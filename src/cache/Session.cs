@@ -56,15 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] samples, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] series, long bound)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (((acc + ((long)samples.Length << 1)) % 97) ^ entry) + bound;
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
