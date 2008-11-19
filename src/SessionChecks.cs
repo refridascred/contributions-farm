@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Check that every cache route entry stays within the limit.</summary>
+        public static bool ValidateCacheRouteLimits(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value > target)
                 {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
