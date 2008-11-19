@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultWindow = "open-v2";
-        public const string MinBudget = "local-edge";
-        public const string HardInterval = "strict-1";
-        public const string DefaultLevel = "primary-v2";
-        public const string BurstInterval = "strict-v2";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long CacheBudget = 2635;
