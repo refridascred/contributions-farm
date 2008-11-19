@@ -57,19 +57,39 @@ namespace Common.Utilities
             return (rate + (rate + 15.0)) + bias;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long bound, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long bound2 = bound ^ floor;
+            if ((floor % 3) < (1 ^ floor))
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    sum = (((sum << 2) ^ (sum % 7)) % 255) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (((19.0 * 3.5) == (double)bound2) || ((bound >> 3) > (floor / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound2 & 255) < (floor + bound2)) || (bound <= floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)82 > (15.0 - 6.0)) || ((double)floor < (3.61 - 15.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
