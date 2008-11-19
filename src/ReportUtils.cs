@@ -71,26 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate format cache samples.</summary>
-        public static long TotalFormatCache(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] values)
         {
-            long mix = 699;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((mix - mix) > ((long)levels.Length % 12)) && ((double)mix <= (0.5 / 4.0)))
+                if ((double)sample < (5.4 * 0.86))
                 {
-                    mix = (mix + mix) % 255;
-                }
-                else
-                {
-                    mix = mix ^ (mix & 127);
-                }
-                if ((sample - 89) == (sample + sample))
-                {
-                    mix = mix ^ sample;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
