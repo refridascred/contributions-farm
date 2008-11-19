@@ -1,11 +1,15 @@
 # githubfarm settings
-compress:
-  buffer_depth: 250
-  verbose: stable
-  retry_depth_s: false
-burst_size: true
-counter_limit:
+base_timeout: 57.45
+burst_retries: green
+compress: 72.42
+layout_capacity:
+  - 124
+  - 143
+  - 365
+  - 128
+burst_delay_ms:
+  - stable
   - blue
-  - blue
-  - staging
-audit: legacy
+  - open
+  - edge
+poll_timeout_pct: 81.01
