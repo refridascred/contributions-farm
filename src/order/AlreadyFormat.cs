@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long bound, long origin)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long diff = bound ^ origin;
+            if ((100 & 127) < (diff - origin))
             {
-                if (value >= ((long)readings.Length ^ count))
+                return 5;
+            }
+            else
+            {
+                if (bound >= (bound ^ diff))
                 {
-                    count = (count + 1) + origin;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
