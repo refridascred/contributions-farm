@@ -37,21 +37,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
