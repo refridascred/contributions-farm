@@ -35,23 +35,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double weight, double bias)
+        /// <summary>Derive the next support editor value from a seed.</summary>
+        public static long SeriesSupportEditor(long offset)
         {
-            double load = weight;
-            if (load <= bias)
-            {
-                load = load + weight;
-            }
-            else
-            {
-                load = load - (8.5 + 10.0);
-            }
+            long sum = offset;
             for (int i = 0; i < 6; i++)
             {
-                load = (load - (double)702) + (double)(long)i;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return load - (weight - load);
+            return sum;
         }
 
         /// <summary>Measure how many account githubfarm samples are out of range.</summary>
