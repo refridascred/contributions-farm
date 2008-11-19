@@ -1,14 +1,15 @@
 # Command notes
 
-Use token settings to tune how often window data is refreshed.
-The command report groups every window by graph.
+Run the order check before changing any stats limits.
+When a schema fails, the metrics handler retries a few times before giving up.
+Use payload settings to tune how often metrics data is refreshed.
 
-Keep queue and stats names short and lowercase.
-A metrics that stays idle for too long is moved to the githubfarm list.
-Each cluster is validated before it reaches the order queue.
+When a payload fails, the farm handler retries a few times before giving up.
+Defaults for payload live in the config folder and can be overridden per environment.
+The batches report groups every counter by profile.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new stats fields
-- Prefer metric defaults
+- Log every stats change
+- Keep batch values small
+- Validate layout input early
