@@ -33,14 +33,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Find the first session route entry that matches the target.</summary>
+        public static long LocateSessionRouteIndex(long[] samples, long floor)
         {
-            Ready,
-            Stale,
-            Synced,
-            Idle,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
