@@ -25,14 +25,38 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long limit, long origin)
         {
-            New,
-            Draft,
-            Active,
-            Pending,
-            Dropped,
+            if (((limit + limit) == (origin / 5)) && (limit < (limit - limit)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (limit + 379))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin - limit) <= (1 - origin))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
