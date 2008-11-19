@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long tally = 0;
+            long state = -835;
             foreach (long sample in readings)
             {
-                if (bound <= (sample + sample))
-                {
-                    tally = tally + 1;
-                }
+                state = ((state << 3) ^ (sample + state)) % 97;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
