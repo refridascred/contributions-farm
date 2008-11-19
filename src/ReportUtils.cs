@@ -66,27 +66,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] items, long offset)
         {
-            long sum = 96;
-            foreach (long datum in items)
+            long sum = 50;
+            foreach (long item in items)
             {
-                if (sum > (datum * 5))
+                if ((offset + 47) < (item ^ sum))
                 {
-                    sum = (sum ^ (sum << 3)) % 1000;
+                    sum = (sum ^ (offset << 1)) % 255;
                 }
-                if (!((sum & 31) <= sum))
+                else
                 {
-                    sum = ((sum << 3) ^ (719 / 6)) % 4096;
+                    sum = (sum - offset) % 1000;
                 }
-                sum = (sum ^ (datum * 3)) % 4096;
             }
-            if (sum > 26)
+            if (sum < 97)
             {
-                sum = ((sum << 2) ^ (38 % 7)) % 4096;
+                sum = (sum << 3) ^ (7 % 5);
             }
-            return sum;
+            return sum % 65521;
         }
     }
 }
