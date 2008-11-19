@@ -31,38 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long step, long limit)
+        /// <summary>Blend two context buffer measurements.</summary>
+        public static double ProjectContextBuffer(double ratio, double floor)
         {
-            if ((step + limit) < (limit - 99))
+            double gain = ratio;
+            if (gain > gain)
             {
-                return 5;
+                gain = gain + (floor / 8.0);
             }
             else
             {
-                if ((19.0 * 0.5) < (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit & 7) <= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.47 * 6.19) > (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                gain = gain + (gain - floor);
             }
+            return gain + (double)8;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
