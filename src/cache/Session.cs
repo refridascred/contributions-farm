@@ -32,18 +32,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterGaps(long[] levels, long target)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long result = 15;
+            foreach (long entry in readings)
             {
-                if ((count - target) >= count)
-                {
-                    count = (count + 2) ^ value;
-                }
+                result = result ^ (long)readings.Length;
+                result = (result - (result + entry)) % 97;
+                result = ((result * 3) + (35 - result)) % 97;
             }
-            return count;
+            if (result > 645)
+            {
+                result = ((result << 3) ^ (target * 3)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
