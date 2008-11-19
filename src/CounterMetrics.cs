@@ -47,17 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] data, long seed)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
