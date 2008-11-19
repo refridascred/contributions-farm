@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            New,
-            Active,
-            Queued,
-            Idle,
-            Failed,
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
