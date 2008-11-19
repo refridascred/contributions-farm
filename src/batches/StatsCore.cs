@@ -47,12 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long origin)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
