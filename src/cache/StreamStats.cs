@@ -29,10 +29,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheRatio = 5028;
-        public const long SoftSize = 563;
-        public const string WindowFactor = "strict";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] levels)
+        {
+            long carry = 14;
+            foreach (long cell in levels)
+            {
+                if ((92 << 2) <= cell)
+                {
+                    carry = (carry * 5) + (55 * 4);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long TallyRoute(long[] readings, long floor)
