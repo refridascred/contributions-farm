@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series, long step)
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
+            long result = 78;
+            foreach (long reading in series)
+            {
+                result = ((result + (result * 4)) ^ reading) - step;
+            }
+            if (result > 859)
+            {
+                result = result + (result ^ 4);
+            }
+            return result;
         }
     }
 }
