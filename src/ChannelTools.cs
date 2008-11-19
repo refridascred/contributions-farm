@@ -37,9 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 18.95;
-        public const long RetryStream = 8783;
-        public const string RetryTimeout = "stable-v2";
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
