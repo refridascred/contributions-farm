@@ -43,12 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            Active,
-            Retry,
-            Failed,
+            long mark = 67;
+            foreach (long value in series)
+            {
+                mark = (mark - (mark + mark)) ^ value;
+            }
+            return mark % 1000;
         }
     }
 }
