@@ -20,18 +20,12 @@ namespace Common.Utilities
         public const double MinRatio = 5.97;
         public const string BurstSpan = "cached-edge";
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] data, long limit)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen / 4) == (limit << 3))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
