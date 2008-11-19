@@ -56,10 +56,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 3523;
-        public const double CacheInterval = 58.27;
-        public const long BatchSize = 1262;
+        /// <summary>Count the farm cache entries that pass the check.</summary>
+        public static long CountFarmCacheHits(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((count + sample) <= (sample + sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
