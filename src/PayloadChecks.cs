@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long BatchInterval = 434;
         public const long BatchQueue = 1930;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long anchor = 949;
-            foreach (long sample in readings)
-            {
-                if ((double)anchor <= (double)sample)
-                {
-                    anchor = ((anchor << 2) ^ (anchor ^ sample)) % 97;
-                }
-            }
-            return anchor % 1000;
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the graph status values.</summary>
