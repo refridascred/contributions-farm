@@ -33,11 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Retry,
+            Failed,
+            Locked,
         }
     }
 }
