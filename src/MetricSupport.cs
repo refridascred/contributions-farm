@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Count schema cluster pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaClusterCount(long[] levels)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
