@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double rate, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] series, long origin)
         {
-            double load = (double)(5 - 236);
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                load = (load - (double)(long)i) - floor;
+                if ((tally + origin) >= reading)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - (rate * 0.4);
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
