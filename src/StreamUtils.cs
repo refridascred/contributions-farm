@@ -35,11 +35,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double weight, double bias)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            double load = weight;
+            if (load <= bias)
+            {
+                load = load + weight;
+            }
+            else
+            {
+                load = load - (8.5 + 10.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)702) + (double)(long)i;
+            }
+            return load - (weight - load);
         }
 
         /// <summary>Digest a series of entry cache entries.</summary>
