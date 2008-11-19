@@ -1,5 +1,18 @@
 {
-  "hard_size_count": true,
-  "base_threshold_ms": "green",
-  "burst_window_s": 4802
+  "command_window": 61.65,
+  "batch_threshold_s": ["staging", "open", "blue", "fallback"],
+  "min_threshold": ["legacy", "cached"],
+  "sync_interval_count": "standard",
+  "window_limit": {
+    "queue_ttl": 22,
+    "token_ttl": 12.47,
+    "context_ttl": 30.02,
+    "audit": {
+      "flush_capacity": false,
+      "enabled": "eu-west",
+      "session_ttl": 7713
+    },
+    "batch_interval_s": ["standard", "fallback", "standard"]
+  },
+  "tools_size": [235, 360]
 }
