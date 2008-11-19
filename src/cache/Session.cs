@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long offset)
         {
-            Retry,
-            Synced,
-            Queued,
-            Dropped,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
