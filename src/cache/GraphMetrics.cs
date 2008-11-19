@@ -19,15 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Ready,
-            Queued,
-            Closed,
-            Synced,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleInterval = 6608;
+        public const long LimitRatio = 442;
+        public const string BatchStats = "alpha";
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
