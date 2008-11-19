@@ -43,15 +43,12 @@ namespace Common.Utilities
             return scale - (offset - offset);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mark = 67;
-            foreach (long value in series)
-            {
-                mark = (mark - (mark + mark)) ^ value;
-            }
-            return mark % 1000;
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
