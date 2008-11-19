@@ -14,17 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a counter batch reading by value.</summary>
-        public static long LookupCounterBatchIndex(long[] readings, long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 7;
+            foreach (long sample in samples)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                carry = (carry ^ (carry + sample)) + seed;
+                if (((long)samples.Length - sample) > carry)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
