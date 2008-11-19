@@ -32,21 +32,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long limit)
         {
-            long result = 15;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = result ^ (long)readings.Length;
-                result = (result - (result + entry)) % 97;
-                result = ((result * 3) + (35 - result)) % 97;
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 645)
-            {
-                result = ((result << 3) ^ (target * 3)) % 1000;
-            }
-            return result % 97;
+            return -1;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
