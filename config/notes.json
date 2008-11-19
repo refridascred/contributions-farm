@@ -1,5 +1,6 @@
 {
-  "soft_ttl_ms": 100,
-  "token_capacity": 55,
-  "buffer_retries": 5.06
+  "context_size": true,
+  "idle_window": ["stable", "strict", "standard", "standard"],
+  "burst_timeout": ["strict", "green", "cached"],
+  "burst_limit_s": "edge"
 }
