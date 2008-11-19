@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] samples)
         {
-            Done,
-            Synced,
-            Active,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell >= 17.0)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
