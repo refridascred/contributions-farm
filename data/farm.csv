@@ -1,7 +1,7 @@
-id,active,weight
-1,8.14,40.31
-2,543,open
-3,679,267
-4,107,690
-5,legacy,47.81
-6,97.38,stable
+id,token,region,label
+1,51.9,855,blue
+2,67.48,715,35.96
+3,green,929,58
+4,standard,strict,618
+5,62.8,678,609
+6,193,703,501
