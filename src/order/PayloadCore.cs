@@ -31,19 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long limit)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (item >= limit)
+                if ((item < (item + item)) || ((3 >> 2) >= (item << 1)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a context entry.</summary>
