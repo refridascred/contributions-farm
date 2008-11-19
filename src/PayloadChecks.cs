@@ -33,23 +33,32 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long mark = -7;
-            foreach (long datum in readings)
+            long state = 134;
+            foreach (long entry in items)
             {
-                mark = (mark - mark) % 4096;
-                if ((mark & 7) > ((-5) % 16))
+                for (int i = 0; i < 5; i++)
                 {
-                    mark = (mark + (datum + datum)) % 97;
+                    state = ((state + state) % 65521) ^ (long)i;
+                    state = (state ^ (state / 5)) % 65521;
                 }
-                else
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    mark = (mark - mark) % 1000;
+                    state = (((state << 2) ^ (entry << 1)) % 101) ^ (long)i2;
+                    state = (state << 2) ^ state;
+                }
+                if ((state >> 2) < (entry & 1))
+                {
+                    state = state + entry;
                 }
             }
-            return mark;
+            if (state < 766)
+            {
+                state = ((state * 3) + 67) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
