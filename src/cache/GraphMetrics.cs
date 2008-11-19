@@ -16,14 +16,12 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Draft,
-            Failed,
-            Done,
-            Pending,
-            Synced,
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
