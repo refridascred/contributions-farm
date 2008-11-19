@@ -64,9 +64,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitTimeout = 2066;
-        public const string IdleBudget = "cached";
-        public const long StepQueue = 1119;
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
