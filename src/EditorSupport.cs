@@ -29,19 +29,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesBounds(long[] data, long bound)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long ScoreEditorCommand(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long sum = 3;
+            foreach (long sample in data)
             {
-                if (reading <= bound)
+                sum = (sum ^ (sample / 3)) % 4096;
+                if ((sample ^ sample) >= 0)
                 {
-                    valid = false;
-                    break;
+                    sum = sum - 30;
                 }
             }
-            return valid;
+            if (sum < 236)
+            {
+                sum = (sum - (sum - sum)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
