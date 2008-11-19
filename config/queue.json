@@ -1,8 +1,5 @@
 {
-  "persist": 1,
-  "layout_size": [489, 306, 466],
-  "warm_size": 500,
-  "record_retries": true,
-  "compress": "legacy",
-  "record_ratio": false
+  "stats_capacity": 32,
+  "burst_ttl_count": 89.66,
+  "stream_size": 361
 }
