@@ -52,22 +52,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload buffer entries.</summary>
-        public static long ScorePayloadBuffer(long[] samples, long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = 807;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    sum = (sum - (sum >> 4)) % 101;
-                }
-                if (((sum ^ (long)samples.Length) >= (seed << 2)) && ((datum * 4) > (sum ^ sum)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Retry,
+            Idle,
+            Paused,
+            Closed,
+            Locked,
         }
     }
 }
