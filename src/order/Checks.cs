@@ -37,14 +37,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long seed, long limit)
         {
-            Idle,
-            Retry,
-            Synced,
-            Paused,
-            Closed,
+            long span = seed + limit;
+            if (((double)seed <= (8.47 * 5.0)) && ((span << 3) == (54 ^ 490)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((seed - span) == (limit - seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed <= (3.0 - 19.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
