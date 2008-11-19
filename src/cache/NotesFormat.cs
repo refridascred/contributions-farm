@@ -13,14 +13,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 4328;
+        public const long BurstSize = 2903;
+        public const long WindowTimeout = 8885;
+        public const string CacheNotes = "open-v2";
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double SmoothGithubfarm(double weight, double span)
