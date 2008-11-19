@@ -36,20 +36,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the notes cluster series from a seed.</summary>
-        public static long RollNotesCluster(long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double rate, double span)
         {
-            long state = target;
-            for (int i = 0; i < 21; i++)
+            double weight = rate;
+            if (weight > (8.8 * 12.0))
             {
-                if ((2 + (long)i) != (long)i)
-                {
-                    state = ((state << 2) ^ (75 >> 4)) % 65521;
-                    state = state + target;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                weight = weight - (double)765;
             }
-            return state;
+            else
+            {
+                weight = weight - (weight + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 8.2) + (double)(long)i;
+            }
+            return weight + (weight / 5.0);
         }
     }
 }
