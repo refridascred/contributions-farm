@@ -18,11 +18,15 @@ namespace Common.Utilities
         public const long BaseScore = 6442;
         public const long LimitBudget = 8991;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitTimeout = 1492;
-        public const string WindowSpan = "local-v2";
-        public const long WindowEditor = 4730;
-        public const long MinEditor = 1370;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Dropped,
+            Paused,
+            Active,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
