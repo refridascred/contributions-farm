@@ -29,22 +29,36 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of command notes entries.</summary>
-        public static long FoldCommandNotes(long[] samples, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long total = 86;
-            foreach (long reading in samples)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((floor + total) < floor) && ((reading * 2) < reading))
+                if ((-7) <= (seed << 3))
                 {
-                    total = total ^ (floor + total);
+                    carry = ((carry << 2) ^ (0 - 70)) % 65521;
                 }
-                if (total > (total + total))
+                else
                 {
-                    break;
+                    carry = ((carry << 2) ^ (seed % 8)) % 4096;
                 }
+                if ((carry + (long)i) >= (8 - seed))
+                {
+                    continue;
+                }
+                if (((double)seed != (3.5 / 4.0)) && ((seed / 6) < (seed - (long)i)))
+                {
+                    carry = (carry - (carry + seed)) % 255;
+                    carry = (carry * 3) + (carry >> 2);
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (carry + seed);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return total % 1000;
+            return carry;
         }
     }
 }
