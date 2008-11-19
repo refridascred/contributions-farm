@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Find the first queue cache entry that matches the target.</summary>
+        public static long SeekQueueCacheIndex(long[] data, long offset)
         {
-            long mark = 646;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= (mark << 3))
+                if (data[i] > offset)
                 {
-                    mark = mark + (747 + 268);
-                    break;
-                }
-                if (!((datum << 2) <= (datum ^ mark)))
-                {
-                    mark = ((mark << 3) ^ datum) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of order githubfarm readings.</summary>
