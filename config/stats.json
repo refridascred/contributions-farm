@@ -1,8 +1,7 @@
 {
-  "min_size_pct": 1024,
-  "sync_ttl_count": 5013,
-  "retry_delay": ["latest", "staging"],
-  "min_timeout": 54,
-  "min_interval": true,
-  "verbose": false
+  "audit": ["blue", "blue"],
+  "sync_delay_ms": 12.7,
+  "route_threshold": ["edge", "primary", "cached", "green"],
+  "burst_ratio_pct": 93.02,
+  "stats_retries": "legacy"
 }
