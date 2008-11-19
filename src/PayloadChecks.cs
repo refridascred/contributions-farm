@@ -43,22 +43,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the checks graph entries that pass the check.</summary>
-        public static long MeasureChecksGraphHits(long[] levels)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((long)levels.Length < entry)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = (state * 4) + ((long)i ^ state);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
