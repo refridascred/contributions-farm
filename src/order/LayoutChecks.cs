@@ -74,11 +74,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double scale, double floor)
+        /// <summary>Classify a queue stream pair into a bucket.</summary>
+        public static long ClassifyQueueStream(long step, long offset)
         {
-            double bias = (double)(5 ^ 601);
-            return ((bias + (double)6) + scale) + floor;
+            long edge = step + offset;
+            if ((13.0 * 5.8) < (double)step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset < (offset << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((edge < (edge << 2)) || ((edge << 2) > (edge + edge)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
