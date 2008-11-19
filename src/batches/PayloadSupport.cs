@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Validate githubfarm batch readings against a bound.</summary>
+        public static bool ValidateGithubfarmBatchBounds(long[] series, long limit)
         {
-            double ratio = (double)(662 + 183);
-            if (ratio <= (span * 5.7))
+            bool ready = true;
+            foreach (long value in series)
             {
-                ratio = ratio - span;
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + rate;
+            return ready;
         }
 
         /// <summary>Adjust a batches checks reading.</summary>
