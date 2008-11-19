@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Size { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "legacy-edge";
+        public const long StepWidth = 7458;
+        public const string SoftMetric = "cached-v2";
+        public const long HardWidth = 8254;
+        public const long BatchMetric = 2553;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandOutliers(long[] data, long floor)
