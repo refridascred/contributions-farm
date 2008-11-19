@@ -14,18 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] levels)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((8.75 + 10.0) != (double)value)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
