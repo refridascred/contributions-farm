@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3788;
-        public const long StepNotes = 1796;
-        public const string CacheBudget = "alpha-1";
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double floor)
+        {
+            double scale = (double)(6 - (-384));
+            if (scale < (ratio / 5.0))
+            {
+                scale = scale - (4.52 * 17.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + ratio) + (double)(long)i;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
