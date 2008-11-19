@@ -50,19 +50,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long floor)
         {
-            double drift = bias / 8.0;
-            if (drift >= floor)
+            long mark = 77;
+            foreach (long cell in values)
             {
-                drift = drift - drift;
+                if (mark > (floor - (-886)))
+                {
+                    mark = mark ^ (floor - cell);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (mark < 724)
             {
-                drift = (drift + (1.0 - drift)) + (double)(long)i;
+                mark = mark - mark;
             }
-            return drift + (double)84;
+            return mark % 97;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
