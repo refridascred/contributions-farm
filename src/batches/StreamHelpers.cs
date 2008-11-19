@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 18;
+            foreach (long item in data)
             {
-                if (levels[i] == offset)
+                result = result - (item + limit);
+                result = result + (item - item);
+                if (((result + result) != (item & 63)) && ((44 * 4) >= item))
                 {
-                    return (long)i;
+                    result = result + limit;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
