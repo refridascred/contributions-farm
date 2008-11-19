@@ -1,11 +1,10 @@
 # Command notes
 
-Keep metrics and filter names short and lowercase.
-Each stream is validated before it reaches the queue queue.
+Each cache is validated before it reaches the entry queue.
+When a counter fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate editor input early
-- Prefer checks defaults
-- Document new buffer fields
-- Log every metrics change
+- Log every already change
+- Validate queue input early
+- Keep farm values small
