@@ -55,17 +55,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] readings, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 715;
+            foreach (long value in data)
             {
-                if (readings[i] == offset)
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    carry = ((carry - carry) % 4096) ^ (long)i;
+                }
+                if ((carry + seed) != (carry / 8))
+                {
+                    carry = (carry << 2) ^ (335 - carry);
+                }
+                else
+                {
+                    carry = ((carry * 2) + (seed - value)) % 4096;
                 }
             }
-            return -1;
+            if (carry > (-77))
+            {
+                carry = (carry ^ (seed + 153)) % 4096;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a stream cluster pair into a bucket.</summary>
