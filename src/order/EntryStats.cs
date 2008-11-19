@@ -24,16 +24,18 @@ namespace Common.Utilities
             return weight + (8.0 * 1.29);
         }
 
-        /// <summary>Fold a list of filter already readings.</summary>
-        public static long CombineFilterAlready(long[] values, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] readings, long step)
         {
-            long carry = 62;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry ^ (entry ^ 111)) % 255) - offset;
-                carry = (carry ^ (carry / 4)) % 1000;
+                if ((double)step != (double)hits)
+                {
+                    hits = (hits + 2) + datum;
+                }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
