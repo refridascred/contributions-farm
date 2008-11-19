@@ -32,17 +32,39 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3438;
         public const long LimitDepth = 1850;
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        /// <summary>Rank profile account input into a small class.</summary>
+        public static long ClassifyProfileAccount(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = seed - limit;
+            if (5 <= (span / 7))
             {
-                if (readings[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((span + span) > (seed / 9))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + seed) != (span + span))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - seed) < (limit << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
