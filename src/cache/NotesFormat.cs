@@ -30,11 +30,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 1856;
-        public const double IdleNotes = 8.06;
-        public const string MaxBudget = "legacy-v2";
-        public const string BurstNotes = "primary-edge";
-        public const double RetryRatio = 62.43;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
