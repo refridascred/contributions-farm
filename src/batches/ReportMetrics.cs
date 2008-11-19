@@ -15,19 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (result < (result - 19))
-                {
-                    result = ((result << 2) ^ (step / 7)) % 65521;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
