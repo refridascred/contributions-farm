@@ -27,12 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Count { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBudget = 96.04;
+        public const long RetryFactor = 6516;
+        public const long BaseBatches = 4846;
+        public const double HardLevel = 15.81;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] levels)
