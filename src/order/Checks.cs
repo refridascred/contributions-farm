@@ -49,10 +49,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowFactor = 51.76;
-        public const string CacheSupport = "latest-1";
-        public const long MaxSupport = 7022;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
