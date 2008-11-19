@@ -52,11 +52,13 @@ namespace Common.Utilities
         public const long MaxInterval = 5897;
         public const string DefaultRecord = "fallback-1";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 7.3;
-        public const long IdleDepth = 8512;
-        public const double SoftScore = 67.29;
-        public const long HardLevel = 5907;
-        public const string StepBudget = "latest-1";
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+        }
     }
 }
