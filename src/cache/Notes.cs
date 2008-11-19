@@ -44,28 +44,36 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long step, long floor)
+        /// <summary>Rank counter buffer input into a small class.</summary>
+        public static long SortCounterBuffer(long seed, long floor)
         {
-            if (5.76 >= (double)step)
+            long edge = seed + floor;
+            if (((seed - 682) < (seed - floor)) && ((20.0 / 6.0) >= (double)seed))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((step & 1) < step)
+                if ((0.9 * 0.82) < (double)seed)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (((-54) / 3) <= (step << 3))
+                    if (!((edge + seed) != (79 - floor)))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 4;
+                        if (1.39 >= (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
