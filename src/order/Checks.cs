@@ -54,11 +54,13 @@ namespace Common.Utilities
         public const string CacheSupport = "latest-1";
         public const long MaxSupport = 7022;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double bias, double span)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double weight = (bias - bias) + (double)(-353);
-            return (weight + (weight / 2.0)) + span;
+            New,
+            Queued,
+            Active,
+            Pending,
         }
     }
 }
