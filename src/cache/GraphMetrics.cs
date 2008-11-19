@@ -33,19 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] levels, long limit)
+        /// <summary>Locate a payload channel reading by value.</summary>
+        public static long SeekPayloadChannelIndex(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != limit)
+                if ((items[i] < origin) && ((items[i] % 3) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
