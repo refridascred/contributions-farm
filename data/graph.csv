@@ -1,7 +1,8 @@
-id,active,level
-1,36.46,264
-2,staging,blue
-3,321,cached
-4,77.14,58.36
-5,947,21.92
-6,local,green
+id,rank,token,active
+1,1.51,fallback,234
+2,508,18.53,20.54
+3,fallback,63.48,primary
+4,29.77,32.4,493
+5,58,572,58.12
+6,strict,95.63,668
+7,94.48,local,486
