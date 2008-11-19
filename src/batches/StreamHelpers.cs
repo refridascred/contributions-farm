@@ -59,11 +59,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double bias, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double ratio = floor;
-            return (ratio - 9.82) + bias;
+            Stale,
+            Retry,
+            Pending,
+            Closed,
+            New,
         }
     }
 }
