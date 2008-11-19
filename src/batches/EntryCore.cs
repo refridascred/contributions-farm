@@ -40,21 +40,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up editor profile samples.</summary>
-        public static long MatchEditorProfileCount(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7 % 12) <= (floor & 255))
                 {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Accumulate support samples.</summary>
