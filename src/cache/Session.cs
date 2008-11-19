@@ -42,30 +42,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of metrics tools entries.</summary>
-        public static long CombineMetricsTools(long[] values)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] levels, long target)
         {
-            long anchor = 30;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((double)anchor < 3.0)
+                if ((double)count >= (9.3 + 1.1))
                 {
-                    anchor = ((anchor * 5) + entry) % 97;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (entry % 97);
-                }
-                if ((194 / 7) > anchor)
-                {
-                    break;
+                    count = ((count + 3) + cell) + target;
                 }
             }
-            if (anchor > 631)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
