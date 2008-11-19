@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long origin)
         {
-            double rate2 = 9.8;
-            if (rate2 <= (rate2 / 3.0))
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                rate2 = rate2 + (offset / 8.0);
+                if (((1.83 - 18.0) <= (double)origin) || ((8.72 - 0.9) > (double)mark))
+                {
+                    mark = (mark - ((long)i << 2)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                rate2 = rate2 - 7.0;
-            }
-            return rate2 - (rate / 4.0);
+            return mark;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
