@@ -12,19 +12,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] items, long floor)
+        /// <summary>Count support tools pairs that satisfy a relation.</summary>
+        public static long MatchSupportToolsCount(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
