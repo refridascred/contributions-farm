@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string DefaultAccount = "local-v2";
         public const long BatchAccount = 2517;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] <= seed)
+                if (items[i] >= step)
                 {
                     return (long)i;
                 }
