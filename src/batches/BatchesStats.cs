@@ -48,23 +48,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] levels, long seed)
+        /// <summary>Combine schema tools values into a single score.</summary>
+        public static long DigestSchemaTools(long[] values, long seed)
         {
-            long mix = 4;
-            foreach (long cell in levels)
+            long mix = 5;
+            foreach (long reading in values)
             {
-                mix = (mix + (seed * 3)) ^ cell;
-                if (((7.33 - 4.2) >= (double)mix) || (mix < (mix & 15)))
+                if ((double)reading < 20.0)
                 {
-                    mix = mix ^ (mix >> 3);
+                    mix = ((mix * 4) + (reading * 5)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 4) + (reading ^ 187);
                 }
             }
-            if (mix < 91)
+            if (mix > 608)
             {
-                mix = (mix ^ mix) % 255;
+                mix = (mix << 3) ^ seed;
             }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
