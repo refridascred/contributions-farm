@@ -35,25 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long limit)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double ratio, double floor)
         {
-            long slot = target - limit;
-            if ((slot & 63) >= (limit ^ 5))
+            double load = (double)(3 * 2);
+            if (load < (double)202)
             {
-                return 7;
+                load = (load - (double)3) + ratio;
             }
             else
             {
-                if (((2.5 * 7.6) <= (double)slot) && ((double)limit <= (3.2 + 3.5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                load = load - (3.0 - load);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (16.0 + load)) - (double)(long)i;
+            }
+            return load - (floor / 3.0);
         }
     }
 }
