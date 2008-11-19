@@ -66,12 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultGraph = 29.3;
+        public const long LimitWidth = 5036;
+        public const double CacheGraph = 43.84;
 
         /// <summary>Derive the next stats support value from a seed.</summary>
         public static long RollStatsSupport(long bound)
