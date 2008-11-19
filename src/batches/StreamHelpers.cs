@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long DefaultEditor = 3275;
         public const double CacheEditor = 0.71;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 4421;
-        public const double BatchToken = 63.08;
-        public const long DefaultToken = 4822;
-        public const double WindowLevel = 17.03;
+        /// <summary>Audit batches token readings against a rule.</summary>
+        public static long AuditBatchesTokenMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((double)target != (7.7 / 2.0))
+                {
+                    hits = (hits + 1) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
