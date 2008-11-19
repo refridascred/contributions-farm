@@ -1,13 +1,5 @@
 # support settings
-persist: 1024
-poll_threshold:
-  - strict
-  - fallback
-  - primary
-strict: open
-account_window:
-  cache_size_count: 7.9
-  compress: 9
-  soft_threshold_count: true
-  warm_interval_ms: green
-  stream_delay: standard
+min_window_pct: 4058
+sync_depth_s: false
+retry_window: 100
+cache_threshold: 36.51
