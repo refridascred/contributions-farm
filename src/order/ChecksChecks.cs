@@ -23,18 +23,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many filter schema samples are out of range.</summary>
-        public static long CountFilterSchemaOutliers(long[] readings, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)bound < (4.0 + 0.4))
+                if (!((double)state >= 8.3))
                 {
-                    matches = (matches + 1) + entry;
+                    state = state ^ (-3);
                 }
+                state = (state ^ (target >> 1)) % 4096;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a route summary.</summary>
