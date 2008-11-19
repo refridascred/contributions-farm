@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many metrics format samples are out of range.</summary>
-        public static long MeasureMetricsFormatOutliers(long[] levels, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((reading * 3) < (reading / 2))
+                if (!(2.95 < (double)tally))
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many support githubfarm samples are out of range.</summary>
