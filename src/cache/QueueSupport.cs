@@ -34,19 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Check that every graph githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGraphGithubfarmLimits(long[] samples, long step)
         {
-            long state = 7;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                state = (state ^ (cell % 64)) % 4096;
-                if (((814 + cell) == (state ^ state)) || ((cell + state) >= (3 + cell)))
+                if (sample > step)
                 {
-                    state = (state - state) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
     }
 }
