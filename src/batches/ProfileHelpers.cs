@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long sum = 7;
-            foreach (long item in readings)
-            {
-                if (item >= sum)
-                {
-                    sum = (((sum * 4) + 88) % 65521) - offset;
-                }
-            }
-            return sum % 97;
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
