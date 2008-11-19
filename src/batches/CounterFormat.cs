@@ -53,13 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double bias, double floor)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
+            double rate = floor;
+            if (rate < (rate - bias))
+            {
+                rate = rate - bias;
+            }
+            return rate - bias;
         }
     }
 }
