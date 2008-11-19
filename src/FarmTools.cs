@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a contributi token counter forward.</summary>
-        public static long IterateContributiToken(long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] series)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (!((double)matches > (6.0 / 9.0)))
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
