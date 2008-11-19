@@ -55,19 +55,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            double bias = (double)447 * 20.0;
-            if (bias < (bias * 1.0))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (bias - (double)58) - rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + (7.57 - bias);
+            return seen;
         }
     }
 }
