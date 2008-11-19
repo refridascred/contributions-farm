@@ -28,26 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data)
+        /// <summary>Check that every queue session entry stays within the limit.</summary>
+        public static bool CheckQueueSessionBounds(long[] values, long floor)
         {
-            long anchor = 1;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (((-64) ^ datum) <= datum)
+                if (reading >= floor)
                 {
-                    anchor = (anchor + anchor) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor > 893)
-            {
-                anchor = (anchor * 5) + (anchor + anchor);
-            }
-            return anchor % 97;
+            return flag;
         }
     }
 }
