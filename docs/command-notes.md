@@ -1,14 +1,11 @@
 # Command notes
 
-Keep entry and buffer names short and lowercase.
-The batches report groups every batches by stream.
-
-When a profile fails, the format handler retries a few times before giving up.
-The metrics report groups every queue by support.
+The record helpers are pure functions, so they are safe to call from any thread.
+Run the graph check before changing any notes limits.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate route input early
-- Prefer cache defaults
-- Keep graph values small
-- Log every stats change
+- Keep route values small
+- Validate record input early
+- Prefer record defaults
