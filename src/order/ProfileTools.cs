@@ -33,31 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a checks session pair into a bucket.</summary>
-        public static long SortChecksSession(long target, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] levels)
         {
-            if ((double)limit > (1.87 + 20.0))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= 2.58)
+                if ((cell + hits) < (hits ^ hits))
                 {
-                    return 7;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((limit - limit) < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
