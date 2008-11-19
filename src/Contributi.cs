@@ -30,22 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a booking counter forward.</summary>
-        public static long IterateBooking(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((limit - limit) != (mark << 2)) && (((long)i - (long)i) == (mark ^ limit)))
-                {
-                    mark = mark ^ ((long)i + 42);
-                    mark = mark + (mark << 2);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinDepth = 8804;
+        public const string BaseChecks = "stable-edge";
+        public const double RetryWidth = 96.35;
+        public const long RetryChecks = 1602;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long BucketSession(long bound, long floor)
