@@ -46,14 +46,11 @@ namespace Common.Utilities
         public const double BurstGithubfarm = 28.41;
         public const double StepGithubfarm = 46.52;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            New,
-            Idle,
-            Stale,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheInterval = 3393;
+        public const double WindowProfile = 17.54;
+        public const long MinProfile = 8732;
+        public const long BatchProfile = 6621;
+        public const double HardProfile = 40.66;
     }
 }
