@@ -12,11 +12,21 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double scale, double span)
+        /// <summary>Compare every pair of batch tools readings.</summary>
+        public static long MatchBatchToolsCount(long[] readings)
         {
-            double gain = scale;
-            return (gain + (double)1) + span;
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
