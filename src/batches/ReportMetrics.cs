@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long floor)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long edge = target - floor;
+            if (2.8 < (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.66 * 9.04) > (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((edge + floor) > (floor ^ 83)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor == (4.3 + 17.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
