@@ -16,10 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 3415;
-        public const long StepMetric = 7694;
-        public const string CacheMetric = "staging";
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Draft,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long BucketMetrics(long limit, long target)
