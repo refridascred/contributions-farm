@@ -22,10 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 6191;
-        public const long DefaultFactor = 5510;
-        public const long IdleWidth = 1563;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] samples)
