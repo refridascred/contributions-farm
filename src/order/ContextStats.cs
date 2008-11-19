@@ -33,12 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long offset)
         {
-            Locked,
-            Paused,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats status values.</summary>
