@@ -13,19 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] items, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long origin, long target)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            if (((origin - target) >= origin) && ((target * 2) < (origin >> 3)))
             {
-                if (reading >= bound)
+                return 2;
+            }
+            else
+            {
+                if (target < (origin & 1))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - target) == (origin / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
