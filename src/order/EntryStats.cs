@@ -35,33 +35,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a notes already value against two limits.</summary>
-        public static long RankNotesAlready(long target, long limit)
-        {
-            long gap = target - limit;
-            if (target < (limit - limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - 7) == (2 * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((7.1 * 11.0) == (double)gap)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 2027;
+        public const long BatchBatches = 2184;
+        public const long IdleBatches = 1682;
+        public const long RetryFactor = 3993;
+        public const long CacheBatches = 2796;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long limit)
