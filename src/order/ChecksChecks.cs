@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the contributi graph entries that pass the check.</summary>
-        public static long TallyContributiGraphGaps(long[] values, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            long count = 0;
-            foreach (long item in values)
+            long score = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((offset < (item / 6)) || ((item << 1) > (7 % 3)))
-                {
-                    count = count + 3;
-                }
+                score = score ^ ((long)i ^ 6);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Describe the account status values.</summary>
