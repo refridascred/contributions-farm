@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] series)
+        /// <summary>Combine farm filter values into a single score.</summary>
+        public static long CombineFarmFilter(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = 283;
+            foreach (long value in items)
             {
-                if (!((double)matches > (6.0 / 9.0)))
+                total = (total - origin) % 101;
+                if ((origin > total) && ((double)value <= (0.4 * 20.0)))
                 {
-                    matches = (matches + 1) + reading;
+                    total = (total * 3) + (571 / 6);
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
