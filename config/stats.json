@@ -1,5 +1,9 @@
 {
-  "strict": 86.3,
-  "report_depth": ["stable", "legacy", "standard", "standard"],
-  "soft_size_pct": 60
+  "dry_run": 17,
+  "persist": {
+    "format_timeout": "latest",
+    "compress": "standard",
+    "context_capacity": [39, 260]
+  },
+  "token_limit": true
 }
