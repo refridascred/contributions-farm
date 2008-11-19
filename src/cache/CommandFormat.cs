@@ -66,22 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long origin)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long state = 5;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((62 * 5) <= ((-17) + state)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state ^ (state ^ origin)) % 101) ^ sample;
+                    if ((series[i] ^ series[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state > 402)
-            {
-                state = (state + origin) % 65521;
-            }
-            return state % 1000;
+            return matches;
         }
     }
 }
