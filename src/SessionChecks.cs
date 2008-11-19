@@ -15,15 +15,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a batch token reading.</summary>
-        public static double SmoothBatchToken(double rate, double bias)
+        /// <summary>Validate window command readings against a bound.</summary>
+        public static bool ValidateWindowCommandRange(long[] levels, long seed)
         {
-            double gain = 6.3;
-            if (gain <= (double)382)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                gain = (gain - bias) + rate;
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return gain + bias;
+            return ok;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
