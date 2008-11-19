@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] samples, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                if ((data[i] == seed) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
