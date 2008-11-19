@@ -23,11 +23,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double gain, double span)
+        /// <summary>Find the first account session entry that matches the target.</summary>
+        public static long LookupAccountSessionIndex(long[] levels, long limit)
         {
-            double scale = gain;
-            return (scale - (double)(-267)) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
