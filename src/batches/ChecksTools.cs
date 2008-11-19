@@ -26,13 +26,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Synced,
-            Closed,
-            Paused,
-            Draft,
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a checks entry.</summary>
