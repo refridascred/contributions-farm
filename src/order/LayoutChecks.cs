@@ -41,17 +41,32 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] readings, long step)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long edge = target + floor;
+            if (edge >= (edge ^ target))
             {
-                if ((readings[i] < step) && ((readings[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((floor % 24) <= edge)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)646 < (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
