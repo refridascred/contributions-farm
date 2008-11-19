@@ -1,25 +1,10 @@
 # githubfarm settings
-audit: 6
-sync_capacity_count:
-  profile_window:
-    poll_limit_count: 62.24
-    strict: local
-    buffer_threshold: 100
-    batch_threshold: 81
-    max_delay:
-      - 34
-      - 14
-      - 307
-      - 241
-    batch_window_pct: standard
-  queue_depth: open
-  githubfarm_capacity:
-    - cached
-    - cached
-    - latest
-  entry_window: 250
-  poll_retries_count: 86.3
-max_ratio_pct: 7606
-retry_limit_s: 60
-idle_timeout_s: 5815
-already_window: true
+commits_depth:
+  - open
+  - cached
+strict: 7357
+enabled:
+  - 16
+  - 498
+  - 495
+  - 98
