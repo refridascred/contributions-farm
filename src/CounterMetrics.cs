@@ -19,12 +19,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 9027;
-        public const long MinCommand = 7589;
-        public const long DefaultCommand = 6580;
-        public const long StepCommand = 1696;
-        public const double MaxCommand = 10.57;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long WeighSchema(long[] values, long limit)
