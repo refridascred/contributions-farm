@@ -31,19 +31,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            double scale = (weight - weight) - offset;
-            if (scale <= (weight * 8.68))
+            long acc = 0;
+            foreach (long datum in items)
             {
-                scale = scale + offset;
+                if (!((acc ^ acc) == (acc << 1)))
+                {
+                    acc = ((acc << 3) ^ acc) + datum;
+                }
             }
-            else
+            if (acc > 5)
             {
-                scale = scale + (double)640;
+                acc = acc - acc;
             }
-            return scale - (offset - offset);
+            return acc;
         }
 
         /// <summary>Hold a order stats.</summary>
