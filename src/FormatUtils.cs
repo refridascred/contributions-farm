@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items, long floor)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value - value) >= (floor ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
