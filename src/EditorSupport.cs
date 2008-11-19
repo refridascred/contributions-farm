@@ -29,23 +29,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a batch session value against two limits.</summary>
-        public static long ClassifyBatchSession(long floor, long limit)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long target)
         {
-            long delta = floor ^ limit;
-            if (((double)delta > (8.0 + 1.0)) || ((double)delta == (7.0 / 6.0)))
+            long span = limit + target;
+            if ((double)limit > (4.1 - 7.2))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((limit % 10) >= floor)
+                if (!((1 + span) >= target))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 1;
+                    if ((double)limit > (20.0 - 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
