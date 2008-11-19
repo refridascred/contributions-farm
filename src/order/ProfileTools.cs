@@ -74,21 +74,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            if (drift <= (double)767)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - 9.92) - bias;
             }
-            return tally;
+            return drift - (ratio * 1.0);
         }
     }
 }
