@@ -23,11 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            Synced,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Digest a series of context entries.</summary>
