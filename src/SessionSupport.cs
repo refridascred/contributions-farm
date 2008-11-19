@@ -29,31 +29,22 @@ namespace Common.Utilities
         public const long MinSize = 5212;
         public const double BurstEditor = 74.88;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long bound, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] levels, long offset)
         {
-            if ((double)seed <= (1.39 / 4.0))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 255) == (bound + seed))
+                if ((tally - 351) < tally)
                 {
-                    return 2;
+                    tally = ((tally + 3) + cell) - offset;
                 }
                 else
                 {
-                    if ((bound + 9) != (seed << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
