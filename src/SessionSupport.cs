@@ -20,15 +20,19 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] items, long floor)
         {
-            double ratio2 = 1.61 * 8.1;
-            if (ratio2 <= offset)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                ratio2 = (ratio2 - (0.1 / 9.0)) + ratio;
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return ratio2 - (offset - ratio2);
+            return stale;
         }
 
         /// <summary>Hold a checks entry.</summary>
