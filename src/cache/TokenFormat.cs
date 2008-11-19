@@ -19,17 +19,38 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a editor cluster reading by value.</summary>
-        public static long LookupEditorClusterIndex(long[] readings, long floor)
+        /// <summary>Rank counter checks input into a small class.</summary>
+        public static long BucketCounterChecks(long target, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((58 ^ limit) == (target << 1)) && ((double)target >= (7.6 * 4.4)))
             {
-                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (target < (target + 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((target % 10) <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit / 3) < target)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a stream batch figure with a bias.</summary>
