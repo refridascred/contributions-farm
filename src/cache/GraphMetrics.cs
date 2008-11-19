@@ -58,18 +58,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] data)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((count - count) >= (count + count))
+                if (cell <= offset)
                 {
-                    count = (count + 3) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
