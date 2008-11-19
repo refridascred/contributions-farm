@@ -1,6 +1,7 @@
 {
-  "metric_depth": 5962,
-  "idle_ttl": 58.6,
-  "graph_ratio": [12, 368, 356, 375],
-  "base_ratio": "cached"
+  "strict": "eu-west",
+  "filter_ratio": 52,
+  "compress": 60,
+  "warm_retries_pct": "eu-west",
+  "batch_interval_count": 77
 }
