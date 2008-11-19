@@ -1,33 +1,13 @@
 # entry settings
-max_window:
-  - 159
-  - 275
-  - 206
-  - 283
-flush_window_ms:
-  - staging
-  - open
-  - blue
-sync_interval: legacy
-command_window:
-  stats_ttl:
-    - 198
-    - 405
-    - 161
-    - 25
-  persist:
-    - 395
-    - 448
-    - 314
-  graph_delay:
-    min_ttl_count: 70
-    already_depth: staging
-    strict: latest
-  layout_depth: 74.46
-  farm_threshold: 100
-  sync_timeout: 60
-hard_ttl_count: 250
-warm_limit:
-  - 158
-  - 490
-  - 488
+min_retries_count: 24.4
+batch_depth: 8573
+flush_ttl_pct:
+  window_threshold: 11
+  min_depth:
+    - open
+    - latest
+  strict: 2101
+contributi_ttl: true
+cache_window:
+  - 330
+  - 226
