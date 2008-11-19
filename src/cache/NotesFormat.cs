@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] data)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double ratio = gain;
+            if (ratio <= (double)75)
             {
-                if ((double)item <= (7.46 + 20.0))
-                {
-                    hits = hits + 2;
-                }
+                ratio = (ratio + gain) - span;
             }
-            return hits;
+            return ratio - gain;
         }
 
         /// <summary>Hold a commits entry.</summary>
