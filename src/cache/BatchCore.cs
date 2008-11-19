@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            Synced,
+            Locked,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
