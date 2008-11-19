@@ -35,18 +35,32 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long step)
+        /// <summary>Grade a notes already value against two limits.</summary>
+        public static long RankNotesAlready(long target, long limit)
         {
-            long mix = 50;
-            foreach (long item in series)
+            long gap = target - limit;
+            if (target < (limit - limit))
             {
-                if ((mix >> 3) <= (item + item))
+                return 5;
+            }
+            else
+            {
+                if ((target - 7) == (2 * 4))
                 {
-                    mix = (mix - (step + 50)) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if ((7.1 * 11.0) == (double)gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return mix % 65521;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
