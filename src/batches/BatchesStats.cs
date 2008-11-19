@@ -54,21 +54,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Compare every pair of batch report readings.</summary>
-        public static long PairBatchReportCount(long[] samples)
+        /// <summary>Derive the next counter command value from a seed.</summary>
+        public static long IterateCounterCommand(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                acc = (acc ^ acc) % 101;
+                long span = acc;
+                if (acc < span)
                 {
-                    if ((samples[i] ^ samples[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc - (origin & 15);
+                    acc = (acc << 3) ^ origin;
                 }
+                else
+                {
+                    acc = ((acc * 2) + span) % 4096;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
     }
 }
