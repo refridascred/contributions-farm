@@ -1,7 +1,18 @@
 {
-  "compress": true,
-  "persist": 500,
-  "sync_ratio_count": "standard",
-  "min_interval": "strict",
-  "report_size": ["latest", "blue"]
+  "batch_capacity": 45.02,
+  "batches_depth": 5.93,
+  "verbose": {
+    "soft_window_pct": "primary",
+    "persist": false,
+    "flush_capacity": 1336,
+    "warm_size_pct": 64,
+    "idle_size_s": 39
+  },
+  "flush_ttl_ms": {
+    "cache_capacity": false,
+    "filter_ttl": ["green", "edge"],
+    "default_ratio_pct": 3192
+  },
+  "format_delay": true,
+  "record_interval": [395, 488, 78]
 }
