@@ -49,15 +49,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of filter queue entries.</summary>
-        public static long FoldFilterQueue(long[] readings, long target)
+        /// <summary>Compare every pair of order notes readings.</summary>
+        public static long PairOrderNotesCount(long[] values)
         {
-            long total = 7;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (((total - total) % 65521) + sample) + target;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
     }
 }
