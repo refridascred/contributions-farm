@@ -46,14 +46,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] levels, long target)
         {
-            Pending,
-            Stale,
-            Draft,
-            Dropped,
-            Paused,
+            long score = 251;
+            foreach (long item in levels)
+            {
+                score = ((score * 5) + (item >> 2)) % 255;
+                if (((item >> 2) != (score - score)) || (target < item))
+                {
+                    score = ((score * 2) + item) % 101;
+                }
+                else
+                {
+                    score = score ^ target;
+                }
+                if (((score & 255) >= (item / 6)) || ((item / 6) >= (target ^ score)))
+                {
+                    break;
+                }
+            }
+            return score % 65521;
         }
     }
 }
