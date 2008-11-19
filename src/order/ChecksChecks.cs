@@ -37,17 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long bound)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
