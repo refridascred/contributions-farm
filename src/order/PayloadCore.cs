@@ -29,19 +29,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series, long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] series, long bound)
         {
-            long result = 521;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ seed) % 97;
-                if ((double)value > (3.4 - 4.1))
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    result = (result << 2) ^ (value ^ result);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Count the stream layout entries that pass the check.</summary>
