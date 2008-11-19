@@ -1,7 +1,12 @@
 {
-  "audit": "legacy",
-  "base_window_s": 250,
-  "checks_capacity": "local",
-  "strict": "edge",
-  "retry_size": false
+  "metric_ttl": [292, 193, 102, 314],
+  "base_retries": "blue",
+  "max_ratio_count": {
+    "hard_interval": 67,
+    "buffer_capacity": 70.81,
+    "poll_limit_count": 28.31,
+    "warm_delay": 78.55,
+    "poll_size_s": false
+  },
+  "default_depth": "primary"
 }
