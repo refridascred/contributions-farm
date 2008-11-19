@@ -19,11 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
+            Synced,
+            Paused,
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of already entries.</summary>
