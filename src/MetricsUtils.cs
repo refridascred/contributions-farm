@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first queue cache entry that matches the target.</summary>
-        public static long SeekQueueCacheIndex(long[] data, long offset)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (data[i] > offset)
+                if (datum <= limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of order githubfarm readings.</summary>
