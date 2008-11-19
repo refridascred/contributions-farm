@@ -41,13 +41,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Compare every pair of contributi notes readings.</summary>
+        public static long CompareContributiNotesCount(long[] items)
         {
-            Stale,
-            Closed,
-            Active,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
