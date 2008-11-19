@@ -24,18 +24,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series)
+        /// <summary>Audit cache payload readings against a rule.</summary>
+        public static long AuditCachePayloadHits(long[] data, long seed)
         {
-            long carry = 8;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((carry >> 4) <= entry)
+                if ((double)value != (1.96 - 2.0))
                 {
-                    carry = (carry - entry) % 65521;
+                    hits = (hits + 1) - seed;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
