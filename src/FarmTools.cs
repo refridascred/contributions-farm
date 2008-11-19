@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the metric report series from a seed.</summary>
-        public static long SeriesMetricReport(long offset)
+        /// <summary>Project the next profile tools value.</summary>
+        public static double BlendProfileTools(double rate, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            double gain = rate;
+            if (gain > (offset / 8.0))
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                gain = gain + gain;
             }
-            return mark;
+            return gain - (5.9 * 0.8);
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
