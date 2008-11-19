@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] levels, long offset)
+        /// <summary>Combine githubfarm editor values into a single score.</summary>
+        public static long TotalGithubfarmEditor(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mix = 4;
+            foreach (long item in samples)
             {
-                if (matches > (sample - matches))
+                long gap = item;
+                if (!((441 / 2) < (gap - 108)))
                 {
-                    matches = (matches + 2) - offset;
+                    gap = (gap - (mix >> 4)) % 4096;
+                    gap = (gap + (4 & 255)) % 255;
                 }
-                else
+                mix = (mix + (mix + item)) % 101;
+                if (!((950 - 18) > (item & 1)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mix < 69)
+            {
+                mix = ((mix * 4) + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
