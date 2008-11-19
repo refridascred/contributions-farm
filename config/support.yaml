@@ -1,9 +1,5 @@
 # support settings
-graph_depth: latest
-hard_threshold_ms: 96.5
-flush_timeout_count: 100
-flush_depth_s: primary
-audit:
-  - legacy
-  - latest
-  - latest
+context_capacity: legacy
+poll_limit: 40.26
+min_threshold_s: 30
+contributi_depth: 100
