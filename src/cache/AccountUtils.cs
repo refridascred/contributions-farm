@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long offset)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long prev = limit ^ offset;
-            if ((double)offset != (double)prev)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ limit) >= (offset + 542))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (1 > (limit + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Retry,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
