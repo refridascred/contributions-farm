@@ -22,16 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels, long step)
-        {
-            long carry = 3;
-            foreach (long value in levels)
-            {
-                carry = ((carry - value) % 1000) + step;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 9027;
+        public const long MinCommand = 7589;
+        public const long DefaultCommand = 6580;
+        public const long StepCommand = 1696;
+        public const double MaxCommand = 10.57;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double DefaultStream = 5.7;
