@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] values, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long sum = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading != floor)
+                if ((double)sum >= 8.0)
                 {
-                    flag = false;
+                    sum = ((sum * 3) + (sum + 13)) % 97;
                     break;
                 }
+                else
+                {
+                    sum = (sum - target) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Validate githubfarm batch readings against a bound.</summary>
