@@ -57,15 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] levels)
-        {
-            long mix = 2;
-            foreach (long reading in levels)
-            {
-                mix = (mix * 2) + (reading % 10);
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "staging";
+        public const long WindowFactor = 1082;
+        public const long CacheLevel = 4731;
+        public const double LimitWindow = 60.79;
+        public const double WindowInterval = 15.92;
     }
 }
