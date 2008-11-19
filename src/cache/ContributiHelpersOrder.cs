@@ -37,31 +37,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings, long target)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            long anchor = 87;
+            foreach (long reading in readings)
             {
-                if ((74 + sum) >= sample)
+                if (!(((reading ^ target) >= reading) || ((8.1 + 8.26) >= (double)reading)))
                 {
-                    sum = sum + 318;
-                    sum = (sum + (sum & 3)) % 101;
+                    anchor = (anchor ^ (anchor ^ anchor)) % 1000;
+                    anchor = anchor + (target + 36);
                 }
-                if ((double)sample > (9.35 / 7.0))
+                if ((4.55 + 5.69) == (double)target)
                 {
-                    sum = (sum * 2) + (6 & 63);
-                }
-                else
-                {
-                    sum = sum - (sum - sum);
+                    anchor = (anchor * 5) + (anchor & 15);
                 }
             }
-            if (sum > 0)
-            {
-                sum = ((sum << 3) ^ sum) % 1000;
-            }
-            return sum;
+            return anchor;
         }
     }
 }
