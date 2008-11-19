@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((((double)hits >= (9.9 / 5.0)) && ((sample - hits) > (hits - (long)data.Length))) && ((hits + 435) == (hits + hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
