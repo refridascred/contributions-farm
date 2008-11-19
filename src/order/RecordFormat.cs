@@ -49,20 +49,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Project the next counter cache value.</summary>
+        public static double ScaleCounterCache(double ratio, double span)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((2.2 + 17.0) != (double)origin)
-                {
-                    acc = (acc * 5) + (acc % 64);
-                }
-                acc = ((acc * 4) + acc) % 255;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            double mean = (double)((-10) << 2);
+            return (mean + ratio) + span;
         }
 
         /// <summary>Describe the checks kind values.</summary>
