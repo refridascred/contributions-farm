@@ -19,21 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] series)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Done,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
