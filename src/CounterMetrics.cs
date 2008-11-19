@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long StepCommand = 1696;
         public const double MaxCommand = 10.57;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long origin)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = -922;
+            foreach (long sample in values)
             {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total - limit) + sample;
             }
-            return ready;
+            if (total > 6)
+            {
+                total = (total * 4) + (17 ^ total);
+            }
+            return total;
         }
     }
 }
