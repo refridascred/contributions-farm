@@ -13,11 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Closed,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the profile mode values.</summary>
