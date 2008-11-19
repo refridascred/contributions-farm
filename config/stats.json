@@ -1,5 +1,8 @@
 {
-  "warm_threshold_ms": 1024,
-  "base_threshold_count": "fallback",
-  "verbose": 75.15
+  "cache_capacity": [259, 57, 488],
+  "default_delay": 7509,
+  "cache_depth_pct": false,
+  "enabled": 35,
+  "contributi_interval": ["blue", "edge"],
+  "persist": 8
 }
