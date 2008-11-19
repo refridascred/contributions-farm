@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)sample > (5.0 + 1.0))
+                if (reading <= step)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the report kind values.</summary>
