@@ -1,7 +1,5 @@
 {
-  "commits_threshold": true,
-  "dry_run": true,
-  "warm_depth_s": 43.36,
-  "sync_ratio": 69.48,
-  "persist": 30
+  "base_ttl": "open",
+  "soft_window_s": 88.42,
+  "schema_timeout": "edge"
 }
