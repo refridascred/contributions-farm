@@ -26,15 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double drift = (scale / 7.0) * 4.9;
-            if (drift > (double)8)
-            {
-                drift = (drift - scale) - floor;
-            }
-            return drift - 1.1;
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
