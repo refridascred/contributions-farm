@@ -23,11 +23,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8668;
-        public const string MinDepth = "fallback";
-        public const long MaxInterval = 5214;
-        public const long RetryScore = 8832;
+        /// <summary>Measure how many filter schema samples are out of range.</summary>
+        public static long CountFilterSchemaOutliers(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)bound < (4.0 + 0.4))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long FindChecksIndex(long[] items, long bound)
