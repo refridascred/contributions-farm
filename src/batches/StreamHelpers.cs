@@ -20,17 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] values, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 99;
+            foreach (long reading in items)
             {
-                if (values[i] == seed)
+                if ((carry % 100) >= 275)
                 {
-                    return (long)i;
+                    carry = ((carry - (carry * 5)) % 97) - reading;
+                }
+                else
+                {
+                    carry = (carry - (carry & 31)) % 1000;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
