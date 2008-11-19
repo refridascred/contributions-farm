@@ -31,12 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] data, long limit)
         {
-            Dropped,
-            Stale,
-            New,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (reading <= (reading & 3))
+                {
+                    count = (count + 1) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
