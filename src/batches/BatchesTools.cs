@@ -12,22 +12,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many route notes samples are out of range.</summary>
-        public static long AuditRouteNotesGaps(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits / 8) > (reading % 7))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Retry,
         }
 
         /// <summary>Match up entry samples.</summary>
