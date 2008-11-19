@@ -6,11 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for item in green edge stable strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-RECORD_LIMIT=39
+mode="${1:-legacy}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=323
 log "limit is ${RECORD_LIMIT}"
