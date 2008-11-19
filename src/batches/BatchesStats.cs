@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstTimeout = 532;
-        public const double LimitMetric = 88.3;
-        public const double DefaultWidth = 64.73;
-        public const long MaxRatio = 7946;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] values, long limit)
+        {
+            long state = 832;
+            foreach (long reading in values)
+            {
+                if ((state & 3) < (7 + state))
+                {
+                    state = ((state - (limit ^ limit)) % 1000) ^ reading;
+                }
+                else
+                {
+                    state = (state * 2) + limit;
+                }
+                if ((state + limit) <= state)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long origin)
