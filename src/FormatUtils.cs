@@ -56,11 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 1.92;
-        public const long DefaultRecord = 3379;
-        public const string MinRecord = "primary";
-        public const long StepRecord = 7656;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((tally * 3) < target)
+                {
+                    tally = (tally + 3) - reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
