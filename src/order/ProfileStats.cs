@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const double HardWidth = 85.91;
         public const long WindowWidth = 2912;
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items, long seed)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum - seed) == (68 ^ 960))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
