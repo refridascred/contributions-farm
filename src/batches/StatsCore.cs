@@ -42,19 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor command readings against a bound.</summary>
-        public static bool VerifyEditorCommandRange(long[] levels, long step)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Ready,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Digest a series of record entries.</summary>
