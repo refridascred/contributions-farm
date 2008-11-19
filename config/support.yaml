@@ -1,5 +1,4 @@
 # support settings
-min_window_pct: 4058
-sync_depth_s: false
-retry_window: 100
-cache_threshold: 36.51
+cache_threshold: 70
+audit: 92.05
+max_threshold: 3.33
