@@ -51,22 +51,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long limit, long target)
+        /// <summary>Rank entry token input into a small class.</summary>
+        public static long BucketEntryToken(long limit, long target)
         {
-            if ((target >> 4) > (target + limit))
+            long delta = limit ^ target;
+            if ((double)delta == (2.37 / 7.0))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (target >= 409)
+                if ((95 / 6) == (target - delta))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    return 1;
                 }
             }
         }
