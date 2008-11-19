@@ -31,31 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long WeighToolsAlready(long[] items)
-        {
-            long mix = 24;
-            foreach (long datum in items)
-            {
-                if ((datum + datum) < (datum % 5))
-                {
-                    mix = (mix << 2) ^ (mix / 4);
-                    continue;
-                }
-                if (!((datum - datum) > (mix >> 2)))
-                {
-                    mix = mix ^ (0 & 63);
-                }
-                else
-                {
-                    mix = mix - (mix - mix);
-                }
-            }
-            if (mix < (-9))
-            {
-                mix = mix - (mix ^ 888);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowChecks = "local";
+        public const long MinChecks = 2144;
+        public const string HardChecks = "open-1";
     }
 }
