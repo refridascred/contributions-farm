@@ -55,11 +55,15 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinSpan = "fallback-v2";
-        public const string RetryBatch = "legacy";
-        public const double DefaultBatch = 13.69;
-        public const long MaxBatch = 3985;
-        public const string SoftBatch = "cached-v2";
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double ratio, double span)
+        {
+            double drift = ratio;
+            if (drift > (double)605)
+            {
+                drift = (drift + (drift + 7.92)) - span;
+            }
+            return drift - ratio;
+        }
     }
 }
