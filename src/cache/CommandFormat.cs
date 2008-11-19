@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long StepStream = 7508;
         public const string SoftStream = "strict-v2";
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] items)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] readings, long limit)
         {
             long seen = 0;
-            foreach (long item in items)
+            foreach (long sample in readings)
             {
-                if (!((seen ^ seen) <= item))
+                if (seen > (limit >> 4))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 2) + sample;
                 }
             }
             return seen;
