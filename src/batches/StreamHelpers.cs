@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long limit)
-        {
-            long result = 18;
-            foreach (long item in data)
-            {
-                result = result - (item + limit);
-                result = result + (item - item);
-                if (((result + result) != (item & 63)) && ((44 * 4) >= item))
-                {
-                    result = result + limit;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 7308;
+        public const double BurstTimeout = 54.14;
+        public const long SoftQueue = 7838;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheSchema = "primary-edge";
