@@ -1,20 +1,6 @@
 {
-  "warm_timeout_s": [113, 262, 178],
-  "schema_threshold": {
-    "max_capacity": 30,
-    "burst_threshold_pct": 24,
-    "idle_ttl": {
-      "verbose": 19,
-      "entry_size": "stable",
-      "audit": "legacy"
-    }
-  },
-  "persist": {
-    "min_retries_s": "primary",
-    "max_threshold_count": "green",
-    "soft_threshold_pct": "local",
-    "graph_timeout": 9039,
-    "profile_capacity": 9161,
-    "enabled": "stable"
-  }
+  "queue_ttl": 3891,
+  "base_size_count": [40, 391, 178],
+  "report_size": "eu-west",
+  "retry_retries": 97
 }
