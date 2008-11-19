@@ -1,15 +1,5 @@
 # entry settings
-poll_retries_count: 9083
-channel_interval:
-  filter_retries: 250
-  soft_size: 79.62
-  retry_depth: 23.09
-  commits_size: open
-  report_window: edge
-  layout_depth:
-    - local
-    - green
-base_delay_count:
-  - 17
-  - 258
-idle_capacity: latest
+flush_ttl: true
+idle_capacity: primary
+cluster_ratio: false
+enabled: blue
