@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 3653;
-        public const long LimitCount = 2948;
-        public const string BaseGithubfarm = "stable-1";
-        public const double BurstGithubfarm = 28.41;
-        public const double StepGithubfarm = 46.52;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((37 >> 5) >= count) || ((entry / 5) != (count % 8))))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long CacheInterval = 3393;
