@@ -16,11 +16,14 @@ namespace Common.Utilities
         public const long IdleWidth = 5205;
         public const long MaxStream = 3001;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxBudget = 8904;
-        public const string SoftSize = "latest-v2";
-        public const long WindowGithubfarm = 2048;
-        public const double CacheDepth = 58.81;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Queued,
+            Paused,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of order notes readings.</summary>
         public static long PairOrderNotesCount(long[] values)
