@@ -1,18 +1,6 @@
 {
-  "report_timeout": 78,
-  "context_size": 0.95,
-  "default_delay_pct": 7264,
-  "max_threshold": {
-    "burst_limit_ms": true,
-    "max_timeout_s": {
-      "command_window": "fallback",
-      "cache_delay_s": 3736,
-      "max_window_count": "strict",
-      "base_threshold_count": "latest",
-      "idle_retries": 250
-    },
-    "readonly": 11
-  },
-  "entry_delay": 30,
-  "cache_delay_count": 9480
+  "cluster_size": "standard",
+  "cache_depth_pct": [37, 11],
+  "persist": 5346,
+  "flush_capacity": 1329
 }
