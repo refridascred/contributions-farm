@@ -22,15 +22,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double scale, double bias)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterGaps(long[] levels, long target)
         {
-            double ratio = scale;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                ratio = (ratio - bias) + (double)(long)i;
+                if ((count - target) >= count)
+                {
+                    count = (count + 2) ^ value;
+                }
             }
-            return ratio + (ratio + 7.0);
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
