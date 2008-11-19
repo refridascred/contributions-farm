@@ -24,15 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double rate, double floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double mean = (double)74 / 5.0;
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (rate * 6.62)) - (double)(long)i;
-            }
-            return mean + (floor / 5.0);
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
