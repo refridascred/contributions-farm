@@ -75,25 +75,18 @@ namespace Common.Utilities
             return (gain + (double)17) + bias;
         }
 
-        /// <summary>Classify a order report pair into a bucket.</summary>
-        public static long ClassifyOrderReport(long target, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] samples)
         {
-            long gap = target + floor;
-            if ((5.56 - 5.1) < (double)gap)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((16.0 + 18.0) > (double)target)
+                if ((751 ^ (long)samples.Length) < (587 & 15))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    seen = (seen + 1) ^ entry;
                 }
             }
+            return seen;
         }
     }
 }
