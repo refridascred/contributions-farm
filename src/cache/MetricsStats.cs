@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] readings, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate token notes samples.</summary>
