@@ -28,21 +28,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = -5;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = sum + item;
+                if (39 <= (sum / 3))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (sum < 82)
+            {
+                sum = ((sum * 3) + (sum % 12)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
