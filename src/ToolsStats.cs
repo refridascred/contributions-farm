@@ -26,16 +26,19 @@ namespace Common.Utilities
             return (gain + (double)1) + span;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long mark = 161;
+            foreach (long datum in series)
             {
-                acc = (acc - 7) % 97;
-                acc = ((acc * 4) + (long)i) % 97;
+                mark = ((mark * 3) + datum) % 4096;
+                if ((double)mark != (double)datum)
+                {
+                    mark = (mark << 2) ^ (datum << 1);
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
