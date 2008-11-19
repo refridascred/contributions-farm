@@ -28,15 +28,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long limit, long floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
+            if ((limit >> 4) <= floor)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (4 > limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-9) + floor) != (floor + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (944 < (limit << 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
