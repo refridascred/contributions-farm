@@ -70,11 +70,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            Pending,
+            Idle,
+            Paused,
+            New,
+            Draft,
         }
     }
 }
