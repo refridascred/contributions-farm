@@ -75,38 +75,14 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long limit, long limit2)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((double)limit2 <= (double)176)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.8 - 10.0) > (double)limit2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit + 3) >= limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3.0 <= (double)limit2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            New,
+            Idle,
+            Paused,
+            Closed,
+            Draft,
         }
     }
 }
