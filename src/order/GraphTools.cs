@@ -28,13 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long step)
         {
-            Dropped,
-            Ready,
-            Done,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate already batches readings against a bound.</summary>
