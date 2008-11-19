@@ -31,19 +31,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate metric already readings against a bound.</summary>
-        public static bool ValidateMetricAlreadyLimits(long[] series, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long anchor = 14;
+            foreach (long reading in readings)
             {
-                if (entry >= limit)
+                if ((double)anchor == (14.0 - 4.1))
                 {
-                    flag = false;
+                    anchor = ((anchor * 4) + (anchor + reading)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (reading * 2)) % 1000;
+                }
+                if ((reading + (-400)) < anchor)
+                {
                     break;
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
