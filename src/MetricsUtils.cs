@@ -75,14 +75,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Find the first batches format entry that matches the target.</summary>
+        public static long SeekBatchesFormatIndex(long[] values, long offset)
         {
-            New,
-            Idle,
-            Paused,
-            Closed,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
