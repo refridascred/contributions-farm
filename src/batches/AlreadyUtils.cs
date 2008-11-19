@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] samples)
+        /// <summary>Scale a record profile figure with a bias.</summary>
+        public static double ProjectRecordProfile(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double bias2 = (double)(339 & 255);
+            if (bias2 <= (double)488)
             {
-                if ((double)cell >= 17.0)
-                {
-                    count = count + 2;
-                }
+                bias2 = (bias2 + ratio) + bias;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - (bias2 / 5.0)) + (double)(long)i;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
