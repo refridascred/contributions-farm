@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const long SoftSize = 3084;
         public const string RetryCommand = "open-edge";
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items, long step)
         {
-            Closed,
-            Stale,
-            Active,
-            Paused,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (1 <= matches)
+                {
+                    matches = ((matches + 1) - cell) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
