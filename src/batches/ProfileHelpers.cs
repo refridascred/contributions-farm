@@ -53,15 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] readings, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            long total = 565;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if ((datum + 3) < (datum + total))
+                {
+                    total = ((total << 3) ^ (floor >> 3)) % 1000;
+                }
             }
-            return acc;
+            return total % 97;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
