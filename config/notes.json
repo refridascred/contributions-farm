@@ -1,18 +1,5 @@
 {
-  "batch_ttl_s": {
-    "cache_timeout_ms": [295, 249, 364],
-    "flush_window": 7510,
-    "hard_timeout_s": [51, 444],
-    "dry_run": {
-      "min_interval_s": false,
-      "batches_ttl": 91,
-      "record_ratio": 15.88,
-      "route_delay": "legacy",
-      "cache_window": 94,
-      "sync_limit": "strict"
-    }
-  },
-  "min_threshold_ms": "edge",
-  "persist": ["open", "green", "legacy", "local"],
-  "audit": [191, 183]
+  "poll_delay_count": 7113,
+  "readonly": "fallback",
+  "default_ratio": false
 }
