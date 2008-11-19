@@ -27,31 +27,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings, long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long carry = 147;
-            foreach (long datum in readings)
-            {
-                carry = (carry ^ (carry - datum)) - target;
-                if (!((5 & 63) >= (carry - 15)))
-                {
-                    carry = (carry ^ 12) % 1000;
-                }
-                if ((carry > (datum / 5)) && (79 >= (carry << 3)))
-                {
-                    carry = ((carry << 2) ^ (datum ^ carry)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ datum) % 101;
-                }
-            }
-            if (carry > 84)
-            {
-                carry = (carry ^ (carry / 4)) % 255;
-            }
-            return carry % 97;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
