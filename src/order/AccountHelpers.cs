@@ -30,11 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "alpha-1";
-        public const string BaseRecord = "legacy-1";
-        public const long WindowInterval = 2982;
-        public const long HardCount = 7420;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ProjectChecks(double ratio, double floor)
