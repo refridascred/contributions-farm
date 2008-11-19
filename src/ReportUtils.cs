@@ -39,15 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long limit)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long bound, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long offset = bound + floor;
+            if ((45 << 2) < floor)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((floor / 2) >= (floor >> 3)) || ((floor * 2) == (79 + (-50))))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 + bound) > floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + offset) >= floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
