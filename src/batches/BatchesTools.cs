@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long diff = floor ^ bound;
-            if (!(floor > (bound ^ diff)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (849 > (diff >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many route notes samples are out of range.</summary>
