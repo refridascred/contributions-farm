@@ -1,16 +1,10 @@
 # support settings
-batch_ratio_ms: open
-default_limit_ms: strict
-dry_run: primary
-burst_depth_count: 100
-compress:
-  poll_ttl_pct: true
-  cache_limit_s: 26
-  burst_interval:
-    sync_size_ms: edge
-    audit: local
-    stream_window: staging
-    order_ratio: fallback
-    compress: 44
-  burst_size_ms: latest
-base_window_pct: 7.13
+poll_window:
+  batch_capacity: local
+  notes_window: false
+  sync_limit:
+    - 200
+    - 268
+    - 42
+idle_threshold_pct: 4
+dry_run: 82.14
