@@ -1,8 +1,15 @@
 # entry settings
-soft_ratio_s: local
-retry_delay_s: 4880
-readonly: 7014
-batch_ttl_s:
-  - 254
-  - 298
-dry_run: latest
+poll_retries_count: 9083
+channel_interval:
+  filter_retries: 250
+  soft_size: 79.62
+  retry_depth: 23.09
+  commits_size: open
+  report_window: edge
+  layout_depth:
+    - local
+    - green
+base_delay_count:
+  - 17
+  - 258
+idle_capacity: latest
