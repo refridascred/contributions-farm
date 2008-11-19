@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Dropped,
-            Paused,
-            Done,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9518;
+        public const long MinWidth = 3848;
+        public const long IdleBatch = 5898;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long seed)
