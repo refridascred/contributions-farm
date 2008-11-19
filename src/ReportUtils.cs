@@ -29,18 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] series)
+        /// <summary>Count the batch context entries that pass the check.</summary>
+        public static long MeasureBatchContextMatches(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (count < (entry + count))
+                if ((reading ^ limit) <= (limit & 255))
                 {
-                    count = count + 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
