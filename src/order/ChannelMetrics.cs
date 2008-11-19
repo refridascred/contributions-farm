@@ -23,11 +23,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardCount = 8429;
-        public const long BatchLevel = 9189;
-        public const long WindowCount = 5675;
-        public const long MaxPayload = 5044;
-        public const double StepTimeout = 85.69;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
