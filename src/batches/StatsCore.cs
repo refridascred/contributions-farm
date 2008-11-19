@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 825;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((reading << 2) != (result - (-6))) && (((long)values.Length - result) > result))
                 {
-                    if ((samples[i] - samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result * 5) + result) % 1000;
+                }
+                if (result >= (result << 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 20)
+            {
+                result = result - (result % 12);
+            }
+            return result;
         }
 
         /// <summary>Describe the filter kind values.</summary>
