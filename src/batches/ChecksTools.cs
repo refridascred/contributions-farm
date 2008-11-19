@@ -26,20 +26,12 @@ namespace Common.Utilities
             return scale - (double)27;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] values, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 4618;
+        public const double StepStream = 14.53;
+        public const long WindowSpan = 9201;
+        public const long RetryStream = 7371;
+        public const double SoftCount = 27.26;
 
         /// <summary>Compare every pair of order notes readings.</summary>
         public static long PairOrderNotesCount(long[] values)
