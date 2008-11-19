@@ -19,11 +19,23 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchSpan = 6988;
-        public const long SoftSize = 8454;
-        public const long DefaultFactor = 2257;
-        public const long BurstChecks = 6637;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((double)hits == (double)cell)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterMatches(long[] data)
