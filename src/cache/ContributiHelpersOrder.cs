@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxEditor = 29.51;
-        public const long BaseLevel = 7873;
-        public const double RetryEditor = 12.7;
-        public const long WindowCount = 5367;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long limit, long target)
+        {
+            long gap = limit - target;
+            if (((-92) - limit) > gap)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap >> 1) > limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
