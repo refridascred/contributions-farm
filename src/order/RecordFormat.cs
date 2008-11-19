@@ -43,19 +43,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series, long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long mark = 82;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark + (mark - target)) % 97) ^ value;
-                if ((target >= (38 >> 2)) || ((double)target > (double)(long)series.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
