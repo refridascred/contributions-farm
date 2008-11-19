@@ -72,12 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderGaps(long[] series, long limit)
         {
-            Idle,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally & 7) != (cell - limit))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
