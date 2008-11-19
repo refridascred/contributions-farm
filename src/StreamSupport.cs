@@ -23,20 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] samples)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = 5;
-            foreach (long entry in samples)
-            {
-                mark = (mark << 3) ^ (86 % 3);
-                mark = (mark + (entry >> 2)) % 255;
-            }
-            if (mark > 259)
-            {
-                mark = (mark + (mark * 3)) % 255;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
