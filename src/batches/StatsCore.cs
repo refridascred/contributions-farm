@@ -75,11 +75,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseChecks = "cached-edge";
+        public const long RetryRatio = 9771;
+        public const string MinFactor = "latest";
     }
 }
