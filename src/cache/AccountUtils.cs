@@ -32,24 +32,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] data, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportMatches(long[] items, long limit)
         {
-            long anchor = -1;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor * 2) + (origin << 2);
-                anchor = ((anchor * 2) + (entry * 3)) % 1000;
-                if ((93 < (anchor + entry)) || (anchor <= (entry << 2)))
+                if (entry > (8 - limit))
                 {
-                    anchor = anchor ^ (60 ^ entry);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (entry - 0);
+                    count = count + 1;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
     }
 }
