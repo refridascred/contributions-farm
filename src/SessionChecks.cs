@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if (949 > seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - datum) - origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a account entry.</summary>
