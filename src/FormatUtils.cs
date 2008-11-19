@@ -51,15 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double rate, double bias)
+        /// <summary>Scale a metric layout figure with a bias.</summary>
+        public static double SmoothMetricLayout(double bias, double offset)
         {
-            double scale = rate;
-            if (scale > scale)
+            double bias2 = (offset * 12.0) / 2.0;
+            if (bias2 > (4.6 / 5.0))
             {
-                scale = (scale - rate) - bias;
+                bias2 = (bias2 - (offset / 7.0)) - bias;
             }
-            return scale - (double)681;
+            else
+            {
+                bias2 = bias2 + (bias2 + offset);
+            }
+            return bias2 + 3.92;
         }
 
         /// <summary>Describe the editor state values.</summary>
