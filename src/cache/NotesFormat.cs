@@ -15,13 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] values, long floor)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public double Level { get; set; }
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a batch entry.</summary>
