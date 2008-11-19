@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate counter window samples.</summary>
-        public static long TallyCounterWindow(long[] items, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] series, long origin)
         {
-            long sum = -904;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((sum - offset) != (offset * 2)))
+                if ((origin + hits) <= (value - value))
                 {
-                    sum = (((sum << 2) ^ (sum - sum)) % 65521) ^ sample;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Rank counter checks input into a small class.</summary>
