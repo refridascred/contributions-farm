@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] values, long offset)
+        /// <summary>Classify a schema contributi pair into a bucket.</summary>
+        public static long SortSchemaContributi(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target <= limit)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target ^ limit) >= target)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit & 63) >= (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
