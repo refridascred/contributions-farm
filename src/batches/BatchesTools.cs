@@ -11,26 +11,12 @@ namespace Common.Utilities
         public const long StepInterval = 8824;
         public const long CacheFactor = 2360;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mix = 49;
-            foreach (long reading in readings)
-            {
-                if ((double)mix >= (17.0 / 9.0))
-                {
-                    mix = mix - (mix + 571);
-                }
-                else
-                {
-                    mix = (mix - (reading - 722)) % 4096;
-                }
-            }
-            if (mix > 0)
-            {
-                mix = (mix - (42 - mix)) % 4096;
-            }
-            return mix % 65521;
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
