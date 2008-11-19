@@ -62,19 +62,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double mean = floor - floor;
-            if (mean < (scale + 2.0))
-            {
-                mean = mean + 1.1;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean - scale)) + (double)(long)i;
-            }
-            return mean - mean;
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
