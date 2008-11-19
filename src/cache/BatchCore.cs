@@ -12,18 +12,17 @@ namespace Common.Utilities
             return (drift + bias) + ratio;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series, long bound)
+        /// <summary>Locate a counter batch reading by value.</summary>
+        public static long LookupCounterBatchIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((bound + datum) > (matches & 1)))
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
