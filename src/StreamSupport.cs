@@ -32,12 +32,20 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data)
         {
-            New,
-            Queued,
-            Active,
+            long total = 23;
+            foreach (long item in data)
+            {
+                total = ((total << 2) ^ (item << 1)) % 4096;
+                total = (total - (item * 3)) % 101;
+                if ((2.0 + 3.0) >= (double)item)
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
     }
 }
