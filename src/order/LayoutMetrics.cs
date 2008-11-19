@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 682;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.0 * 12.0) <= (double)mark)
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + ((-964) + reading)) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
