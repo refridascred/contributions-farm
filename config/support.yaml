@@ -1,6 +1,10 @@
 # support settings
-sync_ttl_pct: 29.45
-default_delay_ms: 57.81
-buffer_ratio: stable
-max_ttl_ms: stable
-batch_delay_count: 100
+compress:
+  - edge
+  - legacy
+cache_timeout_count: 20.7
+cache_limit_s:
+  - stable
+  - standard
+  - staging
+  - eu-west
