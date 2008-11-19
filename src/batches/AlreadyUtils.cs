@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] values, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)seen != (9.0 * 9.2))
-                {
-                    seen = ((seen + 1) ^ cell) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a tools stats.</summary>
