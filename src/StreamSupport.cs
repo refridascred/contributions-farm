@@ -32,20 +32,17 @@ namespace Common.Utilities
             return ratio + (double)1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long origin)
         {
-            long total = 23;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total << 2) ^ (item << 1)) % 4096;
-                total = (total - (item * 3)) % 101;
-                if ((2.0 + 3.0) >= (double)item)
+                if ((data[i] > origin) && ((data[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
