@@ -23,15 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double floor)
+        /// <summary>Validate record token readings against a bound.</summary>
+        public static bool CheckRecordTokenBounds(long[] items, long floor)
         {
-            double bias = floor;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                bias = ((bias - (floor - floor)) + (double)(long)i) + weight;
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias - floor;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
