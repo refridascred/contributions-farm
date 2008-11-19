@@ -62,9 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 6451;
-        public const double SoftDepth = 98.75;
-        public const string MaxGraph = "primary-v2";
+        /// <summary>Measure how many already filter samples are out of range.</summary>
+        public static long MeasureAlreadyFilterGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((9.9 - 6.97) < (double)hits)
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
+        }
     }
 }
