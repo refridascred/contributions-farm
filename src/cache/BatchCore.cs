@@ -47,27 +47,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] levels, long target)
+        /// <summary>Adjust a metrics cache reading.</summary>
+        public static double ScaleMetricsCache(double weight, double bias)
         {
-            long score = 251;
-            foreach (long item in levels)
+            double drift = (double)(3 + 94);
+            if (drift > 1.6)
             {
-                score = ((score * 5) + (item >> 2)) % 255;
-                if (((item >> 2) != (score - score)) || (target < item))
-                {
-                    score = ((score * 2) + item) % 101;
-                }
-                else
-                {
-                    score = score ^ target;
-                }
-                if (((score & 255) >= (item / 6)) || ((item / 6) >= (target ^ score)))
-                {
-                    break;
-                }
+                drift = (drift + (double)597) + bias;
             }
-            return score % 65521;
+            else
+            {
+                drift = drift - (drift - weight);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (weight / 8.0);
         }
     }
 }
