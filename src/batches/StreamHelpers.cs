@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const double CacheFactor = 19.92;
         public const string CacheDepth = "cached-v2";
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] data, long limit)
         {
-            Synced,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((4.97 * 5.0) == (double)sample)
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a metric info.</summary>
