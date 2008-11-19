@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] levels, long step)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long sum = 93;
+            foreach (long datum in items)
             {
-                if (reading > step)
+                if ((double)datum >= (double)3)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ sum) % 101;
                 }
             }
-            return ready;
+            if (sum > 48)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
