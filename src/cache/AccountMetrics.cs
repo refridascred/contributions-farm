@@ -63,14 +63,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
-        {
-            Draft,
-            Failed,
-            Idle,
-            Active,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstScore = 2237;
+        public const long StepAccount = 7789;
+        public const long MinSize = 4439;
     }
 }
