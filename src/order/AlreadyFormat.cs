@@ -28,13 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long bound)
         {
-            New,
-            Queued,
-            Failed,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
