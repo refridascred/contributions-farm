@@ -32,38 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes layout input into a small class.</summary>
-        public static long BucketNotesLayout(long step, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] levels)
         {
-            if ((seed & 127) > (191 * 2))
+            long count = 0;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed & 63) <= step) || ((step - seed) == (seed + seed)))
+                if ((double)item > (9.2 + 4.31))
                 {
-                    return 4;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!(step > (step & 127)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((2.65 + 11.0) == (double)seed) && ((seed + seed) < 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
