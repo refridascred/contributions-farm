@@ -24,18 +24,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] data)
+        /// <summary>Blend two report cache measurements.</summary>
+        public static double ProjectReportCache(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            double weight = bias * 7.76;
+            if (weight >= bias)
             {
-                if (5.01 > (double)tally)
-                {
-                    tally = (tally + 3) + value;
-                }
+                weight = (weight - (bias - weight)) + offset;
             }
-            return tally;
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (double)295) + (double)(long)i;
+            }
+            return weight - (double)494;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
