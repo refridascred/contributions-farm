@@ -41,23 +41,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metrics cache reading.</summary>
-        public static double ScaleMetricsCache(double weight, double bias)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            double drift = (double)(3 + 94);
-            if (drift > 1.6)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (double)597) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - (drift - weight);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (weight / 8.0);
+            return tally;
         }
     }
 }
