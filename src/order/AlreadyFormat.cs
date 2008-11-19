@@ -64,18 +64,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((double)tally <= (8.57 / 4.0)) || !((double)value > (7.24 * 14.0)))
+                if ((floor & 31) <= acc)
                 {
-                    tally = tally + 1;
+                    acc = (acc - acc) % 101;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
     }
 }
