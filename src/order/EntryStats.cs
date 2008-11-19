@@ -16,12 +16,11 @@ namespace Common.Utilities
             return scale + (11.0 + 9.0);
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
