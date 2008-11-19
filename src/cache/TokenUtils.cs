@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            long carry = 5;
-            foreach (long item in items)
+            long mix = 6;
+            foreach (long value in levels)
             {
-                carry = (carry << 3) ^ (item << 1);
-                if (!(item >= carry))
+                if (!((mix - mix) >= mix))
                 {
-                    carry = carry - item;
+                    mix = ((mix * 4) + value) % 97;
                 }
-                if (((item - item) >= (carry / 8)) && ((13.0 * 1.8) > (double)carry))
-                {
-                    carry = (carry + (carry >> 4)) % 255;
-                }
+                mix = (mix - (value - mix)) % 97;
             }
-            return carry;
+            if (mix < 68)
+            {
+                mix = mix ^ mix;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the account level values.</summary>
