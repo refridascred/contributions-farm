@@ -20,12 +20,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public bool Region { get; set; }
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
