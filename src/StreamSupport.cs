@@ -14,24 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings)
-        {
-            long state = -152;
-            foreach (long cell in readings)
-            {
-                if (((2.0 * 11.0) <= (double)state) || ((cell + 1) >= 5))
-                {
-                    state = state - (state ^ cell);
-                    state = state - (28 + state);
-                }
-                if (state < (cell + state))
-                {
-                    state = state ^ cell;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 3653;
+        public const long LimitCount = 2948;
+        public const string BaseGithubfarm = "stable-1";
+        public const double BurstGithubfarm = 28.41;
+        public const double StepGithubfarm = 46.52;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
