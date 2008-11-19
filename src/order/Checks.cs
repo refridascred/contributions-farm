@@ -20,19 +20,21 @@ namespace Common.Utilities
             return gain + (double)(-35);
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Compare every pair of buffer payload readings.</summary>
+        public static long OverlapBufferPayloadCount(long[] levels)
         {
-            long sum = 9;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (((sum * 4) + (91 >> 4)) % 65521) ^ datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (sum < 60)
-            {
-                sum = (sum * 3) + ((-68) & 7);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Describe the command state values.</summary>
