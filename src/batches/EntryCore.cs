@@ -50,17 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats report entry that matches the target.</summary>
-        public static long LocateStatsReportIndex(long[] data, long limit)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (data[i] < limit)
+                if (item >= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
