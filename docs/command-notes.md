@@ -1,11 +1,12 @@
 # Command notes
 
-Use layout settings to tune how often channel data is refreshed.
-Keep cluster and support names short and lowercase.
-When a contributi fails, the already handler retries a few times before giving up.
+Use buffer settings to tune how often cache data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate support input early
-- Document new session fields
-- Review order limits each release
+- Log every profile change
+- Validate graph input early
+- Prefer checks defaults
+- Document new layout fields
