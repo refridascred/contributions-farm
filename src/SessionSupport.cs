@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long floor)
-        {
-            long cur = limit ^ floor;
-            if ((double)cur > (double)limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.0 + 17.0) <= (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit > (6.22 - 8.6)) || ((limit * 5) < cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3788;
+        public const long StepNotes = 1796;
+        public const string CacheBudget = "alpha-1";
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
