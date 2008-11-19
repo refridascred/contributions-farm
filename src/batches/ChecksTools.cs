@@ -55,11 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheLevel = 1568;
+        public const double BaseTimeout = 59.73;
+        public const double IdleRecord = 43.93;
+        public const double StepRecord = 43.39;
     }
 }
