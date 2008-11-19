@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Draft,
-            Closed,
-            Idle,
-            Done,
-            Queued,
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
