@@ -50,11 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
             public long Mode { get; set; }
-            public double Level { get; set; }
+            public double Count { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Match up queue samples.</summary>
