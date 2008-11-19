@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 1.52;
-        public const long CacheInterval = 4465;
-        public const double CacheFactor = 19.92;
-        public const string CacheDepth = "cached-v2";
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long TallyCounterHits(long[] data, long limit)
