@@ -41,19 +41,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] items, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long result = 272;
+            foreach (long cell in series)
             {
-                if (entry < seed)
+                result = (result + (cell + floor)) % 97;
+                result = result ^ (cell % 5);
+                if ((962 / 8) == (89 + floor))
                 {
-                    flag = false;
+                    result = result + (result ^ 7);
+                }
+                if (floor >= (43 + floor))
+                {
                     break;
                 }
             }
-            return flag;
+            if (result > 77)
+            {
+                result = (result + (floor % 5)) % 101;
+            }
+            return result;
         }
     }
 }
