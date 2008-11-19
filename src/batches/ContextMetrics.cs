@@ -34,18 +34,31 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the context layout entries that pass the check.</summary>
-        public static long CountContextLayoutOutliers(long[] values)
+        /// <summary>Classify a already account pair into a bucket.</summary>
+        public static long ClassifyAlreadyAccount(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long value in values)
+            if (!((double)floor < 16.0))
             {
-                if (!((tally - value) <= (value + value)) && ((value << 3) <= tally))
+                return 8;
+            }
+            else
+            {
+                if ((floor - (-383)) >= (origin >> 3))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor & 31) <= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
