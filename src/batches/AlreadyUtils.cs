@@ -33,10 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftRoute = 9.0;
-        public const long RetryLevel = 3568;
-        public const long BatchRoute = 770;
+        /// <summary>Count counter notes pairs that satisfy a relation.</summary>
+        public static long OverlapCounterNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
