@@ -1,19 +1,7 @@
 {
-  "stream_ttl": 57.75,
-  "poll_threshold_s": {
-    "stats_size": [66, 394, 66],
-    "verbose": "standard",
-    "compress": true,
-    "burst_window_count": false
-  },
-  "cache_limit_pct": false,
-  "profile_timeout": {
-    "dry_run": "stable",
-    "support_threshold": "blue",
-    "base_limit_s": [77, 50],
-    "warm_interval_ms": 250,
-    "queue_ratio": false
-  },
-  "layout_ratio": true,
-  "hard_capacity_s": false
+  "entry_retries": 76,
+  "base_depth": false,
+  "cache_ratio": false,
+  "warm_ttl_s": 89.98,
+  "batch_window_count": 9807
 }
