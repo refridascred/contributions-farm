@@ -13,13 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Accumulate buffer batch samples.</summary>
+        public static long FoldBufferBatch(long[] values, long bound)
         {
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long sum = 8;
+            foreach (long item in values)
+            {
+                if (7.2 >= (double)(long)values.Length)
+                {
+                    sum = ((sum + (item % 97)) % 101) - bound;
+                }
+            }
+            if (sum > 76)
+            {
+                sum = (sum ^ (704 - (-80))) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the already state values.</summary>
