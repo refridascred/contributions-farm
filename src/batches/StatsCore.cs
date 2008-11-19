@@ -42,12 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Validate editor command readings against a bound.</summary>
+        public static bool VerifyEditorCommandRange(long[] levels, long step)
         {
-            Done,
-            Closed,
-            Synced,
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of record entries.</summary>
