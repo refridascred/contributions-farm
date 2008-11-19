@@ -1,8 +1,7 @@
 # entry settings
-burst_depth: 4.08
-readonly: green
-cache_threshold: fallback
-dry_run:
-  - 73
-  - 26
-flush_depth_pct: staging
+burst_window_count: true
+batch_retries_count: 62.89
+cache_timeout: strict
+warm_depth: local
+poll_capacity: 33
+flush_interval_pct: 60
