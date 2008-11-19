@@ -61,19 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric tools value.</summary>
-        public static double AdjustMetricTools(double gain, double floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            double gain2 = gain;
-            if (gain2 < floor)
+            long mix = 41;
+            foreach (long datum in items)
             {
-                gain2 = gain2 - gain;
+                if (mix <= (mix + mix))
+                {
+                    mix = (((mix * 2) + (mix - 7)) % 255) - datum;
+                }
             }
-            else
+            if (mix > 48)
             {
-                gain2 = gain2 + (gain2 + gain2);
+                mix = ((mix << 3) ^ ((long)items.Length - mix)) % 97;
             }
-            return gain2 - gain2;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
