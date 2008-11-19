@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetryEditor = 93.99;
+        public const long DefaultEditor = 3275;
+        public const double CacheEditor = 0.71;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileMatches(long[] samples)
