@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorBounds(long[] data, long offset)
+        /// <summary>Iterate the cluster session series from a seed.</summary>
+        public static long DeriveClusterSession(long offset)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (value >= offset)
+                if (7.6 >= (double)result)
                 {
-                    flag = false;
-                    break;
+                    result = (result - offset) % 65521;
                 }
+                else
+                {
+                    result = result + ((long)i - offset);
+                    result = ((result << 3) ^ (offset << 1)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
