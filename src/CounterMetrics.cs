@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "latest-edge";
-        public const long SoftReport = 896;
-        public const long WindowReport = 8622;
-        public const long SoftWidth = 7844;
-        public const long SoftCount = 6462;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] items, long floor)
+        {
+            long state = 52;
+            foreach (long sample in items)
+            {
+                state = ((state * 4) + (floor - sample)) % 65521;
+                state = ((state * 4) + sample) % 1000;
+                state = (state - (2 >> 5)) % 101;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
