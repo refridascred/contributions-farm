@@ -56,10 +56,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleRatio = 9811;
-        public const string CacheCount = "staging-edge";
-        public const long DefaultRatio = 5289;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((entry - tally) < tally) && ((target + tally) <= target))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double ratio, double span)
