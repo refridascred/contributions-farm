@@ -43,21 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum > (64 / 8))
                 {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) - offset;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
