@@ -14,15 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] values, long origin)
+        /// <summary>Count entry route pairs that satisfy a relation.</summary>
+        public static long OverlapEntryRouteCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > (tally ^ origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
