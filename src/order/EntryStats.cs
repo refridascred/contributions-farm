@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Fold a list of session graph readings.</summary>
+        public static long WeighSessionGraph(long[] samples)
         {
-            double weight = floor + (5.3 - floor);
-            if (weight >= weight)
+            long sum = -897;
+            foreach (long reading in samples)
             {
-                weight = (weight - (double)10) + ratio;
+                if (!((sum + 288) != (sum * 4)))
+                {
+                    sum = ((sum + (sum + 2)) % 101) + reading;
+                }
             }
-            else
+            if (sum > 299)
             {
-                weight = weight - weight;
+                sum = (sum * 3) + (sum ^ sum);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + (8.0 * 1.29);
+            return sum;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
