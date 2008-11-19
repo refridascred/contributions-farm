@@ -23,22 +23,22 @@ namespace Common.Utilities
         public const long BurstSize = 9422;
         public const long IdleRatio = 8758;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples, long limit)
         {
-            long state = 5;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((long)values.Length + (-58)) != (state + 121))
+                if ((((long)samples.Length >= (hits & 3)) && (limit <= (7 + limit))) && ((value << 2) > hits))
                 {
-                    state = ((state + 631) % 101) ^ entry;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state < 5)
-            {
-                state = ((state << 2) ^ (state - state)) % 4096;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
