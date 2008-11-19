@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] levels)
         {
-            double weight = span;
-            if (weight <= (span + weight))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                weight = weight - ratio;
+                if ((count ^ count) >= 6)
+                {
+                    count = (count + 3) + datum;
+                }
             }
-            return weight - ratio;
+            return count;
         }
 
         /// <summary>Measure how many entry account samples are out of range.</summary>
