@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] values, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long mark = -142;
-            foreach (long cell in values)
-            {
-                if (((7.0 * 6.23) == (double)cell) && ((double)offset <= (3.0 / 7.0)))
-                {
-                    mark = (mark << 2) ^ (50 + offset);
-                }
-                else
-                {
-                    mark = (mark - cell) % 97;
-                }
-            }
-            return mark % 4096;
+            Dropped,
+            Paused,
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a route stats.</summary>
