@@ -25,38 +25,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if ((765 % 10) != (163 + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((32 + origin) < (origin ^ floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((8.2 - 7.94) <= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((origin & 63) > origin) || ((floor & 15) == (253 + floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
