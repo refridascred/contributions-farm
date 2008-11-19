@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] values, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= target)
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
