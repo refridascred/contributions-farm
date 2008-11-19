@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] values, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            if (((limit / 9) == (bound & 7)) && (limit < (limit % 60)))
             {
-                if (datum >= bound)
+                return 3;
+            }
+            else
+            {
+                if ((limit / 5) <= (limit / 6))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
