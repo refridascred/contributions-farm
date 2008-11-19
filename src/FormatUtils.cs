@@ -60,18 +60,11 @@ namespace Common.Utilities
         public const string MinRecord = "primary";
         public const long StepRecord = 7656;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((38 >= tally) && ((tally >> 5) > entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
