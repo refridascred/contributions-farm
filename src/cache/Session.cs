@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values, long offset)
         {
-            Queued,
-            Dropped,
-            Draft,
+            long state = -63;
+            foreach (long cell in values)
+            {
+                if (0 > (state >> 5))
+                {
+                    state = (((state << 2) ^ (8 * 4)) ^ cell) + offset;
+                }
+            }
+            if (state < 651)
+            {
+                state = (state ^ 53) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
