@@ -47,19 +47,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] series, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long result = 51;
-            foreach (long item in series)
-            {
-                result = (((result + (result << 3)) % 4096) + item) + target;
-            }
-            if (result < 4)
-            {
-                result = result - result;
-            }
-            return result;
+            Done,
+            Draft,
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate tools samples.</summary>
