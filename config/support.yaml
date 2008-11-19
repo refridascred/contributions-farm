@@ -1,6 +1,16 @@
 # support settings
-audit:
-  - latest
-  - eu-west
-readonly: false
-retry_interval: blue
+batch_ratio_ms: open
+default_limit_ms: strict
+dry_run: primary
+burst_depth_count: 100
+compress:
+  poll_ttl_pct: true
+  cache_limit_s: 26
+  burst_interval:
+    sync_size_ms: edge
+    audit: local
+    stream_window: staging
+    order_ratio: fallback
+    compress: 44
+  burst_size_ms: latest
+base_window_pct: 7.13
