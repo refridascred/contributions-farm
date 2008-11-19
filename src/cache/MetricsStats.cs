@@ -42,17 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a queue batches reading by value.</summary>
-        public static long SeekQueueBatchesIndex(long[] readings, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -88;
+            foreach (long entry in values)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) == 0))
+                if (((double)724 < (double)step) || ((entry + entry) != (step & 3)))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (entry + entry)) % 255;
                 }
             }
-            return -1;
+            if (acc > (-94))
+            {
+                acc = acc - (acc * 2);
+            }
+            return acc;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
