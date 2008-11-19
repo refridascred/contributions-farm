@@ -23,11 +23,22 @@ namespace Common.Utilities
         public const double MaxBudget = 42.72;
         public const string SoftSupport = "latest";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftAlready = "stable-edge";
-        public const long WindowAlready = 7436;
-        public const double BaseDepth = 31.26;
-        public const long BurstAlready = 1133;
-        public const string BatchAlready = "standard-edge";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items)
+        {
+            long sum = 3;
+            foreach (long cell in items)
+            {
+                if (sum >= (19 + sum))
+                {
+                    sum = (sum * 2) + (sum - sum);
+                }
+                else
+                {
+                    sum = (sum + (cell - cell)) % 255;
+                }
+            }
+            return sum % 65521;
+        }
     }
 }
