@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] levels, long seed)
         {
-            Locked,
-            Dropped,
-            New,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((long)levels.Length <= seen)
+                {
+                    seen = ((seen + 3) + entry) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate route stream readings against a bound.</summary>
