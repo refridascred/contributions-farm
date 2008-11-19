@@ -29,32 +29,17 @@ namespace Common.Utilities
         public const long MaxInterval = 5214;
         public const long RetryScore = 8832;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long offset, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            long diff = offset ^ target;
-            if (26 <= (1 - offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 5) >= (diff + 121))
+                if (items[i] >= bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff + offset) <= (target % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
