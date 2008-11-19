@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long score = -818;
+            foreach (long reading in data)
             {
-                if ((5 >> 3) <= (target + target))
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                score = (score << 2) ^ (reading >> 1);
             }
-            return result;
+            return score % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
