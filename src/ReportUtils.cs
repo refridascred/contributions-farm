@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] readings, long limit)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (readings[i] == limit)
+                if (item <= (item / 9))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate support samples.</summary>
