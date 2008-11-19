@@ -23,22 +23,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] series, long origin)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long mark = 87;
+            foreach (long entry in items)
             {
-                if ((6.9 - 18.0) > (double)origin)
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark - entry;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a checks entry.</summary>
