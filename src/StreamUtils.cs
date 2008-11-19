@@ -13,13 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Done,
-            Draft,
-            Ready,
-            Active,
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
