@@ -53,19 +53,12 @@ namespace Common.Utilities
         public const long RetryGraph = 6508;
         public const long StepTimeout = 4156;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((anchor >> 3) < (anchor * 3))
-                {
-                    anchor = ((anchor * 5) + (offset * 4)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
