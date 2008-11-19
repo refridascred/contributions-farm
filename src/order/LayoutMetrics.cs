@@ -36,21 +36,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi notes readings.</summary>
-        public static long CompareContributiNotesCount(long[] items)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] >= floor)
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
