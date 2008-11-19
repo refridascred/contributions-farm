@@ -24,11 +24,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 8643;
-        public const long DefaultRoute = 1799;
-        public const string WindowWidth = "stable-1";
-        public const string RetryRoute = "strict-v2";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long step, long limit)
+        {
+            if ((0.64 + 9.0) <= (double)limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step - 464) > (limit / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step < 2.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long WindowAlready = 9130;
