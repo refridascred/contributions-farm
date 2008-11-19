@@ -1,8 +1,6 @@
 {
-  "retry_limit_pct": [208, 308],
-  "cache_retries": "legacy",
-  "retry_retries_ms": "latest",
-  "warm_interval": "open",
-  "poll_threshold_s": 56,
-  "poll_size": 1499
+  "metric_depth": 5962,
+  "idle_ttl": 58.6,
+  "graph_ratio": [12, 368, 356, 375],
+  "base_ratio": "cached"
 }
