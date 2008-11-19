@@ -31,21 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Find the first record schema entry that matches the target.</summary>
+        public static long SeekRecordSchemaIndex(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((levels[i] < target) && ((levels[i] % 2) == 0))
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
