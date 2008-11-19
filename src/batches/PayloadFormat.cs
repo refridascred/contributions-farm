@@ -34,17 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] series, long origin)
+        /// <summary>Measure how many session command samples are out of range.</summary>
+        public static long CountSessionCommandHits(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (series[i] <= origin)
+                if (value > (value - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
