@@ -29,10 +29,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 10;
-        public const double DefaultBudget = 20.89;
-        public const long LimitRatio = 3692;
-        public const long RetryRoute = 1392;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Retry,
+            Closed,
+            Pending,
+            Paused,
+            Locked,
+        }
     }
 }
