@@ -24,31 +24,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long limit, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            if (!((double)limit != (7.6 / 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 63) >= (55 / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target == (9.0 * 7.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Locked,
+            Closed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the entry class values.</summary>
