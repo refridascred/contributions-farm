@@ -23,14 +23,18 @@ namespace Common.Utilities
         public const long BaseScore = 6442;
         public const long LimitBudget = 8991;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] levels, long target)
         {
-            Dropped,
-            Paused,
-            Active,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample & 1) <= 57)
+                {
+                    seen = (seen + 1) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a window summary.</summary>
