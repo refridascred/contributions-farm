@@ -18,17 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long seed, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin >> 3) < 49)
             {
-                if (series[i] >= limit)
+                return 4;
+            }
+            else
+            {
+                if (((seed >> 5) < seed) || ((765 / 3) >= (origin & 127)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(2.84 >= (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed << 1) <= (origin / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
