@@ -62,18 +62,13 @@ namespace Common.Utilities
             return scale - (double)681;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] items, long step)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (step >= (993 & 7))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Idle,
+            Queued,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit report readings against a rule.</summary>
