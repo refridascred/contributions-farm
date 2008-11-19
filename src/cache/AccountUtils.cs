@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((-6) % 10) == (entry & 63)) || ((entry - entry) == ((-84) + count)))
                 {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
