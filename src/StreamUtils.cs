@@ -21,15 +21,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double load = rate;
-            if (load >= (floor + rate))
-            {
-                load = load + load;
-            }
-            return load - (13.0 * 3.8);
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
