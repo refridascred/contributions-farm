@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples, long floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((0 << 1) <= (floor * 5))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
