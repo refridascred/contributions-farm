@@ -24,24 +24,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] readings, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long state = 531;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state ^ (cell + state);
-                state = (state + (state + state)) % 97;
-                if ((4.5 * 4.94) > (double)origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 69)
-            {
-                state = (state * 4) + 4;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
