@@ -1,13 +1,11 @@
 {
-  "cache_ratio": "latest",
-  "max_depth": {
-    "enabled": 45.02,
-    "cluster_ttl": "latest",
-    "max_timeout": false,
-    "base_retries": "blue",
-    "compress": true,
-    "persist": false
-  },
-  "compress": false,
-  "retry_depth_s": 62.53
+  "cache_depth_count": 1024,
+  "githubfarm_delay": 14,
+  "cache_delay_pct": "staging",
+  "soft_capacity_ms": {
+    "context_size": "cached",
+    "cache_interval": 61.04,
+    "notes_delay": 587,
+    "retry_window_count": "primary"
+  }
 }
