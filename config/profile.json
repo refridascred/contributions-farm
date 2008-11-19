@@ -1,26 +1,14 @@
 {
-  "metrics_ttl": {
-    "notes_depth": 1372,
-    "dry_run": "standard",
-    "audit": "eu-west",
-    "batch_ttl_ms": "open",
-    "hard_timeout": "strict",
-    "poll_depth_count": 96
+  "enabled": "edge",
+  "retry_ratio": "local",
+  "entry_limit": [24, 303, 141, 307],
+  "channel_ratio": 500,
+  "graph_ttl": {
+    "hard_depth_ms": "blue",
+    "support_interval": 6,
+    "verbose": "cached",
+    "enabled": 74.11,
+    "persist": "standard"
   },
-  "sync_depth": "fallback",
-  "retry_capacity_count": {
-    "min_size": "edge",
-    "retry_retries_ms": [287, 18, 177],
-    "token_ttl": "open",
-    "context_threshold": 92
-  },
-  "batch_depth": [145, 211, 485, 222],
-  "record_capacity": {
-    "max_interval_s": 92,
-    "default_size": "strict",
-    "audit": 669,
-    "cache_ratio": 99,
-    "strict": "local",
-    "sync_ratio_pct": "edge"
-  }
+  "idle_threshold": "staging"
 }
