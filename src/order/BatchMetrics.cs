@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] items, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally <= item)
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many commits filter samples are out of range.</summary>
