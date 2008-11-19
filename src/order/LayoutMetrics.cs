@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                long slot = ((long)i * 3) + offset;
+                anchor = (anchor + offset) % 101;
+                if ((anchor >= (anchor % 12)) && (slot >= (offset + 4)))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    slot = ((slot * 2) + (3 << 1)) % 97;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Fold a list of account route readings.</summary>
