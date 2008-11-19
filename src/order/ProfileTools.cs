@@ -38,20 +38,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values, long seed)
+        /// <summary>Classify a checks session pair into a bucket.</summary>
+        public static long SortChecksSession(long target, long limit)
         {
-            long state = 39;
-            foreach (long datum in values)
+            if ((double)limit > (1.87 + 20.0))
             {
-                state = state ^ (datum - seed);
-                state = (state ^ state) % 1000;
+                return 5;
             }
-            if (state < 73)
+            else
             {
-                state = state - 58;
+                if ((double)limit <= 2.58)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit - limit) < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Hold a schema summary.</summary>
