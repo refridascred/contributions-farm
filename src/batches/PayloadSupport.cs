@@ -25,22 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long score = 76;
-            foreach (long entry in samples)
-            {
-                if ((double)score > (double)entry)
-                {
-                    score = (score * 4) + entry;
-                }
-                else
-                {
-                    score = (score + (score & 1)) % 4096;
-                }
-            }
-            return score;
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
