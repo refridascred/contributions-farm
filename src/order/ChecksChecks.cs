@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Synced,
-            Paused,
-            Ready,
-            Done,
             Draft,
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Digest a series of already entries.</summary>
