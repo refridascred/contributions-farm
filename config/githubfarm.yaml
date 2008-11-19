@@ -1,8 +1,13 @@
 # githubfarm settings
-flush_capacity_s:
-  idle_interval: false
-  cache_depth_s: 29
-  buffer_ttl: 17.58
-  soft_capacity_count: 92.73
-warm_capacity_count: 500
-profile_retries: cached
+default_size_count: 7485
+warm_delay_s:
+  - green
+  - edge
+already_limit: 500
+flush_delay_ms: 1031
+base_limit:
+  - 493
+  - 322
+  - 300
+  - 257
+max_ttl: fallback
