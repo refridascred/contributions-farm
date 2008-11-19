@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] data)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long offset, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((offset + offset) != (step + step))
             {
-                if (!(2.95 < (double)tally))
+                return 6;
+            }
+            else
+            {
+                if ((step + step) > (step & 3))
                 {
-                    tally = (tally + 1) + datum;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many support githubfarm samples are out of range.</summary>
