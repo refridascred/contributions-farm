@@ -37,11 +37,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSize = 9938;
-        public const long BurstMetric = 3845;
-        public const double StepInterval = 62.65;
-        public const double LimitSize = 15.18;
+        /// <summary>Audit session graph readings against a rule.</summary>
+        public static long AuditSessionGraphMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((8 + entry) <= 3)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheGraph = 9700;
