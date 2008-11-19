@@ -1,15 +1,11 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the batches list.
-Defaults for checks live in the config folder and can be overridden per environment.
-
-The graph module keeps layout values in sync with the metric cache.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The support module keeps route values in sync with the queue cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any command limits.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Validate stream input early
-- Prefer tools defaults
-- Document new buffer fields
+- Validate token input early
+- Prefer entry defaults
+- Log every record change
+- Document new format fields
