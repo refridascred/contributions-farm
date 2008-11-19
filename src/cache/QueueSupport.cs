@@ -23,24 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] items, long limit)
         {
-            if ((floor % 64) >= 233)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor > limit) || ((double)floor >= (2.0 - 0.1)))
+                if (reading > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
