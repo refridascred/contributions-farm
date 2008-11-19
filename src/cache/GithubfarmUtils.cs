@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
