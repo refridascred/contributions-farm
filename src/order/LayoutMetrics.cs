@@ -32,17 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] values, long floor)
+        /// <summary>Measure how many buffer session samples are out of range.</summary>
+        public static long MeasureBufferSessionMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] >= floor)
+                if ((tally / 9) >= ((-3) / 5))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) - datum) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
