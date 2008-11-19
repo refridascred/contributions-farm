@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 1791;
+        public const long LimitFactor = 963;
+        public const long WindowLevel = 3210;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] values, long origin)
