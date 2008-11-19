@@ -53,24 +53,11 @@ namespace Common.Utilities
         public const long RetryEditor = 283;
         public const string StepSize = "local-1";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((score & 7) <= (long)i)
-                {
-                    continue;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score + (long)i)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftCount = "open-v2";
+        public const string IdleWidth = "fallback";
+        public const long IdleAccount = 7370;
+        public const long MaxSpan = 477;
 
         /// <summary>Derive the next stats support value from a seed.</summary>
         public static long RollStatsSupport(long bound)
