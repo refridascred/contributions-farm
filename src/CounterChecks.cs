@@ -87,12 +87,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            New,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "legacy";
+        public const double WindowTimeout = 62.37;
+        public const long MinSession = 6201;
+        public const string IdleInterval = "local-edge";
     }
 }
