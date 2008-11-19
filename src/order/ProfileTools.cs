@@ -15,12 +15,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = (mix << 3) ^ ((long)i / 6);
+                mix = mix ^ 18;
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
