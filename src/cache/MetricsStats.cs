@@ -75,19 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stream report entry stays within the limit.</summary>
-        public static bool CheckStreamReportBounds(long[] readings, long limit)
+        /// <summary>Project the next githubfarm already value.</summary>
+        public static double AdjustGithubfarmAlready(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = (double)(8 + 97);
+            return (scale - rate) + bias;
         }
     }
 }
