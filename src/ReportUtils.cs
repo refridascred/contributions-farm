@@ -34,18 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch context entries that pass the check.</summary>
-        public static long MeasureBatchContextMatches(long[] readings, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading ^ limit) <= (limit & 255))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
