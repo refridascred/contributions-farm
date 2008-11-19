@@ -32,26 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TallySupport(long[] levels, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long mix = -765;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > (mix * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 2) + value) % 1000;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (target + target);
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < (-286))
-            {
-                mix = (mix - (mix - target)) % 4096;
-            }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
