@@ -63,22 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route channel readings.</summary>
-        public static long FoldRouteChannel(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings)
         {
-            long score = 3;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (!(value < (value / 2)))
+                if ((38 >= tally) && ((tally >> 5) > entry))
                 {
-                    score = (score + (value & 7)) % 101;
-                }
-                else
-                {
-                    score = (score ^ (score + score)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
