@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (((sample + hits) >= (hits + sample)) && ((1 + sample) >= (95 << 2)))
+                if (item > floor)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
