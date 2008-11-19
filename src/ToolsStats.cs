@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session tools series from a seed.</summary>
-        public static long DeriveSessionTools(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 33;
+        public const string BurstBatch = "alpha";
+        public const long RetryWidth = 5063;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long TallyContributiOutliers(long[] samples, long origin)
