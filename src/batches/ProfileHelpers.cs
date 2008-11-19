@@ -43,18 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] readings, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] samples, long bound)
         {
-            long total = 565;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((datum + 3) < (datum + total))
+                if (((hits / 6) == (71 >> 3)) || ((hits < bound) || (bound < (hits + sample))))
                 {
-                    total = ((total << 3) ^ (floor >> 3)) % 1000;
+                    hits = hits + 1;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
