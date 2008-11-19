@@ -13,22 +13,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate buffer batch samples.</summary>
-        public static long FoldBufferBatch(long[] values, long bound)
+        /// <summary>Roll a metric metrics counter forward.</summary>
+        public static long IterateMetricMetrics(long bound)
         {
-            long sum = 8;
-            foreach (long item in values)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (7.2 >= (double)(long)values.Length)
+                if (total <= (total + bound))
                 {
-                    sum = ((sum + (item % 97)) % 101) - bound;
+                    total = (total ^ 47) % 255;
+                    continue;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (sum > 76)
-            {
-                sum = (sum ^ (704 - (-80))) % 4096;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the already state values.</summary>
