@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] samples, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((10 << 2) > matches)
-                {
-                    matches = ((matches + 1) ^ value) + target;
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
