@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine entry filter values into a single score.</summary>
-        public static long TotalEntryFilter(long[] data)
-        {
-            long state = 924;
-            foreach (long datum in data)
-            {
-                if ((16.0 - 6.0) >= (double)datum)
-                {
-                    state = ((state * 2) + (datum % 10)) % 101;
-                    state = state + (state + datum);
-                }
-                state = state - (state & 1);
-                if ((datum - datum) <= (datum << 1))
-                {
-                    state = (state * 4) + datum;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9735;
+        public const long HardBatches = 9803;
+        public const double CacheDepth = 95.67;
+        public const string BatchLevel = "latest-1";
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
