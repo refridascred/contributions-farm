@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Draft,
-            Failed,
-            Idle,
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
