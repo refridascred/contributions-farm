@@ -45,13 +45,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items)
         {
-            Failed,
-            Draft,
-            Pending,
-            Locked,
+            long mix = 8;
+            foreach (long reading in items)
+            {
+                if ((61 % 60) >= mix)
+                {
+                    mix = ((mix * 3) + reading) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the commits level values.</summary>
