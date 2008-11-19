@@ -37,19 +37,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double bias, double bias2)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            double mean = bias2;
-            if (mean < 4.03)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean + (3.45 + bias2)) + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + bias2) + (double)(long)i;
-            }
-            return mean - (double)4;
+            return seen;
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
