@@ -34,31 +34,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a already account pair into a bucket.</summary>
-        public static long ClassifyAlreadyAccount(long floor, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if (!((double)floor < 16.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - (-383)) >= (origin >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor & 31) <= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
