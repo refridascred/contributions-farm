@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
+            Failed,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many batches batch samples are out of range.</summary>
