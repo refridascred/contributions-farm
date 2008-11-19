@@ -1,15 +1,11 @@
 # Command notes
 
-Defaults for batches live in the config folder and can be overridden per environment.
-Defaults for farm live in the config folder and can be overridden per environment.
-The format report groups every contributi by stats.
-
-A command that stays idle for too long is moved to the format list.
-Run the notes check before changing any token limits.
+Use layout settings to tune how often channel data is refreshed.
+Keep cluster and support names short and lowercase.
+When a contributi fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate token input early
-- Keep channel values small
-- Log every tools change
+- Validate support input early
+- Document new session fields
+- Review order limits each release
