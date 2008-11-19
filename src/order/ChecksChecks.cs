@@ -40,13 +40,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings, long target)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
+            long mix = 6;
+            foreach (long entry in readings)
+            {
+                mix = (((mix * 3) + entry) % 255) + target;
+            }
+            if (mix > 536)
+            {
+                mix = (mix + ((long)readings.Length * 5)) % 101;
+            }
+            return mix;
         }
     }
 }
