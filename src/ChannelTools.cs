@@ -37,12 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            public double Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
