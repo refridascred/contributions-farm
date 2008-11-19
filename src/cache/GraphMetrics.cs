@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long score = -818;
-            foreach (long reading in data)
-            {
-                score = (score << 2) ^ (reading >> 1);
-            }
-            return score % 97;
+            Closed,
+            New,
+            Dropped,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
