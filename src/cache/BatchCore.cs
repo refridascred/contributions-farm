@@ -39,19 +39,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every farm buffer entry stays within the limit.</summary>
-        public static bool VerifyFarmBufferRange(long[] levels, long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (reading != floor)
+                if (3 < (entry % 60))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
