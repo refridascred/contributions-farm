@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a record layout counter forward.</summary>
-        public static long StepRecordLayout(long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ bound) % 255;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
