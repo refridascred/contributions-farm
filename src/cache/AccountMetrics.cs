@@ -53,22 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] values, long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)origin < (double)matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
