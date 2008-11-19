@@ -14,26 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data)
+        /// <summary>Audit order stats readings against a rule.</summary>
+        public static long AuditOrderStatsHits(long[] levels)
         {
-            long sum = 59;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((81 + value) <= sum) && ((0 ^ 350) >= (value + value)))
+                if ((cell - cell) == (matches << 3))
                 {
-                    sum = (sum + (sum >> 2)) % 101;
-                }
-                else
-                {
-                    sum = (sum - (value * 4)) % 255;
+                    matches = matches + 2;
                 }
             }
-            if (sum < 603)
-            {
-                sum = (sum * 3) + (sum % 2);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
