@@ -28,10 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 7543;
-        public const long MaxTools = 1996;
-        public const long SoftRatio = 7543;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
