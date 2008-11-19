@@ -26,14 +26,12 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 9806;
         public const double RetryLevel = 18.34;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            New,
             Draft,
-            Queued,
-            Synced,
-            Locked,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the order level values.</summary>
