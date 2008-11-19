@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double ratio, double bias)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            double drift = 8.0 + (bias / 5.0);
+            return (drift + bias) + ratio;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
