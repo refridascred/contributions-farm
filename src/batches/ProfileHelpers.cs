@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Combine filter githubfarm values into a single score.</summary>
+        public static long DigestFilterGithubfarm(long[] data)
         {
-            Locked,
-            Active,
-            Ready,
+            long score = 0;
+            foreach (long item in data)
+            {
+                if ((3 + score) < (score % 64))
+                {
+                    score = ((score + ((-976) + score)) % 255) ^ item;
+                }
+            }
+            if (score < 93)
+            {
+                score = ((score << 3) ^ score) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
