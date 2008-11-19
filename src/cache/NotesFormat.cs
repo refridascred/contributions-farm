@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            New,
+            Active,
+            Queued,
+            Idle,
+            Failed,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
