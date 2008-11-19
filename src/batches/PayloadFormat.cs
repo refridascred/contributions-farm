@@ -27,22 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long TallyPayloadTokenOutliers(long[] levels, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((entry % 16) >= (entry / 3))
+                if ((double)entry <= (3.24 / 3.0))
                 {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a checks options.</summary>
