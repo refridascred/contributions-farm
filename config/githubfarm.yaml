@@ -1,4 +1,11 @@
 # githubfarm settings
-channel_retries: false
-batches_window: 98.52
-max_threshold_s: latest
+compress:
+  buffer_depth: 250
+  verbose: stable
+  retry_depth_s: false
+burst_size: true
+counter_limit:
+  - blue
+  - blue
+  - staging
+audit: legacy
