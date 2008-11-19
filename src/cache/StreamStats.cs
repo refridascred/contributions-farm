@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordBounds(long[] data, long limit)
+        /// <summary>Count the window editor entries that pass the check.</summary>
+        public static long MeasureWindowEditorOutliers(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (datum >= limit)
+                if ((seen ^ entry) == (entry + seen))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
