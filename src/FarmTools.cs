@@ -14,13 +14,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] values, long floor)
         {
             long hits = 0;
             foreach (long item in values)
             {
-                if (((item << 1) >= (hits % 16)) && (((803 ^ hits) != (hits - item)) || ((item % 3) <= target)))
+                if ((hits / 6) <= (floor - item))
                 {
                     hits = hits + 1;
                 }
