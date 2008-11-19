@@ -58,19 +58,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 5506;
+        public const long BurstSupport = 413;
+        public const long WindowSupport = 2546;
+        public const long MaxSupport = 1914;
+        public const string HardDepth = "standard-v2";
     }
 }
