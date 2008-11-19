@@ -20,11 +20,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long bound)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            long anchor = 660;
+            foreach (long entry in series)
+            {
+                anchor = ((anchor ^ entry) % 101) - bound;
+            }
+            return anchor % 4096;
         }
     }
 }
