@@ -31,19 +31,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long carry = 54;
-            foreach (long value in levels)
-            {
-                carry = ((carry - carry) % 1000) + value;
-            }
-            if (carry < 122)
-            {
-                carry = (carry << 3) ^ (carry >> 1);
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
