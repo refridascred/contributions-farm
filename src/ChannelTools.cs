@@ -34,21 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Adjust a profile editor reading.</summary>
+        public static double BlendProfileEditor(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (span - gain) + span;
+            if (mean > (mean / 5.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + gain;
             }
-            return seen;
+            else
+            {
+                mean = mean - span;
+            }
+            return mean + mean;
         }
     }
 }
