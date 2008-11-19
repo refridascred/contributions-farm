@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series, long offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long acc = 780;
-            foreach (long sample in series)
-            {
-                if (((939 + sample) > (12 << 1)) || ((offset + offset) > offset))
-                {
-                    acc = (acc << 3) ^ (acc / 7);
-                }
-            }
-            return acc;
+            Queued,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
