@@ -27,13 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
+            Queued,
+            Done,
+            Dropped,
         }
 
         /// <summary>Hold a metrics record.</summary>
