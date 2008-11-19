@@ -64,39 +64,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long floor, long seed)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long target)
         {
-            long diff = floor + seed;
-            if ((floor + floor) < (diff & 255))
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor % 97) <= (diff ^ floor))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 4;
+                    mix = ((mix - (4 - (long)i)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    if (((double)seed <= (double)floor) || ((diff + seed) < (diff << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (30 <= (seed + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = (mix + (target + mix)) % 97;
+                mix = (mix ^ (target << 1)) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
