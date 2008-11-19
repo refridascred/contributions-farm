@@ -20,15 +20,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate token notes samples.</summary>
-        public static long FoldTokenNotes(long[] items, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsMatches(long[] series)
         {
-            long sum = 1;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                sum = ((sum + sum) - datum) - target;
+                if ((double)15 < (double)cell)
+                {
+                    hits = hits + 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine order commits values into a single score.</summary>
