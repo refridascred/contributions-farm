@@ -46,14 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Draft,
-            Retry,
-            Locked,
-            Queued,
-            Done,
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
