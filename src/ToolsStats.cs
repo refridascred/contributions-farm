@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const string BurstBatch = "alpha";
         public const long RetryWidth = 5063;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] samples, long origin)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((origin <= (origin & 127)) && ((value / 3) >= (origin + hits))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the profile kind values.</summary>
