@@ -24,18 +24,21 @@ namespace Common.Utilities
             return weight + (8.0 * 1.29);
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] readings, long step)
+        /// <summary>Count session schema pairs that satisfy a relation.</summary>
+        public static long OverlapSessionSchemaCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)step != (double)hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) + datum;
+                    if ((series[i] + series[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
