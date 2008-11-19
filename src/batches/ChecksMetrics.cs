@@ -113,11 +113,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchTimeout = "latest";
-        public const long MaxLayout = 1468;
-        public const string CacheLayout = "legacy-1";
-        public const string HardSpan = "primary-edge";
-        public const string BurstLayout = "local";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 4972;
+        public const string WindowAccount = "standard-v2";
+        public const long LimitDepth = 3716;
+        public const long RetryAccount = 8718;
+        public const long MaxWidth = 8261;
     }
 }
