@@ -1,7 +1,7 @@
 {
-  "poll_depth": [11, 295],
-  "metric_capacity": 75.17,
-  "compress": "eu-west",
-  "max_threshold_count": 2919,
-  "graph_ttl": 72.89
+  "commits_threshold": true,
+  "dry_run": true,
+  "warm_depth_s": 43.36,
+  "sync_ratio": 69.48,
+  "persist": 30
 }
