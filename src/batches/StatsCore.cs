@@ -47,23 +47,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double weight, double offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double drift = 7.4 + weight;
-            if (drift < weight)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - (drift / 7.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - drift;
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
