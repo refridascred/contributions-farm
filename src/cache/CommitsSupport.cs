@@ -52,10 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string MaxWidth = "staging-1";
-        public const double BurstBuffer = 12.01;
-        public const string BaseWidth = "primary-v2";
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public long Size { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long IterateGithubfarm(long limit)
