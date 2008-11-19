@@ -24,12 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
+        public static long TallyGithubfarmMetricOutliers(long[] values, long seed)
         {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (datum < hits)
+                {
+                    hits = (hits + 3) + seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
