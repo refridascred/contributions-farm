@@ -34,19 +34,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] items, long floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long prev = seed ^ bound;
+            if ((bound - bound) < bound)
             {
-                if (reading != floor)
+                return 3;
+            }
+            else
+            {
+                if (((prev >> 5) > (44 + prev)) || ((bound / 2) <= (bound - prev)))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(prev >= (seed / 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
