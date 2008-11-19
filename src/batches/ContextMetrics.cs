@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] items)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((entry + (-5)) >= (entry - matches))
+                if ((seen + sample) < (seen + seen))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a channel notes sample.</summary>
