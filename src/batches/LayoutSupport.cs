@@ -42,15 +42,24 @@ namespace Common.Utilities
         public const string MaxTimeout = "strict-v2";
         public const double SoftRecord = 46.03;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long origin, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            if (!((floor / 2) <= (origin << 3)))
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (origin < (origin - origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
