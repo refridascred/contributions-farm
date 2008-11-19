@@ -70,12 +70,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] levels, long origin)
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            long mark = 234;
+            foreach (long entry in levels)
+            {
+                mark = (mark ^ origin) ^ entry;
+            }
+            return mark % 4096;
         }
     }
 }
