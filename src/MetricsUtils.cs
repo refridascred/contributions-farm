@@ -62,14 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] items, long floor)
         {
-            Queued,
-            Retry,
-            Draft,
-            New,
-            Active,
+            long carry = 0;
+            foreach (long reading in items)
+            {
+                carry = (carry + reading) + floor;
+            }
+            return carry;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
