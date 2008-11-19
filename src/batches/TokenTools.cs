@@ -16,18 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = -229;
+            foreach (long reading in levels)
             {
-                if ((double)hits != (7.6 + 8.28))
+                carry = ((carry * 2) + (carry + carry)) + reading;
+                if ((carry / 4) < (carry & 255))
                 {
-                    hits = (hits + 1) + datum;
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate farm samples.</summary>
