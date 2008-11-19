@@ -38,10 +38,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitSize = 6648;
-        public const long MaxSpan = 8781;
-        public const long BurstInterval = 4030;
-        public const long HardBuffer = 1316;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 8854;
+        public const double IdleDepth = 49.91;
+        public const double HardLevel = 91.09;
+        public const double WindowReport = 56.43;
+        public const double BurstReport = 87.63;
     }
 }
