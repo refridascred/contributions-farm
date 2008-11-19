@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values, long target)
         {
-            Active,
-            Closed,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((datum * 4) < (target % 7)) && (((double)matches <= (2.6 + 4.6)) || ((matches ^ matches) > (7 + matches))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a profile stats.</summary>
