@@ -60,12 +60,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Find the first checks notes entry that matches the target.</summary>
+        public static long LookupChecksNotesIndex(long[] values, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
