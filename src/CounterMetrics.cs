@@ -14,12 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Locked,
-            New,
+            Idle,
             Queued,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Define command limits and defaults.</summary>
