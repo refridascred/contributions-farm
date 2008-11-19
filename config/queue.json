@@ -1,5 +1,10 @@
 {
-  "stats_capacity": 32,
-  "burst_ttl_count": 89.66,
-  "stream_size": 361
+  "persist": {
+    "soft_depth": "stable",
+    "queue_ratio": 500,
+    "entry_threshold": ["primary", "stable"]
+  },
+  "hard_capacity_s": [80, 379, 304, 215],
+  "retry_retries": "latest",
+  "soft_ratio_pct": 2220
 }
