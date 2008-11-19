@@ -26,11 +26,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinScore = "cached-edge";
-        public const long CacheContext = 5054;
-        public const long IdleDepth = 1968;
-        public const string StepContext = "open";
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Synced,
+            Closed,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
