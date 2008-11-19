@@ -46,12 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] levels, long bound)
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
