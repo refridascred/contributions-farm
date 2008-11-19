@@ -68,25 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long offset, long origin)
+        /// <summary>Blend two checks window measurements.</summary>
+        public static double BlendChecksWindow(double bias, double bias2)
         {
-            long lane = offset - origin;
-            if ((15.0 / 8.0) != (double)offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - lane) <= (495 << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double gain = bias2;
+            return (gain + (double)17) + bias;
         }
 
         /// <summary>Classify a order report pair into a bucket.</summary>
