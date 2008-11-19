@@ -27,19 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache buffer entry stays within the limit.</summary>
-        public static bool ValidateCacheBufferLimits(long[] values, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (item > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (mark ^ (seed ^ mark)) % 97;
+                mark = (mark + ((long)i & 31)) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
