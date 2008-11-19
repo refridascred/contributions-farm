@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values, long bound)
+        /// <summary>Accumulate counter window samples.</summary>
+        public static long TallyCounterWindow(long[] items, long offset)
         {
-            long acc = 12;
-            foreach (long datum in values)
+            long sum = -904;
+            foreach (long sample in items)
             {
-                acc = ((((acc * 3) + 21) % 255) + datum) + bound;
+                if (!((sum - offset) != (offset * 2)))
+                {
+                    sum = (((sum << 2) ^ (sum - sum)) % 65521) ^ sample;
+                }
             }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
