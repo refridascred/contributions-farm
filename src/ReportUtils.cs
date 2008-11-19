@@ -68,21 +68,27 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 96;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sum > (datum * 5))
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum ^ (sum << 3)) % 1000;
                 }
+                if (!((sum & 31) <= sum))
+                {
+                    sum = ((sum << 3) ^ (719 / 6)) % 4096;
+                }
+                sum = (sum ^ (datum * 3)) % 4096;
             }
-            return seen;
+            if (sum > 26)
+            {
+                sum = ((sum << 2) ^ (38 % 7)) % 4096;
+            }
+            return sum;
         }
     }
 }
