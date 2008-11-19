@@ -41,12 +41,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 8523;
-        public const long MaxBatch = 7273;
-        public const double BatchCount = 90.29;
-        public const long SoftDepth = 2410;
-        public const long HardBatch = 1771;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = total ^ (origin + (long)i);
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (total - total) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleRatio = 9811;
