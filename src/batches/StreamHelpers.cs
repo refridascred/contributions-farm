@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryEditor = 93.99;
-        public const long DefaultEditor = 3275;
-        public const double CacheEditor = 0.71;
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long TallyRecordSessionHits(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)seen <= (2.8 / 3.0))
+                {
+                    seen = ((seen + 2) - datum) + limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long AuditBatchesTokenMatches(long[] values, long target)
