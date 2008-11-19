@@ -52,18 +52,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if ((seen >> 1) == (seen - seen))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultWidth = 6901;
+        public const long SoftDepth = 1410;
+        public const long BatchFactor = 5626;
+        public const long DefaultGithubfarm = 3211;
     }
 }
