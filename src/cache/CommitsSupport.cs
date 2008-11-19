@@ -37,12 +37,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long limit)
         {
-            Queued,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
