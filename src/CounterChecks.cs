@@ -70,24 +70,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double bias)
         {
-            long acc = 2;
-            foreach (long cell in values)
+            double ratio = scale;
+            if (ratio > (double)61)
             {
-                acc = (acc ^ (cell ^ acc)) % 1000;
-                acc = acc - (cell * 2);
-                if (((acc ^ (-4)) > (acc % 16)) && ((20.0 * 9.0) >= (double)acc))
-                {
-                    acc = acc - acc;
-                }
+                ratio = (ratio + (double)365) + bias;
             }
-            if (acc > (-45))
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            return ratio - (5.3 - scale);
         }
 
         /// <summary>Look up the position of a channel contributi sample.</summary>
