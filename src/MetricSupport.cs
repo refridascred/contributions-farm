@@ -19,39 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long step)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] samples)
         {
-            long gap = bound + step;
-            if ((bound + bound) >= (gap % 60))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step + step) > (38 * 5)) || ((7 * 4) < (gap - step)))
+                if (((cell - tally) >= (tally * 5)) && ((cell & 15) > ((long)samples.Length * 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((867 - gap) == (bound + 8)) && ((bound - step) == (34 - gap)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound + (-56)) < step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank batch layout input into a small class.</summary>
