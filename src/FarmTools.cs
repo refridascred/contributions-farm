@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Iterate the metric report series from a seed.</summary>
+        public static long SeriesMetricReport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
