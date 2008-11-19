@@ -99,25 +99,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (seed <= (seed / 2))
+                if (!((seed - seed) < seed))
                 {
-                    total = (total + (seed - 1)) % 65521;
-                    total = (total - (long)i) % 255;
+                    count = (count + 2) ^ item;
                 }
                 else
                 {
-                    long count = (seed ^ seed) << 2;
-                    total = total ^ (count & 63);
+                    count = count - 1;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return count;
         }
     }
 }
