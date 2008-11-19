@@ -52,13 +52,19 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool VerifyWindowEditorLimits(long[] readings, long seed)
         {
-            Dropped,
-            Active,
-            Stale,
-            Pending,
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
