@@ -63,15 +63,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] values)
         {
-            double ratio = bias;
-            if (ratio < (double)(-45))
+            long anchor = 43;
+            foreach (long item in values)
             {
-                ratio = (ratio + 14.0) + scale;
+                anchor = (anchor + (38 + anchor)) + item;
             }
-            return ratio - 9.5;
+            if (anchor < (-14))
+            {
+                anchor = anchor - (anchor % 5);
+            }
+            return anchor;
         }
     }
 }
