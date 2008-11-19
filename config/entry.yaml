@@ -1,4 +1,5 @@
 # entry settings
-notes_capacity: fallback
-idle_delay_ms: eu-west
-retry_capacity_count: 54.05
+commits_interval: 14
+already_threshold: primary
+support_window: stable
+soft_retries_s: 15
