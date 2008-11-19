@@ -37,11 +37,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double weight, double span)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long target)
         {
-            double bias = weight;
-            return bias + (span * 1.0);
+            long score = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((long)i < (target / 6)))
+                {
+                    score = (score - (35 - 6)) % 101;
+                }
+                score = (score << 2) ^ (-37);
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a payload record.</summary>
