@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double floor)
         {
-            long acc = 4;
-            foreach (long datum in items)
+            double bias2 = bias;
+            if (bias2 > bias)
             {
-                if ((acc >= ((-74) - acc)) && ((offset << 2) > offset))
-                {
-                    acc = (acc ^ (datum / 2)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (600 + acc)) % 65521;
-                }
+                bias2 = (bias2 - (bias / 2.0)) - floor;
             }
-            return acc;
+            else
+            {
+                bias2 = bias2 + (4.0 * 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
