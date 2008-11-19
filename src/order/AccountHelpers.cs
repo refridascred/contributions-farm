@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinWidth = 7745;
-        public const double LimitNotes = 30.49;
-        public const double MinNotes = 73.34;
-        public const double SoftNotes = 9.41;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsHits(long[] items)
