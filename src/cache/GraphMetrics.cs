@@ -23,27 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long total = 4;
-            foreach (long item in samples)
-            {
-                if (!((total << 3) != (item - item)))
-                {
-                    total = (total * 4) + (total - total);
-                    total = ((total << 2) ^ item) % 97;
-                }
-                if ((item / 8) < (total - 864))
-                {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = (total * 5) + 688;
-                }
-            }
-            return total;
+            New,
+            Synced,
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
