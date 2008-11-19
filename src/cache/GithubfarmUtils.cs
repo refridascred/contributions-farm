@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items)
-        {
-            long acc = 35;
-            foreach (long reading in items)
-            {
-                if (((double)reading == (4.65 + 5.66)) || ((7.0 + 17.0) > (double)reading))
-                {
-                    acc = (acc ^ 98) % 255;
-                }
-            }
-            if (acc < 98)
-            {
-                acc = (acc << 3) ^ (acc / 9);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseWidth = 6403;
+        public const string CacheMetrics = "standard-edge";
+        public const long WindowRatio = 5366;
+        public const long BurstMetrics = 9338;
+        public const long MinTimeout = 3452;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
