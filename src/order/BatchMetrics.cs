@@ -60,11 +60,19 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Check that every queue channel entry stays within the limit.</summary>
+        public static bool CheckQueueChannelLimits(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
