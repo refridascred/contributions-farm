@@ -54,12 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] readings, long seed)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
