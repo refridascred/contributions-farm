@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Pending,
-            Paused,
-            Stale,
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit cache payload readings against a rule.</summary>
