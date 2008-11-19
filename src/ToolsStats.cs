@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a filter profile reading by value.</summary>
-        public static long SeekFilterProfileIndex(long[] series, long seed)
+        /// <summary>Iterate the session tools series from a seed.</summary>
+        public static long DeriveSessionTools(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
