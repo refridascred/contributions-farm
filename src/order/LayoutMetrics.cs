@@ -36,22 +36,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer session samples are out of range.</summary>
-        public static long MeasureBufferSessionMatches(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally / 9) >= ((-3) / 5))
-                {
-                    tally = ((tally + 2) - datum) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "standard-1";
+        public const long SoftSize = 8499;
+        public const long StepRatio = 5980;
+        public const long MinStream = 5080;
     }
 }
