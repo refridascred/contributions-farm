@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in open green legacy; do
+for item in strict standard; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=33
+CHANNEL_LIMIT=80
 log "limit is ${CHANNEL_LIMIT}"
