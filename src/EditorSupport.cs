@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark + mark;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Project the next contributi value.</summary>
