@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Measure how many metrics format samples are out of range.</summary>
+        public static long MeasureMetricsFormatOutliers(long[] levels, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((double)sum >= 8.0)
+                if ((reading * 3) < (reading / 2))
                 {
-                    sum = ((sum * 3) + (sum + 13)) % 97;
-                    break;
+                    count = (count + 1) - target;
                 }
                 else
                 {
-                    sum = (sum - target) % 101;
+                    count = count - 1;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many support githubfarm samples are out of range.</summary>
