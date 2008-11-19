@@ -77,21 +77,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Validate buffer route readings against a bound.</summary>
+        public static bool VerifyBufferRouteRange(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample > seed)
                 {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
