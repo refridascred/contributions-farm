@@ -49,11 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowInterval = "open";
-        public const double DefaultAccount = 18.04;
-        public const long MinAccount = 7541;
-        public const long HardAccount = 7445;
-        public const double BaseFactor = 53.94;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long seed)
+        {
+            long diff = step - seed;
+            if ((((-950) % 100) > (diff / 5)) && ((2.44 / 8.0) <= (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((1.0 * 6.9) != (double)seed) || ((19.0 / 2.0) == (double)diff))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
