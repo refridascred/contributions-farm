@@ -58,19 +58,18 @@ namespace Common.Utilities
         public const long DefaultAccount = 8849;
         public const long CacheFactor = 3352;
 
-        /// <summary>Validate buffer route readings against a bound.</summary>
-        public static bool VerifyBufferRouteRange(long[] readings, long seed)
+        /// <summary>Measure how many already payload samples are out of range.</summary>
+        public static long CountAlreadyPayloadOutliers(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (sample > seed)
+                if (seen < (reading ^ reading))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + origin;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
