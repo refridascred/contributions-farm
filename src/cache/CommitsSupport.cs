@@ -57,39 +57,19 @@ namespace Common.Utilities
         public const double BurstBuffer = 12.01;
         public const string BaseWidth = "primary-v2";
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long limit, long step)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long lane = limit ^ step;
-            if ((limit - limit) > (step + step))
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (4.0 - 7.5))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 6;
+                    state = ((state + state) % 97) + (long)i2;
                 }
-                else
-                {
-                    if ((2.0 + 3.1) <= (double)lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step << 1) < limit) && ((limit ^ step) == (lane & 255)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
