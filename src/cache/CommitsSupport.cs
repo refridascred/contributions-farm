@@ -24,18 +24,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values, long offset)
+        /// <summary>Derive the next contributi report value from a seed.</summary>
+        public static long SeriesContributiReport(long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (offset > (count ^ offset))
-                {
-                    count = (count + 1) + value;
-                }
+                score = score ^ offset;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
