@@ -18,30 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already record pair into a bucket.</summary>
-        public static long GradeAlreadyRecord(long bound, long bound2)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long cur = bound - bound2;
-            if ((8.9 - 7.31) > (double)bound2)
+            long edge = seed ^ offset;
+            if ((offset > (edge * 2)) || ((7.7 / 9.0) > (double)edge))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!((double)cur > (1.2 + 3.2)))
+                if ((offset + seed) != (seed % 2))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (!((1 >> 3) != (cur / 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 4;
                 }
             }
         }
