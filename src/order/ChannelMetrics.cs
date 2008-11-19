@@ -58,17 +58,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
     }
 }
