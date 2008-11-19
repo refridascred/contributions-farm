@@ -1,18 +1,5 @@
 {
-  "cache_ratio": 98,
-  "burst_delay": 30,
-  "persist": 71.73,
-  "retry_ttl": {
-    "layout_retries": [119, 429],
-    "buffer_ttl": false,
-    "audit": {
-      "compress": 33,
-      "burst_window": ["edge", "green", "edge"],
-      "farm_ratio": [51, 88],
-      "strict": true
-    },
-    "default_threshold_pct": 89,
-    "graph_ratio": ["open", "blue", "standard", "cached"],
-    "strict": [279, 178, 477]
-  }
+  "warm_ratio_ms": false,
+  "sync_capacity_ms": ["blue", "stable", "legacy"],
+  "format_size": false
 }
