@@ -14,19 +14,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long ScoreFilterChannel(long[] data)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long total = 2;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total + (total & 255)) % 97;
-                if ((859 << 2) > (datum % 24))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = total - (total + datum);
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return hits;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
