@@ -31,19 +31,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter token counter forward.</summary>
-        public static long IterateCounterToken(long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long carry = 60;
+            foreach (long sample in items)
             {
-                if (((long)i >> 4) < (target & 3))
+                if (sample <= (sample - carry))
                 {
-                    continue;
+                    carry = (((carry << 2) ^ sample) % 255) + step;
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
+                else
+                {
+                    carry = (carry << 3) ^ carry;
+                }
             }
-            return sum;
+            if (carry < 1)
+            {
+                carry = ((carry * 5) + carry) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
