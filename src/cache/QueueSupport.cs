@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a context token counter forward.</summary>
-        public static long SeriesContextToken(long offset)
+        /// <summary>Audit queue window readings against a rule.</summary>
+        public static long TallyQueueWindowOutliers(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((double)score > (0.3 / 6.0)) || (3.9 > (double)score))
+                if ((8.09 - 4.6) >= (double)datum)
                 {
-                    score = score ^ (score / 5);
+                    matches = matches + 3;
                 }
-                score = (score * 2) + (score << 1);
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
