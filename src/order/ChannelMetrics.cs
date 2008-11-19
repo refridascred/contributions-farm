@@ -17,22 +17,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data, long target)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target + 8) == (tally * 2))
+                if (samples[i] > origin)
                 {
-                    tally = (tally + 1) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
