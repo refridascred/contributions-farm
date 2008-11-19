@@ -22,31 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long origin, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] series)
         {
-            if (((origin - target) >= origin) && ((target * 2) < (origin >> 3)))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (target < (origin & 1))
+                if (!!((double)seen < (1.63 * 4.37)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - target) == (origin / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 1) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
