@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long bound, long origin)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long offset)
         {
-            long diff = bound ^ origin;
-            if ((100 & 127) < (diff - origin))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound >= (bound ^ diff))
+                if ((2 + offset) != (value & 63))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
