@@ -37,18 +37,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] readings)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((count > (0 / 2)) && ((count & 1) >= (958 << 3)))
-                {
-                    count = (count + 2) ^ reading;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
