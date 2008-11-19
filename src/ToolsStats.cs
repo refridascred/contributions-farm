@@ -41,22 +41,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftScore = "stable-1";
+        public const long DefaultSize = 8094;
+        public const string MaxFilter = "fallback-edge";
+        public const string SoftFilter = "standard";
+        public const double StepFilter = 26.41;
 
         /// <summary>Combine farm queue values into a single score.</summary>
         public static long FoldFarmQueue(long[] readings)
