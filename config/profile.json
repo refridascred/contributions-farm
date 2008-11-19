@@ -1,8 +1,24 @@
 {
-  "audit": "eu-west",
-  "filter_depth": "fallback",
-  "retry_delay_ms": 74.42,
-  "verbose": false,
-  "hard_limit_pct": "local",
-  "soft_window_count": "fallback"
+  "entry_limit": 2,
+  "max_retries": {
+    "compress": 100,
+    "already_timeout": {
+      "hard_depth_count": "latest",
+      "dry_run": "standard",
+      "channel_timeout": [4, 191]
+    },
+    "retry_delay": "open",
+    "metrics_threshold": ["local", "blue"],
+    "poll_ttl": true
+  },
+  "hard_threshold_count": "green",
+  "default_ttl": {
+    "cluster_interval": [187, 4, 375, 323],
+    "record_threshold": {
+      "base_ttl_ms": "edge",
+      "sync_size_pct": "blue",
+      "verbose": "cached"
+    },
+    "sync_limit": ["latest", "stable", "eu-west"]
+  }
 }
