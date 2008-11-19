@@ -31,36 +31,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((-7) <= (seed << 3))
+                if (samples[i] >= target)
                 {
-                    carry = ((carry << 2) ^ (0 - 70)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ (seed % 8)) % 4096;
-                }
-                if ((carry + (long)i) >= (8 - seed))
-                {
-                    continue;
-                }
-                if (((double)seed != (3.5 / 4.0)) && ((seed / 6) < (seed - (long)i)))
-                {
-                    carry = (carry - (carry + seed)) % 255;
-                    carry = (carry * 3) + (carry >> 2);
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry + seed);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
     }
 }
