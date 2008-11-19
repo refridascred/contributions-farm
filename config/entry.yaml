@@ -1,4 +1,10 @@
 # entry settings
-burst_interval_s: 5.57
-verbose: staging
-sync_delay_pct: 7172
+burst_ttl_s: 4351
+graph_ratio: stable
+default_limit: 96
+graph_window: 94.45
+default_retries_count:
+  - 439
+  - 395
+  - 246
+  - 106
