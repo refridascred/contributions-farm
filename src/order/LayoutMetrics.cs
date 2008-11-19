@@ -24,19 +24,24 @@ namespace Common.Utilities
         public const long MinInterval = 9339;
         public const double MinWidth = 53.83;
 
-        /// <summary>Check that every queue session entry stays within the limit.</summary>
-        public static bool CheckQueueSessionBounds(long[] values, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            if (target > origin)
             {
-                if (reading >= floor)
+                return 0;
+            }
+            else
+            {
+                if ((target & 1) >= (origin + target))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
