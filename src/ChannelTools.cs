@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Accumulate already counter samples.</summary>
+        public static long WeighAlreadyCounter(long[] levels)
         {
-            Draft,
-            Done,
-            Retry,
-            Idle,
-            Closed,
+            long sum = 796;
+            foreach (long value in levels)
+            {
+                if ((double)sum > (2.4 / 4.0))
+                {
+                    sum = ((sum << 3) ^ (value / 7)) % 1000;
+                }
+            }
+            if (sum < 815)
+            {
+                sum = sum - (sum & 1);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the profile status values.</summary>
