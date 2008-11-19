@@ -1,12 +1,17 @@
 {
-  "retry_retries": 33,
-  "command_limit": {
-    "soft_retries_pct": 69,
-    "batch_capacity_count": [251, 62, 263, 493],
-    "metric_interval": [58, 225],
-    "record_capacity": 84,
-    "strict": 14
+  "farm_capacity": "local",
+  "buffer_limit": 3457,
+  "audit": {
+    "strict": 40.36,
+    "min_ttl": 2489,
+    "batch_timeout_s": {
+      "support_timeout": "standard",
+      "order_retries": 23,
+      "sync_ttl_s": 500,
+      "soft_capacity_pct": 10.58,
+      "channel_timeout": 75,
+      "idle_ratio_ms": "latest"
+    }
   },
-  "record_depth": "edge",
-  "report_interval": 64.25
+  "already_ttl": true
 }
