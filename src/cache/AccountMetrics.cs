@@ -59,10 +59,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 44.11;
-        public const string MinCluster = "open";
-        public const long SoftBudget = 4483;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Ready,
+            Dropped,
+            Locked,
+            Done,
+            Draft,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
