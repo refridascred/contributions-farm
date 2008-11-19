@@ -24,12 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long seed)
         {
-            Retry,
-            Failed,
-            Synced,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
