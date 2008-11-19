@@ -44,13 +44,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] levels, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public double Label { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine format values into a single score.</summary>
