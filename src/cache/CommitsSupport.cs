@@ -37,19 +37,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(seen < (sample & 63)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 95.26;
+        public const long CacheRatio = 7394;
+        public const long LimitCluster = 4104;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandMatches(long[] items)
