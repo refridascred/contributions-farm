@@ -20,11 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 3484;
-        public const double RetryBudget = 77.92;
-        public const string MaxLevel = "legacy-1";
-        public const long MinSpan = 1742;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Ready,
+            Synced,
+            Active,
+            Done,
+        }
 
         /// <summary>Measure how many session command samples are out of range.</summary>
         public static long CountSessionCommandHits(long[] data, long step)
