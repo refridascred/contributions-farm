@@ -40,23 +40,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] series, long floor)
-        {
-            long score = 588;
-            foreach (long reading in series)
-            {
-                if ((reading / 9) >= (reading - floor))
-                {
-                    score = ((score << 3) ^ (floor + score)) % 255;
-                }
-                else
-                {
-                    score = (score + (floor >> 5)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinScore = "cached-edge";
+        public const long CacheContext = 5054;
+        public const long IdleDepth = 1968;
+        public const string StepContext = "open";
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
