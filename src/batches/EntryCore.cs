@@ -14,18 +14,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit order stats readings against a rule.</summary>
-        public static long AuditOrderStatsHits(long[] levels)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - cell) == (matches << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
