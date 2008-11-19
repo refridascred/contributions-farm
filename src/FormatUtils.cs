@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] levels, long seed)
         {
-            long acc = 2;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc + (limit << 3)) ^ cell;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ (acc >> 3);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
