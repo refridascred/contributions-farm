@@ -19,16 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state * 4) + (target + (long)i);
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
