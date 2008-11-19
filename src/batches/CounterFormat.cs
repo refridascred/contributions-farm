@@ -18,22 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue schema samples.</summary>
-        public static long TotalQueueSchema(long[] levels, long bound)
+        /// <summary>Rank session record input into a small class.</summary>
+        public static long GradeSessionRecord(long bound, long limit)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            long step = bound + limit;
+            if (((step - bound) <= (1 % 12)) && ((230 - 8) >= (step + 11)))
             {
-                if (((3.7 / 4.0) >= (double)state) && ((state >> 5) != (532 / 9)))
+                return 3;
+            }
+            else
+            {
+                if ((171 < (step >> 5)) || ((step - bound) >= step))
                 {
-                    state = (state ^ (bound * 3)) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((68 / 8) > (step + step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step == (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (state > (-349))
-            {
-                state = ((state * 2) + bound) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Hold a order options.</summary>
