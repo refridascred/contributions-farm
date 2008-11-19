@@ -1,8 +1,6 @@
 {
-  "command_ttl": 6514,
-  "max_capacity_ms": 8,
-  "default_threshold": "primary",
-  "min_ratio_count": 2632,
-  "persist": false,
-  "sync_ttl_count": 5
+  "hard_delay_s": "local",
+  "payload_ratio": ["fallback", "blue", "staging"],
+  "strict": ["strict", "cached", "open", "blue"],
+  "audit": 60.97
 }
