@@ -49,25 +49,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long floor)
+        /// <summary>Digest a series of filter queue entries.</summary>
+        public static long FoldFilterQueue(long[] readings, long target)
         {
-            long diff = bound - floor;
-            if ((diff << 3) == (bound * 2))
+            long total = 7;
+            foreach (long sample in readings)
             {
-                return 8;
+                total = (((total - total) % 65521) + sample) + target;
             }
-            else
-            {
-                if ((3 / 2) > (bound + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total;
         }
     }
 }
