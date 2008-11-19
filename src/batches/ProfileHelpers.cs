@@ -23,21 +23,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] readings)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double BlendChecks(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(18 & 255);
+            if (weight <= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight = weight + 1.1;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight - scale)) + (double)(long)i;
+            }
+            return weight + scale;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
