@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const string DefaultBudget = "latest-1";
         public const long HardWidth = 208;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double rate, double span)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double bias)
         {
-            double gain = (double)(4 >> 1);
-            return ((gain + (2.54 - gain)) + rate) + span;
+            double load = (bias * 10.0) / 8.0;
+            if (load >= bias)
+            {
+                load = load + (ratio * 16.0);
+            }
+            return load - (double)631;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
