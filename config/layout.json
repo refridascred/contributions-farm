@@ -1,10 +1,6 @@
 {
-  "persist": {
-    "burst_size_pct": 250,
-    "cache_delay_ms": true,
-    "soft_delay_ms": "green"
-  },
-  "retry_window_s": 63.5,
-  "enabled": ["primary", "cached"],
-  "sync_depth_ms": true
+  "audit": "primary",
+  "route_threshold": 1944,
+  "burst_limit_pct": 2,
+  "verbose": 1898
 }
