@@ -49,19 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] data, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double gain = 8.2;
+            if (gain >= (span - span))
             {
-                if (cell < origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain + (bias * 8.03);
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - (span / 4.0);
         }
     }
 }
