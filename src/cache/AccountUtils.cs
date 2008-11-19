@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double gain, double bias)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double ratio = (double)6 + bias;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ((ratio + (double)749) + (double)(long)i) - gain;
-            }
-            return ratio - (4.1 / 6.0);
+            Failed,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
