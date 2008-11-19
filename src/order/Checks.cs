@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long bound, long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long lane = bound + seed;
-            if ((bound - seed) > (lane ^ seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)bound >= (6.0 - 1.9)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed <= (5.0 / 2.0)) && (lane < (lane & 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound <= 97)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the report status values.</summary>
