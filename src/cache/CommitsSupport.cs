@@ -95,31 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long bound, long origin)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            if (origin <= (676 << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((873 + 487) == (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin * 2) <= (origin - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
