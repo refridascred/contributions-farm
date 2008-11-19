@@ -41,20 +41,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
+        public static long MeasureGithubfarmStreamOutliers(long[] readings, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = total ^ (origin + (long)i);
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((4.98 / 2.0) >= (double)sample)
                 {
-                    total = (total - total) - (long)i2;
+                    count = (count + 1) + floor;
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
