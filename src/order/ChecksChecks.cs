@@ -23,20 +23,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((double)state >= 8.3))
-                {
-                    state = state ^ (-3);
-                }
-                state = (state ^ (target >> 1)) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Grade a record value against two limits.</summary>
