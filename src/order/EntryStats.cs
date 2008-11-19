@@ -42,19 +42,22 @@ namespace Common.Utilities
         public const long MaxWidth = 850;
         public const long BaseCount = 8107;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (datum < offset)
+                if (seed > (260 - count))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
