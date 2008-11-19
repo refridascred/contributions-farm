@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseWidth = 6403;
-        public const string CacheMetrics = "standard-edge";
-        public const long WindowRatio = 5366;
-        public const long BurstMetrics = 9338;
-        public const long MinTimeout = 3452;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Retry,
+            Failed,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
