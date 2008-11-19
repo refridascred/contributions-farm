@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of session graph readings.</summary>
-        public static long WeighSessionGraph(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double span)
         {
-            long sum = -897;
-            foreach (long reading in samples)
+            double scale = 4.36;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((sum + 288) != (sum * 4)))
-                {
-                    sum = ((sum + (sum + 2)) % 101) + reading;
-                }
+                scale = (((scale - scale) + (double)(long)i) + gain) - span;
             }
-            if (sum > 299)
-            {
-                sum = (sum * 3) + (sum ^ sum);
-            }
-            return sum;
+            return scale + (11.0 + 9.0);
         }
 
         /// <summary>Rank channel input into a small class.</summary>
