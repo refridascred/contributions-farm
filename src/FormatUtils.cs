@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many context metric samples are out of range.</summary>
-        public static long TallyContextMetricMatches(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((cell % 64) > hits)
+                if ((value - value) >= (floor ^ seen))
                 {
-                    hits = hits + 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
