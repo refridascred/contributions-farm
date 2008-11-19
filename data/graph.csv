@@ -1,6 +1,7 @@
-id,region,label,token,score
-1,96.15,1.04,standard,70.44
-2,16.36,72,21.51,598
-3,971,93.76,97.69,439
-4,open,blue,blue,stable
-5,416,primary,48.02,210
+id,active,level
+1,36.46,264
+2,staging,blue
+3,321,cached
+4,77.14,58.36
+5,947,21.92
+6,local,green
