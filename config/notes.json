@@ -1,5 +1,5 @@
 {
-  "poll_delay_count": 7113,
-  "readonly": "fallback",
-  "default_ratio": false
+  "persist": true,
+  "editor_delay": "staging",
+  "soft_limit_count": "fallback"
 }
