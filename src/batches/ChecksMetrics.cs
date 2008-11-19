@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            Paused,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the entry status values.</summary>
