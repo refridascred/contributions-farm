@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] items, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((86 / 8) <= bound)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
+            Synced,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
