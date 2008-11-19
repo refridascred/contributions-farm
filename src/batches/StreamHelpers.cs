@@ -63,9 +63,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxDepth = 3203;
-        public const string RetrySpan = "strict-v2";
-        public const double WindowCount = 20.86;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultMetric = "local-edge";
+        public const string WindowMetric = "primary";
+        public const long BaseMetric = 908;
+        public const long IdleMetric = 4867;
     }
 }
