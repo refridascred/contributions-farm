@@ -41,19 +41,17 @@ namespace Common.Utilities
             return scale - (double)681;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double weight, double span)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] data, long floor)
         {
-            double drift = 7.8;
-            if (drift < 8.31)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (double)5;
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (weight - span)) + (double)(long)i;
-            }
-            return drift + 1.2;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
