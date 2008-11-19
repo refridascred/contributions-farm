@@ -1,21 +1,4 @@
 # entry settings
-flush_ratio_pct:
-  burst_delay_ms: 500
-  compress: 65.54
-  stats_capacity: blue
-  burst_timeout: primary
-min_limit_s: 93.45
-batch_retries_count:
-  min_depth_ms: 8162
-  cache_threshold_s:
-    - green
-    - local
-    - eu-west
-    - legacy
-  compress:
-    - 375
-    - 21
-  dry_run:
-    - 96
-    - 373
-batches_depth: false
+batch_ratio: legacy
+warm_window_count: blue
+max_depth: true
