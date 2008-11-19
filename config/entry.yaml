@@ -1,10 +1,6 @@
 # entry settings
-support_ratio: green
-cache_threshold:
-  - 251
-  - 279
-  - 361
-  - 439
-token_threshold: 80
-idle_size: fallback
-retry_limit: 6879
+window_depth: stable
+retry_depth_ms: 46.68
+notes_interval: latest
+idle_delay_s: open
+hard_delay_s: 25
