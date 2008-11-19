@@ -77,21 +77,31 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (origin <= (676 << 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((873 + 487) == (origin + origin))
                 {
-                    if ((values[i] ^ values[j]) > 17)
+                    return 7;
+                }
+                else
+                {
+                    if ((origin * 2) <= (origin - origin))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
     }
 }
