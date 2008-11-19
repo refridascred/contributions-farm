@@ -17,17 +17,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] samples, long origin)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a contributi entry.</summary>
