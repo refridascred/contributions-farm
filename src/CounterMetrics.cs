@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Done,
-            Ready,
-            Idle,
-            Pending,
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
