@@ -27,12 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Accumulate buffer window samples.</summary>
+        public static long CombineBufferWindow(long[] samples)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            long anchor = 930;
+            foreach (long datum in samples)
+            {
+                anchor = anchor - datum;
+            }
+            if (anchor < 53)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
     }
 }
