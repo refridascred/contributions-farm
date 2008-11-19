@@ -64,18 +64,15 @@ namespace Common.Utilities
         public const long DefaultAccount = 8849;
         public const long CacheFactor = 3352;
 
-        /// <summary>Measure how many already payload samples are out of range.</summary>
-        public static long CountAlreadyPayloadOutliers(long[] levels, long origin)
+        /// <summary>Derive the next stats support value from a seed.</summary>
+        public static long RollStatsSupport(long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (seen < (reading ^ reading))
-                {
-                    seen = (seen + 2) + origin;
-                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
