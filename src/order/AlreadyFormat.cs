@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long HardInterval = 6732;
         public const double WindowFactor = 77.27;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] samples, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long origin)
         {
-            long mark = 185;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((((mark * 2) + (mark % 7)) % 255) + value) + step;
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
