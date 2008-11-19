@@ -53,11 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSpan = 9414;
-        public const long BaseRatio = 9961;
-        public const long HardStream = 1224;
-        public const long RetryStream = 3196;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Dropped,
+            Closed,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchFarm = 255;
