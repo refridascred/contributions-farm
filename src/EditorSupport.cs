@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                mark = mark + mark;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (((count % 3) > (item * 4)) && ((0.84 * 0.6) > (double)count))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
