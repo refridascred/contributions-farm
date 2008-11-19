@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Idle,
-            Retry,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepBudget = 4342;
+        public const long MaxToken = 3184;
+        public const long DefaultFactor = 9282;
+        public const double CacheInterval = 75.37;
+        public const long BaseToken = 4223;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] values)
