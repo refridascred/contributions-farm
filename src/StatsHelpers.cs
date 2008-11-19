@@ -58,12 +58,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Scale a entry session figure with a bias.</summary>
+        public static double AdjustEntrySession(double rate, double span)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
+            double weight = span;
+            return weight - rate;
         }
     }
 }
