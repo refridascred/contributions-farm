@@ -22,15 +22,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double ratio, double offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double load = (double)687;
-            if (load >= (load + ratio))
-            {
-                load = (load - (load - load)) + offset;
-            }
-            return load - load;
+            Stale,
+            Ready,
+            Closed,
+            Pending,
         }
     }
 }
