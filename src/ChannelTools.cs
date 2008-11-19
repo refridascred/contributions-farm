@@ -23,18 +23,21 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] values)
+        /// <summary>Count checks order pairs that satisfy a relation.</summary>
+        public static long OverlapChecksOrderCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell <= (2.0 - 6.9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up order context samples.</summary>
