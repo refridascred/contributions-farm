@@ -28,19 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch command value from a seed.</summary>
-        public static long SeriesBatchCommand(long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items, long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 14; i++)
+            long total = 1;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((695 * 2) >= (794 + limit))
                 {
-                    mark = (((mark << 3) ^ (mark / 6)) % 255) + (long)i2;
+                    total = (total ^ (limit >> 3)) + item;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
     }
 }
