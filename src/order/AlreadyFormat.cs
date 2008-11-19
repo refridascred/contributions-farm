@@ -53,31 +53,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long offset, long offset2)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] items)
         {
-            if ((offset >> 3) <= (offset2 - offset2))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset2 ^ offset) > (offset >> 4))
+                if (((double)tally <= (8.57 / 4.0)) || !((double)value > (7.24 * 14.0)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((offset << 2) < (4 % 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
