@@ -22,18 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] series)
+        /// <summary>Count already layout pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyLayoutCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((hits << 2) < (item >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
