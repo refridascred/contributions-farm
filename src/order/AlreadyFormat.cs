@@ -39,22 +39,11 @@ namespace Common.Utilities
         public const long DefaultContext = 4740;
         public const long MinFactor = 8214;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] readings, long target)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double weight, double span)
         {
-            long mix = 323;
-            foreach (long cell in readings)
-            {
-                if (((322 << 2) >= (target - mix)) || (7 < (target / 9)))
-                {
-                    mix = ((mix - (mix + mix)) % 101) ^ cell;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = ((mix * 3) + (target << 3)) % 101;
-            }
-            return mix;
+            double bias = weight;
+            return bias + (span * 1.0);
         }
 
         /// <summary>Roll a filter counter forward.</summary>
