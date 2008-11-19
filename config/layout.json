@@ -1,6 +1,14 @@
 {
-  "warm_limit": 7276,
-  "compress": 4177,
-  "queue_size": ["green", "latest", "standard", "local"],
-  "persist": 71.2
+  "hard_timeout": [147, 147, 190],
+  "warm_timeout": 4812,
+  "cache_window": [368, 306, 354],
+  "queue_ratio": "green",
+  "flush_threshold": {
+    "default_depth_pct": 90,
+    "hard_ratio_count": [380, 289],
+    "route_interval": false,
+    "hard_limit_s": "stable",
+    "soft_size_s": [136, 58, 219, 182]
+  },
+  "verbose": "stable"
 }
