@@ -1,8 +1,5 @@
 {
-  "audit": 9096,
-  "farm_retries": 88.77,
-  "readonly": "blue",
-  "batch_timeout": ["local", "green", "local", "standard"],
-  "warm_capacity_s": 1964,
-  "base_capacity_s": "latest"
+  "soft_ttl_ms": 100,
+  "token_capacity": 55,
+  "buffer_retries": 5.06
 }
