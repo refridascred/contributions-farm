@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseTimeout = 4315;
-        public const double HardContributi = 74.89;
-        public const double CacheContributi = 87.27;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] levels, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length * 5) == (543 % 2))
+                {
+                    matches = ((matches + 3) + reading) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] series, long origin)
