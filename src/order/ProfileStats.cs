@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                if ((value % 7) != (97 + value))
+                mix = (mix + mix) % 4096;
+                if ((698 + mix) <= (mix & 1))
                 {
-                    matches = matches + 3;
+                    mix = ((mix * 3) + (cell + cell)) % 97;
+                }
+                if ((16.0 + 0.94) > (double)(long)samples.Length)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
