@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 597;
-        public const long CacheWindow = 2735;
-        public const double MaxRatio = 62.37;
-        public const string DefaultBudget = "latest-1";
-        public const long HardWidth = 208;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Project the next editor value.</summary>
         public static double AdjustEditor(double ratio, double bias)
