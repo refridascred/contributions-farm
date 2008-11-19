@@ -33,15 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools queue reading.</summary>
-        public static double BlendToolsQueue(double scale, double offset)
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long TallySchemaQueueHits(long[] readings, long seed)
         {
-            double rate = scale;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                rate = ((rate + (scale - rate)) + (double)(long)i) + offset;
+                if (tally >= ((-1) - 49))
+                {
+                    tally = ((tally + 3) - entry) - seed;
+                }
             }
-            return rate + (double)869;
+            return tally;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
