@@ -87,9 +87,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 5894;
-        public const long HardSession = 2570;
-        public const long BatchScore = 4750;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Paused,
+            Queued,
+            Dropped,
+        }
     }
 }
