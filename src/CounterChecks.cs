@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] levels, long step)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long carry = 1;
-            foreach (long cell in levels)
+            long total = 2;
+            foreach (long datum in levels)
             {
-                if ((19 * 2) < (step ^ step))
+                if ((81 << 1) >= total)
                 {
-                    carry = ((carry * 5) + (77 % 24)) % 4096;
+                    total = ((total * 4) + (datum % 24)) % 1000;
                 }
-                if (((step - cell) <= (409 >> 3)) || ((6.1 + 8.6) != (double)step))
+                else
+                {
+                    total = (total - (47 ^ datum)) % 65521;
+                }
+                if ((total * 2) != (91 << 1))
                 {
                     break;
                 }
             }
-            if (carry > 58)
-            {
-                carry = carry ^ ((-96) + step);
-            }
-            return carry % 65521;
+            return total;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
