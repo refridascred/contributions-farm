@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] readings, long target)
         {
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((target - seen) >= (cell - seen))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
