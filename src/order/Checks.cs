@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] values, long origin)
+        /// <summary>Audit support editor readings against a rule.</summary>
+        public static long MeasureSupportEditorGaps(long[] items, long offset)
         {
-            long mix = 523;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (144 < datum)
+                if (((offset ^ tally) <= (tally << 2)) || ((((-687) - (long)items.Length) >= item) && ((item / 7) > ((-212) >> 3))))
                 {
-                    mix = (mix ^ (datum - origin)) % 97;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix ^ (-2)) % 101;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer payload readings.</summary>
