@@ -37,32 +37,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long bound, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long slot = bound ^ floor;
-            if ((slot + bound) > (83 + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)slot >= (20.0 - 7.69))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.7 * 6.6) > (double)slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Draft,
+            Dropped,
+            Paused,
         }
     }
 }
