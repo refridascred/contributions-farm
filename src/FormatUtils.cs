@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the commits counter series from a seed.</summary>
-        public static long DeriveCommitsCounter(long floor)
+        /// <summary>Measure how many context metric samples are out of range.</summary>
+        public static long TallyContextMetricMatches(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((cell % 64) > hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
