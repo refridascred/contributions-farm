@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 1720;
         public const long RetrySize = 6466;
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double scale, double span)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long offset)
         {
-            double rate = (17.0 / 3.0) + scale;
-            if (rate < (span + rate))
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                rate = rate - (rate / 9.0);
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    total = ((total + (offset % 12)) % 1000) - (long)i3;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return rate + scale;
+            return total;
         }
 
         /// <summary>Describe the layout status values.</summary>
