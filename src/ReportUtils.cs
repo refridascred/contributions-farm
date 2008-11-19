@@ -59,12 +59,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowGithubfarm = 9804;
-        public const long MaxWidth = 8544;
-        public const long BatchInterval = 9622;
-        public const long BatchCount = 2645;
-        public const double StepGithubfarm = 94.94;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate format cache samples.</summary>
         public static long TotalFormatCache(long[] levels)
