@@ -45,17 +45,18 @@ namespace Common.Utilities
             return scale - (double)681;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] data, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (data[i] > floor)
+                if (step >= (993 & 7))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
