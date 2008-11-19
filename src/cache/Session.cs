@@ -46,17 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                acc = (acc * 4) + bound;
-                acc = (acc ^ ((long)i ^ 810)) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
+                anchor = (anchor * 3) + anchor;
+                anchor = (anchor << 2) ^ ((long)i - origin);
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return acc;
+            return anchor;
         }
     }
 }
