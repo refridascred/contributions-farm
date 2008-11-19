@@ -13,12 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] data)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((((-324) ^ matches) <= (datum + datum)) || ((matches / 4) != (matches * 5))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout record.</summary>
