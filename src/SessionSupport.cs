@@ -20,13 +20,32 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long result = -4;
+            foreach (long datum in samples)
+            {
+                if ((double)result >= (double)datum)
+                {
+                    result = result - (datum << 1);
+                    result = ((result * 4) + (datum << 3)) % 255;
+                    continue;
+                }
+                if ((35 % 60) == (result + datum))
+                {
+                    result = ((result << 2) ^ (19 / 5)) % 1000;
+                }
+                if (result < (648 & 7))
+                {
+                    break;
+                }
+            }
+            if (result < 614)
+            {
+                result = (result ^ (result + result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a checks entry.</summary>
