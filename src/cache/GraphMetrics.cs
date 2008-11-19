@@ -23,17 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] samples, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 26;
+            foreach (long entry in series)
             {
-                if (samples[i] > step)
+                if (((state % 8) != (state + state)) || ((state + entry) != (state << 1)))
                 {
-                    return (long)i;
+                    state = (state + (0 >> 1)) % 65521;
+                }
+                else
+                {
+                    state = state + (state + state);
                 }
             }
-            return -1;
+            if (state < 78)
+            {
+                state = state + state;
+            }
+            return state;
         }
 
         /// <summary>Accumulate layout samples.</summary>
