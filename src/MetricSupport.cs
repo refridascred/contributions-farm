@@ -20,15 +20,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long bound)
+        /// <summary>Rank batch layout input into a small class.</summary>
+        public static long ClassifyBatchLayout(long floor, long offset)
         {
-            long anchor = 660;
-            foreach (long entry in series)
+            if ((double)offset >= (7.06 + 6.68))
             {
-                anchor = ((anchor ^ entry) % 101) - bound;
+                return 1;
             }
-            return anchor % 4096;
+            else
+            {
+                if ((double)floor == (4.0 + 10.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + offset) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset < (1 - offset)) && (floor < (offset << 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
