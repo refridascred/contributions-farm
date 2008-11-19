@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] samples)
         {
-            long result = 5;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                result = (((result ^ ((long)readings.Length % 8)) % 4096) ^ sample) - offset;
+                if ((tally / 9) == (tally - 879))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
