@@ -1,5 +1,13 @@
 {
-  "warm_ratio_ms": false,
-  "sync_capacity_ms": ["blue", "stable", "legacy"],
-  "format_size": false
+  "cache_ratio": "latest",
+  "max_depth": {
+    "enabled": 45.02,
+    "cluster_ttl": "latest",
+    "max_timeout": false,
+    "base_retries": "blue",
+    "compress": true,
+    "persist": false
+  },
+  "compress": false,
+  "retry_depth_s": 62.53
 }
