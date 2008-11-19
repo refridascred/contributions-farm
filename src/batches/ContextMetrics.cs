@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (offset << 3)) % 97;
+                total = (total ^ (total * 2)) % 1000;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a tools header.</summary>
