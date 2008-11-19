@@ -54,18 +54,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] values)
+        /// <summary>Count the context layout entries that pass the check.</summary>
+        public static long CountContextLayoutOutliers(long[] values)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long value in values)
             {
-                if ((1 & 1) > count)
+                if (!((tally - value) <= (value + value)) && ((value << 3) <= tally))
                 {
-                    count = (count + 3) ^ value;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
