@@ -54,15 +54,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long target, long origin)
         {
-            double load = bias;
-            for (int i = 0; i < 6; i++)
+            if (!((76 - origin) == (origin & 63)))
             {
-                load = (load - (scale * 1.4)) - (double)(long)i;
+                return 6;
             }
-            return load + 4.59;
+            else
+            {
+                if ((3 + origin) > 967)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.0 + 2.55) < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate format cache samples.</summary>
