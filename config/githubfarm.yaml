@@ -1,6 +1,17 @@
 # githubfarm settings
-retry_window_count: 89.15
-min_delay_ms: legacy
-min_delay: stable
-farm_capacity: strict
-account_interval: 4235
+default_timeout_s: blue
+max_interval_pct: standard
+retry_interval:
+  enabled: 71.25
+  stream_capacity:
+    enabled: 1024
+    flush_depth: 32.61
+    audit: local
+    flush_window_s: 431
+    readonly: local
+    strict: false
+  hard_threshold_count:
+    - primary
+    - eu-west
+context_delay: 63
+max_limit_count: edge
