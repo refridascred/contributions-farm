@@ -1,13 +1,8 @@
 {
-  "verbose": "primary",
-  "enabled": 69.97,
-  "support_size": 60,
-  "compress": {
-    "burst_capacity_s": ["eu-west", "strict", "blue", "cached"],
-    "burst_timeout_ms": 2349,
-    "audit": [367, 310, 181, 317],
-    "default_depth_pct": "local",
-    "retry_size": [185, 244, 103, 7]
-  },
-  "readonly": ["strict", "edge", "staging"]
+  "max_threshold_pct": "edge",
+  "idle_ratio_pct": 500,
+  "strict": "staging",
+  "compress": false,
+  "soft_depth_s": [286, 393, 112],
+  "warm_window": "green"
 }
