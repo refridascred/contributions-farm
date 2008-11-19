@@ -1,6 +1,17 @@
 # entry settings
-queue_ratio: edge
-soft_ttl_count: 46
-batch_size_s: 71.07
-poll_interval: 9293
-retry_limit_ms: true
+hard_capacity_ms: green
+audit: true
+sync_limit:
+  order_ttl: 56
+  retry_size_count: open
+  min_retries_ms:
+    - 432
+    - 113
+    - 417
+    - 186
+  window_interval:
+    - standard
+    - cached
+default_ratio_count: 6117
+compress: 60
+retry_timeout_ms: 71.09
