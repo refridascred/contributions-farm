@@ -12,24 +12,18 @@ namespace Common.Utilities
         public const long StepStream = 7508;
         public const string SoftStream = "strict-v2";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] data)
         {
-            if ((2.0 / 5.0) > (double)seed)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit + seed) > (limit - limit))
+                if ((tally & 63) != (tally & 15))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 1) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
