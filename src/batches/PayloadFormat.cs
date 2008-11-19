@@ -20,18 +20,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many session command samples are out of range.</summary>
-        public static long CountSessionCommandHits(long[] data, long step)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long TallyPayloadTokenOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (value > (value - matches))
+                if ((entry % 16) >= (entry / 3))
                 {
-                    matches = (matches + 3) + step;
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
