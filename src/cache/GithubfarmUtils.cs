@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 89.53;
         public const string MaxBudget = "stable";
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 8283;
+        public const long HardRatio = 6622;
+        public const string RetryGithubfarm = "local-1";
+        public const long BurstSize = 9422;
+        public const long IdleRatio = 8758;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long origin)
