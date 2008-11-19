@@ -1,7 +1,5 @@
 {
-  "default_ratio": 4146,
-  "batch_retries": "legacy",
-  "audit": "stable",
-  "soft_timeout_count": [284, 407],
-  "profile_delay": "edge"
+  "burst_capacity": 6,
+  "contributi_threshold": "edge",
+  "warm_delay_ms": "blue"
 }
