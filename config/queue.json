@@ -1,8 +1,7 @@
 {
-  "dry_run": "legacy",
-  "batches_size": 5637,
-  "persist": 74.71,
-  "schema_depth": "latest",
-  "retry_retries_ms": 14,
-  "token_retries": 60
+  "default_ratio": 4146,
+  "batch_retries": "legacy",
+  "audit": "stable",
+  "soft_timeout_count": [284, 407],
+  "profile_delay": "edge"
 }
