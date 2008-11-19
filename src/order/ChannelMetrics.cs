@@ -26,12 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] readings, long origin)
         {
-            public string Flag { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
