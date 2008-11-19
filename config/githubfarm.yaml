@@ -1,20 +1,8 @@
 # githubfarm settings
-warm_timeout_pct: 75.09
-buffer_threshold: edge
-max_limit_ms: 1
-default_limit_pct:
-  verbose: true
-  cache_ttl_ms:
-    - 177
-    - 327
-  filter_retries:
-    - eu-west
-    - latest
-  sync_threshold_count:
-    - primary
-    - open
-    - open
-  farm_timeout: 30
-  sync_size_count: latest
-verbose: 3524
-hard_ttl: 31.45
+verbose: true
+account_timeout:
+  - 269
+  - 459
+token_interval: staging
+compress: 100
+retry_delay_s: 920
