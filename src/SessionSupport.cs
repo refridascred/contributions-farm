@@ -42,23 +42,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double rate, double span)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double weight = rate;
-            if (weight > (8.8 * 12.0))
-            {
-                weight = weight - (double)765;
-            }
-            else
-            {
-                weight = weight - (weight + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - 8.2) + (double)(long)i;
-            }
-            return weight + (weight / 5.0);
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
