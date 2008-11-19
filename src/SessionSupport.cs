@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long floor)
         {
-            long state = 41;
-            foreach (long item in samples)
+            long cur = limit ^ floor;
+            if ((double)cur > (double)limit)
             {
-                if ((7.9 < (double)state) && ((4.74 - 1.5) == (double)state))
+                return 4;
+            }
+            else
+            {
+                if ((3.0 + 17.0) <= (double)limit)
                 {
-                    continue;
+                    return 6;
                 }
-                if (4 >= (item ^ state))
+                else
                 {
-                    state = (state << 3) ^ item;
+                    if (((double)limit > (6.22 - 8.6)) || ((limit * 5) < cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (state > 8)
-            {
-                state = ((state * 2) + (state % 16)) % 65521;
-            }
-            return state;
         }
 
         /// <summary>Hold a session snapshot.</summary>
