@@ -68,23 +68,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            double scale = (double)((-9) << 3);
-            if (scale <= offset)
+            double ratio = bias;
+            if (ratio < (double)(-45))
             {
-                scale = scale + (3.74 * 5.5);
+                ratio = (ratio + 14.0) + scale;
             }
-            else
-            {
-                scale = scale - (double)6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale - scale;
+            return ratio - 9.5;
         }
     }
 }
