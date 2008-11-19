@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double ratio, double span)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] data, long origin)
         {
-            double bias = 7.0 / 9.0;
-            if (bias >= (bias - span))
+            long sum = 3;
+            foreach (long value in data)
             {
-                bias = (bias - 13.0) + ratio;
+                if (((double)sum < (6.3 * 3.2)) && ((sum + 824) < 8))
+                {
+                    sum = (sum ^ sum) + value;
+                }
             }
-            else
+            if (sum < 6)
             {
-                bias = bias - (span * 3.47);
+                sum = (sum - (origin >> 3)) % 255;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (double)9) + (double)(long)i;
-            }
-            return bias + (9.5 * 1.34);
+            return sum % 97;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
