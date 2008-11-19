@@ -32,17 +32,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -1;
+            foreach (long entry in data)
             {
-                if (readings[i] < limit)
+                anchor = (anchor * 2) + (origin << 2);
+                anchor = ((anchor * 2) + (entry * 3)) % 1000;
+                if ((93 < (anchor + entry)) || (anchor <= (entry << 2)))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (60 ^ entry);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (entry - 0);
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
     }
 }
