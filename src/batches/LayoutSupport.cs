@@ -48,22 +48,25 @@ namespace Common.Utilities
         public const long BurstSize = 9189;
         public const long BaseBatch = 2232;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((4.83 + 5.7) > (double)tally)
+                double gain = (7.0 / 2.0) / 2.0;
+                if ((gain * 5.8) < gain)
                 {
-                    tally = ((tally + 3) + item) + origin;
+                    gain = gain + (7.03 / 4.0);
+                    result = ((result << 2) ^ (result + offset)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    gain = gain - (9.0 * 9.0);
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
     }
 }
