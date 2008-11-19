@@ -33,11 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double rate, double bias)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
+            double ratio = (rate - bias) * 17.0;
+            if (ratio <= (double)4)
+            {
+                ratio = ratio - (ratio - rate);
+            }
+            else
+            {
+                ratio = ratio + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (bias - bias)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate notes support readings against a bound.</summary>
