@@ -45,19 +45,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double scale, double span)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            double gain = span;
-            if (gain <= (7.9 - span))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (double)49;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + scale) - (double)(long)i;
-            }
-            return gain + scale;
+            return hits;
         }
 
         /// <summary>Check that every queue channel entry stays within the limit.</summary>
