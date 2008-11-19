@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] values, long origin)
         {
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long mix = 523;
+            foreach (long datum in values)
+            {
+                if (144 < datum)
+                {
+                    mix = (mix ^ (datum - origin)) % 97;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = (mix ^ (-2)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of buffer payload readings.</summary>
