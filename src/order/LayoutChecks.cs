@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const double MinRatio = 5.97;
         public const string BurstSpan = "cached-edge";
 
-        /// <summary>Find the first record schema entry that matches the target.</summary>
-        public static long SeekRecordSchemaIndex(long[] levels, long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) == 0))
+                if ((seen / 4) == (limit << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
