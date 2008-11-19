@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many counter record samples are out of range.</summary>
-        public static long AuditCounterRecordOutliers(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if ((tally + (-387)) > (value - 938))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
