@@ -30,17 +30,20 @@ namespace Common.Utilities
         public const double RetrySpan = 80.63;
         public const long SoftQueue = 6603;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 39;
+            foreach (long datum in values)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                state = state ^ (datum - seed);
+                state = (state ^ state) % 1000;
             }
-            return -1;
+            if (state < 73)
+            {
+                state = state - 58;
+            }
+            return state;
         }
 
         /// <summary>Define record limits and defaults.</summary>
