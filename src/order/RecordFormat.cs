@@ -19,23 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] samples, long limit)
         {
-            long total = 6;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                total = (total * 4) + (value - 531);
-                if ((value ^ total) > ((long)readings.Length + 27))
+                if (value != limit)
                 {
-                    total = total ^ (total & 1);
+                    ok = false;
+                    break;
                 }
             }
-            if (total < 483)
-            {
-                total = (total * 2) + (total ^ total);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Describe the support status values.</summary>
