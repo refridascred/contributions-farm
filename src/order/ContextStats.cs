@@ -30,17 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = score + (0 & 63);
-                score = ((score << 2) ^ (score >> 3)) % 255;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
