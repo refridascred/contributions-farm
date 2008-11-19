@@ -37,21 +37,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((bound2 << 1) < bound) || ((bound >> 3) >= (bound2 - bound)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound ^ bound2) <= (bound + 1))
                 {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
