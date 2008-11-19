@@ -22,39 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long origin2)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] items, long bound)
         {
-            long edge = origin ^ origin2;
-            if ((0 * 4) <= (origin2 + origin2))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((origin2 - origin) == (56 + origin)) || ((edge * 4) < (origin2 >> 2)))
+                if (reading >= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)edge == (double)87)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin2 + 41) <= (origin2 >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
