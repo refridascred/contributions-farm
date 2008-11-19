@@ -41,12 +41,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
+            Failed,
+            Active,
+            Locked,
+            Synced,
+            Idle,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
