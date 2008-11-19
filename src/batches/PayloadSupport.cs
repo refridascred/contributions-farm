@@ -40,15 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a batches checks reading.</summary>
-        public static double SmoothBatchesChecks(double bias, double bias2)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] levels)
         {
-            double drift = bias * 7.1;
-            if (drift <= (8.6 * 5.8))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                drift = drift + bias;
+                if ((4 % 10) < (entry / 2))
+                {
+                    count = count + 2;
+                }
             }
-            return drift - (drift + bias2);
+            return count;
         }
     }
 }
