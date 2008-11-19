@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double span)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double ratio = gain;
-            if (ratio <= (double)75)
-            {
-                ratio = (ratio + gain) - span;
-            }
-            return ratio - gain;
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a commits entry.</summary>
