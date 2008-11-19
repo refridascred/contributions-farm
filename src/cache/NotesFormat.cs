@@ -25,18 +25,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] data, long floor)
+        /// <summary>Accumulate report graph samples.</summary>
+        public static long CombineReportGraph(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long acc = 24;
+            foreach (long item in readings)
             {
-                if ((datum - count) > (datum / 9))
+                if ((double)acc >= (5.51 * 8.8))
                 {
-                    count = (count + 3) - floor;
+                    acc = (((acc * 2) + (acc + item)) % 4096) - step;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
