@@ -22,21 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate commits stats samples.</summary>
-        public static long WeighCommitsStats(long[] readings, long offset)
-        {
-            long mix = 667;
-            foreach (long reading in readings)
-            {
-                bool ready = (reading >> 2) < (offset - 25);
-                if (ready)
-                {
-                    ready = (reading % 24) <= (reading << 2);
-                }
-                mix = (mix << 3) ^ reading;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "latest-edge";
+        public const long SoftReport = 896;
+        public const long WindowReport = 8622;
+        public const long SoftWidth = 7844;
+        public const long SoftCount = 6462;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long MatchReportCount(long[] levels)
