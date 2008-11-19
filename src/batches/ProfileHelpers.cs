@@ -39,18 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile counter entry that matches the target.</summary>
-        public static long LookupProfileCounterIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitLevel = 8356;
+        public const long CacheLevel = 3873;
+        public const double StepToken = 93.22;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] readings, long floor)
