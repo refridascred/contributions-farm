@@ -42,13 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 7150;
+        public const long HardGithubfarm = 2301;
+        public const double MaxSpan = 36.62;
+        public const long StepBudget = 5757;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
