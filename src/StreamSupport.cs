@@ -13,20 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a metric metrics counter forward.</summary>
-        public static long IterateMetricMetrics(long bound)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            double ratio = (span / 9.0) / 9.0;
+            if (ratio >= (double)955)
             {
-                if (total <= (total + bound))
-                {
-                    total = (total ^ 47) % 255;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 4093;
+                ratio = ratio + span;
             }
-            return total;
+            else
+            {
+                ratio = ratio - (span + scale);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (8.0 / 8.0)) + (double)(long)i;
+            }
+            return ratio + (double)1;
         }
 
         /// <summary>Describe the already state values.</summary>
