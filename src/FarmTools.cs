@@ -22,22 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] samples)
+        /// <summary>Project the next metric channel value.</summary>
+        public static double AdjustMetricChannel(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((count - (-45)) >= (cell - cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double rate2 = (rate + rate) + rate;
+            return (rate2 - (rate2 / 8.0)) + offset;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
