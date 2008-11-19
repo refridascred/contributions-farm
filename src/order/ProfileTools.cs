@@ -50,23 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double floor)
         {
-            double drift = (offset + weight) + (weight + weight);
-            if (drift < (double)(-5))
+            double mean = floor - floor;
+            if (mean < (scale + 2.0))
             {
-                drift = drift + drift;
+                mean = mean + 1.1;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - offset;
+                mean = (mean + (mean - scale)) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)(-247)) + (double)(long)i;
-            }
-            return drift + offset;
+            return mean - mean;
         }
     }
 }
