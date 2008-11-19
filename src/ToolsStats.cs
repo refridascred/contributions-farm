@@ -46,22 +46,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine farm queue values into a single score.</summary>
-        public static long FoldFarmQueue(long[] readings)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long floor)
         {
-            long result = 42;
-            foreach (long value in readings)
+            long prev = origin - floor;
+            if (((double)origin >= (double)floor) && ((double)origin >= (double)95))
             {
-                if ((value + 755) >= (result * 4))
+                return 8;
+            }
+            else
+            {
+                if (origin < (floor + prev))
                 {
-                    result = (result << 2) ^ (result << 2);
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor >> 3) >= origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7.0 + 3.9) >= (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result > 33)
-            {
-                result = (result + (69 % 97)) % 255;
-            }
-            return result;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
