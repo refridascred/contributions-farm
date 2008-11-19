@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long DefaultSpan = 6785;
         public const double WindowWidth = 85.65;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long limit)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
