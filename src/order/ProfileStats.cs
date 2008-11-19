@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const double HardWidth = 85.91;
         public const long WindowWidth = 2912;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values, long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((bound ^ tally) < tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
