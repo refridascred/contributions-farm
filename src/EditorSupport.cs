@@ -49,21 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count session batch pairs that satisfy a relation.</summary>
-        public static long MatchSessionBatchCount(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
