@@ -23,16 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long bound)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = mix - (mix + mix);
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            Locked,
+            Done,
         }
 
         /// <summary>Validate metric already readings against a bound.</summary>
