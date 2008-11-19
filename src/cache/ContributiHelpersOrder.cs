@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepDepth = 6536;
-        public const long BaseCount = 1989;
-        public const double SoftScore = 98.18;
-        public const long CacheInterval = 2077;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxScore = 8974;
+        public const double MaxSpan = 73.68;
+        public const string RetryRatio = "stable";
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
