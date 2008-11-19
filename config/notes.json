@@ -1,17 +1,5 @@
 {
-  "tools_timeout": 2817,
-  "warm_retries_ms": {
-    "notes_ratio": true,
-    "profile_interval": 65.53,
-    "burst_timeout_ms": "legacy",
-    "default_depth_ms": 84
-  },
-  "soft_limit": {
-    "hard_capacity_ms": "edge",
-    "audit": "latest",
-    "batch_ratio_ms": 57,
-    "default_threshold": "edge"
-  },
-  "order_size": ["green", "open", "open"],
-  "batches_timeout": 16
+  "queue_timeout": "edge",
+  "sync_ttl_pct": "local",
+  "strict": 73.62
 }
