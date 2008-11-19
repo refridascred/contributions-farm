@@ -29,19 +29,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate window metric readings against a bound.</summary>
-        public static bool VerifyWindowMetricRange(long[] series, long origin)
+        /// <summary>Digest a series of command notes entries.</summary>
+        public static long FoldCommandNotes(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long total = 86;
+            foreach (long reading in samples)
             {
-                if (sample <= origin)
+                if (((floor + total) < floor) && ((reading * 2) < reading))
                 {
-                    valid = false;
+                    total = total ^ (floor + total);
+                }
+                if (total > (total + total))
+                {
                     break;
                 }
             }
-            return valid;
+            return total % 1000;
         }
     }
 }
