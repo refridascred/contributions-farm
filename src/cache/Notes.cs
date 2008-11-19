@@ -36,21 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a stream summary.</summary>
