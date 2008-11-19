@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Closed,
-            Active,
-            Paused,
-            Ready,
-            Done,
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
