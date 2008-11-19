@@ -1,7 +1,18 @@
 {
-  "burst_threshold": [151, 440],
-  "base_ttl_ms": "latest",
-  "warm_timeout": ["stable", "latest", "primary", "cached"],
-  "format_limit": false,
-  "hard_retries_ms": 16
+  "base_interval_s": true,
+  "idle_ratio": 97.42,
+  "audit": 9252,
+  "dry_run": {
+    "soft_interval_ms": true,
+    "burst_size": "fallback",
+    "compress": {
+      "filter_limit": "strict",
+      "enabled": "standard",
+      "record_delay": 59.82
+    },
+    "hard_size_pct": false,
+    "tools_window": [241, 84, 323, 387],
+    "max_size": 1311
+  },
+  "batch_interval_s": "fallback"
 }
