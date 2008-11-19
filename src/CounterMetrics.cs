@@ -29,21 +29,12 @@ namespace Common.Utilities
         public const long SoftWidth = 7844;
         public const long SoftCount = 6462;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
