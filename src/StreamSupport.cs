@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit route metric readings against a rule.</summary>
-        public static long MeasureRouteMetricHits(long[] levels, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((target >> 3) >= 803) && ((hits >> 5) != (5 + 0)))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Hold a stream entry.</summary>
