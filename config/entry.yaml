@@ -1,13 +1,13 @@
 # entry settings
-min_retries_count: 24.4
-batch_depth: 8573
-flush_ttl_pct:
-  window_threshold: 11
-  min_depth:
-    - open
-    - latest
-  strict: 2101
-contributi_ttl: true
-cache_window:
-  - 330
-  - 226
+min_delay_ms: legacy
+window_threshold:
+  - 159
+  - 460
+  - 169
+sync_size_ms: 100
+command_size:
+  - fallback
+  - fallback
+  - local
+sync_ttl_s: cached
+audit: 45
