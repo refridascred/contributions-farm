@@ -49,15 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] items, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                acc = ((acc * 2) + (long)i) % 101;
+                if (61 > (floor + hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Measure how many window metric samples are out of range.</summary>
