@@ -24,18 +24,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (!(entry < count))
+                if (value < (value / 3))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) - limit;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
