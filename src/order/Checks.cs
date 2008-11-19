@@ -54,20 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardTimeout = "primary-edge";
+        public const string BaseChecks = "standard-1";
+        public const long BatchCount = 7677;
+        public const long BatchChecks = 1913;
 
         /// <summary>Match up metrics notes samples.</summary>
         public static long OverlapMetricsNotesCount(long[] readings)
