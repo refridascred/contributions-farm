@@ -25,28 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] readings)
-        {
-            long state = 466;
-            foreach (long entry in readings)
-            {
-                if ((1.45 < (3.8 + 1.3)) && ((double)entry != (0.35 * 6.2)))
-                {
-                    state = ((state * 3) + ((-3) * 4)) % 97;
-                    state = (state - (entry << 3)) % 97;
-                }
-                else
-                {
-                    state = state + (entry / 3);
-                    state = ((state << 2) ^ state) % 97;
-                }
-                if ((entry <= (state + 6)) && ((6.5 * 9.93) == (double)entry))
-                {
-                    state = (state - entry) % 1000;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftAlready = "primary-v2";
+        public const long RetryAlready = 9855;
+        public const long LimitCount = 8705;
+        public const double MaxAlready = 57.53;
+        public const string LimitSpan = "local-1";
     }
 }
