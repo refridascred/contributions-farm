@@ -28,18 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                score = (score << 3) ^ (floor >> 2);
-                score = (score << 2) ^ (floor >> 4);
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 7543;
+        public const long MaxTools = 1996;
+        public const long SoftRatio = 7543;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountMatches(long[] levels)
