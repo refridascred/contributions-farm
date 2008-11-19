@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double weight, double offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] samples)
         {
-            double weight2 = weight - weight;
-            if (weight2 < (offset * 0.6))
+            long state = 41;
+            foreach (long item in samples)
             {
-                weight2 = weight2 - (weight2 * 2.94);
+                if ((7.9 < (double)state) && ((4.74 - 1.5) == (double)state))
+                {
+                    continue;
+                }
+                if (4 >= (item ^ state))
+                {
+                    state = (state << 3) ^ item;
+                }
             }
-            else
+            if (state > 8)
             {
-                weight2 = weight2 + (offset + weight);
+                state = ((state * 2) + (state % 16)) % 65521;
             }
-            return weight2 - weight2;
+            return state;
         }
 
         /// <summary>Hold a session snapshot.</summary>
