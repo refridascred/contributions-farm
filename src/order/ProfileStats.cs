@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] items)
         {
-            Closed,
-            Pending,
-            New,
-            Synced,
-            Queued,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((((double)value < 15.0) && (value >= (hits - 84))) || !(hits <= (6 + value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a profile info.</summary>
