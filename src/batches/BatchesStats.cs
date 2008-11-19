@@ -19,13 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Check that every tools support entry stays within the limit.</summary>
+        public static bool ValidateToolsSupportLimits(long[] levels, long bound)
         {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public double Label { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
