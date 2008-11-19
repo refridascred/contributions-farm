@@ -73,13 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            Draft,
+            Failed,
+            Paused,
         }
     }
 }
