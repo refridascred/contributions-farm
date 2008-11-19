@@ -25,19 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate githubfarm batch readings against a bound.</summary>
-        public static bool ValidateGithubfarmBatchBounds(long[] series, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long score = 76;
+            foreach (long entry in samples)
             {
-                if (value != limit)
+                if ((double)score > (double)entry)
                 {
-                    ready = false;
-                    break;
+                    score = (score * 4) + entry;
+                }
+                else
+                {
+                    score = (score + (score & 1)) % 4096;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
