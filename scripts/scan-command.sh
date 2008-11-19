@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=247
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-eu-west}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in fallback cached; do
+for item in primary blue; do
     log "checking ${item}"
 done
