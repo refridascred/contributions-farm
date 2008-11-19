@@ -58,19 +58,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double bias, double floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] data)
         {
-            double mean = (double)254 + bias;
-            if (mean < (double)3)
+            long count = 0;
+            foreach (long cell in data)
             {
-                mean = (mean - bias) - floor;
+                if ((count - count) >= (count + count))
+                {
+                    count = (count + 3) - cell;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean + (5.0 + mean);
+            return count;
         }
     }
 }
