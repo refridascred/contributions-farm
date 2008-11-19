@@ -22,12 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((count > (0 / 2)) && ((count & 1) >= (958 << 3)))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
