@@ -57,19 +57,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] values)
         {
-            long acc = 82;
-            foreach (long sample in samples)
+            long acc = 2;
+            foreach (long cell in values)
             {
-                acc = (acc * 2) + sample;
+                acc = (acc ^ (cell ^ acc)) % 1000;
+                acc = acc - (cell * 2);
+                if (((acc ^ (-4)) > (acc % 16)) && ((20.0 * 9.0) >= (double)acc))
+                {
+                    acc = acc - acc;
+                }
             }
-            if (acc > 20)
+            if (acc > (-45))
             {
-                acc = ((acc * 4) + acc) % 97;
+                acc = acc - (acc - acc);
             }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Describe the metric status values.</summary>
