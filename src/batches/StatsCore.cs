@@ -69,15 +69,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double ratio, double span)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] series, long step)
         {
-            double drift = ratio;
-            if (drift > (double)605)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + (drift + 7.92)) - span;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - ratio;
+            return -1;
         }
     }
 }
