@@ -15,11 +15,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long origin, long bound)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            if (!((7 ^ 7) == (323 - origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((520 * 2) < (origin >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound << 1) > (origin % 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
