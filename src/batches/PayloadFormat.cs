@@ -47,23 +47,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order format samples.</summary>
-        public static long DigestOrderFormat(long[] series, long origin)
-        {
-            long anchor = 748;
-            foreach (long value in series)
-            {
-                anchor = ((anchor << 2) ^ (origin + origin)) % 97;
-                if (value >= (origin - value))
-                {
-                    anchor = (anchor << 2) ^ (origin / 4);
-                }
-                else
-                {
-                    anchor = anchor ^ (value ^ origin);
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 58.79;
+        public const long MinFactor = 9604;
+        public const string IdleSession = "open-v2";
+        public const string IdleLevel = "latest";
+        public const string WindowSession = "legacy-1";
     }
 }
