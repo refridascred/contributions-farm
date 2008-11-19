@@ -39,19 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels)
         {
-            long state = 989;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (((2.0 / 4.0) >= (double)tally) || ((item + item) >= (item & 1)))
                 {
-                    state = (state + ((long)i ^ entry)) - origin;
+                    tally = tally + 2;
                 }
-                state = (state << 3) ^ (851 ^ entry);
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
