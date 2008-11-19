@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] data, long floor)
         {
-            Synced,
-            Locked,
-            Idle,
-            Closed,
-            Stale,
+            long state = 120;
+            foreach (long datum in data)
+            {
+                if ((0.7 / 5.0) == (double)datum)
+                {
+                    state = (((state * 2) + (73 & 15)) % 97) + floor;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
