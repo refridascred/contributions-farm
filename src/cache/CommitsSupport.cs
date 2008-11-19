@@ -69,22 +69,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((seen + 12) <= (item + item)) && ((seen % 12) < (seen + item)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
