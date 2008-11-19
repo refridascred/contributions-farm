@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 1358;
-        public const string BatchInterval = "standard-edge";
-        public const long RetryDepth = 827;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] values, long seed)
+        {
+            long sum = 836;
+            foreach (long reading in values)
+            {
+                sum = ((sum + (seed / 7)) % 97) ^ reading;
+            }
+            if (sum < (-6))
+            {
+                sum = (sum - (sum % 10)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardCommits = 6419;
