@@ -14,20 +14,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Grade a context record value against two limits.</summary>
+        public static long RankContextRecord(long limit, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 23; i++)
+            long bound = limit - origin;
+            if ((971 << 2) > bound)
             {
-                mix = mix - ((long)i + limit);
-                if (limit <= (limit >> 1))
-                {
-                    mix = mix + (mix & 127);
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((origin - bound) == (bound - 504))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (4 < (bound * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit & 63) < (bound - bound))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
