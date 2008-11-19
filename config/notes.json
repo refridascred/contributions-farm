@@ -1,5 +1,7 @@
 {
-  "entry_size": false,
-  "min_size_count": 79.3,
-  "burst_window": true
+  "poll_depth": [11, 295],
+  "metric_capacity": 75.17,
+  "compress": "eu-west",
+  "max_threshold_count": 2919,
+  "graph_ttl": 72.89
 }
