@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const double RetryEditor = 12.7;
         public const long WindowCount = 5367;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings, long bound)
+        /// <summary>Derive the next entry account value from a seed.</summary>
+        public static long DeriveEntryAccount(long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((value + bound) > (5 + value))
-                {
-                    count = count + 2;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Roll a contributi already counter forward.</summary>
