@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 9431;
-        public const long RetryRecord = 9562;
-        public const long IdleBudget = 8285;
-        public const long MaxRecord = 3454;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (5.0 + 1.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
