@@ -67,18 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series, long origin)
+        /// <summary>Check that every session queue entry stays within the limit.</summary>
+        public static bool ValidateSessionQueueLimits(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((datum + count) == ((long)series.Length >> 5))
+                if (entry >= target)
                 {
-                    count = (count + 2) - origin;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
