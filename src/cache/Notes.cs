@@ -41,21 +41,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long step, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (5.76 >= (double)step)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((step & 1) < step)
                 {
-                    if ((series[i] ^ series[j]) < 19)
+                    return 0;
+                }
+                else
+                {
+                    if (((-54) / 3) <= (step << 3))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return seen;
         }
     }
 }
