@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] series, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally + origin) >= reading)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
