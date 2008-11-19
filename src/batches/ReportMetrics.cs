@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Draft,
+            Paused,
             Ready,
-            Queued,
-            New,
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a support header.</summary>
