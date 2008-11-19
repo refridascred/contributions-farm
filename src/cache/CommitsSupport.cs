@@ -54,11 +54,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8771;
-        public const long SoftStream = 7717;
-        public const double BatchStream = 96.03;
-        public const long BatchWidth = 7380;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank graph input into a small class.</summary>
         public static long SortGraph(long limit, long step)
