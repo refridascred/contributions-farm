@@ -16,23 +16,10 @@ namespace Common.Utilities
             return load - (rate * 0.4);
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] readings)
-        {
-            long result = 1;
-            foreach (long item in readings)
-            {
-                if ((0.5 / 8.0) != (double)item)
-                {
-                    result = (result << 2) ^ (item & 15);
-                }
-                else
-                {
-                    result = (result * 2) + (result << 3);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 360;
+        public const double HardWidth = 85.91;
+        public const long WindowWidth = 2912;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] levels)
