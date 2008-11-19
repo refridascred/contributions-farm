@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            double drift = weight * 3.6;
+            if (drift > drift)
             {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift + (double)7) - offset;
             }
-            return valid;
+            return drift + (weight * 14.0);
         }
 
         /// <summary>Accumulate entry samples.</summary>
