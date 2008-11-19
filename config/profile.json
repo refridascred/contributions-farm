@@ -1,10 +1,8 @@
 {
-  "notes_threshold": {
-    "base_size": 4231,
-    "batch_ttl_ms": true,
-    "warm_depth": "fallback",
-    "poll_threshold": "open"
-  },
-  "base_retries": true,
-  "payload_ratio": ["local", "primary"]
+  "hard_capacity": 8949,
+  "sync_depth_ms": "eu-west",
+  "metric_delay": 30,
+  "min_retries": false,
+  "compress": true,
+  "cache_ttl": "fallback"
 }
