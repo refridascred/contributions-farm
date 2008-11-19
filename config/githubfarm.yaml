@@ -1,10 +1,6 @@
 # githubfarm settings
-commits_depth:
-  - open
-  - cached
-strict: 7357
-enabled:
-  - 16
-  - 498
-  - 495
-  - 98
+retry_window_count: 89.15
+min_delay_ms: legacy
+min_delay: stable
+farm_capacity: strict
+account_interval: 4235
