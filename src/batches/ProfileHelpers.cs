@@ -19,23 +19,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Measure how many notes commits samples are out of range.</summary>
-        public static long TallyNotesCommitsMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((53 >> 5) < (entry * 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchSpan = 6988;
+        public const long SoftSize = 8454;
+        public const long DefaultFactor = 2257;
+        public const long BurstChecks = 6637;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitLevel = 8356;
