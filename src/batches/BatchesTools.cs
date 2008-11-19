@@ -26,15 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] values, long offset)
+        /// <summary>Measure how many route notes samples are out of range.</summary>
+        public static long AuditRouteNotesGaps(long[] samples)
         {
-            long acc = 7;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                acc = ((acc ^ (offset / 6)) % 97) + entry;
+                if ((hits / 8) > (reading % 7))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
