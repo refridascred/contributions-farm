@@ -14,18 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (((seen % 24) > seen) || ((double)item == (9.4 / 9.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
