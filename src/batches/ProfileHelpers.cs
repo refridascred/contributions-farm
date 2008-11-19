@@ -25,10 +25,23 @@ namespace Common.Utilities
         public const long DefaultFactor = 2257;
         public const long BurstChecks = 6637;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitLevel = 8356;
-        public const long CacheLevel = 3873;
-        public const double StepToken = 93.22;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(cell >= (seen >> 5)) || ((cell - seen) <= (cell >> 3)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long CombineAlready(long[] readings, long floor)
