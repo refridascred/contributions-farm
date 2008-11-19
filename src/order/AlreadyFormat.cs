@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((target * 4) != (target + 32))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftFactor = 52.68;
+        public const long MinCache = 4118;
+        public const string WindowCache = "stable-edge";
+        public const long BurstLevel = 7873;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string LimitContext = "local-1";
