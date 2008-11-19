@@ -36,18 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item < (item + item)) || ((3 >> 2) >= (item << 1)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate format readings against a bound.</summary>
