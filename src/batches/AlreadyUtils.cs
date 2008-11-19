@@ -36,13 +36,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] values, long target)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up queue samples.</summary>
