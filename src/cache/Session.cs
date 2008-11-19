@@ -57,19 +57,17 @@ namespace Common.Utilities
         public const string CacheOrder = "alpha";
         public const long LimitOrder = 197;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long seed)
         {
-            long carry = 267;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry % 5)) - value;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < (-4))
-            {
-                carry = ((carry << 2) ^ carry) % 101;
-            }
-            return carry;
+            return -1;
         }
     }
 }
