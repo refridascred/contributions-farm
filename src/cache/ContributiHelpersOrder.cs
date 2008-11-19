@@ -22,13 +22,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Stale,
-            Ready,
-            Closed,
-            Pending,
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
