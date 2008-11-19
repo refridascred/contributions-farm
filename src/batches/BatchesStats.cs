@@ -34,22 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] samples)
         {
-            long result = 335;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(3.56 <= (double)cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result + (cell >> 5)) % 255;
-                }
-                else
-                {
-                    result = result + cell;
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch report readings.</summary>
