@@ -22,19 +22,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] samples, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (reading > target)
+                if (datum < seed)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
     }
 }
