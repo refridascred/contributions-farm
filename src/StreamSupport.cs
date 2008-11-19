@@ -40,13 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] samples, long target)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
