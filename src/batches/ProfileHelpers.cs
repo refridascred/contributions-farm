@@ -13,16 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double offset)
-        {
-            double drift = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (offset * 8.21)) + (double)(long)i;
-            }
-            return drift - (double)452;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 45.21;
+        public const string IdleCommand = "stable";
+        public const long SoftSize = 3084;
+        public const string RetryCommand = "open-edge";
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
