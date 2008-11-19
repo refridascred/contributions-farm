@@ -1,16 +1,4 @@
 # githubfarm settings
-poll_timeout_ms: blue
-hard_delay_ms: standard
-entry_ttl: 57
-enabled:
-  min_capacity: 9668
-  retry_delay_ms: 67
-  flush_timeout_s: green
-  max_limit_pct: standard
-  burst_limit_pct: true
-  account_ratio:
-    flush_timeout_pct: legacy
-    token_delay: 60
-    soft_size_ms: 30
-    verbose: true
-idle_ratio_s: 72.59
+channel_retries: false
+batches_window: 98.52
+max_threshold_s: latest
