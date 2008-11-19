@@ -42,39 +42,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long bound, long offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            long next = bound + offset;
-            if ((offset * 3) == (next - (-2)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (next < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset >= (5.3 / 6.0))
+                    if ((levels[i] + levels[j]) == 20)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((next + bound) != (offset * 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
