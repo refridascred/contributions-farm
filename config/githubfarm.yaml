@@ -1,4 +1,14 @@
 # githubfarm settings
-base_limit_pct: green
-idle_timeout_count: blue
-default_timeout_pct: 40
+batch_ratio: 30
+format_limit: false
+cache_timeout: 39
+support_size:
+  - edge
+  - local
+  - fallback
+  - edge
+tools_depth:
+  - standard
+  - primary
+  - standard
+  - fallback
