@@ -36,13 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyLimits(long[] readings, long seed)
         {
-            Idle,
-            Active,
-            Ready,
-            Synced,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the token metric series from a seed.</summary>
