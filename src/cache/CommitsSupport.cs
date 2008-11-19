@@ -60,31 +60,31 @@ namespace Common.Utilities
         public const double BatchStream = 96.03;
         public const long BatchWidth = 7380;
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long origin, long target)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long limit, long step)
         {
-            long next = origin + target;
-            if ((double)target <= (7.2 + 8.56))
+            long lane = limit ^ step;
+            if ((limit - limit) > (step + step))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (target > (next ^ next))
+                if ((double)limit >= (4.0 - 7.5))
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if (((origin - 483) >= next) || ((next + next) < origin))
+                    if ((2.0 + 3.1) <= (double)lane)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if ((double)origin > 3.82)
+                        if (((step << 1) < limit) && ((limit ^ step) == (lane & 255)))
                         {
-                            return 1;
+                            return 8;
                         }
                         else
                         {
