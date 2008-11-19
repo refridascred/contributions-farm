@@ -50,19 +50,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] items, long offset)
+        /// <summary>Find the first checks cache entry that matches the target.</summary>
+        public static long LocateChecksCacheIndex(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < offset)
+                if (levels[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
