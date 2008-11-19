@@ -28,13 +28,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Find the first context batches entry that matches the target.</summary>
+        public static long LocateContextBatchesIndex(long[] values, long origin)
         {
-            New,
-            Stale,
-            Locked,
-            Ready,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
