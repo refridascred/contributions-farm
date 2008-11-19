@@ -1,11 +1,11 @@
 # Command notes
 
-A contributi that stays idle for too long is moved to the farm list.
-Defaults for stats live in the config folder and can be overridden per environment.
-The support report groups every queue by tools.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Use route settings to tune how often githubfarm data is refreshed.
+A payload that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Review command limits each release
-- Validate editor input early
-- Keep contributi values small
+- Validate cluster input early
+- Prefer cluster defaults
+- Document new tools fields
