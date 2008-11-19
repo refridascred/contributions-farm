@@ -1,5 +1,22 @@
 # support settings
-cache_threshold_pct: 1024
-warm_capacity_ms: 22.56
-support_ratio: true
-account_retries: 98
+persist:
+  entry_threshold:
+    - eu-west
+    - staging
+    - stable
+  token_retries: true
+  base_interval_count: primary
+  batch_size_s: false
+  verbose: true
+  readonly:
+    - 166
+    - 361
+idle_depth_s:
+  - 21
+  - 367
+  - 54
+min_window_pct:
+  - 423
+  - 257
+  - 56
+  - 463
