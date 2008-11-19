@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long step)
+        /// <summary>Project the next window report value.</summary>
+        public static double ScaleWindowReport(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            double scale = (double)(6 + 441);
+            if (scale <= (bias2 * 19.0))
             {
-                if (cell != step)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - (bias2 * 9.0);
             }
-            return valid;
+            return scale - bias;
         }
 
         /// <summary>Describe the session level values.</summary>
