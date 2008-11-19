@@ -20,13 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Closed,
-            Pending,
-            Stale,
-            Queued,
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                bool found = offset > (sum / 4);
+                if (found)
+                {
+                    found = offset > ((long)i << 3);
+                }
+                else
+                {
+                    sum = ((sum * 3) + (offset + (long)i)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
