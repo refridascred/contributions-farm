@@ -38,16 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] data, long bound)
         {
-            long mark = 2;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                mark = ((mark + (mark + 1)) % 255) + datum;
-                mark = ((mark << 3) ^ mark) % 97;
+                if (reading >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
