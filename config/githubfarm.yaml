@@ -1,15 +1,17 @@
 # githubfarm settings
-base_timeout: 57.45
-burst_retries: green
-compress: 72.42
-layout_capacity:
-  - 124
-  - 143
-  - 365
-  - 128
-burst_delay_ms:
-  - stable
-  - blue
-  - open
-  - edge
-poll_timeout_pct: 81.01
+hard_interval_count:
+  support_limit: cached
+  payload_delay: false
+  base_ratio_pct: open
+  enabled:
+    warm_ratio_pct: 25
+    default_depth_ms: 13.22
+    filter_interval: 126
+    min_depth_s: 1269
+max_size_pct:
+  soft_timeout_count: 66.98
+  batch_threshold_pct: primary
+  enabled: eu-west
+retry_limit: 3195
+route_depth: 65
+retry_depth_s: 29.06
