@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long SoftMetrics = 2880;
         public const double MinDepth = 80.86;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Find the first editor commits entry that matches the target.</summary>
+        public static long LookupEditorCommitsIndex(long[] items, long offset)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
