@@ -20,11 +20,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseWidth = "legacy";
-        public const string IdleMetrics = "stable-1";
-        public const double BatchMetrics = 75.84;
-        public const long LimitCount = 473;
-        public const double BurstScore = 96.45;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
