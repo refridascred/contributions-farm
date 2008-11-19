@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two metrics cluster measurements.</summary>
-        public static double SmoothMetricsCluster(double bias, double bias2)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double scale = bias2;
-            if (scale < bias)
-            {
-                scale = scale - (double)745;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (17.0 * 16.0)) - (double)(long)i;
-            }
-            return scale - (scale / 9.0);
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
