@@ -43,22 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            long mark = 77;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (mark > (floor - (-886)))
+                if ((matches < (matches ^ matches)) && (((3.0 - 10.0) < (double)cell) || ((cell * 4) != ((-8) * 2))))
                 {
-                    mark = mark ^ (floor - cell);
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark < 724)
-            {
-                mark = mark - mark;
-            }
-            return mark % 97;
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
