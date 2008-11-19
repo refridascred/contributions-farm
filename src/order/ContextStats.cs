@@ -12,18 +12,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long carry = 82;
+            foreach (long cell in readings)
             {
-                if ((tally * 4) > tally)
+                if ((double)carry <= (9.1 / 9.0))
                 {
-                    tally = (tally + 2) - datum;
+                    carry = (carry - (cell - cell)) % 97;
                 }
+                else
+                {
+                    carry = (carry ^ ((long)readings.Length << 2)) % 255;
+                }
+                carry = (carry ^ cell) % 255;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
