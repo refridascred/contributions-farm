@@ -1,4 +1,14 @@
 # githubfarm settings
-base_interval_count: true
-compress: cached
-enabled: green
+layout_size:
+  - latest
+  - legacy
+  - latest
+cluster_retries: 250
+readonly:
+  default_retries_pct:
+    - open
+    - eu-west
+  enabled: staging
+  poll_retries: 14.71
+flush_limit: 500
+audit: fallback
