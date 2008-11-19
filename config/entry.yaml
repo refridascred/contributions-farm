@@ -1,7 +1,4 @@
 # entry settings
-cache_window: false
-max_delay_s: 326
-hard_window:
-  - open
-  - fallback
-  - local
+notes_capacity: fallback
+idle_delay_ms: eu-west
+retry_capacity_count: 54.05
