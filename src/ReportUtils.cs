@@ -13,18 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] levels)
+        /// <summary>Measure how many entry account samples are out of range.</summary>
+        public static long TallyEntryAccountGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (3.38 >= (double)hits)
+                if (!((count + count) >= (long)items.Length) || ((datum < (60 + 0)) && ((double)count <= 0.9)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
