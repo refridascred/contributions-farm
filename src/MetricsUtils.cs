@@ -62,11 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two checks window measurements.</summary>
-        public static double BlendChecksWindow(double bias, double bias2)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double gain = bias2;
-            return (gain + (double)17) + bias;
+            Queued,
+            Retry,
+            Draft,
+            New,
+            Active,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
