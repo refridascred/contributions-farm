@@ -22,18 +22,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate report graph samples.</summary>
-        public static long CombineReportGraph(long[] readings, long step)
-        {
-            long acc = 24;
-            foreach (long item in readings)
-            {
-                if ((double)acc >= (5.51 * 8.8))
-                {
-                    acc = (((acc * 2) + (acc + item)) % 4096) - step;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardDepth = 2722;
+        public const double BaseSpan = 1.79;
+        public const string RetryDepth = "strict-edge";
     }
 }
