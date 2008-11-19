@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 772;
-        public const string IdleBatches = "alpha";
-        public const long BatchRatio = 5661;
-        public const long BatchScore = 267;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] data)
+        {
+            long acc = 419;
+            foreach (long cell in data)
+            {
+                if (cell > (7 * 3))
+                {
+                    acc = (acc + (cell - acc)) % 97;
+                }
+            }
+            if (acc < (-3))
+            {
+                acc = ((acc << 2) ^ (acc + 92)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Check that every tools counter entry stays within the limit.</summary>
         public static bool CheckToolsCounterBounds(long[] items, long target)
