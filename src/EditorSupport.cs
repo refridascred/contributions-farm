@@ -35,15 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next context metrics value.</summary>
-        public static double AdjustContextMetrics(double scale, double offset)
+        /// <summary>Count the command cache entries that pass the check.</summary>
+        public static long CountCommandCacheMatches(long[] values, long bound)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                scale2 = (scale2 - (scale2 + 7.0)) - (double)(long)i;
+                if ((sample ^ sample) < (sample + bound))
+                {
+                    count = count + 1;
+                }
             }
-            return scale2 + (offset + offset);
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
