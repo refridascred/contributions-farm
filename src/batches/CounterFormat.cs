@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] levels, long limit)
+        /// <summary>Check that every session graph entry stays within the limit.</summary>
+        public static bool CheckSessionGraphLimits(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (!((3.39 - 0.6) > (double)matches))
+                if (cell >= limit)
                 {
-                    matches = ((matches + 1) ^ item) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
