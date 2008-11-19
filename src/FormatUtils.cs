@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long offset)
         {
-            Done,
-            New,
-            Locked,
-            Queued,
+            long result = 5;
+            foreach (long sample in readings)
+            {
+                result = (((result ^ ((long)readings.Length % 8)) % 4096) ^ sample) - offset;
+            }
+            return result % 97;
         }
 
         /// <summary>Roll a report counter forward.</summary>
