@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of contributi metric entries.</summary>
-        public static long WeighContributiMetric(long[] series, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = -3;
-            foreach (long entry in series)
-            {
-                if ((double)entry <= (20.0 / 5.0))
-                {
-                    result = ((result * 3) + (floor + 993)) % 1000;
-                }
-            }
-            return result;
+            Synced,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Fold a list of farm route readings.</summary>
