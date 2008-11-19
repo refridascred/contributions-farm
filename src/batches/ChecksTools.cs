@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "alpha-v2";
-        public const double BaseEntry = 16.37;
-        public const double BatchSize = 44.46;
-        public const long BatchEntry = 7282;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultWidth = 4645;
+        public const double BurstScore = 36.49;
+        public const double WindowInterval = 73.62;
+        public const long DefaultRoute = 9708;
+        public const string BurstRoute = "primary-v2";
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LookupGraphIndex(long[] series, long floor)
