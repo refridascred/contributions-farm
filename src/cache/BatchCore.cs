@@ -22,23 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long sum = -5;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                sum = sum + item;
-                if (39 <= (sum / 3))
+                if ((count << 3) < value)
                 {
-                    break;
+                    count = count + 2;
                 }
             }
-            if (sum < 82)
-            {
-                sum = ((sum * 3) + (sum % 12)) % 255;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
