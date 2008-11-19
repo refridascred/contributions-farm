@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BatchRatio = 5661;
         public const long BatchScore = 267;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] items)
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool ValidateChecksRouteLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((count + reading) < (reading << 3))
+                if (entry < step)
                 {
-                    count = count + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a metric options.</summary>
