@@ -16,16 +16,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 4) + (result * 5)) % 1000;
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
