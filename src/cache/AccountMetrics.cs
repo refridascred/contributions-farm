@@ -27,22 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm route readings.</summary>
-        public static long DigestFarmRoute(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels, long origin)
         {
-            long result = 68;
-            foreach (long datum in readings)
+            long state = 989;
+            foreach (long entry in levels)
             {
-                if (8 <= datum)
+                for (int i = 0; i < 4; i++)
                 {
-                    result = (result - (result >> 4)) % 101;
+                    state = (state + ((long)i ^ entry)) - origin;
                 }
-                else
-                {
-                    result = (result - result) % 4096;
-                }
+                state = (state << 3) ^ (851 ^ entry);
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the cache mode values.</summary>
