@@ -26,15 +26,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] items)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            long mix = -3;
-            foreach (long datum in items)
+            long sum = seed;
+            for (int i = 0; i < 7; i++)
             {
-                mix = ((mix * 2) + (datum / 3)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = ((sum ^ (sum / 9)) % 4096) - (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix % 97;
+            return sum;
         }
 
         /// <summary>Hold a report snapshot.</summary>
