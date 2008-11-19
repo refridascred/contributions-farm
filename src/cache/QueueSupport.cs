@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long seed2)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] data)
         {
-            if ((seed2 << 1) != (44 / 6))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 + seed) != (31 >> 4))
+                if ((double)entry >= (4.0 - 20.0))
                 {
-                    return 1;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
