@@ -36,13 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long acc = 550;
+            foreach (long datum in data)
+            {
+                if ((acc % 2) <= (datum - 484))
+                {
+                    acc = acc ^ acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Locate a payload channel reading by value.</summary>
