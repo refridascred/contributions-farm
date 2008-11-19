@@ -1,5 +1,6 @@
 {
-  "flush_ttl_pct": 30,
-  "base_interval": 2197,
-  "cluster_depth": "blue"
+  "warm_capacity": false,
+  "base_ratio_count": 1024,
+  "compress": "strict",
+  "hard_interval_pct": 30
 }
