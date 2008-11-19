@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the payload batch series from a seed.</summary>
-        public static long RollPayloadBatch(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 4125;
+        public const long WindowBatches = 5572;
+        public const long DefaultSpan = 6785;
+        public const double WindowWidth = 85.65;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiLimits(long[] items, long limit)
