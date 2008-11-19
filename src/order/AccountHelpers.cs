@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double rate, double offset)
-        {
-            double ratio = (double)(5 ^ 39);
-            if (ratio <= (double)(-17))
-            {
-                ratio = (ratio - rate) - offset;
-            }
-            return ratio - rate;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 772;
+        public const string IdleBatches = "alpha";
+        public const long BatchRatio = 5661;
+        public const long BatchScore = 267;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsHits(long[] items)
