@@ -61,21 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Project the next metric tools value.</summary>
+        public static double AdjustMetricTools(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = gain;
+            if (gain2 < floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain2 = gain2 - gain;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + (gain2 + gain2);
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Check that every queue channel entry stays within the limit.</summary>
