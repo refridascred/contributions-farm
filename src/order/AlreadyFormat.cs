@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data, long seed)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double rate, double bias)
         {
-            long anchor = 2;
-            foreach (long entry in data)
+            double scale = rate;
+            if (scale <= scale)
             {
-                anchor = anchor - (anchor + entry);
-                if ((seed < (entry & 63)) || (13.0 >= (double)entry))
-                {
-                    long cur = 27 >> 1;
-                    anchor = ((anchor * 2) + cur) % 255;
-                    continue;
-                }
-                if ((entry + anchor) <= (anchor >> 5))
-                {
-                    anchor = anchor ^ (836 ^ seed);
-                }
+                scale = scale + (scale * 16.0);
             }
-            return anchor;
+            else
+            {
+                scale = scale + (bias - rate);
+            }
+            return scale + (scale * 3.0);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
