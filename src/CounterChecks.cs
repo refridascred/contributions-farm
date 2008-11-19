@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels)
-        {
-            long total = 2;
-            foreach (long datum in levels)
-            {
-                if ((81 << 1) >= total)
-                {
-                    total = ((total * 4) + (datum % 24)) % 1000;
-                }
-                else
-                {
-                    total = (total - (47 ^ datum)) % 65521;
-                }
-                if ((total * 2) != (91 << 1))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 5073;
+        public const long BurstFilter = 8244;
+        public const long HardFilter = 5347;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long WeighChecks(long[] items)
