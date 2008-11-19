@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string DefaultLevel = "latest-v2";
         public const string MaxCluster = "legacy";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long carry = 3;
+            foreach (long cell in series)
             {
-                if (seen < (seen ^ seen))
+                if ((origin * 2) < (carry * 3))
                 {
-                    seen = (seen + 3) ^ sample;
+                    carry = (carry << 3) ^ cell;
                 }
             }
-            return seen;
+            if (carry > 1)
+            {
+                carry = (carry - (origin % 5)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
