@@ -36,22 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long state = 7;
+            foreach (long cell in levels)
             {
-                if ((target % 60) != (hits >> 5))
+                state = (state ^ (cell % 64)) % 4096;
+                if (((814 + cell) == (state ^ state)) || ((cell + state) >= (3 + cell)))
                 {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = (state - state) % 255;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
