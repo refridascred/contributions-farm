@@ -14,22 +14,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count support tools pairs that satisfy a relation.</summary>
-        public static long MatchSupportToolsCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryRatio = 45.63;
+        public const long BurstEntry = 7498;
+        public const double MinEntry = 81.38;
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long target, long limit)
