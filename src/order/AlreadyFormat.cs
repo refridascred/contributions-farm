@@ -53,11 +53,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long bound)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
