@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double IdleDepth = 5.23;
         public const long WindowCommand = 7065;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen ^ entry) > (entry / 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchBudget = 8898;
+        public const string LimitDepth = "alpha-v2";
+        public const string CacheEditor = "stable-v2";
+        public const double BatchDepth = 21.86;
+        public const long LimitWidth = 7729;
 
         /// <summary>Project the next stats value.</summary>
         public static double ProjectStats(double scale, double floor)
