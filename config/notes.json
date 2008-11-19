@@ -1,6 +1,5 @@
 {
-  "context_size": true,
-  "idle_window": ["stable", "strict", "standard", "standard"],
-  "burst_timeout": ["strict", "green", "cached"],
-  "burst_limit_s": "edge"
+  "hard_size_count": true,
+  "base_threshold_ms": "green",
+  "burst_window_s": 4802
 }
