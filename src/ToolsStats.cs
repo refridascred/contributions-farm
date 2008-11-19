@@ -26,12 +26,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 4476;
         public const long CacheSpan = 9494;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            Idle,
-            Done,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
