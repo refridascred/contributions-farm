@@ -30,12 +30,11 @@ namespace Common.Utilities
             return drift - (floor * 3.31);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 4618;
-        public const double StepStream = 14.53;
-        public const long WindowSpan = 9201;
-        public const long RetryStream = 7371;
-        public const double SoftCount = 27.26;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxBudget = 8904;
+        public const string SoftSize = "latest-v2";
+        public const long WindowGithubfarm = 2048;
+        public const double CacheDepth = 58.81;
 
         /// <summary>Compare every pair of order notes readings.</summary>
         public static long PairOrderNotesCount(long[] values)
