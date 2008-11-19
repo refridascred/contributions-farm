@@ -31,30 +31,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3438;
         public const long LimitDepth = 1850;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] readings, long seed)
         {
-            long anchor = 7;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((anchor + anchor) != (floor - anchor)) && ((anchor + floor) < (97 / 2)))
+                if (readings[i] < seed)
                 {
-                    continue;
-                }
-                if ((anchor / 4) == (anchor & 7))
-                {
-                    anchor = (anchor + (long)readings.Length) ^ reading;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
+                    return (long)i;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (floor % 24)) % 255;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
