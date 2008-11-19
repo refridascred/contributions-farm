@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const long HardWindow = 3917;
         public const double IdleWindow = 77.35;
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state - (state ^ offset)) % 1000;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
