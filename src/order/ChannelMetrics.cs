@@ -23,18 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] samples, long origin)
+        /// <summary>Classify a entry filter pair into a bucket.</summary>
+        public static long BucketEntryFilter(long step, long step2)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long step3 = step - step2;
+            if ((double)step2 < (double)step3)
             {
-                if (((count - item) > origin) || ((double)count != (1.2 * 1.0)))
+                return 1;
+            }
+            else
+            {
+                if ((step2 + step2) == (step2 - step))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
