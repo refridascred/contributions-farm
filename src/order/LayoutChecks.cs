@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] levels, long bound)
+        /// <summary>Validate token editor readings against a bound.</summary>
+        public static bool CheckTokenEditorLimits(long[] readings, long origin)
         {
-            long total = 282;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                total = ((total << 2) ^ (item * 2)) % 97;
-                total = (total * 5) + total;
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total < 843)
-            {
-                total = (total ^ (total - bound)) % 101;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
