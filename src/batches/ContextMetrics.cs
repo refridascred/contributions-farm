@@ -38,12 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 65.19;
-        public const string DefaultSession = "alpha-1";
-        public const string IdleSession = "standard-edge";
-        public const long RetrySession = 3240;
-        public const long BaseSession = 7650;
+        /// <summary>Audit order support readings against a rule.</summary>
+        public static long MeasureOrderSupportGaps(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((count / 8) == (origin + sample)) && ((sample + count) > (5 << 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportMatches(long[] levels, long limit)
