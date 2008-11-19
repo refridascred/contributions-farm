@@ -23,19 +23,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate record token readings against a bound.</summary>
-        public static bool CheckRecordTokenBounds(long[] items, long floor)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Retry,
+            Synced,
+            Paused,
+            Closed,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
