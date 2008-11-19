@@ -20,16 +20,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next contributi report value from a seed.</summary>
-        public static long SeriesContributiReport(long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                score = score ^ offset;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
