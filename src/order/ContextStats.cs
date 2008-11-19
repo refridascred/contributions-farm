@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleFactor = 4744;
-        public const long BaseScore = 6442;
-        public const long LimitBudget = 8991;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double offset)
+        {
+            double rate2 = 9.8;
+            if (rate2 <= (rate2 / 3.0))
+            {
+                rate2 = rate2 + (offset / 8.0);
+            }
+            else
+            {
+                rate2 = rate2 - 7.0;
+            }
+            return rate2 - (rate / 4.0);
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryOutliers(long[] levels, long target)
