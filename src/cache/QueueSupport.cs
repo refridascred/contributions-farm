@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] data)
+        /// <summary>Iterate the payload batch series from a seed.</summary>
+        public static long RollPayloadBatch(long target)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)entry >= (4.0 - 20.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
