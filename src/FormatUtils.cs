@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long acc = 2;
+            foreach (long cell in readings)
             {
-                if ((tally / 9) == (tally - 879))
-                {
-                    tally = (tally + 1) ^ item;
-                }
+                acc = (acc + (limit << 3)) ^ cell;
             }
-            return tally;
+            if (acc > 4)
+            {
+                acc = acc ^ (acc >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
