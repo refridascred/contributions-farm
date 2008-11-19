@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorBounds(long[] data, long offset)
         {
-            Synced,
-            Draft,
-            Failed,
-            Dropped,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
