@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Active,
-            Dropped,
-            Done,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 2247;
+        public const double MaxBudget = 42.72;
+        public const string SoftSupport = "latest";
 
         /// <summary>Define already limits and defaults.</summary>
         public const string SoftAlready = "stable-edge";
