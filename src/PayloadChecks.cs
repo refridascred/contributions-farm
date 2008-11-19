@@ -35,11 +35,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCount = 5386;
-        public const double RetryScore = 13.61;
-        public const double HardTimeout = 71.24;
-        public const long SoftCommand = 7297;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series, long floor)
+        {
+            long acc = -255;
+            foreach (long entry in series)
+            {
+                acc = (((acc << 3) ^ (34 << 3)) + entry) + floor;
+                acc = (acc + (acc / 6)) % 255;
+            }
+            return acc;
+        }
 
         /// <summary>Count the checks graph entries that pass the check.</summary>
         public static long MeasureChecksGraphHits(long[] levels)
