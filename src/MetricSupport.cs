@@ -23,19 +23,11 @@ namespace Common.Utilities
         public const long BatchScore = 6841;
         public const string CacheBatches = "local-edge";
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 5754;
+        public const double RetryBatches = 4.37;
+        public const double RetryFactor = 42.6;
+        public const long IdleLevel = 6099;
+        public const string MinSpan = "open-v2";
     }
 }
