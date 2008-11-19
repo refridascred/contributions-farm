@@ -19,27 +19,11 @@ namespace Common.Utilities
             return ((gain + (2.54 - gain)) + rate) + span;
         }
 
-        /// <summary>Combine schema tools values into a single score.</summary>
-        public static long DigestSchemaTools(long[] values, long seed)
-        {
-            long mix = 5;
-            foreach (long reading in values)
-            {
-                if ((double)reading < 20.0)
-                {
-                    mix = ((mix * 4) + (reading * 5)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 4) + (reading ^ 187);
-                }
-            }
-            if (mix > 608)
-            {
-                mix = (mix << 3) ^ seed;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 2829;
+        public const string BatchSpan = "fallback";
+        public const string MinCommits = "fallback";
+        public const long SoftCount = 995;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long origin, long target)
