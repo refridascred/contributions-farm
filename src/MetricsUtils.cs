@@ -64,21 +64,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Compare every pair of payload editor readings.</summary>
+        public static long MatchPayloadEditorCount(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix - (4 - (long)i)) % 65521) ^ (long)i2;
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = (mix + (target + mix)) % 97;
-                mix = (mix ^ (target << 1)) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
     }
 }
