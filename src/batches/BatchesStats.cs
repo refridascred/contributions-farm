@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every support stats entry stays within the limit.</summary>
-        public static bool ValidateSupportStatsLimits(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 597;
+        public const long CacheWindow = 2735;
+        public const double MaxRatio = 62.37;
+        public const string DefaultBudget = "latest-1";
+        public const long HardWidth = 208;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ProjectGithubfarm(double rate, double span)
