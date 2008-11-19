@@ -26,13 +26,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long limit)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor << 2) ^ (limit / 6)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Validate window editor readings against a bound.</summary>
