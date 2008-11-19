@@ -34,31 +34,18 @@ namespace Common.Utilities
         public const long MinCount = 813;
         public const long BurstFactor = 3724;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long limit, long limit2)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] data)
         {
-            if ((limit2 << 1) >= limit)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(limit < (limit2 + limit2)))
+                if ((double)hits >= 20.0)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.5 / 2.0) > (1.0 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
     }
 }
