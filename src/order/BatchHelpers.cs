@@ -31,28 +31,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long WeighToolsAlready(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = 24;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((datum + datum) < (datum % 5))
                 {
-                    score = ((score - (683 + bound)) % 4096) ^ (long)i2;
+                    mix = (mix << 2) ^ (mix / 4);
+                    continue;
                 }
-                if (((bound + 124) <= (90 ^ score)) || (((long)i + score) != (score << 3)))
+                if (!((datum - datum) > (mix >> 2)))
                 {
-                    score = score + bound;
-                    score = ((score * 5) + score) % 65521;
+                    mix = mix ^ (0 & 63);
                 }
                 else
                 {
-                    score = score + (bound + score);
+                    mix = mix - (mix - mix);
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            if (mix < (-9))
+            {
+                mix = mix - (mix ^ 888);
+            }
+            return mix % 4096;
         }
     }
 }
