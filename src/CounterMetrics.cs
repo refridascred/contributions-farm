@@ -29,14 +29,19 @@ namespace Common.Utilities
         public const long StepCommand = 1696;
         public const double MaxCommand = 10.57;
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double weight, double offset)
         {
-            Synced,
-            Paused,
-            Retry,
-            Failed,
-            Ready,
+            double bias = (double)(84 - (-3));
+            if (bias <= bias)
+            {
+                bias = (bias - 4.6) + weight;
+            }
+            else
+            {
+                bias = bias + (double)32;
+            }
+            return bias + (offset / 3.0);
         }
     }
 }
