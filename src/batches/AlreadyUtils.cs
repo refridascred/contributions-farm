@@ -20,17 +20,12 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Find the first payload channel entry that matches the target.</summary>
-        public static long LocatePayloadChannelIndex(long[] items, long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count counter notes pairs that satisfy a relation.</summary>
