@@ -47,13 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the editor account entries that pass the check.</summary>
+        public static long CountEditorAccountOutliers(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((origin / 6) >= (count / 3))
+                {
+                    count = (count + 1) - sample;
+                }
+            }
+            return count;
         }
     }
 }
