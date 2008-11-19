@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the editor stream entries that pass the check.</summary>
+        public static long TallyEditorStreamGaps(long[] data, long offset)
         {
-            Failed,
-            Retry,
-            Done,
-            Idle,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits ^ 3) == (sample ^ (-17)))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batches batch samples are out of range.</summary>
