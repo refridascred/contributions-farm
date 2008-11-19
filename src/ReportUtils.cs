@@ -54,31 +54,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long target, long origin)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            if (!((76 - origin) == (origin & 63)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3 + origin) > 967)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.0 + 2.55) < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Accumulate format cache samples.</summary>
