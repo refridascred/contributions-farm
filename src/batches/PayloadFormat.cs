@@ -40,11 +40,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 58.79;
-        public const long MinFactor = 9604;
-        public const string IdleSession = "open-v2";
-        public const string IdleLevel = "latest";
-        public const string WindowSession = "legacy-1";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long origin, long floor)
+        {
+            if ((24 + floor) != (66 / 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((736 / 2) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
