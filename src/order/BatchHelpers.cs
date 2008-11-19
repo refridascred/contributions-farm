@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long step, long origin)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long next = step ^ origin;
-            if ((406 + next) <= (step * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >= (next + step)) || ((double)next == (5.48 / 7.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)next == (1.78 + 7.8)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step + origin) > (1 >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
