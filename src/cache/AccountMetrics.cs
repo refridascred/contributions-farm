@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowWidth = 8248;
-        public const long BaseBuffer = 7855;
-        public const long CacheScore = 2638;
-        public const long MaxBuffer = 8085;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double gain, double span)
+        {
+            double rate = gain;
+            if (rate < (double)50)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + (span * 0.83);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + gain;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double RetrySize = 58.11;
