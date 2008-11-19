@@ -22,9 +22,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardDepth = 2722;
-        public const double BaseSpan = 1.79;
-        public const string RetryDepth = "strict-edge";
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double weight, double span)
+        {
+            double weight2 = weight / 3.0;
+            if (weight2 <= (span + weight))
+            {
+                weight2 = weight2 + weight2;
+            }
+            else
+            {
+                weight2 = weight2 - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + 5.9) - (double)(long)i;
+            }
+            return weight2 - weight;
+        }
     }
 }
