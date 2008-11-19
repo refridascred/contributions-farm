@@ -36,24 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long seed, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] readings, long offset)
         {
-            if (((double)origin >= (12.0 + 4.06)) && ((seed / 7) >= (904 / 6)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed * 3) == (origin + seed))
+                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
