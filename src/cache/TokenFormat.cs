@@ -26,12 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double floor)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            double drift = (scale / 7.0) * 4.9;
+            if (drift > (double)8)
+            {
+                drift = (drift - scale) - floor;
+            }
+            return drift - 1.1;
         }
     }
 }
