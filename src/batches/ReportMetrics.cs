@@ -30,32 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long seed, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long prev = seed ^ bound;
-            if ((bound - bound) < bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((prev >> 5) > (44 + prev)) || ((bound / 2) <= (bound - prev)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(prev >= (seed / 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
