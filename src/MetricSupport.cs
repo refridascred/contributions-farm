@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BaseDepth = "fallback-1";
-        public const double StepSize = 16.85;
-        public const long WindowTimeout = 8409;
-        public const long CacheContext = 6684;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((0.38 / 7.0) >= (double)cell) && ((seen - cell) <= (floor - 44)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] values, long limit)
