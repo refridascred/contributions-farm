@@ -47,23 +47,13 @@ namespace Common.Utilities
         public const long CacheCommand = 7036;
         public const string BaseCommand = "latest";
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc << 3) ^ ((long)i * 5)) ^ (long)i2;
-                }
-                acc = acc + 5;
-                if (((step - 799) > ((long)i + step)) || ((double)(long)i < (10.0 + 2.1)))
-                {
-                    acc = (acc + ((long)i * 3)) % 101;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
             return acc;
         }
