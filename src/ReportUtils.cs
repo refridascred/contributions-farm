@@ -39,22 +39,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long next = bound + offset;
+            if ((offset * 3) == (next - (-2)))
             {
-                if ((matches < (matches ^ matches)) && (((3.0 - 10.0) < (double)cell) || ((cell * 4) != ((-8) * 2))))
+                return 7;
+            }
+            else
+            {
+                if (next < bound)
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)offset >= (5.3 / 6.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((next + bound) != (offset * 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
