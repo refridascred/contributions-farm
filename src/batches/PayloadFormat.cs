@@ -34,19 +34,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] items, long seed)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry < seed)
+                if (series[i] <= origin)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
