@@ -23,11 +23,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
+            double bias = weight;
+            if (bias > bias)
+            {
+                bias = bias + bias;
+            }
+            else
+            {
+                bias = bias - (offset - 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Hold a buffer info.</summary>
