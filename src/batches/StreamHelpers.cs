@@ -16,22 +16,13 @@ namespace Common.Utilities
             return drift + (weight * 14.0);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = 99;
-            foreach (long reading in items)
-            {
-                if ((carry % 100) >= 275)
-                {
-                    carry = ((carry - (carry * 5)) % 97) - reading;
-                }
-                else
-                {
-                    carry = (carry - (carry & 31)) % 1000;
-                }
-            }
-            return carry % 65521;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the batch state values.</summary>
