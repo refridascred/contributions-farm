@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next stats already value.</summary>
-        public static double AdjustStatsAlready(double scale, double span)
+        /// <summary>Check that every order metric entry stays within the limit.</summary>
+        public static bool VerifyOrderMetricRange(long[] items, long step)
         {
-            double rate = span;
-            if (rate >= (double)63)
+            bool ok = true;
+            foreach (long item in items)
             {
-                rate = (rate + (double)652) - scale;
+                if (item < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + rate;
+            return ok;
         }
 
         /// <summary>Digest a series of route entries.</summary>
