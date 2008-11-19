@@ -23,11 +23,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
