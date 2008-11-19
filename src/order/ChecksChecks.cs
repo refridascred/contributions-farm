@@ -40,19 +40,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long mix = 6;
-            foreach (long entry in readings)
-            {
-                mix = (((mix * 3) + entry) % 255) + target;
-            }
-            if (mix > 536)
-            {
-                mix = (mix + ((long)readings.Length * 5)) % 101;
-            }
-            return mix;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
