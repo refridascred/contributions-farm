@@ -64,22 +64,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] readings, long target)
+        /// <summary>Check that every stream report entry stays within the limit.</summary>
+        public static bool CheckStreamReportBounds(long[] readings, long limit)
         {
-            long state = 542;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((entry < (target + target)) && ((5.0 / 8.0) != (double)target))
+                if (sample != limit)
                 {
-                    state = (state + (state - (-673))) % 4096;
-                }
-                if (!(entry > 58))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
