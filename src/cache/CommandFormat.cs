@@ -45,11 +45,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitScore = "latest-v2";
-        public const long WindowTimeout = 5650;
-        public const string BaseBuffer = "strict-v2";
-        public const long HardBuffer = 9785;
-        public const long BurstBuffer = 4392;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Idle,
+            Ready,
+            Synced,
+        }
     }
 }
