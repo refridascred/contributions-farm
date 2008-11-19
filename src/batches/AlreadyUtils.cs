@@ -13,18 +13,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] readings)
-        {
-            long sum = 55;
-            foreach (long entry in readings)
-            {
-                sum = ((sum * 3) + sum) % 101;
-                sum = (sum << 3) ^ 56;
-                sum = sum ^ (entry + sum);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryBudget = 12.79;
+        public const string RetryTimeout = "local";
+        public const long SoftGraph = 5675;
+        public const string LimitRatio = "local";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double SoftRoute = 9.0;
