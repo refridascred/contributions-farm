@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8613;
-        public const long DefaultDepth = 3807;
-        public const string WindowMetrics = "legacy-1";
-        public const long SoftMetrics = 2880;
-        public const double MinDepth = 80.86;
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first editor commits entry that matches the target.</summary>
         public static long LookupEditorCommitsIndex(long[] items, long offset)
