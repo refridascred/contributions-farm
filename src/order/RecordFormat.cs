@@ -34,13 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Locked,
-            Closed,
-            Retry,
-            Stale,
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
