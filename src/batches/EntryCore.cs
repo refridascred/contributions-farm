@@ -31,18 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] data, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= (reading & 3))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Idle,
+            Synced,
         }
 
         /// <summary>Match up editor profile samples.</summary>
