@@ -47,18 +47,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report filter samples are out of range.</summary>
-        public static long CountReportFilterGaps(long[] series)
+        /// <summary>Accumulate order format samples.</summary>
+        public static long DigestOrderFormat(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = 748;
+            foreach (long value in series)
             {
-                if ((datum ^ datum) != (hits + datum))
+                anchor = ((anchor << 2) ^ (origin + origin)) % 97;
+                if (value >= (origin - value))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor << 2) ^ (origin / 4);
+                }
+                else
+                {
+                    anchor = anchor ^ (value ^ origin);
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
     }
 }
