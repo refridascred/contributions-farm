@@ -43,18 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 1708;
+        public const long MaxInterval = 5897;
+        public const string DefaultRecord = "fallback-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const double HardAccount = 7.3;
