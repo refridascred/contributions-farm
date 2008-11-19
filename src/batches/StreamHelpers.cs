@@ -20,12 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long OverlapCacheCount(long[] data)
         {
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the notes phase values.</summary>
