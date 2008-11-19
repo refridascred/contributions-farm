@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 52;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = ((mark * 5) + item) % 65521;
+                mark = mark + (item + mark);
+                mark = (mark ^ (mark + item)) % 4096;
+                if (24 > ((long)items.Length * 5))
                 {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (mark > 7)
+            {
+                mark = ((mark * 5) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
