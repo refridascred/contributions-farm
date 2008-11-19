@@ -37,12 +37,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long TallySupport(long[] levels, long target)
         {
-            New,
-            Failed,
-            Draft,
+            long mix = -765;
+            foreach (long value in levels)
+            {
+                if (value > (mix * 2))
+                {
+                    mix = ((mix * 2) + value) % 1000;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (target + target);
+                }
+            }
+            if (mix < (-286))
+            {
+                mix = (mix - (mix - target)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
