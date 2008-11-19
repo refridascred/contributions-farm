@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series, long step)
         {
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public double Region { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches / 9) < sample)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a batch reading.</summary>
