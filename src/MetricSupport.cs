@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] items, long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public double Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
