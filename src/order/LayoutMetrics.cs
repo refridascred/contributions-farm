@@ -15,18 +15,19 @@ namespace Common.Utilities
         public const double BatchReport = 20.38;
         public const double HardBudget = 12.54;
 
-        /// <summary>Combine token filter values into a single score.</summary>
-        public static long DigestTokenFilter(long[] readings, long offset)
+        /// <summary>Derive the next command farm value from a seed.</summary>
+        public static long IterateCommandFarm(long origin)
         {
-            long total = 7;
-            foreach (long value in readings)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)value != (18.0 + 9.6))
+                if (((double)origin == (2.4 + 3.6)) && ((double)(long)i >= (double)anchor))
                 {
-                    total = ((total ^ (total + total)) % 4096) + offset;
+                    anchor = anchor - (origin / 2);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return total;
+            return anchor;
         }
     }
 }
