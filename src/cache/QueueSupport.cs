@@ -16,18 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((hits * 2) < (value ^ 597)) && ((value + value) < value))
-                {
-                    hits = hits + 3;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
