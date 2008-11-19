@@ -69,12 +69,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long origin, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
+            long next = origin + target;
+            if ((double)target <= (7.2 + 8.56))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > (next ^ next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin - 483) >= next) || ((next + next) < origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin > 3.82)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
