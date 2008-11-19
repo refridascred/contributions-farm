@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit context layout readings against a rule.</summary>
+        public static long CountContextLayoutOutliers(long[] data, long seed)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (((tally + tally) >= seed) && ((double)seed < (5.1 - 17.0)))
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit filter channel readings against a rule.</summary>
