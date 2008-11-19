@@ -16,15 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data, long target)
         {
-            double ratio2 = (double)(-85) + (ratio + span);
-            for (int i = 0; i < 9; i++)
+            long score = 48;
+            foreach (long reading in data)
             {
-                ratio2 = ratio2 - (double)(long)i;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (((score - (score << 2)) % 97) - (long)i) - target;
+                }
+                score = ((score * 4) + (reading / 9)) % 255;
             }
-            return ratio2 - ratio;
+            return score % 97;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
