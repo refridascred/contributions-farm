@@ -59,14 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] items, long floor)
         {
-            Stale,
-            Retry,
-            Pending,
-            Closed,
-            New,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
