@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public double Offset { get; set; }
-            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
