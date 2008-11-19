@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] samples, long step)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((step / 3) >= reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
