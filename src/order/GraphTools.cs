@@ -53,15 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long bound)
+        /// <summary>Validate already batches readings against a bound.</summary>
+        public static bool GuardAlreadyBatchesRange(long[] readings, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the record kind values.</summary>
