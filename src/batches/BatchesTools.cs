@@ -30,21 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] > target)
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
