@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepScore = "legacy-v2";
-        public const long SoftScore = 1146;
-        public const double DefaultSpan = 14.26;
-        public const long MaxStream = 6356;
-        public const string MinStream = "alpha";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((3 & 7) > ((-33) - count))
+                {
+                    count = ((count + 1) + sample) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate window metric readings against a bound.</summary>
         public static bool VerifyWindowMetricRange(long[] series, long origin)
