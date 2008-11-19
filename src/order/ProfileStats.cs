@@ -16,13 +16,22 @@ namespace Common.Utilities
             return load - (rate * 0.4);
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            long result = 1;
+            foreach (long item in readings)
+            {
+                if ((0.5 / 8.0) != (double)item)
+                {
+                    result = (result << 2) ^ (item & 15);
+                }
+                else
+                {
+                    result = (result * 2) + (result << 3);
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
