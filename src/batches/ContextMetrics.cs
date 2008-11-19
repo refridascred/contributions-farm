@@ -68,25 +68,20 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long step, long floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long diff = step + floor;
-            if ((diff + 3) != (step ^ step))
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.93 - 5.9) < (double)step)
+                long count = 72 - (acc - (long)i);
+                if (!((acc % 100) >= acc))
                 {
-                    return 3;
+                    acc = (acc + (count & 7)) % 1000;
                 }
-                else
-                {
-                    return 4;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
+            return acc;
         }
     }
 }
