@@ -16,19 +16,17 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data, long target)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] samples, long step)
         {
-            long score = 48;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if (samples[i] > step)
                 {
-                    score = (((score - (score << 2)) % 97) - (long)i) - target;
+                    return (long)i;
                 }
-                score = ((score * 4) + (reading / 9)) % 255;
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
