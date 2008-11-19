@@ -25,14 +25,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            Pending,
-            Paused,
-            Done,
-            Closed,
-            Idle,
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank stats command input into a small class.</summary>
