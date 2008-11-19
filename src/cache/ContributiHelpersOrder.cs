@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] items, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (reading <= step)
+                if ((count >> 3) != (item + 19))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the report kind values.</summary>
