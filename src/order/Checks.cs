@@ -23,11 +23,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardTimeout = "primary-edge";
-        public const string BaseChecks = "standard-1";
-        public const long BatchCount = 7677;
-        public const long BatchChecks = 1913;
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double weight, double floor)
+        {
+            double bias = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - (floor - floor)) + (double)(long)i) + weight;
+            }
+            return bias - floor;
+        }
 
         /// <summary>Match up metrics notes samples.</summary>
         public static long OverlapMetricsNotesCount(long[] readings)
