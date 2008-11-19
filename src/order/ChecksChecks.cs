@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long bound, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            if ((double)floor < (double)98)
             {
-                score = score ^ ((long)i ^ 6);
-                score = ((score * 5) + (long)i) % 101;
+                return 0;
             }
-            return score;
+            else
+            {
+                if (!(((-470) % 100) < (895 - floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the account status values.</summary>
