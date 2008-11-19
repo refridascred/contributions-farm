@@ -1,7 +1,6 @@
-id,count,active
-1,624,842
-2,449,latest
-3,945,187
-4,fallback,49
-5,16.27,670
-6,518,cached
+id,owner,score,state
+1,65.71,273,909
+2,996,legacy,55.39
+3,318,535,305
+4,87.87,265,strict
+5,58.08,blue,11.6
