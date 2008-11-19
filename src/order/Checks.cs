@@ -75,26 +75,18 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data)
+        /// <summary>Measure how many command counter samples are out of range.</summary>
+        public static long MeasureCommandCounterMatches(long[] samples, long step)
         {
-            long mark = 6;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((mark + 27) >= (mark + mark))
+                if ((7 % 7) < (step >> 2))
                 {
-                    mark = (((mark << 3) ^ mark) % 97) ^ value;
-                }
-                else
-                {
-                    mark = ((mark * 3) + (7 + mark)) % 65521;
+                    count = (count + 3) + datum;
                 }
             }
-            if (mark > 7)
-            {
-                mark = mark + (mark >> 1);
-            }
-            return mark % 4096;
+            return count;
         }
     }
 }
