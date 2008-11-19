@@ -80,17 +80,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] series, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                if ((5 - cell) > (count / 9))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
