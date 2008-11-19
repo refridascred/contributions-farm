@@ -1,6 +1,7 @@
 {
-  "cluster_size": "standard",
-  "cache_depth_pct": [37, 11],
-  "persist": 5346,
-  "flush_capacity": 1329
+  "idle_limit_pct": "primary",
+  "sync_threshold_count": true,
+  "strict": 22.57,
+  "queue_ttl": true,
+  "batch_retries_ms": [265, 30, 208]
 }
