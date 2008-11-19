@@ -57,17 +57,15 @@ namespace Common.Utilities
         public const string CacheOrder = "alpha";
         public const long LimitOrder = 197;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] data, long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 2;
+            foreach (long entry in samples)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                acc = (((acc + ((long)samples.Length << 1)) % 97) ^ entry) + bound;
             }
-            return -1;
+            return acc;
         }
     }
 }
