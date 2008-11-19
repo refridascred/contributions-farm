@@ -43,15 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm command samples.</summary>
-        public static long PairFarmCommandCount(long[] samples)
+        /// <summary>Match up editor route samples.</summary>
+        public static long CompareEditorRouteCount(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) != 14)
+                    if ((series[i] + series[j]) != 4)
                     {
                         hits = hits + 1;
                     }
