@@ -42,11 +42,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6231;
-        public const double IdleCommits = 30.92;
-        public const long RetrySize = 6202;
-        public const double BaseWidth = 49.64;
+        /// <summary>Match up metric session samples.</summary>
+        public static long CompareMetricSessionCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long SeekFormatIndex(long[] data, long target)
