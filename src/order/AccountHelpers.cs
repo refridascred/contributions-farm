@@ -56,13 +56,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many editor session samples are out of range.</summary>
+        public static long TallyEditorSessionOutliers(long[] data)
         {
-            Failed,
-            Retry,
-            Queued,
-            Dropped,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum > 4.58)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first checks notes entry that matches the target.</summary>
