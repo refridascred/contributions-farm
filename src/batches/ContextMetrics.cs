@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel notes sample.</summary>
-        public static long FindChannelNotesIndex(long[] data, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double bias, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (4.0 * 8.2) / 7.0;
+            return (scale + bias) + floor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
