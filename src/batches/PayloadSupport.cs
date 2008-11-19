@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Queued,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "alpha";
+        public const string DefaultScore = "primary-edge";
+        public const long BaseWindow = 9066;
+        public const long HardWindow = 3917;
+        public const double IdleWindow = 77.35;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] data)
