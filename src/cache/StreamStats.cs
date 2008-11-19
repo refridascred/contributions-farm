@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long SoftSize = 563;
         public const string WindowFactor = "strict";
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] levels, long target)
+        /// <summary>Find the first buffer session entry that matches the target.</summary>
+        public static long LocateBufferSessionIndex(long[] levels, long target)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if (levels[i] >= target)
                 {
                     return (long)i;
                 }
