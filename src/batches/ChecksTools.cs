@@ -19,18 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph format samples are out of range.</summary>
-        public static long CountGraphFormatMatches(long[] data)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if ((floor - 43) < (373 - floor))
             {
-                if ((double)tally < (double)34)
+                return 0;
+            }
+            else
+            {
+                if ((limit & 3) <= (5 - limit))
                 {
-                    tally = (tally + 2) - entry;
+                    return 6;
+                }
+                else
+                {
+                    if (limit > (floor + 375))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
