@@ -1,5 +1,7 @@
 {
-  "flush_retries_count": 59.28,
-  "githubfarm_timeout": "stable",
-  "base_timeout_pct": 19
+  "commits_size": true,
+  "min_delay": 60,
+  "batches_threshold": 18,
+  "hard_ratio_s": "open",
+  "default_size": 10.11
 }
