@@ -14,13 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
