@@ -33,12 +33,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            Ready,
+            Stale,
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
