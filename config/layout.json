@@ -1,5 +1,8 @@
 {
-  "warm_interval": true,
-  "payload_timeout": 98,
-  "queue_interval": 93
+  "stats_threshold": 48.95,
+  "counter_delay": 30,
+  "flush_size_count": 59.7,
+  "hard_interval": "local",
+  "min_limit": [138, 18, 495, 458],
+  "readonly": "open"
 }
