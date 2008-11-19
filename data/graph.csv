@@ -1,8 +1,6 @@
-id,rank,owner,label,token
-1,105,standard,fallback,local
-2,strict,open,607,45.17
-3,57.57,4.54,9.43,219
-4,118,635,primary,352
-5,fallback,fallback,296,74.27
-6,448,601,256,544
-7,46.62,49.57,94.2,705
+id,score,owner
+1,eu-west,422
+2,cached,latest
+3,primary,389
+4,15.98,855
+5,12.6,307
