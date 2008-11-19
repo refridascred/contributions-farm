@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long bound, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long floor)
         {
-            if ((double)floor < (double)98)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(((-470) % 100) < (895 - floor)))
+                total = total + (total >> 5);
+                if (floor < (long)i)
                 {
-                    return 3;
+                    total = (total - total) % 255;
+                    continue;
                 }
-                else
+                if (!((double)total < (double)floor))
                 {
-                    return 8;
+                    total = (total + total) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Describe the account status values.</summary>
