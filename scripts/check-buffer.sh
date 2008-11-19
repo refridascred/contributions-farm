@@ -7,11 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in legacy standard staging latest; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=140
+log "limit is ${BUFFER_LIMIT}"
