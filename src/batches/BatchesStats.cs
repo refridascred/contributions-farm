@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public bool Flag { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
