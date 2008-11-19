@@ -42,18 +42,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] levels, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count >= (9.3 + 1.1))
-                {
-                    count = ((count + 3) + cell) + target;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
