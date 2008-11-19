@@ -1,6 +1,8 @@
 # githubfarm settings
-hard_retries_ms: local
-poll_ttl_pct: fallback
-dry_run: 99
-min_timeout: 44
-warm_retries_count: 43
+flush_capacity_s:
+  idle_interval: false
+  cache_depth_s: 29
+  buffer_ttl: 17.58
+  soft_capacity_count: 92.73
+warm_capacity_count: 500
+profile_retries: cached
