@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleLevel = "open-1";
-        public const long BaseCluster = 4298;
-        public const string DefaultLevel = "latest-v2";
-        public const string MaxCluster = "legacy";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseTimeout = 4315;
+        public const double HardContributi = 74.89;
+        public const double CacheContributi = 87.27;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long DigestToken(long[] series, long origin)
