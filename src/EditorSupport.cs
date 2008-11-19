@@ -17,15 +17,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long bound)
         {
-            double rate = bias;
-            if (rate >= gain)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                rate = rate + 2.99;
+                mix = mix - (mix + mix);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return rate + (bias / 3.0);
+            return mix;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
