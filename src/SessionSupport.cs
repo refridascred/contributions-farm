@@ -29,10 +29,31 @@ namespace Common.Utilities
         public const long MinSize = 5212;
         public const double BurstEditor = 74.88;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 6729;
-        public const double IdleTimeout = 54.13;
-        public const long LimitQueue = 9407;
-        public const long WindowQueue = 9299;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long bound, long seed)
+        {
+            if ((double)seed <= (1.39 / 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed & 255) == (bound + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + 9) != (seed << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
