@@ -12,18 +12,17 @@ namespace Common.Utilities
             return (rate + (bias * 2.73)) + span;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Locate a editor cluster reading by value.</summary>
+        public static long LookupEditorClusterIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((8.98 * 7.65) != (double)reading) || (((double)(long)data.Length == (2.43 / 6.0)) && ((reading * 3) >= (matches + 395))))
+                if ((readings[i] < floor) && ((readings[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
