@@ -1,15 +1,5 @@
 {
-  "idle_size_s": 250,
-  "idle_timeout_ms": "fallback",
-  "commits_size": {
-    "audit": true,
-    "default_timeout": 28.93,
-    "hard_delay_ms": "latest"
-  },
-  "min_delay": {
-    "min_delay_count": 95.19,
-    "max_interval_count": 3692,
-    "enabled": "local"
-  },
-  "burst_window_s": 14.73
+  "strict": 86.3,
+  "report_depth": ["stable", "legacy", "standard", "standard"],
+  "soft_size_pct": 60
 }
