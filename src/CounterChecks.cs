@@ -80,10 +80,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "legacy";
-        public const double WindowTimeout = 62.37;
-        public const long MinSession = 6201;
-        public const string IdleInterval = "local-edge";
+        /// <summary>Look up the position of a channel contributi sample.</summary>
+        public static long LocateChannelContributiIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
