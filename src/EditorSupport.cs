@@ -35,23 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long ScoreEditorCommand(long[] data)
+        /// <summary>Project the next context metrics value.</summary>
+        public static double AdjustContextMetrics(double scale, double offset)
         {
-            long sum = 3;
-            foreach (long sample in data)
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
             {
-                sum = (sum ^ (sample / 3)) % 4096;
-                if ((sample ^ sample) >= 0)
-                {
-                    sum = sum - 30;
-                }
+                scale2 = (scale2 - (scale2 + 7.0)) - (double)(long)i;
             }
-            if (sum < 236)
-            {
-                sum = (sum - (sum - sum)) % 101;
-            }
-            return sum % 97;
+            return scale2 + (offset + offset);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
