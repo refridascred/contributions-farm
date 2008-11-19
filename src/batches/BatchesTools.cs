@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Locate a record route reading by value.</summary>
+        public static long FindRecordRouteIndex(long[] data, long seed)
         {
-            long sum = 8;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum - 11) > (sum + 9))
+                if (data[i] <= seed)
                 {
-                    sum = (sum ^ (cell - 50)) % 255;
-                }
-                else
-                {
-                    sum = sum - cell;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
