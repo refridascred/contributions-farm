@@ -51,23 +51,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long mix = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)i + anchor) <= 431)
-                {
-                    break;
-                }
-                if ((anchor + anchor) > limit)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the record kind values.</summary>
