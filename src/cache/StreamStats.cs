@@ -12,18 +12,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the window editor entries that pass the check.</summary>
-        public static long MeasureWindowEditorOutliers(long[] readings)
+        /// <summary>Audit filter channel readings against a rule.</summary>
+        public static long AuditFilterChannelHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((seen ^ entry) == (entry + seen))
+                if (!((count / 2) >= (cell + cell)) || ((5 + count) <= cell))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
