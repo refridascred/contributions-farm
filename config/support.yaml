@@ -1,9 +1,27 @@
 # support settings
-min_ttl_count: false
-burst_threshold_count: strict
-hard_depth_ms: local
-warm_capacity_pct:
-  cache_window_count: 33.5
-  compress: legacy
-  soft_interval: 60
-  stats_capacity: eu-west
+burst_capacity: 95
+compress:
+  enabled: false
+  cache_depth_count: 3365
+  persist:
+    max_depth: 30
+    flush_ttl: false
+    editor_window: open
+strict: 60
+batch_capacity: fallback
+flush_window:
+  account_interval: eu-west
+  hard_ttl_pct:
+    min_window_ms: false
+    hard_timeout: cached
+    filter_size: staging
+    readonly: 53
+    payload_delay: true
+    metric_threshold: 60.85
+  soft_capacity: blue
+  audit: latest
+  cluster_interval:
+    - 285
+    - 328
+    - 159
+  record_delay: strict
