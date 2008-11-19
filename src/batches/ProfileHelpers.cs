@@ -38,21 +38,23 @@ namespace Common.Utilities
             return weight + scale;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (((mix ^ (mix & 7)) % 65521) - (long)i) ^ item;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mix = ((mix * 2) + ((-31) << 1)) - (long)i2;
+                }
+                mix = ((mix * 5) + ((-224) & 127)) % 65521;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
