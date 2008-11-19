@@ -69,21 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up metrics support samples.</summary>
-        public static long MatchMetricsSupportCount(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Closed,
+            Failed,
         }
     }
 }
