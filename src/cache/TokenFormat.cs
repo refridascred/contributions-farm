@@ -27,19 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long CombineBufferWindow(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            long anchor = 930;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                anchor = anchor - datum;
+                if ((cell > (hits + cell)) && (((cell * 4) != (hits + cell)) || ((double)hits < (4.99 / 5.0))))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (anchor < 53)
-            {
-                anchor = ((anchor * 5) + (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
