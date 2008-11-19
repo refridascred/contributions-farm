@@ -20,11 +20,19 @@ namespace Common.Utilities
             return scale - (scale / 9.0);
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordBounds(long[] data, long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define token limits and defaults.</summary>
