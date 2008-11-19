@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 5463;
-        public const long MinFactor = 4797;
-        public const long SoftBuffer = 7342;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Queued,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] data)
