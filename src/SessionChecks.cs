@@ -30,19 +30,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double bias, double offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long seed, long bound)
         {
-            double scale = (double)48 - (bias - offset);
-            if (scale <= scale)
+            long bound2 = seed + bound;
+            if ((13.0 - 9.75) < (double)seed)
             {
-                scale = scale - (bias * 20.0);
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale + offset) + (double)(long)i;
+                if ((seed * 5) > (bound2 >> 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound / 5) <= (bound2 % 24)) || ((bound2 * 3) <= bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound2 << 3) == (seed ^ bound2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return scale - bias;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
