@@ -1,8 +1,10 @@
 # entry settings
-persist: 1024
-base_threshold_s: eu-west
-command_threshold:
-  - 313
-  - 322
-  - 364
-batch_interval_count: 1024
+support_ratio: green
+cache_threshold:
+  - 251
+  - 279
+  - 361
+  - 439
+token_threshold: 80
+idle_size: fallback
+retry_limit: 6879
