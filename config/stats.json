@@ -1,23 +1,7 @@
 {
-  "token_ratio": 5271,
-  "max_ttl": {
-    "layout_interval": false,
-    "soft_threshold_s": 1733,
-    "queue_threshold": 77.53,
-    "strict": {
-      "flush_ttl_count": 3212,
-      "base_timeout": "open",
-      "max_window": 93.3,
-      "audit": true,
-      "soft_interval_count": [474, 26],
-      "warm_limit_ms": "open"
-    },
-    "sync_size_ms": {
-      "burst_interval": false,
-      "dry_run": 21.88,
-      "sync_capacity_ms": 78.2
-    },
-    "cache_retries_ms": 250
-  },
-  "verbose": "staging"
+  "compress": true,
+  "audit": 915,
+  "soft_timeout_pct": 76.57,
+  "base_limit": ["eu-west", "stable", "open"],
+  "min_depth_pct": "edge"
 }
