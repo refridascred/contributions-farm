@@ -19,12 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 9115;
-        public const long HardGithubfarm = 6085;
-        public const long IdleGithubfarm = 5750;
-        public const long WindowGithubfarm = 9806;
-        public const double RetryLevel = 18.34;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] series, long seed)
