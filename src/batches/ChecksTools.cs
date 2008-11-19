@@ -19,31 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long floor, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            if ((floor - 43) < (373 - floor))
+            long result = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                result = ((result * 4) + (result * 5)) % 1000;
+                result = ((result * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit & 3) <= (5 - limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit > (floor + 375))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
