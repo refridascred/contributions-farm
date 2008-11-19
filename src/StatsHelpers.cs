@@ -21,11 +21,14 @@ namespace Common.Utilities
             return rate + scale;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
+            New,
+            Draft,
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Adjust a commits reading.</summary>
