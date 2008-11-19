@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandRange(long[] data, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
