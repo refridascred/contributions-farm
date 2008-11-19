@@ -1,11 +1,10 @@
 # Command notes
 
-The payload report groups every cluster by report.
-Run the entry check before changing any order limits.
-Each batches is validated before it reaches the githubfarm queue.
+The context helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate metrics input early
-- Log every route change
+- Document new graph fields
+- Log every githubfarm change
+- Review metric limits each release
