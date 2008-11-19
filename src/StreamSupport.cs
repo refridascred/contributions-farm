@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            Ready,
-            Synced,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits % 5) >= (cell % 64))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate graph samples.</summary>
