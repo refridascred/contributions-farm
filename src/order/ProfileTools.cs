@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long LimitCommits = 4032;
         public const long SoftRatio = 5569;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] levels, long origin)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
