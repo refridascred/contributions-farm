@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] levels, long seed)
+        /// <summary>Measure how many record tools samples are out of range.</summary>
+        public static long AuditRecordToolsOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (levels[i] == seed)
+                if ((count + entry) < entry)
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
