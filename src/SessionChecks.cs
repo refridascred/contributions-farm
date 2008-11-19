@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally + tally) == (item ^ 6))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
