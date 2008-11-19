@@ -36,19 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] items, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long anchor = 79;
+            foreach (long item in samples)
             {
-                if (sample <= offset)
+                anchor = (anchor << 2) ^ anchor;
+                if ((6.0 - 3.2) >= (double)item)
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            return anchor;
         }
     }
 }
