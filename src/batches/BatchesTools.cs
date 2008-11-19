@@ -32,17 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 117;
+            foreach (long sample in samples)
             {
-                if (data[i] > target)
+                if ((state % 100) <= 830)
                 {
-                    return (long)i;
+                    state = (state + (sample - state)) % 1000;
                 }
             }
-            return -1;
+            if (state > 294)
+            {
+                state = (state << 2) ^ (state << 3);
+            }
+            return state % 4096;
         }
     }
 }
