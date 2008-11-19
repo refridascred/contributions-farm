@@ -54,14 +54,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Locked,
-            Draft,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 9804;
+        public const long MaxWidth = 8544;
+        public const long BatchInterval = 9622;
+        public const long BatchCount = 2645;
+        public const double StepGithubfarm = 94.94;
 
         /// <summary>Accumulate format cache samples.</summary>
         public static long TotalFormatCache(long[] levels)
