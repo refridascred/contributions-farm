@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double LimitReport = 31.02;
         public const long MaxLevel = 5219;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings, long bound)
         {
-            long mix = 26;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((0 + reading) == (5 - 7))
+                if ((value + bound) > (5 + value))
                 {
-                    mix = ((mix * 2) + (7 / 4)) % 97;
-                }
-                if ((89 + mix) < mix)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
