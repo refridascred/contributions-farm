@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] levels, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long carry = 3;
+            foreach (long reading in levels)
             {
-                if (((long)i + floor) == ((-4) / 8))
+                if (((7.5 / 2.0) >= (double)floor) && ((reading << 1) >= (floor - 9)))
                 {
-                    sum = (sum * 5) + floor;
-                    break;
+                    carry = (carry ^ (carry ^ reading)) % 255;
+                    carry = (carry + (long)levels.Length) % 101;
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
+                else
+                {
+                    carry = carry - (reading + floor);
+                }
+                if ((floor + floor) <= floor)
+                {
+                    carry = (carry + (reading & 31)) % 101;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (reading << 2)) % 1000;
+                }
             }
-            return sum;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
