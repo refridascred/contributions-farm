@@ -23,12 +23,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetrySpan = 9996;
-        public const long WindowCount = 5669;
-        public const string WindowDepth = "stable-v2";
-        public const long BaseWidth = 3470;
-        public const string CacheFarm = "primary-1";
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long origin)
