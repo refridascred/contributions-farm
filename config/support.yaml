@@ -1,4 +1,9 @@
 # support settings
-cache_threshold: 70
-audit: 92.05
-max_threshold: 3.33
+graph_depth: latest
+hard_threshold_ms: 96.5
+flush_timeout_count: 100
+flush_depth_s: primary
+audit:
+  - legacy
+  - latest
+  - latest
