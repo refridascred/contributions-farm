@@ -69,11 +69,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long offset)
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score + ((long)i / 3)) % 97;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
