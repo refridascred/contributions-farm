@@ -28,22 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((((long)readings.Length * 4) <= (3 / 3)) && ((tally ^ sample) < (tally + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
