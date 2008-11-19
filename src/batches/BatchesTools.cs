@@ -32,20 +32,15 @@ namespace Common.Utilities
         public const string CacheSupport = "strict-1";
         public const long LimitDepth = 6217;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] values, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            long mark = 86;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    mix = ((mix << 3) ^ (mix / 7)) ^ (long)i2;
-                }
-                mix = (mix + 250) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                mark = ((mark ^ 67) ^ cell) - limit;
             }
-            return mix;
+            return mark % 97;
         }
     }
 }
