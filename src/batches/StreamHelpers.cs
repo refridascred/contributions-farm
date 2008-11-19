@@ -28,17 +28,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long acc = 76;
-            foreach (long sample in levels)
-            {
-                acc = (acc ^ (387 + acc)) % 101;
-                acc = acc - sample;
-                acc = (acc ^ (sample + acc)) % 65521;
-            }
-            return acc;
+            Synced,
+            New,
+            Active,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
