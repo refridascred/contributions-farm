@@ -23,11 +23,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            Queued,
+            Ready,
+            Stale,
         }
     }
 }
