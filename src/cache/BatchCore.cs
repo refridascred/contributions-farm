@@ -28,18 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = 123;
+            foreach (long sample in series)
             {
-                if ((count << 3) < value)
+                if (!(sample <= (score - sample)))
                 {
-                    count = count + 2;
+                    score = score ^ (score * 3);
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Check that every farm buffer entry stays within the limit.</summary>
