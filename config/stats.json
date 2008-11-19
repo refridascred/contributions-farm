@@ -1,5 +1,6 @@
 {
-  "warm_threshold_s": false,
-  "commits_timeout": ["local", "staging", "fallback"],
-  "hard_ttl_count": 6405
+  "flush_window": true,
+  "max_interval_pct": false,
+  "warm_depth_pct": 51.08,
+  "metrics_ttl": 60
 }
