@@ -62,9 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 30.95;
-        public const double MinChecks = 8.53;
-        public const long IdleChecks = 1264;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Done,
+            Idle,
+            Closed,
+            Failed,
+            New,
+        }
     }
 }
