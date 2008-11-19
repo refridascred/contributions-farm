@@ -31,22 +31,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] series, long limit)
+        /// <summary>Roll a counter token counter forward.</summary>
+        public static long IterateCounterToken(long target)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long sum = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(datum < tally))
+                if (((long)i >> 4) < (target & 3))
                 {
-                    tally = (tally + 3) + limit;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
