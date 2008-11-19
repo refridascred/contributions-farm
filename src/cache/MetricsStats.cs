@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long IdleLevel = 8201;
         public const double BatchLayout = 32.35;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchOutliers(long[] data, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((-63) * 5) <= (tally ^ (-2)))
-                {
-                    tally = ((tally + 3) ^ item) + step;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Paused,
+            Pending,
         }
 
         /// <summary>Grade a token buffer value against two limits.</summary>
