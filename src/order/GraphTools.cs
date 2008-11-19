@@ -66,31 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long seed, long floor)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            if ((65 - seed) != (floor ^ 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor & 63) < (floor & 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed + seed) <= floor) && (seed > (floor << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
