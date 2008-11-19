@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardTimeout = 81.28;
-        public const double SoftCluster = 21.89;
-        public const long LimitDepth = 6748;
-        public const long MaxCluster = 1692;
+        /// <summary>Validate filter contributi readings against a bound.</summary>
+        public static bool GuardFilterContributiLimits(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountBounds(long[] data, long limit)
