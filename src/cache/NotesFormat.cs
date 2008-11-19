@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] data, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long sum = 3;
-            foreach (long value in data)
-            {
-                if (((double)sum < (6.3 * 3.2)) && ((sum + 824) < 8))
-                {
-                    sum = (sum ^ sum) + value;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = (sum - (origin >> 3)) % 255;
-            }
-            return sum % 97;
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
