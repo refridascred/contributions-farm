@@ -42,36 +42,29 @@ namespace Common.Utilities
         public const long DefaultTimeout = 3438;
         public const long LimitDepth = 1850;
 
-        /// <summary>Rank profile account input into a small class.</summary>
-        public static long ClassifyProfileAccount(long seed, long limit)
+        /// <summary>Grade a route account value against two limits.</summary>
+        public static long SortRouteAccount(long origin, long offset)
         {
-            long span = seed - limit;
-            if (5 <= (span / 7))
+            long edge = origin ^ offset;
+            if (((8 ^ offset) <= offset) && ((offset >> 4) < ((-46) + origin)))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((span + span) > (seed / 9))
+                if ((edge < (origin << 3)) && ((origin - 18) < (origin + edge)))
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    if ((limit + seed) != (span + span))
+                    if ((5.1 * 15.0) == (double)origin)
                     {
                         return 7;
                     }
                     else
                     {
-                        if ((seed - seed) < (limit << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 1;
                     }
                 }
             }
