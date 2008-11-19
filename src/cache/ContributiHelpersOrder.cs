@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate cluster schema readings against a bound.</summary>
-        public static bool VerifyClusterSchemaRange(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitDepth = 8365;
+        public const double LimitReport = 31.02;
+        public const long MaxLevel = 5219;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] data)
