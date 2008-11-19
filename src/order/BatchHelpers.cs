@@ -26,14 +26,28 @@ namespace Common.Utilities
         public const long WindowDepth = 703;
         public const long CacheCommits = 2015;
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long bound)
         {
-            New,
-            Retry,
-            Closed,
-            Draft,
-            Idle,
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score - (683 + bound)) % 4096) ^ (long)i2;
+                }
+                if (((bound + 124) <= (90 ^ score)) || (((long)i + score) != (score << 3)))
+                {
+                    score = score + bound;
+                    score = ((score * 5) + score) % 65521;
+                }
+                else
+                {
+                    score = score + (bound + score);
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
