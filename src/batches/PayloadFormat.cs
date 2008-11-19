@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] data, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((double)matches < (0.83 + 2.0)) || ((sample << 2) >= matches))
+                if ((reading * 4) >= (9 % 100))
                 {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
