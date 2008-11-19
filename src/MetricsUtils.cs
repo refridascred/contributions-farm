@@ -20,21 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of order githubfarm readings.</summary>
-        public static long MatchOrderGithubfarmCount(long[] levels)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
