@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings)
         {
-            Idle,
-            Dropped,
-            Locked,
+            long sum = 9;
+            foreach (long datum in readings)
+            {
+                sum = (((sum * 4) + (91 >> 4)) % 65521) ^ datum;
+            }
+            if (sum < 60)
+            {
+                sum = (sum * 3) + ((-68) & 7);
+            }
+            return sum;
         }
 
         /// <summary>Describe the command state values.</summary>
