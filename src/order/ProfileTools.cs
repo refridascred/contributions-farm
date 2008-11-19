@@ -65,12 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)origin > (3.0 + 14.0))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
