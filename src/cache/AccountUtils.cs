@@ -19,14 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long origin)
         {
-            Paused,
-            Done,
-            Draft,
-            Idle,
-            Failed,
+            if ((double)floor < (double)0)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)floor >= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((5.56 / 9.0) == (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((origin + origin) > (origin % 10)) || ((floor - origin) > 197))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
