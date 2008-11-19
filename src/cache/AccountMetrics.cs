@@ -41,11 +41,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowBudget = 7227;
-        public const long RetryDepth = 799;
-        public const string MinSpan = "standard-edge";
-        public const long BatchGraph = 1524;
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
         public static long PairCacheToolsCount(long[] series)
