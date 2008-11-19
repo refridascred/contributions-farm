@@ -13,27 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of graph report readings.</summary>
-        public static long WeighGraphReport(long[] values)
+        /// <summary>Measure how many batches batch samples are out of range.</summary>
+        public static long TallyBatchesBatchHits(long[] series, long limit)
         {
-            long carry = 8;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((carry % 5) >= carry)
+                if ((double)621 < (double)limit)
                 {
-                    carry = (carry << 2) ^ 826;
-                    carry = (carry ^ value) % 65521;
-                }
-                if ((12.0 + 1.0) > (2.0 - 0.48))
-                {
-                    carry = carry + ((long)values.Length + value);
+                    hits = (hits + 1) + entry;
                 }
             }
-            if (carry > 74)
-            {
-                carry = (carry + (carry + (-11))) % 97;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a contributi info.</summary>
