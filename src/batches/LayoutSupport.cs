@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const long BatchSchema = 5108;
         public const long DefaultSchema = 1317;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - seen) != (seen * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4262;
+        public const double HardTimeout = 79.93;
+        public const long IdleDepth = 1168;
+        public const string MaxTimeout = "strict-v2";
+        public const double SoftRecord = 46.03;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long DeriveNotes(long bound)
