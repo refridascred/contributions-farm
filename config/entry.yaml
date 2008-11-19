@@ -1,8 +1,29 @@
 # entry settings
-cache_limit_s:
-  poll_limit_s: 60
-  default_window_count: 3749
-  retry_threshold: 34.78
-poll_capacity: false
-poll_threshold_count: 9796
-poll_window_count: 12
+flush_window_pct:
+  cache_retries_s: 8435
+  profile_retries: 14.63
+  hard_depth_count: latest
+  cache_size_pct: 11
+  dry_run: 100
+  queue_size: green
+max_interval_s: false
+soft_size: staging
+entry_ttl: 33.33
+queue_ttl: primary
+notes_threshold:
+  batch_size_pct:
+    farm_delay: 250
+    window_retries:
+      - 138
+      - 227
+      - 330
+    min_ttl_count: true
+    batch_size_pct: 5095
+  default_timeout_ms: blue
+  batch_delay: 19.02
+  persist: primary
+  enabled: 53.74
+  hard_size_s:
+    - 280
+    - 307
+    - 279
