@@ -43,18 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] values, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((20.0 / 6.0) > (double)step)
+                if (entry < seed)
                 {
-                    hits = (hits + 2) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
