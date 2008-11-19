@@ -57,15 +57,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a support token counter forward.</summary>
-        public static long StepSupportToken(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitTimeout = 2066;
+        public const string IdleBudget = "cached";
+        public const long StepQueue = 1119;
     }
 }
