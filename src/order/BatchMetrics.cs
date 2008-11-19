@@ -28,17 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first context batches entry that matches the target.</summary>
-        public static long LocateContextBatchesIndex(long[] values, long origin)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
