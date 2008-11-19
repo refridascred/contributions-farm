@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values, long step)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = 8;
-            foreach (long sample in values)
-            {
-                if ((step + step) == (score / 7))
-                {
-                    score = ((score - (step + (-722))) % 65521) + sample;
-                }
-            }
-            if (score < (-40))
-            {
-                score = (score - (74 + 7)) % 255;
-            }
-            return score;
+            Draft,
+            Done,
+            Retry,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the profile status values.</summary>
