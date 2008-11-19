@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Iterate the context filter series from a seed.</summary>
