@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
-        {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 80.12;
+        public const long StepSpan = 2633;
+        public const string WindowCluster = "legacy";
+        public const long DefaultScore = 280;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LocateRecordIndex(long[] levels, long origin)
