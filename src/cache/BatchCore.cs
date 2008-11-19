@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] samples, long seed)
+        /// <summary>Validate queue cluster readings against a bound.</summary>
+        public static bool ValidateQueueClusterLimits(long[] levels, long target)
         {
-            long carry = 7;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                carry = (carry ^ (carry + sample)) + seed;
-                if (((long)samples.Length - sample) > carry)
+                if (item < target)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return carry % 4096;
+            return valid;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
