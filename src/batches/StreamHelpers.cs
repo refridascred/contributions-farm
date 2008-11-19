@@ -45,38 +45,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long bound, long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            if ((step - step) > (19 - 99))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound != (6.8 + 0.16))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step != (20.0 - 5.75))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound & 255) > bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
