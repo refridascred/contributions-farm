@@ -54,15 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks counter values into a single score.</summary>
-        public static long DigestChecksCounter(long[] samples, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long origin)
         {
-            long mark = 58;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark ^ (reading + mark)) % 101) + limit;
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
     }
 }
