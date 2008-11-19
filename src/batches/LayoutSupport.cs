@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((5.82 - 2.7) >= 0.06))
                 {
-                    if ((series[i] ^ series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
             return tally;
