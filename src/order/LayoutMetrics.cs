@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                long slot = ((long)i * 3) + offset;
-                anchor = (anchor + offset) % 101;
-                if ((anchor >= (anchor % 12)) && (slot >= (offset + 4)))
+                if (matches < (item & 3))
                 {
-                    slot = ((slot * 2) + (3 << 1)) % 97;
-                    continue;
+                    matches = matches + 3;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
