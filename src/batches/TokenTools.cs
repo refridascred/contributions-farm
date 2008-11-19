@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long carry = -229;
-            foreach (long reading in levels)
-            {
-                carry = ((carry * 2) + (carry + carry)) + reading;
-                if ((carry / 4) < (carry & 255))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a counter token counter forward.</summary>
