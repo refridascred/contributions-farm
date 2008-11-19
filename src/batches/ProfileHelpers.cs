@@ -13,22 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double drift = gain;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)hits == (double)cell)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = (drift - (offset * 8.21)) + (double)(long)i;
             }
-            return hits;
+            return drift - (double)452;
         }
 
         /// <summary>Describe the stream mode values.</summary>
