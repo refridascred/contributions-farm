@@ -24,22 +24,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metric editor readings against a rule.</summary>
-        public static long TallyMetricEditorOutliers(long[] samples, long target)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-11) < (datum ^ seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
