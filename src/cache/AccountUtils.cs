@@ -19,11 +19,10 @@ namespace Common.Utilities
         public const long DefaultChannel = 6268;
         public const long CacheChannel = 6816;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseBudget = 2629;
-        public const long BurstTools = 7716;
-        public const long BaseCount = 8601;
-        public const double DefaultTools = 44.01;
-        public const long BatchTools = 6688;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 2316;
+        public const long BaseProfile = 1729;
+        public const long MaxWidth = 4027;
+        public const long MinRatio = 7830;
     }
 }
