@@ -1,6 +1,6 @@
 {
-  "poll_window": 54.82,
-  "batch_capacity_count": ["local", "green"],
-  "batch_ratio": 1,
-  "strict": 19.38
+  "route_size": false,
+  "max_capacity": 2096,
+  "min_threshold_count": "green",
+  "audit": 11.0
 }
