@@ -39,19 +39,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double span)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long floor, long origin)
         {
-            double weight = (double)((-64) + 3);
-            if (weight <= (rate + weight))
+            if ((origin << 3) <= (floor + 37))
             {
-                weight = weight - (double)5;
+                return 0;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                weight = (weight + (span * 20.0)) - (double)(long)i;
+                if (!((floor * 5) != (origin + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin % 60) < (floor + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return weight + 2.0;
         }
     }
 }
