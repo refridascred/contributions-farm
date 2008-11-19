@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseRatio = 6483;
-        public const long LimitRatio = 3394;
-        public const string RetryLevel = "open-1";
-        public const long StepDepth = 5819;
-        public const long BaseToken = 7769;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long offset)
+        {
+            long prev = limit ^ offset;
+            if ((double)offset != (double)prev)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ limit) >= (offset + 542))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 > (limit + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesLimits(long[] values, long target)
