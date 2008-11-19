@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 975;
-        public const double HardQueue = 68.58;
-        public const long BatchInterval = 434;
-        public const long BatchQueue = 1930;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next stats already value.</summary>
         public static double AdjustStatsAlready(double scale, double span)
