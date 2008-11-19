@@ -15,19 +15,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] values, long floor)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            double bias = 7.0 / 9.0;
+            if (bias >= (bias - span))
             {
-                if (entry >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - 13.0) + ratio;
             }
-            return ok;
+            else
+            {
+                bias = bias - (span * 3.47);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (double)9) + (double)(long)i;
+            }
+            return bias + (9.5 * 1.34);
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
