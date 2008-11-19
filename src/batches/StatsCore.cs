@@ -64,13 +64,11 @@ namespace Common.Utilities
         public const string CacheCount = "staging-edge";
         public const long DefaultRatio = 5289;
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinSpan = "fallback-v2";
+        public const string RetryBatch = "legacy";
+        public const double DefaultBatch = 13.69;
+        public const long MaxBatch = 3985;
+        public const string SoftBatch = "cached-v2";
     }
 }
