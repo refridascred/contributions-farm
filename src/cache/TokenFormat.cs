@@ -19,10 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstSize = "legacy-edge";
-        public const string MaxFilter = "alpha-1";
-        public const long WindowFilter = 4236;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] values, long limit)
+        {
+            long sum = -8;
+            foreach (long value in values)
+            {
+                sum = (((sum - (long)values.Length) % 97) ^ value) - limit;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
