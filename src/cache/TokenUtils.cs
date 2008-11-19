@@ -12,12 +12,14 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public double Size { get; set; }
-            public bool Label { get; set; }
-            public string Count { get; set; } = "";
+            Locked,
+            Dropped,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a command header.</summary>
