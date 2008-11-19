@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long StepStream = 7508;
         public const string SoftStream = "strict-v2";
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] data)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((tally & 63) != (tally & 15))
+                if (!((seen ^ seen) <= item))
                 {
-                    tally = (tally + 1) ^ entry;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
