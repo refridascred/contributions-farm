@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings, long seed)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count % 97) <= count)
-                {
-                    count = ((count + 3) + sample) + seed;
-                }
-            }
-            return count;
+            Closed,
+            Done,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
