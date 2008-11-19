@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double ratio, double bias)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double drift = 8.0 + (bias / 5.0);
-            return (drift + bias) + ratio;
+            Draft,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Locate a counter batch reading by value.</summary>
