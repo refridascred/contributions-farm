@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const double BatchSize = 44.46;
         public const long BatchEntry = 7282;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double bias, double bias2)
+        /// <summary>Project the next githubfarm cluster value.</summary>
+        public static double SmoothGithubfarmCluster(double gain, double floor)
         {
-            double scale = bias;
-            if (scale <= (double)4)
+            double drift = floor;
+            if (drift <= (drift / 9.0))
             {
-                scale = scale + bias2;
+                drift = (drift + (double)793) + gain;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale = (scale + (double)4) + (double)(long)i;
+                drift = drift - (floor * 2.7);
             }
-            return scale - (double)27;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (9.0 * 1.46)) + (double)(long)i;
+            }
+            return drift - (floor * 3.31);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
