@@ -20,32 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long step, long offset)
+        /// <summary>Audit cache contributi readings against a rule.</summary>
+        public static long TallyCacheContributiHits(long[] series)
         {
-            long prev = step ^ offset;
-            if (!((offset + 80) == (prev + offset)))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)prev > (6.66 - 7.0)) && ((prev ^ step) < (42 + step)))
+                if ((45 ^ reading) <= (count >> 1))
                 {
-                    return 4;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((prev * 3) >= (659 << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine schema tools values into a single score.</summary>
