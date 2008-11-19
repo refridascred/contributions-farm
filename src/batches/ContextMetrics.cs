@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (matches < (entry / 7))
+                if (value >= step)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a context header.</summary>
