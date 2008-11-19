@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long StepDepth = 5819;
         public const long BaseToken = 7769;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinCount = 1680;
-        public const double SoftInterval = 92.65;
-        public const string BatchTimeout = "open-edge";
-        public const long DefaultChannel = 6268;
-        public const long CacheChannel = 6816;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long GradeCounter(long target, long bound)
