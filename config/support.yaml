@@ -1,17 +1,13 @@
 # support settings
-batches_retries: 97.44
-flush_size_pct:
-  - 284
-  - 216
-base_limit: 500
-min_capacity_count: strict
-dry_run: 5259
-hard_size_pct:
-  idle_delay_s:
-    base_interval_s: 500
-    flush_capacity: eu-west
-    cache_depth_count: 100
-    soft_retries_count: 500
-    sync_ratio_count: 38
-  strict: 95.17
-  audit: false
+persist: 1024
+poll_threshold:
+  - strict
+  - fallback
+  - primary
+strict: open
+account_window:
+  cache_size_count: 7.9
+  compress: 9
+  soft_threshold_count: true
+  warm_interval_ms: green
+  stream_delay: standard
