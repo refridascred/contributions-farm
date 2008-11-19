@@ -31,24 +31,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long offset, long origin)
-        {
-            if (((double)origin >= (19.0 / 8.0)) || (3.22 < (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin < (origin + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 5769;
+        public const double HardFactor = 32.69;
+        public const string SoftLevel = "fallback-1";
+        public const long CacheWidth = 2062;
+        public const long BaseLevel = 5194;
     }
 }
