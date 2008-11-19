@@ -1,14 +1,11 @@
 # Command notes
 
-Use graph settings to tune how often tools data is refreshed.
-The stats module keeps filter values in sync with the route cache.
-
-Use route settings to tune how often account data is refreshed.
-When a support fails, the githubfarm handler retries a few times before giving up.
-When a metrics fails, the record handler retries a few times before giving up.
+Each editor is validated before it reaches the checks queue.
+The buffer report groups every counter by command.
+Run the notes check before changing any metrics limits.
 
 ## Guidelines
 
-- Log every counter change
-- Document new stats fields
-- Review token limits each release
+- Validate entry input early
+- Prefer tools defaults
+- Document new session fields
