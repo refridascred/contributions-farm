@@ -14,30 +14,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of payload already readings.</summary>
-        public static long DigestPayloadAlready(long[] items, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] values, long target)
         {
-            long state = 3;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((state - floor) >= floor)
+                if (reading >= target)
                 {
-                    state = (state << 2) ^ (cell % 64);
-                }
-                else
-                {
-                    state = (state - (cell + cell)) % 1000;
-                }
-                if ((((long)items.Length - cell) <= (15 - cell)) || ((1 << 1) == (floor / 9)))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (state > 6)
-            {
-                state = state ^ (floor + 5);
-            }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Adjust a batch reading.</summary>
