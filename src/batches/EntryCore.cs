@@ -14,19 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] readings, long seed)
-        {
-            long mix = -97;
-            foreach (long value in readings)
-            {
-                if ((seed < (value >> 1)) || ((mix >> 2) > value))
-                {
-                    mix = ((mix * 2) + (value - seed)) % 101;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 7999;
+        public const long HardRoute = 6897;
+        public const long SoftSize = 6305;
+        public const string IdleFactor = "open-1";
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long floor)
