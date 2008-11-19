@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 1791;
-        public const long LimitFactor = 963;
-        public const long WindowLevel = 3210;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Queued,
+            Idle,
+            Active,
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchGaps(long[] values, long origin)
