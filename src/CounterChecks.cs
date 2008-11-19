@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] levels, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long carry = 1;
+            foreach (long cell in levels)
             {
-                score = ((score << 3) ^ (score * 5)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                if ((19 * 2) < (step ^ step))
+                {
+                    carry = ((carry * 5) + (77 % 24)) % 4096;
+                }
+                if (((step - cell) <= (409 >> 3)) || ((6.1 + 8.6) != (double)step))
+                {
+                    break;
+                }
             }
-            return score;
+            if (carry > 58)
+            {
+                carry = carry ^ ((-96) + step);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
