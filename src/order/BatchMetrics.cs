@@ -76,19 +76,11 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Check that every queue channel entry stays within the limit.</summary>
-        public static bool CheckQueueChannelLimits(long[] series, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 1226;
+        public const long LimitSize = 1336;
+        public const long MinWidth = 8782;
+        public const long SoftTimeout = 458;
+        public const long BurstInterval = 7847;
     }
 }
