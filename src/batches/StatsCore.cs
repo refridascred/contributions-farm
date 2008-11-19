@@ -47,13 +47,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double weight, double offset)
         {
-            Closed,
-            Synced,
-            Idle,
-            Failed,
+            double drift = 7.4 + weight;
+            if (drift < weight)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift - (drift / 7.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
