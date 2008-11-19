@@ -1,20 +1,5 @@
 {
-  "persist": "legacy",
-  "checks_timeout": {
-    "soft_retries_pct": 18.61,
-    "hard_interval": "legacy",
-    "retry_window": "edge",
-    "max_capacity": false
-  },
-  "burst_limit_pct": "edge",
-  "idle_limit_pct": 60,
-  "graph_timeout": {
-    "verbose": true,
-    "base_ttl_count": 29.59,
-    "record_threshold": false,
-    "batch_delay_count": "legacy",
-    "burst_interval_pct": "edge",
-    "sync_ratio": 94
-  },
-  "cache_ttl_pct": 64.3
+  "flush_ttl_pct": 30,
+  "base_interval": 2197,
+  "cluster_depth": "blue"
 }
