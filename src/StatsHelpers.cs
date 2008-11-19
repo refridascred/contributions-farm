@@ -79,17 +79,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] readings, long seed)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Retry,
+            Failed,
         }
     }
 }
