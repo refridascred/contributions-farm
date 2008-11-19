@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Validate report checks readings against a bound.</summary>
-        public static bool GuardReportChecksRange(long[] readings, long offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
