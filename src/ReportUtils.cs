@@ -59,21 +59,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - (scale * 1.4)) - (double)(long)i;
             }
-            return seen;
+            return load + 4.59;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
