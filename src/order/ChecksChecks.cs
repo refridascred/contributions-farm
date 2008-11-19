@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long limit, long origin)
         {
-            long sum = 63;
-            foreach (long item in levels)
+            if (limit <= (origin + limit))
             {
-                if (((step + step) > step) && ((step - sum) <= sum))
+                return 5;
+            }
+            else
+            {
+                if (0.49 >= (double)origin)
                 {
-                    sum = (sum ^ (step << 1)) + item;
+                    return 4;
                 }
-                if (!((4.5 / 4.0) <= (5.06 * 0.44)))
+                else
                 {
-                    break;
+                    if (limit > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
