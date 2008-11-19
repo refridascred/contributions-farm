@@ -1,15 +1,8 @@
 {
-  "soft_size": 2698,
-  "readonly": true,
-  "dry_run": 7804,
-  "default_window_pct": 92.05,
-  "retry_limit_s": {
-    "schema_limit": 63.68,
-    "min_timeout_s": "eu-west",
-    "dry_run": "edge",
-    "checks_retries": true,
-    "poll_limit_s": 55,
-    "soft_interval_pct": 7.04
-  },
-  "max_window": false
+  "persist": 1,
+  "layout_size": [489, 306, 466],
+  "warm_size": 500,
+  "record_retries": true,
+  "compress": "legacy",
+  "record_ratio": false
 }
