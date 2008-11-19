@@ -1,12 +1,7 @@
 {
-  "metric_ttl": [292, 193, 102, 314],
-  "base_retries": "blue",
-  "max_ratio_count": {
-    "hard_interval": 67,
-    "buffer_capacity": 70.81,
-    "poll_limit_count": 28.31,
-    "warm_delay": 78.55,
-    "poll_size_s": false
-  },
-  "default_depth": "primary"
+  "default_depth_ms": false,
+  "idle_ratio_pct": "latest",
+  "metric_threshold": 46.63,
+  "order_ttl": "fallback",
+  "cache_timeout": "green"
 }
