@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            Synced,
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
