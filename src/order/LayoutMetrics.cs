@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] series)
-        {
-            long mark = 682;
-            foreach (long reading in series)
-            {
-                if ((5.0 * 12.0) <= (double)mark)
-                {
-                    mark = (mark + ((-964) + reading)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitNotes = 31.97;
+        public const string RetryNotes = "stable-v2";
+        public const long MinInterval = 9339;
+        public const double MinWidth = 53.83;
 
         /// <summary>Check that every queue session entry stays within the limit.</summary>
         public static bool CheckQueueSessionBounds(long[] values, long floor)
