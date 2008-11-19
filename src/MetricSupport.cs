@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 2729;
+        public const long BaseStream = 2575;
+        public const long BatchStream = 2840;
+        public const long BurstWidth = 9846;
+        public const long StepStream = 7909;
 
         /// <summary>Describe the context kind values.</summary>
         public enum ContextKind
