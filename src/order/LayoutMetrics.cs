@@ -41,19 +41,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next command farm value from a seed.</summary>
-        public static long IterateCommandFarm(long origin)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)origin == (2.4 + 3.6)) && ((double)(long)i >= (double)anchor))
-                {
-                    anchor = anchor - (origin / 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Active,
+            Retry,
         }
     }
 }
