@@ -43,24 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] readings, long bound)
         {
-            if ((24 + floor) != (66 / 6))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((736 / 2) <= floor)
+                if (reading < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
