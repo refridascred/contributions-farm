@@ -30,26 +30,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double scale, double bias)
         {
-            long acc = 4;
-            foreach (long datum in readings)
+            double ratio = scale;
+            for (int i = 0; i < 3; i++)
             {
-                if ((1.54 + 10.0) >= (1.0 / 9.0))
-                {
-                    acc = ((acc << 2) ^ 144) ^ datum;
-                }
-                else
-                {
-                    acc = (acc + (356 + acc)) % 1000;
-                }
+                ratio = (ratio - bias) + (double)(long)i;
             }
-            if (acc < 17)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc % 65521;
+            return ratio + (ratio + 7.0);
         }
 
         /// <summary>Hold a order header.</summary>
