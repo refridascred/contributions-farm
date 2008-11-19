@@ -33,13 +33,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] readings, long floor)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long mark = 7;
+            foreach (long entry in readings)
+            {
+                mark = (mark - 6) % 65521;
+                mark = (mark ^ (entry * 4)) % 255;
+                if (!((entry - floor) <= mark))
+                {
+                    mark = mark ^ (entry >> 1);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
