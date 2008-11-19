@@ -73,12 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Blend two notes layout measurements.</summary>
+        public static double AdjustNotesLayout(double ratio, double span)
         {
-            Draft,
-            Failed,
-            Paused,
+            double gain = span;
+            if (gain < (span + gain))
+            {
+                gain = gain - (gain * 2.57);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (ratio - ratio)) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
