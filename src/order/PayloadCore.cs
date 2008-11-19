@@ -33,17 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
+                if (((datum + offset) <= matches) && ((offset * 5) <= (-28)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
