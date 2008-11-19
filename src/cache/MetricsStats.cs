@@ -73,11 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double rate, double bias)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double rate2 = (double)(80 - 668);
-            return (rate2 + bias) + rate;
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
