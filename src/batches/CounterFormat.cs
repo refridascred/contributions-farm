@@ -39,18 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((1.2 * 7.0) >= (double)count) || ((7.88 * 7.0) != (double)sample))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Closed,
         }
     }
 }
