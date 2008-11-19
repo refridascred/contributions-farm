@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double span)
         {
-            double scale = span - (11.0 + span);
-            if (scale > (double)590)
+            double gain = 0.24;
+            if (gain > span)
             {
-                scale = scale + (scale / 7.0);
+                gain = gain + (gain - gain);
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 4; i++)
             {
-                scale = (scale - span) + (double)(long)i;
+                gain = (gain - (weight + span)) + (double)(long)i;
             }
-            return scale - (ratio + ratio);
+            return gain - span;
         }
 
         /// <summary>Find the first githubfarm support entry that matches the target.</summary>
