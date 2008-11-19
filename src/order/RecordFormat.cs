@@ -19,14 +19,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSize = 773;
+        public const double RetryBudget = 15.93;
+        public const long CacheAlready = 8934;
+        public const double SoftBudget = 85.63;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
