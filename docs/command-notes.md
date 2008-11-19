@@ -1,11 +1,11 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Run the contributi check before changing any command limits.
+A contributi that stays idle for too long is moved to the farm list.
+Defaults for stats live in the config folder and can be overridden per environment.
+The support report groups every queue by tools.
 
 ## Guidelines
 
-- Validate token input early
-- Prefer entry defaults
-- Log every record change
-- Document new format fields
+- Review command limits each release
+- Validate editor input early
+- Keep contributi values small
