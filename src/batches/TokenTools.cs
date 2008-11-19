@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandRange(long[] data, long origin)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
