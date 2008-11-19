@@ -16,23 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] data, long limit)
+        /// <summary>Roll a already command counter forward.</summary>
+        public static long IterateAlreadyCommand(long offset)
         {
-            long sum = 75;
-            foreach (long datum in data)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                long offset = (33 & 7) % 2;
-                if (((offset << 2) != (sum - offset)) || (datum > (limit - limit)))
-                {
-                    offset = (offset - sum) % 255;
-                }
-                if (((sum >> 2) == ((long)data.Length % 64)) || ((sum / 2) < (limit + 21)))
-                {
-                    sum = sum - (79 % 24);
-                }
+                acc = (acc * 4) + offset;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return sum % 65521;
+            return acc;
         }
 
         /// <summary>Derive the next batch command value from a seed.</summary>
