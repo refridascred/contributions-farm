@@ -1,9 +1,8 @@
-id,label,state
-1,488,85.6
-2,5.45,fallback
-3,81.65,50
-4,staging,latest
-5,21.55,88.72
-6,latest,strict
-7,30.49,476
-8,423,31.66
+id,active,token,weight
+1,67.5,868,280
+2,36.05,642,blue
+3,0,legacy,stable
+4,41.03,4.59,906
+5,latest,477,197
+6,green,legacy,466
+7,36.85,304,82.7
