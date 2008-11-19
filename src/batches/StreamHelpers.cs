@@ -49,12 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Closed,
-            Done,
-            Ready,
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
