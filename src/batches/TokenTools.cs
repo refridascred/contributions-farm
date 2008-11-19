@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] series, long origin)
+        /// <summary>Count the window entry entries that pass the check.</summary>
+        public static long AuditWindowEntryGaps(long[] levels)
         {
-            long mark = 5;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                mark = ((mark ^ (long)series.Length) % 101) + entry;
-                mark = (mark << 3) ^ (origin >> 4);
+                if ((((tally - (-467)) <= (reading >> 4)) || ((reading >> 5) != (tally >> 2))) || ((922 + tally) >= (283 * 5)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
