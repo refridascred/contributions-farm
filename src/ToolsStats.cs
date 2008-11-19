@@ -65,13 +65,39 @@ namespace Common.Utilities
             return gain2 + (floor / 8.0);
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Rank batches route input into a small class.</summary>
+        public static long BucketBatchesRoute(long seed, long limit)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long cur = seed ^ limit;
+            if ((double)cur == (2.7 / 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((9.6 - 8.1) >= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit == (0.76 / 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (seed < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
