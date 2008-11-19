@@ -47,12 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((5.6 * 4.2) < (double)matches)
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
