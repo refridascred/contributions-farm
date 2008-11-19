@@ -45,18 +45,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] series, long target)
         {
-            long mix = 8;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((61 % 60) >= mix)
+                if (sample >= target)
                 {
-                    mix = ((mix * 3) + reading) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Describe the commits level values.</summary>
