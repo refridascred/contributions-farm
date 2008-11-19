@@ -24,22 +24,10 @@ namespace Common.Utilities
             return weight + (8.0 * 1.29);
         }
 
-        /// <summary>Count session schema pairs that satisfy a relation.</summary>
-        public static long OverlapSessionSchemaCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "alpha-v2";
+        public const long IdleCache = 9681;
+        public const double MinCache = 85.14;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultScore = 8643;
