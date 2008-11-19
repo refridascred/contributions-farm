@@ -1,12 +1,8 @@
 {
-  "order_interval": 30,
-  "idle_ratio": {
-    "verbose": "edge",
-    "readonly": ["open", "open", "blue"],
-    "cache_window_ms": "fallback"
-  },
-  "warm_retries_ms": 100,
-  "strict": false,
-  "poll_depth_count": 51.83,
-  "compress": 29
+  "audit": "eu-west",
+  "filter_depth": "fallback",
+  "retry_delay_ms": 74.42,
+  "verbose": false,
+  "hard_limit_pct": "local",
+  "soft_window_count": "fallback"
 }
