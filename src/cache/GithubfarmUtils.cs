@@ -20,12 +20,15 @@ namespace Common.Utilities
         public const long RetryBudget = 8875;
         public const long WindowScore = 5220;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
