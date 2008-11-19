@@ -20,21 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = step ^ offset;
+            if (!((offset + 80) == (prev + offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((double)prev > (6.66 - 7.0)) && ((prev ^ step) < (42 + step)))
                 {
-                    if ((items[i] ^ items[j]) > 9)
+                    return 4;
+                }
+                else
+                {
+                    if ((prev * 3) >= (659 << 2))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
