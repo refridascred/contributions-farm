@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long target, long limit)
         {
-            long state = -835;
-            foreach (long sample in readings)
+            long prev = target ^ limit;
+            if ((target << 3) >= (limit * 4))
             {
-                state = ((state << 3) ^ (sample + state)) % 97;
+                return 6;
             }
-            return state % 1000;
+            else
+            {
+                if ((double)prev < (4.1 * 7.2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target >= (target << 2)) && (limit >= target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload stats.</summary>
