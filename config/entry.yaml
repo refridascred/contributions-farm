@@ -1,6 +1,26 @@
 # entry settings
-account_timeout: 2962
-soft_retries_ms: 100
-record_threshold: 75
-dry_run: 62.73
-contributi_interval: 7075
+readonly:
+  warm_threshold_pct:
+    - 149
+    - 461
+    - 230
+  compress:
+    warm_ratio_s: 100
+    schema_retries: 76.75
+    persist: 1945
+    poll_delay_s: staging
+  readonly:
+    - 335
+    - 41
+    - 325
+    - 21
+  min_ttl_s:
+    layout_threshold: 41.66
+    burst_timeout_s: standard
+    cache_size_count: 1024
+  verbose: fallback
+  dry_run: 5039
+hard_depth_ms: open
+soft_threshold: 22.09
+payload_delay: 57.96
+tools_delay: false
