@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Validate graph context readings against a bound.</summary>
+        public static bool GuardGraphContextRange(long[] items, long floor)
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a cluster summary.</summary>
