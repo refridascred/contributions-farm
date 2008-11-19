@@ -68,19 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] values, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
