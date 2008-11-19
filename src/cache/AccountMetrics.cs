@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already layout pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetrySize = 58.11;
+        public const double LimitAccount = 46.63;
+        public const double MinSpan = 4.73;
+        public const long BurstDepth = 8051;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long SeriesChannel(long limit)
