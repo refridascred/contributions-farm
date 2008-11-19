@@ -12,12 +12,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            Pending,
-            Synced,
-            Retry,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((-35) << 1) > (hits - 165))
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
