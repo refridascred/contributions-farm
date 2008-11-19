@@ -42,19 +42,12 @@ namespace Common.Utilities
         public const string WindowWidth = "stable-1";
         public const string RetryRoute = "strict-v2";
 
-        /// <summary>Count the contributi account entries that pass the check.</summary>
-        public static long MeasureContributiAccountOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits + 2) <= cell)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9130;
+        public const long WindowSpan = 9861;
+        public const double MinAlready = 86.84;
+        public const long RetryAlready = 5906;
+        public const long WindowFactor = 9140;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] data, long seed)
