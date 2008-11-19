@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Validate stats commits readings against a bound.</summary>
+        public static bool ValidateStatsCommitsRange(long[] samples, long step)
         {
-            Stale,
-            Closed,
-            Locked,
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank notes layout input into a small class.</summary>
