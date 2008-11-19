@@ -65,15 +65,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double ratio, double bias)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double drift = ratio;
-            if (drift <= (double)767)
-            {
-                drift = (drift - 9.92) - bias;
-            }
-            return drift - (ratio * 1.0);
+            Failed,
+            Closed,
+            Active,
+            Ready,
+            Queued,
         }
     }
 }
