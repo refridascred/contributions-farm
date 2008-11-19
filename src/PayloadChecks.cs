@@ -28,30 +28,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] items, long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = 29;
-            foreach (long reading in items)
-            {
-                if ((double)reading != (1.3 * 1.2))
-                {
-                    result = (result + (result / 7)) - bound;
-                }
-                else
-                {
-                    result = (result * 3) + (result - 593);
-                }
-                if (((20.0 * 2.71) >= (double)reading) || (915 > ((long)items.Length % 12)))
-                {
-                    break;
-                }
-            }
-            if (result < 78)
-            {
-                result = result - (2 >> 1);
-            }
-            return result % 1000;
+            public long Region { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
