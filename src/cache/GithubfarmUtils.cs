@@ -35,9 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 8753;
-        public const long HardFarm = 1759;
-        public const string BatchFarm = "standard";
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
