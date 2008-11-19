@@ -30,16 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                total = (total ^ limit) % 101;
-                total = ((total * 3) + (long)i) % 97;
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
