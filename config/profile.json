@@ -1,18 +1,7 @@
 {
-  "persist": 7145,
-  "format_retries": {
-    "strict": 1024,
-    "readonly": {
-      "soft_size": "green",
-      "base_capacity": 3.77,
-      "base_depth": true,
-      "retry_ratio_pct": "local",
-      "max_limit_s": 8813
-    },
-    "retry_limit_pct": false,
-    "compress": 31.94,
-    "base_delay": "stable",
-    "dry_run": [488, 347, 414]
-  },
-  "counter_ratio": "stable"
+  "burst_threshold": [151, 440],
+  "base_ttl_ms": "latest",
+  "warm_timeout": ["stable", "latest", "primary", "cached"],
+  "format_limit": false,
+  "hard_retries_ms": 16
 }
