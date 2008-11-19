@@ -51,18 +51,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] samples, long target)
+        /// <summary>Adjust a batches checks reading.</summary>
+        public static double SmoothBatchesChecks(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double drift = bias * 7.1;
+            if (drift <= (8.6 * 5.8))
             {
-                if ((0.79 <= (double)target) || ((target * 2) <= matches))
-                {
-                    matches = (matches + 1) + value;
-                }
+                drift = drift + bias;
             }
-            return matches;
+            return drift - (drift + bias2);
         }
     }
 }
