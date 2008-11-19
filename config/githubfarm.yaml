@@ -1,14 +1,7 @@
 # githubfarm settings
-order_ttl: 60
-commits_size:
-  cache_size_ms:
-    - standard
-    - strict
-  poll_window_s:
-    - 447
-    - 407
-  default_delay_count: primary
-burst_threshold_count: primary
-default_threshold_s: standard
-verbose: 22.71
-max_size_s: 1349
+buffer_retries: 60
+counter_retries: 60.95
+contributi_retries: 43.57
+max_limit_s: 8395
+flush_window_ms: 83
+hard_window: false
