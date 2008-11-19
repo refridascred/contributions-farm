@@ -14,19 +14,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every session graph entry stays within the limit.</summary>
-        public static bool CheckSessionGraphLimits(long[] values, long limit)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= limit)
+                if (series[i] >= limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
