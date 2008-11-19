@@ -27,12 +27,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Queued,
-            Done,
-            Dropped,
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next support editor value from a seed.</summary>
