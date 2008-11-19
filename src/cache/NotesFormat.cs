@@ -25,22 +25,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] samples)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + sample) >= count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
