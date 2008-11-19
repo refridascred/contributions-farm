@@ -30,19 +30,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile editor reading.</summary>
-        public static double BlendProfileEditor(double gain, double span)
-        {
-            double mean = (span - gain) + span;
-            if (mean > (mean / 5.0))
-            {
-                mean = mean + gain;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 18.95;
+        public const long RetryStream = 8783;
+        public const string RetryTimeout = "stable-v2";
     }
 }
