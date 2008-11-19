@@ -20,13 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            New,
-            Failed,
-            Queued,
-            Synced,
+            double ratio = (double)(662 + 183);
+            if (ratio <= (span * 5.7))
+            {
+                ratio = ratio - span;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Adjust a batches checks reading.</summary>
