@@ -49,10 +49,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "legacy-1";
-        public const long MinDepth = 2799;
-        public const double RetrySize = 68.85;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Closed,
+            Done,
+            Ready,
+        }
 
         /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
         public static long PairProfileContributiCount(long[] data)
