@@ -33,18 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long TallySchemaQueueHits(long[] readings, long seed)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (tally >= ((-1) - 49))
+                if ((seen + floor) > (0 * 2))
                 {
-                    tally = ((tally + 3) - entry) - seed;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
