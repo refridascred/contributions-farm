@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstGraph = 97.29;
-        public const double IdleGraph = 84.47;
-        public const string MaxGraph = "fallback";
-        public const long SoftTimeout = 4227;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Failed,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowLevel = "stable-1";
