@@ -16,19 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] data, long target)
         {
-            long mark = 249;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                mark = ((mark << 3) ^ item) % 97;
+                if ((target * 4) <= target)
+                {
+                    hits = (hits + 3) + item;
+                }
             }
-            if (mark < (-8))
-            {
-                mark = (mark * 2) + 1;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Match up filter buffer samples.</summary>
