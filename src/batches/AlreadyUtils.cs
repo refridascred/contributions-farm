@@ -36,17 +36,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] values, long target)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 2;
+            foreach (long datum in samples)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (mark + 1)) % 255) + datum;
+                mark = ((mark << 3) ^ mark) % 97;
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
