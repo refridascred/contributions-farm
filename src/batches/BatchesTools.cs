@@ -41,11 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
