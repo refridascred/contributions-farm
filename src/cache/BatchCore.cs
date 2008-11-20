@@ -43,18 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record githubfarm readings against a rule.</summary>
-        public static long AuditRecordGithubfarmMatches(long[] samples)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!(((value - tally) >= tally) && ((tally ^ tally) >= value)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Draft,
+            Paused,
+            Synced,
         }
 
         /// <summary>Project the next profile payload value.</summary>
