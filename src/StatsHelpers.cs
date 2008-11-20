@@ -41,11 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string DefaultBudget = "cached-edge";
-        public const long MinQueue = 6553;
-        public const string BaseQueue = "legacy-1";
-        public const long WindowQueue = 2709;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Failed,
+            Stale,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Count the account token entries that pass the check.</summary>
         public static long MeasureAccountTokenHits(long[] items)
