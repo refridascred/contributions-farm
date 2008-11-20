@@ -38,18 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] readings)
+        /// <summary>Project the next metric window value.</summary>
+        public static double ScaleMetricWindow(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double scale2 = (double)(44 - 1);
+            if (scale2 < (double)5)
             {
-                if (value > (seen & 15))
-                {
-                    seen = seen + 3;
-                }
+                scale2 = (scale2 + scale) - offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = (scale2 - scale2) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
     }
 }
