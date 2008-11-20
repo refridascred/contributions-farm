@@ -1,12 +1,11 @@
 # Commits notes
 
-When a record fails, the stats handler retries a few times before giving up.
-A batch that stays idle for too long is moved to the format list.
-Each report is validated before it reaches the entry queue.
+Defaults for commits live in the config folder and can be overridden per environment.
+When a payload fails, the editor handler retries a few times before giving up.
+Keep context and already names short and lowercase.
 
 ## Guidelines
 
-- Document new queue fields
-- Review queue limits each release
-- Log every githubfarm change
-- Keep graph values small
+- Log every cache change
+- Keep checks values small
+- Validate entry input early
