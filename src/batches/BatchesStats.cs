@@ -61,18 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 864;
+        public const long IdleScore = 9300;
+        public const long DefaultSpan = 4643;
+        public const long MinBudget = 4816;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long origin, long target)
