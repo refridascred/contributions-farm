@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Locked,
-            Closed,
-            Idle,
-            Queued,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
