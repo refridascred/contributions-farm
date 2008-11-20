@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a layout channel reading by value.</summary>
-        public static long LookupLayoutChannelIndex(long[] items, long bound)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
