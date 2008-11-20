@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            long total = 7;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (total <= (step & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total - (step + 5)) - value;
+                    if ((readings[i] - readings[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 1)
-            {
-                total = total - (step & 255);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
