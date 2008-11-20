@@ -27,39 +27,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long target)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long offset = origin ^ target;
-            if (!((target ^ origin) >= 282))
+            long sum = 614;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((23 * 4) > (target + target))
+                if ((sum - sum) >= (cell / 8))
                 {
-                    return 4;
+                    sum = (sum + sum) % 97;
                 }
-                else
+                if ((cell / 9) < (sum - cell))
                 {
-                    if ((offset ^ offset) == (target << 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + target) <= 88)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    sum = (sum ^ (cell % 60)) % 97;
+                }
+                if ((sum - cell) >= (sum >> 3))
+                {
+                    sum = sum ^ (cell ^ cell);
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a channel summary.</summary>
