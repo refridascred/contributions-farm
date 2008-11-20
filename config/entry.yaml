@@ -1,5 +1,4 @@
 # entry settings
-sync_delay: 250
-hard_limit_pct: false
-compress: 82.42
-dry_run: 36.28
+base_retries_ms: eu-west
+default_ttl_pct: 5205
+retry_delay: 94.72
