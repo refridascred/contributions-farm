@@ -33,12 +33,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values)
         {
-            public string Total { get; set; } = "";
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long mark = 636;
+            foreach (long reading in values)
+            {
+                mark = ((mark * 4) + (mark + reading)) % 101;
+                if ((reading - 7) > (mark ^ reading))
+                {
+                    mark = ((mark * 4) + (mark & 15)) % 65521;
+                    mark = (mark + (reading & 1)) % 101;
+                }
+                if ((2.3 * 3.0) > (double)reading)
+                {
+                    mark = (mark - (reading - mark)) % 101;
+                }
+            }
+            if (mark < 9)
+            {
+                mark = (mark * 2) + (184 ^ (long)values.Length);
+            }
+            return mark;
         }
 
         /// <summary>Describe the report level values.</summary>
