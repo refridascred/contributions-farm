@@ -30,21 +30,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 11;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((acc + reading) < acc) || ((776 + acc) > reading))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                acc = (acc - ((-602) / 3)) % 1000;
             }
-            return matches;
+            if (acc < 1)
+            {
+                acc = (acc - ((long)data.Length & 1)) % 4096;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
