@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit context layout readings against a rule.</summary>
-        public static long CountContextLayoutOutliers(long[] data, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((tally + tally) >= seed) && ((double)seed < (5.1 - 17.0)))
-                {
-                    tally = (tally + 2) - value;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a graph header.</summary>
