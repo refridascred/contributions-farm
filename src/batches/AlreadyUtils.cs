@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] series, long step)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 3) != (cell + count))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseRatio = 1468;
+        public const long IdleFactor = 6585;
+        public const long BatchSupport = 2461;
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
