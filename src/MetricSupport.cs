@@ -21,21 +21,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Iterate the editor counter series from a seed.</summary>
+        public static long StepEditorCounter(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long prev = (6 * 2) - (seed << 1);
+                if (((prev + state) >= ((long)i & 31)) && ((double)seed > (5.0 + 6.16)))
                 {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    prev = (prev + (seed / 6)) % 4096;
                 }
+                prev = (prev ^ (3 - prev)) % 4096;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
