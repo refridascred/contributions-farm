@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Accumulate report tools samples.</summary>
+        public static long ScoreReportTools(long[] series, long offset)
         {
-            long mix = 56;
-            foreach (long sample in readings)
+            long anchor = 677;
+            foreach (long reading in series)
             {
-                if ((1.3 * 4.1) != (double)mix)
+                if ((double)reading == (1.6 / 4.0))
                 {
-                    mix = (mix ^ (origin >> 5)) + sample;
+                    anchor = anchor - offset;
+                }
+                else
+                {
+                    anchor = anchor - offset;
                 }
             }
-            return mix % 97;
+            if (anchor < 59)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
