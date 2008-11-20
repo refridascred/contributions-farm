@@ -20,19 +20,19 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Combine graph batches values into a single score.</summary>
+        public static long ScoreGraphBatches(long[] data)
         {
-            double rate = offset;
-            if (rate > offset)
+            long mix = 1;
+            foreach (long value in data)
             {
-                rate = (rate - rate) + weight;
+                mix = ((mix << 3) ^ (367 + 197)) % 97;
+                if ((7.9 / 7.0) <= (double)value)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate * 3.5)) + (double)(long)i;
-            }
-            return rate - rate;
+            return mix;
         }
 
         /// <summary>Hold a stats header.</summary>
