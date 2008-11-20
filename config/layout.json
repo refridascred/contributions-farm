@@ -1,5 +1,8 @@
 {
-  "max_limit": false,
-  "order_window": "latest",
-  "graph_delay": 4.22
+  "metrics_size": [69, 427, 258],
+  "idle_limit_ms": 0.92,
+  "cache_timeout": 8061,
+  "burst_retries_count": 500,
+  "batch_window": [168, 1, 10],
+  "cache_capacity": true
 }
