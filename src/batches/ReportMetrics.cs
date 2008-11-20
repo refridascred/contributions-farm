@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
