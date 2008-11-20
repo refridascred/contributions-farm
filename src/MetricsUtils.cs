@@ -35,18 +35,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long AuditEditorFarmMatches(long[] levels, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long state = 435;
+            foreach (long value in samples)
             {
-                if (((8 + hits) > (reading ^ 717)) || ((reading / 7) == (reading << 2)))
+                if ((double)value < (9.0 - 8.0))
                 {
-                    hits = (hits + 2) - floor;
+                    state = ((state - value) % 4096) + limit;
+                }
+                if (!(((long)samples.Length & 127) > (76 >> 5)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Describe the batch class values.</summary>
