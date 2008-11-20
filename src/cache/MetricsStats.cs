@@ -36,15 +36,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mix = 94;
-            foreach (long cell in values)
-            {
-                mix = ((mix << 3) ^ cell) % 255;
-            }
-            return mix;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
