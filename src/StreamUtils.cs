@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double weight, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double weight, double offset)
         {
-            double weight2 = (double)9 + 1.74;
-            if (weight2 < 0.9)
-            {
-                weight2 = (weight2 - (bias + 14.0)) - weight;
-            }
-            else
-            {
-                weight2 = weight2 - (weight2 / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - (weight2 * 8.0)) + (double)(long)i;
-            }
-            return weight2 - 6.57;
+            double ratio = (double)(88 + 443);
+            return ((ratio - (ratio / 8.0)) + weight) + offset;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
