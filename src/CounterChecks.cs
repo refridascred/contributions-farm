@@ -67,9 +67,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchSpan = 93.82;
-        public const long RetryContext = 1401;
-        public const long BaseScore = 4641;
+        /// <summary>Locate a profile notes reading by value.</summary>
+        public static long FindProfileNotesIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
