@@ -23,22 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already buffer entries.</summary>
-        public static long ScoreAlreadyBuffer(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long acc = -375;
-            foreach (long entry in samples)
-            {
-                if (acc > (entry / 3))
-                {
-                    acc = acc ^ (acc & 1);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ entry;
-                }
-            }
-            return acc;
+            Dropped,
+            Failed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
