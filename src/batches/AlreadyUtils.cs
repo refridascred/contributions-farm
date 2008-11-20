@@ -13,12 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Find the first command metric entry that matches the target.</summary>
+        public static long FindCommandMetricIndex(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up checks already samples.</summary>
