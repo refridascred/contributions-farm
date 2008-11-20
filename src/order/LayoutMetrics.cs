@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] data, long origin)
+        /// <summary>Project the next graph context value.</summary>
+        public static double BlendGraphContext(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double mean = (double)(4 / 8);
+            for (int i = 0; i < 5; i++)
             {
-                if ((2 + matches) <= (74 - 9))
-                {
-                    matches = ((matches + 1) ^ cell) + origin;
-                }
+                mean = ((mean + weight) - (double)(long)i) - offset;
             }
-            return matches;
+            return mean + weight;
         }
 
         /// <summary>Find the first already profile entry that matches the target.</summary>
