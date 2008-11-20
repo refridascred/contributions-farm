@@ -74,11 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Find the first notes account entry that matches the target.</summary>
+        public static long SeekNotesAccountIndex(long[] levels, long bound)
         {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
