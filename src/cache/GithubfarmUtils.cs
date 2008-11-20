@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a batch batches figure with a bias.</summary>
-        public static double BlendBatchBatches(double bias, double offset)
-        {
-            double gain = (offset - offset) / 3.0;
-            for (int i = 0; i < 7; i++)
-            {
-                gain = ((gain - offset) - (double)(long)i) - bias;
-            }
-            return gain - offset;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "local";
+        public const long CacheInterval = 5207;
+        public const long BaseRatio = 1124;
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long RankFarm(long target, long step)
