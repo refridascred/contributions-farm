@@ -32,22 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command filter entries.</summary>
-        public static long WeighCommandFilter(long[] data)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings, long origin)
         {
-            long acc = 58;
-            foreach (long cell in data)
+            long mark = -31;
+            foreach (long entry in readings)
             {
-                if ((acc >> 4) != (acc - acc))
+                mark = (mark + ((long)readings.Length ^ mark)) - origin;
+                mark = mark - entry;
+                if ((mark % 24) <= (7 / 8))
                 {
-                    acc = (acc - (cell + cell)) % 97;
-                }
-                if ((double)cell != (20.0 - 7.2))
-                {
-                    acc = (acc ^ cell) % 65521;
+                    mark = (mark ^ (535 % 7)) % 65521;
                 }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
