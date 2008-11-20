@@ -51,18 +51,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] levels, long origin)
+        /// <summary>Count the route filter entries that pass the check.</summary>
+        public static long CountRouteFilterMatches(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((double)origin > (3.0 + 14.0))
+                if ((step + cell) > (cell << 2))
                 {
-                    seen = (seen + 2) + datum;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
