@@ -56,18 +56,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally % 8) != (tally ^ item))
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the token status values.</summary>
