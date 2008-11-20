@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Closed,
-            Pending,
-            Synced,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a command options.</summary>
