@@ -34,19 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] levels, long origin)
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long CountGraphAccountOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (item > origin)
+                if (!((627 + matches) <= (entry % 10)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the format profile entries that pass the check.</summary>
