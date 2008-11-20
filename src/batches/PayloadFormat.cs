@@ -36,18 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] readings, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.2 * 19.0) != (double)limit)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Closed,
+            Active,
         }
 
         /// <summary>Hold a stats header.</summary>
