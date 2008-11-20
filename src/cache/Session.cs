@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor token entries.</summary>
-        public static long WeighEditorToken(long[] readings, long limit)
+        /// <summary>Audit counter schema readings against a rule.</summary>
+        public static long TallyCounterSchemaHits(long[] items, long origin)
         {
-            long state = 3;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                state = (state << 3) ^ (state + limit);
-                state = state - reading;
+                if (origin > (0 + origin))
+                {
+                    hits = (hits + 2) - reading;
+                }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Describe the report state values.</summary>
