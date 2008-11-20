@@ -1,26 +1,5 @@
 # entry settings
-flush_ratio_s: latest
-sync_size:
-  - local
-  - legacy
-  - open
-payload_capacity: false
-entry_limit: eu-west
-readonly:
-  max_timeout:
-    base_timeout: true
-    entry_ratio:
-      - edge
-      - edge
-      - legacy
-    cache_retries: false
-    sync_window_count: edge
-    readonly: edge
-  batch_depth: 59
-  commits_timeout:
-    verbose: 1024
-    sync_ratio_count: 2437
-    contributi_timeout: 85.23
-    enabled: true
-    retry_interval_ms: edge
-  base_size: false
+notes_size: 250
+default_interval: local
+route_window: 60
+persist: staging
