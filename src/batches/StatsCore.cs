@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 8499;
-        public const string BaseRoute = "legacy-edge";
-        public const long DefaultLevel = 2779;
-        public const string BurstRoute = "stable-edge";
-        public const long MaxFactor = 436;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 2596;
+        public const long MaxInterval = 7198;
+        public const long LimitLevel = 1292;
 
         /// <summary>Classify a commits editor pair into a bucket.</summary>
         public static long GradeCommitsEditor(long origin, long step)
