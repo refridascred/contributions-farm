@@ -18,22 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long step, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long lane = step + origin;
+            if ((3.3 * 10.0) <= (double)origin)
             {
-                if ((matches + matches) >= (datum - datum))
+                return 7;
+            }
+            else
+            {
+                if ((double)lane < (double)7)
                 {
-                    matches = matches + 3;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
