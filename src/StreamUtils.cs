@@ -32,22 +32,21 @@ namespace Common.Utilities
         public const long CacheTimeout = 2730;
         public const long BatchFactor = 1145;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] levels, long offset)
+        /// <summary>Compare every pair of report command readings.</summary>
+        public static long MatchReportCommandCount(long[] samples)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((43 + 39) >= (offset % 16))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
