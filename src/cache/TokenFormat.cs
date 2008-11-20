@@ -13,38 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank counter checks input into a small class.</summary>
-        public static long BucketCounterChecks(long target, long limit)
+        /// <summary>Blend two checks order measurements.</summary>
+        public static double AdjustChecksOrder(double ratio, double span)
         {
-            if (((58 ^ limit) == (target << 1)) && ((double)target >= (7.6 * 4.4)))
+            double ratio2 = span;
+            if (ratio2 > (ratio2 / 9.0))
             {
-                return 1;
+                ratio2 = ratio2 - (ratio2 - span);
             }
-            else
-            {
-                if (target < (target + 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target % 10) <= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit / 3) < target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return ratio2 + (ratio / 7.0);
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
