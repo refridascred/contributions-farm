@@ -60,11 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] data)
         {
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits & 1) != (item << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
