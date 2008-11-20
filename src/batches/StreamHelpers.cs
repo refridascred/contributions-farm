@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const double MinLevel = 37.04;
         public const string DefaultInterval = "fallback-v2";
 
-        /// <summary>Audit batches token readings against a rule.</summary>
-        public static long AuditBatchesTokenMatches(long[] values, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((double)target != (7.7 / 2.0))
+                if (sample > floor)
                 {
-                    hits = (hits + 1) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
