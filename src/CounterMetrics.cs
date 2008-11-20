@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Count the commits graph entries that pass the check.</summary>
+        public static long MeasureCommitsGraphOutliers(long[] samples)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((7 << 2) <= ((long)samples.Length ^ (long)samples.Length))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
