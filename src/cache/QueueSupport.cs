@@ -15,19 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double ratio, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] data, long floor)
         {
-            double load = ratio;
-            if (load < (offset + load))
+            bool flag = true;
+            foreach (long datum in data)
             {
-                load = load + (ratio * 2.8);
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - offset;
-            }
-            return load + (offset * 7.0);
+            return flag;
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
