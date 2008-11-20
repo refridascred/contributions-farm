@@ -13,18 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the command payload entries that pass the check.</summary>
-        public static long TallyCommandPayloadGaps(long[] data)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((27 + 3) > (reading / 7)) && (tally >= (tally ^ reading)))
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
