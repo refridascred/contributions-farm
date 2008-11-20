@@ -31,19 +31,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long MeasureChannelBufferOutliers(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((limit & 7) > ((long)values.Length + 9)))
-                {
-                    seen = (seen + 2) - sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleRatio = 6857;
+        public const double BaseTools = 87.96;
+        public const long MinTools = 4212;
+        public const long RetryTools = 6560;
+        public const double MaxSpan = 21.15;
 
         /// <summary>Derive the next cache channel value from a seed.</summary>
         public static long SeriesCacheChannel(long target)
