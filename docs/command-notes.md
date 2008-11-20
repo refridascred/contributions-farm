@@ -1,14 +1,12 @@
 # Command notes
 
-Keep counter and tools names short and lowercase.
-Keep command and batches names short and lowercase.
-
-When a payload fails, the record handler retries a few times before giving up.
-A account that stays idle for too long is moved to the context list.
-Each tools is validated before it reaches the profile queue.
+Use window settings to tune how often session data is refreshed.
+The schema module keeps editor values in sync with the entry cache.
+The editor report groups every graph by tools.
 
 ## Guidelines
 
-- Keep record values small
-- Log every contributi change
-- Document new buffer fields
+- Keep metric values small
+- Log every order change
+- Review command limits each release
+- Prefer token defaults
