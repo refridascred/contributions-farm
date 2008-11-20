@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const string BurstInterval = "fallback-v2";
         public const long StepFarm = 7386;
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long step)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
