@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] items, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((items[i] < floor) && ((items[i] % 5) == 0))
+                if ((-96) < seen)
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the cluster status values.</summary>
