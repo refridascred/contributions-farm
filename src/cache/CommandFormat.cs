@@ -30,11 +30,38 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long step)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            if ((step / 7) > step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step + bound) == ((-12) * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step < bound) || (step > (4 - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound >> 2) >= (bound & 15))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first order batch entry that matches the target.</summary>
