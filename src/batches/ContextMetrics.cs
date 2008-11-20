@@ -70,13 +70,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
-        {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "primary-edge";
+        public const double CacheBatch = 4.55;
+        public const long CacheDepth = 852;
     }
 }
