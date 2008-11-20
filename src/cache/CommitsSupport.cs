@@ -78,32 +78,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long offset, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] samples)
         {
-            long slot = offset - target;
-            if ((269 < (slot & 15)) || ((target << 1) > (393 + slot)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((23 + offset) == (target ^ 959)) || (slot >= (61 << 3)))
+                if (((datum + datum) >= 1) || ((-84) > datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)4 <= (double)offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
