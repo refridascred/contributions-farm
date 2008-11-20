@@ -14,14 +14,23 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double gain, double span)
         {
-            Draft,
-            Ready,
-            Pending,
-            Queued,
-            Active,
+            double ratio = gain;
+            if (ratio < (15.0 - span))
+            {
+                ratio = ratio - (double)(-51);
+            }
+            else
+            {
+                ratio = ratio - (gain * 2.8);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - gain) + (double)(long)i;
+            }
+            return ratio - (ratio / 8.0);
         }
 
         /// <summary>Hold a window summary.</summary>
