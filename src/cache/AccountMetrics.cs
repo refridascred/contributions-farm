@@ -69,9 +69,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstScore = 2237;
-        public const long StepAccount = 7789;
-        public const long MinSize = 4439;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
