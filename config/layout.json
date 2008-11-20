@@ -1,7 +1,6 @@
 {
-  "cache_retries_pct": "blue",
-  "batch_size_s": [55, 346, 23, 327],
-  "poll_threshold": true,
-  "payload_size": "primary",
-  "base_delay_ms": 47.35
+  "flush_threshold_s": 1.79,
+  "poll_capacity": false,
+  "batch_limit": 92,
+  "counter_delay": "staging"
 }
