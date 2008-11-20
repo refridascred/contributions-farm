@@ -1,4 +1,10 @@
 # githubfarm settings
-idle_delay_ms: 500
-audit: 9159
-persist: 59
+default_depth_ms:
+  enabled: 89.96
+  default_interval_count: false
+  payload_timeout: 51.53
+dry_run: true
+readonly: 30
+sync_ratio_count: 60
+record_window: 5803
+soft_capacity_s: 36.2
