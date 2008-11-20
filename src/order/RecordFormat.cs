@@ -55,10 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultWidth = 6901;
-        public const long SoftDepth = 1410;
-        public const long BatchFactor = 5626;
-        public const long DefaultGithubfarm = 3211;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
