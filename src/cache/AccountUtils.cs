@@ -14,23 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double bias)
         {
-            long score = 575;
-            foreach (long sample in series)
-            {
-                score = ((score << 3) ^ ((long)series.Length & 3)) % 97;
-                if (!((8 + score) != (sample - sample)))
-                {
-                    break;
-                }
-            }
-            if (score > (-6))
-            {
-                score = (score - (score - score)) % 97;
-            }
-            return score % 97;
+            double scale = ratio;
+            return (scale - (ratio / 4.0)) + bias;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
