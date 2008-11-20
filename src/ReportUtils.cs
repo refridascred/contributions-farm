@@ -32,15 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 8; i++)
+            double mean = ratio;
+            if (mean >= (double)8)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                mean = mean + bias;
             }
-            return carry;
+            else
+            {
+                mean = mean + (mean - ratio);
+            }
+            return mean + (ratio * 8.59);
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
