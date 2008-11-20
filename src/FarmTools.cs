@@ -29,12 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] series, long limit)
         {
-            Pending,
-            Dropped,
-            Closed,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (limit < (limit / 3))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
