@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((reading + reading) < step) && (96 > (reading + reading)))
+                if (cell <= seed)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
