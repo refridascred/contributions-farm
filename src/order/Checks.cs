@@ -25,21 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer payload readings.</summary>
-        public static long OverlapBufferPayloadCount(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Match up metric session samples.</summary>
