@@ -41,10 +41,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "legacy-edge";
-        public const double MaxLevel = 12.96;
-        public const long MinRatio = 5138;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Ready,
+            Stale,
+            Draft,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long AuditChecksMatches(long[] values, long step)
