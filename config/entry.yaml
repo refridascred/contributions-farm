@@ -1,23 +1,25 @@
 # entry settings
-flush_interval:
-  flush_limit_s:
-    idle_capacity: stable
-    queue_ratio: 39
-    contributi_capacity: true
-    format_depth: false
-  stream_retries: false
-  batch_size_ms: edge
-  hard_capacity:
-    verbose:
-      - stable
-      - green
-      - standard
-    min_window: false
-    poll_timeout_pct:
-      - open
-      - eu-west
-  idle_ratio_ms: true
-  max_size_pct: strict
-soft_ttl: 17.0
-warm_retries_ms: 100
-retry_ttl: false
+verbose: true
+sync_delay_ms: true
+counter_ratio:
+  persist: local
+  poll_size_s: true
+  min_timeout_pct: standard
+channel_interval:
+  - 405
+  - 173
+  - 486
+  - 406
+persist:
+  cache_limit:
+    persist:
+      - 283
+      - 354
+      - 490
+      - 220
+    readonly: latest
+    cache_retries: 1058
+    graph_retries: 4254
+  cache_threshold: latest
+  verbose: false
+  warm_interval_ms: 76.83
