@@ -68,12 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitSize = 97.31;
-        public const long BatchAlready = 1470;
-        public const string LimitAlready = "strict-v2";
-        public const long BurstSize = 682;
-        public const long StepAlready = 7702;
+        /// <summary>Audit session commits readings against a rule.</summary>
+        public static long AuditSessionCommitsOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (868 < entry)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] readings)
