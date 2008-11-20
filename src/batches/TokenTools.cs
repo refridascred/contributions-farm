@@ -38,14 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] data)
         {
-            Stale,
-            Idle,
-            Dropped,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seen <= (9.0 / 9.0))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
