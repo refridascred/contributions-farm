@@ -26,20 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report farm readings.</summary>
-        public static long ScoreReportFarm(long[] series, long step)
+        /// <summary>Accumulate commits counter samples.</summary>
+        public static long TallyCommitsCounter(long[] readings)
         {
-            long score = 90;
-            foreach (long cell in series)
+            long anchor = 76;
+            foreach (long sample in readings)
             {
-                score = (score ^ (step & 15)) ^ cell;
-                score = (score ^ ((-11) & 1)) % 1000;
+                if (((anchor % 64) > (sample >> 4)) || ((17.0 / 2.0) != (double)sample))
+                {
+                    anchor = (anchor + (sample + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (sample % 60)) % 255;
+                }
             }
-            if (score < (-1))
-            {
-                score = score + step;
-            }
-            return score % 1000;
+            return anchor;
         }
     }
 }
