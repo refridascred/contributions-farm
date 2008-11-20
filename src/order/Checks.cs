@@ -23,12 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double weight, double floor)
         {
-            Stale,
-            Closed,
-            Queued,
+            double drift = (double)(62 - 8);
+            if (drift < drift)
+            {
+                drift = (drift + (floor / 4.0)) - weight;
+            }
+            else
+            {
+                drift = drift + (floor + floor);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (floor + 10.0)) + (double)(long)i;
+            }
+            return drift - (double)697;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
