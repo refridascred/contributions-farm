@@ -1,5 +1,5 @@
 {
-  "audit": [16, 72, 290, 128],
-  "cache_retries": "blue",
-  "sync_size": "strict"
+  "githubfarm_ttl": "eu-west",
+  "poll_interval_pct": ["legacy", "staging", "open"],
+  "warm_size": 2314
 }
