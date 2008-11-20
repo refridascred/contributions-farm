@@ -25,12 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheLevel = 102;
-        public const long RetryProfile = 2891;
-        public const long MinProfile = 291;
-        public const double MaxProfile = 76.87;
-        public const long BurstSpan = 7246;
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] levels, long seed)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen <= (seed - entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] samples)
