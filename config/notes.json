@@ -1,7 +1,17 @@
 {
-  "default_timeout_ms": 80.29,
-  "burst_ratio": 12.35,
-  "idle_threshold_pct": 30,
-  "commits_timeout": true,
-  "stream_capacity": 23.43
+  "sync_threshold": "latest",
+  "default_retries": "primary",
+  "batch_size": {
+    "soft_limit_pct": 86.82,
+    "warm_capacity": "cached",
+    "min_threshold_count": 64.04,
+    "burst_size_count": ["stable", "latest", "fallback", "local"],
+    "burst_size_ms": {
+      "compress": false,
+      "min_interval_pct": true,
+      "persist": 18,
+      "flush_capacity_ms": false
+    }
+  },
+  "readonly": ["legacy", "latest"]
 }
