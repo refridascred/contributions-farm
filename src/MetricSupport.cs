@@ -27,21 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the editor counter series from a seed.</summary>
-        public static long StepEditorCounter(long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double rate, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            double gain = 7.0;
+            if (gain > (double)50)
             {
-                long prev = (6 * 2) - (seed << 1);
-                if (((prev + state) >= ((long)i & 31)) && ((double)seed > (5.0 + 6.16)))
-                {
-                    prev = (prev + (seed / 6)) % 4096;
-                }
-                prev = (prev ^ (3 - prev)) % 4096;
-                state = ((state * 5) + (long)i) % 97;
+                gain = (gain + (rate - gain)) - bias;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (double)(-41);
         }
     }
 }
