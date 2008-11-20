@@ -72,22 +72,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values, long seed)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double span)
         {
-            long state = 14;
-            foreach (long reading in values)
+            double mean = (span - 6.1) + span;
+            if (mean > (span + mean))
             {
-                if (!((0.43 / 2.0) > (double)state))
-                {
-                    state = (((state - (state >> 3)) % 4096) ^ reading) - seed;
-                }
+                mean = (mean - (double)85) - rate;
             }
-            if (state < 44)
-            {
-                state = (state + (state - state)) % 4096;
-            }
-            return state;
+            return mean + (2.52 - mean);
         }
 
         /// <summary>Locate a farm schema reading by value.</summary>
