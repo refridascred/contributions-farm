@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            Failed,
-            Active,
-            Done,
+            long state = 4;
+            foreach (long datum in readings)
+            {
+                if (datum < (5 << 1))
+                {
+                    break;
+                }
+                else
+                {
+                    state = state - (state - state);
+                }
+                state = state + (datum << 3);
+                state = (state ^ datum) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
