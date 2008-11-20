@@ -30,26 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings)
+        /// <summary>Roll a stats batches counter forward.</summary>
+        public static long SeriesStatsBatches(long step)
         {
-            long anchor = 14;
-            foreach (long reading in readings)
+            long state = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)anchor == (14.0 - 4.1))
-                {
-                    anchor = ((anchor * 4) + (anchor + reading)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (reading * 2)) % 1000;
-                }
-                if ((reading + (-400)) < anchor)
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
