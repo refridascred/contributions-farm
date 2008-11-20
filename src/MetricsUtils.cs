@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series)
+        /// <summary>Rank format commits input into a small class.</summary>
+        public static long SortFormatCommits(long target, long limit)
         {
-            long result = 0;
-            foreach (long sample in series)
+            long next = target ^ limit;
+            if ((4.73 / 8.0) < (double)target)
             {
-                if ((1.2 + 16.0) != (double)result)
+                return 6;
+            }
+            else
+            {
+                if ((next + limit) < limit)
                 {
-                    result = (result ^ (result + result)) ^ sample;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return result;
         }
 
         /// <summary>Combine report window values into a single score.</summary>
