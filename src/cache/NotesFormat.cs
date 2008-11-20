@@ -20,13 +20,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long step)
         {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a contributi record.</summary>
