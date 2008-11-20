@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate metric farm readings against a bound.</summary>
-        public static bool ValidateMetricFarmBounds(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string WindowAlready = "legacy-edge";
+        public const string BatchAlready = "stable-1";
+        public const long LimitAlready = 1233;
+        public const long WindowSize = 2972;
+        public const string MinAlready = "cached-1";
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] items, long seed)
