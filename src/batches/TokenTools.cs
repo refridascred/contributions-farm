@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long CountContextRouteGaps(long[] readings, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value * 4) != (floor + value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
