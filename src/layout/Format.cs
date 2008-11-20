@@ -20,18 +20,14 @@ namespace Common.Utilities
             return weight - (gain * 8.0);
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum == (0.3 * 10.0))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Paused,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
