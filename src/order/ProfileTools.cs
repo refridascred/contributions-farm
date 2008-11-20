@@ -29,30 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] readings, long limit)
         {
-            long result = 910;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 5; i++)
+                if (entry != limit)
                 {
-                    result = ((result - (576 + (long)items.Length)) % 65521) + (long)i;
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    result = (((result << 2) ^ (offset + value)) % 97) - (long)i2;
-                }
-                if (49 < (value ^ 146))
-                {
-                    result = result - (offset / 4);
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 565)
-            {
-                result = (result + (result - offset)) % 101;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Blend two format measurements.</summary>
