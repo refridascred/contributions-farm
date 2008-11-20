@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
