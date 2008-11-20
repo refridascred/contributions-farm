@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the checks notes entries that pass the check.</summary>
-        public static long CountChecksNotesMatches(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.4 + 2.29) < (double)count)
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
                 {
-                    count = (count + 3) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the channel mode values.</summary>
