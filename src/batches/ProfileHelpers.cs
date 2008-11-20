@@ -47,16 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Project the next batch order value.</summary>
+        public static double AdjustBatchOrder(double gain, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 15; i++)
+            double gain2 = (double)(818 - 35);
+            for (int i = 0; i < 3; i++)
             {
-                score = (score + (target - score)) % 97;
-                score = ((score * 3) + (long)i) % 101;
+                gain2 = (gain2 + gain) - (double)(long)i;
             }
-            return score;
+            return gain2 - bias;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
