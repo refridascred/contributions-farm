@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstScore = "local-1";
-        public const long BaseAlready = 3975;
-        public const string WindowRatio = "fallback-1";
-        public const long WindowAlready = 9478;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
