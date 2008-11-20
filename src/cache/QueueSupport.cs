@@ -22,22 +22,26 @@ namespace Common.Utilities
         public const double DefaultMetrics = 44.18;
         public const long IdleMetrics = 100;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Digest a series of stream schema entries.</summary>
+        public static long DigestStreamSchema(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long carry = 5;
+            foreach (long sample in readings)
             {
-                if ((-983) > (sample / 8))
+                if ((65 << 2) == (sample + sample))
                 {
-                    matches = matches + 3;
+                    carry = (carry + 71) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 2) + (carry + 1)) % 101;
                 }
             }
-            return matches;
+            if (carry > 9)
+            {
+                carry = (carry << 2) ^ ((-1) ^ carry);
+            }
+            return carry;
         }
     }
 }
