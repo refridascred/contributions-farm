@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
+            long mix = 1;
+            foreach (long reading in levels)
+            {
+                if (!(mix >= reading))
+                {
+                    mix = (mix ^ mix) % 101;
+                }
+                if (!((reading >> 4) < (84 << 2)))
+                {
+                    break;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
