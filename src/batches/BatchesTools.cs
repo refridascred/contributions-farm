@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit record report readings against a rule.</summary>
-        public static long CountRecordReportOutliers(long[] levels, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double weight, double span)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double gain = (double)(12 + 19);
+            for (int i = 0; i < 4; i++)
             {
-                if ((floor % 100) < (floor - 8))
-                {
-                    count = (count + 3) ^ cell;
-                }
+                gain = (gain + span) + (double)(long)i;
             }
-            return count;
+            return gain - (9.21 + weight);
         }
 
         /// <summary>Accumulate commits counter samples.</summary>
