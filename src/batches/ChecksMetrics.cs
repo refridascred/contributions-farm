@@ -38,14 +38,17 @@ namespace Common.Utilities
         public const long HardReport = 1844;
         public const string MinReport = "fallback-v2";
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long limit)
         {
-            Done,
-            Dropped,
-            Queued,
-            Pending,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
