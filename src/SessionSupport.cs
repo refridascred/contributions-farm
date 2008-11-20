@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a metric already figure with a bias.</summary>
+        public static double ScaleMetricAlready(double bias, double span)
         {
-            Stale,
-            Queued,
-            Done,
-            Dropped,
+            double scale = bias / 9.0;
+            if (scale > span)
+            {
+                scale = scale + scale;
+            }
+            return scale + (8.09 + scale);
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
