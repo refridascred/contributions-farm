@@ -13,24 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long origin, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series, long offset)
         {
-            if (!((9.5 / 5.0) >= (double)limit))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit ^ origin) < (limit + origin)) && ((limit + limit) <= origin))
+                if ((seen & 63) == (6 / 6))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    seen = ((seen + 1) ^ sample) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many githubfarm command samples are out of range.</summary>
