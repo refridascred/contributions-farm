@@ -59,16 +59,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mix = ((mix * 3) + (mix * 3)) % 255;
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((hits + hits) >= (cell + hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
