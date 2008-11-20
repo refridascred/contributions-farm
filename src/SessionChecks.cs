@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Fold a list of cache checks readings.</summary>
+        public static long WeighCacheChecks(long[] data)
         {
-            Locked,
-            Closed,
-            Active,
-            Synced,
+            long score = 16;
+            foreach (long cell in data)
+            {
+                score = score ^ (9 ^ cell);
+            }
+            return score;
         }
 
         /// <summary>Combine session values into a single score.</summary>
