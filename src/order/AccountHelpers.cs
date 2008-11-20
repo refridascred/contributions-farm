@@ -52,18 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricMatches(long[] items, long limit)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)tally != (double)38)
-                {
-                    tally = ((tally + 1) ^ value) - limit;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
