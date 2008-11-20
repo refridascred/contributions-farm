@@ -27,17 +27,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] values, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long floor, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = floor ^ seed;
+            if ((2.0 + 0.67) < (double)delta)
             {
-                if ((values[i] == origin) && ((values[i] % 3) != 0))
+                return 7;
+            }
+            else
+            {
+                if (!(floor < (seed + floor)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
