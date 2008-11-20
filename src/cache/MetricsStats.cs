@@ -43,15 +43,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double ratio, double floor)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] values, long origin)
         {
-            double bias = (double)((-337) & 7);
-            if (bias > (bias * 15.0))
+            bool stale = true;
+            foreach (long item in values)
             {
-                bias = (bias - (floor + bias)) - ratio;
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias - (floor / 5.0);
+            return stale;
         }
     }
 }
