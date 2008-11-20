@@ -1,5 +1,10 @@
 {
-  "hard_delay_ms": "strict",
-  "base_capacity": "legacy",
-  "max_interval": 1024
+  "retry_delay_count": 100,
+  "compress": 1024,
+  "enabled": 57,
+  "burst_threshold_s": {
+    "soft_threshold": "legacy",
+    "burst_depth_pct": [100, 264],
+    "commits_threshold": 61
+  }
 }
