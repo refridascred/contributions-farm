@@ -16,15 +16,27 @@ namespace Common.Utilities
         public const string BaseSize = "local-edge";
         public const double IdleAccount = 34.59;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long state = -562;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                for (int i = 0; i < 3; i++)
+                {
+                    state = state + (state / 9);
+                    state = state + (long)i;
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state << 2) ^ (state ^ (long)i2);
+                }
+                if ((state - reading) < (4 / 8))
+                {
+                    state = state + (-675);
+                }
             }
-            return mix;
+            return state % 97;
         }
     }
 }
