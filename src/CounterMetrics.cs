@@ -23,10 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double CacheSize = 55.53;
-        public const string CacheFactor = "alpha-1";
-        public const long MaxCounter = 2961;
+        /// <summary>Blend two payload token measurements.</summary>
+        public static double SmoothPayloadToken(double weight, double floor)
+        {
+            double gain = floor;
+            if (gain >= 5.34)
+            {
+                gain = (gain - (double)29) - weight;
+            }
+            else
+            {
+                gain = gain - (gain * 2.1);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - (double)351;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long floor, long limit)
