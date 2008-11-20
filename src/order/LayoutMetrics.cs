@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long BatchFilter = 854;
         public const double HardSpan = 61.74;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Stale,
+            Retry,
         }
     }
 }
