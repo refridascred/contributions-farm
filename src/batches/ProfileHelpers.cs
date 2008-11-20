@@ -44,13 +44,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] series, long target)
         {
-            Stale,
-            Paused,
-            Retry,
-            Synced,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
