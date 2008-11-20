@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry ^ ((long)i - carry)) % 65521;
+                carry = (carry ^ (514 + bound)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the command status values.</summary>
