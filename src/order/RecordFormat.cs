@@ -71,13 +71,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 44.51;
+        public const string BaseTimeout = "primary-1";
+        public const double WindowTools = 78.16;
     }
 }
