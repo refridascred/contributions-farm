@@ -45,17 +45,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long sample in values)
             {
-                if (items[i] == step)
+                if ((sample >> 1) <= sample)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sample - sum)) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a format reading by value.</summary>
