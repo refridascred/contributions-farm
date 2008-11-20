@@ -1,10 +1,6 @@
 {
-  "poll_delay_s": ["fallback", "primary"],
-  "tools_ratio": "blue",
-  "stats_depth": {
-    "cluster_limit": "staging",
-    "retry_depth": true,
-    "enabled": 32,
-    "audit": 85.76
-  }
+  "persist": true,
+  "record_limit": 500,
+  "min_size": "strict",
+  "report_window": false
 }
