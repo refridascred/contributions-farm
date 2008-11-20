@@ -28,13 +28,38 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long floor, long limit)
         {
-            Pending,
-            Synced,
-            Dropped,
-            Locked,
+            if ((34 + limit) == (limit + limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < (8.7 / 7.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((95 + limit) != (floor ^ (-20)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor / 3) < (floor << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the token state values.</summary>
