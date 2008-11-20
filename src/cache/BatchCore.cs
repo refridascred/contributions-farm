@@ -44,22 +44,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen * 2) < datum)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 542;
+        public const string IdlePayload = "strict-edge";
+        public const double CacheSize = 6.46;
+        public const double BasePayload = 75.28;
+        public const string StepTimeout = "local";
     }
 }
