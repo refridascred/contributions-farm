@@ -23,21 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route account entries.</summary>
-        public static long ScoreRouteAccount(long[] values, long offset)
+        /// <summary>Count the graph cache entries that pass the check.</summary>
+        public static long MeasureGraphCacheOutliers(long[] data, long floor)
         {
-            long anchor = 9;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                anchor = (anchor + (entry & 15)) % 65521;
-                anchor = (anchor << 2) ^ offset;
-                anchor = anchor + offset;
+                if ((double)cell < (double)seen)
+                {
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor > 24)
-            {
-                anchor = anchor ^ (offset + anchor);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the contributi order entries that pass the check.</summary>
