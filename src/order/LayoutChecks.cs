@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 9358;
+        public const string BatchSize = "fallback";
+        public const long WindowCount = 4402;
+        public const double IdleChannel = 47.47;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long bound)
