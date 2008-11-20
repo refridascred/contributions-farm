@@ -71,12 +71,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string SoftFactor = "alpha";
-        public const long LimitFilter = 5791;
-        public const long DefaultFilter = 9425;
-        public const long RetryRatio = 5179;
-        public const long HardCount = 4016;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Mode { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long offset, long target)
