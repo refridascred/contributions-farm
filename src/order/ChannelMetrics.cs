@@ -19,24 +19,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long floor)
         {
-            if ((double)origin <= 5.22)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.7 / 7.0) > (double)origin)
+                if (reading >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
