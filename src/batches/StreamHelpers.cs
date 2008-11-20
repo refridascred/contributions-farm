@@ -32,26 +32,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] values, long origin)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long total = 70;
-            foreach (long entry in values)
-            {
-                if (total >= (origin % 64))
-                {
-                    total = (total << 2) ^ (origin - 833);
-                    total = (total + (total >> 1)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 97;
-                }
-                total = (total ^ (97 - entry)) % 101;
-                total = (total * 5) + (total & 127);
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Find the first batches cache entry that matches the target.</summary>
