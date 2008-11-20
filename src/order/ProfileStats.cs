@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] readings)
+        /// <summary>Validate metrics commits readings against a bound.</summary>
+        public static bool GuardMetricsCommitsLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell > offset)
                 {
-                    if ((readings[i] - readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
