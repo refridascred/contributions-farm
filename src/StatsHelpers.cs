@@ -50,18 +50,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the account token entries that pass the check.</summary>
-        public static long MeasureAccountTokenHits(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits < (hits + (-274))) && ((hits * 3) >= (item * 3)))
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix * 3) + (mix * 3)) % 255;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
