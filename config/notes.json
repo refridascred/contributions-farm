@@ -1,7 +1,12 @@
 {
-  "checks_limit": "strict",
-  "sync_retries_ms": 500,
-  "enabled": 94,
-  "record_limit": 1.84,
-  "report_delay": "fallback"
+  "persist": "cached",
+  "default_depth_s": 90.28,
+  "cache_window_s": 8821,
+  "audit": ["blue", "blue", "staging"],
+  "soft_interval_s": "stable",
+  "flush_ratio_s": {
+    "batch_delay": 1024,
+    "sync_retries": false,
+    "burst_threshold_ms": 18
+  }
 }
