@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] values, long target)
         {
-            New,
-            Queued,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)target >= 10.0)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
