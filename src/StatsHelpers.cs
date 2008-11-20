@@ -36,19 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command payload entry stays within the limit.</summary>
-        public static bool GuardCommandPayloadLimits(long[] samples, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
