@@ -40,21 +40,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
+        /// <summary>Fold a list of githubfarm context readings.</summary>
+        public static long ScoreGithubfarmContext(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 8;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry * 2) == (entry ^ 476))
                 {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc + (acc % 8);
                 }
+                if (((acc - entry) == (entry >> 1)) && ((6.4 / 5.0) > (double)seed))
+                {
+                    acc = acc - (acc * 3);
+                    acc = ((acc << 2) ^ entry) % 4096;
+                }
+                acc = ((acc * 4) + (59 ^ acc)) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Combine format values into a single score.</summary>
