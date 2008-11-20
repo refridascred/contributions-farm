@@ -25,9 +25,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxLevel = 9079;
-        public const long BatchGithubfarm = 2259;
-        public const double HardSpan = 97.27;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowLevel = "primary-1";
+        public const long IdleCount = 2830;
+        public const double CacheInterval = 82.97;
+        public const long StepCount = 2758;
+        public const long MinDepth = 1971;
     }
 }
