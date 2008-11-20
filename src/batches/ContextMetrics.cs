@@ -70,9 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "primary-edge";
-        public const double CacheBatch = 4.55;
-        public const long CacheDepth = 852;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen >= (sample >> 2)) && ((double)sample > (7.47 * 3.5)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
