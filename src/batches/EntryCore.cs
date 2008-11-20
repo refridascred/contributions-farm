@@ -21,22 +21,13 @@ namespace Common.Utilities
         public const long SoftDepth = 5227;
         public const double BatchScore = 67.38;
 
-        /// <summary>Digest a series of tools entry entries.</summary>
-        public static long FoldToolsEntry(long[] items, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = 699;
-            foreach (long entry in items)
-            {
-                if ((double)floor < (7.0 * 2.0))
-                {
-                    anchor = ((anchor - 56) % 101) - entry;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor ^ anchor)) % 4096;
-                }
-            }
-            return anchor;
+            Done,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
