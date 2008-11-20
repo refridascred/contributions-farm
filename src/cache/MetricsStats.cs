@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] levels, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long carry = 8;
-            foreach (long item in levels)
-            {
-                carry = (((carry ^ carry) % 1000) ^ item) - origin;
-            }
-            return carry;
+            Stale,
+            Draft,
+            Idle,
+            Failed,
+            Done,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
