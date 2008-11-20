@@ -65,16 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
-        {
-            long total = 77;
-            foreach (long cell in data)
-            {
-                total = (((total << 3) ^ (total << 3)) % 1000) + cell;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string SoftFactor = "alpha";
+        public const long LimitFilter = 5791;
+        public const long DefaultFilter = 9425;
+        public const long RetryRatio = 5179;
+        public const long HardCount = 4016;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long BucketStats(long offset, long target)
