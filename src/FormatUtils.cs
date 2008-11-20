@@ -42,13 +42,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public bool Level { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 1429;
+        public const string WindowTimeout = "legacy-edge";
+        public const double CacheProfile = 21.69;
+        public const double WindowProfile = 90.93;
+        public const long StepProfile = 1292;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long MatchCommitsCount(long[] items)
