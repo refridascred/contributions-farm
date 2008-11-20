@@ -1,18 +1,8 @@
 {
-  "payload_timeout": 30,
-  "strict": "blue",
-  "compress": {
-    "base_limit_pct": 72,
-    "min_interval_count": 19.27,
-    "min_capacity_count": {
-      "verbose": 57.28,
-      "batch_window": "cached",
-      "audit": "blue",
-      "cache_window": 10,
-      "persist": "edge",
-      "sync_depth": "green"
-    }
-  },
-  "audit": 30,
-  "batch_depth": 83
+  "compress": 7602,
+  "report_threshold": ["cached", "open", "staging"],
+  "sync_ttl_pct": 2197,
+  "window_interval": 98.41,
+  "poll_window_s": "legacy",
+  "persist": 33
 }
