@@ -27,13 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Find the first record filter entry that matches the target.</summary>
+        public static long LocateRecordFilterIndex(long[] data, long target)
         {
-            Active,
-            Paused,
-            Retry,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
