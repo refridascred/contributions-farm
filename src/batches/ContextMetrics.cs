@@ -62,10 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "stable-v2";
-        public const long SoftSize = 5676;
-        public const long HardNotes = 4096;
-        public const string RetryNotes = "latest-v2";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + matches) == (bound + 116))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
