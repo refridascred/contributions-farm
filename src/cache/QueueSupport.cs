@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
+            long score = 82;
+            foreach (long entry in values)
             {
-                carry = (carry ^ ((long)i - carry)) % 65521;
-                carry = (carry ^ (514 + bound)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                score = ((score * 2) + (17 + score)) % 65521;
+                if (((entry - entry) > (52 + 89)) && ((double)entry <= (double)score))
+                {
+                    score = (score << 3) ^ (entry ^ score);
+                }
+                else
+                {
+                    score = (score + (entry - score)) % 97;
+                }
             }
-            return carry;
+            if (score > 223)
+            {
+                score = (score * 2) + (score / 3);
+            }
+            return score;
         }
 
         /// <summary>Describe the command status values.</summary>
