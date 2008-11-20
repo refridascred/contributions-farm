@@ -60,32 +60,16 @@ namespace Common.Utilities
         public const long RetryEditor = 283;
         public const string StepSize = "local-1";
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long origin2)
+        /// <summary>Derive the next entry support value from a seed.</summary>
+        public static long IterateEntrySupport(long bound)
         {
-            long edge = origin - origin2;
-            if ((17 & 127) < edge)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                carry = ((carry << 3) ^ (carry / 9)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (7.9 < (double)origin2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((edge << 1) > 89)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
