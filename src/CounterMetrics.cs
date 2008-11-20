@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many stream layout samples are out of range.</summary>
-        public static long TallyStreamLayoutHits(long[] readings)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample - sample) <= sample)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
