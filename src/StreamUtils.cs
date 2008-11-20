@@ -82,14 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Closed,
-            Done,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseWidth = 8828;
+        public const string CacheFilter = "standard";
+        public const long IdleTimeout = 9;
+        public const double BurstRatio = 45.32;
+        public const long StepTimeout = 231;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
