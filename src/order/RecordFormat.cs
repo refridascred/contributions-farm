@@ -31,23 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples)
-        {
-            long sum = 8;
-            foreach (long cell in samples)
-            {
-                if ((cell * 2) >= (2 & 1))
-                {
-                    sum = (sum * 3) + (cell + cell);
-                }
-            }
-            if (sum < 608)
-            {
-                sum = (sum * 3) + (-2);
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double SoftStream = 12.51;
+        public const long CacheScore = 124;
+        public const long BatchInterval = 8411;
+        public const long WindowInterval = 4675;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] samples, long target)
