@@ -74,19 +74,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool found = true;
-            foreach (long datum in readings)
-            {
-                if (datum < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
