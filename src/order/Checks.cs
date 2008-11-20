@@ -54,12 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] samples)
         {
-            Queued,
-            Paused,
-            Locked,
+            long anchor = 39;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor << 3) ^ 15) % 97) - cell;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a format reading by value.</summary>
