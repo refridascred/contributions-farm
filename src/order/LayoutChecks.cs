@@ -14,15 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long acc = 549;
-            foreach (long entry in series)
-            {
-                acc = (acc << 3) ^ (entry - entry);
-            }
-            return acc;
+            Ready,
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
