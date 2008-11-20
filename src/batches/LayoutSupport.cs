@@ -31,11 +31,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long MeasureChannelBufferOutliers(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((limit & 7) > ((long)values.Length + 9)))
+                {
+                    seen = (seen + 2) - sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next cache channel value from a seed.</summary>
