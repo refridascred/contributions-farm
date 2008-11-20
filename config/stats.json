@@ -1,6 +1,5 @@
 {
-  "warm_size_count": "local",
-  "hard_timeout_ms": 5.4,
-  "graph_size": 30.91,
-  "max_capacity_ms": "primary"
+  "stats_ratio": 97,
+  "min_delay_pct": ["latest", "cached", "strict", "green"],
+  "stream_interval": "standard"
 }
