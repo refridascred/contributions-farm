@@ -1,7 +1,8 @@
 # githubfarm settings
-batch_interval_count: 28
-batch_ratio_s: 42.97
-max_window_s: legacy
-soft_interval_ms: legacy
-compress: 1024
-warm_timeout: local
+flush_interval: fallback
+default_capacity: 3042
+verbose:
+  - 497
+  - 226
+  - 249
+  - 129
