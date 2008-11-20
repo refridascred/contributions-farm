@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Scale a route farm figure with a bias.</summary>
+        public static double BlendRouteFarm(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = 19.0;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = ((drift - (double)35) + (double)(long)i) - bias;
             }
-            return count;
+            return drift + gain;
         }
 
         /// <summary>Measure how many commits cluster samples are out of range.</summary>
