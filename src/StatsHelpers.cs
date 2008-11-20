@@ -64,32 +64,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a command editor value against two limits.</summary>
-        public static long SortCommandEditor(long floor, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
-            long offset = floor - limit;
-            if (!(25 > (limit * 5)))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((4 - offset) != (limit * 3))
+                if ((tally % 8) != (tally ^ item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((607 ^ limit) >= (floor % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a entry session figure with a bias.</summary>
