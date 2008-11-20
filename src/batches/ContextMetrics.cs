@@ -53,18 +53,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] values, long bound)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + matches) == (bound + 116))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Active,
+            Done,
         }
     }
 }
