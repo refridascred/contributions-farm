@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const double MaxBudget = 42.72;
         public const string SoftSupport = "latest";
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] data, long limit)
         {
-            long sum = 3;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (sum >= (19 + sum))
+                if ((item & 63) >= limit)
                 {
-                    sum = (sum * 2) + (sum - sum);
-                }
-                else
-                {
-                    sum = (sum + (cell - cell)) % 255;
+                    tally = tally + 1;
                 }
             }
-            return sum % 65521;
+            return tally;
         }
     }
 }
