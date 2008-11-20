@@ -37,12 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Done,
-            Retry,
-            Stale,
+            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
