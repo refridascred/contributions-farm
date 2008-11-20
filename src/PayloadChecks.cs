@@ -63,16 +63,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] readings, long target)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                state = (state * 4) + ((long)i ^ state);
-                state = ((state * 4) + (long)i) % 65521;
+                if (datum < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
