@@ -28,17 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
