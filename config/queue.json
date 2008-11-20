@@ -1,6 +1,13 @@
 {
-  "persist": 3763,
-  "warm_capacity_pct": "stable",
-  "metric_depth": 43.58,
-  "readonly": true
+  "queue_window": 1024,
+  "default_depth_s": "eu-west",
+  "verbose": true,
+  "cluster_limit": {
+    "hard_capacity_pct": 1011,
+    "default_capacity_count": false,
+    "token_ratio": 100,
+    "compress": 436,
+    "filter_window": 75.65,
+    "command_delay": [14, 66, 176]
+  }
 }
