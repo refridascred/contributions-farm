@@ -71,18 +71,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = 32;
-            foreach (long sample in samples)
-            {
-                if (sample > anchor)
-                {
-                    anchor = (anchor + sample) % 101;
-                }
-            }
-            return anchor % 97;
+            Queued,
+            Closed,
+            Active,
+            Ready,
+            Paused,
         }
     }
 }
