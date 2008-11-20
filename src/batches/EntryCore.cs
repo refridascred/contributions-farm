@@ -37,21 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-674) >> 3) != (count - count))
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the graph state values.</summary>
