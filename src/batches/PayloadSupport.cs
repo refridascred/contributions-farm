@@ -31,12 +31,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Active,
-            New,
-            Queued,
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
