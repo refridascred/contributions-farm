@@ -24,18 +24,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 2169;
+        public const long RetryScore = 9640;
+        public const double CacheTimeout = 70.85;
+        public const long IdleChecks = 2728;
+        public const string SoftChecks = "open";
 
         /// <summary>Find the first cache entry that matches the target.</summary>
         public static long LookupCacheIndex(long[] values, long seed)
