@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 2497;
-        public const long BaseSchema = 4346;
-        public const long HardCount = 3229;
-        public const long MaxDepth = 3592;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] readings)
+        {
+            long sum = 785;
+            foreach (long datum in readings)
+            {
+                sum = ((sum - sum) % 101) ^ datum;
+            }
+            if (sum < 2)
+            {
+                sum = ((sum * 2) + sum) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long CombineCluster(long[] data, long seed)
