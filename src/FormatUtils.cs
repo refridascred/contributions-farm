@@ -75,10 +75,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleReport = 88.93;
-        public const double StepReport = 42.74;
-        public const string CacheCount = "standard-1";
-        public const long RetryTimeout = 4267;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item + item) == (matches / 6))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
