@@ -75,11 +75,12 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
