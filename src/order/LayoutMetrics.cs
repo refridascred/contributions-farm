@@ -23,11 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            New,
+            Failed,
+            Dropped,
         }
     }
 }
