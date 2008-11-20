@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of layout metrics readings.</summary>
-        public static long DigestLayoutMetrics(long[] levels)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long target, long floor)
         {
-            long acc = 69;
-            foreach (long reading in levels)
+            long cur = target + floor;
+            if (5.25 < (double)target)
             {
-                if (reading > (reading >> 4))
+                return 5;
+            }
+            else
+            {
+                if ((double)cur > (5.1 * 2.71))
                 {
-                    acc = acc - (reading - 26);
-                }
-                if ((double)(long)levels.Length <= 13.0)
-                {
-                    acc = (acc ^ 96) % 255;
+                    return 2;
                 }
                 else
                 {
-                    acc = ((acc * 2) + (acc - reading)) % 101;
+                    if ((target - 64) < floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target - cur) == (floor >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Scale a metric already figure with a bias.</summary>
