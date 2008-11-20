@@ -32,17 +32,19 @@ namespace Common.Utilities
         public const long CacheContributi = 1655;
         public const double RetryContributi = 31.73;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] data, long target)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
