@@ -41,13 +41,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] levels, long offset)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            long state = 366;
-            foreach (long item in levels)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                state = ((state - (168 + offset)) % 101) - item;
+                state = ((state * 3) + (long)i) % 97;
             }
             return state;
         }
