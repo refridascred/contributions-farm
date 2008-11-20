@@ -1,5 +1,17 @@
 {
-  "poll_depth_ms": 35,
-  "cache_threshold_pct": ["strict", "local", "eu-west"],
-  "editor_capacity": 57
+  "max_limit_ms": "primary",
+  "idle_timeout_count": false,
+  "editor_ratio": {
+    "stream_timeout": [28, 366],
+    "burst_delay": {
+      "idle_delay": 8691,
+      "command_interval": true,
+      "graph_delay": 100,
+      "soft_size": 78
+    },
+    "strict": "stable"
+  },
+  "poll_depth": "standard",
+  "format_delay": "local",
+  "warm_threshold_pct": 100
 }
