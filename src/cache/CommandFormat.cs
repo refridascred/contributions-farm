@@ -37,19 +37,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double gain, double bias)
+        /// <summary>Roll a farm format counter forward.</summary>
+        public static long IterateFarmFormat(long target)
         {
-            double weight = (double)(-983) * 7.4;
-            if (weight < 0.04)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                weight = weight - (bias / 5.0);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + gain) - (double)(long)i;
-            }
-            return weight + (bias - gain);
+            return mix;
         }
     }
 }
