@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading == (0.4 - 2.78))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
