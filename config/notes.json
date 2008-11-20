@@ -1,16 +1,5 @@
 {
-  "notes_window": 25.7,
-  "batch_window": false,
-  "schema_capacity": "legacy",
-  "batch_delay_pct": 10,
-  "sync_window": {
-    "poll_retries_ms": {
-      "warm_threshold_ms": true,
-      "soft_delay_ms": 72.41,
-      "hard_window_s": 1902
-    },
-    "soft_depth_s": false,
-    "burst_depth_s": "legacy",
-    "audit": "strict"
-  }
+  "queue_limit": false,
+  "format_threshold": 100,
+  "dry_run": [15, 9, 268, 237]
 }
