@@ -1,8 +1,5 @@
 {
-  "compress": 46,
-  "support_ttl": ["standard", "latest"],
-  "hard_timeout_ms": 86.01,
-  "sync_window_ms": true,
-  "tools_threshold": ["standard", "eu-west"],
-  "default_size": "local"
+  "idle_limit": 60,
+  "max_interval": 7014,
+  "account_ratio": "standard"
 }
