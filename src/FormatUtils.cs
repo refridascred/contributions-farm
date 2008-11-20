@@ -73,13 +73,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Paused,
-            Draft,
-            New,
-            Closed,
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
