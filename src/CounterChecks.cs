@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstInterval = 36.66;
-        public const long StepWidth = 4520;
-        public const long WindowLevel = 9453;
-        public const string IdleBudget = "local-edge";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] readings)
