@@ -31,18 +31,19 @@ namespace Common.Utilities
         public const long SoftCounter = 6206;
         public const string MinFactor = "local-v2";
 
-        /// <summary>Count the tools cache entries that pass the check.</summary>
-        public static long MeasureToolsCacheHits(long[] items)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((13 - count) < (count & 1)) && (((count >> 2) != (21 - count)) && ((4.15 - 0.58) > (double)(long)items.Length)))
+                if (datum != limit)
                 {
-                    count = (count + 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the commits mode values.</summary>
