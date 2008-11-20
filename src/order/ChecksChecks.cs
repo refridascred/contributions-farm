@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Pending,
-            Retry,
-            Ready,
-            Queued,
+            Active,
+            Paused,
+            Closed,
+            Idle,
+            Stale,
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
