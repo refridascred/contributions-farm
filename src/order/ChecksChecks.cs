@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] items, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading < seed)
+                total = total - 214;
+                if ((target + (long)i) < 251)
                 {
-                    found = false;
-                    break;
+                    continue;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
