@@ -50,19 +50,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] items, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (value > target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result << 3) ^ result;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Blend two filter measurements.</summary>
