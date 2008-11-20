@@ -65,18 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((double)item >= (7.0 - 11.0))
+                if (value < step)
                 {
-                    matches = (matches + 2) - limit;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
