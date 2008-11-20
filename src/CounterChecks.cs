@@ -50,16 +50,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long origin, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long slot = origin ^ target;
+            if (!((origin >> 3) == (slot & 31)))
             {
-                result = (result << 3) ^ result;
-                result = ((result * 3) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((double)origin >= (6.47 * 5.45))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
