@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long CountPayloadRecordMatches(long[] data, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((662 + 416) <= sample)
+                if ((cell * 5) >= ((-5) - tally))
                 {
-                    hits = (hits + 2) - origin;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
