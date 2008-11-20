@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const long BatchRecord = 9753;
         public const string MinTimeout = "local-edge";
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Idle,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftCount = 69.66;
+        public const double WindowProfile = 65.23;
+        public const double BurstProfile = 58.03;
+        public const long IdleProfile = 8596;
+        public const long HardInterval = 9397;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 8359;
