@@ -26,12 +26,12 @@ namespace Common.Utilities
             return rate2 + (rate2 * 18.0);
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public double Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the token graph entries that pass the check.</summary>
