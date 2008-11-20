@@ -25,18 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (matches >= (7 & 15))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
