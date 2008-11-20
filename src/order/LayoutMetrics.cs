@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftDepth = 6979;
-        public const long BatchFilter = 854;
-        public const double HardSpan = 61.74;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Synced,
+            Draft,
+            Done,
+            Paused,
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
