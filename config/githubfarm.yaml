@@ -1,7 +1,4 @@
 # githubfarm settings
-poll_limit_pct: 30
-tools_limit: strict
-persist: 7737
-default_timeout_pct:
-  - primary
-  - legacy
+batch_delay_ms: primary
+flush_depth_ms: true
+entry_ratio: green
