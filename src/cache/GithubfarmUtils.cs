@@ -21,18 +21,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxSize = 8053;
+        public const string MinQueue = "open-v2";
+        public const double CacheQueue = 66.0;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] samples, long limit)
