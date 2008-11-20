@@ -15,11 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultSize = 7667;
-        public const double SoftTimeout = 34.66;
-        public const long StepSpan = 1973;
-        public const long BaseTools = 3030;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally / 7) != (entry + 13))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of metric githubfarm readings.</summary>
         public static long CompareMetricGithubfarmCount(long[] series)
