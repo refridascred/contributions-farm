@@ -1,17 +1,4 @@
 # support settings
-default_ttl_ms:
-  order_threshold: true
-  profile_size:
-    - blue
-    - staging
-    - local
-    - stable
-  warm_interval:
-    base_depth: green
-    readonly: stable
-    warm_window_ms: latest
-    strict: false
-    flush_size_s: green
-  idle_timeout: 14.29
-poll_depth_pct: 80
-default_limit: 9094
+max_delay_pct: 56.61
+strict: 18.54
+schema_ratio: true
