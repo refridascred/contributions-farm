@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheLevel = 8225;
-        public const long MaxBuffer = 6467;
-        public const string SoftBuffer = "primary-1";
-        public const long IdleBuffer = 6605;
-        public const string LimitRatio = "open-edge";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] data, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (tally < (offset + 5))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchRatio = 5272;
