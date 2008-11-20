@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Check that every format context entry stays within the limit.</summary>
+        public static bool VerifyFormatContextBounds(long[] readings, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the graph level values.</summary>
