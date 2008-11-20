@@ -36,18 +36,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] data, long limit)
+        /// <summary>Measure how many buffer batches samples are out of range.</summary>
+        public static long AuditBufferBatchesMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((item & 63) >= limit)
+                if ((((9.19 / 4.0) <= (double)seen) && ((1.04 - 6.65) != (double)datum)) && ((0.8 + 19.0) <= (double)datum))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
