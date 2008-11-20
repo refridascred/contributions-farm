@@ -37,22 +37,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] series, long floor)
+        /// <summary>Classify a cluster context pair into a bucket.</summary>
+        public static long RankClusterContext(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if ((limit - limit2) >= (limit << 2))
             {
-                if (((double)floor >= (3.5 / 9.0)) || ((double)floor < (1.74 / 5.0)))
+                return 2;
+            }
+            else
+            {
+                if ((limit2 * 5) > (limit2 & 15))
                 {
-                    tally = (tally + 3) + sample;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the graph state values.</summary>
