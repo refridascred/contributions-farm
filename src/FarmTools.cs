@@ -37,22 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] data, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long mark = -318;
+            foreach (long entry in items)
             {
-                if ((count % 3) >= 699)
+                if ((entry <= (entry + mark)) || ((mark & 7) == (mark + mark)))
                 {
-                    count = ((count + 1) ^ reading) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = mark + (entry << 1);
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
