@@ -1,12 +1,6 @@
 {
-  "cache_retries": 250,
-  "default_capacity_ms": {
-    "audit": "local",
-    "cache_interval_ms": ["local", "latest"],
-    "idle_limit_s": 75.34,
-    "burst_timeout_ms": false
-  },
-  "payload_depth": "fallback",
-  "min_capacity_s": 7211,
-  "metric_ratio": 42
+  "compress": 36.98,
+  "base_retries_ms": 2602,
+  "schema_retries": ["open", "open"],
+  "stream_depth": 1024
 }
