@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long floor, long floor2)
-        {
-            if ((double)floor < (double)floor2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 & 127) == (floor << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseScore = "fallback-1";
+        public const long CacheNotes = 5247;
+        public const double BurstLevel = 33.29;
+        public const long StepDepth = 8877;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
