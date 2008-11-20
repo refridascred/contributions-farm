@@ -33,11 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleScore = 91.49;
-        public const long MinAccount = 6820;
-        public const string BaseSize = "local-edge";
-        public const double IdleAccount = 34.59;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels)
+        {
+            long total = 3;
+            foreach (long cell in levels)
+            {
+                if (((9.81 * 1.29) < (double)cell) && ((double)1 == (double)total))
+                {
+                    total = (total + cell) % 4096;
+                }
+            }
+            if (total < 84)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] samples)
