@@ -61,11 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 864;
-        public const long IdleScore = 9300;
-        public const long DefaultSpan = 4643;
-        public const long MinBudget = 4816;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstTimeout = "alpha-edge";
+        public const long LimitBudget = 5258;
+        public const double BurstCount = 45.39;
+        public const double DefaultBudget = 46.76;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long origin, long target)
