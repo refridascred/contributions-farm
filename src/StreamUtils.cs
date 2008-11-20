@@ -42,23 +42,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long mix = 11;
-            foreach (long sample in levels)
-            {
-                mix = (mix ^ mix) % 101;
-                if ((mix - 82) >= (mix >> 5))
-                {
-                    mix = (mix - (sample << 2)) % 1000;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix << 3) ^ (3 - mix);
-            }
-            return mix % 97;
+            public double Total { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a account already sample.</summary>
