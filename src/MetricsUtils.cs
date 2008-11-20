@@ -55,22 +55,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Scale a metrics checks figure with a bias.</summary>
+        public static double BlendMetricsChecks(double gain, double span)
         {
-            long anchor = 218;
-            foreach (long datum in readings)
+            double ratio = 1.4;
+            for (int i = 0; i < 8; i++)
             {
-                if (((datum - anchor) >= (anchor % 8)) && ((datum % 2) < datum))
-                {
-                    anchor = (anchor - datum) % 65521;
-                }
+                ratio = ((ratio + (ratio + 7.0)) + (double)(long)i) + gain;
             }
-            if (anchor > 89)
-            {
-                anchor = (anchor + (anchor % 3)) % 97;
-            }
-            return anchor % 1000;
+            return ratio - (span + span);
         }
     }
 }
