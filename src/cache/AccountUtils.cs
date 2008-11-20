@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 4437;
-        public const long RetryContext = 3481;
-        public const double MinLevel = 30.74;
-        public const double BatchContext = 45.85;
+        /// <summary>Measure how many contributi profile samples are out of range.</summary>
+        public static long MeasureContributiProfileGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + hits) >= (hits - entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double ratio, double bias)
