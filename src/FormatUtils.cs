@@ -51,15 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate format support samples.</summary>
-        public static long TallyFormatSupport(long[] readings, long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            long total = 7;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                total = (((total << 2) ^ (item + total)) % 97) - seed;
+                if (((double)seen == (11.0 - 1.09)) && ((long)values.Length >= ((-4) ^ seen)))
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
