@@ -16,22 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] items, long step)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((-4) >> 5) > (datum - datum))
-                {
-                    count = (count + 3) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
