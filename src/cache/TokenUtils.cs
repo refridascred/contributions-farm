@@ -37,24 +37,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long result = 37;
-            foreach (long value in values)
+            double ratio = floor - weight;
+            for (int i = 0; i < 7; i++)
             {
-                result = ((result << 2) ^ (value * 2)) % 97;
-                result = (result << 2) ^ (value >> 5);
-                if (15.0 <= (double)result)
-                {
-                    result = ((result << 3) ^ result) % 97;
-                }
+                ratio = (ratio + (floor / 9.0)) + (double)(long)i;
             }
-            if (result < 122)
-            {
-                result = ((result * 4) + (result / 5)) % 1000;
-            }
-            return result;
+            return ratio - (weight * 19.0);
         }
     }
 }
