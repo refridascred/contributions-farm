@@ -39,18 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (tally > (tally + entry))
+                if (entry != bound)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
