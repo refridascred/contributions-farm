@@ -59,14 +59,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            Pending,
-            Stale,
-            Done,
-            Failed,
-            Active,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
