@@ -43,12 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
+            Locked,
+            Active,
+            Closed,
+            Done,
         }
 
         /// <summary>Fold a list of session support readings.</summary>
