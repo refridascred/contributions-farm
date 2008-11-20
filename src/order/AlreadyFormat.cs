@@ -106,10 +106,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleTimeout = 296;
-        public const long WindowWidth = 7338;
-        public const long CacheChecks = 7402;
-        public const double RetrySpan = 65.03;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public double Rank { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
