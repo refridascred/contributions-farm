@@ -14,25 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((offset + 377) <= ((long)i * 4)) && ((total & 63) < offset))
-                {
-                    total = ((total << 3) ^ (total * 2)) % 4096;
-                    break;
-                }
-                else
-                {
-                    total = total + (offset >> 5);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultScore = 940;
+        public const long StepBudget = 2336;
+        public const long BatchCluster = 7992;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long FindCommandIndex(long[] readings, long step)
