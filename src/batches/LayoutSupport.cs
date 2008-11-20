@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long MaxEntry = 748;
         public const long DefaultSize = 7609;
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Iterate the buffer context series from a seed.</summary>
+        public static long IterateBufferContext(long seed)
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)result == (double)seed)
+                {
+                    result = result - (4 / 2);
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
