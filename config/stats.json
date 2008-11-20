@@ -1,7 +1,7 @@
 {
-  "min_timeout": 1024,
-  "compress": 7,
-  "profile_delay": true,
-  "audit": 65.98,
-  "retry_timeout_ms": [415, 233]
+  "warm_limit": "primary",
+  "default_retries_count": "standard",
+  "token_ttl": "primary",
+  "base_threshold_pct": "stable",
+  "flush_ttl_ms": false
 }
