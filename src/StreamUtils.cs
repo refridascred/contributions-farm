@@ -27,12 +27,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5218;
-        public const long BatchInterval = 1682;
-        public const double WindowDepth = 17.96;
-        public const string MaxWidth = "local-1";
-        public const long LimitPayload = 1781;
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((seed % 100) < (603 >> 3))
+                {
+                    mix = (mix << 3) ^ seed;
+                }
+                if (((long)i < ((long)i / 4)) && ((mix + seed) > 4))
+                {
+                    mix = ((mix * 2) + (mix - mix)) % 101;
+                    mix = ((mix << 3) ^ (mix + seed)) % 255;
+                    continue;
+                }
+                if (421 > (seed ^ (long)i))
+                {
+                    mix = ((mix * 5) + (seed >> 3)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
