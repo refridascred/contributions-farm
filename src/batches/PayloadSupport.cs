@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            long sum = 96;
+            foreach (long reading in items)
             {
-                if ((((long)i / 9) == (mix & 31)) && ((mix + 7) > (long)i))
-                {
-                    mix = ((mix * 3) + (-559)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - ((long)i & 15)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                sum = (sum ^ (sum >> 5)) ^ reading;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
