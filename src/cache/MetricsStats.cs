@@ -42,19 +42,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] values, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (item > origin)
+                if ((target - 666) < item)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
