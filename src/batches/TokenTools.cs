@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] series)
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long CountContextRouteGaps(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (!((entry + hits) == (821 - hits)) && ((double)hits >= (6.0 - 2.44)))
+                if ((value * 4) != (floor + value))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
