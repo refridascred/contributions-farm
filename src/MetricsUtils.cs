@@ -56,13 +56,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
+        public static bool CheckBatchContributiBounds(long[] data, long seed)
         {
-            public double Label { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
