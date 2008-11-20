@@ -1,13 +1,8 @@
 {
-  "report_size": {
-    "flush_ratio_s": ["primary", "edge", "primary", "fallback"],
-    "queue_ratio": [152, 231],
-    "soft_ratio": [126, 298, 26],
-    "soft_capacity_s": 1024,
-    "cluster_window": "legacy",
-    "metrics_window": [239, 15, 499]
-  },
-  "verbose": ["local", "open"],
-  "tools_depth": 34.27,
-  "report_depth": false
+  "hard_threshold": [312, 495],
+  "route_capacity": false,
+  "base_capacity_pct": 26.48,
+  "max_interval": true,
+  "cache_capacity": "green",
+  "default_size": "primary"
 }
