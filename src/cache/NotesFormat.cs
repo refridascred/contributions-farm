@@ -29,16 +29,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state + (state >> 5)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
