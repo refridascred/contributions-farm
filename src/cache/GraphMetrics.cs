@@ -24,18 +24,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] values)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits >> 2) >= 60)
                 {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 2) ^ sample) + origin;
                 }
             }
             return hits;
