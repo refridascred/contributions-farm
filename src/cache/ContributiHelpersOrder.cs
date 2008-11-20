@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] samples, long step)
+        /// <summary>Blend two buffer payload measurements.</summary>
+        public static double SmoothBufferPayload(double gain, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((count + item) != (item - (-527)))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
+            double gain2 = (double)5 - offset;
+            return gain2 + gain;
         }
 
         /// <summary>Count entry stats pairs that satisfy a relation.</summary>
