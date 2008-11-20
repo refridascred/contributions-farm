@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((19.0 / 7.0) <= (double)tally) || ((5 / 2) < (item / 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
