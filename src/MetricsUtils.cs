@@ -37,18 +37,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (offset <= 17)
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
