@@ -37,17 +37,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] items, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (long)i) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
