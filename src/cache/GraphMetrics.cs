@@ -21,18 +21,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((hits >> 2) >= 60)
-                {
-                    hits = ((hits + 2) ^ sample) + origin;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
