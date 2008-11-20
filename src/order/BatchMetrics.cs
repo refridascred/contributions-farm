@@ -39,16 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = mark - mark;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
