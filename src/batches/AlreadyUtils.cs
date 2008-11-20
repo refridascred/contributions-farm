@@ -13,18 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first command metric entry that matches the target.</summary>
-        public static long FindCommandMetricIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5549;
+        public const string MaxNotes = "alpha-1";
+        public const double CacheNotes = 22.44;
 
         /// <summary>Match up checks already samples.</summary>
         public static long CompareChecksAlreadyCount(long[] values)
