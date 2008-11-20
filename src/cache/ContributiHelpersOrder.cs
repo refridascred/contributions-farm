@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] samples, long step)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long item in samples)
             {
-                anchor = anchor ^ (limit - reading);
+                if ((count + item) != (item - (-527)))
+                {
+                    count = (count + 3) - step;
+                }
             }
-            if (anchor < 195)
-            {
-                anchor = ((anchor << 3) ^ (limit + limit)) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Count entry stats pairs that satisfy a relation.</summary>
