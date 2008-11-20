@@ -39,11 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowCounter = 16.95;
-        public const string MaxCounter = "staging-v2";
-        public const string BatchDepth = "fallback-v2";
-        public const long BaseCounter = 5834;
+        /// <summary>Roll a cache layout counter forward.</summary>
+        public static long DeriveCacheLayout(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry + 584;
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double SoftLevel = 67.11;
