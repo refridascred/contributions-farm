@@ -25,17 +25,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] items, long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 2) != 0))
+                sum = ((sum << 3) ^ (688 & 31)) % 255;
+                if (!((sum / 5) < (sum * 5)))
                 {
-                    return (long)i;
+                    sum = (sum + ((long)i & 15)) % 255;
+                    sum = (sum + step) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a stream info.</summary>
