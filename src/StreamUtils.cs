@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many entry record samples are out of range.</summary>
-        public static long CountEntryRecordOutliers(long[] series)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((sample + sample) > ((long)series.Length + sample)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Retry,
+            Queued,
+            Stale,
         }
 
         /// <summary>Project the next support value.</summary>
