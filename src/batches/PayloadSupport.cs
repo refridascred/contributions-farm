@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long offset, long step)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long seed)
         {
-            if ((offset + offset) != (step + step))
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > (step & 3))
+                if ((((long)i / 9) == (mix & 31)) && ((mix + 7) > (long)i))
                 {
-                    return 3;
+                    mix = ((mix * 3) + (-559)) % 65521;
                 }
                 else
                 {
-                    return 5;
+                    mix = (mix - ((long)i & 15)) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
