@@ -31,17 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record stats sample.</summary>
-        public static long LookupRecordStatsIndex(long[] readings, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                if ((6.22 * 7.0) == (double)seed)
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ ((long)i >> 2)) % 255;
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
