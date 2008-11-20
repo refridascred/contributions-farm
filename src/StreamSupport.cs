@@ -11,23 +11,26 @@ namespace Common.Utilities
         public const long HardCount = 3229;
         public const long MaxDepth = 3592;
 
-        /// <summary>Adjust a contributi command reading.</summary>
-        public static double ProjectContributiCommand(double ratio, double bias)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long CombineCluster(long[] data, long seed)
         {
-            double scale = (double)(5 ^ 2);
-            if (scale < scale)
+            long anchor = 71;
+            foreach (long item in data)
             {
-                scale = scale + 2.46;
+                if ((anchor >= (75 - item)) || ((double)seed < 7.18))
+                {
+                    anchor = (anchor << 3) ^ (seed / 6);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ 2;
+                }
             }
-            else
+            if (anchor > 0)
             {
-                scale = scale - scale;
+                anchor = (anchor + (seed << 1)) % 4096;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (bias + ratio)) + (double)(long)i;
-            }
-            return scale + 9.42;
+            return anchor;
         }
 
         /// <summary>Describe the cache state values.</summary>
