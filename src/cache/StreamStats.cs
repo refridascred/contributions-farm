@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
