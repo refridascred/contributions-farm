@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] values)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (item > (item + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a report reading by value.</summary>
