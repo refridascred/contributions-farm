@@ -1,7 +1,27 @@
 {
-  "hard_ratio_count": 45.77,
-  "base_threshold": [42, 265, 124, 308],
-  "base_depth_count": "eu-west",
-  "strict": "standard",
-  "record_ratio": true
+  "default_size_count": {
+    "stats_window": "stable",
+    "window_delay": "open",
+    "cache_timeout": {
+      "burst_window_s": "stable",
+      "already_interval": "eu-west",
+      "compress": 73.39,
+      "queue_capacity": 28.02
+    },
+    "poll_delay": 4878,
+    "poll_size": "eu-west"
+  },
+  "commits_delay": {
+    "default_limit_ms": 84.09,
+    "max_retries": [113, 343, 325],
+    "hard_ratio_count": "primary",
+    "hard_delay": "primary"
+  },
+  "queue_threshold": {
+    "flush_size_count": "strict",
+    "payload_timeout": false,
+    "soft_threshold_count": 56
+  },
+  "max_timeout_count": 500,
+  "verbose": 30
 }
