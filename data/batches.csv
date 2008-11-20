@@ -1,6 +1,10 @@
-id,owner,active,ratio
-1,eu-west,994,89.24
-2,568,943,57.82
-3,185,7.23,299
-4,701,local,598
-5,eu-west,152,open
+id,label,score,weight
+1,615,green,97.3
+2,stable,495,23.2
+3,cached,23.95,standard
+4,9.23,strict,open
+5,593,78,fallback
+6,fallback,open,local
+7,406,edge,53.1
+8,standard,open,51.21
+9,75,2.88,stable
