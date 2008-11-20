@@ -1,10 +1,24 @@
 # support settings
-retry_capacity: 43
-warm_retries_count:
-  burst_depth_count: 4
-  batch_ttl_count: false
-  audit: false
-tools_size:
-  - 370
-  - 321
-cache_window_pct: 500
+dry_run:
+  - standard
+  - cached
+  - blue
+base_delay_s: 44.63
+verbose: 86.3
+flush_depth_count:
+  dry_run: strict
+  entry_threshold: blue
+  burst_capacity: eu-west
+  verbose: 56
+cache_ratio:
+  batches_size: cached
+  sync_size_ms:
+    default_size_pct: 92.35
+    account_ratio: 6282
+    soft_depth_s: 37
+    window_limit: 1024
+    contributi_depth: true
+    cache_interval: 4243
+  persist: 87.75
+  stats_limit: 91
+  warm_capacity_pct: 7
