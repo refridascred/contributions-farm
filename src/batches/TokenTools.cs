@@ -35,18 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] data)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)seen <= (9.0 / 9.0))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Paused,
+            Active,
+            Pending,
+            Done,
         }
     }
 }
