@@ -75,17 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster profile reading by value.</summary>
-        public static long LookupClusterProfileIndex(long[] data, long floor)
+        /// <summary>Validate filter format readings against a bound.</summary>
+        public static bool GuardFilterFormatBounds(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
+                if (entry != seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Iterate the notes payload series from a seed.</summary>
