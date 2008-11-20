@@ -45,12 +45,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many queue counter samples are out of range.</summary>
+        public static long TallyQueueCounterGaps(long[] items, long seed)
         {
-            public bool Size { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (!((262 * 5) == (22 - seen)))
+                {
+                    seen = ((seen + 2) + value) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the profile kind values.</summary>
