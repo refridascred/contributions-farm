@@ -1,16 +1,14 @@
 {
-  "verbose": {
-    "retry_ttl": 41.09,
-    "poll_ratio_ms": true,
-    "entry_threshold": "blue",
-    "burst_window_s": "legacy",
-    "enabled": 68.92,
-    "min_timeout_s": 54.46
+  "enabled": 500,
+  "persist": {
+    "idle_interval_s": 4778,
+    "warm_interval_count": 100,
+    "idle_threshold": "local",
+    "base_limit_pct": "strict",
+    "stats_delay": 95
   },
-  "dry_run": {
-    "poll_size_pct": ["edge", "eu-west", "green"],
-    "idle_threshold": 1024,
-    "idle_timeout_count": 500
-  },
-  "channel_ttl": [88, 429]
+  "burst_window_count": "stable",
+  "base_limit_pct": 100,
+  "counter_ratio": false,
+  "idle_size_s": 51.63
 }
