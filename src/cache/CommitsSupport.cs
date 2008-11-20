@@ -60,18 +60,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum + datum) >= 1) || ((-84) > datum))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
