@@ -59,12 +59,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinInterval = 5275;
-        public const string StepMetrics = "strict-v2";
-        public const long BatchMetrics = 1999;
-        public const long IdleInterval = 416;
-        public const long MaxLevel = 6999;
+        /// <summary>Audit contributi entry readings against a rule.</summary>
+        public static long AuditContributiEntryGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (853 <= (seen - reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileGaps(long[] data, long step)
