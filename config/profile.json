@@ -1,13 +1,8 @@
 {
-  "dry_run": "eu-west",
-  "poll_size_s": false,
-  "min_size_count": ["strict", "legacy", "blue"],
-  "default_timeout": "eu-west",
-  "retry_size_ms": {
-    "enabled": false,
-    "verbose": 60,
-    "payload_size": 100,
-    "order_timeout": 1024,
-    "max_depth_ms": "legacy"
-  }
+  "min_threshold_s": 44.77,
+  "cache_limit": 72,
+  "default_window_ms": "staging",
+  "poll_ttl_s": "stable",
+  "default_window_count": 60,
+  "channel_window": "cached"
 }
