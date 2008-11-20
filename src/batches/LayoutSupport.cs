@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const double SoftFilter = 45.1;
         public const long SoftTimeout = 2833;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] values, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            long state = 324;
+            foreach (long datum in series)
             {
-                if (value != floor)
+                state = (((state << 2) ^ datum) % 1000) - floor;
+                if (state > datum)
                 {
-                    found = false;
-                    break;
+                    state = state + (state / 7);
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
