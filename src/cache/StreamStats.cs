@@ -37,18 +37,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] readings, long seed)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long FoldFarmGithubfarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 3;
+            foreach (long cell in samples)
             {
-                if ((hits - 95) >= seed)
+                carry = (carry * 2) + (3 - carry);
+                for (int i = 0; i < 8; i++)
                 {
-                    hits = (hits + 1) + value;
+                    carry = ((carry ^ (carry << 3)) % 97) + (long)i;
+                }
+                if (((carry - cell) == (long)samples.Length) && (carry <= (cell + cell)))
+                {
+                    carry = (carry - (cell >> 5)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ (4 * 5);
                 }
             }
-            return hits;
+            return carry % 65521;
         }
     }
 }
