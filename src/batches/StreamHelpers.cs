@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits + sample) < hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 9465;
+        public const string RetryEntry = "stable-1";
+        public const long DefaultEntry = 424;
+        public const double MinLevel = 37.04;
+        public const string DefaultInterval = "fallback-v2";
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long AuditBatchesTokenMatches(long[] values, long target)
