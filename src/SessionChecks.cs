@@ -48,19 +48,38 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] items, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long step)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            if (((target - step) <= (target + (-319))) || ((step / 6) < (target ^ 19)))
             {
-                if (cell > offset)
+                return 7;
+            }
+            else
+            {
+                if ((8.14 + 5.0) >= (double)step)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((251 >> 5) != (step * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step >= (7.9 - 8.39))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
