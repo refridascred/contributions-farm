@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long seed, long floor)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            if ((floor & 31) <= floor)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed >= (double)floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (9 < (seed - seed))
+                    if ((data[i] - data[j]) < 20)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up token farm samples.</summary>
