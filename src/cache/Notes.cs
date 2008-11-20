@@ -48,12 +48,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
