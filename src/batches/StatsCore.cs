@@ -29,19 +29,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] readings, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading >= offset)
+                if ((limit ^ limit) != (tally / 2))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
