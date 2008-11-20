@@ -1,11 +1,5 @@
 {
-  "max_delay": "standard",
-  "dry_run": {
-    "batch_ratio": "eu-west",
-    "hard_interval_count": 60,
-    "burst_capacity_count": [120, 254, 205, 221]
-  },
-  "poll_interval": "stable",
-  "retry_interval_ms": false,
-  "base_limit_s": 54.78
+  "persist": "primary",
+  "strict": "standard",
+  "enabled": "latest"
 }
