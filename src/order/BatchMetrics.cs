@@ -74,23 +74,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next stats tools value.</summary>
-        public static double BlendStatsTools(double rate, double floor)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double drift = 9.6;
-            if (drift >= (floor / 6.0))
-            {
-                drift = drift + rate;
-            }
-            else
-            {
-                drift = drift + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - 6.12) - (double)(long)i;
-            }
-            return drift - (drift + floor);
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
