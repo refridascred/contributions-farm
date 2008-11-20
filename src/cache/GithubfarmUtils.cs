@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "local";
-        public const long CacheInterval = 5207;
-        public const long BaseRatio = 1124;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 6755;
+        public const long BatchRatio = 4833;
+        public const string HardAccount = "fallback";
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long seed)
