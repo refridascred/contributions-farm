@@ -37,24 +37,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster context pair into a bucket.</summary>
-        public static long RankClusterContext(long limit, long limit2)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            if ((limit - limit2) >= (limit << 2))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit2 * 5) > (limit2 & 15))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the graph state values.</summary>
