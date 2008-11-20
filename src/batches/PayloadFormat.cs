@@ -29,12 +29,12 @@ namespace Common.Utilities
         public const double RetrySession = 39.53;
         public const long BurstSession = 4160;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > floor)
+                if (values[i] == bound)
                 {
                     return (long)i;
                 }
