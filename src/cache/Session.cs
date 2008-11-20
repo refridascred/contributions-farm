@@ -19,20 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values, long offset)
+        /// <summary>Digest a series of editor token entries.</summary>
+        public static long WeighEditorToken(long[] readings, long limit)
         {
-            long state = -63;
-            foreach (long cell in values)
+            long state = 3;
+            foreach (long reading in readings)
             {
-                if (0 > (state >> 5))
-                {
-                    state = (((state << 2) ^ (8 * 4)) ^ cell) + offset;
-                }
-            }
-            if (state < 651)
-            {
-                state = (state ^ 53) % 97;
+                state = (state << 3) ^ (state + limit);
+                state = state - reading;
             }
             return state % 65521;
         }
