@@ -50,16 +50,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi layout value from a seed.</summary>
-        public static long RollContributiLayout(long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double weight, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            double bias = (offset / 9.0) * 8.4;
+            for (int i = 0; i < 3; i++)
             {
-                carry = (carry + (carry + carry)) % 65521;
-                carry = ((carry * 3) + (long)i) % 101;
+                bias = (bias + (double)(long)i) - weight;
             }
-            return carry;
+            return bias + (bias * 5.41);
         }
     }
 }
