@@ -116,11 +116,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheFactor = "local-v2";
-        public const long CacheMetrics = 6647;
-        public const double LimitCount = 10.0;
-        public const long MaxRatio = 627;
-        public const long WindowMetrics = 5872;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Idle,
+            Pending,
+            Done,
+        }
     }
 }
