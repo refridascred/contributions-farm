@@ -23,13 +23,39 @@ namespace Common.Utilities
         public const long CacheDepth = 6436;
         public const string RetryLevel = "cached-1";
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Rank support account input into a small class.</summary>
+        public static long GradeSupportAccount(long target, long origin)
         {
-            Failed,
-            Closed,
-            Paused,
-            Pending,
+            long offset = target + origin;
+            if (((double)offset <= (3.0 * 9.4)) && (target > (672 + origin)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target & 15) > offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target < (offset * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + (-3)) > 0)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a entry record.</summary>
