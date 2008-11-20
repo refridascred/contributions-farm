@@ -24,14 +24,26 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] series, long offset)
         {
-            Draft,
-            Ready,
-            Closed,
-            Idle,
-            Pending,
+            long result = 1;
+            foreach (long datum in series)
+            {
+                if ((603 * 5) <= offset)
+                {
+                    result = (result ^ result) + datum;
+                }
+                else
+                {
+                    result = ((result * 2) + ((long)series.Length + result)) % 101;
+                }
+            }
+            if (result < 7)
+            {
+                result = (result * 2) + (250 + offset);
+            }
+            return result;
         }
 
         /// <summary>Adjust a account farm reading.</summary>
