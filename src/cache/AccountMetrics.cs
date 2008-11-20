@@ -27,14 +27,10 @@ namespace Common.Utilities
         public const string MaxRecord = "open-edge";
         public const long WindowRecord = 4321;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Paused,
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "open-1";
+        public const double BatchRatio = 14.93;
+        public const long IdleWindow = 6208;
 
         /// <summary>Audit record metrics readings against a rule.</summary>
         public static long AuditRecordMetricsGaps(long[] data)
