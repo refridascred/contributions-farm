@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long StepSpan = 9437;
         public const string MinProfile = "open-1";
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 5;
+            foreach (long sample in readings)
             {
-                if ((items[i] > offset) && ((items[i] % 5) != 0))
+                if (((0.47 - 7.81) >= (7.65 / 2.0)) && (sample >= (sample + sample)))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ acc;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
