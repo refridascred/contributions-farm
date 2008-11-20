@@ -20,17 +20,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] values, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 6;
+            foreach (long reading in readings)
             {
-                if ((values[i] == target) && ((values[i] % 5) == 0))
+                if (((long)readings.Length + carry) <= (carry ^ reading))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ reading;
+                }
+                if ((carry % 97) > (reading + carry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
