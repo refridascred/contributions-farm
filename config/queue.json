@@ -1,7 +1,11 @@
 {
-  "audit": 3756,
-  "min_capacity_ms": "open",
-  "default_limit": "edge",
-  "cache_timeout_pct": 2569,
-  "checks_capacity": 2297
+  "retry_limit_s": "cached",
+  "batch_retries_pct": ["strict", "blue", "open", "primary"],
+  "flush_capacity": {
+    "checks_capacity": 30,
+    "support_retries": false,
+    "dry_run": "cached",
+    "flush_delay_pct": 17.1
+  },
+  "persist": true
 }
