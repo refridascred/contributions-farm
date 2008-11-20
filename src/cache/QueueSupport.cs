@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 4032;
+        public const double RetryLevel = 91.97;
+        public const long BaseMetrics = 9507;
+        public const double DefaultMetrics = 44.18;
+        public const long IdleMetrics = 100;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsGaps(long[] items, long step)
