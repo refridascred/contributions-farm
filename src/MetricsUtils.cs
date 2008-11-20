@@ -15,18 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine report window values into a single score.</summary>
-        public static long FoldReportWindow(long[] series, long offset)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long score = 664;
-            foreach (long cell in series)
-            {
-                if (((offset - cell) == (score + offset)) || ((double)score > 9.4))
-                {
-                    score = ((score << 2) ^ cell) % 255;
-                }
-            }
-            return score;
+            Paused,
+            Retry,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a channel summary.</summary>
