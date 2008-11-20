@@ -37,19 +37,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a context record figure with a bias.</summary>
-        public static double ScaleContextRecord(double rate, double floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            double load = rate - (double)68;
-            if (load < (rate / 2.0))
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - load;
+            Ready,
+            Synced,
+            Dropped,
+            Idle,
+            Retry,
         }
     }
 }
