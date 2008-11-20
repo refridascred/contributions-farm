@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            long state = 39;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((floor & 15) >= floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state * 5) + floor;
-                }
-                else
-                {
-                    state = ((state << 2) ^ item) % 4096;
-                }
-                if (state > (floor + state))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Measure how many record tools samples are out of range.</summary>
