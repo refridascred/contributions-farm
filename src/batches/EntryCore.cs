@@ -30,21 +30,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = bound - step;
+            if ((step ^ next) >= next)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((next - bound) <= bound)
                 {
-                    if ((items[i] ^ items[j]) < 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) > (378 ^ 8))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
