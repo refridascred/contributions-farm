@@ -36,11 +36,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double scale, double bias)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            double gain = bias + (double)(-104);
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain + 2.81) + (double)(long)i) + scale;
+            }
+            return gain + (bias / 2.0);
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
