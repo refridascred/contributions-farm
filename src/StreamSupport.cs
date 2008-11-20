@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double SmoothFarm(double weight, double offset)
-        {
-            double weight2 = weight;
-            if (weight2 > (weight2 + 14.0))
-            {
-                weight2 = (weight2 + (double)(-378)) + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + weight2;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 2497;
+        public const long BaseSchema = 4346;
+        public const long HardCount = 3229;
+        public const long MaxDepth = 3592;
 
         /// <summary>Adjust a contributi command reading.</summary>
         public static double ProjectContributiCommand(double ratio, double bias)
