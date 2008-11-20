@@ -36,28 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = 6;
-            foreach (long datum in samples)
-            {
-                mark = (mark ^ datum) % 4096;
-                mark = ((mark * 2) + (1 + mark)) % 4096;
-                if ((mark << 2) >= (mark << 1))
-                {
-                    mark = mark - (9 + 395);
-                }
-                else
-                {
-                    mark = (mark + (datum << 3)) % 4096;
-                }
-            }
-            if (mark > 9)
-            {
-                mark = mark ^ ((-62) + mark);
-            }
-            return mark;
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
