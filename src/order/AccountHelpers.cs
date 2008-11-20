@@ -44,15 +44,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Project the next notes metric value.</summary>
+        public static double ProjectNotesMetric(double ratio, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            double ratio2 = floor;
+            if (ratio2 > (double)58)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                ratio2 = (ratio2 + (floor / 7.0)) - ratio;
             }
-            return acc;
+            else
+            {
+                ratio2 = ratio2 - (floor + 5.36);
+            }
+            return ratio2 + (double)718;
         }
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
