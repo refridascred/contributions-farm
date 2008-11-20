@@ -25,12 +25,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long limit)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
