@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long floor)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] series)
         {
-            if (origin < 27)
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6.0 / 2.0) == (double)floor)
+                if ((13 % 24) <= count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 255) == (floor / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 3) - entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of format payload readings.</summary>
