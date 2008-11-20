@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank format commits input into a small class.</summary>
-        public static long SortFormatCommits(long target, long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long next = target ^ limit;
-            if ((4.73 / 8.0) < (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((next + limit) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Done,
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Combine report window values into a single score.</summary>
