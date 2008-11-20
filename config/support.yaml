@@ -1,14 +1,17 @@
 # support settings
-retry_limit: edge
-default_ratio_s: blue
-base_timeout_pct: 9.98
-default_retries_count: 8761
-verbose:
-  metrics_retries: local
-  poll_capacity_ms:
-    - 326
-    - 343
-    - 193
-    - 208
-  soft_threshold_count: cached
-max_depth_pct: 91
+default_ttl_ms:
+  order_threshold: true
+  profile_size:
+    - blue
+    - staging
+    - local
+    - stable
+  warm_interval:
+    base_depth: green
+    readonly: stable
+    warm_window_ms: latest
+    strict: false
+    flush_size_s: green
+  idle_timeout: 14.29
+poll_depth_pct: 80
+default_limit: 9094
