@@ -45,13 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "staging-1";
+        public const string BaseInterval = "open-v2";
+        public const long HardSize = 950;
+        public const string MaxRecord = "open-edge";
+        public const long WindowRecord = 4321;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
