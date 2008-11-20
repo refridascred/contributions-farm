@@ -11,20 +11,38 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-edge";
         public const long DefaultStream = 5755;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            if (!(9.0 <= (double)floor))
             {
-                if ((double)mix <= (4.97 * 10.0))
-                {
-                    mix = mix ^ (mix >> 3);
-                }
-                mix = mix + (mix & 3);
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((25 >> 1) != (floor & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((8 << 3) <= (target % 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target / 2) >= (target & 15))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
