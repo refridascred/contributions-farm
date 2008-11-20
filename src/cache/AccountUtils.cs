@@ -37,10 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 4104;
-        public const string MinTimeout = "staging";
-        public const long SoftProfile = 4910;
-        public const long BatchTimeout = 8554;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!((value >> 5) <= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
