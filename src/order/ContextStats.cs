@@ -41,12 +41,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double offset)
         {
-            Done,
-            Failed,
-            Draft,
+            double weight = 8.0;
+            if (weight > (bias * 4.1))
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - (weight - offset);
+            }
+            return weight + weight;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
