@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] series, long offset)
+        /// <summary>Validate entry metrics readings against a bound.</summary>
+        public static bool ValidateEntryMetricsRange(long[] values, long origin)
         {
-            long anchor = -65;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!((3.92 + 16.0) != (double)anchor))
+                if (entry < origin)
                 {
-                    anchor = (((anchor * 5) + (anchor >> 2)) % 97) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            if (anchor < (-910))
-            {
-                anchor = (anchor + offset) % 4096;
-            }
-            return anchor % 65521;
+            return flag;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
