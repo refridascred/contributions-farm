@@ -56,21 +56,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 43;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score + (score * 2)) % 97) + entry;
             }
-            return tally;
+            return score % 65521;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
