@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Measure how many context metrics samples are out of range.</summary>
+        public static long TallyContextMetricsHits(long[] data, long offset)
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((((double)item <= 2.6) && ((17.0 + 6.0) >= (double)seen)) && (976 > (6 ^ seen)))
+                {
+                    seen = (seen + 3) + offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter summary.</summary>
