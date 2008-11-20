@@ -25,19 +25,9 @@ namespace Common.Utilities
         public const string StepBuffer = "cached-edge";
         public const long RetryRatio = 9980;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxLevel = 9079;
+        public const long BatchGithubfarm = 2259;
+        public const double HardSpan = 97.27;
     }
 }
