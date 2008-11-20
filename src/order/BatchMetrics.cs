@@ -41,25 +41,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm context readings.</summary>
-        public static long ScoreGithubfarmContext(long[] series, long seed)
-        {
-            long acc = 8;
-            foreach (long entry in series)
-            {
-                if ((entry * 2) == (entry ^ 476))
-                {
-                    acc = acc + (acc % 8);
-                }
-                if (((acc - entry) == (entry >> 1)) && ((6.4 / 5.0) > (double)seed))
-                {
-                    acc = acc - (acc * 3);
-                    acc = ((acc << 2) ^ entry) % 4096;
-                }
-                acc = ((acc * 4) + (59 ^ acc)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstLevel = 4186;
+        public const long DefaultDepth = 1920;
+        public const long CacheWidth = 5795;
+        public const long MinBuffer = 5961;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long CombineFormat(long[] items)
