@@ -1,8 +1,6 @@
 {
-  "filter_capacity": false,
-  "strict": 8420,
-  "commits_timeout": "green",
-  "retry_delay_count": "fallback",
-  "idle_limit": true,
-  "burst_depth_pct": 97
+  "window_window": [179, 321],
+  "window_capacity": 100,
+  "strict": false,
+  "audit": "blue"
 }
