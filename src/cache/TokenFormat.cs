@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Derive the next support filter value from a seed.</summary>
+        public static long RollSupportFilter(long offset)
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of editor format readings.</summary>
