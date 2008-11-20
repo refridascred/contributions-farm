@@ -54,21 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
-        public static long OverlapBufferClusterCount(long[] readings)
+        /// <summary>Match up farm batch samples.</summary>
+        public static long MatchFarmBatchCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 3)
+                    if ((data[i] - data[j]) != 15)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a counter info.</summary>
