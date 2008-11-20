@@ -42,24 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command filter value against two limits.</summary>
-        public static long GradeCommandFilter(long origin, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((1.4 / 9.0) == (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 4) != (origin % 64))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
