@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Find the first already profile entry that matches the target.</summary>
-        public static long FindAlreadyProfileIndex(long[] readings, long seed)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] >= seed)
+                if ((items[i] > offset) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
