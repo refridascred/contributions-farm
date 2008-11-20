@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long target, long offset)
         {
-            Active,
-            Idle,
-            New,
+            if (((target & 63) >= target) && ((7.0 - 5.2) != (double)target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)offset > (9.0 + 11.0)) && ((74 + offset) == (target & 7)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
