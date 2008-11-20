@@ -1,5 +1,8 @@
 # entry settings
-base_delay_count: latest
-poll_delay_count: primary
-verbose: 1534
-session_timeout: 45
+poll_ttl: 1386
+farm_delay:
+  - strict
+  - fallback
+  - local
+  - cached
+cache_depth_s: 72
