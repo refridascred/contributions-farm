@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitWidth = 93.08;
-        public const string DefaultDepth = "strict";
-        public const long MinContributi = 3619;
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] values, long limit)
