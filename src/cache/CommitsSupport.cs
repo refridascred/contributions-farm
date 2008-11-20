@@ -48,13 +48,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
+        public static long OverlapBufferClusterCount(long[] readings)
         {
-            New,
-            Retry,
-            Failed,
-            Stale,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
