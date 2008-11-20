@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support filter value from a seed.</summary>
-        public static long RollSupportFilter(long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] levels, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                if (((double)hits >= 6.47) && ((datum - 278) != (928 + step)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of editor format readings.</summary>
