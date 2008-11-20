@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Locate a context batch reading by value.</summary>
+        public static long FindContextBatchIndex(long[] series, long bound)
         {
-            public double Region { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
