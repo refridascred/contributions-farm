@@ -49,27 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long state = 3;
-            foreach (long sample in series)
+            long total = 9;
+            foreach (long cell in data)
             {
-                if (!(sample >= (state >> 4)))
-                {
-                    state = (state ^ state) % 65521;
-                    state = state - (sample % 3);
-                }
-                if ((double)state > (12.0 * 3.9))
-                {
-                    state = (state ^ (state + sample)) % 97;
-                }
+                total = (total + total) - cell;
             }
-            if (state > (-6))
+            if (total < 51)
             {
-                state = (state * 3) + (72 ^ 259);
+                total = (total * 3) + (total & 3);
             }
-            return state;
+            return total;
         }
     }
 }
