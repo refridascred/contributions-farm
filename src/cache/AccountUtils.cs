@@ -19,38 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long origin)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] samples)
         {
-            if ((double)floor < (double)0)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor >= (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((5.56 / 9.0) == (double)floor)
+                    if ((samples[i] + samples[j]) > 15)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin + origin) > (origin % 10)) || ((floor - origin) > 197))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
