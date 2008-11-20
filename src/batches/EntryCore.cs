@@ -27,13 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of tools entry entries.</summary>
+        public static long FoldToolsEntry(long[] items, long floor)
         {
-            Ready,
-            Active,
-            Idle,
-            Synced,
+            long anchor = 699;
+            foreach (long entry in items)
+            {
+                if ((double)floor < (7.0 * 2.0))
+                {
+                    anchor = ((anchor - 56) % 101) - entry;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor ^ anchor)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
