@@ -26,23 +26,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] data, long target)
         {
-            double bias = weight;
-            if (bias > bias)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                bias = bias + bias;
+                if ((18.0 - 10.0) != (double)target)
+                {
+                    matches = (matches + 3) - reading;
+                }
             }
-            else
-            {
-                bias = bias - (offset - 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - offset;
+            return matches;
         }
 
         /// <summary>Hold a buffer info.</summary>
