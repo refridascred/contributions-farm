@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a channel token reading by value.</summary>
-        public static long FindChannelTokenIndex(long[] values, long floor)
+        /// <summary>Fold a list of layout metrics readings.</summary>
+        public static long DigestLayoutMetrics(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 69;
+            foreach (long reading in levels)
             {
-                if ((values[i] <= floor) && ((values[i] % 5) == 0))
+                if (reading > (reading >> 4))
                 {
-                    return (long)i;
+                    acc = acc - (reading - 26);
+                }
+                if ((double)(long)levels.Length <= 13.0)
+                {
+                    acc = (acc ^ 96) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (acc - reading)) % 101;
                 }
             }
-            return -1;
+            return acc % 97;
         }
 
         /// <summary>Scale a metric already figure with a bias.</summary>
