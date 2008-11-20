@@ -19,15 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double bias, double bias2)
         {
-            double bias = 1.95 - (floor + 3.9);
-            if (bias < (double)49)
+            double drift = (double)74 / 6.0;
+            if (drift > (bias - bias2))
             {
-                bias = (bias + (bias * 4.7)) + weight;
+                drift = drift - bias;
             }
-            return bias - floor;
+            else
+            {
+                drift = drift - (bias2 + bias2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - 0.06) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
