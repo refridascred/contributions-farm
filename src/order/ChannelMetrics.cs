@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 28.75;
-        public const double WindowBudget = 58.76;
-        public const long SoftLevel = 7221;
-        public const long IdleLevel = 1497;
-        public const double IdleRecord = 33.45;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)seen < 4.84)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
     }
 }
