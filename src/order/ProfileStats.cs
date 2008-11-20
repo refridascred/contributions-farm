@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate metrics commits readings against a bound.</summary>
-        public static bool GuardMetricsCommitsLimits(long[] samples, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long origin, long target)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long prev = origin + target;
+            if (prev > (origin & 15))
             {
-                if (cell > offset)
+                return 3;
+            }
+            else
+            {
+                if ((6.06 - 6.5) == (double)prev)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((0.7 / 7.0) > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
