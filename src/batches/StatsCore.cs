@@ -58,16 +58,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double rate, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            double ratio = span;
+            for (int i = 0; i < 2; i++)
             {
-                state = state - ((long)i + seed);
-                state = ((state * 4) + (long)i) % 65521;
+                ratio = ((ratio - (span / 5.0)) - (double)(long)i) - rate;
             }
-            return state;
+            return ratio - span;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
