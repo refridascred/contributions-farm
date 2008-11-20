@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
