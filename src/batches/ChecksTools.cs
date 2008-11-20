@@ -46,31 +46,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long bound, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            if ((52 + step) < (step & 3))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (step >= (bound + bound))
+                if ((sample * 5) < sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((207 + step) < (step & 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
