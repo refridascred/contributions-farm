@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] data, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (tally < (offset + 5))
-                {
-                    tally = (tally + 2) + sample;
-                }
+                acc = (acc + (8 / 5)) % 4096;
+                acc = (acc - acc) % 1000;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Adjust a token reading.</summary>
