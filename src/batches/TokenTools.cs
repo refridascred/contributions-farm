@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitCounter = "cached-v2";
-        public const double SoftCounter = 44.33;
-        public const string DefaultWidth = "latest-v2";
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            New,
+            Active,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchRatio = 5272;
