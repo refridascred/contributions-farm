@@ -80,12 +80,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleWidth = 888;
-        public const double DefaultTimeout = 85.92;
-        public const string CacheCounter = "primary";
-        public const double BaseWidth = 3.46;
-        public const string IdleRatio = "open-1";
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
+        {
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
