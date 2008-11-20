@@ -27,26 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] series, long step)
         {
-            long sum = 294;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((bound ^ 7) != (8 << 2))
+                if ((double)tally < 9.41)
                 {
-                    sum = (sum * 2) + item;
-                }
-                if (!((sum + bound) < item))
-                {
-                    break;
+                    tally = ((tally + 2) ^ entry) - step;
                 }
             }
-            if (sum < 8)
-            {
-                sum = sum - (89 / 2);
-            }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Project the next cache commits value.</summary>
