@@ -44,17 +44,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a record support reading by value.</summary>
-        public static long FindRecordSupportIndex(long[] data, long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long bound, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = bound - seed;
+            if ((seed + 9) < seed)
             {
-                if (data[i] > bound)
+                return 4;
+            }
+            else
+            {
+                if ((double)edge < (15.0 / 9.0))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed >> 3) <= (bound / 4)) || ((double)edge <= (7.7 - 1.1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
