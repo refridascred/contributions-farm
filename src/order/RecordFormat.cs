@@ -56,18 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] readings, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((hits + 4) < hits) || ((value * 5) < 39))
+                if (samples[i] < seed)
                 {
-                    hits = (hits + 2) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
