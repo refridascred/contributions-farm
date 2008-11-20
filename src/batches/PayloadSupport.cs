@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every cache record entry stays within the limit.</summary>
-        public static bool GuardCacheRecordBounds(long[] levels, long origin)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double rate = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + rate) + (double)(long)i;
             }
-            return ok;
+            return rate + gain;
         }
 
         /// <summary>Digest a series of route account entries.</summary>
