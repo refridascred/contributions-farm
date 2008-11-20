@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardInterval = 7761;
-        public const double SoftEntry = 35.48;
-        public const long MaxEntry = 748;
-        public const long DefaultSize = 7609;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowRatio = 9096;
+        public const double StepInterval = 56.36;
+        public const string MinContributi = "legacy";
+        public const long BurstWidth = 2875;
+        public const double BatchBudget = 63.32;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ProjectEntry(double ratio, double floor)
