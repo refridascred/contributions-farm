@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Synced,
-            Draft,
-            Ready,
-            Locked,
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
