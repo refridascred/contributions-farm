@@ -1,4 +1,5 @@
 # entry settings
-max_size_pct: 1024
-idle_window_ms: blue
-min_interval_ms: 37
+retry_depth_count: stable
+verbose: 2203
+max_limit_s: 20.31
+burst_size: true
