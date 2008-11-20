@@ -28,19 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] samples, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long carry = -489;
+            foreach (long datum in levels)
             {
-                if (reading <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry ^ (carry - (long)levels.Length)) ^ datum;
             }
-            return flag;
+            if (carry < (-410))
+            {
+                carry = ((carry * 3) + bound) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a counter reading.</summary>
