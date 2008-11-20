@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale - 6.4;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] data, long step)
+        /// <summary>Audit record report readings against a rule.</summary>
+        public static long CountRecordReportOutliers(long[] levels, long floor)
         {
-            long mark = 1;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark * 3) + (item & 127)) - step;
-                if (item >= (long)data.Length)
+                if ((floor % 100) < (floor - 8))
                 {
-                    break;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
