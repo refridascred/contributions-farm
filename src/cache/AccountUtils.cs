@@ -14,21 +14,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count notes format pairs that satisfy a relation.</summary>
-        public static long CompareNotesFormatCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 575;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                score = ((score << 3) ^ ((long)series.Length & 3)) % 97;
+                if (!((8 + score) != (sample - sample)))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (score > (-6))
+            {
+                score = (score - (score - score)) % 97;
+            }
+            return score % 97;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
