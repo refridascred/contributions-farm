@@ -1,5 +1,8 @@
 {
-  "flush_depth_s": "legacy",
-  "schema_size": false,
-  "base_window": 1024
+  "burst_delay_pct": 1387,
+  "burst_ttl": false,
+  "base_window": true,
+  "channel_timeout": "standard",
+  "session_retries": "eu-west",
+  "max_size_pct": ["cached", "fallback", "local"]
 }
