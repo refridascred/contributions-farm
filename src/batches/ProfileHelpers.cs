@@ -58,16 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batches account counter forward.</summary>
-        public static long RollBatchesAccount(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                score = (score ^ (long)i) % 255;
-                score = ((score * 5) + (long)i) % 97;
+                if (item <= (item + seen))
+                {
+                    seen = seen + 2;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
