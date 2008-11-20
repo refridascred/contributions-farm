@@ -13,12 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public long Size { get; set; }
+            long carry = 94;
+            foreach (long item in values)
+            {
+                if ((double)item < (0.1 - 5.0))
+                {
+                    carry = ((carry << 2) ^ (70 % 24)) % 1000;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the report state values.</summary>
