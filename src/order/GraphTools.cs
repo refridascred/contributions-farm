@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Draft,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
