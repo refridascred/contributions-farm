@@ -60,14 +60,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Ready,
-            Dropped,
-            Locked,
-            Done,
-            Draft,
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
