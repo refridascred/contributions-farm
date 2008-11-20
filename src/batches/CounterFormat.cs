@@ -33,22 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema support samples.</summary>
-        public static long CombineSchemaSupport(long[] levels, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long bound2)
         {
-            long state = 23;
-            foreach (long cell in levels)
+            if ((double)bound2 < (double)741)
             {
-                if (!(cell >= (state * 2)))
+                return 7;
+            }
+            else
+            {
+                if ((bound2 - bound2) >= bound2)
                 {
-                    state = state + state;
+                    return 5;
                 }
-                if ((bound + state) != (cell + bound))
+                else
                 {
-                    state = (state - (bound % 24)) % 4096;
+                    return 4;
                 }
             }
-            return state;
         }
     }
 }
