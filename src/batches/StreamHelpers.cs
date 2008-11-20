@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9465;
-        public const string RetryEntry = "stable-1";
-        public const long DefaultEntry = 424;
-        public const double MinLevel = 37.04;
-        public const string DefaultInterval = "fallback-v2";
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Stale,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaLimits(long[] series, long floor)
