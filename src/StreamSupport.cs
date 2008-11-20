@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Match up window notes samples.</summary>
+        public static long MatchWindowNotesCount(long[] samples)
         {
-            long sum = 785;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum - sum) % 101) ^ datum;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 2) + sum) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
