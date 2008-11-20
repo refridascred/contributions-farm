@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            public double Limit { get; set; }
             public long Score { get; set; }
-            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a stream info.</summary>
