@@ -1,9 +1,6 @@
 {
-  "idle_capacity": "cached",
-  "min_window": 69,
-  "warm_interval": {
-    "verbose": 5,
-    "soft_threshold_ms": true,
-    "stats_window": "legacy"
-  }
+  "metrics_timeout": false,
+  "max_delay_ms": "staging",
+  "context_ttl": 31.3,
+  "poll_depth_ms": true
 }
