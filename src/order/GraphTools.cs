@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long LimitAlready = 5540;
         public const long CacheAlready = 3756;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] data, long limit)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Count the graph account entries that pass the check.</summary>
