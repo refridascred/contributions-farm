@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double ratio, double offset)
         {
-            long anchor = 744;
-            foreach (long datum in data)
-            {
-                anchor = (((anchor * 3) + (anchor / 9)) % 1000) + datum;
-                if (!((anchor * 4) < anchor))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            double gain = (double)131 + ratio;
+            return (gain + gain) + offset;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
