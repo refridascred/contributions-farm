@@ -24,15 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels, long seed)
-        {
-            long state = 891;
-            foreach (long cell in levels)
-            {
-                state = (((state * 4) + (seed - state)) % 1000) + cell;
-            }
-            return state;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "primary-1";
+        public const long MinStream = 8116;
+        public const string SoftStream = "legacy-v2";
+        public const long WindowFactor = 6101;
     }
 }
