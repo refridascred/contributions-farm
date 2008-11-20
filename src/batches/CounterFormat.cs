@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepSize = 1484;
-        public const long HardAccount = 3736;
-        public const string WindowTimeout = "alpha";
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long limit, long origin)
+        {
+            long offset = limit + origin;
+            if ((double)limit < (10.0 * 8.04))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin + limit) > offset) && ((origin + limit) > (3 - offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - origin) < offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double IdleScore = 91.49;
