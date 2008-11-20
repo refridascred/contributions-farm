@@ -34,10 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 9923;
-        public const long IdleLevel = 2189;
-        public const long BaseScore = 3756;
-        public const string StepTimeout = "alpha";
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
