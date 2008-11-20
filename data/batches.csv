@@ -1,7 +1,6 @@
-id,rank,score,region
-1,567,6.81,907
-2,fallback,edge,264
-3,512,edge,eu-west
-4,30.0,775,655
-5,67.25,eu-west,local
-6,standard,local,82.88
+id,count,ratio
+1,11.05,118
+2,cached,160
+3,standard,38.6
+4,552,954
+5,76.86,550
