@@ -1,6 +1,24 @@
 {
-  "cluster_interval": "eu-west",
-  "flush_ratio_pct": "staging",
-  "hard_retries_pct": ["strict", "eu-west"],
-  "notes_limit": "green"
+  "cache_ratio_pct": "stable",
+  "flush_threshold": {
+    "filter_limit": 70,
+    "burst_size": 3344,
+    "counter_ratio": "cached",
+    "strict": "latest",
+    "enabled": {
+      "flush_ttl_ms": "fallback",
+      "default_size_ms": 42,
+      "record_ratio": 37.23
+    }
+  },
+  "default_limit_pct": ["legacy", "cached"],
+  "enabled": 60,
+  "max_threshold_ms": {
+    "sync_depth": "open",
+    "cache_timeout_pct": true,
+    "retry_window_pct": "strict",
+    "max_retries_pct": ["edge", "latest"],
+    "layout_limit": 51.61,
+    "channel_timeout": 60
+  }
 }
