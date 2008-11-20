@@ -60,17 +60,24 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a account already sample.</summary>
-        public static long SeekAccountAlreadyIndex(long[] data, long offset)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long offset, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((offset << 2) < seed)
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((4 << 2) == (offset + seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
