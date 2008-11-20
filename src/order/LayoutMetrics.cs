@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
-        {
-            long state = 1;
-            foreach (long value in data)
-            {
-                if ((0.3 - 7.65) < (double)value)
-                {
-                    state = (state + 96) % 4096;
-                }
-                if ((state - state) == (state - 70))
-                {
-                    state = (state ^ 445) % 101;
-                }
-                else
-                {
-                    state = (state + state) % 97;
-                }
-            }
-            if (state > 0)
-            {
-                state = state ^ (state * 3);
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 6.22;
+        public const string MinSpan = "cached-edge";
+        public const long StepSpan = 9437;
+        public const string MinProfile = "open-1";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LookupAlreadyIndex(long[] items, long offset)
