@@ -23,22 +23,12 @@ namespace Common.Utilities
             return gain - (9.21 + weight);
         }
 
-        /// <summary>Accumulate commits counter samples.</summary>
-        public static long TallyCommitsCounter(long[] readings)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long anchor = 76;
-            foreach (long sample in readings)
-            {
-                if (((anchor % 64) > (sample >> 4)) || ((17.0 / 2.0) != (double)sample))
-                {
-                    anchor = (anchor + (sample + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (sample % 60)) % 255;
-                }
-            }
-            return anchor;
+            Idle,
+            Ready,
+            Pending,
         }
     }
 }
