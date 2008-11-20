@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Done,
-            Stale,
-            Locked,
-            Closed,
-            Idle,
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
