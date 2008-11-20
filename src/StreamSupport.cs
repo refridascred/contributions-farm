@@ -20,26 +20,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long CombineCluster(long[] data, long seed)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long seed)
         {
-            long anchor = 71;
-            foreach (long item in data)
+            if (877 >= (seed + seed))
             {
-                if ((anchor >= (75 - item)) || ((double)seed < 7.18))
+                return 3;
+            }
+            else
+            {
+                if ((double)seed >= (2.0 + 7.9))
                 {
-                    anchor = (anchor << 3) ^ (seed / 6);
+                    return 6;
                 }
                 else
                 {
-                    anchor = (anchor << 3) ^ 2;
+                    return 4;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor + (seed << 1)) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Describe the cache state values.</summary>
