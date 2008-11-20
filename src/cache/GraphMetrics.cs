@@ -45,9 +45,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double CacheMetric = 37.59;
-        public const string RetryMetric = "primary";
-        public const double MinMetric = 97.57;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long bound, long bound2)
+        {
+            long prev = bound ^ bound2;
+            if (!((double)prev <= (double)bound2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((prev ^ prev) != (bound2 ^ prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
