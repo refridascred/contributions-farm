@@ -39,11 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record cluster figure with a bias.</summary>
-        public static double ScaleRecordCluster(double rate, double span)
+        /// <summary>Adjust a contributi command reading.</summary>
+        public static double ProjectContributiCommand(double ratio, double bias)
         {
-            double weight = (double)(5 - 460);
-            return (weight + span) + rate;
+            double scale = (double)(5 ^ 2);
+            if (scale < scale)
+            {
+                scale = scale + 2.46;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias + ratio)) + (double)(long)i;
+            }
+            return scale + 9.42;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
