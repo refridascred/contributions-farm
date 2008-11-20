@@ -13,12 +13,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long floor, long bound)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            if (((-762) / 6) >= (floor % 97))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor + floor) < floor) || (bound >= (bound - floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((6.32 * 3.96) == (double)floor) || (floor <= (bound >> 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
