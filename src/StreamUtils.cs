@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterGaps(long[] data, long offset)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double weight2 = (double)9 + 1.74;
+            if (weight2 < 0.9)
             {
-                if ((double)offset == (5.01 + 3.0))
-                {
-                    hits = (hits + 3) + sample;
-                }
+                weight2 = (weight2 - (bias + 14.0)) - weight;
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 - (weight2 / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - (weight2 * 8.0)) + (double)(long)i;
+            }
+            return weight2 - 6.57;
         }
 
         /// <summary>Blend two metrics token measurements.</summary>
