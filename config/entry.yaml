@@ -1,8 +1,5 @@
 # entry settings
-default_interval: eu-west
-base_retries: 88.35
-default_window_ms: 3437
-cluster_threshold: strict
-max_ttl:
-  - staging
-  - legacy
+max_threshold: primary
+warm_timeout_count: true
+max_retries_ms: false
+warm_interval_count: legacy
