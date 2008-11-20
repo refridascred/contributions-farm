@@ -13,20 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate queue cluster readings against a bound.</summary>
-        public static bool ValidateQueueClusterLimits(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 3301;
+        public const long DefaultScore = 3121;
+        public const double StepFormat = 74.66;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long RollGithubfarm(long offset)
