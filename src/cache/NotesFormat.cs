@@ -32,22 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] values)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)sample != (9.04 / 2.0)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
