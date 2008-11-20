@@ -39,18 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer batches samples are out of range.</summary>
-        public static long AuditBufferBatchesMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((((9.19 / 4.0) <= (double)seen) && ((1.04 - 6.65) != (double)datum)) && ((0.8 + 19.0) <= (double)datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 28.75;
+        public const double WindowBudget = 58.76;
+        public const long SoftLevel = 7221;
+        public const long IdleLevel = 1497;
+        public const double IdleRecord = 33.45;
     }
 }
