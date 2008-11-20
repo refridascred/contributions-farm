@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long MeasureChannelAlreadyGaps(long[] values, long step)
         {
-            Queued,
-            Idle,
-            Active,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((step + step) < seen)
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a notes reading.</summary>
