@@ -27,19 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] samples, long origin)
+        /// <summary>Digest a series of report cache entries.</summary>
+        public static long TallyReportCache(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long mix = -938;
+            foreach (long datum in levels)
             {
-                if (sample != origin)
+                if ((mix - bound) != (761 + bound))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix + bound) + datum;
                 }
             }
-            return ready;
+            return mix % 4096;
         }
     }
 }
