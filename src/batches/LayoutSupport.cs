@@ -59,39 +59,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long target)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long TallySupportNotesMatches(long[] data)
         {
-            long gap = offset - target;
-            if (((gap % 24) == (target ^ gap)) && ((offset / 5) > offset))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target < 18.0)
+                if ((hits - hits) != (hits + cell))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((3.4 / 5.0) > (double)gap) && ((target << 3) > (gap - gap)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((gap & 7) != (offset + 294)) && (gap >= (gap / 2)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
