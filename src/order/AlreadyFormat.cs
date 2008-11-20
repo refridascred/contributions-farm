@@ -30,18 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
-        public static long TallyGithubfarmMetricOutliers(long[] values, long seed)
+        /// <summary>Locate a cluster profile reading by value.</summary>
+        public static long LookupClusterProfileIndex(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < hits)
+                if ((data[i] >= floor) && ((data[i] % 2) == 0))
                 {
-                    hits = (hits + 3) + seed;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
