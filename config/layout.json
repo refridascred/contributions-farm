@@ -1,13 +1,7 @@
 {
-  "counter_timeout": true,
-  "burst_ratio_pct": "primary",
-  "enabled": "blue",
-  "burst_capacity": ["strict", "edge", "blue", "eu-west"],
-  "batch_size_ms": {
-    "metrics_capacity": "standard",
-    "strict": 1440,
-    "sync_capacity_ms": [173, 188, 321],
-    "hard_interval": 7.09
-  },
-  "persist": 51
+  "min_threshold": 48,
+  "entry_limit": 3985,
+  "poll_interval_s": 83.79,
+  "soft_ttl": 65.46,
+  "persist": "local"
 }
