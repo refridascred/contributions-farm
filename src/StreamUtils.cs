@@ -80,40 +80,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long limit, long offset)
-        {
-            long delta = limit - offset;
-            if ((limit << 1) < limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((limit + offset) >= offset) || ((212 + offset) < offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)235 == (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((delta + limit) >= offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleWidth = 888;
+        public const double DefaultTimeout = 85.92;
+        public const string CacheCounter = "primary";
+        public const double BaseWidth = 3.46;
+        public const string IdleRatio = "open-1";
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
