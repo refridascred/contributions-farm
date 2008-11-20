@@ -50,12 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepFactor = 867;
-        public const long BaseRatio = 7470;
-        public const string DefaultScore = "stable-v2";
-        public const long IdleLevel = 93;
-        public const long MinRatio = 1366;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] readings, long offset)
