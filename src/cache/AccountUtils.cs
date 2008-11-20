@@ -34,12 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "strict";
+        public const double IdleRatio = 14.76;
+        public const long MaxScore = 4334;
+        public const long SoftBudget = 9320;
+        public const double MaxMetrics = 72.26;
     }
 }
