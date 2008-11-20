@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm order counter forward.</summary>
-        public static long SeriesGithubfarmOrder(long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] samples, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
