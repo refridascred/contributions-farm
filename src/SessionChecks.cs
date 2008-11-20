@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftBudget = 8841;
-        public const long DefaultSize = 7948;
-        public const string MinDepth = "primary-1";
-        public const long WindowSchema = 8481;
-        public const long StepSchema = 3247;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Synced,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Roll a support token counter forward.</summary>
         public static long SeriesSupportToken(long floor)
