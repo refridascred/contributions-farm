@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] samples, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
