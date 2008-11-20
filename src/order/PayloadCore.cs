@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the editor stream entries that pass the check.</summary>
-        public static long TallyEditorStreamGaps(long[] data, long offset)
+        /// <summary>Locate a layout channel reading by value.</summary>
+        public static long LookupLayoutChannelIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits ^ 3) == (sample ^ (-17)))
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
                 {
-                    hits = (hits + 3) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many batches batch samples are out of range.</summary>
