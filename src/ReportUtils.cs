@@ -65,21 +65,38 @@ namespace Common.Utilities
             return mean + (ratio * 8.59);
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((origin + limit) >= limit))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit * 2) <= (limit ^ origin))
                 {
-                    if ((values[i] ^ values[j]) != 9)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit ^ 851) != ((-183) + 1))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((((-507) - origin) > limit) && ((limit >> 1) <= (limit + limit)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
