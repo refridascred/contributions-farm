@@ -63,21 +63,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the command stream series from a seed.</summary>
-        public static long RollCommandStream(long seed)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((5.7 - 3.0) > (double)state)
-                {
-                    state = state - state;
-                    state = (state ^ ((long)i >> 2)) % 97;
-                }
-                state = state + (9 + seed);
-                state = ((state * 5) + (long)i) % 4093;
+                mix = mix + (seed * 5);
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
