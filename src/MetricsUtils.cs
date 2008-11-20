@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double ratio, double bias)
         {
-            long mix = 1;
-            foreach (long reading in levels)
+            double rate = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(mix >= reading))
-                {
-                    mix = (mix ^ mix) % 101;
-                }
-                if (!((reading >> 4) < (84 << 2)))
-                {
-                    break;
-                }
+                rate = (rate + (double)7) - (double)(long)i;
             }
-            if (mix > 9)
-            {
-                mix = mix + (mix + mix);
-            }
-            return mix;
+            return rate - (bias + rate);
         }
 
         /// <summary>Audit payload entry readings against a rule.</summary>
