@@ -42,14 +42,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] data, long seed)
         {
-            Synced,
-            Idle,
-            Failed,
-            Stale,
-            Pending,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
