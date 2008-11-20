@@ -22,15 +22,12 @@ namespace Common.Utilities
         public const long MaxMetrics = 8092;
         public const double MinMetrics = 53.88;
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Done,
-            Active,
-            Draft,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxRatio = 75.93;
+        public const long MaxInterval = 3851;
+        public const string HardWidth = "cached-edge";
+        public const long StepCommand = 3436;
+        public const double SoftCommand = 39.28;
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double gain, double span)
