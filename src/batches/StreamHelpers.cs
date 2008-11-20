@@ -39,11 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 362;
-        public const double MaxFactor = 64.17;
-        public const string HardCommand = "open-edge";
-        public const string DefaultCommand = "cached";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultScore = 9317;
+        public const long HardInterval = 1268;
+        public const string RetryScore = "legacy";
+        public const string MaxFilter = "cached";
+        public const long StepSize = 112;
 
         /// <summary>Find the first batches cache entry that matches the target.</summary>
         public static long LookupBatchesCacheIndex(long[] levels, long limit)
