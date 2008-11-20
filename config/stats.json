@@ -1,5 +1,20 @@
 {
-  "stream_delay": 30,
-  "sync_window_s": true,
-  "dry_run": 7955
+  "idle_window": 18.24,
+  "schema_timeout": {
+    "hard_ratio_pct": 30,
+    "strict": true,
+    "verbose": 75.97,
+    "warm_capacity_pct": [145, 497],
+    "tools_window": "strict"
+  },
+  "audit": ["legacy", "edge"],
+  "soft_window": [283, 336, 448, 346],
+  "context_capacity": {
+    "retry_size_pct": 66.78,
+    "record_window": false,
+    "readonly": "stable",
+    "buffer_delay": 8961,
+    "warm_window_ms": "staging"
+  },
+  "soft_timeout": "stable"
 }
