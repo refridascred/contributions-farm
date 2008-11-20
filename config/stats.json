@@ -1,7 +1,7 @@
 {
-  "warm_limit": "primary",
-  "default_retries_count": "standard",
-  "token_ttl": "primary",
-  "base_threshold_pct": "stable",
-  "flush_ttl_ms": false
+  "base_window_ms": 100,
+  "warm_depth_ms": 3974,
+  "soft_ratio_count": 55.51,
+  "soft_delay": 87.76,
+  "soft_window_count": "open"
 }
