@@ -61,11 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstTimeout = "alpha-edge";
-        public const long LimitBudget = 5258;
-        public const double BurstCount = 45.39;
-        public const double DefaultBudget = 46.76;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] levels, long origin)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((origin % 2) >= (count - 9))
+                {
+                    count = (count + 2) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long origin, long target)
