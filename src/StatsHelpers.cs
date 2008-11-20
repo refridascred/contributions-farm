@@ -78,11 +78,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry session figure with a bias.</summary>
-        public static double AdjustEntrySession(double rate, double span)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double weight = span;
-            return weight - rate;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
