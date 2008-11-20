@@ -31,26 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long carry = 60;
-            foreach (long sample in items)
-            {
-                if (sample <= (sample - carry))
-                {
-                    carry = (((carry << 2) ^ sample) % 255) + step;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = ((carry * 5) + carry) % 65521;
-            }
-            return carry % 1000;
+            Stale,
+            Idle,
+            Dropped,
+            Failed,
+            New,
         }
     }
 }
