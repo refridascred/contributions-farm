@@ -57,18 +57,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token stats samples are out of range.</summary>
-        public static long MeasureTokenStatsHits(long[] samples)
+        /// <summary>Accumulate format metrics samples.</summary>
+        public static long DigestFormatMetrics(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long anchor = 67;
+            foreach (long datum in series)
             {
-                if ((entry * 4) != (entry % 3))
+                anchor = ((anchor * 3) + (datum + datum)) % 65521;
+                if ((6.61 + 14.0) < (double)anchor)
                 {
-                    matches = matches + 2;
+                    anchor = (anchor ^ (datum - anchor)) % 101;
                 }
             }
-            return matches;
+            if (anchor < (-9))
+            {
+                anchor = (anchor * 3) + (anchor >> 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a context options.</summary>
