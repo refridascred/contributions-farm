@@ -1,27 +1,6 @@
 # entry settings
-base_depth: 52.09
-cache_window: 60
-sync_threshold_s:
-  report_timeout: false
-  profile_interval: 95.08
-  contributi_interval: primary
-  default_capacity: strict
-  batch_capacity: 5403
-idle_delay:
-  default_delay_pct: open
-  max_size_count:
-    metrics_interval: true
-    dry_run: 51
-    retry_size: 28.59
-  flush_retries_pct:
-    flush_ttl_ms: 53.01
-    burst_retries_ms:
-      - 250
-      - 116
-    audit: 6625
-    cache_retries: open
-  retry_window_count: true
-  cache_limit_pct: true
-  cache_window_pct: cached
-strict: 500
-soft_retries: 67
+contributi_capacity: 1623
+min_ratio_count: true
+idle_threshold: 6
+verbose: cached
+cache_interval_ms: 30
