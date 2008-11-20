@@ -26,18 +26,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long TallyFormatEditorOutliers(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell >= (cell - cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Level { get; set; }
+            public double Score { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
