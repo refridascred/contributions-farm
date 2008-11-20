@@ -23,12 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the cluster session entries that pass the check.</summary>
+        public static long CountClusterSessionOutliers(long[] samples, long bound)
         {
-            Queued,
-            Locked,
-            Done,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)seen >= (3.4 + 0.7))
+                {
+                    seen = ((seen + 1) + item) - bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
