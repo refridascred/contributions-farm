@@ -14,15 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate queue cache samples.</summary>
-        public static long ScoreQueueCache(long[] series, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteRange(long[] samples, long step)
         {
-            long mix = 672;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                mix = (((mix << 2) ^ reading) % 97) + offset;
+                if (reading <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return ok;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
