@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 8499;
+        public const string BaseRoute = "legacy-edge";
+        public const long DefaultLevel = 2779;
+        public const string BurstRoute = "stable-edge";
+        public const long MaxFactor = 436;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
