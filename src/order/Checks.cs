@@ -36,13 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            Done,
-            Failed,
-            Ready,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 3) + ((long)i >> 5)) % 97;
+                if (((long)i / 3) != (limit << 2))
+                {
+                    acc = acc ^ (acc + limit);
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate context samples.</summary>
