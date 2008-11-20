@@ -39,26 +39,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            long sum = 5;
-            foreach (long cell in data)
+            double gain2 = (double)(977 >> 3);
+            if (gain2 > (double)9)
             {
-                if ((486 - cell) > (sum % 100))
-                {
-                    sum = ((sum * 3) + cell) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (long)data.Length) % 97;
-                }
-                if (((double)sum != (0.1 + 19.0)) && ((cell & 255) != (sum & 255)))
-                {
-                    sum = (sum ^ (sum % 8)) % 101;
-                }
+                gain2 = (gain2 + (double)7) - gain;
             }
-            return sum;
+            return gain2 - (gain2 - floor);
         }
 
         /// <summary>Hold a editor info.</summary>
