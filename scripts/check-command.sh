@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=311
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=422
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in fallback local standard legacy; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
