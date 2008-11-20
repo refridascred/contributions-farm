@@ -20,12 +20,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "primary";
-        public const long RetryDepth = 9065;
-        public const string BurstMetrics = "strict";
-        public const double MaxCount = 98.75;
-        public const long SoftDepth = 560;
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] samples, long limit)
