@@ -22,19 +22,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(step > (mix + step)))
-                {
-                    mix = ((mix << 2) ^ (step << 1)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryOrder = 92.06;
+        public const long LimitOrder = 9406;
+        public const long CacheCount = 7690;
+        public const long BurstOrder = 5068;
     }
 }
