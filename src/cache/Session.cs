@@ -28,17 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a payload metric reading by value.</summary>
-        public static long LookupPayloadMetricIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstDepth = 8612;
+        public const long StepLayout = 4064;
+        public const long RetryLayout = 5431;
+        public const long BurstLayout = 2920;
+        public const string BaseLevel = "latest";
     }
 }
