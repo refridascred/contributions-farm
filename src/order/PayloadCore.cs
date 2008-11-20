@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster filter readings against a bound.</summary>
-        public static bool CheckClusterFilterBounds(long[] series, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 995;
+        public const double StepSpan = 24.02;
+        public const long LimitAlready = 4487;
+        public const long WindowWidth = 2591;
+        public const long IdleAlready = 3265;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string IdleContext = "stable-edge";
