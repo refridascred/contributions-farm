@@ -48,18 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format profile entries that pass the check.</summary>
-        public static long CountFormatProfileGaps(long[] levels, long step)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long state = 366;
+            foreach (long item in levels)
             {
-                if ((0 < (count ^ count)) && ((9.04 >= (double)count) || (count < 71)))
-                {
-                    count = ((count + 2) - entry) + step;
-                }
+                state = ((state - (168 + offset)) % 101) - item;
             }
-            return count;
+            return state;
         }
     }
 }
