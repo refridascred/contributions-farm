@@ -20,24 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long target, long target2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] series, long limit)
         {
-            if (!((target << 1) <= target2))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target2 + target) > target2)
+                if ((((limit * 2) < (seen + seen)) && ((sample + sample) > (seen * 3))) || ((1.4 + 4.9) <= (double)seen))
                 {
-                    return 7;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
