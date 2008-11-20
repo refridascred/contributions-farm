@@ -2,10 +2,11 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new',
-    rank INTEGER,
-    active INTEGER NOT NULL DEFAULT 1
+    created_at TIMESTAMP,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
+
+INSERT INTO stats_logs (token, level) VALUES ('cached', 87);
+INSERT INTO stats_logs (token, level) VALUES ('edge', 30);
