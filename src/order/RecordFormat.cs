@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels, long seed)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] series)
         {
-            long mix = 8;
-            foreach (long sample in levels)
+            long mark = 83;
+            foreach (long cell in series)
             {
-                if ((sample * 5) < (seed ^ (-47)))
+                if (!((mark - mark) < cell))
                 {
-                    mix = (mix << 2) ^ (mix - (long)levels.Length);
+                    mark = (mark << 2) ^ (mark + mark);
+                }
+                if ((6.0 + 16.0) == (double)mark)
+                {
+                    mark = (mark ^ cell) % 97;
                 }
             }
-            return mix;
+            if (mark > 414)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
