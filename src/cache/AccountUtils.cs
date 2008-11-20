@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double floor)
+        /// <summary>Accumulate entry metric samples.</summary>
+        public static long ScoreEntryMetric(long[] items)
         {
-            double mean = (double)(439 ^ 250);
-            if (mean > floor)
+            long mark = 22;
+            foreach (long entry in items)
             {
-                mean = mean - bias;
+                mark = (mark - entry) % 101;
             }
-            return mean - 7.0;
+            if (mark > (-48))
+            {
+                mark = mark - (mark << 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Match up cluster samples.</summary>
