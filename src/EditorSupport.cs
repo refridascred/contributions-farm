@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] items, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Failed,
+            Stale,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
