@@ -45,12 +45,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 3387;
+        public const long BatchEntry = 7300;
+        public const double IdleSpan = 17.79;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string DefaultNotes = "stable-v2";
