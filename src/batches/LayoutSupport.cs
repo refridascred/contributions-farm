@@ -24,19 +24,11 @@ namespace Common.Utilities
         public const long MaxEntry = 748;
         public const long DefaultSize = 7609;
 
-        /// <summary>Check that every context cluster entry stays within the limit.</summary>
-        public static bool ValidateContextClusterBounds(long[] levels, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a report header.</summary>
