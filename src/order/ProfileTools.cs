@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long limit, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels)
         {
-            if ((target & 255) >= (limit + target))
+            long carry = 74;
+            foreach (long cell in levels)
             {
-                return 2;
+                carry = (carry + (135 + carry)) + cell;
             }
-            else
-            {
-                if (target < (limit % 24))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the session state values.</summary>
