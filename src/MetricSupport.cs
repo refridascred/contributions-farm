@@ -15,15 +15,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long total = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Pending,
+            Idle,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
