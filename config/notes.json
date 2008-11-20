@@ -1,5 +1,5 @@
 {
-  "idle_limit": 60,
-  "max_interval": 7014,
-  "account_ratio": "standard"
+  "base_retries_count": [411, 282, 407, 417],
+  "session_delay": "green",
+  "dry_run": 30
 }
