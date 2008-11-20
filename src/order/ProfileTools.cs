@@ -29,19 +29,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] readings, long limit)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry != limit)
+                if ((cell + 1) <= (cell ^ seen))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Blend two format measurements.</summary>
