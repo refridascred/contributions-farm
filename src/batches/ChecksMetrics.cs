@@ -45,30 +45,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values, long origin)
+        /// <summary>Count the support cluster entries that pass the check.</summary>
+        public static long AuditSupportClusterOutliers(long[] samples, long limit)
         {
-            long state = 4;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((4 < state) || ((double)395 != (double)cell))
+                if ((item * 3) > (seen ^ limit))
                 {
-                    state = state - (4 + state);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    state = ((state << 3) ^ (origin + cell)) % 65521;
-                }
-                if ((state % 16) == (cell - state))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (state > 937)
-            {
-                state = state - (origin - origin);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a report cache value against two limits.</summary>
