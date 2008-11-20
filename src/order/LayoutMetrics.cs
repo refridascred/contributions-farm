@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((7.23 / 9.0) <= (double)(long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Failed,
+            Stale,
+            Pending,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
