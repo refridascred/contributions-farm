@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 5392;
-        public const long SoftChannel = 8001;
-        public const string IdleScore = "primary-edge";
-        public const long MaxChannel = 8625;
-        public const long BatchChannel = 6456;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((count - reading) != (count << 2)))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long ScoreProfile(long[] series)
