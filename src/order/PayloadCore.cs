@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            double gain2 = (double)(613 - 284);
+            if (gain2 >= bias)
+            {
+                gain2 = gain2 - (gain - gain2);
+            }
+            else
+            {
+                gain2 = gain2 + (bias / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (bias + gain)) + (double)(long)i;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Define already limits and defaults.</summary>
