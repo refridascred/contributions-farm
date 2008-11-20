@@ -13,18 +13,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if ((double)floor < 8.7)
             {
-                if (!((((-324) ^ matches) <= (datum + datum)) || ((matches / 4) != (matches * 5))))
+                return 7;
+            }
+            else
+            {
+                if (!((9.0 * 8.2) < (double)floor))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (double)(-2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.0 * 6.5) < (double)limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
