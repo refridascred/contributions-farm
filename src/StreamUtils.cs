@@ -46,24 +46,13 @@ namespace Common.Utilities
             return ((ratio - (ratio / 8.0)) + weight) + offset;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long step)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            if (((-33) << 1) >= (target << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)1 == (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
