@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] samples, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = seed - limit;
+            if (seed <= (step + seed))
             {
-                if (samples[i] > origin)
+                return 3;
+            }
+            else
+            {
+                if ((limit + seed) != (limit & 31))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
