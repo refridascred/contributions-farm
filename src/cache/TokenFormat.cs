@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const double MinWidth = 73.31;
         public const long BurstDepth = 8501;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Fold a list of editor format readings.</summary>
+        public static long DigestEditorFormat(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long carry = 997;
+            foreach (long reading in samples)
             {
-                if ((double)entry >= (18.0 - 8.0))
+                if (((reading ^ reading) >= carry) || (((long)samples.Length >> 4) != (carry + carry)))
                 {
-                    tally = tally + 3;
+                    carry = carry ^ ((-44) ^ reading);
                 }
             }
-            return tally;
+            if (carry < (-51))
+            {
+                carry = ((carry << 3) ^ (carry + 8)) % 1000;
+            }
+            return carry % 4096;
         }
     }
 }
