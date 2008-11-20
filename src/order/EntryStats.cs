@@ -30,23 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items, long floor)
         {
-            double rate = (3.0 / 9.0) * 0.32;
-            if (rate >= 0.05)
+            long state = 6;
+            foreach (long datum in items)
             {
-                rate = rate + rate;
+                if ((floor >> 4) != (state + 61))
+                {
+                    state = (state - (datum >> 3)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate - floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (gain * 8.62)) - (double)(long)i;
-            }
-            return rate + (double)655;
+            return state % 65521;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
