@@ -63,11 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 542;
-        public const string IdlePayload = "strict-edge";
-        public const double CacheSize = 6.46;
-        public const double BasePayload = 75.28;
-        public const string StepTimeout = "local";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepCount = 1527;
+        public const long MaxQueue = 9413;
+        public const double BatchQueue = 59.5;
+        public const long SoftTimeout = 2787;
+        public const long MinQueue = 2457;
     }
 }
