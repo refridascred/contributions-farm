@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = limit + step;
+            if (!((limit * 3) == (limit & 7)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)cur > (1.8 + 11.0))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
