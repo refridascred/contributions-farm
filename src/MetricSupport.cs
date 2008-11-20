@@ -27,22 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long AuditGithubfarmCommandGaps(long[] items)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (!((9.31 > (double)count) || ((9.0 - 6.0) < (double)count)))
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
