@@ -49,18 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((((double)341 != (double)matches) || ((limit * 3) != ((long)levels.Length + limit))) || (limit >= (limit + limit)))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Active,
         }
     }
 }
