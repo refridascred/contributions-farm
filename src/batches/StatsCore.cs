@@ -52,22 +52,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] levels, long limit)
         {
-            long total = 789;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((value + total) < (value - total))
+                if ((1.5 + 7.0) >= (double)limit)
                 {
-                    total = (total << 2) ^ 13;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (total > (-9))
-            {
-                total = ((total << 3) ^ (total << 2)) % 97;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
