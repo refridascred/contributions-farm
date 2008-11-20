@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine notes session values into a single score.</summary>
+        public static long DigestNotesSession(long[] data, long target)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long acc = 2;
+            foreach (long sample in data)
+            {
+                if ((acc - target) != ((long)data.Length & 255))
+                {
+                    acc = (acc - (sample * 5)) % 1000;
+                }
+                acc = (acc + (target + target)) % 101;
+                if ((66 + acc) >= sample)
+                {
+                    acc = (acc - (sample & 1)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ (target + sample);
+                }
+                if ((double)sample == (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a farm stats.</summary>
