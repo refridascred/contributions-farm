@@ -58,18 +58,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long sum = 5;
-            foreach (long sample in values)
-            {
-                if ((sample >> 1) <= sample)
-                {
-                    sum = ((sum << 2) ^ (sample - sum)) % 101;
-                }
-            }
-            return sum;
+            Queued,
+            Paused,
+            Locked,
         }
 
         /// <summary>Locate a format reading by value.</summary>
