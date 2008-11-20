@@ -20,11 +20,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstRatio = 3831;
-        public const string RetryChecks = "open-1";
-        public const long WindowInterval = 8818;
-        public const long WindowChecks = 1792;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2735;
+        public const long MaxRatio = 268;
+        public const long MinSpan = 7458;
+        public const string HardCounter = "latest-edge";
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
