@@ -1,24 +1,7 @@
 {
-  "compress": 10.79,
-  "cluster_depth": 6470,
-  "max_depth_count": 250,
-  "idle_limit_pct": 36,
-  "flush_timeout": {
-    "flush_window_s": 100,
-    "command_size": {
-      "farm_ratio": 19.12,
-      "audit": "fallback",
-      "poll_retries": true,
-      "session_window": "fallback"
-    },
-    "default_size_ms": 500,
-    "cache_ratio_pct": 38.95
-  },
-  "strict": {
-    "channel_limit": false,
-    "cache_retries_pct": true,
-    "soft_timeout_s": "eu-west",
-    "poll_delay": 82,
-    "batch_depth_ms": true
-  }
+  "idle_timeout": ["fallback", "eu-west", "staging"],
+  "stream_capacity": "strict",
+  "warm_ratio_ms": false,
+  "queue_retries": 100,
+  "retry_interval": "open"
 }
