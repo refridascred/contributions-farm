@@ -55,12 +55,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Pending,
-            Stale,
+            Active,
             Draft,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
