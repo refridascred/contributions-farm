@@ -18,13 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
-            public double Owner { get; set; }
-            public string Label { get; set; } = "";
+            Idle,
+            Draft,
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
