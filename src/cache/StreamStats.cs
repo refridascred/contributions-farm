@@ -43,12 +43,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of stats already readings.</summary>
+        public static long FoldStatsAlready(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public bool Weight { get; set; }
+            long sum = 413;
+            foreach (long entry in samples)
+            {
+                sum = (sum - (85 ^ entry)) % 1000;
+                sum = (sum - (entry >> 2)) % 97;
+            }
+            return sum;
         }
     }
 }
