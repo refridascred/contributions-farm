@@ -40,19 +40,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double bias, double span)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double gain = 8.2;
-            if (gain >= (span - span))
-            {
-                gain = gain + (bias * 8.03);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - (span / 4.0);
+            Dropped,
+            Retry,
+            Paused,
+            Synced,
+            Stale,
         }
     }
 }
