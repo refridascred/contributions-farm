@@ -22,11 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
