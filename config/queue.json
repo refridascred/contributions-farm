@@ -1,11 +1,5 @@
 {
-  "retry_limit_s": "cached",
-  "batch_retries_pct": ["strict", "blue", "open", "primary"],
-  "flush_capacity": {
-    "checks_capacity": 30,
-    "support_retries": false,
-    "dry_run": "cached",
-    "flush_delay_pct": 17.1
-  },
-  "persist": true
+  "poll_size_pct": false,
+  "dry_run": "open",
+  "flush_window_s": "green"
 }
