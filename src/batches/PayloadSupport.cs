@@ -33,11 +33,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the contributi order entries that pass the check.</summary>
+        public static long TallyContributiOrderMatches(long[] values)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)count == (double)reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
