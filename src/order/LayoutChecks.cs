@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 9358;
-        public const string BatchSize = "fallback";
-        public const long WindowCount = 4402;
-        public const double IdleChannel = 47.47;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double gain, double span)
+        {
+            double weight = gain;
+            return weight + span;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long DerivePayload(long bound)
