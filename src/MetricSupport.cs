@@ -20,22 +20,27 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long carry = 6;
-            foreach (long reading in readings)
+            long mix = 994;
+            foreach (long item in values)
             {
-                if (((long)readings.Length + carry) <= (carry ^ reading))
+                if (8.2 <= (double)item)
                 {
-                    carry = (carry << 2) ^ reading;
+                    mix = mix ^ (mix + mix);
                 }
-                if ((carry % 97) > (reading + carry))
+                if ((mix << 3) > (item - item))
                 {
-                    break;
+                    mix = ((mix << 3) ^ (mix ^ item)) % 97;
                 }
+                mix = (mix << 3) ^ 1;
             }
-            return carry;
+            if (mix < 161)
+            {
+                mix = mix ^ ((-32) & 31);
+            }
+            return mix;
         }
     }
 }
