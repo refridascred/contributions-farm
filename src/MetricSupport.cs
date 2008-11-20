@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long offset, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if (offset >= (offset / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((282 >> 3) > (seed % 97)) || ((seed ^ offset) == (seed - offset)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
