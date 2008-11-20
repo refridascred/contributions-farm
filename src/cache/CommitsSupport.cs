@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long origin)
         {
-            Queued,
-            Done,
-            Closed,
-            Draft,
-            Ready,
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((anchor & 7) >= (origin / 5))
+                {
+                    continue;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Match up farm samples.</summary>
