@@ -1,17 +1,9 @@
 # githubfarm settings
-commits_depth: strict
-base_capacity_count: 3053
-dry_run: stable
-cache_ttl: primary
-soft_delay_count:
-  window_window:
-    contributi_delay: cached
-    burst_threshold: 92.2
-    route_capacity: 50.54
-    filter_interval: latest
-  poll_ratio_count:
-    - 189
-    - 452
-    - 102
-  burst_delay_count: blue
-  profile_delay: 4413
+verbose: 45.07
+batch_depth_ms:
+  batch_size_pct: 1279
+  burst_delay_pct: 75
+  retry_ttl: 3927
+  persist: fallback
+cache_ratio_ms: false
+order_capacity: 70
