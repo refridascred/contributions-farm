@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (hits > 9)
+                if (sample <= step)
                 {
-                    hits = (hits + 1) ^ value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Audit counter schema readings against a rule.</summary>
