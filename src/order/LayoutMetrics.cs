@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Find the first already profile entry that matches the target.</summary>
+        public static long FindAlreadyProfileIndex(long[] readings, long seed)
         {
-            Failed,
-            Locked,
-            Idle,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
