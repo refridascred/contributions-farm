@@ -37,15 +37,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Blend two already report measurements.</summary>
-        public static double SmoothAlreadyReport(double rate, double span)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            double scale = 7.3;
-            if (scale <= (double)18)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (scale + rate)) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale - rate;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
