@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleFactor = "local";
-        public const long WindowInterval = 6069;
-        public const long RetryWidth = 6041;
+        /// <summary>Audit support checks readings against a rule.</summary>
+        public static long TallySupportChecksHits(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((origin & 63) > (origin >> 1)) && ((seen > origin) && ((origin - (-66)) > (seen & 255))))
+                {
+                    seen = (seen + 2) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long SeriesSession(long target)
