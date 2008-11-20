@@ -20,21 +20,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] <= bound)
                 {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
