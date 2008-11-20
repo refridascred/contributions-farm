@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] levels, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long step)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > step)
+                if ((state / 3) < (state + step))
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 3) + (36 * 4)) % 101;
                 }
+                else
+                {
+                    state = (state + ((long)i & 3)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
