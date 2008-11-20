@@ -56,32 +56,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a report cache value against two limits.</summary>
-        public static long RankReportCache(long seed, long step)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] samples, long target)
         {
-            long slot = seed + step;
-            if (((8.97 + 2.1) == (double)slot) || ((double)seed < (4.01 + 8.0)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (step <= (slot + seed))
+                if (samples[i] < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((8.5 / 2.0) <= (double)slot) || ((double)step <= (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
