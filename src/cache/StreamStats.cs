@@ -51,32 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route account value against two limits.</summary>
-        public static long SortRouteAccount(long origin, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] readings)
         {
-            long edge = origin ^ offset;
-            if (((8 ^ offset) <= offset) && ((offset >> 4) < ((-46) + origin)))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge < (origin << 3)) && ((origin - 18) < (origin + edge)))
+                if ((value + value) <= ((long)readings.Length & 63))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.1 * 15.0) == (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
