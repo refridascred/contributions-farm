@@ -46,25 +46,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long origin, long target)
+        /// <summary>Measure how many token stats samples are out of range.</summary>
+        public static long MeasureTokenStatsHits(long[] samples)
         {
-            long slot = origin ^ target;
-            if (!((origin >> 3) == (slot & 31)))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin >= (6.47 * 5.45))
+                if ((entry * 4) != (entry % 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
