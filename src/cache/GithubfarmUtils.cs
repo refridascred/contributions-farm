@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BatchRatio = 4833;
         public const string HardAccount = "fallback";
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((seed + total) >= (seed ^ 406)))
-                {
-                    total = (total * 2) + total;
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
+            Queued,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
