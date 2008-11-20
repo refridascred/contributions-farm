@@ -22,23 +22,17 @@ namespace Common.Utilities
         public const double LimitWindow = 62.61;
         public const long BaseSpan = 6114;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            long acc = 69;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(datum >= (acc + datum)))
+                if (readings[i] >= origin)
                 {
-                    acc = (acc + 6) % 255;
-                    acc = (acc ^ (acc + acc)) % 97;
-                }
-                if ((acc + acc) < (datum >> 1))
-                {
-                    acc = (acc + (acc * 4)) % 97;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
