@@ -36,15 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double scale, double bias)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double gain, double span)
         {
-            double gain = scale;
-            for (int i = 0; i < 6; i++)
+            double mean = (gain + 4.0) / 5.0;
+            for (int i = 0; i < 7; i++)
             {
-                gain = (gain + scale) + (double)(long)i;
+                mean = (mean + (double)77) + (double)(long)i;
             }
-            return gain + bias;
+            return mean + (span * 5.9);
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
