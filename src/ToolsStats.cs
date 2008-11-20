@@ -71,22 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((cell * 3) >= (matches ^ cell)) || (cell >= (cell % 7)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSpan = 6349;
+        public const string BurstDepth = "latest";
+        public const long SoftQueue = 4965;
     }
 }
