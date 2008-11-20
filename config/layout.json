@@ -1,7 +1,6 @@
 {
-  "warm_threshold": "legacy",
-  "strict": "strict",
-  "default_size_count": true,
-  "report_size": 30,
-  "min_capacity_pct": "blue"
+  "cache_retries_ms": 35.28,
+  "command_depth": 74.87,
+  "retry_depth_count": [311, 484, 380, 482],
+  "warm_limit": true
 }
