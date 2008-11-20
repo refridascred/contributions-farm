@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] items)
         {
-            Stale,
-            Failed,
-            Idle,
-            Ready,
-            Queued,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((double)reading < (7.57 * 1.0)) && ((reading + seen) > (8 / 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
