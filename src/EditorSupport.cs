@@ -20,18 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster session entries that pass the check.</summary>
-        public static long CountClusterSessionOutliers(long[] samples, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((double)seen >= (3.4 + 0.7))
+                if ((double)count >= (6.7 * 7.0))
                 {
-                    seen = ((seen + 1) + item) - bound;
+                    count = (count + 2) + reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
