@@ -15,19 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] data, long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
