@@ -2,10 +2,8 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    owner TEXT NOT NULL,
-    score REAL NOT NULL DEFAULT 0
+    ratio REAL,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
-
-INSERT INTO commits_records (region, owner, score) VALUES ('standard', 'primary', 69.94);
+CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
