@@ -28,12 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Active,
-            Stale,
-            Retry,
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
