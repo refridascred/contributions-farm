@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long offset)
         {
-            long step = seed - limit;
-            if (seed <= (step + seed))
+            long total = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + seed) != (limit & 31))
+                if ((((long)i % 12) <= (total ^ offset)) && (((long)i + offset) < offset))
                 {
-                    return 5;
+                    break;
                 }
-                else
-                {
-                    return 0;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Locate a queue record reading by value.</summary>
