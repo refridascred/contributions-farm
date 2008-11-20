@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((reading * 5) >= (184 + 783))
+                if ((step + 691) > ((-82) * 5))
                 {
-                    tally = tally + 3;
+                    count = (count + 3) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
