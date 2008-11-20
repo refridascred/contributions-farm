@@ -19,19 +19,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((offset & 255) < hits)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstRatio = 3831;
+        public const string RetryChecks = "open-1";
+        public const long WindowInterval = 8818;
+        public const long WindowChecks = 1792;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
