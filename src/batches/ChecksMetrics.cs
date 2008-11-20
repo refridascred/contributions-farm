@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleSession = 34.68;
-        public const long WindowDepth = 2271;
-        public const long CacheLevel = 2412;
-        public const long MaxSession = 8890;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleSize = 4096;
