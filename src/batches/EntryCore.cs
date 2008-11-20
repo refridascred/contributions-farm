@@ -30,17 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] readings, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
