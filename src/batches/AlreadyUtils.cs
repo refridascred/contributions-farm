@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((14.0 * 5.4) == (double)reading)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Retry,
+            Locked,
+            Failed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define support limits and defaults.</summary>
