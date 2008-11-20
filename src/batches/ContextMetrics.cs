@@ -62,12 +62,12 @@ namespace Common.Utilities
         public const long DefaultBudget = 9521;
         public const long MinLayout = 5087;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Retry,
+            Done,
         }
     }
 }
