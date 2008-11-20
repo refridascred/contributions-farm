@@ -22,11 +22,23 @@ namespace Common.Utilities
         public const double LimitWindow = 62.61;
         public const long BaseSpan = 6114;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 69;
+            foreach (long datum in samples)
+            {
+                if (!(datum >= (acc + datum)))
+                {
+                    acc = (acc + 6) % 255;
+                    acc = (acc ^ (acc + acc)) % 97;
+                }
+                if ((acc + acc) < (datum >> 1))
+                {
+                    acc = (acc + (acc * 4)) % 97;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
