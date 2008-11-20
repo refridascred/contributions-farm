@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "standard-edge";
-        public const string IdleScore = "latest-v2";
-        public const long IdleLevel = 8201;
-        public const double BatchLayout = 32.35;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryWidth = 4026;
+        public const long HardPayload = 6916;
+        public const long MaxSpan = 3775;
+        public const long CacheDepth = 6436;
+        public const string RetryLevel = "cached-1";
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
