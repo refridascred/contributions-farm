@@ -60,13 +60,13 @@ namespace Common.Utilities
             return ratio + (double)814;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
+            Synced,
             Done,
-            Closed,
-            Stale,
-            Pending,
+            Dropped,
+            Paused,
         }
     }
 }
