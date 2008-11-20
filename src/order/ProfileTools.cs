@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] readings)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long limit, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            if ((target & 255) >= (limit + target))
             {
-                if ((((datum / 6) < (datum << 1)) || ((hits % 97) == (datum % 3))) && !((datum * 4) >= 9))
+                return 2;
+            }
+            else
+            {
+                if (target < (limit % 24))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
