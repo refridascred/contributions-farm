@@ -52,17 +52,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache channel value from a seed.</summary>
-        public static long SeriesCacheChannel(long target)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long target)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long gap = offset - target;
+            if (((gap % 24) == (target ^ gap)) && ((offset / 5) > offset))
             {
-                mix = ((mix << 3) ^ (mix + mix)) % 97;
-                mix = mix ^ (mix % 16);
-                mix = ((mix * 4) + (long)i) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((double)target < 18.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((3.4 / 5.0) > (double)gap) && ((target << 3) > (gap - gap)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((gap & 7) != (offset + 294)) && (gap >= (gap / 2)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
