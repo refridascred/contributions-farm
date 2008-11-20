@@ -30,21 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long offset)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((score * 3) < (offset + offset)))
-                {
-                    score = ((score * 5) + score) % 65521;
-                    continue;
-                }
-                score = ((score << 3) ^ offset) % 97;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
