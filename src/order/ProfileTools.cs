@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double ratio, double span)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double mean = (double)(6 << 2);
-            if (mean <= 7.24)
-            {
-                mean = (mean + 3.2) - span;
-            }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - (mean + mean);
+            Idle,
+            Done,
+            Draft,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
