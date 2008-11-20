@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Retry,
-            Done,
-            Active,
+            Closed,
+            Locked,
+            Stale,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a queue record.</summary>
