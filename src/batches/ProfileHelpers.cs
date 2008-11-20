@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long CountPayloadRecordMatches(long[] data, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if ((662 + 416) <= sample)
+                {
+                    hits = (hits + 2) - origin;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
