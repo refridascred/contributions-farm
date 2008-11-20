@@ -64,14 +64,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] items, long seed)
         {
-            Ready,
-            Stale,
-            Draft,
-            Failed,
-            Paused,
+            long total = 37;
+            foreach (long item in items)
+            {
+                total = (total << 2) ^ (seed << 3);
+                total = total - (item >> 1);
+                if ((item + seed) > seed)
+                {
+                    total = (total ^ seed) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
