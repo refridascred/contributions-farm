@@ -50,15 +50,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values)
         {
-            double ratio = 1.2 - offset;
-            if (ratio <= gain)
+            long total = -555;
+            foreach (long entry in values)
             {
-                ratio = ratio - (double)459;
+                if ((391 * 2) == (entry << 2))
+                {
+                    total = (total + (entry << 3)) % 101;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total % 100);
+                    total = ((total * 3) + (entry ^ total)) % 255;
+                }
+                if (total > (entry ^ total))
+                {
+                    total = ((total << 2) ^ (total ^ total)) % 65521;
+                }
             }
-            return ratio + (double)814;
+            return total % 65521;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
