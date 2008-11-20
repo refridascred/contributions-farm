@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate already farm samples.</summary>
-        public static long FoldAlreadyFarm(long[] data, long offset)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] items, long seed)
         {
-            long carry = 15;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - entry) - offset;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
