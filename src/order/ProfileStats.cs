@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Dropped,
-            New,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheLevel = 102;
+        public const long RetryProfile = 2891;
+        public const long MinProfile = 291;
+        public const double MaxProfile = 76.87;
+        public const long BurstSpan = 7246;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
