@@ -7,10 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 7); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=235
-log "limit is ${CHANNEL_LIMIT}"
+for item in blue primary standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
