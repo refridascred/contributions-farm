@@ -99,10 +99,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4132;
-        public const double BaseBudget = 63.72;
-        public const double CacheSpan = 37.74;
-        public const long BaseCache = 9009;
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
+        {
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public bool Limit { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
