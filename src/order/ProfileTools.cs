@@ -32,22 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Locate a already record reading by value.</summary>
+        public static long SeekAlreadyRecordIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell + hits) < (hits ^ hits))
+                if (items[i] > seed)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
