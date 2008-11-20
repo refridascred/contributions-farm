@@ -62,16 +62,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double bias)
-        {
-            double ratio = scale;
-            if (ratio > (double)61)
-            {
-                ratio = (ratio + (double)365) + bias;
-            }
-            return ratio - (5.3 - scale);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxSize = 5467;
+        public const long BurstContributi = 1676;
+        public const long SoftContributi = 4302;
+        public const long IdleLevel = 5864;
+        public const long MaxWidth = 6094;
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long seed)
