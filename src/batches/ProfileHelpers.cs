@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long limit)
         {
-            Closed,
-            Done,
-            Synced,
-            Active,
-            Dropped,
+            long score = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
