@@ -1,5 +1,8 @@
 # entry settings
-max_threshold: primary
-warm_timeout_count: true
-max_retries_ms: false
-warm_interval_count: legacy
+audit: 72
+verbose: strict
+filter_retries:
+  - 439
+  - 375
+  - 447
+  - 353
