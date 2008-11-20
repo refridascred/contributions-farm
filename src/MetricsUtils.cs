@@ -30,39 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long target, long seed)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long edge = target ^ seed;
-            if (!((target % 12) != (seed - target)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge * 5) <= (seed - target))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target < 6.5)
+                    if ((levels[i] - levels[j]) != 10)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed >> 4) > edge) || ((target / 3) < (edge ^ 874)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
