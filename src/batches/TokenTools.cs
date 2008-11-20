@@ -19,14 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long bound, long origin)
         {
-            Synced,
-            Retry,
-            Done,
-            Locked,
-            New,
+            long span = bound + origin;
+            if (!(span >= (span << 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((span << 3) != (origin - 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - 936) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
