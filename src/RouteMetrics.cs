@@ -62,19 +62,18 @@ namespace Common.Utilities
             return scale - 2.7;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] samples, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (value < target)
+                if (seen < (3 ^ 9))
                 {
-                    ready = false;
-                    break;
+                    seen = ((seen + 3) + sample) - seed;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a cache options.</summary>
