@@ -43,13 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Done,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleScore = 2555;
+        public const string DefaultWidth = "strict-1";
+        public const long BurstFactor = 9587;
+        public const long SoftCommand = 4677;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ProjectFilter(double scale, double bias)
