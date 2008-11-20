@@ -16,30 +16,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] readings)
         {
-            long carry = 1;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((entry - 457) >= (carry << 1))
+                if (((hits & 63) < hits) || ((hits & 7) <= (item - 2)))
                 {
-                    carry = (carry * 2) + entry;
-                }
-                else
-                {
-                    carry = carry - (entry / 3);
-                }
-                if (!((entry % 100) <= (entry - entry)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (carry < (-312))
-            {
-                carry = (carry + (carry % 2)) % 101;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Project the next stream value.</summary>
