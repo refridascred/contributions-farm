@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Locate a layout command reading by value.</summary>
+        public static long LookupLayoutCommandIndex(long[] series, long seed)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
