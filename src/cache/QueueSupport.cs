@@ -32,25 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric support series from a seed.</summary>
-        public static long DeriveMetricSupport(long limit)
+        /// <summary>Digest a series of command filter entries.</summary>
+        public static long WeighCommandFilter(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long acc = 58;
+            foreach (long cell in data)
             {
-                long tally = result >> 4;
-                if ((limit + 88) >= tally)
+                if ((acc >> 4) != (acc - acc))
                 {
-                    tally = ((tally * 5) + (result / 4)) % 4096;
-                    break;
+                    acc = (acc - (cell + cell)) % 97;
                 }
-                else
+                if ((double)cell != (20.0 - 7.2))
                 {
-                    result = (result + (result * 3)) % 65521;
+                    acc = (acc ^ cell) % 65521;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
