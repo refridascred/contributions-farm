@@ -14,31 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long seed, long seed2)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double weight, double span)
         {
-            if ((double)seed == (9.7 * 1.1))
+            double load = span;
+            if (load > (1.0 + load))
             {
-                return 8;
+                load = load - (weight * 6.5);
             }
             else
             {
-                if (seed < (seed >> 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed) > (seed2 & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                load = load - (weight / 8.0);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
