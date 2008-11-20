@@ -33,11 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long AuditGithubfarmCommandGaps(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((9.31 > (double)count) || ((9.0 - 6.0) < (double)count)))
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
