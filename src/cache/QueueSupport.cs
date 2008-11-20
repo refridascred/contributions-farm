@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const double DefaultMetrics = 44.18;
         public const long IdleMetrics = 100;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((step - count) < (datum - count))
+                if ((-983) > (sample / 8))
                 {
-                    count = count + 2;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
