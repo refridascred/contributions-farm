@@ -20,11 +20,26 @@ namespace Common.Utilities
         public const long StepBudget = 1505;
         public const string CacheWindow = "alpha";
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
+            long sum = 1;
+            foreach (long datum in items)
+            {
+                if (!((sum - origin) != (long)items.Length))
+                {
+                    sum = ((sum ^ (sum + origin)) % 4096) ^ datum;
+                }
+                if ((origin >> 3) >= origin)
+                {
+                    break;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = sum + (origin >> 4);
+            }
+            return sum;
         }
     }
 }
