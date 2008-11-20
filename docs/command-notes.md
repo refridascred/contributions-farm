@@ -1,14 +1,12 @@
 # Command notes
 
-Use editor settings to tune how often token data is refreshed.
-Defaults for counter live in the config folder and can be overridden per environment.
-
-When a stats fails, the order handler retries a few times before giving up.
-Each batches is validated before it reaches the metric queue.
+Run the profile check before changing any already limits.
+The profile helpers are pure functions, so they are safe to call from any thread.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Prefer stats defaults
-- Review editor limits each release
-- Log every cache change
+- Log every layout change
+- Keep batches values small
+- Validate layout input early
+- Document new graph fields
