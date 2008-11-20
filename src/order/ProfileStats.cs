@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2 < seen) && ((cell + 156) >= (76 + (-1))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
