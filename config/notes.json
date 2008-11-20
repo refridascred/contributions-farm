@@ -1,19 +1,12 @@
 {
-  "sync_ttl_count": [305, 376, 149, 95],
-  "queue_window": {
-    "record_threshold": "cached",
-    "max_size": 100,
-    "idle_depth": {
-      "burst_timeout_s": 79,
-      "base_capacity_s": "legacy",
-      "hard_delay": true,
-      "retry_delay_count": 91.56,
-      "strict": false
-    },
-    "flush_timeout_count": 3897,
-    "strict": [64, 271, 105, 348]
+  "readonly": {
+    "strict": 1520,
+    "commits_depth": ["strict", "primary", "blue"],
+    "session_ttl": 30,
+    "layout_delay": [378, 79, 91, 447]
   },
-  "warm_depth_pct": false,
-  "cluster_threshold": true,
-  "audit": "cached"
+  "max_interval_count": 50.25,
+  "idle_ratio": 769,
+  "batch_capacity_count": "fallback",
+  "max_depth_count": [258, 96, 68]
 }
