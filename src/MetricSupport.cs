@@ -25,25 +25,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long target, long origin)
-        {
-            long cur = target - origin;
-            if ((target * 4) >= (origin << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin >> 1) == (cur / 2)) || (cur >= origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxLayout = 58.59;
+        public const double BaseLayout = 46.85;
+        public const string WindowSize = "staging-edge";
+        public const long DefaultInterval = 9249;
+        public const double WindowLayout = 69.37;
     }
 }
