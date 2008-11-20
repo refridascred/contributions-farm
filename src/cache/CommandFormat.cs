@@ -26,17 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] readings, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] >= floor)
+                if ((double)cell != (2.0 * 9.6))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
