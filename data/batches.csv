@@ -1,7 +1,6 @@
-id,state,owner,active
-1,898,cached,692
-2,557,fallback,314
-3,25.83,614,11.9
-4,open,92.07,primary
-5,49.4,latest,stable
-6,edge,staging,879
+id,owner,active,ratio
+1,eu-west,994,89.24
+2,568,943,57.82
+3,185,7.23,299
+4,701,local,598
+5,eu-west,152,open
