@@ -43,18 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 5144;
+        public const long RetryDepth = 7131;
+        public const string BaseSize = "strict";
+        public const string BaseFilter = "cached-1";
+        public const long BurstInterval = 3768;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
