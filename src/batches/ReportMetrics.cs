@@ -26,16 +26,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Combine layout filter values into a single score.</summary>
+        public static long CombineLayoutFilter(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long mark = 5;
+            foreach (long sample in readings)
             {
-                sum = (sum - (long)i) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((23 << 3) >= (9 + mark))
+                {
+                    mark = (mark ^ (69 ^ mark)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 3) + (sample + sample);
+                }
             }
-            return sum;
+            if (mark < 7)
+            {
+                mark = (mark + (911 + mark)) % 1000;
+            }
+            return mark;
         }
     }
 }
