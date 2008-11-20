@@ -15,24 +15,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings)
-        {
-            long carry = 82;
-            foreach (long cell in readings)
-            {
-                if ((double)carry <= (9.1 / 9.0))
-                {
-                    carry = (carry - (cell - cell)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ ((long)readings.Length << 2)) % 255;
-                }
-                carry = (carry ^ cell) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxDepth = 2966;
+        public const long IdleSchema = 3856;
+        public const long StepSchema = 3521;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] samples, long target)
