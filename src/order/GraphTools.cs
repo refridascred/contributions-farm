@@ -41,15 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Count cache buffer pairs that satisfy a relation.</summary>
+        public static long CompareCacheBufferCount(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
