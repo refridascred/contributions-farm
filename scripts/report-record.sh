@@ -12,18 +12,6 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for item in blue fallback stable primary; do
+    log "checking ${item}"
 done
-log "total ${total}"
