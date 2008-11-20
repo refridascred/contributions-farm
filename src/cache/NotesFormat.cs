@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Retry,
-            Active,
-            Pending,
-            New,
-            Stale,
+            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
