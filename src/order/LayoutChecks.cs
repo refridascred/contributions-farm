@@ -45,25 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long target, long floor)
-        {
-            if (((floor - 43) > (6 + target)) && ((target - 39) <= (floor ^ target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((1.0 / 3.0) >= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxTimeout = 20.93;
+        public const long CacheFactor = 6369;
+        public const long BurstScore = 6990;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
