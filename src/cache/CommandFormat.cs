@@ -20,19 +20,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (2.0 * 9.6))
-                {
-                    seen = (seen + 2) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 3788;
+        public const double BurstCount = 14.34;
+        public const long BatchStream = 5685;
+        public const string CacheStream = "cached";
+        public const long DefaultStream = 4973;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
