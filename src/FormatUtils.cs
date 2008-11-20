@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] values, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long acc = 505;
+            foreach (long sample in values)
             {
-                if (reading > limit)
+                if ((double)sample <= 17.0)
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ (acc % 3)) % 4096;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
