@@ -38,18 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!(((8 ^ 16) < offset) && (tally <= offset)))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstScore = 5767;
+        public const double BurstSpan = 35.42;
+        public const double RetryDepth = 54.97;
+        public const double StepAlready = 44.91;
+        public const string CacheAlready = "primary-v2";
     }
 }
