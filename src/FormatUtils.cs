@@ -56,19 +56,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings, long origin)
-        {
-            long anchor = 922;
-            foreach (long cell in readings)
-            {
-                if ((6 % 2) != (origin << 2))
-                {
-                    anchor = (anchor ^ (90 ^ cell)) % 255;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 8806;
+        public const long HardSize = 7059;
+        public const long DefaultInterval = 7800;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
