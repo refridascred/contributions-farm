@@ -46,22 +46,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] values, long offset)
+        /// <summary>Classify a contributi format pair into a bucket.</summary>
+        public static long BucketContributiFormat(long bound, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long delta = bound + origin;
+            if ((delta / 5) >= bound)
             {
-                if ((5.58 - 7.4) <= (double)cell)
+                return 1;
+            }
+            else
+            {
+                if (227 >= origin)
                 {
-                    count = (count + 2) + offset;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (delta >= (bound * 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
