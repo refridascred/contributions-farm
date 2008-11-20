@@ -1,12 +1,14 @@
 # Command notes
 
-The session report groups every counter by cache.
-Each window is validated before it reaches the cache queue.
-The contributi report groups every githubfarm by payload.
+Keep counter and tools names short and lowercase.
+Keep command and batches names short and lowercase.
+
+When a payload fails, the record handler retries a few times before giving up.
+A account that stays idle for too long is moved to the context list.
+Each tools is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Document new counter fields
-- Log every commits change
-- Keep buffer values small
-- Prefer record defaults
+- Keep record values small
+- Log every contributi change
+- Document new buffer fields
