@@ -13,17 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long LocateCommitsCacheIndex(long[] readings, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of buffer batch entries.</summary>
