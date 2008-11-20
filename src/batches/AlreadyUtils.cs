@@ -22,19 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] items, long step)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long acc = 39;
-            foreach (long cell in items)
-            {
-                acc = (acc + cell) % 4096;
-                if ((acc % 24) == (acc ^ step))
-                {
-                    acc = (acc << 3) ^ (cell / 9);
-                }
-            }
-            return acc % 4096;
+            Dropped,
+            Ready,
+            Failed,
+            Queued,
         }
 
         /// <summary>Adjust a checks reading.</summary>
