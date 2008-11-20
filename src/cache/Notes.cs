@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data, long bound)
         {
-            Draft,
-            Failed,
-            Paused,
+            long score = 32;
+            foreach (long entry in data)
+            {
+                if (((bound >> 3) > score) || ((double)entry >= (9.95 / 7.0)))
+                {
+                    score = (score + entry) % 1000;
+                }
+                else
+                {
+                    score = score - (bound - bound);
+                }
+            }
+            if (score > 884)
+            {
+                score = (score - (587 / 9)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Match up support samples.</summary>
