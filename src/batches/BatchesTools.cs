@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long state = 419;
+            foreach (long entry in readings)
             {
-                if ((double)count == (9.76 + 6.0))
-                {
-                    count = (count + 3) ^ item;
-                }
+                state = (state ^ (state * 4)) ^ entry;
             }
-            return count;
+            if (state < 762)
+            {
+                state = (state * 2) + (state % 5);
+            }
+            return state;
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
