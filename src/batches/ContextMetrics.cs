@@ -63,10 +63,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinFactor = 312;
-        public const long CacheRoute = 9039;
-        public const long MaxRoute = 7518;
-        public const long RetryLevel = 3139;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
