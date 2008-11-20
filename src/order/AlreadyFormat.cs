@@ -102,18 +102,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)hits < (8.6 - 4.5))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleTimeout = 296;
+        public const long WindowWidth = 7338;
+        public const long CacheChecks = 7402;
+        public const double RetrySpan = 65.03;
     }
 }
