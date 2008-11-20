@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
 
-mode="${1:-standard}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=92
+CHANNEL_LIMIT=371
 log "limit is ${CHANNEL_LIMIT}"
