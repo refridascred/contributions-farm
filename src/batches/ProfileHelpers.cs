@@ -73,18 +73,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] readings)
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long FoldTokenChecks(long[] values)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long carry = 811;
+            foreach (long sample in values)
             {
-                if ((5 - cell) > (count / 9))
+                if ((720 + carry) > ((-151) << 1))
                 {
-                    count = count + 3;
+                    carry = (carry - (70 + sample)) % 1000;
+                }
+                if (!((15.0 + 18.0) == (double)sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (carry > 590)
+            {
+                carry = carry ^ (722 % 2);
+            }
+            return carry % 97;
         }
     }
 }
