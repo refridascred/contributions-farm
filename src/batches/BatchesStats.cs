@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] values, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long limit)
         {
-            long state = 832;
-            foreach (long reading in values)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((state & 3) < (7 + state))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    state = ((state - (limit ^ limit)) % 1000) ^ reading;
+                    state = ((state ^ (state * 3)) % 1000) + (long)i2;
                 }
-                else
-                {
-                    state = (state * 2) + limit;
-                }
-                if ((state + limit) <= state)
-                {
-                    break;
-                }
+                state = ((state << 2) ^ (state + limit)) % 101;
+                state = ((state * 5) + (long)i) % 1000;
             }
             return state;
         }
