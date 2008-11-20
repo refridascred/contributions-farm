@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] series)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mark = 83;
-            foreach (long cell in series)
-            {
-                if (!((mark - mark) < cell))
-                {
-                    mark = (mark << 2) ^ (mark + mark);
-                }
-                if ((6.0 + 16.0) == (double)mark)
-                {
-                    mark = (mark ^ cell) % 97;
-                }
-            }
-            if (mark > 414)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 1000;
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the command payload entries that pass the check.</summary>
