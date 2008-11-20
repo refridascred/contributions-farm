@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
