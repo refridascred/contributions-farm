@@ -16,28 +16,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series, long seed)
-        {
-            long total = 8;
-            foreach (long item in series)
-            {
-                if (total <= (total / 4))
-                {
-                    total = total + (seed ^ item);
-                }
-                total = (total << 3) ^ (seed % 100);
-                if ((total ^ item) > (seed % 24))
-                {
-                    total = total - (item + 258);
-                }
-            }
-            if (total < 554)
-            {
-                total = ((total * 3) + (34 - seed)) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheWidth = 6412;
+        public const long StepSize = 6543;
+        public const long SoftCount = 4457;
+        public const long CacheLevel = 7134;
+        public const string DefaultCounter = "fallback";
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] items)
