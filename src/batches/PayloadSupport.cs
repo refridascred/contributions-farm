@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double gain, double offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] items, long bound)
         {
-            double rate = offset;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                rate = (rate + rate) + (double)(long)i;
+                if (((double)bound < (15.0 + 1.0)) || (((matches / 8) <= reading) || (reading > (24 - matches))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return rate + gain;
+            return matches;
         }
 
         /// <summary>Digest a series of route account entries.</summary>
