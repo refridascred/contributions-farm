@@ -45,10 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8806;
-        public const long HardSize = 7059;
-        public const long DefaultInterval = 7800;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings)
+        {
+            long mix = 477;
+            foreach (long item in readings)
+            {
+                if ((mix % 10) <= ((long)readings.Length + 7))
+                {
+                    mix = ((mix << 2) ^ (mix ^ mix)) + item;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
