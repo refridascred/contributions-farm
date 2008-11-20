@@ -1,7 +1,6 @@
 {
-  "filter_limit": false,
-  "base_ttl": 83,
-  "cache_size": "cached",
-  "window_retries": 250,
-  "batches_capacity": "primary"
+  "strict": 42,
+  "sync_threshold": 2620,
+  "base_retries": [123, 197, 265],
+  "filter_depth": 26
 }
