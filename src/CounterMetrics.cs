@@ -46,17 +46,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] samples, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (span - rate) - span;
+            if (gain > (3.54 * 6.83))
             {
-                if ((samples[i] == step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - 20.0;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - (double)63;
         }
     }
 }
