@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] values, long offset)
         {
-            long state = 419;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long item in values)
             {
-                state = (state ^ (state * 4)) ^ entry;
+                if (((matches - offset) > (2 ^ offset)) && (((long)values.Length % 7) >= matches))
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            if (state < 762)
-            {
-                state = (state * 2) + (state % 5);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
