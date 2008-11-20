@@ -22,20 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] readings, long origin)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            long mark = -31;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + ((long)readings.Length ^ mark)) - origin;
-                mark = mark - entry;
-                if ((mark % 24) <= (7 / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark ^ (535 % 7)) % 65521;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
