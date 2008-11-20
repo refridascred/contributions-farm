@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long MinTools = 8701;
         public const string BurstCount = "open";
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] items, long floor)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length & 255) > (78 * 3))
-                {
-                    count = ((count + 1) ^ reading) - floor;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
