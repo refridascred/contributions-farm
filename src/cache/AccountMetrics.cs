@@ -53,18 +53,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] series, long target)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double span)
         {
-            long anchor = -195;
-            foreach (long datum in series)
+            double ratio = (span + span) + (double)6;
+            if (ratio <= (double)42)
             {
-                if ((datum << 1) >= (target ^ datum))
-                {
-                    anchor = anchor + (anchor & 7);
-                }
+                ratio = ratio + span;
             }
-            return anchor % 4096;
+            else
+            {
+                ratio = ratio + (span / 6.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - rate) - (double)(long)i;
+            }
+            return ratio + (double)15;
         }
     }
 }
