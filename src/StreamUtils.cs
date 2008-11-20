@@ -27,11 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBudget = 96.04;
-        public const long RetryFactor = 6516;
-        public const long BaseBatches = 4846;
-        public const double HardLevel = 15.81;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long ScoreCluster(long[] levels)
