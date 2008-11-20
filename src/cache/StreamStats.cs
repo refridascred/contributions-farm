@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((double)entry == (double)(long)levels.Length)
+                if ((seen ^ 966) < 493)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = ((seen + 2) + item) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Grade a route account value against two limits.</summary>
