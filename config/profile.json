@@ -1,5 +1,27 @@
 {
-  "cache_timeout": 18.58,
-  "audit": 8305,
-  "already_threshold": 68
+  "sync_ttl": {
+    "verbose": 70,
+    "support_threshold": "blue",
+    "route_timeout": false
+  },
+  "audit": 45,
+  "metrics_ttl": {
+    "profile_size": false,
+    "layout_window": 535,
+    "max_interval_s": "edge",
+    "poll_capacity_ms": {
+      "strict": 965,
+      "idle_ratio_s": 500,
+      "sync_size_ms": 100,
+      "editor_size": 70.64,
+      "window_delay": "open"
+    }
+  },
+  "support_capacity": {
+    "min_capacity_ms": 7528,
+    "dry_run": 24.03,
+    "contributi_window": [39, 312]
+  },
+  "max_depth_s": 66.48,
+  "enabled": [379, 479, 171, 45]
 }
