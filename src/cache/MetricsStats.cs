@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] data, long step)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
