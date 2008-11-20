@@ -27,21 +27,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up checks already samples.</summary>
-        public static long CompareChecksAlreadyCount(long[] values)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Active,
+            Paused,
+            Retry,
+            Locked,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
