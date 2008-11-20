@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] series, long step)
         {
-            long carry = 5;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in series)
             {
-                carry = ((carry ^ 5) % 101) - reading;
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
