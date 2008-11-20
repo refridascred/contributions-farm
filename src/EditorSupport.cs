@@ -54,24 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((origin + 499) > (origin - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)origin <= (8.6 / 7.0)) && (bound > (origin - origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
