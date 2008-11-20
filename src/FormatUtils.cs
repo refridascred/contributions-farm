@@ -34,21 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum << 3) ^ (688 & 31)) % 255;
-                if (!((sum / 5) < (sum * 5)))
+                if ((series[i] <= step) && ((series[i] % 5) == 0))
                 {
-                    sum = (sum + ((long)i & 15)) % 255;
-                    sum = (sum + step) % 97;
+                    return (long)i;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
