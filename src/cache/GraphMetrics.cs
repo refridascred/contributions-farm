@@ -58,17 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] readings, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) == 0))
+                if ((double)seed < (9.2 * 2.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the commits state values.</summary>
