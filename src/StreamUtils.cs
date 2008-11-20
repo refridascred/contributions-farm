@@ -55,22 +55,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long delta = origin - bound;
+            if (delta < (delta + bound))
             {
-                if (((datum >> 2) <= tally) || ((tally >> 4) >= datum))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound <= (1.0 + 6.16))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (origin > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
