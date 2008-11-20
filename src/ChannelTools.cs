@@ -27,12 +27,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
