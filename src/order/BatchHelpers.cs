@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double gain, double offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double mean = (1.2 + 8.6) / 9.0;
-            if (mean <= (mean * 0.4))
-            {
-                mean = (mean - 2.4) - offset;
-            }
-            return mean - gain;
+            Failed,
+            Active,
+            Done,
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
