@@ -68,19 +68,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 8218;
+        public const long RetryMetric = 5043;
+        public const string BatchDepth = "strict-1";
+        public const string SoftSize = "strict-edge";
     }
 }
