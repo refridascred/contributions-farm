@@ -20,19 +20,14 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Closed,
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Hold a contributi record.</summary>
