@@ -62,15 +62,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next profile payload value.</summary>
-        public static double SmoothProfilePayload(double bias, double span)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] values, long seed)
         {
-            double rate = bias;
-            if (rate >= rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (rate - bias)) - span;
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (0.17 + rate);
+            return -1;
         }
     }
 }
