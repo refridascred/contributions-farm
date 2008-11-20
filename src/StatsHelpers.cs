@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] readings, long step)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((step + 691) > ((-82) * 5))
-                {
-                    count = (count + 3) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Done,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate format samples.</summary>
