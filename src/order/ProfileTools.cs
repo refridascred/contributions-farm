@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long offset)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] readings)
         {
-            if ((45 & 15) <= (offset ^ bound))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound << 2) > (18 - offset)) || (offset < (bound - bound)))
+                if ((((datum / 6) < (datum << 1)) || ((hits % 97) == (datum % 3))) && !((datum * 4) >= 9))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.2 - 3.15) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a commits info.</summary>
