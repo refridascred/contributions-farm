@@ -37,12 +37,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long floor)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
