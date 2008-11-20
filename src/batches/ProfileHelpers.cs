@@ -16,19 +16,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double weight, double bias)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] items, long target)
         {
-            double weight2 = (double)(36 >> 2);
-            if (weight2 <= weight)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                weight2 = weight2 + (9.64 + bias);
+                if (cell > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (double)513;
-            }
-            return weight2 - bias;
+            return stale;
         }
 
         /// <summary>Rank buffer editor input into a small class.</summary>
