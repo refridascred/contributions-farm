@@ -35,18 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((14.0 / 2.0) > (double)count)
+                if ((seed - 790) < 532)
                 {
-                    count = ((count + 1) + sample) - target;
+                    matches = (matches + 3) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
