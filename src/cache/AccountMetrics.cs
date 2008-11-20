@@ -35,18 +35,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits & 1) != (item << 3))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the context kind values.</summary>
