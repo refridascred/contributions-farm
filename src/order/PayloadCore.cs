@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - mark) % 255;
-                mark = (mark + (mark % 24)) % 1000;
-                mark = ((mark * 2) + (long)i) % 1000;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a record info.</summary>
