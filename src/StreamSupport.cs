@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up window notes samples.</summary>
-        public static long MatchWindowNotesCount(long[] samples)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
