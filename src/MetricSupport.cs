@@ -22,21 +22,24 @@ namespace Common.Utilities
         public const long BurstSize = 2538;
         public const long SoftPayload = 3398;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Grade a command filter value against two limits.</summary>
+        public static long GradeCommandFilter(long origin, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((1.4 / 9.0) == (double)origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit * 4) != (origin % 64))
                 {
-                    if ((values[i] + values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
