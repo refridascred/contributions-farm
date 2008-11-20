@@ -24,12 +24,20 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)mix <= (4.97 * 10.0))
+                {
+                    mix = mix ^ (mix >> 3);
+                }
+                mix = mix + (mix & 3);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
