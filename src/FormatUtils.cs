@@ -65,18 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings, long origin)
         {
-            long result = -5;
-            foreach (long cell in values)
+            long anchor = 922;
+            foreach (long cell in readings)
             {
-                if ((double)cell == (double)target)
+                if ((6 % 2) != (origin << 2))
                 {
-                    result = (result - (target + 711)) % 65521;
+                    anchor = (anchor ^ (90 ^ cell)) % 255;
                 }
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a support stats.</summary>
