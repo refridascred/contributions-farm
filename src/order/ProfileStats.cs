@@ -25,19 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] levels, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen <= (seed - entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinInterval = 90.79;
+        public const long BaseTimeout = 944;
+        public const long HardLevel = 2118;
+        public const string CacheRatio = "local-edge";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] samples)
