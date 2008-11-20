@@ -74,14 +74,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Retry,
-            Synced,
-            Stale,
+            Draft,
+            New,
             Ready,
-            Paused,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
