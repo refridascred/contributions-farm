@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] items, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (items[i] == seed)
+                if (item >= limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
