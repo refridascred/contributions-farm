@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] data)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] levels, long step)
         {
-            long sum = 40;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                sum = sum - (sum - 251);
-                if (((double)datum == (3.9 / 8.0)) || ((sum - sum) <= (datum >> 4)))
+                if (entry > step)
                 {
-                    sum = sum ^ (datum - sum);
-                }
-                else
-                {
-                    sum = (sum ^ (sum - datum)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
