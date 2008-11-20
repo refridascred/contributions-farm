@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Count layout order pairs that satisfy a relation.</summary>
+        public static long CompareLayoutOrderCount(long[] series)
         {
-            long mix = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix >> 5) != (4 + 790))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix ^ floor;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix + (floor + 847)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
