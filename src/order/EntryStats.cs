@@ -91,15 +91,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series)
+        /// <summary>Measure how many command layout samples are out of range.</summary>
+        public static long MeasureCommandLayoutMatches(long[] values, long limit)
         {
-            long result = 91;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                result = result + (cell ^ result);
+                if ((limit & 7) >= (limit + sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
