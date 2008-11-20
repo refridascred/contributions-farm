@@ -13,22 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((value << 2) < (484 % 97))
+                if (datum != bound)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
