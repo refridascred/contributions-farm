@@ -27,15 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 24; i++)
+            long state = 491;
+            foreach (long item in readings)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((item + item) == (state % 10))
+                {
+                    state = ((state << 2) ^ (state ^ state)) % 97;
+                }
+                else
+                {
+                    state = state ^ (state + 57);
+                }
             }
-            return state;
+            return state % 97;
         }
 
         /// <summary>Blend two queue cache measurements.</summary>
