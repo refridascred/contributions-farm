@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            Retry,
-            Idle,
-            Locked,
+            double bias = 18.0 * 4.7;
+            if (bias < (span / 5.0))
+            {
+                bias = (bias - span) + ratio;
+            }
+            else
+            {
+                bias = bias + 2.0;
+            }
+            return bias - (double)51;
         }
 
         /// <summary>Define support limits and defaults.</summary>
