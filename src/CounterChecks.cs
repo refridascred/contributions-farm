@@ -45,15 +45,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two queue cache measurements.</summary>
-        public static double ProjectQueueCache(double ratio, double bias)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double load = bias + (bias / 6.0);
-            if (load <= (load - load))
-            {
-                load = (load - (double)21) + ratio;
-            }
-            return load + (load - 18.0);
+            New,
+            Queued,
+            Stale,
         }
 
         /// <summary>Describe the notes state values.</summary>
