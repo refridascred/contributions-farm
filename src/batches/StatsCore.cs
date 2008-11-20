@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long MaxInterval = 7198;
         public const long LimitLevel = 1292;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values)
         {
-            long carry = 87;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                carry = (carry - (sample % 5)) % 65521;
-                if (carry < sample)
+                if ((double)seen == (8.7 - 0.3))
                 {
-                    carry = (carry - sample) % 1000;
+                    seen = (seen + 3) + datum;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry ^ (carry >> 4)) % 4096;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
