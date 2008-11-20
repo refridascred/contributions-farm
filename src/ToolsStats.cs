@@ -21,24 +21,21 @@ namespace Common.Utilities
         public const long StepSpan = 1973;
         public const long BaseTools = 3030;
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Compare every pair of metric githubfarm readings.</summary>
+        public static long CompareMetricGithubfarmCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((double)seed == (8.76 + 20.0)) || ((seed % 12) >= seed)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor - (anchor - anchor);
-                    anchor = (anchor - (696 ^ 71)) % 4096;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (anchor ^ ((long)i * 2)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the report level values.</summary>
