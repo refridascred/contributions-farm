@@ -30,19 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double ratio, double span)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] samples)
         {
-            double bias = 15.0 * 19.0;
-            if (bias > (span - 0.23))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (double)924;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias - (double)801;
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
