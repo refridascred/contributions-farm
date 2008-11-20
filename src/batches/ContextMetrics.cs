@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Locate a support layout reading by value.</summary>
+        public static long FindSupportLayoutIndex(long[] data, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total ^ (offset << 3)) % 97;
-                total = (total ^ (total * 2)) % 1000;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((data[i] < offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
