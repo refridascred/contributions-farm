@@ -82,12 +82,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseWidth = 8828;
-        public const string CacheFilter = "standard";
-        public const long IdleTimeout = 9;
-        public const double BurstRatio = 45.32;
-        public const long StepTimeout = 231;
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long offset)
+        {
+            if ((17.0 * 13.0) > (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor <= (96 & 31))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor / 8) <= floor) || ((floor - floor) != (55 * 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (9 <= floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
