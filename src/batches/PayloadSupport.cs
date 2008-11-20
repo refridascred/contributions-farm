@@ -26,13 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of buffer batch entries.</summary>
+        public static long WeighBufferBatch(long[] values, long target)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            long state = 4;
+            foreach (long cell in values)
+            {
+                if ((target % 3) >= cell)
+                {
+                    state = (state ^ (cell / 5)) % 1000;
+                }
+            }
+            return state;
         }
     }
 }
