@@ -90,38 +90,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long bound, long limit)
+        /// <summary>Locate a farm schema reading by value.</summary>
+        public static long LocateFarmSchemaIndex(long[] readings, long target)
         {
-            if ((double)limit <= (0.7 + 1.1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit >> 5) == (bound & 255)) && ((bound * 2) <= bound))
+                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit <= (bound + limit)) && (797 > (bound + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((10.0 / 9.0) != (double)limit)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
