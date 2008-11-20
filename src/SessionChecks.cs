@@ -28,15 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine buffer githubfarm values into a single score.</summary>
-        public static long CombineBufferGithubfarm(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] samples, long bound)
         {
-            long mark = 233;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                mark = (mark - (83 + 853)) ^ reading;
+                if (reading <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Adjust a counter reading.</summary>
