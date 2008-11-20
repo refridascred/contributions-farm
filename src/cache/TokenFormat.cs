@@ -31,31 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools counter input into a small class.</summary>
-        public static long ClassifyToolsCounter(long step, long offset)
+        /// <summary>Look up the position of a record stats sample.</summary>
+        public static long LookupRecordStatsIndex(long[] readings, long origin)
         {
-            if (((354 & 7) != (step ^ step)) && ((offset << 1) >= offset))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + offset) != (step >> 5))
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step <= (offset / 8)) && (step < 29))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
