@@ -22,26 +22,31 @@ namespace Common.Utilities
         public const double DefaultMetrics = 44.18;
         public const long IdleMetrics = 100;
 
-        /// <summary>Digest a series of stream schema entries.</summary>
-        public static long DigestStreamSchema(long[] readings)
+        /// <summary>Grade a entry stats value against two limits.</summary>
+        public static long GradeEntryStats(long floor, long limit)
         {
-            long carry = 5;
-            foreach (long sample in readings)
+            if (!((limit % 64) < (floor / 7)))
             {
-                if ((65 << 2) == (sample + sample))
+                return 7;
+            }
+            else
+            {
+                if ((354 >> 4) <= (limit + floor))
                 {
-                    carry = (carry + 71) % 97;
+                    return 4;
                 }
                 else
                 {
-                    carry = ((carry * 2) + (carry + 1)) % 101;
+                    if ((floor + floor) == (floor ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 9)
-            {
-                carry = (carry << 2) ^ ((-1) ^ carry);
-            }
-            return carry;
         }
     }
 }
