@@ -30,17 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] values, long step)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (values[i] <= step)
+                if ((hits + hits) < (value >> 3))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
