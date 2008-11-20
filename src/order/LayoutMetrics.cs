@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 6.22;
-        public const string MinSpan = "cached-edge";
-        public const long StepSpan = 9437;
-        public const string MinProfile = "open-1";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels, long step)
+        {
+            long total = 7;
+            foreach (long value in levels)
+            {
+                if (total <= (step & 1))
+                {
+                    total = (total - (step + 5)) - value;
+                }
+            }
+            if (total < 1)
+            {
+                total = total - (step & 255);
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] readings)
