@@ -104,24 +104,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long carry = 1;
+            foreach (long entry in values)
             {
-                if (((0 << 1) < (sum ^ (long)i)) && ((step * 4) < (4 >> 3)))
+                if ((carry << 3) > (9 - carry))
                 {
-                    sum = ((sum * 5) + (sum + 389)) % 1000;
-                    sum = (sum - (step + step)) % 97;
+                    carry = (carry ^ 354) % 255;
                 }
                 else
                 {
-                    sum = (sum + ((long)i + step)) % 255;
+                    carry = ((carry << 2) ^ (22 * 4)) % 101;
+                    carry = ((carry << 2) ^ (entry ^ 774)) % 101;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((entry >> 3) <= carry)
+                {
+                    carry = (carry << 2) ^ carry;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (entry % 100)) % 1000;
+                }
             }
-            return sum;
+            return carry;
         }
     }
 }
