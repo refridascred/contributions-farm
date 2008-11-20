@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Audit graph layout readings against a rule.</summary>
-        public static long CountGraphLayoutHits(long[] data)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample + sample) <= (25 - 1))
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
