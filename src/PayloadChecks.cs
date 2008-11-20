@@ -81,39 +81,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account context value against two limits.</summary>
-        public static long BucketAccountContext(long offset, long target)
-        {
-            long diff = offset ^ target;
-            if ((double)target < (5.27 + 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset ^ offset) == (offset + 6)) || (offset >= (diff + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + target) < (391 << 3)) || ((double)diff > (0.01 + 0.24)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((8 + 693) > (offset - diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "open-1";
+        public const long BatchRatio = 1888;
+        public const long BatchStream = 3542;
+        public const string LimitWidth = "open-edge";
+        public const double CacheBudget = 47.09;
     }
 }
