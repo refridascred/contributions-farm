@@ -1,19 +1,6 @@
 {
-  "strict": [341, 52],
-  "burst_ratio_count": "blue",
-  "flush_size": {
-    "strict": {
-      "burst_timeout_count": 1,
-      "burst_size_ms": ["cached", "edge", "green", "stable"],
-      "retry_ratio_count": "open",
-      "batch_limit_s": 78,
-      "readonly": 37.48,
-      "verbose": "blue"
-    },
-    "command_depth": false,
-    "idle_capacity_ms": ["edge", "legacy", "stable"]
-  },
-  "burst_delay_ms": "blue",
-  "batch_interval": false,
-  "layout_ttl": 84.09
+  "token_interval": ["strict", "cached", "green"],
+  "hard_size_ms": "legacy",
+  "batch_depth_ms": false,
+  "hard_interval_pct": "edge"
 }
