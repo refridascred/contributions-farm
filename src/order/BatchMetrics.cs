@@ -32,14 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Retry,
-            Active,
-            Ready,
-            Pending,
-            Draft,
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
