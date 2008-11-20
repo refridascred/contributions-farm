@@ -59,22 +59,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
-            long mix = 41;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (mix <= (mix + mix))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (((mix * 2) + (mix - 7)) % 255) - datum;
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 48)
-            {
-                mix = ((mix << 3) ^ ((long)items.Length - mix)) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
