@@ -50,19 +50,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(score < seed))
-                {
-                    score = (score << 2) ^ (1 - seed);
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Retry,
+            Synced,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define account limits and defaults.</summary>
