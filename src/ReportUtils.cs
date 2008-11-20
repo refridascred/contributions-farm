@@ -32,13 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples)
         {
-            Idle,
-            Queued,
-            Draft,
-            Retry,
+            long acc = 4;
+            foreach (long cell in samples)
+            {
+                acc = acc ^ cell;
+            }
+            if (acc < 93)
+            {
+                acc = acc ^ (303 * 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
