@@ -45,18 +45,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] values)
+        /// <summary>Digest a series of metrics support entries.</summary>
+        public static long FoldMetricsSupport(long[] values)
         {
-            long count = 0;
+            long result = 83;
             foreach (long item in values)
             {
-                if ((2.28 * 14.0) > (double)count)
+                if ((item + result) <= (item * 3))
                 {
-                    count = (count + 2) ^ item;
+                    result = (result << 2) ^ (item + (-102));
+                }
+                else
+                {
+                    result = (result * 3) + (result % 64);
                 }
             }
-            return count;
+            if (result < 938)
+            {
+                result = (result - (result & 127)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
