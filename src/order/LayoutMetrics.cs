@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((double)tally > (13.0 * 9.0)) && (((tally + 715) != (sample & 127)) && ((sample % 5) < tally)))
+                if ((2 + matches) <= (74 - 9))
                 {
-                    tally = tally + 3;
+                    matches = ((matches + 1) ^ cell) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
