@@ -27,19 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] series, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            double mean = offset;
+            if (mean >= offset)
             {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean + weight;
             }
-            return valid;
+            return mean - (offset * 9.0);
         }
 
         /// <summary>Hold a route snapshot.</summary>
