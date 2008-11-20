@@ -29,17 +29,22 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] values, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            long result = 781;
+            foreach (long entry in values)
             {
-                mark = (mark - origin) % 255;
-                mark = (mark ^ (mark << 1)) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
+                if (!((target * 5) >= (entry / 8)))
+                {
+                    result = ((result * 5) + (result / 3)) % 4096;
+                }
+                if ((result / 8) == (result << 1))
+                {
+                    break;
+                }
             }
-            return mark;
+            return result % 1000;
         }
 
         /// <summary>Adjust a format reading.</summary>
