@@ -37,18 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (((reading >> 2) != ((-2) % 5)) || ((step % 12) > step))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 4104;
+        public const string MinTimeout = "staging";
+        public const long SoftProfile = 4910;
+        public const long BatchTimeout = 8554;
     }
 }
