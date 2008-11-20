@@ -33,17 +33,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
