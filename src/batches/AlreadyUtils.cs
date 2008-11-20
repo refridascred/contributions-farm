@@ -61,13 +61,24 @@ namespace Common.Utilities
             return ratio + (double)814;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long limit, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            if ((6 % 60) > (limit >> 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(2.9 > (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
