@@ -28,17 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] values, long seed)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (values[i] >= seed)
+                if (value <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
