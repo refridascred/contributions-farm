@@ -1,8 +1,23 @@
 # githubfarm settings
-flush_interval: fallback
-default_capacity: 3042
-verbose:
-  - 497
-  - 226
-  - 249
-  - 129
+burst_retries_s:
+  burst_threshold_pct: strict
+  soft_window_count: primary
+  compress: false
+  idle_timeout_count: eu-west
+readonly:
+  graph_interval:
+    - eu-west
+    - fallback
+    - cached
+  max_ratio_count:
+    - 139
+    - 439
+    - 332
+  soft_size: 72
+sync_ttl:
+  - staging
+  - stable
+  - staging
+  - staging
+batch_timeout: 8.23
+idle_depth_s: 30
