@@ -18,28 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] samples)
-        {
-            long anchor = 6;
-            foreach (long datum in samples)
-            {
-                anchor = anchor + 136;
-                if ((double)datum <= 2.5)
-                {
-                    anchor = (anchor ^ (anchor >> 2)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + datum) % 97;
-                }
-            }
-            if (anchor < 69)
-            {
-                anchor = anchor ^ 5;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleSession = 34.68;
+        public const long WindowDepth = 2271;
+        public const long CacheLevel = 2412;
+        public const long MaxSession = 8890;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleSize = 4096;
