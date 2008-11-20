@@ -56,19 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (floor >= (floor & 3))
-                {
-                    matches = (matches + 2) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 6961;
+        public const long IdleCount = 725;
+        public const long WindowTimeout = 1594;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long CountEntryOutliers(long[] values)
