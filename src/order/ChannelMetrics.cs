@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 2247;
-        public const double MaxBudget = 42.72;
-        public const string SoftSupport = "latest";
+        /// <summary>Classify a schema filter pair into a bucket.</summary>
+        public static long BucketSchemaFilter(long seed, long seed2)
+        {
+            if ((seed + seed2) > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed <= (seed % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsMatches(long[] data, long limit)
