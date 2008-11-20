@@ -38,16 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                result = (result - result) % 97;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            public double Score { get; set; }
+            public double Level { get; set; }
         }
     }
 }
