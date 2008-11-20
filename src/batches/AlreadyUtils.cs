@@ -53,24 +53,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long limit, long step)
+        /// <summary>Audit account batch readings against a rule.</summary>
+        public static long CountAccountBatchOutliers(long[] readings)
         {
-            if ((6 % 60) > (limit >> 5))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(2.9 > (double)step))
+                if (seen < (item - item))
                 {
-                    return 1;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
