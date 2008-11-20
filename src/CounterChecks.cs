@@ -37,17 +37,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                score = (score ^ score) % 255;
-                score = score + (offset / 7);
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Queued,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
