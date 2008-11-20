@@ -73,14 +73,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Failed,
-            Retry,
-            Queued,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 5697;
+        public const long BaseInterval = 7397;
+        public const string BurstBudget = "fallback-1";
+        public const long BatchRecord = 3391;
+        public const long HardRecord = 6031;
     }
 }
