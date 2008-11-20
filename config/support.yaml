@@ -1,30 +1,12 @@
 # support settings
-dry_run: 1
-session_retries: 62
-persist: fallback
-max_interval_pct: 92
-poll_capacity_count:
-  idle_ttl:
-    dry_run: open
-    readonly: strict
-    persist:
-      - eu-west
-      - local
-      - primary
-      - green
-    stats_depth: eu-west
-    burst_size:
-      - 342
-      - 256
-    poll_window_count: cached
-  base_window_s: local
-  poll_interval: 338
-  audit:
-    - 470
-    - 112
-  batch_threshold_count: cached
-  batch_depth:
-    - latest
-    - latest
-    - local
-    - staging
+session_delay: 1024
+strict:
+  soft_retries_pct: true
+  stream_depth: strict
+  buffer_retries: 682
+  warm_depth: green
+  dry_run: 1506
+stats_ttl: true
+window_depth: latest
+base_delay_s: primary
+max_delay_s: 7780
