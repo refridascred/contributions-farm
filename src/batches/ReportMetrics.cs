@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long bound)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = -9;
+            foreach (long reading in readings)
             {
-                if (items[i] >= bound)
+                if ((6 ^ reading) <= (result * 2))
                 {
-                    return (long)i;
+                    result = result ^ (result + reading);
+                }
+                if ((845 / 6) < result)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 2)
+            {
+                result = (result ^ (0 + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
