@@ -73,14 +73,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long origin)
         {
-            Active,
-            Retry,
-            Locked,
-            Idle,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
