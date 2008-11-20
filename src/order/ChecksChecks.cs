@@ -28,9 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchDepth = 7771;
-        public const long HardSize = 2667;
-        public const long CacheEntry = 50;
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
