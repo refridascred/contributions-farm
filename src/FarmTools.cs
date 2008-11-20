@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Combine stats already values into a single score.</summary>
+        public static long DigestStatsAlready(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long acc = 81;
+            foreach (long cell in series)
             {
-                if ((double)hits >= (double)value)
+                if (!((acc / 3) > (cell + cell)))
                 {
-                    hits = hits + 1;
+                    acc = acc + (cell / 9);
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
