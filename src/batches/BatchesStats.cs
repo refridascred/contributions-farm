@@ -27,17 +27,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long seed, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((6.69 + 3.78) <= (double)seed)
             {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((seed / 9) <= (7 * 3)) && ((target % 7) != (seed - 17)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed < 2.7) && ((seed % 3) >= target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target > (3.7 * 7.72))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
