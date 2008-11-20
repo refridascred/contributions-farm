@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = (acc - acc) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
