@@ -89,16 +89,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Locate a stream cluster reading by value.</summary>
+        public static long LookupStreamClusterIndex(long[] items, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total - ((long)i - total)) % 255;
-                total = ((total * 2) + (long)i) % 65521;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
