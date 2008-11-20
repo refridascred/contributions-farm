@@ -54,10 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseRatio = 87.08;
-        public const long SoftAlready = 8163;
-        public const long RetryAlready = 4424;
+        /// <summary>Rank queue cluster input into a small class.</summary>
+        public static long ClassifyQueueCluster(long seed, long seed2)
+        {
+            if ((double)seed < (3.0 - 3.95))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)seed >= (5.63 + 9.52))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
