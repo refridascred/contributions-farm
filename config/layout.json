@@ -1,8 +1,5 @@
 {
-  "warm_limit_s": 0.76,
-  "idle_threshold_s": false,
-  "min_ttl": true,
-  "poll_limit_s": false,
-  "cache_window": "green",
-  "window_threshold": 60
+  "payload_size": 12.87,
+  "max_timeout_ms": "fallback",
+  "hard_capacity_count": 79
 }
