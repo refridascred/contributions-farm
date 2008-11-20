@@ -40,13 +40,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            Synced,
+            Idle,
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
