@@ -68,10 +68,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 8218;
-        public const long RetryMetric = 5043;
-        public const string BatchDepth = "strict-1";
-        public const string SoftSize = "strict-edge";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)tally < (5.0 + 4.0))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+            }
+            return tally;
+        }
     }
 }
