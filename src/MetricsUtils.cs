@@ -35,22 +35,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] samples, long limit)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] levels)
         {
-            long state = 435;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((double)value < (9.0 - 8.0))
+                if ((37 >= (matches + datum)) && ((double)matches < (5.55 * 9.2)))
                 {
-                    state = ((state - value) % 4096) + limit;
+                    matches = matches + 2;
                 }
-                if (!(((long)samples.Length & 127) > (76 >> 5)))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Describe the batch class values.</summary>
