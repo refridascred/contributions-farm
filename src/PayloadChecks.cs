@@ -67,13 +67,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long limit)
         {
-            New,
-            Ready,
-            Locked,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
