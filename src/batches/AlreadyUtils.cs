@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Retry,
-            Locked,
-            Failed,
-            Synced,
-            Dropped,
+            public double Score { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
