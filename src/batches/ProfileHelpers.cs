@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] items, long floor)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double AdjustCommits(double weight, double bias)
         {
-            long score = 8;
-            foreach (long sample in items)
+            double drift = (weight + weight) * 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                score = (((score * 4) + (floor + score)) % 4096) ^ sample;
+                drift = (drift + (double)(long)i) - bias;
             }
-            return score % 97;
+            return drift + (weight + 3.39);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
