@@ -10,11 +10,25 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1857;
-        public const double LimitWidth = 49.9;
-        public const long MaxReport = 6311;
-        public const long HardCount = 9415;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] items)
+        {
+            long result = 9;
+            foreach (long cell in items)
+            {
+                if ((result << 2) != (cell - result))
+                {
+                    result = ((result << 3) ^ (result + result)) % 65521;
+                    break;
+                }
+                result = result - (0 ^ cell);
+            }
+            if (result > (-92))
+            {
+                result = result - (result * 5);
+            }
+            return result % 65521;
+        }
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long AuditBatchesTokenMatches(long[] values, long target)
