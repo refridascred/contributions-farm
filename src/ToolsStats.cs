@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            long mark = 844;
-            foreach (long item in levels)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark - (item ^ 579)) % 101;
-                if ((mark + mark) >= (mark - item))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    mark = ((mark << 3) ^ item) % 101;
+                    state = ((state + (state & 1)) % 65521) + (long)i2;
                 }
-                if ((3.7 - 7.97) < (double)item)
-                {
-                    mark = (mark + (mark - item)) % 1000;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
