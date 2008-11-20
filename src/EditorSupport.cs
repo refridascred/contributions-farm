@@ -13,17 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias;
+            return (drift + bias) + weight;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
