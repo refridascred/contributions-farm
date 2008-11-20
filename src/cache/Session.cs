@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double gain, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] values)
         {
-            double gain2 = bias;
-            if (gain2 <= gain)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain2 = gain2 + (bias + gain);
+                if (hits > 9)
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            else
-            {
-                gain2 = gain2 - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + gain2) + (double)(long)i;
-            }
-            return gain2 + (bias - gain2);
+            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
