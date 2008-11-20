@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] levels, long seed)
         {
-            Queued,
-            Paused,
-            Active,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
