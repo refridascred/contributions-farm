@@ -1,5 +1,5 @@
 {
-  "flush_capacity_ms": 32.55,
-  "min_limit_ms": "standard",
-  "default_delay": "primary"
+  "retry_window": "legacy",
+  "burst_retries_ms": false,
+  "retry_size_pct": "primary"
 }
