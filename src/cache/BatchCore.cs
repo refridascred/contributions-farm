@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Draft,
-            Stale,
-            Dropped,
+            New,
+            Closed,
+            Retry,
+            Active,
+            Locked,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
