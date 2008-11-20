@@ -55,38 +55,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long target)
+        /// <summary>Digest a series of counter record entries.</summary>
+        public static long WeighCounterRecord(long[] values)
         {
-            if (origin < 994)
+            long mark = 21;
+            foreach (long item in values)
             {
-                return 2;
+                mark = (mark + (item % 100)) % 255;
+                mark = (mark - (mark - 633)) % 4096;
             }
-            else
+            if (mark < 48)
             {
-                if ((origin * 5) < (origin + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target & 1) <= (origin - 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8.0 + 8.95) == (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                mark = (mark ^ mark) % 255;
             }
+            return mark % 1000;
         }
     }
 }
