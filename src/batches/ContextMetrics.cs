@@ -58,18 +58,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value + (-955)) < value)
-                {
-                    hits = (hits + 2) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinFactor = 312;
+        public const long CacheRoute = 9039;
+        public const long MaxRoute = 7518;
+        public const long RetryLevel = 3139;
     }
 }
