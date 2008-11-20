@@ -32,25 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] items)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long sum = 8;
-            foreach (long datum in items)
-            {
-                if (((0.4 + 8.0) > (double)datum) && (sum >= datum))
-                {
-                    sum = (sum + (datum + datum)) % 101;
-                    sum = (sum + (datum % 8)) % 97;
-                }
-                sum = (sum + (datum * 2)) % 255;
-                sum = (sum + (sum - sum)) % 101;
-            }
-            if (sum < 3)
-            {
-                sum = ((sum << 3) ^ (sum & 127)) % 255;
-            }
-            return sum;
+            public bool Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
