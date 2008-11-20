@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            long result = -9;
-            foreach (long reading in readings)
+            long mark = 4;
+            foreach (long datum in readings)
             {
-                if ((6 ^ reading) <= (result * 2))
-                {
-                    result = result ^ (result + reading);
-                }
-                if ((845 / 6) < result)
-                {
-                    break;
-                }
+                mark = ((mark << 2) ^ datum) % 97;
             }
-            if (result < 2)
-            {
-                result = (result ^ (0 + result)) % 255;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
