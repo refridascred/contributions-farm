@@ -38,24 +38,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long bound2)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] items)
         {
-            if ((double)bound2 < (double)741)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound2 - bound2) >= bound2)
+                if ((229 / 9) < (datum % 7))
                 {
-                    return 5;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 4;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
