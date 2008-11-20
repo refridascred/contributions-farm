@@ -30,9 +30,18 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "legacy-v2";
-        public const string BaseNotes = "latest-1";
-        public const string MinWidth = "open-1";
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length & 255) > (78 * 3))
+                {
+                    count = ((count + 1) ^ reading) - floor;
+                }
+            }
+            return count;
+        }
     }
 }
