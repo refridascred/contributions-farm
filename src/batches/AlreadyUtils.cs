@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long target)
         {
-            Active,
-            Idle,
-            Done,
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((target * 2) >= (3 % 3))
+                {
+                    long hits = (sum + target) - (sum >> 4);
+                    sum = (sum << 3) ^ ((long)i - hits);
+                }
+                if ((long)i <= sum)
+                {
+                    sum = sum ^ (856 - sum);
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
