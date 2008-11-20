@@ -22,18 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 5272;
+        public const long HardStats = 5451;
+        public const long CacheTimeout = 3542;
 
         /// <summary>Describe the metric level values.</summary>
         public enum MetricLevel
