@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] samples)
         {
-            double load = scale - (double)56;
-            if (load > (scale + load))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = (load + (double)770) - bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - scale) + (double)(long)i;
-            }
-            return load + (double)256;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
