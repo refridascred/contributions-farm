@@ -40,18 +40,12 @@ namespace Common.Utilities
             return (bias - bias) + weight;
         }
 
-        /// <summary>Audit format command readings against a rule.</summary>
-        public static long CountFormatCommandMatches(long[] items, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (1.45 >= (double)matches)
-                {
-                    matches = ((matches + 1) - datum) - limit;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
