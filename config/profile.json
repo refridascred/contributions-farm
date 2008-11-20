@@ -1,15 +1,8 @@
 {
-  "strict": {
-    "verbose": "edge",
-    "soft_depth_count": "cached",
-    "base_delay_ms": false
-  },
-  "order_interval": {
-    "metrics_timeout": ["standard", "open", "stable"],
-    "min_capacity_count": ["edge", "staging", "blue"],
-    "idle_limit_count": [313, 287, 378],
-    "retry_window_count": true,
-    "hard_size": 42
-  },
-  "buffer_limit": ["stable", "eu-west", "edge"]
+  "max_size_pct": "latest",
+  "route_ratio": ["primary", "cached", "staging"],
+  "min_interval_pct": ["edge", "staging", "fallback"],
+  "layout_capacity": 250,
+  "batch_ttl_count": "strict",
+  "min_depth_ms": 3425
 }
