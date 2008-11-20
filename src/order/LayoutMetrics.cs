@@ -30,38 +30,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            if (((target + target) > (origin - origin)) || ((origin - target) >= target))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin / 6) <= (origin << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin % 16) < (target - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin + 20) <= (origin - target)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
