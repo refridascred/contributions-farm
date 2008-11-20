@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseScore = "fallback-1";
-        public const long CacheNotes = 5247;
-        public const double BurstLevel = 33.29;
-        public const long StepDepth = 8877;
+        /// <summary>Grade a support context value against two limits.</summary>
+        public static long RankSupportContext(long target, long target2)
+        {
+            long offset = target - target2;
+            if ((double)offset <= (1.8 * 6.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target << 2) <= target2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - 586) < (offset ^ target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((target2 - target) >= (target2 - 9)) && ((double)target2 >= (6.1 + 3.6)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
