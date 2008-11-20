@@ -1,4 +1,4 @@
 # support settings
-dry_run: 88.12
-poll_timeout_pct: standard
-cache_interval_pct: stable
+commits_window: green
+retry_capacity_pct: 30
+cache_threshold_count: true
