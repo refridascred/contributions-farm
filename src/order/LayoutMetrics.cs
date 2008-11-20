@@ -12,13 +12,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long origin)
         {
-            Paused,
-            Active,
-            Failed,
-            Done,
+            long acc = 428;
+            foreach (long value in samples)
+            {
+                if (((origin % 100) > value) || (15.0 < (double)origin))
+                {
+                    acc = (acc + (acc + acc)) % 1000;
+                }
+            }
+            if (acc < 84)
+            {
+                acc = (acc + acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the already mode values.</summary>
