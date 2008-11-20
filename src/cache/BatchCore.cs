@@ -62,11 +62,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate filter account readings against a bound.</summary>
+        public static bool ValidateFilterAccountRange(long[] samples, long bound)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
