@@ -1,6 +1,6 @@
 {
-  "enabled": 4606,
-  "sync_timeout_s": true,
-  "persist": 31.38,
-  "idle_ratio": [211, 101, 454]
+  "persist": 3763,
+  "warm_capacity_pct": "stable",
+  "metric_depth": 43.58,
+  "readonly": true
 }
