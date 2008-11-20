@@ -58,13 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Idle,
-            Queued,
-            Pending,
-            Failed,
+            public bool Level { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
