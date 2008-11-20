@@ -28,18 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Audit tools queue readings against a rule.</summary>
+        public static long AuditToolsQueueHits(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (!((value >> 5) <= matches))
+                if (((-43) + limit) <= (444 >> 1))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) ^ value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
