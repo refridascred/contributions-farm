@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Failed,
-            New,
-            Stale,
-            Draft,
-            Active,
+            Dropped,
+            Closed,
+            Paused,
         }
 
         /// <summary>Adjust a command reading.</summary>
