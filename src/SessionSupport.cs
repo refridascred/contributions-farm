@@ -12,31 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a checks report value against two limits.</summary>
-        public static long SortChecksReport(long seed, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            if (((9 & 31) <= (origin + 5)) && ((origin - seed) > (62 % 12)))
+            double load = scale - (double)56;
+            if (load > (scale + load))
             {
-                return 6;
+                load = (load + (double)770) - bias;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (((49 << 1) == (origin - seed)) || ((3 % 97) != (origin + origin)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 7) > (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                load = (load - scale) + (double)(long)i;
             }
+            return load + (double)256;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
