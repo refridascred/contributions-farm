@@ -20,24 +20,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long floor)
         {
-            if (877 >= (seed + seed))
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                acc = (acc - acc) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)seed >= (2.0 + 7.9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the cache state values.</summary>
