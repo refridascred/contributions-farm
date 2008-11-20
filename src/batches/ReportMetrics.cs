@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string RetryOrder = "strict-edge";
         public const long CacheWidth = 6546;
 
-        /// <summary>Digest a series of command token entries.</summary>
-        public static long TallyCommandToken(long[] samples, long origin)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] items, long floor)
         {
-            long mark = 82;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mark = (mark ^ (cell / 6)) % 1000;
-                if (!((mark + cell) >= mark))
+                if ((floor + floor) != (floor / 4))
                 {
-                    mark = (mark - (origin - cell)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (748 * 2)) % 4096;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
