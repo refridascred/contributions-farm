@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] samples)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches + (long)samples.Length) > (datum * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] - data[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
