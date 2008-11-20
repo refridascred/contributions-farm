@@ -1,11 +1,11 @@
 # Command notes
 
-The cluster report groups every report by metric.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
+When a profile fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Keep editor values small
-- Validate format input early
-- Log every counter change
+- Document new cluster fields
+- Log every command change
+- Review session limits each release
+- Keep stats values small
