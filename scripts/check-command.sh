@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary; do
+COMMAND_LIMIT=51
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard local; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+mode="${1:-legacy}"
 case "${mode}" in
-    fallback)
+    edge)
         log "fast path"
         ;;
     *)
