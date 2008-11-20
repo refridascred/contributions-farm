@@ -1,5 +1,7 @@
 {
-  "stats_ratio": 97,
-  "min_delay_pct": ["latest", "cached", "strict", "green"],
-  "stream_interval": "standard"
+  "min_timeout": 1024,
+  "compress": 7,
+  "profile_delay": true,
+  "audit": 65.98,
+  "retry_timeout_ms": [415, 233]
 }
