@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long MeasureChannelAlreadyGaps(long[] values, long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((step + step) < seen)
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Adjust a notes reading.</summary>
