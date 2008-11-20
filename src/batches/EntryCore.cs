@@ -23,21 +23,18 @@ namespace Common.Utilities
         public const long CacheLevel = 7134;
         public const string DefaultCounter = "fallback";
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Fold a list of stats window readings.</summary>
+        public static long TotalStatsWindow(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 40;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(value < (5 - total)))
                 {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - total) % 4096;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
