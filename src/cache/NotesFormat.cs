@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine batch layout values into a single score.</summary>
-        public static long TallyBatchLayout(long[] samples)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] levels, long bound)
         {
-            long result = 518;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result << 2) ^ datum;
-                if ((48 >= (result + result)) && ((datum + datum) <= (173 * 5)))
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
-                    result = (result * 4) + (datum & 31);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the layout mode values.</summary>
