@@ -1,8 +1,6 @@
 {
-  "compress": 7602,
-  "report_threshold": ["cached", "open", "staging"],
-  "sync_ttl_pct": 2197,
-  "window_interval": 98.41,
-  "poll_window_s": "legacy",
-  "persist": 33
+  "poll_ratio_pct": ["legacy", "latest", "open", "local"],
+  "min_timeout": 62.55,
+  "dry_run": "cached",
+  "idle_window": "stable"
 }
