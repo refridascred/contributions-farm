@@ -1,6 +1,5 @@
 {
-  "poll_ratio_pct": ["legacy", "latest", "open", "local"],
-  "min_timeout": 62.55,
-  "dry_run": "cached",
-  "idle_window": "stable"
+  "batch_interval": "eu-west",
+  "sync_delay_count": [132, 274, 32, 43],
+  "dry_run": 20
 }
