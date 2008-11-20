@@ -19,22 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long score = 7;
-            foreach (long sample in series)
-            {
-                if ((sample - score) == (21 + score))
-                {
-                    score = score + score;
-                }
-            }
-            if (score < 0)
-            {
-                score = ((score * 5) + (score + 277)) % 255;
-            }
-            return score % 65521;
+            Idle,
+            Synced,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
