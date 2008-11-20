@@ -54,13 +54,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Find the first batches cache entry that matches the target.</summary>
+        public static long LookupBatchesCacheIndex(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate report already readings against a bound.</summary>
