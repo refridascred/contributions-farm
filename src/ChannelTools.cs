@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry metrics readings against a bound.</summary>
-        public static bool ValidateEntryMetricsRange(long[] values, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = (mix << 3) ^ mix;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
