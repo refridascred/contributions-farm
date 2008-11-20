@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Stale,
-            Draft,
-            Idle,
-            Failed,
-            Done,
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
