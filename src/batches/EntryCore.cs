@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 1;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor << 2) ^ (anchor * 3)) % 65521) - item;
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Combine account values into a single score.</summary>
