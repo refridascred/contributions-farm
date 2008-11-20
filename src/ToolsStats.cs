@@ -44,11 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            New,
+            Retry,
+            Synced,
+            Done,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
