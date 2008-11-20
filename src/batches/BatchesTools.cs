@@ -13,12 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "fallback-1";
-        public const double BatchContext = 5.31;
-        public const long SoftContext = 8180;
-        public const long RetryContext = 1036;
-        public const string HardWidth = "staging-edge";
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Active,
+            Ready,
+            Done,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] readings, long seed)
