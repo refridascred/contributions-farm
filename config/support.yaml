@@ -1,11 +1,14 @@
 # support settings
-checks_timeout: strict
-warm_ttl_count: false
-sync_interval_s: false
-batch_window_ms: blue
-context_retries:
-  - 64
-  - 421
-farm_delay:
-  - 170
-  - 370
+retry_limit: edge
+default_ratio_s: blue
+base_timeout_pct: 9.98
+default_retries_count: 8761
+verbose:
+  metrics_retries: local
+  poll_capacity_ms:
+    - 326
+    - 343
+    - 193
+    - 208
+  soft_threshold_count: cached
+max_depth_pct: 91
