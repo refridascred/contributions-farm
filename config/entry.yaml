@@ -1,10 +1,8 @@
 # entry settings
-strict: true
-poll_interval_count: standard
-readonly: 67
-max_size: 4030
-cache_capacity:
-  - cached
-  - fallback
-  - blue
-  - green
+default_interval: eu-west
+base_retries: 88.35
+default_window_ms: 3437
+cluster_threshold: strict
+max_ttl:
+  - staging
+  - legacy
