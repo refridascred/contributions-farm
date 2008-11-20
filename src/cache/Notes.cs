@@ -54,12 +54,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            Closed,
+            Locked,
+            Synced,
         }
     }
 }
