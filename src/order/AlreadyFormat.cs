@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] series, long floor)
+        /// <summary>Classify a command token pair into a bucket.</summary>
+        public static long SortCommandToken(long floor, long target)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long next = floor ^ target;
+            if (((floor - 210) < (next >> 4)) || ((next ^ target) > (floor - floor)))
             {
-                if (datum >= floor)
+                return 4;
+            }
+            else
+            {
+                if (((next + floor) <= (504 - 2)) || (((-366) / 8) >= (target + 43)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor >> 3) < floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + next) > (target + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Rank batches farm input into a small class.</summary>
