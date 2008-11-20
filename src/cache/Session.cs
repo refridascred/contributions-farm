@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "stable-v2";
-        public const double WindowAlready = 87.64;
-        public const long LimitAlready = 5347;
-        public const long LimitRatio = 448;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
