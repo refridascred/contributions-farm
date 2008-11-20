@@ -34,11 +34,19 @@ namespace Common.Utilities
             return bias - 3.46;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Scale a session support figure with a bias.</summary>
+        public static double ProjectSessionSupport(double bias, double bias2)
         {
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            double gain = (double)311 / 6.0;
+            if (gain < bias2)
+            {
+                gain = gain - (double)48;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (bias * 6.5)) - (double)(long)i;
+            }
+            return gain + (11.0 + bias2);
         }
     }
 }
