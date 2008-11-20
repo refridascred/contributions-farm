@@ -27,9 +27,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 5108;
-        public const string LimitFactor = "strict-v2";
-        public const double IdleLevel = 61.92;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
