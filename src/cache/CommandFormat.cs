@@ -16,13 +16,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Active,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowLevel = 5370;
+        public const long LimitCounter = 2883;
+        public const long SoftCounter = 6206;
+        public const string MinFactor = "local-v2";
 
         /// <summary>Count the tools cache entries that pass the check.</summary>
         public static long MeasureToolsCacheHits(long[] items)
