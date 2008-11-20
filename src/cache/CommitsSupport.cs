@@ -33,12 +33,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Adjust a editor counter reading.</summary>
