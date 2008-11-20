@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Scale a record cluster figure with a bias.</summary>
+        public static double ScaleRecordCluster(double rate, double span)
         {
-            Pending,
-            Stale,
-            Locked,
+            double weight = (double)(5 - 460);
+            return (weight + span) + rate;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
