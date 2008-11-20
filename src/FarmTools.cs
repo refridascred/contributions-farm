@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long MaxChannel = 8625;
         public const long BatchChannel = 6456;
 
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long MeasureProfileNotesOutliers(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + offset) < (hits * 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchDepth = "local";
+        public const long CacheRecord = 2104;
+        public const long SoftInterval = 2225;
+        public const long BatchCount = 141;
+        public const double DefaultRecord = 13.04;
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] readings, long limit)
