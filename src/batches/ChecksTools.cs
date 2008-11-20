@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long DefaultRoute = 9708;
         public const string BurstRoute = "primary-v2";
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Done,
-            Dropped,
-            Paused,
-            Failed,
+            Active,
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
