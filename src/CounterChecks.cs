@@ -72,22 +72,11 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextGaps(long[] levels)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally << 3) <= (tally % 10))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
