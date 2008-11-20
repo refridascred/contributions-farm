@@ -37,18 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] data)
+        /// <summary>Adjust a already checks reading.</summary>
+        public static double ScaleAlreadyChecks(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double drift = (double)(-37) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry <= (3.24 / 3.0))
-                {
-                    seen = seen + 3;
-                }
+                drift = (drift + rate) + (double)(long)i;
             }
-            return seen;
+            return drift + floor;
         }
 
         /// <summary>Count the editor account entries that pass the check.</summary>
