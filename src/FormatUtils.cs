@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the notes profile entries that pass the check.</summary>
+        public static long MeasureNotesProfileMatches(long[] levels)
         {
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((datum + hits) > (hits + hits)) || (hits > (hits << 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
