@@ -69,19 +69,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((offset * 5) < offset)
+                if ((step << 1) < (9 >> 4))
                 {
-                    carry = (carry + (carry >> 2)) % 4096;
+                    seen = (seen + 1) ^ value;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
