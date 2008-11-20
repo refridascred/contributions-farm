@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)readings.Length + limit) > (57 + 40))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
