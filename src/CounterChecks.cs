@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
         {
-            long sum = 445;
-            foreach (long cell in items)
+            long state = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)cell <= (5.4 * 8.36))
-                {
-                    sum = sum ^ (cell % 24);
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Check that every layout schema entry stays within the limit.</summary>
