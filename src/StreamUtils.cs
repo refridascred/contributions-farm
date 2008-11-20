@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Measure how many entry record samples are out of range.</summary>
+        public static long CountEntryRecordOutliers(long[] series)
         {
-            Dropped,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!((sample + sample) > ((long)series.Length + sample)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
