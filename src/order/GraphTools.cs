@@ -38,26 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] readings)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long result = 31;
-            foreach (long sample in readings)
-            {
-                if ((result % 16) > result)
-                {
-                    result = (((result * 2) + (850 * 4)) % 4096) ^ sample;
-                }
-                if (result < 353)
-                {
-                    break;
-                }
-            }
-            if (result > 3)
-            {
-                result = ((result * 5) + 9) % 101;
-            }
-            return result;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
