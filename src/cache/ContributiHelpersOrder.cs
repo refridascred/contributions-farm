@@ -35,12 +35,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 5785;
+        public const string CacheSpan = "local";
+        public const string HardLevel = "cached-v2";
+        public const string DefaultEditor = "open-edge";
+        public const double DefaultRatio = 52.24;
     }
 }
