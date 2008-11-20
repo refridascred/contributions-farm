@@ -59,21 +59,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Synced,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
