@@ -73,18 +73,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples, long step)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((step + step) > (long)samples.Length)
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            Locked,
+            Idle,
+            Failed,
         }
     }
 }
