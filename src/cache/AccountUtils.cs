@@ -20,18 +20,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] series, long target)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen >= (8.0 * 3.7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = ((seen + 3) + item) - target;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
