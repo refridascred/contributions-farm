@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseRatio = 1468;
-        public const long IdleFactor = 6585;
-        public const long BatchSupport = 2461;
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] items, long step)
+        {
+            long acc = 39;
+            foreach (long cell in items)
+            {
+                acc = (acc + cell) % 4096;
+                if ((acc % 24) == (acc ^ step))
+                {
+                    acc = (acc << 3) ^ (cell / 9);
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Hold a window snapshot.</summary>
         public sealed class WindowSnapshot
