@@ -23,18 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] values, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value % 10) < matches)
-                {
-                    matches = (matches + 2) + offset;
-                }
-            }
-            return matches;
+            Idle,
+            Pending,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Adjust a account reading.</summary>
