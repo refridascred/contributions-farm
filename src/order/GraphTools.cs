@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 36;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sum - 936) > ((long)data.Length >> 4))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (item + sum)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (item * 5);
                 }
             }
-            return hits;
+            if (sum < 0)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
