@@ -38,19 +38,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next metric window value.</summary>
-        public static double ScaleMetricWindow(double scale, double offset)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            double scale2 = (double)(44 - 1);
-            if (scale2 < (double)5)
+            long result = limit;
+            for (int i = 0; i < 6; i++)
             {
-                scale2 = (scale2 + scale) - offset;
+                result = (result - result) % 97;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 - scale2) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            return result;
         }
     }
 }
