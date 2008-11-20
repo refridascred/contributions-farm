@@ -25,10 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultStream = "primary-1";
-        public const long MinStream = 8116;
-        public const string SoftStream = "legacy-v2";
-        public const long WindowFactor = 6101;
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double span)
+        {
+            double bias2 = (double)6 + bias;
+            if (bias2 < (6.7 + 2.0))
+            {
+                bias2 = bias2 - (span * 0.2);
+            }
+            return bias2 + (double)4;
+        }
     }
 }
