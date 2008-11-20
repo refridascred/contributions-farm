@@ -106,11 +106,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
         {
-            public double Rank { get; set; }
-            public double Weight { get; set; }
+            long total = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total - ((long)i - total)) % 255;
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
