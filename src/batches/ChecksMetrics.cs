@@ -71,18 +71,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream counter samples are out of range.</summary>
-        public static long CountStreamCounterHits(long[] items, long bound)
+        /// <summary>Grade a report cache value against two limits.</summary>
+        public static long RankReportCache(long seed, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long slot = seed + step;
+            if (((8.97 + 2.1) == (double)slot) || ((double)seed < (4.01 + 8.0)))
             {
-                if (bound > (count << 2))
+                return 2;
+            }
+            else
+            {
+                if (step <= (slot + seed))
                 {
-                    count = (count + 2) - entry;
+                    return 4;
+                }
+                else
+                {
+                    if (((8.5 / 2.0) <= (double)slot) || ((double)step <= (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
