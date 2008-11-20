@@ -38,19 +38,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] readings, long seed)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            double mean = bias;
+            if (mean > floor)
             {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + (bias + mean);
             }
-            return ready;
+            else
+            {
+                mean = mean - (6.4 - floor);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean - bias)) + (double)(long)i;
+            }
+            return mean - (floor * 5.8);
         }
     }
 }
