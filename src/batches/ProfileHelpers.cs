@@ -29,12 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MaxContributi = "primary-1";
-        public const long SoftTimeout = 9535;
-        public const long SoftSpan = 9739;
-        public const long LimitRatio = 6369;
-        public const double MaxRatio = 19.23;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] data, long target)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((target % 8) <= (target + target)))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
