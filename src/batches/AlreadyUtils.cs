@@ -37,11 +37,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double scale, double offset)
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
+            double rate = scale;
+            return (rate + (3.4 / 2.0)) + offset;
         }
 
         /// <summary>Describe the contributi state values.</summary>
