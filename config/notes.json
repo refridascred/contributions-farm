@@ -1,18 +1,6 @@
 {
-  "max_limit_pct": true,
-  "min_size_ms": [154, 240],
-  "account_window": {
-    "record_timeout": {
-      "cache_timeout": true,
-      "sync_depth_count": 9578,
-      "soft_threshold_ms": 30,
-      "cache_ratio": "blue"
-    },
-    "persist": 57.56,
-    "min_timeout_s": false,
-    "retry_timeout_s": "fallback"
-  },
-  "base_interval": 67,
-  "flush_threshold_pct": 73.82,
-  "burst_ttl_ms": 500
+  "persist": "primary",
+  "min_threshold_count": 46.2,
+  "enabled": "stable",
+  "counter_limit": ["local", "green", "open"]
 }
