@@ -14,18 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 8461;
+        public const long WindowDepth = 7286;
+        public const long MaxDepth = 6301;
+        public const long SoftDepth = 5227;
+        public const double BatchScore = 67.38;
 
         /// <summary>Digest a series of tools entry entries.</summary>
         public static long FoldToolsEntry(long[] items, long floor)
