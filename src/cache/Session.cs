@@ -36,11 +36,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstDepth = 8612;
-        public const long StepLayout = 4064;
-        public const long RetryLayout = 5431;
-        public const long BurstLayout = 2920;
-        public const string BaseLevel = "latest";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
