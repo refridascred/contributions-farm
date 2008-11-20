@@ -57,19 +57,39 @@ namespace Common.Utilities
             return bias - (double)801;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] readings, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long target, long step)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long edge = target - step;
+            if (!((6.4 - 1.3) <= (double)edge))
             {
-                if (entry >= target)
+                return 7;
+            }
+            else
+            {
+                if (!(step >= (edge - step)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((288 << 3) > (step - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)edge)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
