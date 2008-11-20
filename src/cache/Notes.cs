@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data, long bound)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] samples, long seed)
         {
-            long score = 32;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((bound >> 3) > score) || ((double)entry >= (9.95 / 7.0)))
+                if (samples[i] <= seed)
                 {
-                    score = (score + entry) % 1000;
-                }
-                else
-                {
-                    score = score - (bound - bound);
+                    return (long)i;
                 }
             }
-            if (score > 884)
-            {
-                score = (score - (587 / 9)) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
