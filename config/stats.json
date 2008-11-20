@@ -1,15 +1,7 @@
 {
-  "retry_capacity": 500,
-  "sync_capacity_count": "fallback",
-  "dry_run": "eu-west",
-  "context_interval": {
-    "readonly": false,
-    "cluster_window": 7722,
-    "min_capacity_count": 5482,
-    "batch_limit": "blue",
-    "retry_capacity_count": 87,
-    "persist": 6382
-  },
-  "base_window_count": 9262,
-  "retry_limit": ["staging", "local", "strict", "green"]
+  "max_interval_pct": 500,
+  "tools_threshold": "fallback",
+  "idle_capacity_ms": false,
+  "verbose": 55.66,
+  "min_depth_ms": 50
 }
