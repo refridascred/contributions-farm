@@ -27,13 +27,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] series, long seed)
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public bool Level { get; set; }
+            long acc = 212;
+            foreach (long value in series)
+            {
+                acc = (((acc << 3) ^ (67 >> 2)) ^ value) + seed;
+            }
+            return acc;
         }
     }
 }
