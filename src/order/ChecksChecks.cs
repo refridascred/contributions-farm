@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                total = total + (total >> 5);
-                if (floor < (long)i)
+                if ((hits ^ hits) != (item / 9))
                 {
-                    total = (total - total) % 255;
-                    continue;
+                    hits = hits + 3;
                 }
-                if (!((double)total < (double)floor))
+                else
                 {
-                    total = (total + total) % 1000;
+                    hits = hits - 1;
                 }
-                total = ((total * 2) + (long)i) % 4093;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of already buffer entries.</summary>
