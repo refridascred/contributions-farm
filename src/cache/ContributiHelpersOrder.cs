@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
