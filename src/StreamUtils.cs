@@ -61,12 +61,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "standard";
-        public const long BurstToken = 3260;
-        public const string IdleBudget = "cached-edge";
-        public const long MaxDepth = 7587;
-        public const long StepToken = 2306;
+        /// <summary>Look up the position of a account already sample.</summary>
+        public static long SeekAccountAlreadyIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterHits(long[] values)
