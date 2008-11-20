@@ -49,18 +49,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] levels, long origin)
+        /// <summary>Project the next cache commits value.</summary>
+        public static double SmoothCacheCommits(double weight, double bias)
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((origin % 2) >= (count - 9))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            double weight2 = bias;
+            return (weight2 + weight2) + weight;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
