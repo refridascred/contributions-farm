@@ -47,15 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a buffer commits reading.</summary>
-        public static double AdjustBufferCommits(double scale, double offset)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] items)
         {
-            double drift = (double)74 + offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                drift = (drift - (3.3 - scale)) + (double)(long)i;
+                if (tally > (tally + entry))
+                {
+                    tally = tally + 2;
+                }
             }
-            return drift - (double)6;
+            return tally;
         }
     }
 }
