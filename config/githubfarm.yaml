@@ -1,4 +1,4 @@
 # githubfarm settings
-filter_depth: false
-readonly: blue
-dry_run: 91
+idle_delay_ms: 500
+audit: 9159
+persist: 59
