@@ -27,18 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph metrics reading by value.</summary>
-        public static long LookupGraphMetricsIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 1326;
+        public const long CacheTimeout = 2730;
+        public const long BatchFactor = 1145;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] levels, long offset)
