@@ -33,13 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
