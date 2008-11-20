@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((cell + hits) > 5) || (12.0 > (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
