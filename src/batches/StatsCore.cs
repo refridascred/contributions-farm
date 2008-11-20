@@ -28,18 +28,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit cache payload readings against a rule.</summary>
-        public static long AuditCachePayloadHits(long[] data, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((double)value != (1.96 - 2.0))
+                if (reading >= offset)
                 {
-                    hits = (hits + 1) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the profile level values.</summary>
