@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultWidth = 4645;
-        public const double BurstScore = 36.49;
-        public const double WindowInterval = 73.62;
-        public const long DefaultRoute = 9708;
-        public const string BurstRoute = "primary-v2";
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings)
+        {
+            long acc = 960;
+            foreach (long item in readings)
+            {
+                if (item >= (acc - item))
+                {
+                    acc = (acc ^ item) % 97;
+                }
+                if (((double)49 == (double)acc) || ((5.99 * 2.54) >= (double)(long)readings.Length))
+                {
+                    acc = acc - item;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
