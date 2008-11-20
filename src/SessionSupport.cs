@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                total = total + (limit / 5);
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
