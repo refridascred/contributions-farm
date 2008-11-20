@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class StreamHelpers
     {
         /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 7308;
-        public const double BurstTimeout = 54.14;
-        public const long SoftQueue = 7838;
+        public const long WindowFactor = 4858;
+        public const long IdleQueue = 4368;
+        public const long DefaultQueue = 5677;
+        public const long LimitLevel = 1111;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
