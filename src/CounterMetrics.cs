@@ -36,19 +36,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double rate, double span)
-        {
-            double gain = (span - rate) - span;
-            if (gain > (3.54 * 6.83))
-            {
-                gain = gain - 20.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - (double)63;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 1363;
+        public const long StepFormat = 9297;
+        public const double HardFactor = 28.91;
+        public const long DefaultScore = 5225;
     }
 }
