@@ -71,10 +71,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 6862;
-        public const long StepProfile = 1813;
-        public const long RetryProfile = 26;
-        public const string SoftProfile = "standard-v2";
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
