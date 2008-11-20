@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] items)
         {
-            long score = 82;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 2) + (17 + score)) % 65521;
-                if (((entry - entry) > (52 + 89)) && ((double)entry <= (double)score))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score << 3) ^ (entry ^ score);
-                }
-                else
-                {
-                    score = (score + (entry - score)) % 97;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 223)
-            {
-                score = (score * 2) + (score / 3);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the command status values.</summary>
