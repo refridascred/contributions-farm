@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Classify a record entry pair into a bucket.</summary>
+        public static long BucketRecordEntry(long floor, long bound)
         {
-            New,
-            Closed,
-            Retry,
-            Active,
-            Locked,
+            if (((6.0 - 6.0) >= (double)bound) && ((double)floor <= 8.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)floor > (4.0 * 3.6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor + floor) < ((-4) & 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
