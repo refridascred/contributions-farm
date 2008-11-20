@@ -38,17 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (samples[i] < step)
+                if (entry > seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
