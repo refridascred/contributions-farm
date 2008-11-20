@@ -116,12 +116,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            Idle,
-            Pending,
-            Done,
+            double weight = scale;
+            if (weight < scale)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - 14.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (scale * 2.05)) + (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
