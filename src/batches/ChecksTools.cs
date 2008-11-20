@@ -32,19 +32,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate profile cache readings against a bound.</summary>
-        public static bool VerifyProfileCacheLimits(long[] samples, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long origin, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            if ((origin ^ 12) < (origin % 12))
             {
-                if (cell != seed)
+                return 3;
+            }
+            else
+            {
+                if (((75 % 100) < (offset - origin)) || ((origin * 2) < offset))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!(origin < (origin % 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (offset / 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
