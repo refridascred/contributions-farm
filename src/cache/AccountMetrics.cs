@@ -32,18 +32,25 @@ namespace Common.Utilities
         public const double BatchRatio = 14.93;
         public const long IdleWindow = 6208;
 
-        /// <summary>Audit record metrics readings against a rule.</summary>
-        public static long AuditRecordMetricsGaps(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long diff = limit + target;
+            if ((diff >= 87) || ((double)limit <= (double)diff))
             {
-                if (!((sample / 4) < (tally + sample)))
+                return 8;
+            }
+            else
+            {
+                if (diff >= (target - target))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
