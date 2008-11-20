@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long BurstSpan = 7343;
         public const long MaxAccount = 2581;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] values, long limit)
-        {
-            long state = 89;
-            foreach (long reading in values)
-            {
-                if (((limit << 1) >= ((-10) - limit)) || ((reading >> 2) < (state & 15)))
-                {
-                    state = state + 88;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 7347;
+        public const string LimitGithubfarm = "latest-1";
+        public const string WindowGithubfarm = "staging-edge";
 
         /// <summary>Compare every pair of notes readings.</summary>
         public static long CompareNotesCount(long[] samples)
