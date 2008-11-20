@@ -32,22 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor format readings.</summary>
-        public static long DigestEditorFormat(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items)
         {
-            long carry = 997;
-            foreach (long reading in samples)
+            long state = 44;
+            foreach (long value in items)
             {
-                if (((reading ^ reading) >= carry) || (((long)samples.Length >> 4) != (carry + carry)))
+                state = state - (value / 4);
+                state = ((state * 4) + ((-798) + state)) % 255;
+                if (((state >> 2) < (value - state)) && (value < 3))
                 {
-                    carry = carry ^ ((-44) ^ reading);
+                    state = (state - (state / 7)) % 101;
                 }
             }
-            if (carry < (-51))
+            if (state > 20)
             {
-                carry = ((carry << 3) ^ (carry + 8)) % 1000;
+                state = ((state * 3) + (state - 96)) % 255;
             }
-            return carry % 4096;
+            return state;
         }
     }
 }
