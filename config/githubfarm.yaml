@@ -1,10 +1,8 @@
 # githubfarm settings
-default_depth_ms:
-  enabled: 89.96
-  default_interval_count: false
-  payload_timeout: 51.53
-dry_run: true
-readonly: 30
-sync_ratio_count: 60
-record_window: 5803
-soft_capacity_s: 36.2
+channel_interval: 69.93
+cache_threshold_count:
+  - 398
+  - 349
+hard_ttl_s: green
+batch_interval: 22.17
+readonly: 16.68
