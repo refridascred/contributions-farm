@@ -45,20 +45,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] data, long target)
-        {
-            long mix = 17;
-            foreach (long entry in data)
-            {
-                mix = ((mix + (mix ^ target)) % 101) - entry;
-            }
-            if (mix < 1)
-            {
-                mix = mix + (long)data.Length;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 4278;
+        public const long MaxLevel = 6775;
+        public const long BaseContributi = 4891;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double ScaleGithubfarm(double rate, double span)
