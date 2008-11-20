@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] readings, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if ((origin2 + origin) < 34)
             {
-                if ((double)bound >= (7.45 * 7.1))
+                return 1;
+            }
+            else
+            {
+                if (((-4) + (-498)) > (origin2 % 5))
                 {
-                    seen = (seen + 1) + value;
+                    return 7;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)origin2 < (10.0 - 2.5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (origin < (-3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of format payload readings.</summary>
