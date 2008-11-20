@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 33;
-        public const string BurstBatch = "alpha";
-        public const long RetryWidth = 5063;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultSize = 7667;
+        public const double SoftTimeout = 34.66;
+        public const long StepSpan = 1973;
+        public const long BaseTools = 3030;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
