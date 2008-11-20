@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 40;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = sum - (sum - 251);
+                if (((double)datum == (3.9 / 8.0)) || ((sum - sum) <= (datum >> 4)))
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ (datum - sum);
+                }
+                else
+                {
+                    sum = (sum ^ (sum - datum)) % 4096;
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
