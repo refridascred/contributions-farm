@@ -1,15 +1,10 @@
 {
-  "default_ratio_ms": 68.13,
-  "batch_delay_pct": "stable",
-  "default_timeout_count": 62.97,
-  "base_interval_count": 96.69,
-  "batch_depth": {
-    "support_limit": {
-      "dry_run": [23, 460],
-      "warm_ttl_pct": "local",
-      "base_delay_pct": 16
-    },
-    "window_ttl": [148, 451],
-    "verbose": [329, 29, 446]
+  "poll_delay_s": ["fallback", "primary"],
+  "tools_ratio": "blue",
+  "stats_depth": {
+    "cluster_limit": "staging",
+    "retry_depth": true,
+    "enabled": 32,
+    "audit": 85.76
   }
 }
