@@ -34,15 +34,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats batches counter forward.</summary>
-        public static long SeriesStatsBatches(long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long seed, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
+            if (!((offset >> 5) != (9 - seed)))
             {
-                state = ((state * 2) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if (!((74 - 68) > seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset - offset) < (offset * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset >> 1) < (offset + (-62)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
