@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
