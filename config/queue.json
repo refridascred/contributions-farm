@@ -1,5 +1,5 @@
 {
-  "batch_capacity_count": "green",
-  "strict": true,
-  "schema_interval": [125, 269]
+  "session_depth": 250,
+  "cache_delay": "blue",
+  "sync_delay": false
 }
