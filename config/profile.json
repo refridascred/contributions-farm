@@ -1,5 +1,11 @@
 {
-  "audit": 264,
-  "metric_capacity": false,
-  "min_delay_ms": "edge"
+  "default_capacity_count": 22.95,
+  "max_interval_count": {
+    "max_delay_pct": 5601,
+    "payload_timeout": ["latest", "local", "edge"],
+    "cache_window": 59.76,
+    "persist": true,
+    "base_capacity_pct": [451, 234, 200]
+  },
+  "base_capacity": true
 }
