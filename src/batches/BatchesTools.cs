@@ -13,18 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] readings)
+        /// <summary>Measure how many checks tools samples are out of range.</summary>
+        public static long CountChecksToolsOutliers(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((entry + 4) < matches)
+                if (15.0 > (double)sample)
                 {
-                    matches = matches + 2;
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
