@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging stable eu-west blue; do
+for item in standard local staging; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
+COMMAND_LIMIT=412
+log "limit is ${COMMAND_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
