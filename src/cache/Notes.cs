@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] readings, long floor)
         {
-            Paused,
-            Stale,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((((2 << 2) <= (floor & 3)) || ((double)floor < (8.0 + 5.0))) || ((cell + (-4)) < cell))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
