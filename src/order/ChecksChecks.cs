@@ -40,26 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] items, long origin)
-        {
-            long sum = 1;
-            foreach (long datum in items)
-            {
-                if (!((sum - origin) != (long)items.Length))
-                {
-                    sum = ((sum ^ (sum + origin)) % 4096) ^ datum;
-                }
-                if ((origin >> 3) >= origin)
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = sum + (origin >> 4);
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitDepth = 37.3;
+        public const double MinLevel = 66.46;
+        public const long BatchDepth = 5017;
+        public const double CacheDepth = 54.37;
     }
 }
