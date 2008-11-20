@@ -97,17 +97,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long target)
+        /// <summary>Grade a account context value against two limits.</summary>
+        public static long BucketAccountContext(long offset, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = offset ^ target;
+            if ((double)target < (5.27 + 6.0))
             {
-                if (items[i] == target)
+                return 0;
+            }
+            else
+            {
+                if (((offset ^ offset) == (offset + 6)) || (offset >= (diff + target)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((target + target) < (391 << 3)) || ((double)diff > (0.01 + 0.24)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((8 + 693) > (offset - diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
