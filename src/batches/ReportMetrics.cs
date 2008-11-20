@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long DigestMetricsNotes(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] readings, long offset)
         {
-            long anchor = 914;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((reading * 3) <= (anchor << 1))
+                if (datum <= offset)
                 {
-                    anchor = (anchor + (anchor - anchor)) % 4096;
+                    found = false;
+                    break;
                 }
-                anchor = anchor + (anchor / 6);
             }
-            return anchor % 65521;
+            return found;
         }
 
         /// <summary>Roll a githubfarm order counter forward.</summary>
