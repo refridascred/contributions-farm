@@ -29,11 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxDepth = 198;
-        public const long CacheWidth = 8279;
-        public const long BaseDepth = 9139;
-        public const long RetryAlready = 5225;
-        public const string RetryRatio = "strict-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchLevel = 5691;
+        public const string DefaultSpan = "alpha-edge";
+        public const double StepGraph = 75.75;
     }
 }
