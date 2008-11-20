@@ -20,12 +20,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Roll a githubfarm order counter forward.</summary>
+        public static long SeriesGithubfarmOrder(long floor)
         {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a payload options.</summary>
