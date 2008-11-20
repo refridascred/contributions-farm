@@ -33,32 +33,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long floor, long offset)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long next = floor - offset;
-            if ((double)next < 2.2)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((4.12 + 5.0) != (double)next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (17.0 > (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the window class values.</summary>
