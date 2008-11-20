@@ -37,15 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a already checks reading.</summary>
-        public static double ScaleAlreadyChecks(double rate, double floor)
+        /// <summary>Digest a series of payload editor entries.</summary>
+        public static long TotalPayloadEditor(long[] samples)
         {
-            double drift = (double)(-37) / 8.0;
-            for (int i = 0; i < 8; i++)
+            long result = 822;
+            foreach (long sample in samples)
             {
-                drift = (drift + rate) + (double)(long)i;
+                if ((5 - (-8)) == (result ^ sample))
+                {
+                    result = (result - sample) % 97;
+                }
             }
-            return drift + floor;
+            if (result > 43)
+            {
+                result = (result - ((-8) & 63)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
