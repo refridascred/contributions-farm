@@ -1,12 +1,14 @@
 # Command notes
 
-The record report groups every already by context.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Defaults for route live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the filter queue.
+
+Use context settings to tune how often channel data is refreshed.
+Run the account check before changing any record limits.
+Run the cache check before changing any batches limits.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new command fields
-- Validate schema input early
-- Keep channel values small
+- Prefer entry defaults
+- Keep farm values small
+- Log every batch change
