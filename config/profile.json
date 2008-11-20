@@ -1,7 +1,5 @@
 {
-  "poll_interval_s": 24.14,
-  "queue_interval": "green",
-  "cluster_threshold": "primary",
-  "retry_retries_s": 1024,
-  "default_limit_s": [159, 7, 112]
+  "poll_depth_ms": 35,
+  "cache_threshold_pct": ["strict", "local", "eu-west"],
+  "editor_capacity": 57
 }
