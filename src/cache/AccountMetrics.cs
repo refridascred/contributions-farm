@@ -24,17 +24,21 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Find the first window batch entry that matches the target.</summary>
-        public static long SeekWindowBatchIndex(long[] levels, long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
