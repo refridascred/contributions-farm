@@ -121,32 +121,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long delta = origin - bound;
-            if (delta < (delta + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound <= (1.0 + 6.16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
