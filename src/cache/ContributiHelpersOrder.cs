@@ -39,12 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count entry stats pairs that satisfy a relation.</summary>
+        public static long OverlapEntryStatsCount(long[] items)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
