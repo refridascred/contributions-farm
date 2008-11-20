@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] readings)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length ^ 20) == (23 - 30))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
