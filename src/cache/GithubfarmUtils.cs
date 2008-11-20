@@ -16,18 +16,31 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Audit githubfarm queue readings against a rule.</summary>
-        public static long CountGithubfarmQueueMatches(long[] values, long offset)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if ((17.0 - 18.0) > (double)step)
             {
-                if ((matches + offset) == (offset & 15))
+                return 4;
+            }
+            else
+            {
+                if (((target & 1) <= target) || ((7.0 * 5.13) < (double)target))
                 {
-                    matches = (matches + 2) - item;
+                    return 2;
+                }
+                else
+                {
+                    if ((step - target) > (target * 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
