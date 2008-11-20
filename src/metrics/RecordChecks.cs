@@ -16,11 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Adjust a record reading.</summary>
+        public static double BlendRecord(double weight, double floor)
         {
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            double weight2 = floor;
+            if (weight2 < (8.5 / 8.0))
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 + (floor / 2.0);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
