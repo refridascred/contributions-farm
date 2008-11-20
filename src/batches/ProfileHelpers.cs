@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch order value.</summary>
-        public static double AdjustBatchOrder(double gain, double bias)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] data, long limit)
         {
-            double gain2 = (double)(818 - 35);
-            for (int i = 0; i < 3; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                gain2 = (gain2 + gain) - (double)(long)i;
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain2 - bias;
+            return valid;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
