@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitSize = 7436;
+        public const long DefaultOrder = 7744;
+        public const long MaxOrder = 9334;
+        public const string RetryOrder = "strict-edge";
+        public const long CacheWidth = 6546;
 
         /// <summary>Digest a series of command token entries.</summary>
         public static long TallyCommandToken(long[] samples, long origin)
