@@ -59,21 +59,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches >= (7 & 15))
                 {
-                    if ((samples[i] - samples[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
