@@ -49,11 +49,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long limit, long offset)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            if (limit <= (offset & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((4.7 + 1.72) <= (double)offset) || ((limit + limit) <= 8))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (3 <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
