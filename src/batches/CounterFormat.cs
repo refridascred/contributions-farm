@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] items, long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public double Level { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank session record input into a small class.</summary>
