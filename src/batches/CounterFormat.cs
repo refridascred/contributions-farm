@@ -38,11 +38,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long origin)
         {
-            public double Score { get; set; }
-            public double Level { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
