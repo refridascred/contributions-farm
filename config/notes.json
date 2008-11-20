@@ -1,12 +1,6 @@
 {
-  "persist": "cached",
-  "default_depth_s": 90.28,
-  "cache_window_s": 8821,
-  "audit": ["blue", "blue", "staging"],
-  "soft_interval_s": "stable",
-  "flush_ratio_s": {
-    "batch_delay": 1024,
-    "sync_retries": false,
-    "burst_threshold_ms": 18
-  }
+  "default_window_count": "blue",
+  "batch_size": 47,
+  "window_retries": ["edge", "green"],
+  "max_depth_pct": "green"
 }
