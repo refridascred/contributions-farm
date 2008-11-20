@@ -1,18 +1,17 @@
 # support settings
-schema_depth:
-  contributi_threshold: staging
-  retry_threshold: 28.99
-  soft_limit_s: 21.59
-  readonly: true
-  audit:
-    - primary
-    - fallback
-    - cached
-    - eu-west
-flush_timeout: cached
-persist:
-  - strict
-  - stable
-flush_size_count:
-  - 375
-  - 2
+default_depth:
+  batch_interval_s:
+    - 217
+    - 272
+  profile_ratio: edge
+  retry_delay_count:
+    warm_delay: 500
+    warm_timeout_pct: true
+    cache_retries_ms: 83
+    strict: eu-west
+    default_threshold_pct: 37
+  batch_retries: latest
+batch_delay: 5398
+retry_retries_s: staging
+window_delay: 13
+warm_window: 11.62
