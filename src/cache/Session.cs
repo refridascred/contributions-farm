@@ -37,19 +37,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] data, long seed)
+        /// <summary>Locate a payload metric reading by value.</summary>
+        public static long LookupPayloadMetricIndex(long[] data, long origin)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= seed)
+                if ((data[i] == origin) && ((data[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
