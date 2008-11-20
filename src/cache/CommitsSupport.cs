@@ -65,26 +65,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] samples, long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            long mix = 77;
-            foreach (long datum in samples)
+            long total = 77;
+            foreach (long cell in data)
             {
-                if (738 >= (limit % 7))
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ datum) % 4096;
-                }
+                total = (((total << 3) ^ (total << 3)) % 1000) + cell;
             }
-            if (mix < 6)
-            {
-                mix = (mix ^ (800 ^ mix)) % 4096;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
