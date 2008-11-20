@@ -1,6 +1,14 @@
 {
-  "hard_retries_ms": true,
-  "warm_ttl_ms": "fallback",
-  "cache_ratio_ms": "green",
-  "idle_threshold": ["staging", "eu-west", "eu-west"]
+  "default_depth_count": false,
+  "default_window_ms": 11.65,
+  "profile_retries": [77, 36, 255, 437],
+  "dry_run": {
+    "cache_capacity_count": true,
+    "token_size": 8099,
+    "flush_threshold_s": 6042,
+    "compress": 30,
+    "soft_retries": 4656,
+    "support_ttl": 60
+  },
+  "warm_delay": 1124
 }
