@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 1759;
-        public const double IdleRecord = 60.05;
-        public const double MinWidth = 73.31;
-        public const long BurstDepth = 8501;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Fold a list of editor format readings.</summary>
         public static long DigestEditorFormat(long[] samples)
