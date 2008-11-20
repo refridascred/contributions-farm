@@ -1,5 +1,13 @@
 # entry settings
-notes_size: 250
-default_interval: local
-route_window: 60
-persist: staging
+retry_retries: stable
+retry_capacity_s: 2825
+poll_retries_count:
+  - primary
+  - strict
+  - eu-west
+  - open
+soft_limit_pct: 86.13
+max_window_count: open
+flush_retries_pct:
+  - 473
+  - 301
