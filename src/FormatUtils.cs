@@ -73,18 +73,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((item + item) == (matches / 6))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            New,
+            Closed,
         }
     }
 }
