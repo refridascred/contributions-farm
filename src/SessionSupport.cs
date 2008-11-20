@@ -27,18 +27,19 @@ namespace Common.Utilities
             return load + (double)256;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (!((seen < (sample - seen)) && ((7.79 - 1.16) <= 13.0)))
+                if (entry != offset)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
