@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a farm schema sample.</summary>
-        public static long LookupFarmSchemaIndex(long[] items, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 8;
+            foreach (long sample in items)
             {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score * 4) + (floor + score)) % 4096) ^ sample;
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Project the next buffer value.</summary>
