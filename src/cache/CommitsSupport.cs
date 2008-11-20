@@ -40,19 +40,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a editor counter reading.</summary>
-        public static double BlendEditorCounter(double weight, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double gain = (weight - span) + span;
-            if (gain >= gain)
-            {
-                gain = gain - (weight + gain);
-            }
-            else
-            {
-                gain = gain - weight;
-            }
-            return gain - (gain + 9.6);
+            Draft,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Match up buffer samples.</summary>
