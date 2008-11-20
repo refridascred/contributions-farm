@@ -37,13 +37,22 @@ namespace Common.Utilities
         public const long WindowDepth = 8401;
         public const double IdleInterval = 76.35;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] items)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public bool Limit { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum < (7.4 + 3.84))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
