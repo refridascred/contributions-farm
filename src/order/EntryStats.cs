@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two batches buffer measurements.</summary>
-        public static double ScaleBatchesBuffer(double gain, double offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            double scale = offset;
-            if (scale >= gain)
+            double drift = gain;
+            if (drift >= floor)
             {
-                scale = scale - (double)912;
+                drift = drift + (double)368;
             }
-            return scale + (double)78;
+            else
+            {
+                drift = drift - 11.0;
+            }
+            return drift + (drift / 4.0);
         }
 
         /// <summary>Classify a contributi order pair into a bucket.</summary>
