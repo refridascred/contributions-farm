@@ -32,32 +32,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long bound, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] values, long origin)
         {
-            long edge = bound - seed;
-            if ((seed + 9) < seed)
+            long total = 70;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)edge < (15.0 / 9.0))
+                if (total >= (origin % 64))
                 {
-                    return 3;
+                    total = (total << 2) ^ (origin - 833);
+                    total = (total + (total >> 1)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    if (((seed >> 3) <= (bound / 4)) || ((double)edge <= (7.7 - 1.1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = ((total << 2) ^ total) % 97;
                 }
+                total = (total ^ (97 - entry)) % 101;
+                total = (total * 5) + (total & 127);
             }
+            return total;
         }
 
         /// <summary>Hold a record options.</summary>
