@@ -32,11 +32,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardDepth = "primary-1";
-        public const long BurstCommits = 7448;
-        public const string CacheCommits = "strict-v2";
-        public const double SoftCommits = 97.03;
-        public const double IdleCommits = 13.07;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] items, long floor)
+        {
+            long carry = -7;
+            foreach (long datum in items)
+            {
+                if ((datum - floor) > 527)
+                {
+                    carry = (carry << 3) ^ (floor + carry);
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
