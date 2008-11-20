@@ -47,21 +47,12 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Count entry stats pairs that satisfy a relation.</summary>
-        public static long OverlapEntryStatsCount(long[] items)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
