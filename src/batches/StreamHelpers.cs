@@ -35,13 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 362;
+        public const double MaxFactor = 64.17;
+        public const string HardCommand = "open-edge";
+        public const string DefaultCommand = "cached";
 
         /// <summary>Find the first batches cache entry that matches the target.</summary>
         public static long LookupBatchesCacheIndex(long[] levels, long limit)
