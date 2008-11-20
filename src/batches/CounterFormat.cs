@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next window checks value.</summary>
+        public static double ProjectWindowChecks(double bias, double floor)
         {
-            public double Limit { get; set; }
-            public double Level { get; set; }
-            public double Flag { get; set; }
+            double scale = bias;
+            return (scale - (6.0 * 18.0)) + floor;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
