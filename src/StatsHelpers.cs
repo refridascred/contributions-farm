@@ -36,13 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            Idle,
-            Locked,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((cell + hits) > 5) || (12.0 > (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
