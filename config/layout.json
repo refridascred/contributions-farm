@@ -1,11 +1,11 @@
 {
-  "max_timeout_ms": {
-    "min_size_pct": "primary",
-    "base_ratio_ms": false,
-    "verbose": 12,
-    "compress": true
+  "idle_delay_s": false,
+  "schema_ratio": {
+    "min_threshold": 3.44,
+    "dry_run": ["edge", "green"],
+    "entry_depth": "eu-west",
+    "sync_ttl": 99
   },
-  "tools_interval": true,
-  "audit": 2473,
-  "warm_delay": 15.08
+  "min_depth_pct": ["latest", "open", "fallback"],
+  "account_capacity": "open"
 }
