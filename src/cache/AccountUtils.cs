@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Adjust a queue reading.</summary>
