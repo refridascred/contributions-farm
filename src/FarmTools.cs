@@ -37,18 +37,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            long mark = -318;
-            foreach (long entry in items)
+            double ratio = (1.0 - rate) + (bias + rate);
+            if (ratio >= rate)
             {
-                if ((entry <= (entry + mark)) || ((mark & 7) == (mark + mark)))
-                {
-                    mark = mark + (entry << 1);
-                }
+                ratio = ratio - (double)510;
             }
-            return mark % 4096;
+            else
+            {
+                ratio = ratio - 5.5;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (rate / 9.0)) - (double)(long)i;
+            }
+            return ratio - (bias + bias);
         }
     }
 }
