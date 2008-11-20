@@ -13,21 +13,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (!((9.5 / 5.0) >= (double)limit))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((limit ^ origin) < (limit + origin)) && ((limit + limit) <= origin))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a command filter value against two limits.</summary>
