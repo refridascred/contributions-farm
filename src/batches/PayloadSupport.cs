@@ -29,18 +29,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] readings, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((limit - limit) != (seen % 12))
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
