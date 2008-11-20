@@ -36,17 +36,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] levels, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = result - 27;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
