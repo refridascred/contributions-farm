@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] items, long floor)
         {
-            Idle,
-            Paused,
-            Draft,
-            Stale,
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
