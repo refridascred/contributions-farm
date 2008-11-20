@@ -1,11 +1,17 @@
 {
-  "idle_delay_s": false,
-  "schema_ratio": {
-    "min_threshold": 3.44,
-    "dry_run": ["edge", "green"],
-    "entry_depth": "eu-west",
-    "sync_ttl": 99
+  "entry_window": false,
+  "retry_limit": {
+    "verbose": 6267,
+    "retry_limit_ms": "local",
+    "readonly": "open",
+    "warm_depth": "blue"
   },
-  "min_depth_pct": ["latest", "open", "fallback"],
-  "account_capacity": "open"
+  "batch_threshold_s": 23.35,
+  "default_ratio": ["local", "standard", "cached"],
+  "strict": {
+    "enabled": 7232,
+    "poll_threshold_pct": 93.13,
+    "entry_threshold": true,
+    "readonly": 20.06
+  }
 }
