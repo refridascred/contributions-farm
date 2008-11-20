@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] readings)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)hits >= (9.44 - 5.08))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 726;
+        public const long StepEntry = 7675;
+        public const long RetryEntry = 8689;
+        public const long LimitEntry = 3845;
 
         /// <summary>Look up the position of a buffer notes sample.</summary>
         public static long FindBufferNotesIndex(long[] levels, long target)
