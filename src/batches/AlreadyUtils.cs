@@ -13,10 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryNotes = 5549;
-        public const string MaxNotes = "alpha-1";
-        public const double CacheNotes = 22.44;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 3) != (cell + count))
+                {
+                    count = (count + 3) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up checks already samples.</summary>
         public static long CompareChecksAlreadyCount(long[] values)
