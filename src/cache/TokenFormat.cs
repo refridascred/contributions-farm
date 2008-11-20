@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two checks order measurements.</summary>
-        public static double AdjustChecksOrder(double ratio, double span)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long offset)
         {
-            double ratio2 = span;
-            if (ratio2 > (ratio2 / 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 - (ratio2 - span);
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return ratio2 + (ratio / 7.0);
+            return -1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
