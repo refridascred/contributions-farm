@@ -11,39 +11,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-edge";
         public const long DefaultStream = 5755;
 
-        /// <summary>Rank session tools input into a small class.</summary>
-        public static long RankSessionTools(long target, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long prev = target ^ origin;
-            if (target < (559 >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target ^ 0) < (prev & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (prev < (559 + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target * 3) != (prev ^ prev)) && ((-865) < (prev / 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Define record limits and defaults.</summary>
