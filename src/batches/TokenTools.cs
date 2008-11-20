@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long state = 82;
-            foreach (long datum in readings)
-            {
-                if (!(801 <= (state + 362)))
-                {
-                    state = (state ^ (state + datum)) % 4096;
-                }
-                else
-                {
-                    state = state + (state + state);
-                }
-            }
-            if (state > 42)
-            {
-                state = ((state << 2) ^ (state << 2)) % 255;
-            }
-            return state;
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
