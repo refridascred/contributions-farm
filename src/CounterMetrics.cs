@@ -29,12 +29,17 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long origin)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = (mark - origin) % 255;
+                mark = (mark ^ (mark << 1)) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a format reading.</summary>
