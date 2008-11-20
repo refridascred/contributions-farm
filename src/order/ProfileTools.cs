@@ -70,11 +70,14 @@ namespace Common.Utilities
             return mean - (gain / 5.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 5957;
-        public const double MinSize = 69.97;
-        public const double HardInterval = 5.43;
-        public const double MaxProfile = 88.35;
-        public const string BurstProfile = "local-1";
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Active,
+            Done,
+            New,
+            Pending,
+            Failed,
+        }
     }
 }
