@@ -23,32 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long bound)
-        {
-            if (!(bound <= 38))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound ^ floor) >= 6)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound + floor) == (bound << 2)) && (floor > bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 7647;
+        public const double BaseWidth = 46.41;
+        public const double LimitWindow = 62.61;
+        public const long BaseSpan = 6114;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
