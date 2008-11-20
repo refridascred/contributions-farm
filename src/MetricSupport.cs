@@ -42,13 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] values, long target)
         {
-            Pending,
-            Stale,
-            Locked,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
