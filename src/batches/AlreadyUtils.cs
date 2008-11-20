@@ -50,19 +50,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] readings)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long anchor = 834;
-            foreach (long item in readings)
-            {
-                anchor = anchor + (anchor << 2);
-                if (((item / 6) <= 5) || ((anchor ^ anchor) < (item + anchor)))
-                {
-                    anchor = ((anchor << 3) ^ (item >> 4)) % 1000;
-                }
-            }
-            return anchor;
+            Done,
+            Closed,
+            Stale,
+            Pending,
         }
     }
 }
