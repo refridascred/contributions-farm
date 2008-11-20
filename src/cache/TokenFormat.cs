@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchInterval = 743;
-        public const string StepLevel = "legacy-v2";
-        public const double WindowCount = 54.01;
-        public const long IdleBudget = 2606;
-        public const long SoftGithubfarm = 6516;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheLevel = "local-1";
+        public const double MinMetrics = 49.42;
+        public const long StepBudget = 2899;
+        public const string DefaultLevel = "local-v2";
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long seed)
