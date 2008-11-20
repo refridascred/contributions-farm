@@ -42,18 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats already entries that pass the check.</summary>
-        public static long CountStatsAlreadyMatches(long[] samples, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading >= (reading + floor))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Paused,
+            Active,
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
