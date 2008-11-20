@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the command status values.</summary>
