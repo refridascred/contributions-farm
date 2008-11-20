@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((13 % 24) <= count)
+                if ((double)bound >= (7.45 * 7.1))
                 {
-                    count = (count + 3) - entry;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of format payload readings.</summary>
