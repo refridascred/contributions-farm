@@ -20,13 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Closed,
-            Idle,
-            Paused,
-            Dropped,
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
