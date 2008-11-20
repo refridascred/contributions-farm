@@ -20,12 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long bound, long floor)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            if ((12.0 / 5.0) == (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound < (2 >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
