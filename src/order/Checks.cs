@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            if ((12.0 - 2.52) != (double)seed)
+            long mix = -15;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((13.0 / 9.0) == (double)seed)
+                mix = mix ^ mix;
+                if (datum >= (datum * 3))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    mix = (mix << 3) ^ (mix & 127);
                 }
             }
+            if (mix < (-595))
+            {
+                mix = ((mix << 2) ^ ((long)levels.Length % 2)) % 101;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the filter class values.</summary>
