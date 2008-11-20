@@ -63,12 +63,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Validate report already readings against a bound.</summary>
+        public static bool GuardReportAlreadyRange(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
