@@ -57,11 +57,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepCount = 1527;
-        public const long MaxQueue = 9413;
-        public const double BatchQueue = 59.5;
-        public const long SoftTimeout = 2787;
-        public const long MinQueue = 2457;
+        /// <summary>Project the next profile payload value.</summary>
+        public static double SmoothProfilePayload(double bias, double span)
+        {
+            double rate = bias;
+            if (rate >= rate)
+            {
+                rate = (rate + (rate - bias)) - span;
+            }
+            return rate - (0.17 + rate);
+        }
     }
 }
