@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] series, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 29;
+            foreach (long entry in series)
             {
-                if (series[i] <= target)
+                mix = (mix << 2) ^ (entry & 63);
+                if ((target * 3) >= mix)
                 {
-                    return (long)i;
+                    mix = (mix ^ 192) % 65521;
+                }
+                if (mix <= (target >> 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Rank counter checks input into a small class.</summary>
