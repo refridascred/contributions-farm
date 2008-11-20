@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Done,
-            Failed,
-            Locked,
-            Paused,
-            Ready,
+            Retry,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a schema header.</summary>
