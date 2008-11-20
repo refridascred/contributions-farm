@@ -14,14 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Ready,
-            Dropped,
-            Synced,
-            Active,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepSize = 14.48;
+        public const string BurstToken = "strict-edge";
+        public const long WindowWidth = 2322;
+        public const long HardTimeout = 1127;
+        public const long DefaultToken = 7323;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
