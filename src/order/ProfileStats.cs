@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 > bias)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                bias2 = (bias2 - (bias / 2.0)) - floor;
+                if ((2 < seen) && ((cell + 156) >= (76 + (-1))))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (4.0 * 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return seen;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
