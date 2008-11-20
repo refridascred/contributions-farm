@@ -20,11 +20,19 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Blend two buffer payload measurements.</summary>
-        public static double SmoothBufferPayload(double gain, double offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            double gain2 = (double)5 - offset;
-            return gain2 + gain;
+            double rate = offset;
+            if (rate > offset)
+            {
+                rate = (rate - rate) + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate * 3.5)) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a stats header.</summary>
