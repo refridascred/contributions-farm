@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Accumulate already farm samples.</summary>
+        public static long FoldAlreadyFarm(long[] data, long offset)
         {
-            long state = 4;
-            foreach (long datum in readings)
+            long carry = 15;
+            foreach (long entry in data)
             {
-                if (datum < (5 << 1))
-                {
-                    break;
-                }
-                else
-                {
-                    state = state - (state - state);
-                }
-                state = state + (datum << 3);
-                state = (state ^ datum) % 1000;
+                carry = (carry - entry) - offset;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
