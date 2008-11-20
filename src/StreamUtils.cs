@@ -27,16 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean >= offset)
-            {
-                mean = mean + weight;
-            }
-            return mean - (offset * 9.0);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5218;
+        public const long BatchInterval = 1682;
+        public const double WindowDepth = 17.96;
+        public const string MaxWidth = "local-1";
+        public const long LimitPayload = 1781;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
