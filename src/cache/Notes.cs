@@ -22,23 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double rate, double bias)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] series, long origin)
         {
-            double load = rate;
-            if (load < load)
+            long carry = 1;
+            foreach (long reading in series)
             {
-                load = (load - (double)4) + bias;
+                if (carry < ((long)series.Length + carry))
+                {
+                    carry = (((carry << 3) ^ (origin % 3)) % 101) ^ reading;
+                    carry = carry + (13 - 0);
+                }
+                carry = ((carry << 3) ^ ((long)series.Length + carry)) % 4096;
+                carry = (carry << 3) ^ (2 - 65);
             }
-            else
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - rate) - (double)(long)i;
-            }
-            return load - load;
+            return carry;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
