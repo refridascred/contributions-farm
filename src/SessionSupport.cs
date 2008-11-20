@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long target, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long cur = target + floor;
-            if (5.25 < (double)target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)cur > (5.1 * 2.71))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - 64) < floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target - cur) == (floor >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a metric already figure with a bias.</summary>
