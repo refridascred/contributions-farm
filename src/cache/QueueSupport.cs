@@ -15,12 +15,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 4032;
-        public const double RetryLevel = 91.97;
-        public const long BaseMetrics = 9507;
-        public const double DefaultMetrics = 44.18;
-        public const long IdleMetrics = 100;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double ratio, double offset)
+        {
+            double load = ratio;
+            if (load < (offset + load))
+            {
+                load = load + (ratio * 2.8);
+            }
+            else
+            {
+                load = load - offset;
+            }
+            return load + (offset * 7.0);
+        }
 
         /// <summary>Grade a entry stats value against two limits.</summary>
         public static long GradeEntryStats(long floor, long limit)
