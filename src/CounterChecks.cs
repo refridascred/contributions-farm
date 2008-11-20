@@ -63,17 +63,11 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] readings, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
