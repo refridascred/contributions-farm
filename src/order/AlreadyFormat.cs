@@ -75,19 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter format readings against a bound.</summary>
-        public static bool GuardFilterFormatBounds(long[] items, long seed)
+        /// <summary>Count the cluster token entries that pass the check.</summary>
+        public static long AuditClusterTokenOutliers(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (entry != seed)
+                if ((sample << 2) < bound)
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Match up checks samples.</summary>
