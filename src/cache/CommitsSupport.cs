@@ -55,19 +55,18 @@ namespace Common.Utilities
             return gain - (gain + 9.6);
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long seed)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
             long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((seed - seed) < seed))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
