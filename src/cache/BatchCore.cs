@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            Synced,
-            New,
-            Pending,
-            Draft,
+            Idle,
             Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Match up token farm samples.</summary>
