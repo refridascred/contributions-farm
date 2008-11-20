@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor commits entry that matches the target.</summary>
-        public static long LookupEditorCommitsIndex(long[] items, long offset)
+        /// <summary>Fold a list of format payload readings.</summary>
+        public static long TallyFormatPayload(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 97;
+            foreach (long value in samples)
             {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
+                if ((5 < (12 - anchor)) && ((anchor >> 1) >= (anchor + anchor)))
                 {
-                    return (long)i;
+                    anchor = (((anchor << 2) ^ (anchor & 7)) % 1000) - value;
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a buffer record.</summary>
