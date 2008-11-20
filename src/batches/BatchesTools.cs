@@ -13,16 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double weight, double span)
-        {
-            double gain = (double)(12 + 19);
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - (9.21 + weight);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "fallback-1";
+        public const double BatchContext = 5.31;
+        public const long SoftContext = 8180;
+        public const long RetryContext = 1036;
+        public const string HardWidth = "staging-edge";
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
