@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                acc = (acc + (8 / 5)) % 4096;
-                acc = (acc - acc) % 1000;
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((tally - datum) <= (tally % 10))
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
