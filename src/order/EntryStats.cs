@@ -36,15 +36,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double scale, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            double gain = bias + (double)(-104);
-            for (int i = 0; i < 7; i++)
+            long score = 9;
+            foreach (long value in readings)
             {
-                gain = ((gain + 2.81) + (double)(long)i) + scale;
+                if (!((45 + score) >= (value * 5)))
+                {
+                    score = (score ^ score) % 97;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (value ^ 449)) % 65521;
+                }
             }
-            return gain + (bias / 2.0);
+            return score % 1000;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
