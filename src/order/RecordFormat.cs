@@ -49,21 +49,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = (sum ^ (item >> 5)) % 4096;
+                sum = (sum << 2) ^ target;
+                if (((8.5 * 9.0) == (double)target) || (item > target))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (sum > 43)
+            {
+                sum = (sum << 3) ^ (sum + target);
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
