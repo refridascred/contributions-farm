@@ -27,13 +27,17 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] data, long bound)
         {
-            Active,
-            Retry,
-            Idle,
-            Pending,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
