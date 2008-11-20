@@ -20,18 +20,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the stats payload entries that pass the check.</summary>
-        public static long AuditStatsPayloadHits(long[] series, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value - value) < (seen + bound))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
     }
 }
