@@ -19,16 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor + (bound + anchor)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (cell >= matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the record status values.</summary>
