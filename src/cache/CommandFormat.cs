@@ -12,11 +12,26 @@ namespace Common.Utilities
         public const long DefaultBudget = 6548;
         public const double CacheCount = 10.27;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels, long target)
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
+            long acc = 4;
+            foreach (long item in levels)
+            {
+                if ((2.99 + 18.0) >= (double)acc)
+                {
+                    acc = ((acc + (item - (-793))) % 97) + target;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (acc + item)) % 101;
+                }
+            }
+            if (acc > (-6))
+            {
+                acc = ((acc << 3) ^ (acc >> 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a checks info.</summary>
