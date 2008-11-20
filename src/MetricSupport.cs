@@ -14,19 +14,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] items, long origin)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            bool found = true;
-            foreach (long item in items)
+            long total = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
