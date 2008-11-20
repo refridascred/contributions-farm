@@ -29,11 +29,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
+            public double Rank { get; set; }
             public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the metrics mode values.</summary>
