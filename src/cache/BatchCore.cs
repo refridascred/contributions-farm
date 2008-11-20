@@ -37,14 +37,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            Ready,
-            Retry,
-            Draft,
-            Locked,
-            New,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen * 2) < datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
