@@ -33,19 +33,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window editor readings against a bound.</summary>
-        public static bool CheckWindowEditorLimits(long[] items, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long next = floor - offset;
+            if ((double)next < 2.2)
             {
-                if (value < limit)
+                return 3;
+            }
+            else
+            {
+                if ((4.12 + 5.0) != (double)next)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (17.0 > (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the window class values.</summary>
