@@ -1,16 +1,13 @@
 # entry settings
-filter_threshold:
-  batch_threshold_count: 81.11
-  hard_size_count: local
-  burst_capacity: open
-  idle_interval:
-    - 323
-    - 137
-    - 44
-  contributi_ratio: 8440
-soft_ttl:
-  graph_size: 83.64
-  compress: stable
-  retry_ratio: false
-  cluster_depth: latest
-warm_ttl_ms: 78
+burst_timeout: 500
+verbose: false
+counter_timeout: 26.9
+cache_interval_s:
+  retry_window: fallback
+  audit:
+    - edge
+    - open
+    - latest
+  max_interval: 250
+layout_threshold: 15
+readonly: true
