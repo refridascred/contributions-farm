@@ -30,18 +30,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] levels)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((5.6 * 4.2) < (double)matches)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                sum = (sum * 5) + (sum + seed);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a cache entry.</summary>
