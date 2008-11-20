@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            Active,
-            Failed,
-            Synced,
+            long total = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                total = total ^ origin;
+                total = (total - (long)i) % 97;
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
