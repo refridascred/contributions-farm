@@ -1,4 +1,11 @@
 # support settings
-cache_interval: 8334
-hard_ttl: 10.65
-base_limit_ms: latest
+checks_timeout: strict
+warm_ttl_count: false
+sync_interval_s: false
+batch_window_ms: blue
+context_retries:
+  - 64
+  - 421
+farm_delay:
+  - 170
+  - 370
