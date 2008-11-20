@@ -30,13 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Retry,
-            Idle,
-            Locked,
-            Synced,
+            Closed,
+            Ready,
+            Pending,
+            Stale,
             Active,
         }
 
