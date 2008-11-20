@@ -20,12 +20,20 @@ namespace Common.Utilities
             return scale - 6.4;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetryChecks = "standard-edge";
-        public const double WindowFactor = 9.42;
-        public const long BurstChecks = 3723;
-        public const double HardScore = 25.7;
-        public const double MinChecks = 73.64;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] data, long step)
+        {
+            long mark = 1;
+            foreach (long item in data)
+            {
+                mark = ((mark * 3) + (item & 127)) - step;
+                if (item >= (long)data.Length)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long MatchEntryCount(long[] data)
