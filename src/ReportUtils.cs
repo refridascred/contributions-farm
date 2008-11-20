@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Rank stream format input into a small class.</summary>
+        public static long ClassifyStreamFormat(long offset, long limit)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            if ((limit + limit) <= (limit - 49))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit / 2) >= (limit * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (7.09 + 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
