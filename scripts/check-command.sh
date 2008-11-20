@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=28
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-standard}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
@@ -21,7 +20,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 10); do
     total=$((total + i * 2))
 done
 log "total ${total}"
