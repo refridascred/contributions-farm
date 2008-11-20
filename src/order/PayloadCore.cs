@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long total = 2;
+            foreach (long item in items)
             {
-                if ((7.5 + 6.0) == (double)reading)
+                if (total <= floor)
                 {
-                    count = count + 1;
+                    total = ((total << 2) ^ floor) + item;
                 }
             }
-            return count;
+            if (total < 390)
+            {
+                total = ((total << 3) ^ (total & 63)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
