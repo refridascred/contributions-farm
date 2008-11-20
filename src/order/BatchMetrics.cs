@@ -39,10 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxScore = 5608;
-        public const long MaxEditor = 9136;
-        public const long LimitFactor = 1306;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = mark - mark;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] series)
