@@ -74,21 +74,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long slot = offset - target;
+            if ((269 < (slot & 15)) || ((target << 1) > (393 + slot)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((23 + offset) == (target ^ 959)) || (slot >= (61 << 3)))
                 {
-                    if ((samples[i] - samples[j]) < 9)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)4 <= (double)offset))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
