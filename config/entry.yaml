@@ -1,32 +1,16 @@
 # entry settings
-notes_window:
-  batch_size_pct: edge
-  cluster_interval: stable
-  enabled: 27.0
-  strict: 71.65
-  poll_capacity: fallback
-audit: 15.55
-strict: staging
-batch_interval_count:
-  cache_window_s: legacy
-  strict:
-    already_ttl:
-      - local
-      - latest
-      - blue
-    strict:
-      - standard
-      - strict
-      - local
-    flush_interval_pct: cached
-    route_size: staging
-    soft_threshold_ms: open
-    max_ratio_pct: green
-  queue_size: 45
-  hard_depth:
+filter_timeout: 1497
+editor_timeout: 89.83
+payload_limit:
+  - 397
+  - 419
+  - 29
+  - 445
+warm_ratio_s: green
+verbose:
+  idle_size:
+    - staging
     - open
-    - primary
-    - legacy
-hard_threshold_ms:
-  - 137
-  - 101
+  buffer_window: 64.08
+  command_limit: eu-west
+  idle_size_s: blue
