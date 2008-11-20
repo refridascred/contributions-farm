@@ -59,25 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] levels, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if ((9.41 * 3.4) != (double)bound)
+                if (sample < bound)
                 {
-                    total = (total - (72 + 54)) % 65521;
-                    continue;
-                }
-                if ((double)(long)i != (double)bound)
-                {
+                    ready = false;
                     break;
                 }
-                total = (total ^ total) % 65521;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return ready;
         }
     }
 }
