@@ -1,6 +1,8 @@
 {
-  "cache_retries_ms": 35.28,
-  "command_depth": 74.87,
-  "retry_depth_count": [311, 484, 380, 482],
-  "warm_limit": true
+  "hard_ttl": "cached",
+  "retry_size_s": false,
+  "hard_size_ms": 2584,
+  "base_size_ms": "green",
+  "persist": "legacy",
+  "tools_interval": 30
 }
