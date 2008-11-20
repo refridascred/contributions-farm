@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long mix = 56;
+            foreach (long sample in readings)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((1.3 * 4.1) != (double)mix)
+                {
+                    mix = (mix ^ (origin >> 5)) + sample;
+                }
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
