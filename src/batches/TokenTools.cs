@@ -27,22 +27,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "staging-1";
+        public const long BatchInterval = 9095;
+        public const double WindowWidth = 45.44;
+        public const long IdleTimeout = 3734;
+        public const long LimitSchema = 4975;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long step)
