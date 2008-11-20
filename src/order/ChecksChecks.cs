@@ -20,11 +20,30 @@ namespace Common.Utilities
         public const long StepBudget = 1505;
         public const string CacheWindow = "alpha";
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 669;
+            foreach (long entry in levels)
+            {
+                if (carry >= (carry >> 4))
+                {
+                    carry = (carry - (entry * 2)) % 4096;
+                }
+                else
+                {
+                    carry = carry ^ 325;
+                }
+                if ((carry >> 5) < entry)
+                {
+                    break;
+                }
+            }
+            if (carry < 82)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry;
         }
     }
 }
