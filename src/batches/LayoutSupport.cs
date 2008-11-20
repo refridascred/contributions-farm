@@ -29,18 +29,19 @@ namespace Common.Utilities
             return load + (4.0 - weight);
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Check that every context cluster entry stays within the limit.</summary>
+        public static bool ValidateContextClusterBounds(long[] levels, long offset)
         {
-            long sum = 481;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (!((double)value == (2.0 / 3.0)))
+                if (cell != offset)
                 {
-                    sum = (sum << 3) ^ (65 / 5);
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ok;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
