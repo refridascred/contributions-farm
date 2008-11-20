@@ -84,23 +84,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double gain, double floor)
+        /// <summary>Rank metric graph input into a small class.</summary>
+        public static long ClassifyMetricGraph(long target, long origin)
         {
-            double scale = (floor / 9.0) + floor;
-            if (scale >= (double)855)
+            if (!((double)target < (8.0 / 5.0)))
             {
-                scale = scale + 7.0;
+                return 5;
             }
             else
             {
-                scale = scale - floor;
+                if (!(origin < (origin >> 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale - floor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
