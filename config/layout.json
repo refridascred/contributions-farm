@@ -1,13 +1,7 @@
 {
-  "cache_ratio": ["open", "green", "latest", "eu-west"],
-  "min_delay_pct": "legacy",
-  "filter_threshold": "latest",
-  "burst_delay_s": [436, 201, 449, 454],
-  "cache_capacity": {
-    "sync_ratio_pct": 8881,
-    "retry_ratio_s": 9446,
-    "session_delay": [97, 333],
-    "profile_timeout": 60,
-    "burst_capacity_s": 26.08
-  }
+  "warm_threshold": "legacy",
+  "strict": "strict",
+  "default_size_count": true,
+  "report_size": 30,
+  "min_capacity_pct": "blue"
 }
