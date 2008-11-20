@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double scale = ratio;
+            if (scale >= (scale * 4.7))
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (16.0 + ratio)) + offset;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (double)1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
