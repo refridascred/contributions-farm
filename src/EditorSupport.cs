@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a filter stats reading.</summary>
-        public static double SmoothFilterStats(double bias, double floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] items, long bound)
         {
-            double load = bias;
-            if (load <= bias)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                load = (load - bias) - floor;
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load - bias;
+            return stale;
         }
 
         /// <summary>Count the cluster session entries that pass the check.</summary>
