@@ -14,18 +14,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample % 100) > (matches - 1))
                 {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
