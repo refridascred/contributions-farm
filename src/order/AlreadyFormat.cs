@@ -44,15 +44,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
