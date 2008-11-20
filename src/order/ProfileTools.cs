@@ -50,18 +50,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the route filter entries that pass the check.</summary>
-        public static long CountRouteFilterMatches(long[] data, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((step + cell) > (cell << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Pending,
+            Synced,
+            Done,
         }
 
         /// <summary>Validate metric queue readings against a bound.</summary>
