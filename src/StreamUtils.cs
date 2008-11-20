@@ -86,35 +86,35 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long step, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long limit, long offset)
         {
-            long delta = step ^ limit;
-            if (!(limit > (delta ^ delta)))
+            long delta = limit - offset;
+            if ((limit << 1) < limit)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((delta - step) >= (step - 4))
+                if (((limit + offset) >= offset) || ((212 + offset) < offset))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (9 >= (delta << 3))
+                    if ((double)235 == (double)limit)
                     {
                         return 5;
                     }
                     else
                     {
-                        if ((double)delta != (8.0 / 9.0))
+                        if (!((delta + limit) >= offset))
                         {
-                            return 0;
+                            return 3;
                         }
                         else
                         {
-                            return 2;
+                            return 7;
                         }
                     }
                 }
