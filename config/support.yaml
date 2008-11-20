@@ -1,8 +1,4 @@
 # support settings
-burst_window: true
-readonly:
-  poll_timeout_count: true
-  idle_ttl: 17
-  hard_ratio_ms: 57
-  strict: 2533
-persist: 33
+dry_run: 88.12
+poll_timeout_pct: standard
+cache_interval_pct: stable
