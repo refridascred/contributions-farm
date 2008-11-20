@@ -40,19 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] data, long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
