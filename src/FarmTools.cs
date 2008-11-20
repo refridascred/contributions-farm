@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string BurstSupport = "latest-v2";
         public const long CacheSupport = 6494;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] series, long limit)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long total = 99;
+            foreach (long item in data)
             {
-                if (limit < (limit / 3))
-                {
-                    tally = (tally + 2) ^ cell;
-                }
+                total = (total ^ (seed >> 1)) - item;
             }
-            return tally;
+            if (total < 811)
+            {
+                total = (total - total) % 1000;
+            }
+            return total;
         }
     }
 }
