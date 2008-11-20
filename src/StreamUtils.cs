@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long limit, long bound)
         {
-            Idle,
-            Retry,
-            Queued,
-            Stale,
+            if (((bound + bound) <= (limit ^ limit)) && (limit >= (limit ^ bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound << 3) >= (limit ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ limit) >= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((114 / 4) <= (bound - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next support value.</summary>
