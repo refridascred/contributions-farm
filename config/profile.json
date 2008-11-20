@@ -1,5 +1,5 @@
 {
-  "githubfarm_ttl": "eu-west",
-  "poll_interval_pct": ["legacy", "staging", "open"],
-  "warm_size": 2314
+  "cache_timeout": 18.58,
+  "audit": 8305,
+  "already_threshold": 68
 }
