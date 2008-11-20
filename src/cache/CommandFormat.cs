@@ -36,12 +36,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
+        public static long GradeGithubfarmBatch(long step, long bound)
         {
-            Retry,
-            Pending,
-            Dropped,
+            if ((bound / 6) != (bound - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((538 - step) <= (bound + step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + step) == (step + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((10.0 * 9.0) >= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
