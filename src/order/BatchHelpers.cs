@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Region { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
