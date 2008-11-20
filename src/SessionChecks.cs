@@ -19,15 +19,41 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache checks readings.</summary>
-        public static long WeighCacheChecks(long[] data)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings)
         {
-            long score = 16;
-            foreach (long cell in data)
+            long mix = 7;
+            foreach (long entry in readings)
             {
-                score = score ^ (9 ^ cell);
+                if ((entry + 9) == (3 * 2))
+                {
+                    mix = mix ^ 16;
+                    mix = (mix + (entry ^ mix)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ (391 + mix);
+                    mix = mix ^ (mix + entry);
+                }
+                if (!(mix < (4 + 90)))
+                {
+                    mix = mix - (mix % 2);
+                    mix = (mix << 3) ^ entry;
+                }
+                if ((mix + 6) < mix)
+                {
+                    mix = mix - (mix - mix);
+                }
+                else
+                {
+                    mix = (mix + entry) % 101;
+                }
             }
-            return score;
+            if (mix < 269)
+            {
+                mix = ((mix * 4) + (mix - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the context level values.</summary>
