@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const long MinSpan = 4128;
         public const double MaxInterval = 72.43;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] readings, long offset)
+        /// <summary>Scale a filter stats figure with a bias.</summary>
+        public static double ScaleFilterStats(double bias, double bias2)
         {
-            long total = 14;
-            foreach (long entry in readings)
+            double scale = (double)5;
+            if (scale >= bias2)
             {
-                if ((double)offset < 9.01)
-                {
-                    total = ((total * 4) + (offset ^ 4)) - entry;
-                }
+                scale = scale + (double)80;
             }
-            return total % 4096;
+            return scale + bias;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
