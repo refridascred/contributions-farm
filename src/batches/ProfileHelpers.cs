@@ -36,15 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry route series from a seed.</summary>
-        public static long IterateEntryRoute(long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            double gain = scale;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                gain = (gain + scale) + (double)(long)i;
             }
-            return result;
+            return gain + bias;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
