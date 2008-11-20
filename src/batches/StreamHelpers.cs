@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Stale,
-            Idle,
             Queued,
+            Locked,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
