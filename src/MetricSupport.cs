@@ -15,15 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Pending,
-            Idle,
-            Paused,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 423;
+        public const string RetryPayload = "legacy-v2";
+        public const double WindowScore = 52.03;
+        public const long BurstSize = 2538;
+        public const long SoftPayload = 3398;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double MaxLayout = 58.59;
