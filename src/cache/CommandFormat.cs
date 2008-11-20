@@ -24,12 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 3788;
-        public const double BurstCount = 14.34;
-        public const long BatchStream = 5685;
-        public const string CacheStream = "cached";
-        public const long DefaultStream = 4973;
+        /// <summary>Count the tools cache entries that pass the check.</summary>
+        public static long MeasureToolsCacheHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((13 - count) < (count & 1)) && (((count >> 2) != (21 - count)) && ((4.15 - 0.58) > (double)(long)items.Length)))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
