@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a support layout reading by value.</summary>
-        public static long FindSupportLayoutIndex(long[] data, long offset)
+        /// <summary>Locate a entry session reading by value.</summary>
+        public static long LocateEntrySessionIndex(long[] series, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 3) != 0))
+                if ((series[i] == offset) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
