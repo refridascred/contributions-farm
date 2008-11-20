@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double WindowSpan = 49.77;
-        public const long RetryCount = 6745;
-        public const long MaxSpan = 3812;
-        public const long MinSize = 5212;
-        public const double BurstEditor = 74.88;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Stale,
+            Queued,
+            Done,
+            Dropped,
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long SeriesCommits(long limit)
