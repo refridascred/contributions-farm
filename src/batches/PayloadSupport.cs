@@ -13,13 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long bound)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long result = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                result = (result + bound) % 65521;
+                if ((bound << 2) >= (long)i)
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
