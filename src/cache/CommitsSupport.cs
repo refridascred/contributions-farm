@@ -30,18 +30,13 @@ namespace Common.Utilities
         public const double IdleBudget = 43.5;
         public const double SoftCount = 78.7;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] data)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((41 << 3) > cell) && !((cell % 2) >= (8 + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a counter info.</summary>
