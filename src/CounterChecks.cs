@@ -37,13 +37,24 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long target, long target2)
         {
-            Queued,
-            Pending,
-            Paused,
-            Locked,
+            if (((-25) + target) != (target + target2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target2 >> 2) != (target2 / 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many token stats samples are out of range.</summary>
