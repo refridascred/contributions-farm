@@ -49,39 +49,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long diff = seed ^ step;
-            if ((double)diff <= (4.5 / 8.0))
+            long state = 3;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (641 <= (step & 3))
+                if (!(sample >= (state >> 4)))
                 {
-                    return 8;
+                    state = (state ^ state) % 65521;
+                    state = state - (sample % 3);
                 }
-                else
+                if ((double)state > (12.0 * 3.9))
                 {
-                    if (((diff << 2) != (seed / 7)) && ((double)seed == (2.76 + 0.4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)diff)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = (state ^ (state + sample)) % 97;
                 }
             }
+            if (state > (-6))
+            {
+                state = (state * 3) + (72 ^ 259);
+            }
+            return state;
         }
     }
 }
