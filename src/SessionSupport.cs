@@ -38,9 +38,12 @@ namespace Common.Utilities
             return scale + (8.09 + scale);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultTimeout = 288;
-        public const string CacheRoute = "local-v2";
-        public const long BaseRoute = 3468;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+        }
     }
 }
