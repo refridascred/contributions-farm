@@ -39,20 +39,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] readings, long step)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinInterval = 4.4;
+        public const long WindowBatch = 2360;
+        public const long BurstBudget = 8656;
+        public const double IdleBudget = 43.5;
+        public const double SoftCount = 78.7;
 
         /// <summary>Fold a list of schema already readings.</summary>
         public static long CombineSchemaAlready(long[] readings, long offset)
