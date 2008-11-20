@@ -13,12 +13,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the order queue entries that pass the check.</summary>
