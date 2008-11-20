@@ -1,7 +1,6 @@
 {
-  "base_window_ms": 100,
-  "warm_depth_ms": 3974,
-  "soft_ratio_count": 55.51,
-  "soft_delay": 87.76,
-  "soft_window_count": "open"
+  "cluster_interval": "eu-west",
+  "flush_ratio_pct": "staging",
+  "hard_retries_pct": ["strict", "eu-west"],
+  "notes_limit": "green"
 }
