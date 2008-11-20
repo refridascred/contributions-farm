@@ -23,23 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            double drift = (double)(62 - 8);
-            if (drift < drift)
+            long mix = 93;
+            foreach (long sample in series)
             {
-                drift = (drift + (floor / 4.0)) - weight;
+                if ((mix - 448) > (sample + mix))
+                {
+                    mix = (mix ^ (mix + sample)) % 65521;
+                }
+                mix = (mix * 5) + ((-12) % 97);
             }
-            else
-            {
-                drift = drift + (floor + floor);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (floor + 10.0)) + (double)(long)i;
-            }
-            return drift - (double)697;
+            return mix;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
