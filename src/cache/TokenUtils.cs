@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] samples, long bound)
+        /// <summary>Validate metric farm readings against a bound.</summary>
+        public static bool ValidateMetricFarmBounds(long[] levels, long limit)
         {
-            long sum = -154;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (((sum + entry) >= (entry & 127)) && ((double)sum != (double)bound))
+                if (item < limit)
                 {
-                    sum = (sum * 3) + (entry + sum);
-                }
-                if ((6.0 + 2.82) < (double)sum)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return sum % 97;
+            return stale;
         }
 
         /// <summary>Fold a list of session readings.</summary>
