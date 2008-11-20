@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleFactor = 87.19;
-        public const long BurstProfile = 4450;
-        public const long RetryScore = 2761;
-        public const double CacheLevel = 79.11;
-        public const long StepSpan = 937;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long origin, long target)
+        {
+            if (!(2.0 <= (double)target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)target > (double)276) || ((345 + target) > target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin - origin) <= target) && ((target >> 5) == (target & 127)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + target) >= (728 ^ target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitCount = "latest-v2";
