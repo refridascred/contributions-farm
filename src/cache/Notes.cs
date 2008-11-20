@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "stable-edge";
+        public const long SoftLevel = 1542;
+        public const long MaxSize = 4871;
+        public const long BurstLevel = 2901;
+        public const string WindowSpan = "fallback-1";
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long limit, long step)
