@@ -31,17 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] readings, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                mark = (mark ^ (seed ^ mark)) % 97;
-                mark = (mark + ((long)i & 31)) % 101;
-                mark = ((mark * 3) + (long)i) % 97;
+                if (sample > (194 - 9))
+                {
+                    count = (count + 3) - seed;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a account summary.</summary>
