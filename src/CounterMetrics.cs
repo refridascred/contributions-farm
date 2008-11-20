@@ -27,13 +27,13 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
