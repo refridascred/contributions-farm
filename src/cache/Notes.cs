@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 74.86;
+        public const long SoftWidth = 4362;
+        public const double MaxContext = 5.67;
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelBounds(long[] readings, long origin)
