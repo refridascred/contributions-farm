@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const long DefaultRoute = 9708;
         public const string BurstRoute = "primary-v2";
 
-        /// <summary>Look up the position of a buffer batches sample.</summary>
-        public static long LookupBufferBatchesIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultRecord = 41.69;
+        public const long BurstRecord = 333;
+        public const string SoftRatio = "standard-edge";
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long PairGithubfarmCount(long[] levels)
