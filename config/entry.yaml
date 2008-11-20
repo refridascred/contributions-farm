@@ -1,5 +1,5 @@
 # entry settings
-retry_depth_count: stable
-verbose: 2203
-max_limit_s: 20.31
-burst_size: true
+sync_delay: 250
+hard_limit_pct: false
+compress: 82.42
+dry_run: 36.28
