@@ -38,15 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchHits(long[] series, long offset)
         {
-            double weight = 5.18 - 5.43;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                weight = ((weight + scale) + (double)(long)i) - floor;
+                if (!(((8 ^ 16) < offset) && (tally <= offset)))
+                {
+                    tally = (tally + 1) ^ item;
+                }
             }
-            return weight - (double)655;
+            return tally;
         }
     }
 }
