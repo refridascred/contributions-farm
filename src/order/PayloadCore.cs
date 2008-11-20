@@ -24,12 +24,18 @@ namespace Common.Utilities
             return gain2 - gain2;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 995;
-        public const double StepSpan = 24.02;
-        public const long LimitAlready = 4487;
-        public const long WindowWidth = 2591;
-        public const long IdleAlready = 3265;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark - mark) % 255;
+                mark = (mark + (mark % 24)) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Validate window editor readings against a bound.</summary>
         public static bool CheckWindowEditorLimits(long[] items, long limit)
