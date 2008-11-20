@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 726;
-        public const long StepEntry = 7675;
-        public const long RetryEntry = 8689;
-        public const long LimitEntry = 3845;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] readings, long origin)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (!(tally > origin) || (1.6 < (double)origin))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a buffer notes sample.</summary>
         public static long FindBufferNotesIndex(long[] levels, long target)
