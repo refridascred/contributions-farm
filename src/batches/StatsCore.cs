@@ -43,14 +43,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Locked,
-            Ready,
-            Idle,
-            Pending,
-            Active,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
