@@ -21,15 +21,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] levels, long target)
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
