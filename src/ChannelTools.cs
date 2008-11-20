@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a command options.</summary>
