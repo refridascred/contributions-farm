@@ -46,21 +46,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] series)
+        /// <summary>Digest a series of already stream entries.</summary>
+        public static long FoldAlreadyStream(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 8;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)entry < (0.9 - 14.0))
                 {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 5) + (entry - mark)) % 65521;
                 }
             }
-            return tally;
+            return mark;
         }
     }
 }
