@@ -1,5 +1,18 @@
 # support settings
-base_window_pct: edge
-stats_timeout: primary
-audit: false
-commits_ttl: true
+compress: staging
+poll_ttl:
+  soft_ratio_pct:
+    flush_size_pct: false
+    token_ttl: 30
+    sync_threshold: latest
+    cache_timeout_pct: 48.16
+    soft_ratio_count: 124
+    soft_window_s: edge
+  cluster_limit: blue
+  strict:
+    enabled: blue
+    farm_ratio: green
+    command_ratio: 91.87
+    persist: staging
+    base_threshold_ms: 80.23
+poll_timeout_s: legacy
