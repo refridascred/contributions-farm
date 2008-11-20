@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            Ready,
-            Draft,
-            New,
-            Pending,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((14.0 * 5.4) == (double)reading)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
