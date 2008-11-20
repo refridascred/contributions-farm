@@ -33,16 +33,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                sum = (sum + (target + target)) % 65521;
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((matches + matches) <= matches)
+                {
+                    matches = ((matches + 1) - sample) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of metrics support entries.</summary>
