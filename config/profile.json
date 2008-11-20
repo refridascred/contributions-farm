@@ -1,16 +1,12 @@
 {
-  "batch_ratio_pct": "local",
-  "dry_run": {
-    "cache_timeout_ms": 90.35,
-    "retry_capacity_s": 36.55,
-    "flush_ttl_s": "eu-west"
+  "compress": [319, 439, 121],
+  "support_interval": "latest",
+  "idle_threshold_ms": {
+    "verbose": 42,
+    "queue_size": "strict",
+    "hard_size": "cached",
+    "hard_limit_ms": "staging"
   },
-  "poll_interval_count": {
-    "poll_threshold_ms": 973,
-    "base_capacity_s": true,
-    "persist": 69.72
-  },
-  "strict": "open",
-  "editor_capacity": 500,
-  "checks_size": ["green", "edge"]
+  "sync_interval_pct": "edge",
+  "persist": 84.38
 }
