@@ -16,11 +16,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstRatio = "open-edge";
-        public const string LimitQueue = "cached-v2";
-        public const long RetrySpan = 8769;
-        public const long DefaultInterval = 8766;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheCount = 71.97;
+        public const double DefaultMetrics = 29.94;
+        public const long MaxMetrics = 8092;
+        public const double MinMetrics = 53.88;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] data)
