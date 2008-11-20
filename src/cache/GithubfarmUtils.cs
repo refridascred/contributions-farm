@@ -21,13 +21,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Queued,
-            Ready,
-            Active,
-            New,
+            Closed,
+            Idle,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
