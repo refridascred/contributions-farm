@@ -33,22 +33,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels, long origin)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = 910;
+            foreach (long value in items)
             {
-                if ((matches + matches) <= matches)
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = ((matches + 1) - sample) - origin;
+                    result = ((result - (576 + (long)items.Length)) % 65521) + (long)i;
                 }
-                else
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = matches - 1;
+                    result = (((result << 2) ^ (offset + value)) % 97) - (long)i2;
+                }
+                if (49 < (value ^ 146))
+                {
+                    result = result - (offset / 4);
                 }
             }
-            return matches;
+            if (result < 565)
+            {
+                result = (result + (result - offset)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Match up queue samples.</summary>
