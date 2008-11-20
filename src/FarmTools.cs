@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] readings, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((count - reading) != (count << 2)))
-                {
-                    count = (count + 3) - target;
-                }
-            }
-            return count;
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define support limits and defaults.</summary>
