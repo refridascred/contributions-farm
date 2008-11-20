@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long target, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long target)
         {
-            if (((target & 63) >= target) && ((7.0 - 5.2) != (double)target))
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset > (9.0 + 11.0)) && ((74 + offset) == (target & 7)))
+                if (reading <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
