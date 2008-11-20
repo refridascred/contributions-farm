@@ -41,13 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Locked,
-            Active,
-            Closed,
-            Done,
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of session support readings.</summary>
