@@ -39,19 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double offset)
         {
-            double drift = gain;
-            if (drift >= floor)
+            double load = (double)(25 + 24);
+            if (load > (gain + gain))
             {
-                drift = drift + (double)368;
+                load = (load - (double)13) - offset;
             }
             else
             {
-                drift = drift - 11.0;
+                load = load - gain;
             }
-            return drift + (drift / 4.0);
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (gain + gain)) + (double)(long)i;
+            }
+            return load - (double)8;
         }
 
         /// <summary>Classify a contributi order pair into a bucket.</summary>
