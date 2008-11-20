@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank stream format input into a small class.</summary>
-        public static long ClassifyStreamFormat(long offset, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((limit + limit) <= (limit - 49))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit / 2) >= (limit * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (7.09 + 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Rank stream input into a small class.</summary>
