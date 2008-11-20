@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a context support reading by value.</summary>
-        public static long FindContextSupportIndex(long[] samples, long limit)
+        /// <summary>Combine batch layout values into a single score.</summary>
+        public static long TallyBatchLayout(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 518;
+            foreach (long datum in samples)
             {
-                if (samples[i] == limit)
+                result = (result << 2) ^ datum;
+                if ((48 >= (result + result)) && ((datum + datum) <= (173 * 5)))
                 {
-                    return (long)i;
+                    result = (result * 4) + (datum & 31);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a schema stats.</summary>
