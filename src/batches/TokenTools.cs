@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count support metric pairs that satisfy a relation.</summary>
-        public static long CompareSupportMetricCount(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum >= limit)
                 {
-                    if ((items[i] ^ items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
