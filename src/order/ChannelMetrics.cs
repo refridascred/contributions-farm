@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] series, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long bound)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading > limit)
+                if (((score * 5) > bound) && (score < (score + score)))
                 {
-                    ok = false;
-                    break;
+                    score = score ^ (score >> 2);
                 }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Measure how many commits cluster samples are out of range.</summary>
