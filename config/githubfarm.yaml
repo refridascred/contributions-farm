@@ -1,12 +1,11 @@
 # githubfarm settings
-layout_delay: primary
-audit:
-  base_size_s: green
-  max_interval_count: false
-  graph_limit: 21
-  dry_run: 47.86
-  metrics_limit: local
-poll_ttl_s: staging
-batch_size_s: 3122
-githubfarm_depth: 30.72
-editor_depth: true
+soft_capacity_s: 250
+compress:
+  buffer_depth: 4906
+  sync_delay_s: stable
+  enabled:
+    - 463
+    - 467
+  persist: 82.39
+  min_depth_ms: 7087
+dry_run: true
