@@ -82,12 +82,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long bound)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                if (items[i] == target)
                 {
                     return (long)i;
                 }
