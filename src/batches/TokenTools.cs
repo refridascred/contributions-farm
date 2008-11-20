@@ -27,13 +27,9 @@ namespace Common.Utilities
         public const long HardStats = 5451;
         public const long CacheTimeout = 3542;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Paused,
-            Active,
-            Pending,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "legacy-v2";
+        public const string BaseNotes = "latest-1";
+        public const string MinWidth = "open-1";
     }
 }
