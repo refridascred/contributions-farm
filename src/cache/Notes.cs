@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] samples)
         {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a notes reading.</summary>
