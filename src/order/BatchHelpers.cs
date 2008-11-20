@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] items, long target)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Ready,
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a window summary.</summary>
