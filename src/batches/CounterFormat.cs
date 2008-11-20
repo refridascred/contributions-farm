@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double floor)
+        /// <summary>Validate cache counter readings against a bound.</summary>
+        public static bool ValidateCacheCounterLimits(long[] levels, long offset)
         {
-            double bias = (floor + weight) / 7.0;
-            if (bias < weight)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                bias = bias + (2.0 + 6.7);
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)998) + (double)(long)i;
-            }
-            return bias + (double)6;
+            return stale;
         }
 
         /// <summary>Accumulate tools samples.</summary>
