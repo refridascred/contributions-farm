@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string BurstRoute = "stable-edge";
         public const long MaxFactor = 436;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
