@@ -59,13 +59,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(score < seed))
+                {
+                    score = (score << 2) ^ (1 - seed);
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
