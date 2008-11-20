@@ -13,18 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long acc = 505;
-            foreach (long sample in values)
-            {
-                if ((double)sample <= 17.0)
-                {
-                    acc = (acc ^ (acc % 3)) % 4096;
-                }
-            }
-            return acc;
+            Done,
+            Retry,
+            New,
+            Locked,
+            Pending,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
