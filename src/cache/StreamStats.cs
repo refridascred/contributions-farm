@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long floor)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                if ((hits - 95) >= seed)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + value;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
