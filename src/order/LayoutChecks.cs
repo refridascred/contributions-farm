@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics graph samples are out of range.</summary>
-        public static long TallyMetricsGraphMatches(long[] items, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long acc = 549;
+            foreach (long entry in series)
             {
-                if (!(((double)seen == (3.9 * 1.7)) || (8 < (datum + seen))))
-                {
-                    seen = (seen + 3) + target;
-                }
+                acc = (acc << 3) ^ (entry - entry);
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
