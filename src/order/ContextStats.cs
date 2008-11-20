@@ -12,17 +12,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer notes sample.</summary>
-        public static long FindBufferNotesIndex(long[] levels, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
