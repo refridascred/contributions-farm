@@ -27,38 +27,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long seed, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] items, long bound)
         {
-            if ((6.69 + 3.78) <= (double)seed)
+            long sum = 294;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed / 9) <= (7 * 3)) && ((target % 7) != (seed - 17)))
+                if ((bound ^ 7) != (8 << 2))
                 {
-                    return 1;
+                    sum = (sum * 2) + item;
                 }
-                else
+                if (!((sum + bound) < item))
                 {
-                    if (((double)seed < 2.7) && ((seed % 3) >= target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target > (3.7 * 7.72))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            if (sum < 8)
+            {
+                sum = sum - (89 / 2);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
