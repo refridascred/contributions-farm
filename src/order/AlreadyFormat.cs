@@ -89,17 +89,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a stream cluster reading by value.</summary>
-        public static long LookupStreamClusterIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1410;
+        public const long BaseWindow = 5208;
+        public const long BatchDepth = 7359;
+        public const long SoftWindow = 2891;
     }
 }
