@@ -19,19 +19,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] samples, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (value != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
