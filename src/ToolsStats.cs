@@ -33,21 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of metric githubfarm readings.</summary>
-        public static long CompareMetricGithubfarmCount(long[] series)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Idle,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the report level values.</summary>
