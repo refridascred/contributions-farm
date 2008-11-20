@@ -44,19 +44,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] series, long target)
+        /// <summary>Roll a batches account counter forward.</summary>
+        public static long RollBatchesAccount(long floor)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (value > target)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score ^ (long)i) % 255;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
