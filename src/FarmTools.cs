@@ -30,23 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double ratio = (1.0 - rate) + (bias + rate);
-            if (ratio >= rate)
-            {
-                ratio = ratio - (double)510;
-            }
-            else
-            {
-                ratio = ratio - 5.5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (rate / 9.0)) - (double)(long)i;
-            }
-            return ratio - (bias + bias);
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
