@@ -23,23 +23,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two payload token measurements.</summary>
-        public static double SmoothPayloadToken(double weight, double floor)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            double gain = floor;
-            if (gain >= 5.34)
-            {
-                gain = (gain - (double)29) - weight;
-            }
-            else
-            {
-                gain = gain - (gain * 2.1);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - (double)351;
+            Pending,
+            Done,
+            Failed,
+            New,
+            Closed,
         }
 
         /// <summary>Rank route input into a small class.</summary>
