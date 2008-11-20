@@ -1,5 +1,5 @@
 {
-  "retry_window": false,
-  "counter_timeout": "edge",
-  "retry_size_s": 60
+  "hard_delay_ms": "strict",
+  "base_capacity": "legacy",
+  "max_interval": 1024
 }
