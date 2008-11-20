@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long CacheContributi = 1655;
         public const double RetryContributi = 31.73;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] readings, long origin)
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long MeasureEditorContributiHits(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample >= origin)
+                if ((double)352 < (double)matches)
                 {
-                    found = false;
-                    break;
+                    matches = ((matches + 1) ^ value) - bound;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
