@@ -1,6 +1,6 @@
-id,ratio,region,label
-1,blue,edge,36.06
-2,75.74,12.1,75.64
-3,67.55,67.54,761
-4,24.71,open,564
-5,green,67.46,89.3
+id,score,state,label,ratio
+1,42.53,45,121,642
+2,primary,436,71.22,952
+3,latest,16.45,legacy,primary
+4,35.86,430,243,edge
+5,360,387,43.46,874
