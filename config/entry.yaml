@@ -1,12 +1,26 @@
 # entry settings
-githubfarm_delay:
-  soft_retries_s: primary
-  githubfarm_retries: stable
-  batch_delay_s:
-    - stable
-    - edge
-    - green
-  compress: 100
-  sync_size_s: 500
-context_window: 96.46
-idle_ttl_ms: 26
+flush_ratio_s: latest
+sync_size:
+  - local
+  - legacy
+  - open
+payload_capacity: false
+entry_limit: eu-west
+readonly:
+  max_timeout:
+    base_timeout: true
+    entry_ratio:
+      - edge
+      - edge
+      - legacy
+    cache_retries: false
+    sync_window_count: edge
+    readonly: edge
+  batch_depth: 59
+  commits_timeout:
+    verbose: 1024
+    sync_ratio_count: 2437
+    contributi_timeout: 85.23
+    enabled: true
+    retry_interval_ms: edge
+  base_size: false
