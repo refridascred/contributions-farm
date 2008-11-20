@@ -34,11 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 5785;
-        public const string CacheSpan = "local";
-        public const string HardLevel = "cached-v2";
-        public const string DefaultEditor = "open-edge";
-        public const double DefaultRatio = 52.24;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Synced,
+            Closed,
+            Ready,
+            Retry,
+            Draft,
+        }
     }
 }
