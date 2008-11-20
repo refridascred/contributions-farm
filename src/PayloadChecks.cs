@@ -80,22 +80,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] series, long step)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] levels)
         {
-            long result = -6;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step <= (sample - step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result * 2) + 60;
-                }
-                else
-                {
-                    result = (result + sample) % 97;
+                    if ((levels[i] - levels[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
