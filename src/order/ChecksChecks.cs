@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            double rate = gain;
+            return rate + span;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
