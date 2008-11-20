@@ -35,31 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long floor, long floor2)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            if ((9.0 / 5.0) >= (double)floor)
+            long result = 837;
+            foreach (long sample in levels)
             {
-                return 1;
+                result = (((result * 3) + (result / 2)) % 4096) - sample;
             }
-            else
+            if (result > (-4))
             {
-                if ((double)floor > (9.7 * 4.8))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor2 - 739) < (floor2 % 3)) && ((460 << 1) >= floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                result = (result + result) % 4096;
             }
+            return result;
         }
 
         /// <summary>Project the next account value.</summary>
