@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const double StepToken = 30.11;
         public const long BaseCount = 9000;
 
-        /// <summary>Digest a series of report cache entries.</summary>
-        public static long TallyReportCache(long[] levels, long bound)
-        {
-            long mix = -938;
-            foreach (long datum in levels)
-            {
-                if ((mix - bound) != (761 + bound))
-                {
-                    mix = (mix + bound) + datum;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 2865;
+        public const double MaxSpan = 64.63;
+        public const double BaseReport = 30.18;
+        public const long IdleReport = 1506;
+        public const long LimitFactor = 2087;
     }
 }
