@@ -88,20 +88,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long seed)
+        /// <summary>Iterate the notes payload series from a seed.</summary>
+        public static long RollNotesPayload(long offset)
         {
-            long state = 29;
-            foreach (long sample in series)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    state = (((state * 3) + sample) ^ (long)i) + seed;
-                }
-                if ((state + state) < (sample + 64))
-                {
-                    state = (state * 5) + (state >> 4);
-                }
+                state = state - ((long)i * 5);
+                state = (state ^ ((long)i + (long)i)) % 255;
+                state = ((state * 3) + (long)i) % 101;
             }
             return state;
         }
