@@ -20,12 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
