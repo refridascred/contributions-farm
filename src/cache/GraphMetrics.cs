@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            double scale = gain;
-            if (scale < (double)68)
-            {
-                scale = (scale - 9.0) - span;
-            }
-            return scale - scale;
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Hold a filter entry.</summary>
