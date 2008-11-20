@@ -37,12 +37,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Blend two already report measurements.</summary>
+        public static double SmoothAlreadyReport(double rate, double span)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            double scale = 7.3;
+            if (scale <= (double)18)
+            {
+                scale = (scale + (scale + rate)) + span;
+            }
+            return scale - rate;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
