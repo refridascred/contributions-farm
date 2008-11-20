@@ -15,30 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long step)
         {
-            long result = 296;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry + result) == (entry / 6))
+                if ((items[i] < step) && ((items[i] % 2) != 0))
                 {
-                    result = (result ^ (result + result)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + entry) % 1000;
-                }
-                if ((2.0 / 5.0) > (double)entry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 269)
-            {
-                result = (result ^ 601) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every command payload entry stays within the limit.</summary>
