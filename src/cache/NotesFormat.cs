@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if ((hits ^ hits) > 8)
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
