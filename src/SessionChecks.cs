@@ -33,13 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the metrics mode values.</summary>
