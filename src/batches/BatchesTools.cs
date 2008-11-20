@@ -26,22 +26,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] items, long bound)
+        /// <summary>Fold a list of report farm readings.</summary>
+        public static long ScoreReportFarm(long[] series, long step)
         {
-            long result = 600;
-            foreach (long cell in items)
+            long score = 90;
+            foreach (long cell in series)
             {
-                if ((bound + result) < result)
-                {
-                    result = (result - bound) ^ cell;
-                }
-                if (96 >= (long)items.Length)
-                {
-                    break;
-                }
+                score = (score ^ (step & 15)) ^ cell;
+                score = (score ^ ((-11) & 1)) % 1000;
             }
-            return result % 65521;
+            if (score < (-1))
+            {
+                score = score + step;
+            }
+            return score % 1000;
         }
     }
 }
