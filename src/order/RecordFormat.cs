@@ -38,21 +38,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound ^ step) < bound)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((2 % 64) != (bound ^ step))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up batch tools samples.</summary>
