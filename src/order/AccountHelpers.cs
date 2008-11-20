@@ -16,24 +16,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] readings, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] levels, long step)
         {
-            long state = 340;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                state = state ^ origin;
-                state = (state + ((long)readings.Length / 4)) % 101;
-                if (((state << 2) != (long)readings.Length) && ((entry - state) != (entry / 9)))
+                if (sample > step)
                 {
-                    state = ((state * 4) + origin) % 255;
-                }
-                else
-                {
-                    state = ((state * 4) + origin) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
