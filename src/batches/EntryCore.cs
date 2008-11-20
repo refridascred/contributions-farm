@@ -40,13 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] series, long floor)
         {
-            Draft,
-            Queued,
-            Done,
-            Retry,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((double)floor >= (3.5 / 9.0)) || ((double)floor < (1.74 / 5.0)))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph state values.</summary>
