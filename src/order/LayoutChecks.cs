@@ -30,17 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first session route entry that matches the target.</summary>
-        public static long LocateSessionRouteIndex(long[] samples, long floor)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
