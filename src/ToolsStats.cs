@@ -34,39 +34,22 @@ namespace Common.Utilities
         public const double MaxLevel = 12.96;
         public const long MinRatio = 5138;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] values, long step)
         {
-            long prev = origin - floor;
-            if (((double)origin >= (double)floor) && ((double)origin >= (double)95))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin < (floor + prev))
+                if ((cell >> 5) <= step)
                 {
-                    return 5;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if (!((floor >> 3) >= origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7.0 + 3.9) >= (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
