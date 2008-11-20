@@ -45,22 +45,17 @@ namespace Common.Utilities
             return drift - (ratio * 18.0);
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] levels, long floor)
         {
-            long score = 9;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((45 + score) >= (value * 5)))
+                if (levels[i] <= floor)
                 {
-                    score = (score ^ score) % 97;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (value ^ 449)) % 65521;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Derive the next batches report value from a seed.</summary>
