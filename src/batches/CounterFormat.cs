@@ -38,22 +38,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if (offset > (origin ^ offset))
             {
-                if ((229 / 9) < (datum % 7))
+                return 4;
+            }
+            else
+            {
+                if (!(offset >= (offset << 2)))
                 {
-                    matches = matches + 3;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((origin + offset) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (5.0 > (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
