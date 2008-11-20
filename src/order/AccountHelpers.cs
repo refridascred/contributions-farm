@@ -36,20 +36,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next notes metric value.</summary>
-        public static double ProjectNotesMetric(double ratio, double floor)
-        {
-            double ratio2 = floor;
-            if (ratio2 > (double)58)
-            {
-                ratio2 = (ratio2 + (floor / 7.0)) - ratio;
-            }
-            else
-            {
-                ratio2 = ratio2 - (floor + 5.36);
-            }
-            return ratio2 + (double)718;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardInterval = 5970;
+        public const double DefaultStats = 17.33;
+        public const string MinDepth = "alpha-edge";
+        public const long DefaultWidth = 6633;
+        public const string SoftStats = "primary-v2";
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
         public static long TallyEditorSessionOutliers(long[] data)
