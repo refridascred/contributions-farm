@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long origin)
         {
-            Synced,
-            Paused,
-            Dropped,
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = anchor ^ (long)i;
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a support token counter forward.</summary>
