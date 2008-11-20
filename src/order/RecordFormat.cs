@@ -51,18 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] series, long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mark = 76;
+            foreach (long entry in readings)
             {
-                if (datum > (64 / 8))
+                mark = (mark - (mark + mark)) % 255;
+                if (!((entry & 127) > mark))
                 {
-                    hits = (hits + 3) - offset;
+                    break;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
