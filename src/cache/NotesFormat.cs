@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] values)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double bias = (double)(0 - 0);
+            if (bias > (double)46)
             {
-                if ((hits ^ hits) > 8)
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                bias = (bias - bias) - ratio;
             }
-            return hits;
+            else
+            {
+                bias = bias - (double)74;
+            }
+            return bias - span;
         }
 
         /// <summary>Hold a cache stats.</summary>
