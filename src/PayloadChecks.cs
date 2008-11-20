@@ -81,12 +81,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Active,
-            Synced,
-            Ready,
+            New,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
