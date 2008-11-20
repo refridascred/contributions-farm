@@ -46,18 +46,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already stream entries.</summary>
-        public static long FoldAlreadyStream(long[] samples)
-        {
-            long mark = 8;
-            foreach (long entry in samples)
-            {
-                if ((double)entry < (0.9 - 14.0))
-                {
-                    mark = ((mark * 5) + (entry - mark)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftLevel = "local-v2";
+        public const string IdleFarm = "cached";
+        public const long LimitFarm = 3209;
+        public const long LimitSpan = 5595;
     }
 }
