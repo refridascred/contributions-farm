@@ -28,10 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowCount = 8049;
-        public const double CacheMetric = 56.25;
-        public const double DefaultMetric = 26.22;
-        public const double RetryMetric = 30.67;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value + floor) < (12 % 8))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
