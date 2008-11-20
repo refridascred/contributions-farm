@@ -1,10 +1,5 @@
 {
-  "cache_depth_count": "latest",
-  "strict": {
-    "persist": false,
-    "idle_retries_s": "primary",
-    "sync_limit": 100,
-    "command_timeout": true
-  },
-  "persist": 500
+  "strict": 8491,
+  "idle_capacity": 50,
+  "warm_delay": false
 }
