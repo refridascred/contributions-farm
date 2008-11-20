@@ -74,11 +74,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 5697;
-        public const long BaseInterval = 7397;
-        public const string BurstBudget = "fallback-1";
-        public const long BatchRecord = 3391;
-        public const long HardRecord = 6031;
+        /// <summary>Combine support checks values into a single score.</summary>
+        public static long WeighSupportChecks(long[] samples)
+        {
+            long anchor = 35;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor << 2) ^ (item >> 1)) % 1000;
+                if (((-446) - item) != (1 - 6))
+                {
+                    anchor = (anchor + (32 - item)) % 97;
+                }
+                else
+                {
+                    anchor = anchor + (anchor << 2);
+                }
+            }
+            if (anchor < 918)
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
