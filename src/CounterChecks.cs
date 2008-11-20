@@ -37,18 +37,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (matches > (sample >> 3))
-                {
-                    matches = matches + 2;
-                }
+                score = (score ^ score) % 255;
+                score = score + (offset / 7);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
