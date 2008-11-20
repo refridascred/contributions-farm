@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many report farm samples are out of range.</summary>
+        public static long CountReportFarmMatches(long[] readings)
         {
-            Failed,
-            Stale,
-            Pending,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (matches < (matches * 5))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
