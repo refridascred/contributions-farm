@@ -1,7 +1,7 @@
-id,count,token
-1,863,local
-2,82.32,683
-3,primary,cached
-4,7.93,green
-5,stable,cached
-6,eu-west,268
+id,level,ratio,owner,label
+1,latest,16.87,open,369
+2,1.02,stable,238,69.43
+3,strict,939,785,staging
+4,staging,cached,71.97,20
+5,726,strict,strict,local
+6,766,open,288,924
