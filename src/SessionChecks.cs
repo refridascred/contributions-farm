@@ -17,24 +17,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long limit2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            if (1 < limit2)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                anchor = (anchor + (bound + anchor)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit2 * 5) == (limit2 + 857))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the record status values.</summary>
