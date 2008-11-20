@@ -65,18 +65,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] series)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 899;
+            foreach (long item in series)
             {
-                if ((count % 7) != (cell - count))
-                {
-                    count = count + 3;
-                }
+                result = (((result << 3) ^ 2) % 4096) - item;
             }
-            return count;
+            return result % 65521;
         }
     }
 }
