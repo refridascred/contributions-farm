@@ -88,9 +88,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstWidth = 5146;
-        public const long SoftTimeout = 5450;
-        public const double BurstRoute = 3.28;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((0 << 1) < (sum ^ (long)i)) && ((step * 4) < (4 >> 3)))
+                {
+                    sum = ((sum * 5) + (sum + 389)) % 1000;
+                    sum = (sum - (step + step)) % 97;
+                }
+                else
+                {
+                    sum = (sum + ((long)i + step)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
     }
 }
