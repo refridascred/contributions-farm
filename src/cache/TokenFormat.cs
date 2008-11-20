@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchInterval = 743;
+        public const string StepLevel = "legacy-v2";
+        public const double WindowCount = 54.01;
+        public const long IdleBudget = 2606;
+        public const long SoftGithubfarm = 6516;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long seed)
