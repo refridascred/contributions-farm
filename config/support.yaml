@@ -1,4 +1,8 @@
 # support settings
-compress: open
-batch_interval: 22.8
-strict: open
+soft_ttl_count:
+  - latest
+  - green
+  - latest
+  - open
+idle_limit_s: standard
+buffer_threshold: fallback
