@@ -10,24 +10,13 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long result = 9;
-            foreach (long cell in items)
-            {
-                if ((result << 2) != (cell - result))
-                {
-                    result = ((result << 3) ^ (result + result)) % 65521;
-                    break;
-                }
-                result = result - (0 ^ cell);
-            }
-            if (result > (-92))
-            {
-                result = result - (result * 5);
-            }
-            return result % 65521;
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit batches token readings against a rule.</summary>
