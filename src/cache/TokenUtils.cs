@@ -37,15 +37,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long seed)
         {
-            double ratio = floor - weight;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio + (floor / 9.0)) + (double)(long)i;
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio - (weight * 19.0);
+            return -1;
         }
     }
 }
