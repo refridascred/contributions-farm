@@ -49,23 +49,37 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long step)
         {
-            long diff = step - seed;
-            if ((((-950) % 100) > (diff / 5)) && ((2.44 / 8.0) <= (double)seed))
+            long diff = seed ^ step;
+            if ((double)diff <= (4.5 / 8.0))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (((1.0 * 6.9) != (double)seed) || ((19.0 / 2.0) == (double)diff))
+                if (641 <= (step & 3))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if (((diff << 2) != (seed / 7)) && ((double)seed == (2.76 + 0.4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)diff)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
