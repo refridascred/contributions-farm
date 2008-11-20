@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long TallyRecordOrderHits(long[] values, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] data)
         {
             long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((hits >> 1) < floor) && ((0 << 2) < floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
