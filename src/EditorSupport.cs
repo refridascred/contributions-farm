@@ -92,15 +92,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next stats support value from a seed.</summary>
-        public static long RollStatsSupport(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstWidth = 5146;
+        public const long SoftTimeout = 5450;
+        public const double BurstRoute = 3.28;
     }
 }
