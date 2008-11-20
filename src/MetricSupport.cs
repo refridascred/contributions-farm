@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public double Ratio { get; set; }
+            Retry,
+            Draft,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Roll a order counter forward.</summary>
