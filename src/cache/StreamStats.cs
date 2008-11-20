@@ -55,11 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double DefaultBudget = 96.82;
-        public const long MaxBudget = 5727;
-        public const long BurstInterval = 9814;
-        public const long RetryToken = 9715;
-        public const long SoftToken = 7381;
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels, long limit)
+        {
+            long mark = 160;
+            foreach (long datum in levels)
+            {
+                if ((limit + limit) <= (limit + datum))
+                {
+                    mark = (mark * 4) + ((long)levels.Length % 10);
+                }
+                if (((datum % 3) < ((long)levels.Length - mark)) || (datum > (64 ^ datum)))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
+        }
     }
 }
