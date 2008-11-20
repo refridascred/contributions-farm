@@ -27,12 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] samples, long origin)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
