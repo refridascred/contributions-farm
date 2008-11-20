@@ -45,11 +45,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next contributi layout value from a seed.</summary>
+        public static long RollContributiLayout(long origin)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = (carry + (carry + carry)) % 65521;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
