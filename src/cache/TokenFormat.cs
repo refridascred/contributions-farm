@@ -44,23 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stream batch figure with a bias.</summary>
-        public static double ProjectStreamBatch(double weight, double offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] readings, long limit)
         {
-            double rate = offset + weight;
-            if (rate <= (0.3 / 9.0))
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                rate = rate + weight;
+                if (entry != limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (2.79 + offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - 6.0;
+            return ok;
         }
     }
 }
