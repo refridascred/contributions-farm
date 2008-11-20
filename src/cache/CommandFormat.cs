@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchWidth = 16.11;
-        public const long MinStream = 7550;
-        public const double IdleSpan = 74.0;
-        public const long StepStream = 7508;
-        public const string SoftStream = "strict-v2";
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double span)
+        {
+            double ratio = (double)649 * 2.8;
+            if (ratio < scale)
+            {
+                ratio = (ratio - 6.03) + span;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
