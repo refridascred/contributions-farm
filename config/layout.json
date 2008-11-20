@@ -1,6 +1,8 @@
 {
-  "flush_threshold_s": 1.79,
-  "poll_capacity": false,
-  "batch_limit": 92,
-  "counter_delay": "staging"
+  "warm_limit_s": 0.76,
+  "idle_threshold_s": false,
+  "min_ttl": true,
+  "poll_limit_s": false,
+  "cache_window": "green",
+  "window_threshold": 60
 }
