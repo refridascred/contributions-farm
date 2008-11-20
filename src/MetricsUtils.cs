@@ -31,19 +31,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every batch contributi entry stays within the limit.</summary>
-        public static bool CheckBatchContributiBounds(long[] data, long seed)
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long AuditEditorFarmMatches(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (entry > seed)
+                if (((8 + hits) > (reading ^ 717)) || ((reading / 7) == (reading << 2)))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Describe the batch class values.</summary>
