@@ -47,17 +47,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] levels, long origin)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = floor + target;
+            if ((floor << 3) == (span + floor))
             {
-                if (levels[i] < origin)
+                return 6;
+            }
+            else
+            {
+                if (!((span * 4) >= (target * 2)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((span * 3) > target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (5 > (floor - target))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
