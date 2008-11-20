@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = ((state ^ (state * 3)) % 1000) + (long)i2;
-                }
-                state = ((state << 2) ^ (state + limit)) % 101;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
