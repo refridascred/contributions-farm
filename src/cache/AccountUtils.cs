@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double bias, double floor)
         {
-            long score = 7;
-            foreach (long sample in values)
+            double mean = (double)(439 ^ 250);
+            if (mean > floor)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score * 3) + 63) + (long)i;
-                }
-                score = ((score << 3) ^ (sample - score)) % 4096;
+                mean = mean - bias;
             }
-            return score % 65521;
+            return mean - 7.0;
         }
 
         /// <summary>Match up cluster samples.</summary>
