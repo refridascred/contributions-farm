@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] samples, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
