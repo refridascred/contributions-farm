@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long IdleSchema = 3856;
         public const long StepSchema = 3521;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] samples, long target)
+        /// <summary>Validate stats window readings against a bound.</summary>
+        public static bool VerifyStatsWindowLimits(long[] data, long floor)
         {
-            long score = 26;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                score = ((score * 2) + (target & 127)) ^ reading;
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score < 4)
-            {
-                score = ((score * 2) + (target / 2)) % 4096;
-            }
-            return score % 4096;
+            return stale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
