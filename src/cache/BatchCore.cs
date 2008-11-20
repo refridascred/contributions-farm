@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long step2)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long seed, long floor)
         {
-            long offset = step - step2;
-            if ((step - step) <= offset)
+            if ((floor & 31) <= floor)
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if ((step2 % 64) != (step % 16))
+                if ((double)seed >= (double)floor)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    if (9 < (seed - seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
