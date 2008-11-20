@@ -1,5 +1,5 @@
 {
-  "persist": "primary",
-  "strict": "standard",
-  "enabled": "latest"
+  "stream_delay": 30,
+  "sync_window_s": true,
+  "dry_run": 7955
 }
