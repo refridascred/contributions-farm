@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Compare every pair of batches commits readings.</summary>
+        public static long PairBatchesCommitsCount(long[] items)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
