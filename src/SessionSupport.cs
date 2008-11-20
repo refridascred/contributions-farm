@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepCount = 31.67;
-        public const long BurstReport = 4342;
-        public const long MinWidth = 1279;
-        public const long CacheTimeout = 9914;
-        public const double MinReport = 54.74;
+        /// <summary>Locate a channel token reading by value.</summary>
+        public static long FindChannelTokenIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= floor) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double WindowSpan = 49.77;
