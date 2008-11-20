@@ -82,12 +82,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
