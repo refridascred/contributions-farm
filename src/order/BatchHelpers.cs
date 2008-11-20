@@ -13,16 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long floor2)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            if (!((floor << 3) >= (floor + floor)))
             {
-                mix = ((mix * 5) + mix) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (!((floor - floor2) <= (floor2 + (-261))))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the schema record entries that pass the check.</summary>
