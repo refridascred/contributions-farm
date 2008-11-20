@@ -31,12 +31,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public double Region { get; set; }
+            public long Owner { get; set; }
             public long Stamp { get; set; }
-            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
