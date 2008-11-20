@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            Idle,
-            Synced,
-            Stale,
-            Ready,
-            Draft,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits >= (double)value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
