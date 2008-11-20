@@ -34,32 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] values)
         {
-            long next = bound - step;
-            if ((step ^ next) >= next)
+            long mark = 55;
+            foreach (long cell in values)
             {
-                return 4;
+                mark = ((mark ^ (mark & 3)) % 101) ^ cell;
             }
-            else
-            {
-                if ((next - bound) <= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) > (378 ^ 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
