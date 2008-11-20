@@ -39,17 +39,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 5;
+            foreach (long cell in data)
             {
-                if (values[i] == bound)
+                if ((486 - cell) > (sum % 100))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + cell) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (long)data.Length) % 97;
+                }
+                if (((double)sum != (0.1 + 19.0)) && ((cell & 255) != (sum & 255)))
+                {
+                    sum = (sum ^ (sum % 8)) % 101;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a editor info.</summary>
