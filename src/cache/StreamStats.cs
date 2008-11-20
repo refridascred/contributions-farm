@@ -23,11 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] samples)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value << 2) < (484 % 97))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
