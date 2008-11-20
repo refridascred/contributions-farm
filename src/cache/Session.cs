@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
