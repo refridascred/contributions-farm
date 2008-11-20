@@ -32,11 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultSize = 2423;
-        public const long MinEditor = 3711;
-        public const long IdleInterval = 7556;
-        public const long MaxEditor = 3128;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "stable-edge";
+        public const double BurstBudget = 65.61;
+        public const double StepContext = 8.22;
+        public const string DefaultContext = "primary-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double BurstTimeout = 27.75;
