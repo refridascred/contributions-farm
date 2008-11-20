@@ -13,12 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Compare every pair of editor stats readings.</summary>
+        public static long OverlapEditorStatsCount(long[] values)
         {
-            Paused,
-            Stale,
-            Closed,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of buffer batch entries.</summary>
