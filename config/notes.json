@@ -1,5 +1,16 @@
 {
-  "queue_limit": false,
-  "format_threshold": 100,
-  "dry_run": [15, 9, 268, 237]
+  "burst_ttl": false,
+  "soft_interval_s": "cached",
+  "poll_timeout": 2238,
+  "retry_timeout_ms": {
+    "flush_capacity": "local",
+    "hard_limit": 64.75,
+    "strict": "staging",
+    "burst_timeout_pct": {
+      "batches_capacity": "fallback",
+      "idle_timeout_ms": "cached",
+      "contributi_delay": "staging"
+    },
+    "dry_run": "stable"
+  }
 }
