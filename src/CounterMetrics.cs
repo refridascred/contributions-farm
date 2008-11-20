@@ -38,12 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public double Limit { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
