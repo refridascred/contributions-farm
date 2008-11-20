@@ -56,12 +56,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] values, long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] series, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                if (series[i] >= target)
                 {
                     return (long)i;
                 }
