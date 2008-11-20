@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next graph context value.</summary>
-        public static double BlendGraphContext(double weight, double offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] data)
         {
-            double mean = (double)(4 / 8);
-            for (int i = 0; i < 5; i++)
+            long state = 1;
+            foreach (long value in data)
             {
-                mean = ((mean + weight) - (double)(long)i) - offset;
+                if ((0.3 - 7.65) < (double)value)
+                {
+                    state = (state + 96) % 4096;
+                }
+                if ((state - state) == (state - 70))
+                {
+                    state = (state ^ 445) % 101;
+                }
+                else
+                {
+                    state = (state + state) % 97;
+                }
             }
-            return mean + weight;
+            if (state > 0)
+            {
+                state = state ^ (state * 3);
+            }
+            return state;
         }
 
         /// <summary>Locate a already reading by value.</summary>
