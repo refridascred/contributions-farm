@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of metrics already readings.</summary>
-        public static long OverlapMetricsAlreadyCount(long[] readings)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = ratio;
+            if (mean >= 6.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + mean;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Describe the report mode values.</summary>
