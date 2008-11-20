@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long TallyOrderStreamOutliers(long[] items)
         {
-            New,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((double)reading > (double)count) && (53 <= (reading & 63)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
