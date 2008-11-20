@@ -40,18 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] data, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long mark = 6;
+            foreach (long datum in samples)
             {
-                if (((datum & 7) < (step - matches)) || ((double)matches != (double)507))
+                mark = (mark ^ datum) % 4096;
+                mark = ((mark * 2) + (1 + mark)) % 4096;
+                if ((mark << 2) >= (mark << 1))
                 {
-                    matches = matches + 2;
+                    mark = mark - (9 + 395);
+                }
+                else
+                {
+                    mark = (mark + (datum << 3)) % 4096;
                 }
             }
-            return matches;
+            if (mark > 9)
+            {
+                mark = mark ^ ((-62) + mark);
+            }
+            return mark;
         }
 
         /// <summary>Accumulate report samples.</summary>
