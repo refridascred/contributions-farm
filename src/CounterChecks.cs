@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] readings, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 50;
+            foreach (long reading in data)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
+                if ((872 - 7) > reading)
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (reading % 8)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + ((long)data.Length / 8);
+                }
+                if ((anchor ^ anchor) >= reading)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
