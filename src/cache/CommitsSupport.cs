@@ -41,19 +41,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long limit)
+        /// <summary>Adjust a editor counter reading.</summary>
+        public static double BlendEditorCounter(double weight, double span)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            double gain = (weight - span) + span;
+            if (gain >= gain)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = ((state + state) % 97) + (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                gain = gain - (weight + gain);
             }
-            return state;
+            else
+            {
+                gain = gain - weight;
+            }
+            return gain - (gain + 9.6);
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
