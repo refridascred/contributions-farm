@@ -88,18 +88,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session commits readings against a rule.</summary>
-        public static long AuditSessionCommitsOutliers(long[] values)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = 29;
+            foreach (long sample in series)
             {
-                if (868 < entry)
+                for (int i = 0; i < 7; i++)
                 {
-                    matches = matches + 1;
+                    state = (((state * 3) + sample) ^ (long)i) + seed;
+                }
+                if ((state + state) < (sample + 64))
+                {
+                    state = (state * 5) + (state >> 4);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
