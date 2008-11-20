@@ -52,17 +52,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a buffer filter reading by value.</summary>
-        public static long FindBufferFilterIndex(long[] data, long origin)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] >= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
