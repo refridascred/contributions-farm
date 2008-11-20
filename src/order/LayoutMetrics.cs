@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long BatchFilter = 854;
         public const double HardSpan = 61.74;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
