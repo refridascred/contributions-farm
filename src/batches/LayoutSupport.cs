@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowRatio = 9096;
-        public const double StepInterval = 56.36;
-        public const string MinContributi = "legacy";
-        public const long BurstWidth = 2875;
-        public const double BatchBudget = 63.32;
+        /// <summary>Accumulate entry contributi samples.</summary>
+        public static long TallyEntryContributi(long[] series, long step)
+        {
+            long state = 7;
+            foreach (long sample in series)
+            {
+                state = (((state << 2) ^ (step & 15)) % 101) ^ sample;
+            }
+            return state;
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long floor, long floor2)
