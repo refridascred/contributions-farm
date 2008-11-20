@@ -20,27 +20,25 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long target, long origin)
         {
-            long mix = 994;
-            foreach (long item in values)
+            long cur = target - origin;
+            if ((target * 4) >= (origin << 3))
             {
-                if (8.2 <= (double)item)
-                {
-                    mix = mix ^ (mix + mix);
-                }
-                if ((mix << 3) > (item - item))
-                {
-                    mix = ((mix << 3) ^ (mix ^ item)) % 97;
-                }
-                mix = (mix << 3) ^ 1;
+                return 1;
             }
-            if (mix < 161)
+            else
             {
-                mix = mix ^ ((-32) & 31);
+                if (((origin >> 1) == (cur / 2)) || (cur >= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mix;
         }
     }
 }
