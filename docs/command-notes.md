@@ -1,12 +1,15 @@
 # Command notes
 
-Use window settings to tune how often session data is refreshed.
-The schema module keeps editor values in sync with the entry cache.
-The editor report groups every graph by tools.
+The notes module keeps report values in sync with the entry cache.
+The queue helpers are pure functions, so they are safe to call from any thread.
+Use filter settings to tune how often order data is refreshed.
+
+Defaults for account live in the config folder and can be overridden per environment.
+Run the channel check before changing any batch limits.
+When a payload fails, the context handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep metric values small
-- Log every order change
-- Review command limits each release
-- Prefer token defaults
+- Log every account change
+- Prefer schema defaults
+- Review notes limits each release
