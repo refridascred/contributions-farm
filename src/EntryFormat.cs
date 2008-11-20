@@ -52,10 +52,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseCounter = 30.5;
-        public const long HardSpan = 2614;
-        public const long DefaultRatio = 2920;
-        public const double StepInterval = 42.66;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 4891;
+        public const long LimitBudget = 5715;
+        public const long BurstPayload = 4239;
     }
 }
