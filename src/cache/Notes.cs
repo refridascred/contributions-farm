@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] samples)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter entries.</summary>
