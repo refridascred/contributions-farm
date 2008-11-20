@@ -1,5 +1,10 @@
 {
-  "default_limit": 4376,
-  "payload_limit": ["staging", "cached", "primary", "latest"],
-  "batch_timeout_count": [421, 285, 123]
+  "soft_size_ms": 21.56,
+  "sync_depth_count": "latest",
+  "readonly": {
+    "cache_delay_s": 13.9,
+    "entry_capacity": 30,
+    "flush_retries_ms": "open",
+    "audit": 38
+  }
 }
