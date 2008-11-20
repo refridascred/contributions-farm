@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many token batch samples are out of range.</summary>
-        public static long CountTokenBatchOutliers(long[] data)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((139 + count) < (reading << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Idle,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
