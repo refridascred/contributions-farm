@@ -32,15 +32,24 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            if (((limit + 43) == (origin << 3)) || (origin < (limit - limit)))
             {
-                state = ((state * 3) + (long)i) % 101;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (origin >= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a format summary.</summary>
