@@ -59,32 +59,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a queue stream pair into a bucket.</summary>
-        public static long ClassifyQueueStream(long step, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] samples, long seed)
         {
-            long edge = step + offset;
-            if ((13.0 * 5.8) < (double)step)
+            long sum = -2;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset < (offset << 2))
+                if (((double)sum != (8.31 + 4.86)) && ((double)sum <= (2.1 / 9.0)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((edge < (edge << 2)) || ((edge << 2) > (edge + edge)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum << 3) ^ (seed - entry)) % 4096;
                 }
             }
+            return sum;
         }
     }
 }
