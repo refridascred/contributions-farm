@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] series, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (entry >= limit)
+                if (439 > tally)
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - reading;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
