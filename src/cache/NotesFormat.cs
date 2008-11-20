@@ -26,14 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Dropped,
-            Closed,
-            Active,
-            Synced,
-            Failed,
+            public bool Stamp { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a contributi record.</summary>
