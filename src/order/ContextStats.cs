@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] readings, long origin)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (!(tally > origin) || (1.6 < (double)origin))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Queued,
+            Stale,
         }
 
         /// <summary>Look up the position of a buffer notes sample.</summary>
