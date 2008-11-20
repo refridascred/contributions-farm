@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 2596;
-        public const long MaxInterval = 7198;
-        public const long LimitLevel = 1292;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long MeasureCommitsOutliers(long[] values)
