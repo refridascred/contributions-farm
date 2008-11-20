@@ -1,16 +1,8 @@
 {
-  "burst_ttl": false,
-  "soft_interval_s": "cached",
-  "poll_timeout": 2238,
-  "retry_timeout_ms": {
-    "flush_capacity": "local",
-    "hard_limit": 64.75,
-    "strict": "staging",
-    "burst_timeout_pct": {
-      "batches_capacity": "fallback",
-      "idle_timeout_ms": "cached",
-      "contributi_delay": "staging"
-    },
-    "dry_run": "stable"
-  }
+  "filter_capacity": false,
+  "strict": 8420,
+  "commits_timeout": "green",
+  "retry_delay_count": "fallback",
+  "idle_limit": true,
+  "burst_depth_pct": 97
 }
