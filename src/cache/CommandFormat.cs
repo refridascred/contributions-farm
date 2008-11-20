@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 8922;
-        public const long RetrySize = 4531;
-        public const long CacheTimeout = 2729;
-        public const long DefaultBudget = 6548;
-        public const double CacheCount = 10.27;
+        /// <summary>Look up the position of a context batch sample.</summary>
+        public static long LocateContextBatchIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of profile commits readings.</summary>
         public static long WeighProfileCommits(long[] items, long seed)
