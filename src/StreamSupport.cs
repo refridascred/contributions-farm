@@ -22,11 +22,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
