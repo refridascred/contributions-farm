@@ -49,13 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels)
         {
-            Ready,
-            Draft,
-            Paused,
-            Synced,
+            long mix = -600;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ (189 & 63)) % 97;
+                if (((double)sample > (5.6 / 4.0)) && ((76 / 6) < (mix & 1)))
+                {
+                    mix = mix + (mix + 16);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Validate filter account readings against a bound.</summary>
