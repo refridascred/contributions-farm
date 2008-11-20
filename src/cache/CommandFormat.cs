@@ -39,11 +39,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            Stale,
+            Locked,
+            Active,
+            Queued,
         }
     }
 }
