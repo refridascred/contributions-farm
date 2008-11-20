@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data)
-        {
-            long anchor = 50;
-            foreach (long reading in data)
-            {
-                if ((872 - 7) > reading)
-                {
-                    anchor = (anchor ^ (reading % 8)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + ((long)data.Length / 8);
-                }
-                if ((anchor ^ anchor) >= reading)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstInterval = 36.66;
+        public const long StepWidth = 4520;
+        public const long WindowLevel = 9453;
+        public const string IdleBudget = "local-edge";
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] readings)
