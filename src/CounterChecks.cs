@@ -67,15 +67,9 @@ namespace Common.Utilities
         public const long IdleLevel = 5864;
         public const long MaxWidth = 6094;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchSpan = 93.82;
+        public const long RetryContext = 1401;
+        public const long BaseScore = 4641;
     }
 }
