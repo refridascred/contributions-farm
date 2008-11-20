@@ -37,28 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] values, long seed)
         {
-            long mark = 636;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 4) + (mark + reading)) % 101;
-                if ((reading - 7) > (mark ^ reading))
+                if ((values[i] <= seed) && ((values[i] % 5) == 0))
                 {
-                    mark = ((mark * 4) + (mark & 15)) % 65521;
-                    mark = (mark + (reading & 1)) % 101;
-                }
-                if ((2.3 * 3.0) > (double)reading)
-                {
-                    mark = (mark - (reading - mark)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark * 2) + (184 ^ (long)values.Length);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
