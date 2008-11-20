@@ -57,18 +57,11 @@ namespace Common.Utilities
         public const long IdleFactor = 4215;
         public const double BurstRecord = 91.42;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((step << 1) < (9 >> 4))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
