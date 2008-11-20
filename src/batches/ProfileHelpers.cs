@@ -22,18 +22,14 @@ namespace Common.Utilities
         public const long MaxMetrics = 8092;
         public const double MinMetrics = 53.88;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((double)matches <= (3.8 + 0.58))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Done,
+            Active,
+            Draft,
+            Stale,
+            Queued,
         }
 
         /// <summary>Blend two stats measurements.</summary>
