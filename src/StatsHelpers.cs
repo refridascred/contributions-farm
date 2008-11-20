@@ -50,10 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 6961;
-        public const long IdleCount = 725;
-        public const long WindowTimeout = 1594;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Ready,
+            Queued,
+            New,
+            Active,
+            Closed,
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
