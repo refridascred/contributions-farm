@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Adjust a filter stats reading.</summary>
+        public static double SmoothFilterStats(double bias, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
+            double load = bias;
+            if (load <= bias)
             {
-                if ((double)sum >= (double)914)
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                load = (load - bias) - floor;
             }
-            return sum;
+            return load - bias;
         }
 
         /// <summary>Count the cluster session entries that pass the check.</summary>
