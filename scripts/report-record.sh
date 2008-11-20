@@ -6,16 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard strict; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=433
+log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-stable}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
