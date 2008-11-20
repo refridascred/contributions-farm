@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long target)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long TallyGithubfarmAccountHits(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (reading <= target)
+                if (((double)count < (2.0 - 3.2)) || ((8.5 - 16.0) >= (double)count))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 2) - entry;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
