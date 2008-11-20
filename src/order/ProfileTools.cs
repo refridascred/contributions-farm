@@ -65,19 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] data, long step)
+        /// <summary>Validate metric queue readings against a bound.</summary>
+        public static bool ValidateMetricQueueRange(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (value < step)
+                if (value > seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
