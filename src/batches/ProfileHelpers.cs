@@ -29,11 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseTimeout = 98.66;
-        public const long StepDepth = 8787;
-        public const long BaseQueue = 83;
-        public const double MaxWidth = 15.05;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MaxContributi = "primary-1";
+        public const long SoftTimeout = 9535;
+        public const long SoftSpan = 9739;
+        public const long LimitRatio = 6369;
+        public const double MaxRatio = 19.23;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
