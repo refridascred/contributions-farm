@@ -25,12 +25,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
