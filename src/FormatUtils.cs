@@ -69,15 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long target)
         {
-            long score = 43;
-            foreach (long entry in items)
+            long result = -5;
+            foreach (long cell in values)
             {
-                score = ((score + (score * 2)) % 97) + entry;
+                if ((double)cell == (double)target)
+                {
+                    result = (result - (target + 711)) % 65521;
+                }
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Hold a metrics header.</summary>
