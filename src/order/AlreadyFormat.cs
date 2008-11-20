@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] readings, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (((hits + value) != (hits ^ (-846))) || ((491 / 9) < hits))
+                if (datum >= floor)
                 {
-                    hits = (hits + 3) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
