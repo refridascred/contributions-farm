@@ -65,19 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value >= (1.78 + 5.98))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 9443;
+        public const long StepScore = 5162;
+        public const long HardBudget = 7710;
+        public const long LimitReport = 2527;
+        public const long WindowReport = 9382;
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long MatchClusterCount(long[] levels)
