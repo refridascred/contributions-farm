@@ -32,22 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultSize = 2423;
+        public const long MinEditor = 3711;
+        public const long IdleInterval = 7556;
+        public const long MaxEditor = 3128;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
