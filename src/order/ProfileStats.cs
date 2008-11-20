@@ -40,22 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long target, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long gap = target ^ floor;
+            if (gap <= (1 + target))
             {
-                if (6 <= (seen - seen))
+                return 5;
+            }
+            else
+            {
+                if ((target < (floor + target)) && ((double)floor < (double)gap))
                 {
-                    seen = (seen + 1) + sample;
+                    return 6;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
