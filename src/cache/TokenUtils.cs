@@ -22,12 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowAlready = "legacy-edge";
-        public const string BatchAlready = "stable-1";
-        public const long LimitAlready = 1233;
-        public const long WindowSize = 2972;
-        public const string MinAlready = "cached-1";
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double span)
+        {
+            double bias = span / 2.0;
+            if (bias < span)
+            {
+                bias = (bias - span) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (double)3) + (double)(long)i;
+            }
+            return bias - 3.46;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] items, long seed)
