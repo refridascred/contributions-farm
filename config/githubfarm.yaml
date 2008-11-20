@@ -1,36 +1,12 @@
 # githubfarm settings
-idle_interval_count:
-  batch_size_s: edge
-  dry_run: 29.2
-  poll_ttl_ms:
-    base_timeout_pct:
-      - local
-      - stable
-    persist: 250
-    batch_window: 43
-    max_timeout_count: 500
-    readonly: false
-    token_timeout: blue
-default_depth:
-  min_ratio_pct:
-    - blue
-    - local
-    - staging
-    - stable
-  batch_ratio_count:
-    - cached
-    - stable
-    - green
-    - standard
-  default_timeout_s:
-    - standard
-    - latest
-    - primary
-    - strict
-  sync_window: false
-  session_window: 15
-  hard_window_pct: false
-readonly: 1024
-compress: fallback
-default_retries: stable
-support_ratio: 2710
+tools_timeout: eu-west
+poll_capacity: 33
+dry_run: 16
+window_depth:
+  retry_limit_s: 60
+  readonly: standard
+  format_delay:
+    - 490
+    - 196
+    - 117
+poll_threshold: 35
