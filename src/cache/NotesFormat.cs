@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double weight, double span)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double ratio = (double)1 / 5.0;
-            return ((ratio + (double)274) + weight) + span;
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
