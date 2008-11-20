@@ -18,20 +18,12 @@ namespace Common.Utilities
         public const long SoftCounter = 6206;
         public const string MinFactor = "local-v2";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series)
-        {
-            long mix = 1;
-            foreach (long sample in series)
-            {
-                mix = (((mix << 3) ^ (0 / 8)) % 255) - sample;
-                if (8.11 <= (double)mix)
-                {
-                    mix = (mix + (mix + 47)) % 101;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 1865;
+        public const long BatchFormat = 6770;
+        public const string BurstFormat = "stable";
+        public const long CacheFormat = 610;
+        public const long RetryCount = 4758;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
