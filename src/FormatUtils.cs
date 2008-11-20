@@ -49,13 +49,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            Retry,
+            Dropped,
+            Done,
+            Ready,
+            Closed,
         }
     }
 }
