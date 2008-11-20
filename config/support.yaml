@@ -1,12 +1,5 @@
 # support settings
-base_retries:
-  - staging
-  - stable
-  - cached
-enabled: 10.24
-idle_retries_ms: 44
-soft_ratio:
-  - edge
-  - open
-metric_ratio: 15.06
-soft_window_ms: 23
+base_window_pct: edge
+stats_timeout: primary
+audit: false
+commits_ttl: true
