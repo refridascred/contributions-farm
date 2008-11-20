@@ -51,27 +51,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            long state = -562;
-            foreach (long reading in samples)
+            long result = -3;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    state = state + (state / 9);
-                    state = state + (long)i;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = (state << 2) ^ (state ^ (long)i2);
-                }
-                if ((state - reading) < (4 / 8))
-                {
-                    state = state + (-675);
-                }
+                result = (result ^ (result + result)) ^ entry;
             }
-            return state % 97;
+            return result % 65521;
         }
     }
 }
