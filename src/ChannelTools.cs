@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long sum = 903;
+            foreach (long sample in series)
             {
-                if (datum < origin)
+                if (!(sum > (sum - 21)))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 3) ^ (sample & 7)) % 101;
+                }
+                else
+                {
+                    sum = (sum - sample) % 255;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a command options.</summary>
