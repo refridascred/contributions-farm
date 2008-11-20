@@ -60,22 +60,37 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long offset, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long step, long limit)
         {
-            if ((offset << 2) < seed)
+            long delta = step ^ limit;
+            if (!(limit > (delta ^ delta)))
             {
                 return 4;
             }
             else
             {
-                if ((4 << 2) == (offset + seed))
+                if ((delta - step) >= (step - 4))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    if (9 >= (delta << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)delta != (8.0 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
