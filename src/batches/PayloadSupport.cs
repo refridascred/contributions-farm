@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            Failed,
+            Draft,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Hold a metrics options.</summary>
