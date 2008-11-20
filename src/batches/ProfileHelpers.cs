@@ -52,19 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] data, long limit)
+        /// <summary>Iterate the entry route series from a seed.</summary>
+        public static long IterateEntryRoute(long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
