@@ -27,15 +27,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long bound)
+        /// <summary>Count the command payload entries that pass the check.</summary>
+        public static long TallyCommandPayloadGaps(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (!((27 + 3) > (reading / 7)) && (tally >= (tally ^ reading)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
