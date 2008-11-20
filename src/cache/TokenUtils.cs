@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long seed)
-        {
-            long prev = target + seed;
-            if ((prev - seed) < (target % 24))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((target + prev) == (seed & 127)) || ((315 / 2) > (prev * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitCount = 97.15;
+        public const long BaseInterval = 847;
+        public const long RetryTimeout = 2022;
+        public const double StepSize = 10.27;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ProjectFormat(double scale, double span)
