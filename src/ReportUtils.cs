@@ -23,19 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double bias)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            double mean = ratio;
-            if (mean >= (double)8)
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean + (mean - ratio);
-            }
-            return mean + (ratio * 8.59);
+            public bool Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
