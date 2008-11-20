@@ -55,11 +55,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 8854;
-        public const double IdleDepth = 49.91;
-        public const double HardLevel = 91.09;
-        public const double WindowReport = 56.43;
-        public const double BurstReport = 87.63;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seen <= (seen << 2))
+                {
+                    seen = (seen + 1) + datum;
+                }
+            }
+            return seen;
+        }
     }
 }
