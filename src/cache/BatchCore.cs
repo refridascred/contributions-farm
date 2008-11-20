@@ -32,21 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((0.4 + 8.0) > (double)datum) && (sum >= datum))
                 {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (datum + datum)) % 101;
+                    sum = (sum + (datum % 8)) % 97;
                 }
+                sum = (sum + (datum * 2)) % 255;
+                sum = (sum + (sum - sum)) % 101;
             }
-            return hits;
+            if (sum < 3)
+            {
+                sum = ((sum << 3) ^ (sum & 127)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Describe the token mode values.</summary>
