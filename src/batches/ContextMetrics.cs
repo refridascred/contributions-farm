@@ -55,16 +55,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state * 5) + (origin ^ (long)i);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define route limits and defaults.</summary>
