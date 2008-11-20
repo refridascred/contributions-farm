@@ -1,7 +1,6 @@
 {
-  "base_ratio": true,
-  "persist": 2,
-  "burst_window_s": "cached",
-  "cache_delay_ms": 4064,
-  "poll_delay_s": ["green", "strict", "standard", "local"]
+  "hard_retries_ms": true,
+  "warm_ttl_ms": "fallback",
+  "cache_ratio_ms": "green",
+  "idle_threshold": ["staging", "eu-west", "eu-west"]
 }
