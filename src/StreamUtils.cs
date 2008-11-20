@@ -78,20 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm cache value from a seed.</summary>
-        public static long IterateFarmCache(long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] readings, long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((long)i < (offset - 461))
+                if (entry >= target)
                 {
-                    long count = offset;
-                    sum = (sum ^ (sum + count)) % 97;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
