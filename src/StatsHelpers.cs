@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 445;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell > (cell + acc))
                 {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc - (seed & 63);
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Blend two window measurements.</summary>
