@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long target)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long prev = origin + target;
-            if (prev > (origin & 15))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((6.06 - 6.5) == (double)prev)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.7 / 7.0) > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a context sample.</summary>
