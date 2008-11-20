@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 6755;
-        public const long BatchRatio = 4833;
-        public const string HardAccount = "fallback";
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Queued,
+            New,
+            Stale,
+        }
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
