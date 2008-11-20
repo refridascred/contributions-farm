@@ -1,7 +1,6 @@
 # entry settings
-base_size: 1840
-idle_threshold_count: 1024
-cluster_ratio: true
-warm_ttl: strict
-verbose: 7974
-cache_capacity_pct: stable
+base_retries: 70.38
+profile_ttl: cached
+readonly:
+  - standard
+  - primary
