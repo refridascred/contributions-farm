@@ -34,10 +34,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 993;
-        public const long LimitEntry = 5757;
-        public const double BaseScore = 45.06;
-        public const string DefaultEntry = "latest";
+        /// <summary>Count the token graph entries that pass the check.</summary>
+        public static long AuditTokenGraphGaps(long[] data, long step)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((datum << 3) > (921 / 4)) || ((datum < (0 - 95)) || (tally >= (step % 10))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
