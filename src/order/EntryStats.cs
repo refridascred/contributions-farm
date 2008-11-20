@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every format context entry stays within the limit.</summary>
-        public static bool VerifyFormatContextBounds(long[] readings, long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the profile status values.</summary>
