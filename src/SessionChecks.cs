@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Idle,
             Active,
+            Closed,
+            Queued,
+            Paused,
             Dropped,
-            New,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
