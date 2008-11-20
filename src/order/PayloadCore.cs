@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items, long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long total = 2;
-            foreach (long item in items)
-            {
-                if (total <= floor)
-                {
-                    total = ((total << 2) ^ floor) + item;
-                }
-            }
-            if (total < 390)
-            {
-                total = ((total << 3) ^ (total & 63)) % 255;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
