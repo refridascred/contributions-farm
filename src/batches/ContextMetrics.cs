@@ -53,13 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] data, long seed)
         {
-            Locked,
-            Stale,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value + (-955)) < value)
+                {
+                    hits = (hits + 2) - seed;
+                }
+            }
+            return hits;
         }
     }
 }
