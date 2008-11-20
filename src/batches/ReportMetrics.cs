@@ -40,22 +40,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the order queue entries that pass the check.</summary>
-        public static long MeasureOrderQueueHits(long[] items, long floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.4 + 11.0) <= (double)matches)
+                if (items[i] > floor)
                 {
-                    matches = ((matches + 3) ^ reading) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
