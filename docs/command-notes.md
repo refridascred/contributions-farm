@@ -1,14 +1,15 @@
 # Command notes
 
-Run the cache check before changing any farm limits.
-The payload report groups every command by checks.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Keep format and format names short and lowercase.
+Each order is validated before it reaches the already queue.
 
-Use context settings to tune how often window data is refreshed.
-Run the metrics check before changing any already limits.
+The cache report groups every channel by contributi.
+Keep counter and notes names short and lowercase.
+A token that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Document new layout fields
-- Review context limits each release
-- Prefer metric defaults
-- Validate checks input early
+- Keep cache values small
+- Review account limits each release
+- Document new graph fields
