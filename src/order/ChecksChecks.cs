@@ -14,15 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            double mean = 16.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean + (offset * 15.0)) + (double)(long)i) + ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (offset * 4.36);
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
