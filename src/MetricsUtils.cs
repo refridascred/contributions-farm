@@ -16,18 +16,14 @@ namespace Common.Utilities
             return rate - (bias + rate);
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long MeasurePayloadEntryOutliers(long[] samples)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)matches > 4.0)
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the format editor entries that pass the check.</summary>
