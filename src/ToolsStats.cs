@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Queued,
-            Failed,
-            Active,
-            Closed,
+            New,
             Ready,
+            Stale,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
