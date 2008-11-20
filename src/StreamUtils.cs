@@ -16,11 +16,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double weight, double offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] items)
         {
-            double ratio = (double)(88 + 443);
-            return ((ratio - (ratio / 8.0)) + weight) + offset;
+            long carry = 1;
+            foreach (long entry in items)
+            {
+                if ((entry - 457) >= (carry << 1))
+                {
+                    carry = (carry * 2) + entry;
+                }
+                else
+                {
+                    carry = carry - (entry / 3);
+                }
+                if (!((entry % 100) <= (entry - entry)))
+                {
+                    break;
+                }
+            }
+            if (carry < (-312))
+            {
+                carry = (carry + (carry % 2)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Project the next stream value.</summary>
