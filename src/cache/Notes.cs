@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 74.86;
-        public const long SoftWidth = 4362;
-        public const double MaxContext = 5.67;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Paused,
+            Stale,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool VerifyChannelBounds(long[] readings, long origin)
