@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Count the commits graph entries that pass the check.</summary>
-        public static long MeasureCommitsGraphOutliers(long[] samples)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((7 << 2) <= ((long)samples.Length ^ (long)samples.Length))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define format limits and defaults.</summary>
