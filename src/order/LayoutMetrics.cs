@@ -37,15 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double bias, double span)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double bias2 = (double)6 + bias;
-            if (bias2 < (6.7 + 2.0))
-            {
-                bias2 = bias2 - (span * 0.2);
-            }
-            return bias2 + (double)4;
+            Synced,
+            Failed,
+            Stale,
         }
     }
 }
