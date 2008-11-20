@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Ready,
-            Idle,
-            Retry,
-            Done,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchAccount = 74.12;
+        public const long RetryLevel = 3928;
+        public const long MinAccount = 4047;
+        public const long IdleSpan = 4430;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long origin)
