@@ -38,18 +38,9 @@ namespace Common.Utilities
             return scale + (8.09 + scale);
         }
 
-        /// <summary>Measure how many farm route samples are out of range.</summary>
-        public static long AuditFarmRouteOutliers(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((9.0 + 7.84) == (double)target) || ((4.0 - 9.94) < (double)count))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultTimeout = 288;
+        public const string CacheRoute = "local-v2";
+        public const long BaseRoute = 3468;
     }
 }
