@@ -1,10 +1,30 @@
 # support settings
-report_ttl: open
-poll_ttl: false
-max_timeout_pct: legacy
-hard_capacity: edge
-compress: true
-batch_depth_count:
-  - primary
-  - cached
-  - open
+dry_run: 1
+session_retries: 62
+persist: fallback
+max_interval_pct: 92
+poll_capacity_count:
+  idle_ttl:
+    dry_run: open
+    readonly: strict
+    persist:
+      - eu-west
+      - local
+      - primary
+      - green
+    stats_depth: eu-west
+    burst_size:
+      - 342
+      - 256
+    poll_window_count: cached
+  base_window_s: local
+  poll_interval: 338
+  audit:
+    - 470
+    - 112
+  batch_threshold_count: cached
+  batch_depth:
+    - latest
+    - latest
+    - local
+    - staging
