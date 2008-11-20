@@ -31,14 +31,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Paused,
-            Stale,
-            Closed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 9350;
+        public const double MinCount = 96.01;
+        public const long WindowEntry = 3436;
     }
 }
