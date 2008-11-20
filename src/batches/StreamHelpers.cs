@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 5677;
         public const long LimitLevel = 1111;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] levels, long offset)
         {
-            Queued,
-            Locked,
-            Paused,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((offset > (sample >> 5)) || ((2.1 * 3.3) > (double)sample)) && (count < (offset >> 2)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
