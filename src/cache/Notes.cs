@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] readings, long floor)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((((2 << 2) <= (floor & 3)) || ((double)floor < (8.0 + 5.0))) || ((cell + (-4)) < cell))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
