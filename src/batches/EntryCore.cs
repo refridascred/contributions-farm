@@ -68,19 +68,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] samples, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long anchor = 32;
+            foreach (long sample in samples)
             {
-                if (item >= offset)
+                if (sample > anchor)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + sample) % 101;
                 }
             }
-            return ok;
+            return anchor % 97;
         }
     }
 }
