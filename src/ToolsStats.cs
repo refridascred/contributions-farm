@@ -18,17 +18,24 @@ namespace Common.Utilities
         public const long IdleChecks = 2728;
         public const string SoftChecks = "open";
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] values, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (limit <= (limit / 2))
             {
-                if ((values[i] <= seed) && ((values[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((limit % 7) == (148 & 7))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support state values.</summary>
