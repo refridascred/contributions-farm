@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            long anchor = 1;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                anchor = (((anchor << 2) ^ (anchor * 3)) % 65521) - item;
+                if (!((double)sample > (2.4 / 9.0)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
