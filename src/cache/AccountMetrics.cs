@@ -82,19 +82,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Queued,
+            Synced,
         }
     }
 }
