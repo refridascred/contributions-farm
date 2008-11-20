@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Adjust a window reading.</summary>
