@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up stats channel samples.</summary>
-        public static long MatchStatsChannelCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftBudget = 8841;
+        public const long DefaultSize = 7948;
+        public const string MinDepth = "primary-1";
+        public const long WindowSchema = 8481;
+        public const long StepSchema = 3247;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] readings)
