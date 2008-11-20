@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long floor)
         {
-            double ratio = (double)649 * 2.8;
-            if (ratio < scale)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                ratio = (ratio - 6.03) + span;
+                if (sample > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - ratio;
+            return ok;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
