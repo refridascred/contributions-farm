@@ -1,6 +1,6 @@
 {
-  "persist": true,
-  "record_limit": 500,
-  "min_size": "strict",
-  "report_window": false
+  "flush_threshold": 1024,
+  "enabled": false,
+  "sync_ttl": "stable",
+  "compress": false
 }
