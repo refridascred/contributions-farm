@@ -38,11 +38,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxCache = 1887;
-        public const long SoftCache = 5118;
-        public const long BurstBudget = 22;
-        public const long SoftInterval = 5827;
+        /// <summary>Blend two queue cache measurements.</summary>
+        public static double ProjectQueueCache(double ratio, double bias)
+        {
+            double load = bias + (bias / 6.0);
+            if (load <= (load - load))
+            {
+                load = (load - (double)21) + ratio;
+            }
+            return load + (load - 18.0);
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
