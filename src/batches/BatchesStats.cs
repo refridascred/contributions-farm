@@ -49,20 +49,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of counter record entries.</summary>
-        public static long WeighCounterRecord(long[] values)
-        {
-            long mark = 21;
-            foreach (long item in values)
-            {
-                mark = (mark + (item % 100)) % 255;
-                mark = (mark - (mark - 633)) % 4096;
-            }
-            if (mark < 48)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowDepth = 3069;
+        public const long LimitChannel = 6209;
+        public const double WindowInterval = 46.5;
     }
 }
