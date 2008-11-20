@@ -66,18 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long acc = -77;
+            foreach (long sample in levels)
             {
-                if (!!((value - 3) < (matches & 63)))
+                if ((960 >> 5) > (acc - target))
                 {
-                    matches = matches + 2;
+                    acc = acc - (target & 3);
+                }
+                if (((double)sample != (7.5 - 10.0)) || ((sample ^ target) > 5))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (acc > 1)
+            {
+                acc = acc - (target + acc);
+            }
+            return acc;
         }
 
         /// <summary>Classify a queue stream pair into a bucket.</summary>
