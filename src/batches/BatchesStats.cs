@@ -42,17 +42,9 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultRatio = 2421;
+        public const long BatchPayload = 9289;
+        public const double LimitScore = 2.72;
     }
 }
