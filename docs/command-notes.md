@@ -1,11 +1,15 @@
 # Command notes
 
-The profile report groups every order by notes.
-Run the token check before changing any context limits.
+A token that stays idle for too long is moved to the filter list.
+Run the graph check before changing any commits limits.
+
+A batches that stays idle for too long is moved to the checks list.
+Each checks is validated before it reaches the farm queue.
+Each token is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Prefer order defaults
-- Keep checks values small
-- Document new queue fields
-- Review session limits each release
+- Log every profile change
+- Prefer already defaults
+- Validate support input early
+- Review token limits each release
