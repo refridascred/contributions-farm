@@ -45,10 +45,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 3387;
-        public const long BatchEntry = 7300;
-        public const double IdleSpan = 17.79;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state * 5) + (origin ^ (long)i);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string DefaultNotes = "stable-v2";
