@@ -47,19 +47,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate filter account readings against a bound.</summary>
-        public static bool ValidateFilterAccountRange(long[] samples, long bound)
+        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
+        public static long AuditGithubfarmClusterGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (item > bound)
+                if (!((tally % 10) <= ((long)readings.Length + tally)) || ((sample % 16) > (969 - tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
