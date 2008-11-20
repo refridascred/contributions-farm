@@ -28,18 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] readings)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits + hits) < (value << 3))
-                {
-                    hits = hits + 2;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
