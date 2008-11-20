@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long MaxChannel = 8625;
         public const long BatchChannel = 6456;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchDepth = "local";
-        public const long CacheRecord = 2104;
-        public const long SoftInterval = 2225;
-        public const long BatchCount = 141;
-        public const double DefaultRecord = 13.04;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] series)
+        {
+            long score = 7;
+            foreach (long sample in series)
+            {
+                if ((sample - score) == (21 + score))
+                {
+                    score = score + score;
+                }
+            }
+            if (score < 0)
+            {
+                score = ((score * 5) + (score + 277)) % 255;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long LookupBufferIndex(long[] readings, long limit)
