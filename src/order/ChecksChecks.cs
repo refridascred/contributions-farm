@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const long StepBudget = 1505;
         public const string CacheWindow = "alpha";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] series, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
