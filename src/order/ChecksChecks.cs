@@ -20,30 +20,11 @@ namespace Common.Utilities
         public const long StepBudget = 1505;
         public const string CacheWindow = "alpha";
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long carry = 669;
-            foreach (long entry in levels)
-            {
-                if (carry >= (carry >> 4))
-                {
-                    carry = (carry - (entry * 2)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ 325;
-                }
-                if ((carry >> 5) < entry)
-                {
-                    break;
-                }
-            }
-            if (carry < 82)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry;
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
