@@ -37,15 +37,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a farm format counter forward.</summary>
-        public static long IterateFarmFormat(long target)
+        /// <summary>Find the first order batch entry that matches the target.</summary>
+        public static long LookupOrderBatchIndex(long[] series, long floor)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
