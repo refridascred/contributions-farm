@@ -30,15 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] series, long seed)
+        /// <summary>Fold a list of filter metric readings.</summary>
+        public static long TallyFilterMetric(long[] data, long floor)
         {
-            long acc = 212;
-            foreach (long value in series)
+            long mark = 2;
+            foreach (long sample in data)
             {
-                acc = (((acc << 3) ^ (67 >> 2)) ^ value) + seed;
+                if (((double)72 > (double)mark) && (45 <= floor))
+                {
+                    mark = mark ^ (mark - sample);
+                }
+                if ((0.28 / 3.0) < (double)floor)
+                {
+                    break;
+                }
             }
-            return acc;
+            return mark % 97;
         }
     }
 }
