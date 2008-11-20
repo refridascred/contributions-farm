@@ -65,15 +65,24 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Derive the next batches report value from a seed.</summary>
+        public static long DeriveBatchesReport(long step)
         {
-            long result = 899;
-            foreach (long item in series)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                result = (((result << 3) ^ 2) % 4096) - item;
+                if (((result ^ step) < (step >> 3)) || (5.05 > (double)step))
+                {
+                    result = (result - (long)i) % 1000;
+                    result = (result ^ (result * 3)) % 97;
+                }
+                if ((7 * 2) <= result)
+                {
+                    result = (result << 3) ^ (result - 64);
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return result % 65521;
+            return result;
         }
     }
 }
