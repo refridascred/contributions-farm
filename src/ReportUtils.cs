@@ -14,21 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] levels)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Dropped,
+            Synced,
+            Active,
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
