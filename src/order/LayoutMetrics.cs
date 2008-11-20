@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] readings)
         {
-            double drift = bias;
-            if (drift >= scale)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                drift = drift + (19.0 - scale);
+                if (((double)tally > (13.0 * 9.0)) && (((tally + 715) != (sample & 127)) && ((sample % 5) < tally)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                drift = drift - (scale / 4.0);
-            }
-            return drift - (double)3;
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
