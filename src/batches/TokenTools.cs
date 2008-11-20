@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] levels, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] series)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (item <= floor)
+                if (!((entry + hits) == (821 - hits)) && ((double)hits >= (6.0 - 2.44)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
