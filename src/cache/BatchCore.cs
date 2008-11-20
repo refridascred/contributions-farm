@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            New,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Match up token farm samples.</summary>
