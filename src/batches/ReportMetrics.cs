@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long WindowInterval = 8818;
         public const long WindowChecks = 1792;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] values)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (matches >= (matches << 2))
-                {
-                    matches = (matches + 3) + item;
-                }
-            }
-            return matches;
+            public double Region { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
