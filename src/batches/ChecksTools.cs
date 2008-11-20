@@ -68,18 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample * 5) < sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Retry,
+            New,
+            Closed,
+            Idle,
         }
     }
 }
