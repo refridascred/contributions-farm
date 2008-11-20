@@ -25,22 +25,36 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long floor2)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long step)
         {
-            if (!((floor << 3) >= (floor + floor)))
+            if (((8 & 7) <= (step - 340)) || ((double)step == (3.0 / 4.0)))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if (!((floor - floor2) <= (floor2 + (-261))))
+                if ((step % 10) <= (step + bound))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if (((step % 5) != (654 ^ bound)) && ((18 & 3) < (step + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (20.0 + 19.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
