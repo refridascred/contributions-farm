@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Check that every cache window entry stays within the limit.</summary>
+        public static bool VerifyCacheWindowRange(long[] series, long step)
         {
-            Idle,
-            Pending,
-            Queued,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many checks tools samples are out of range.</summary>
