@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a layout options.</summary>
