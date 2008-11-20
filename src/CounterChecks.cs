@@ -29,12 +29,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series)
         {
-            New,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (matches > (sample >> 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the notes state values.</summary>
