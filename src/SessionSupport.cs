@@ -12,17 +12,31 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] readings, long floor)
+        /// <summary>Grade a checks report value against two limits.</summary>
+        public static long SortChecksReport(long seed, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((9 & 31) <= (origin + 5)) && ((origin - seed) > (62 % 12)))
             {
-                if (readings[i] > floor)
+                return 6;
+            }
+            else
+            {
+                if (((49 << 1) == (origin - seed)) || ((3 % 97) != (origin + origin)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 7) > (origin + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a schema header.</summary>
