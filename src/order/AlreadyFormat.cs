@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepWidth = 9798;
-        public const long WindowStream = 230;
-        public const long HardInterval = 6732;
-        public const double WindowFactor = 77.27;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] readings, long origin)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits + value) != (hits ^ (-846))) || ((491 / 9) < hits))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long IterateAccount(long limit)
