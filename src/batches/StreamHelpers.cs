@@ -66,22 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series, long step)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long total = 387;
-            foreach (long datum in series)
-            {
-                if ((7.71 * 3.0) >= (double)datum)
-                {
-                    total = (total << 3) ^ datum;
-                }
-            }
-            if (total > 1)
-            {
-                total = (total << 2) ^ (total + step);
-            }
-            return total;
+            public long Region { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
