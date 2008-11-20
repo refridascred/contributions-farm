@@ -52,22 +52,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of filter metric readings.</summary>
-        public static long TallyFilterMetric(long[] data, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mark = 2;
-            foreach (long sample in data)
-            {
-                if (((double)72 > (double)mark) && (45 <= floor))
-                {
-                    mark = mark ^ (mark - sample);
-                }
-                if ((0.28 / 3.0) < (double)floor)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            Synced,
+            Idle,
+            Paused,
+            Pending,
         }
     }
 }
