@@ -1,6 +1,5 @@
 {
-  "default_window_count": "blue",
-  "batch_size": 47,
-  "window_retries": ["edge", "green"],
-  "max_depth_pct": "green"
+  "cache_window_ms": "stable",
+  "max_ratio_pct": "strict",
+  "retry_ratio": 3.14
 }
