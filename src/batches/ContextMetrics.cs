@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long seed)
         {
-            long carry = 30;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                carry = (carry ^ entry) % 1000;
-                if ((0 - carry) > (entry / 5))
+                if (value >= seed)
                 {
-                    carry = carry + entry;
-                }
-                else
-                {
-                    carry = (carry + entry) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return valid;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
