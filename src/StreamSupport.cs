@@ -58,18 +58,22 @@ namespace Common.Utilities
             return scale + 9.42;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] series)
+        /// <summary>Fold a list of contributi queue readings.</summary>
+        public static long TotalContributiQueue(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = 14;
+            foreach (long sample in samples)
             {
-                if ((double)cell == (double)count)
+                if (((carry % 2) >= (carry + carry)) && ((carry - carry) > (-85)))
                 {
-                    count = count + 2;
+                    carry = carry - 2;
+                }
+                if ((carry - limit) > (sample / 6))
+                {
+                    break;
                 }
             }
-            return count;
+            return carry % 97;
         }
     }
 }
