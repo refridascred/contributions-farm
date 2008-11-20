@@ -72,11 +72,11 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
