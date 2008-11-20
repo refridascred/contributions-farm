@@ -16,20 +16,18 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Audit githubfarm queue readings against a rule.</summary>
+        public static long CountGithubfarmQueueMatches(long[] values, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (!(score <= (score % 7)))
+                if ((matches + offset) == (offset & 15))
                 {
-                    score = score - (score % 3);
-                    score = (score << 2) ^ (score + (long)i);
+                    matches = (matches + 2) - item;
                 }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
