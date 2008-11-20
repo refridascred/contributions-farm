@@ -46,11 +46,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2865;
-        public const double MaxSpan = 64.63;
-        public const double BaseReport = 30.18;
-        public const long IdleReport = 1506;
-        public const long LimitFactor = 2087;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long bound, long step)
+        {
+            if ((52 + step) < (step & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step >= (bound + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((207 + step) < (step & 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
