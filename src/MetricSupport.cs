@@ -31,32 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long prev = floor - target;
-            if (!((target - floor) > target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target - floor) < (target - prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target & 15) <= floor) && ((659 * 3) < (prev + 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Locked,
+            Idle,
         }
     }
 }
