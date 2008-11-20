@@ -83,10 +83,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 1410;
-        public const long BaseWindow = 5208;
-        public const long BatchDepth = 7359;
-        public const long SoftWindow = 2891;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long bound, long limit)
+        {
+            if ((double)limit <= (0.7 + 1.1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((limit >> 5) == (bound & 255)) && ((bound * 2) <= bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit <= (bound + limit)) && (797 > (bound + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((10.0 / 9.0) != (double)limit)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
