@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            double ratio = floor;
-            for (int i = 0; i < 6; i++)
+            double drift = gain * 8.01;
+            if (drift <= (double)3)
             {
-                ratio = ((ratio - (7.4 / 4.0)) + (double)(long)i) + scale;
+                drift = (drift - (double)6) + offset;
             }
-            return ratio + (6.0 / 7.0);
+            return drift + gain;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
