@@ -54,14 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            New,
-            Pending,
-            Stale,
-            Draft,
-            Locked,
+            public long Flag { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
