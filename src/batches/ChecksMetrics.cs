@@ -38,39 +38,14 @@ namespace Common.Utilities
         public const long HardReport = 1844;
         public const string MinReport = "fallback-v2";
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long bound, long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long bound2 = bound ^ floor;
-            if ((floor % 3) < (1 ^ floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((19.0 * 3.5) == (double)bound2) || ((bound >> 3) > (floor / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound2 & 255) < (floor + bound2)) || (bound <= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)82 > (15.0 - 6.0)) || ((double)floor < (3.61 - 15.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Accumulate support samples.</summary>
