@@ -69,12 +69,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Stale,
-            Queued,
-            Synced,
+            Closed,
+            Pending,
+            Ready,
+            Paused,
+            Draft,
         }
     }
 }
