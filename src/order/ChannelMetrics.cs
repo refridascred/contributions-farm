@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] readings)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyLimits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((double)seen < 4.84)
+                if (entry != limit)
                 {
-                    seen = (seen + 3) ^ cell;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
