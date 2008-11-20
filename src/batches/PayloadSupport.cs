@@ -23,22 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph cache entries that pass the check.</summary>
-        public static long MeasureGraphCacheOutliers(long[] data, long floor)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell < (double)seen)
-                {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the contributi order entries that pass the check.</summary>
