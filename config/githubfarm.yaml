@@ -1,20 +1,7 @@
 # githubfarm settings
-min_size_ms: 80.08
-max_timeout:
-  max_depth: false
-  channel_ttl: latest
-  cache_window_s: 5.11
-batches_ratio: 93
-batch_limit_ms:
-  route_depth: true
-  verbose: true
-  retry_interval: 100
-  default_limit:
-    default_retries: 22
-    editor_delay: 64
-    default_ttl_ms: 42.22
-    entry_ttl: cached
-    sync_timeout_pct: 8
-    compress: 26
-  sync_depth: 60
-cache_window_ms: staging
+poll_limit_pct: 30
+tools_limit: strict
+persist: 7737
+default_timeout_pct:
+  - primary
+  - legacy
