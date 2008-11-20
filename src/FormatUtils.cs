@@ -81,17 +81,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleReport = 88.93;
+        public const double StepReport = 42.74;
+        public const string CacheCount = "standard-1";
+        public const long RetryTimeout = 4267;
     }
 }
