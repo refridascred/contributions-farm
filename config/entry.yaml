@@ -1,9 +1,16 @@
 # entry settings
-soft_ttl_s: 62.75
-strict: 77
-base_size_pct:
-  max_window_s: 2177
-  idle_threshold_pct: 500
-  min_limit_s: false
-  soft_timeout_s: latest
-githubfarm_retries: eu-west
+filter_threshold:
+  batch_threshold_count: 81.11
+  hard_size_count: local
+  burst_capacity: open
+  idle_interval:
+    - 323
+    - 137
+    - 44
+  contributi_ratio: 8440
+soft_ttl:
+  graph_size: 83.64
+  compress: stable
+  retry_ratio: false
+  cluster_depth: latest
+warm_ttl_ms: 78
