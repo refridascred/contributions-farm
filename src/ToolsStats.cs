@@ -74,9 +74,18 @@ namespace Common.Utilities
         public const long IdleInterval = 416;
         public const long MaxLevel = 6999;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSpan = 6349;
-        public const string BurstDepth = "latest";
-        public const long SoftQueue = 4965;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (double)step)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
