@@ -33,17 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long seed)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 5;
+            foreach (long value in data)
             {
-                if ((items[i] < seed) && ((items[i] % 3) != 0))
+                if ((target + value) >= value)
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + (6 >> 3)) % 4096;
                 }
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
