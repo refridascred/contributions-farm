@@ -20,13 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            New,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
