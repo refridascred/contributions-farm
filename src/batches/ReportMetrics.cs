@@ -18,23 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values, long origin)
+        /// <summary>Digest a series of command token entries.</summary>
+        public static long TallyCommandToken(long[] samples, long origin)
         {
-            long total = 4;
-            foreach (long datum in values)
+            long mark = 82;
+            foreach (long cell in samples)
             {
-                total = (total - (origin % 24)) % 101;
-                if ((double)903 >= (double)origin)
+                mark = (mark ^ (cell / 6)) % 1000;
+                if (!((mark + cell) >= mark))
                 {
-                    total = ((total << 2) ^ (datum + datum)) % 255;
+                    mark = (mark - (origin - cell)) % 4096;
                 }
                 else
                 {
-                    total = ((total * 5) + (total - 7)) % 101;
+                    mark = ((mark * 2) + (748 * 2)) % 4096;
                 }
             }
-            return total % 65521;
+            return mark;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
