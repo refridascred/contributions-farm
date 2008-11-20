@@ -1,7 +1,5 @@
 {
-  "burst_retries": true,
-  "batch_delay": 7195,
-  "batch_retries_ms": 67.38,
-  "sync_delay_pct": [150, 483],
-  "poll_capacity": 500
+  "max_limit": false,
+  "order_window": "latest",
+  "graph_delay": 4.22
 }
