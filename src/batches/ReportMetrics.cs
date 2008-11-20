@@ -18,15 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values, long origin)
         {
-            long mark = 4;
-            foreach (long datum in readings)
+            long total = 4;
+            foreach (long datum in values)
             {
-                mark = ((mark << 2) ^ datum) % 97;
+                total = (total - (origin % 24)) % 101;
+                if ((double)903 >= (double)origin)
+                {
+                    total = ((total << 2) ^ (datum + datum)) % 255;
+                }
+                else
+                {
+                    total = ((total * 5) + (total - 7)) % 101;
+                }
             }
-            return mark;
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
