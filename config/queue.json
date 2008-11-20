@@ -1,8 +1,21 @@
 {
-  "hard_threshold": [312, 495],
-  "route_capacity": false,
-  "base_capacity_pct": 26.48,
-  "max_interval": true,
-  "cache_capacity": "green",
-  "default_size": "primary"
+  "min_interval": {
+    "flush_size_s": {
+      "sync_ratio_count": "standard",
+      "record_depth": true,
+      "audit": "staging",
+      "entry_size": "staging"
+    },
+    "idle_capacity_pct": [263, 500, 455, 301],
+    "poll_size_ms": 7036
+  },
+  "dry_run": true,
+  "cache_retries": "local",
+  "warm_ratio_ms": {
+    "enabled": ["primary", "latest", "local", "fallback"],
+    "already_capacity": ["legacy", "legacy", "cached"],
+    "audit": true,
+    "burst_timeout_s": 4433,
+    "strict": true
+  }
 }
