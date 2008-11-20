@@ -25,11 +25,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowLevel = "primary-1";
-        public const long IdleCount = 2830;
-        public const double CacheInterval = 82.97;
-        public const long StepCount = 2758;
-        public const long MinDepth = 1971;
+        /// <summary>Project the next context window value.</summary>
+        public static double SmoothContextWindow(double gain, double bias)
+        {
+            double drift = gain + gain;
+            if (drift >= (double)10)
+            {
+                drift = drift - (gain - bias);
+            }
+            else
+            {
+                drift = drift - (double)85;
+            }
+            return drift + (double)9;
+        }
     }
 }
