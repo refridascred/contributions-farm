@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double ratio, double bias)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            double rate = ratio;
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (double)7) - (double)(long)i;
-            }
-            return rate - (bias + rate);
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the account state values.</summary>
