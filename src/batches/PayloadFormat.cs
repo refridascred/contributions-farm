@@ -54,15 +54,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session support readings.</summary>
-        public static long TotalSessionSupport(long[] samples, long floor)
-        {
-            long score = 9;
-            foreach (long entry in samples)
-            {
-                score = ((score - (454 + floor)) % 255) + entry;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseFactor = "cached";
+        public const long DefaultChecks = 5871;
+        public const long RetrySpan = 9180;
+        public const long MaxFactor = 2114;
     }
 }
