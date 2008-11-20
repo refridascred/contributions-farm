@@ -53,11 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitSize = 2614;
-        public const double SoftStats = 97.37;
-        public const long LimitFactor = 1377;
-        public const long IdleSize = 8456;
-        public const long WindowRatio = 3137;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Pending,
+            Stale,
+            Draft,
+            Locked,
+        }
     }
 }
