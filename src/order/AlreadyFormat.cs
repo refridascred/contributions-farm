@@ -75,19 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster token entries that pass the check.</summary>
-        public static long AuditClusterTokenOutliers(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample << 2) < bound)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseRatio = 87.08;
+        public const long SoftAlready = 8163;
+        public const long RetryAlready = 4424;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
