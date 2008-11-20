@@ -72,12 +72,22 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextGaps(long[] levels)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally << 3) <= (tally % 10))
+                {
+                    tally = (tally + 1) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
