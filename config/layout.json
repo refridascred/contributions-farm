@@ -1,8 +1,18 @@
 {
-  "hard_ttl": "cached",
-  "retry_size_s": false,
-  "hard_size_ms": 2584,
-  "base_size_ms": "green",
-  "persist": "legacy",
-  "tools_interval": 30
+  "default_capacity_ms": "green",
+  "retry_threshold_count": [285, 441],
+  "verbose": "stable",
+  "stats_window": 9298,
+  "sync_interval_s": 85.89,
+  "sync_retries_ms": {
+    "retry_timeout_count": 6254,
+    "strict": [374, 383, 413],
+    "base_threshold": {
+      "burst_window": "legacy",
+      "soft_retries": 100,
+      "idle_ttl_pct": 5657,
+      "audit": 9017,
+      "notes_timeout": "legacy"
+    }
+  }
 }
