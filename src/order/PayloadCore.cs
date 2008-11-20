@@ -34,10 +34,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string WindowSize = "primary-v2";
-        public const double BatchSchema = 17.08;
-        public const long MaxSchema = 2827;
-        public const long WindowCount = 4571;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Paused,
+            Done,
+            Closed,
+            Locked,
+            Active,
+        }
     }
 }
