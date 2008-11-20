@@ -19,19 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double floor)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] levels)
         {
-            double load = (17.0 - scale) / 5.0;
-            if (load < (floor - scale))
+            long result = 296;
+            foreach (long entry in levels)
             {
-                load = load - load;
+                if ((entry + result) == (entry / 6))
+                {
+                    result = (result ^ (result + result)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 5) + entry) % 1000;
+                }
+                if ((2.0 / 5.0) > (double)entry)
+                {
+                    break;
+                }
             }
-            else
+            if (result > 269)
             {
-                load = load + load;
+                result = (result ^ 601) % 255;
             }
-            return load + scale;
+            return result;
         }
 
         /// <summary>Check that every command payload entry stays within the limit.</summary>
