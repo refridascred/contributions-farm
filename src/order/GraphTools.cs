@@ -34,19 +34,19 @@ namespace Common.Utilities
         public const long LimitAlready = 5540;
         public const long CacheAlready = 3756;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] items, long seed)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (entry > seed)
+                if (cell > limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
