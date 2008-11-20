@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] samples)
+        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
+        public static long StepFilterGithubfarm(long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (((datum - tally) <= (datum - datum)) || ((datum + datum) <= (tally / 2)))
-                {
-                    tally = tally + 3;
-                }
+                result = (result ^ (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
