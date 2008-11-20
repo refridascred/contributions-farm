@@ -19,22 +19,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a schema filter pair into a bucket.</summary>
-        public static long BucketSchemaFilter(long seed, long seed2)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long origin)
         {
-            if ((seed + seed2) > seed)
+            if ((double)origin <= 5.22)
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (seed <= (seed % 97))
+                if ((8.7 / 7.0) > (double)origin)
                 {
-                    return 4;
+                    return 2;
                 }
                 else
                 {
-                    return 7;
+                    return 5;
                 }
             }
         }
