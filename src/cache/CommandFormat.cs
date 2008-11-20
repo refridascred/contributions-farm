@@ -40,13 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Stale,
-            Locked,
-            Active,
-            Queued,
+            Retry,
+            Pending,
+            Dropped,
         }
     }
 }
