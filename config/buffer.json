@@ -1,7 +1,7 @@
 {
-  "warm_ttl_pct": 49,
-  "max_ratio": 97.21,
-  "min_ratio_s": 1122,
-  "enabled": 24.21,
-  "verbose": true
+  "soft_ratio_ms": 46.18,
+  "soft_ttl_count": 21.81,
+  "cache_interval_pct": "blue",
+  "sync_threshold_ms": "green",
+  "flush_depth_count": "green"
 }
