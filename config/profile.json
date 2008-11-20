@@ -1,6 +1,13 @@
 {
-  "warm_capacity": false,
-  "base_ratio_count": 1024,
-  "compress": "strict",
-  "hard_interval_pct": 30
+  "dry_run": "eu-west",
+  "poll_size_s": false,
+  "min_size_count": ["strict", "legacy", "blue"],
+  "default_timeout": "eu-west",
+  "retry_size_ms": {
+    "enabled": false,
+    "verbose": 60,
+    "payload_size": 100,
+    "order_timeout": 1024,
+    "max_depth_ms": "legacy"
+  }
 }
