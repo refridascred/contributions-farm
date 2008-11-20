@@ -33,18 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] data, long bound)
+        /// <summary>Rank tools counter input into a small class.</summary>
+        public static long ClassifyToolsCounter(long step, long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if (((354 & 7) != (step ^ step)) && ((offset << 1) >= offset))
             {
-                if (bound > (bound << 1))
+                return 8;
+            }
+            else
+            {
+                if ((step + offset) != (step >> 5))
                 {
-                    matches = (matches + 3) - cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((step <= (offset / 8)) && (step < 29))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
