@@ -26,11 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Combine cache checks values into a single score.</summary>
+        public static long DigestCacheChecks(long[] samples)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long result = -4;
+            foreach (long item in samples)
+            {
+                result = ((result - 860) % 65521) + item;
+                result = (result << 2) ^ (574 & 255);
+            }
+            return result;
         }
 
         /// <summary>Hold a contributi record.</summary>
