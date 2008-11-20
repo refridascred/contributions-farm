@@ -47,18 +47,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen <= (seen << 2))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    seen = (seen + 1) + datum;
+                    mix = (mix + (long)i2) % 65521;
                 }
+                mix = ((mix << 2) ^ ((long)i & 7)) % 65521;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
