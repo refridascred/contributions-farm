@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format payload readings.</summary>
-        public static long TallyFormatPayload(long[] samples)
-        {
-            long anchor = 97;
-            foreach (long value in samples)
-            {
-                if ((5 < (12 - anchor)) && ((anchor >> 1) >= (anchor + anchor)))
-                {
-                    anchor = (((anchor << 2) ^ (anchor & 7)) % 1000) - value;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxScore = 5608;
+        public const long MaxEditor = 9136;
+        public const long LimitFactor = 1306;
 
         /// <summary>Match up counter samples.</summary>
         public static long OverlapCounterCount(long[] series)
