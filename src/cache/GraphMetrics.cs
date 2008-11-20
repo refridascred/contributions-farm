@@ -24,18 +24,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            long acc = 550;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc % 2) <= (datum - 484))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc ^ acc;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
