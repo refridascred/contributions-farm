@@ -43,10 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxTimeout = 20.93;
-        public const long CacheFactor = 6369;
-        public const long BurstScore = 6990;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 3131;
+        public const long RetryFactor = 3160;
+        public const long MaxSize = 2328;
+        public const string CacheReport = "standard";
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
