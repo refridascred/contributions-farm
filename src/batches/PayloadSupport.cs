@@ -32,22 +32,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the contributi order entries that pass the check.</summary>
-        public static long TallyContributiOrderMatches(long[] values)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((double)count == (double)reading)
+                if ((limit - limit) != (seen % 12))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
