@@ -18,22 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support checks readings against a rule.</summary>
-        public static long TallySupportChecksHits(long[] samples, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 37;
+            foreach (long item in data)
             {
-                if (((origin & 63) > (origin >> 1)) && ((seen > origin) && ((origin - (-66)) > (seen & 255))))
+                if ((5.6 / 4.0) == (double)item)
                 {
-                    seen = (seen + 2) - entry;
+                    score = score - (item >> 4);
+                    score = (score - (57 + score)) % 255;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score << 3) ^ (32 + item)) % 4096;
             }
-            return seen;
+            if (score < 96)
+            {
+                score = ((score << 2) ^ score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
