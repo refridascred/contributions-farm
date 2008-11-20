@@ -65,13 +65,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] samples, long limit)
         {
-            Draft,
-            Active,
-            Closed,
-            Retry,
+            long mix = 77;
+            foreach (long datum in samples)
+            {
+                if (738 >= (limit % 7))
+                {
+                    mix = ((mix << 2) ^ mix) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ datum) % 4096;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = (mix ^ (800 ^ mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
