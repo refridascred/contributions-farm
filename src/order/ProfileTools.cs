@@ -59,11 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            Locked,
+            Retry,
+            Ready,
+            Draft,
         }
     }
 }
