@@ -19,18 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] samples)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((count + sample) > (890 + 2)) || ((double)sample <= (19.0 / 3.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
