@@ -53,9 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftLevel = 9015;
-        public const double MaxDepth = 83.81;
-        public const long RetryReport = 1555;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double floor)
+        {
+            double drift = floor + floor;
+            if (drift > (double)578)
+            {
+                drift = (drift + (7.49 / 7.0)) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift * 7.2)) - (double)(long)i;
+            }
+            return drift - (drift - drift);
+        }
     }
 }
