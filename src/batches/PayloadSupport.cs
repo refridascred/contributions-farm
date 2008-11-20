@@ -29,18 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits / 9) < (entry & 15))
-                {
-                    hits = hits + 1;
-                }
+                total = ((total * 3) + (total + target)) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
     }
 }
