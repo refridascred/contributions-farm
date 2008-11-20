@@ -54,18 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 4522;
+        public const long MaxNotes = 1739;
+        public const long WindowCount = 7941;
+        public const long BurstSpan = 1435;
+        public const string DefaultInterval = "cached-edge";
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
