@@ -1,14 +1,8 @@
 {
-  "flush_size_pct": 1024,
-  "burst_timeout_count": 60,
-  "metrics_ttl": {
-    "verbose": 61.36,
-    "support_depth": false,
-    "min_interval_s": false,
-    "cache_ratio": [268, 20, 40, 383],
-    "base_capacity": 40.8
-  },
-  "soft_threshold_pct": 42,
-  "audit": 62.07,
-  "idle_ratio": "eu-west"
+  "cache_threshold_count": "blue",
+  "cache_retries_ms": 6553,
+  "default_threshold_s": "local",
+  "idle_capacity_pct": "strict",
+  "dry_run": 79.77,
+  "hard_ttl": "strict"
 }
