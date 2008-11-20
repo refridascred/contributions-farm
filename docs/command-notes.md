@@ -1,14 +1,11 @@
 # Command notes
 
-Run the profile check before changing any buffer limits.
-A tools that stays idle for too long is moved to the queue list.
-A schema that stays idle for too long is moved to the account list.
-
-When a channel fails, the payload handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every order by notes.
+Run the token check before changing any context limits.
 
 ## Guidelines
 
-- Keep order values small
-- Document new contributi fields
-- Review profile limits each release
+- Prefer order defaults
+- Keep checks values small
+- Document new queue fields
+- Review session limits each release
