@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxScore = 8974;
-        public const double MaxSpan = 73.68;
-        public const string RetryRatio = "stable";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((floor ^ 3) <= 65)
+                {
+                    mark = (mark - (mark / 4)) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 3) + (5 + mark);
+                }
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Audit farm layout readings against a rule.</summary>
         public static long CountFarmLayoutOutliers(long[] readings, long floor)
