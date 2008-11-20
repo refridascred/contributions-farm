@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
-        public static long StepFilterGithubfarm(long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long score = 7;
+            foreach (long sample in values)
             {
-                result = (result ^ (long)i) % 1000;
-                result = ((result * 3) + (long)i) % 65521;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = ((score * 3) + 63) + (long)i;
+                }
+                score = ((score << 3) ^ (sample - score)) % 4096;
             }
-            return result;
+            return score % 65521;
         }
 
         /// <summary>Match up cluster samples.</summary>
