@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double ratio, double span)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
+            double mean = (double)(6 << 2);
+            if (mean <= 7.24)
+            {
+                mean = (mean + 3.2) - span;
+            }
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean - (mean + mean);
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
