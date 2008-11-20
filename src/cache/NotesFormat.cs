@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double ratio, double span)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long bound, long offset)
         {
-            double bias = (double)(0 - 0);
-            if (bias > (double)46)
+            long bound2 = bound ^ offset;
+            if ((bound / 3) > (bound2 * 5))
             {
-                bias = (bias - bias) - ratio;
+                return 7;
             }
             else
             {
-                bias = bias - (double)74;
+                if (bound >= (bound + bound2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return bias - span;
         }
 
         /// <summary>Describe the notes class values.</summary>
