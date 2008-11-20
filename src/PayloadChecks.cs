@@ -30,18 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long item in series)
             {
-                if ((18.0 - 10.0) != (double)target)
+                if (item < seed)
                 {
-                    matches = (matches + 3) - reading;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a buffer info.</summary>
