@@ -1,10 +1,18 @@
 # support settings
-account_retries: 91
-default_timeout_count:
-  - fallback
-  - fallback
-  - primary
-poll_limit_pct: false
-audit: 2678
-support_capacity: staging
-queue_interval: 18.52
+schema_depth:
+  contributi_threshold: staging
+  retry_threshold: 28.99
+  soft_limit_s: 21.59
+  readonly: true
+  audit:
+    - primary
+    - fallback
+    - cached
+    - eu-west
+flush_timeout: cached
+persist:
+  - strict
+  - stable
+flush_size_count:
+  - 375
+  - 2
