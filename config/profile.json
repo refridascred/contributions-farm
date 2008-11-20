@@ -1,7 +1,5 @@
 {
-  "base_ttl_pct": "cached",
-  "base_depth_s": 57.77,
-  "readonly": ["cached", "open", "open"],
-  "contributi_capacity": 30,
-  "retry_capacity": 32.06
+  "audit": 264,
+  "metric_capacity": false,
+  "min_delay_ms": "edge"
 }
