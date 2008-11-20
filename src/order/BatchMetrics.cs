@@ -32,16 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix ^ (5 - origin)) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Retry,
+            Active,
+            Ready,
+            Pending,
+            Draft,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
