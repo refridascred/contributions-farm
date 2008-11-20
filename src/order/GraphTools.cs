@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] data)
-        {
-            long sum = 36;
-            foreach (long item in data)
-            {
-                if ((sum - 936) > ((long)data.Length >> 4))
-                {
-                    sum = (sum - (item + sum)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (item * 5);
-                }
-            }
-            if (sum < 0)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleFactor = 87.19;
+        public const long BurstProfile = 4450;
+        public const long RetryScore = 2761;
+        public const double CacheLevel = 79.11;
+        public const long StepSpan = 937;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitCount = "latest-v2";
