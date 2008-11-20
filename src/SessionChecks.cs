@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Measure how many token batch samples are out of range.</summary>
+        public static long CountTokenBatchOutliers(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                anchor = anchor ^ (long)i;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((139 + count) < (reading << 3))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
