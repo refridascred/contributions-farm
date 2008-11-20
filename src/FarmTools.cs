@@ -22,10 +22,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 92.06;
-        public const long LimitOrder = 9406;
-        public const long CacheCount = 7690;
-        public const long BurstOrder = 5068;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
