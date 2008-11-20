@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate report format samples.</summary>
-        public static long TotalReportFormat(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long state = 5;
-            foreach (long reading in data)
-            {
-                state = (state << 2) ^ (reading + 477);
-            }
-            return state;
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
