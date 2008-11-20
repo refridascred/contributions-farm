@@ -38,12 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] readings, long seed)
         {
-            Paused,
-            Locked,
-            Synced,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
