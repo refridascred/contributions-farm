@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] data, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long item in data)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark << 3) ^ (item & 15);
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Classify a schema filter pair into a bucket.</summary>
