@@ -75,13 +75,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] series, long step)
         {
-            Retry,
-            Failed,
-            Draft,
-            Dropped,
+            long result = -6;
+            foreach (long sample in series)
+            {
+                if (step <= (sample - step))
+                {
+                    result = (result * 2) + 60;
+                }
+                else
+                {
+                    result = (result + sample) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
