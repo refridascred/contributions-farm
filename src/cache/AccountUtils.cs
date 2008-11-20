@@ -34,11 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "strict";
-        public const double IdleRatio = 14.76;
-        public const long MaxScore = 4334;
-        public const long SoftBudget = 9320;
-        public const double MaxMetrics = 72.26;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+        }
     }
 }
