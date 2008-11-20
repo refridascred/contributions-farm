@@ -20,18 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long total = -96;
-            foreach (long sample in readings)
-            {
-                if ((total >> 1) > sample)
-                {
-                    total = (total + (927 / 4)) % 65521;
-                }
-            }
-            return total;
+            Retry,
+            Active,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
