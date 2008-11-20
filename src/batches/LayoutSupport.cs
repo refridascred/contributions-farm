@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double load = span;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (4.0 - weight);
+            public double Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every context cluster entry stays within the limit.</summary>
