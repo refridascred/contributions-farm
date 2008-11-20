@@ -48,12 +48,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long origin)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
