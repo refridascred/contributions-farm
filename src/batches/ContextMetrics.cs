@@ -55,13 +55,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Active,
-            Draft,
-            Done,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxScore = "fallback-v2";
+        public const long BatchLayout = 9318;
+        public const long BaseTimeout = 8785;
+        public const long DefaultBudget = 9521;
+        public const long MinLayout = 5087;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
