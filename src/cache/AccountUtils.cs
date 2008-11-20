@@ -18,12 +18,15 @@ namespace Common.Utilities
             return (scale - (ratio / 4.0)) + bias;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
-            public string Count { get; set; } = "";
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
