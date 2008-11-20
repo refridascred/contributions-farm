@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] values, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((matches - offset) > (2 ^ offset)) && (((long)values.Length % 7) >= matches))
+                if (((double)sample != (5.05 - 2.9)) && (sample > (count + 44)))
                 {
-                    matches = (matches + 2) + item;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
