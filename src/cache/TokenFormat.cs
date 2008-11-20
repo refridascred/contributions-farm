@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a layout command reading by value.</summary>
-        public static long LookupLayoutCommandIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftCount = 6.79;
+        public const long WindowGithubfarm = 6928;
+        public const double MinGithubfarm = 35.61;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long floor)
