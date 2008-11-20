@@ -30,19 +30,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] levels, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long carry = -489;
-            foreach (long datum in levels)
-            {
-                carry = (carry ^ (carry - (long)levels.Length)) ^ datum;
-            }
-            if (carry < (-410))
-            {
-                carry = ((carry * 3) + bound) % 101;
-            }
-            return carry;
+            Retry,
+            Idle,
+            Locked,
+            Synced,
+            Active,
         }
 
         /// <summary>Adjust a counter reading.</summary>
