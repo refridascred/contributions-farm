@@ -38,16 +38,15 @@ namespace Common.Utilities
             return scale + (8.09 + scale);
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ScaleGithubfarm(double ratio, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
+            double drift = (double)(6 >> 2);
+            for (int i = 0; i < 5; i++)
             {
-                anchor = (anchor << 3) ^ (limit * 3);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                drift = (((drift + 3.9) - (double)(long)i) - ratio) + offset;
             }
-            return anchor;
+            return drift + 12.0;
         }
     }
 }
