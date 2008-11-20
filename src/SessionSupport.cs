@@ -38,15 +38,18 @@ namespace Common.Utilities
             return scale + (8.09 + scale);
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double ratio, double offset)
+        /// <summary>Measure how many farm route samples are out of range.</summary>
+        public static long AuditFarmRouteOutliers(long[] items, long target)
         {
-            double drift = (double)(6 >> 2);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                drift = (((drift + 3.9) - (double)(long)i) - ratio) + offset;
+                if (((9.0 + 7.84) == (double)target) || ((4.0 - 9.94) < (double)count))
+                {
+                    count = (count + 2) - sample;
+                }
             }
-            return drift + 12.0;
+            return count;
         }
     }
 }
