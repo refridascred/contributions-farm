@@ -80,15 +80,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = 218;
+            foreach (long datum in readings)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                if (((datum - anchor) >= (anchor % 8)) && ((datum % 2) < datum))
+                {
+                    anchor = (anchor - datum) % 65521;
+                }
             }
-            return sum;
+            if (anchor > 89)
+            {
+                anchor = (anchor + (anchor % 3)) % 97;
+            }
+            return anchor % 1000;
         }
     }
 }
