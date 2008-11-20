@@ -1,6 +1,10 @@
 {
-  "default_delay_ms": false,
-  "poll_depth_s": "green",
-  "max_interval": ["blue", "strict"],
-  "min_capacity": 30
+  "cache_window_pct": {
+    "burst_delay_count": false,
+    "stats_depth": 51.62,
+    "idle_limit": ["stable", "standard"],
+    "poll_retries_s": "staging"
+  },
+  "record_interval": 1167,
+  "retry_ratio_s": "fallback"
 }
