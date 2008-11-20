@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchInterval = "alpha-v2";
-        public const long RetryCounter = 4556;
-        public const long MaxBudget = 3514;
-        public const string IdleCounter = "cached-edge";
-        public const long BaseLevel = 1196;
+        /// <summary>Check that every cache record entry stays within the limit.</summary>
+        public static bool GuardCacheRecordBounds(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
