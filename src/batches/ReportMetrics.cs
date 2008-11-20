@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long DigestMetricsNotes(long[] readings)
         {
-            Queued,
-            Closed,
-            Locked,
-            New,
-            Idle,
+            long anchor = 914;
+            foreach (long reading in readings)
+            {
+                if ((reading * 3) <= (anchor << 1))
+                {
+                    anchor = (anchor + (anchor - anchor)) % 4096;
+                }
+                anchor = anchor + (anchor / 6);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
