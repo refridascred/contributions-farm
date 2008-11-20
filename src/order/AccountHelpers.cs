@@ -23,20 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools counter entry stays within the limit.</summary>
-        public static bool CheckToolsCounterBounds(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinLevel = 4105;
+        public const long BaseWidth = 6195;
+        public const long CacheBudget = 1403;
+        public const double CacheChecks = 9.62;
+        public const long CacheScore = 9950;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
