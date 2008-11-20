@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches batch samples are out of range.</summary>
-        public static long TallyBatchesBatchHits(long[] series, long limit)
+        /// <summary>Validate cluster filter readings against a bound.</summary>
+        public static bool CheckClusterFilterBounds(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((double)621 < (double)limit)
+                if (cell >= offset)
                 {
-                    hits = (hits + 1) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
