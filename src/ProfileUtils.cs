@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile utils helpers.</summary>
     public static class ProfileUtils
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Grade a counter order value against two limits.</summary>
+        public static long RankCounterOrder(long seed, long origin)
         {
-            Queued,
-            Failed,
-            Active,
-            Stale,
+            if (((double)seed <= (6.5 / 6.0)) || ((origin >> 4) > (seed ^ origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((9.6 - 0.3) <= (double)origin) && ((origin - seed) >= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= (3.0 + 1.8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin + seed) <= (origin / 6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
