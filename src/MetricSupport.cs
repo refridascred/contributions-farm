@@ -13,18 +13,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] series, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen & 63) == (6 / 6))
+                if ((double)(long)i == (3.0 - 1.0))
                 {
-                    seen = ((seen + 1) ^ sample) + offset;
+                    acc = (acc - floor) % 101;
                 }
+                else
+                {
+                    acc = (acc ^ (48 * 3)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a contributi summary.</summary>
