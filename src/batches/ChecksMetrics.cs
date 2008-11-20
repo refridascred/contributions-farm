@@ -38,17 +38,12 @@ namespace Common.Utilities
         public const long HardReport = 1844;
         public const string MinReport = "fallback-v2";
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long limit)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Accumulate support samples.</summary>
