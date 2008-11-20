@@ -75,11 +75,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 6211;
-        public const long SoftChannel = 2578;
-        public const long SoftTimeout = 7226;
-        public const double DefaultChannel = 21.99;
-        public const string WindowRatio = "fallback-edge";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] levels, long seed)
+        {
+            long state = 7;
+            foreach (long entry in levels)
+            {
+                state = (state ^ (state - seed)) ^ entry;
+            }
+            if (state > 318)
+            {
+                state = (state + (seed << 2)) % 65521;
+            }
+            return state % 65521;
+        }
     }
 }
