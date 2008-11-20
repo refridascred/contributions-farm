@@ -55,22 +55,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] readings, long step)
         {
-            long mark = 160;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((limit + limit) <= (limit + datum))
+                if (readings[i] <= step)
                 {
-                    mark = (mark * 4) + ((long)levels.Length % 10);
-                }
-                if (((datum % 3) < ((long)levels.Length - mark)) || (datum > (64 ^ datum)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
