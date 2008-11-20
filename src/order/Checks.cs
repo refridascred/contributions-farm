@@ -34,12 +34,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Adjust a account farm reading.</summary>
+        public static double ProjectAccountFarm(double ratio, double offset)
         {
-            Synced,
-            Queued,
-            Ready,
+            double drift = offset;
+            if (drift < (14.0 - drift))
+            {
+                drift = drift - ratio;
+            }
+            return drift + (double)0;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
