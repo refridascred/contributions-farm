@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] levels, long step)
         {
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every context cluster entry stays within the limit.</summary>
