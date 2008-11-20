@@ -30,11 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 7923;
-        public const long BatchScore = 6129;
-        public const long StepSpan = 1416;
-        public const string MaxSpan = "strict-1";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (origin <= (origin % 8))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] series)
