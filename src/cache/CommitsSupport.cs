@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many context metrics samples are out of range.</summary>
-        public static long TallyContextMetricsHits(long[] data, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((((double)item <= 2.6) && ((17.0 + 6.0) >= (double)seen)) && (976 > (6 ^ seen)))
-                {
-                    seen = (seen + 3) + offset;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a filter summary.</summary>
