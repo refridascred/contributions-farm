@@ -59,18 +59,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long target2)
         {
-            long seen = 0;
-            foreach (long item in data)
+            if (122 >= target)
             {
-                if (item <= (item + seen))
+                return 6;
+            }
+            else
+            {
+                if (target >= (target & 1))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 3) != (54 - target2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.6 * 2.57) > (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate token checks samples.</summary>
