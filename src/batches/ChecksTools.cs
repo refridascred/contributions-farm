@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 114;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading == (double)limit)
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state * 2) + limit;
                 }
             }
-            return hits;
+            if (state > 50)
+            {
+                state = ((state << 2) ^ (limit / 8)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the batches class values.</summary>
