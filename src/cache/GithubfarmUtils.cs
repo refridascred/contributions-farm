@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long BatchMetric = 9632;
         public const long HardTimeout = 7924;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] samples)
         {
-            Queued,
-            Dropped,
-            Closed,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((hits + item) > hits) && ((8.03 / 3.0) < (double)item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up route samples.</summary>
