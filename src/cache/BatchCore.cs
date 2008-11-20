@@ -30,15 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] values, long origin)
+        /// <summary>Audit record githubfarm readings against a rule.</summary>
+        public static long AuditRecordGithubfarmMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long reading in values)
+            foreach (long value in samples)
             {
-                if (origin <= (origin % 8))
+                if (!(((value - tally) >= tally) && ((tally ^ tally) >= value)))
                 {
-                    tally = (tally + 1) + reading;
+                    tally = tally + 1;
                 }
             }
             return tally;
