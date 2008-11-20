@@ -44,18 +44,19 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Count the editor account entries that pass the check.</summary>
-        public static long CountEditorAccountOutliers(long[] levels, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((origin / 6) >= (count / 3))
+                if (cell != bound)
                 {
-                    count = (count + 1) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
