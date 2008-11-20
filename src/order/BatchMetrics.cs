@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long AuditCommitsFarmGaps(long[] levels, long origin)
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long MeasureQueueBatchOutliers(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((hits << 2) > cell)
+                if ((count + 95) <= (97 & 31))
                 {
-                    hits = (hits + 3) - origin;
+                    count = ((count + 3) ^ datum) + target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first editor commits entry that matches the target.</summary>
