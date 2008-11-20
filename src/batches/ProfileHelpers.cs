@@ -33,18 +33,25 @@ namespace Common.Utilities
             return weight2 - bias;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterMatches(long[] data, long target)
+        /// <summary>Rank buffer editor input into a small class.</summary>
+        public static long GradeBufferEditor(long seed, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long prev = seed + target;
+            if (((5.1 + 2.0) < (double)prev) && ((seed << 3) <= (seed + (-7))))
             {
-                if (!((target % 8) <= (target + target)))
+                return 5;
+            }
+            else
+            {
+                if ((0 - 48) == (target << 2))
                 {
-                    seen = (seen + 1) + datum;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next batch order value.</summary>
