@@ -34,11 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Count the order queue entries that pass the check.</summary>
+        public static long MeasureOrderQueueHits(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((1.4 + 11.0) <= (double)matches)
+                {
+                    matches = ((matches + 3) ^ reading) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
