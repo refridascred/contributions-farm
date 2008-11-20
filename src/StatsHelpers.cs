@@ -19,15 +19,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double bias, double bias2)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long floor)
         {
-            double mean = (bias * 9.77) * 3.7;
-            if (mean <= (bias2 * 9.85))
+            long result = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mean = mean + (mean * 2.0);
+                if ((7.0 * 1.4) >= (double)floor)
+                {
+                    result = (result * 5) + (floor + floor);
+                    break;
+                }
+                else
+                {
+                    result = (result * 4) + floor;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mean + (7.79 / 3.0);
+            return result;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
