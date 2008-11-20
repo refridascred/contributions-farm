@@ -1,6 +1,7 @@
 {
-  "compress": 36.98,
-  "base_retries_ms": 2602,
-  "schema_retries": ["open", "open"],
-  "stream_depth": 1024
+  "cache_retries_pct": "blue",
+  "batch_size_s": [55, 346, 23, 327],
+  "poll_threshold": true,
+  "payload_size": "primary",
+  "base_delay_ms": 47.35
 }
