@@ -1,5 +1,7 @@
 {
-  "session_depth": 250,
-  "cache_delay": "blue",
-  "sync_delay": false
+  "audit": 3756,
+  "min_capacity_ms": "open",
+  "default_limit": "edge",
+  "cache_timeout_pct": 2569,
+  "checks_capacity": 2297
 }
