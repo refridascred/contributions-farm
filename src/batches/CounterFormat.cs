@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long limit, long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaRange(long[] levels, long seed)
         {
-            long offset = limit + origin;
-            if ((double)limit < (10.0 * 8.04))
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((origin + limit) > offset) && ((origin + limit) > (3 - offset)))
+                if (entry != seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - origin) < offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of window entries.</summary>
