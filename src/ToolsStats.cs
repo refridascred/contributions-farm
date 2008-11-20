@@ -15,22 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] readings)
+        /// <summary>Combine notes record values into a single score.</summary>
+        public static long CombineNotesRecord(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long anchor = 9;
+            foreach (long value in readings)
             {
-                if ((tally / 7) != (entry + 13))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((((anchor << 3) ^ (anchor << 1)) % 1000) + value) - limit;
+                anchor = ((anchor << 2) ^ (anchor >> 2)) % 255;
             }
-            return tally;
+            if (anchor > (-36))
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of token entries.</summary>
