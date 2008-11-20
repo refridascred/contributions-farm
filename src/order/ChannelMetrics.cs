@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Match up batches commits samples.</summary>
+        public static long MatchBatchesCommitsCount(long[] levels)
         {
-            long mark = 1;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark << 3) ^ (item & 15);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Classify a schema filter pair into a bucket.</summary>
