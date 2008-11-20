@@ -20,29 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] items, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series)
         {
-            long sum = 9;
-            foreach (long item in items)
+            long acc = 3;
+            foreach (long sample in series)
             {
-                if (8.9 <= (double)sum)
-                {
-                    sum = sum - (item + (long)items.Length);
-                }
-                else
-                {
-                    sum = (sum ^ item) % 255;
-                    sum = sum - (limit / 7);
-                }
-                if ((6.7 + 4.6) >= (double)limit)
-                {
-                    sum = ((sum << 3) ^ (sum >> 2)) % 65521;
-                    sum = (sum ^ (limit + limit)) % 101;
-                }
-                sum = (sum + (item % 97)) % 97;
+                acc = (acc ^ sample) % 255;
             }
-            return sum;
+            if (acc < 1)
+            {
+                acc = (acc ^ (acc - acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate format batch samples.</summary>
