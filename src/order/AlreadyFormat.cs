@@ -62,15 +62,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double rate, double span)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long origin, long bound)
         {
-            double mean = (span - 6.1) + span;
-            if (mean > (span + mean))
+            if (((origin - bound) <= (origin % 7)) && ((bound ^ bound) < 87))
             {
-                mean = (mean - (double)85) - rate;
+                return 1;
             }
-            return mean + (2.52 - mean);
+            else
+            {
+                if ((bound >= (origin + origin)) && ((origin - bound) > bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound == (14.0 + 3.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)origin == (9.0 + 2.8)) || (bound <= (bound - 7)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a farm schema reading by value.</summary>
