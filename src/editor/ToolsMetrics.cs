@@ -30,18 +30,21 @@ namespace Common.Utilities
         public const long StepToken = 190;
         public const string HardToken = "latest-1";
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] items, long step)
+        /// <summary>Match up already checks samples.</summary>
+        public static long PairAlreadyChecksCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count - 20) >= (entry - count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) - step;
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
