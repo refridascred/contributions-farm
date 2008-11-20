@@ -48,11 +48,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 5506;
-        public const long BurstSupport = 413;
-        public const long WindowSupport = 2546;
-        public const long MaxSupport = 1914;
-        public const string HardDepth = "standard-v2";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double CacheMetric = 37.59;
+        public const string RetryMetric = "primary";
+        public const double MinMetric = 97.57;
     }
 }
