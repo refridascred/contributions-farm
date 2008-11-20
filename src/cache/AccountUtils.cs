@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double bias)
-        {
-            double scale = ratio;
-            return (scale - (ratio / 4.0)) + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultInterval = 0.83;
+        public const long LimitFarm = 9271;
+        public const double IdleFarm = 81.62;
+        public const string BurstInterval = "fallback-v2";
+        public const long StepFarm = 7386;
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long step)
