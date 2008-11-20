@@ -40,13 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double offset)
         {
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            double ratio = 1.2 - offset;
+            if (ratio <= gain)
+            {
+                ratio = ratio - (double)459;
+            }
+            return ratio + (double)814;
         }
 
         /// <summary>Describe the format class values.</summary>
