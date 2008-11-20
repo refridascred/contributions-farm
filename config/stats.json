@@ -1,10 +1,11 @@
 {
-  "cache_window_pct": {
-    "burst_delay_count": false,
-    "stats_depth": 51.62,
-    "idle_limit": ["stable", "standard"],
-    "poll_retries_s": "staging"
+  "max_delay": "standard",
+  "dry_run": {
+    "batch_ratio": "eu-west",
+    "hard_interval_count": 60,
+    "burst_capacity_count": [120, 254, 205, 221]
   },
-  "record_interval": 1167,
-  "retry_ratio_s": "fallback"
+  "poll_interval": "stable",
+  "retry_interval_ms": false,
+  "base_limit_s": 54.78
 }
