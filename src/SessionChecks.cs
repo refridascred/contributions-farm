@@ -48,10 +48,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftLevel = "local-v2";
-        public const string IdleFarm = "cached";
-        public const long LimitFarm = 3209;
-        public const long LimitSpan = 5595;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] items, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
