@@ -42,12 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] data)
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public bool Size { get; set; }
+            long mark = 87;
+            foreach (long sample in data)
+            {
+                if ((double)mark < (4.0 - 5.0))
+                {
+                    mark = mark - (sample ^ (long)data.Length);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics summary.</summary>
