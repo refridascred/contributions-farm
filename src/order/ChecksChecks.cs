@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((hits ^ hits) != (item / 9))
+                if (((19.0 / 7.0) <= (double)tally) || ((5 / 2) < (item / 5)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the graph mode values.</summary>
