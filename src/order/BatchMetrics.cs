@@ -71,11 +71,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1226;
-        public const long LimitSize = 1336;
-        public const long MinWidth = 8782;
-        public const long SoftTimeout = 458;
-        public const long BurstInterval = 7847;
+        /// <summary>Project the next stats tools value.</summary>
+        public static double BlendStatsTools(double rate, double floor)
+        {
+            double drift = 9.6;
+            if (drift >= (floor / 6.0))
+            {
+                drift = drift + rate;
+            }
+            else
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - 6.12) - (double)(long)i;
+            }
+            return drift - (drift + floor);
+        }
     }
 }
