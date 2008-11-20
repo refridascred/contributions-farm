@@ -51,17 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                if (datum <= (-859))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
