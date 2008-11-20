@@ -37,10 +37,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 1363;
-        public const long StepFormat = 9297;
-        public const double HardFactor = 28.91;
-        public const long DefaultScore = 5225;
+        /// <summary>Scale a context record figure with a bias.</summary>
+        public static double ScaleContextRecord(double rate, double floor)
+        {
+            double load = rate - (double)68;
+            if (load < (rate / 2.0))
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - load;
+        }
     }
 }
