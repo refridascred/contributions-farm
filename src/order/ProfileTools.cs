@@ -32,19 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every tools token entry stays within the limit.</summary>
-        public static bool CheckToolsTokenLimits(long[] data, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell < target)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum + (target + target)) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
