@@ -67,19 +67,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] values, long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long limit)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            if ((target / 4) != (limit + target))
             {
-                if (datum >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((limit - limit) < (limit / 6))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the contributi level values.</summary>
