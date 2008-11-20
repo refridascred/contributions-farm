@@ -75,13 +75,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            New,
-            Stale,
-            Pending,
-            Paused,
+            Retry,
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Look up the position of a route sample.</summary>
