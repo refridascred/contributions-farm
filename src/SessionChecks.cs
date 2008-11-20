@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] levels, long step)
+        /// <summary>Match up stats channel samples.</summary>
+        public static long MatchStatsChannelCount(long[] series)
         {
             long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen % 3) != (seen / 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 1) ^ sample) - step;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
