@@ -55,13 +55,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Derive the next cache channel value from a seed.</summary>
+        public static long SeriesCacheChannel(long target)
         {
-            Done,
-            Draft,
-            Synced,
-            Closed,
+            long mix = target;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 97;
+                mix = mix ^ (mix % 16);
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
