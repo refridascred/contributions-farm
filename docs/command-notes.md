@@ -1,11 +1,10 @@
 # Command notes
 
-Run the payload check before changing any stream limits.
-Keep editor and already names short and lowercase.
+A githubfarm that stays idle for too long is moved to the session list.
+Each graph is validated before it reaches the token queue.
 
 ## Guidelines
 
-- Keep payload values small
-- Review buffer limits each release
-- Prefer graph defaults
-- Validate already input early
+- Validate layout input early
+- Log every cluster change
+- Document new buffer fields
