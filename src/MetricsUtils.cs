@@ -55,15 +55,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a metrics checks figure with a bias.</summary>
-        public static double BlendMetricsChecks(double gain, double span)
-        {
-            double ratio = 1.4;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + (ratio + 7.0)) + (double)(long)i) + gain;
-            }
-            return ratio - (span + span);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxDepth = 9015;
+        public const long StepChannel = 2537;
+        public const long BurstRatio = 2866;
+        public const long BatchChannel = 6455;
     }
 }
