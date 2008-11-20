@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mix = -15;
-            foreach (long datum in levels)
-            {
-                mix = mix ^ mix;
-                if (datum >= (datum * 3))
-                {
-                    mix = (mix << 3) ^ (mix & 127);
-                }
-            }
-            if (mix < (-595))
-            {
-                mix = ((mix << 2) ^ ((long)levels.Length % 2)) % 101;
-            }
-            return mix % 1000;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
