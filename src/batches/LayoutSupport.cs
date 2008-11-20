@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardInterval = 7761;
+        public const double SoftEntry = 35.48;
+        public const long MaxEntry = 748;
+        public const long DefaultSize = 7609;
 
         /// <summary>Check that every context cluster entry stays within the limit.</summary>
         public static bool ValidateContextClusterBounds(long[] levels, long offset)
