@@ -1,25 +1,12 @@
 # entry settings
-verbose: true
-sync_delay_ms: true
-counter_ratio:
-  persist: local
-  poll_size_s: true
-  min_timeout_pct: standard
-channel_interval:
-  - 405
-  - 173
-  - 486
-  - 406
-persist:
-  cache_limit:
-    persist:
-      - 283
-      - 354
-      - 490
-      - 220
-    readonly: latest
-    cache_retries: 1058
-    graph_retries: 4254
-  cache_threshold: latest
-  verbose: false
-  warm_interval_ms: 76.83
+githubfarm_delay:
+  soft_retries_s: primary
+  githubfarm_retries: stable
+  batch_delay_s:
+    - stable
+    - edge
+    - green
+  compress: 100
+  sync_size_s: 500
+context_window: 96.46
+idle_ttl_ms: 26
