@@ -41,24 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long bound)
+        /// <summary>Compare every pair of cluster session readings.</summary>
+        public static long CompareClusterSessionCount(long[] series)
         {
-            if ((bound ^ step) < bound)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2 % 64) != (bound ^ step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    if ((series[i] ^ series[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up batch tools samples.</summary>
