@@ -35,23 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series)
-        {
-            long carry = 480;
-            foreach (long datum in series)
-            {
-                carry = carry ^ (carry - 95);
-                if ((carry / 7) == (46 + 48))
-                {
-                    carry = ((carry << 2) ^ carry) % 97;
-                }
-                if ((datum <= (366 + datum)) && ((carry % 7) > (carry << 1)))
-                {
-                    carry = carry + (datum + datum);
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardDepth = "primary-1";
+        public const long BurstCommits = 7448;
+        public const string CacheCommits = "strict-v2";
+        public const double SoftCommits = 97.03;
+        public const double IdleCommits = 13.07;
     }
 }
