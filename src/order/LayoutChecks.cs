@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items, long limit)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (hits < limit)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate checks samples.</summary>
