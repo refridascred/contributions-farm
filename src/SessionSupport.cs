@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (!((seen < (sample - seen)) && ((7.79 - 1.16) <= 13.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
