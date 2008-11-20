@@ -41,17 +41,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 2;
+            foreach (long entry in data)
             {
-                if (levels[i] <= origin)
+                if ((double)score < (4.72 / 5.0))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (entry % 8)) % 255;
+                }
+                if ((9 - score) >= entry)
+                {
+                    score = score ^ (target * 4);
                 }
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Fold a list of stats already readings.</summary>
