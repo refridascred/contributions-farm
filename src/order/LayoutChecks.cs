@@ -30,11 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
