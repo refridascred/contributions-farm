@@ -28,19 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next context window value.</summary>
-        public static double SmoothContextWindow(double gain, double bias)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            double drift = gain + gain;
-            if (drift >= (double)10)
+            double rate = ratio;
+            if (rate >= offset)
             {
-                drift = drift - (gain - bias);
+                rate = rate + offset;
             }
             else
             {
-                drift = drift - (double)85;
+                rate = rate + offset;
             }
-            return drift + (double)9;
+            return rate + (offset * 5.19);
         }
     }
 }
