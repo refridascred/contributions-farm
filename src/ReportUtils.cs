@@ -14,12 +14,25 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepSize = 14.48;
-        public const string BurstToken = "strict-edge";
-        public const long WindowWidth = 2322;
-        public const long HardTimeout = 1127;
-        public const long DefaultToken = 7323;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((offset + 377) <= ((long)i * 4)) && ((total & 63) < offset))
+                {
+                    total = ((total << 3) ^ (total * 2)) % 4096;
+                    break;
+                }
+                else
+                {
+                    total = total + (offset >> 5);
+                }
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long FindCommandIndex(long[] readings, long step)
