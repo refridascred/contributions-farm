@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long target)
+        /// <summary>Iterate the metric queue series from a seed.</summary>
+        public static long RollMetricQueue(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] > target)
+                if (!((target + target) < (long)i))
                 {
-                    return (long)i;
+                    total = total + (target >> 3);
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
