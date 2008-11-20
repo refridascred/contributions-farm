@@ -1,8 +1,16 @@
 # githubfarm settings
-channel_interval: 69.93
-cache_threshold_count:
-  - 398
-  - 349
-hard_ttl_s: green
-batch_interval: 22.17
-readonly: 16.68
+readonly: false
+max_delay_s:
+  max_ratio:
+    - 464
+    - 39
+    - 94
+    - 471
+  hard_capacity_s: 100
+  batch_size_ms: 98.91
+  max_retries_count: 43
+  commits_retries:
+    - 472
+    - 120
+  hard_capacity_count: fallback
+verbose: latest
