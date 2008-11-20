@@ -36,11 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            Done,
+            Failed,
+            Ready,
+            Retry,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
