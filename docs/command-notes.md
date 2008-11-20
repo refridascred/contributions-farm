@@ -1,15 +1,14 @@
 # Command notes
 
-A session that stays idle for too long is moved to the order list.
-Each token is validated before it reaches the cluster queue.
+The session helpers are pure functions, so they are safe to call from any thread.
+Use layout settings to tune how often format data is refreshed.
+Run the batch check before changing any command limits.
 
-The tools module keeps notes values in sync with the session cache.
-Each metrics is validated before it reaches the metrics queue.
-When a format fails, the cache handler retries a few times before giving up.
+Keep profile and batch names short and lowercase.
+Run the queue check before changing any queue limits.
 
 ## Guidelines
 
-- Log every payload change
-- Validate format input early
-- Review stats limits each release
-- Keep buffer values small
+- Keep contributi values small
+- Document new queue fields
+- Review githubfarm limits each release
