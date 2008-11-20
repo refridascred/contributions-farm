@@ -46,15 +46,18 @@ namespace Common.Utilities
         public const double IdleBudget = 43.5;
         public const double SoftCount = 78.7;
 
-        /// <summary>Fold a list of schema already readings.</summary>
-        public static long CombineSchemaAlready(long[] readings, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] data)
         {
-            long carry = 716;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                carry = (carry - (offset & 255)) - item;
+                if (((41 << 3) > cell) && !((cell % 2) >= (8 + matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a counter info.</summary>
