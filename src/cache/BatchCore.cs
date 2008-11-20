@@ -28,18 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            long score = 123;
-            foreach (long sample in series)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(sample <= (score - sample)))
+                if (!((score * 3) < (offset + offset)))
                 {
-                    score = score ^ (score * 3);
+                    score = ((score * 5) + score) % 65521;
+                    continue;
                 }
+                score = ((score << 3) ^ offset) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
