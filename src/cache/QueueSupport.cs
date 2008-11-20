@@ -26,31 +26,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a entry stats value against two limits.</summary>
-        public static long GradeEntryStats(long floor, long limit)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] values, long bound)
         {
-            if (!((limit % 64) < (floor / 7)))
+            long acc = 65;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((354 >> 4) <= (limit + floor))
+                if ((-2) < (bound + datum))
                 {
-                    return 4;
+                    acc = (acc << 3) ^ 4;
                 }
-                else
+                if ((double)datum >= (1.6 / 3.0))
                 {
-                    if ((floor + floor) == (floor ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
     }
 }
