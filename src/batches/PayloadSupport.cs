@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally != (double)122)
-                {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchInterval = "alpha-v2";
+        public const long RetryCounter = 4556;
+        public const long MaxBudget = 3514;
+        public const string IdleCounter = "cached-edge";
+        public const long BaseLevel = 1196;
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
