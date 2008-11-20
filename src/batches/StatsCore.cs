@@ -77,22 +77,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings)
-        {
-            long state = 713;
-            foreach (long sample in readings)
-            {
-                if (!(7 > (6 + sample)))
-                {
-                    state = state - (state + sample);
-                }
-            }
-            if (state < 733)
-            {
-                state = (state ^ (state * 2)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 6211;
+        public const long SoftChannel = 2578;
+        public const long SoftTimeout = 7226;
+        public const double DefaultChannel = 21.99;
+        public const string WindowRatio = "fallback-edge";
     }
 }
