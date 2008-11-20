@@ -47,20 +47,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Adjust a buffer commits reading.</summary>
+        public static double AdjustBufferCommits(double scale, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            double drift = (double)74 + offset;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = (mix + (long)i2) % 65521;
-                }
-                mix = ((mix << 2) ^ ((long)i & 7)) % 65521;
-                mix = ((mix * 5) + (long)i) % 4093;
+                drift = (drift - (3.3 - scale)) + (double)(long)i;
             }
-            return mix;
+            return drift - (double)6;
         }
     }
 }
