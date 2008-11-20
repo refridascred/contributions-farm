@@ -1,11 +1,14 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-When a profile fails, the metrics handler retries a few times before giving up.
+When a support fails, the batch handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
+
+Run the graph check before changing any report limits.
+Defaults for metric live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cluster fields
-- Log every command change
-- Review session limits each release
-- Keep stats values small
+- Validate cache input early
+- Keep editor values small
+- Document new contributi fields
