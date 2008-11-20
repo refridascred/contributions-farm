@@ -46,30 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long target, long floor)
         {
-            long edge = target + floor;
-            if (edge >= (edge ^ target))
+            if (((floor - 43) > (6 + target)) && ((target - 39) <= (floor ^ target)))
             {
                 return 3;
             }
             else
             {
-                if ((floor % 24) <= edge)
+                if ((1.0 / 3.0) >= (double)floor)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)646 < (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 1;
                 }
             }
         }
