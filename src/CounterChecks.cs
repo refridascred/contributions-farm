@@ -43,11 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleScore = 2555;
-        public const string DefaultWidth = "strict-1";
-        public const long BurstFactor = 9587;
-        public const long SoftCommand = 4677;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ProjectFilter(double scale, double bias)
