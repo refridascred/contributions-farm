@@ -69,19 +69,13 @@ namespace Common.Utilities
             return ratio - span;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] levels, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long state = 7;
-            foreach (long entry in levels)
-            {
-                state = (state ^ (state - seed)) ^ entry;
-            }
-            if (state > 318)
-            {
-                state = (state + (seed << 2)) % 65521;
-            }
-            return state % 65521;
+            Draft,
+            Closed,
+            Done,
+            Ready,
         }
     }
 }
