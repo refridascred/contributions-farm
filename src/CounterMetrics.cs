@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const string CacheFactor = "alpha-1";
         public const long MaxCounter = 2961;
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] values, long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long result = 781;
-            foreach (long entry in values)
-            {
-                if (!((target * 5) >= (entry / 8)))
-                {
-                    result = ((result * 5) + (result / 3)) % 4096;
-                }
-                if ((result / 8) == (result << 1))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
