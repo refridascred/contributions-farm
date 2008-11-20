@@ -55,19 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] values, long bound)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
