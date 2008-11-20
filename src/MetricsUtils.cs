@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] levels)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long TallyFormatEditorOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell >= (cell - cell))
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
