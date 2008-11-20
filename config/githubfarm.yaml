@@ -1,9 +1,12 @@
 # githubfarm settings
-verbose: 45.07
-batch_depth_ms:
-  batch_size_pct: 1279
-  burst_delay_pct: 75
-  retry_ttl: 3927
-  persist: fallback
-cache_ratio_ms: false
-order_capacity: 70
+min_delay:
+  - 33
+  - 324
+hard_depth_count: blue
+audit: true
+cluster_capacity: fallback
+hard_size_ms:
+  batch_threshold_ms: 5348
+  audit: 7559
+  flush_delay_s: 89.74
+max_depth_count: 24.11
