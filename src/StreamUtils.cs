@@ -46,13 +46,19 @@ namespace Common.Utilities
             return ((ratio - (ratio / 8.0)) + weight) + offset;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double ratio, double span)
         {
-            public string Limit { get; set; } = "";
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            double bias = 15.0 * 19.0;
+            if (bias > (span - 0.23))
+            {
+                bias = bias - (double)924;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias - (double)801;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
