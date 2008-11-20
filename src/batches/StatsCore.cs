@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long MaxInterval = 7198;
         public const long LimitLevel = 1292;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] readings, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long state = 6;
-            foreach (long value in readings)
+            long carry = 87;
+            foreach (long sample in items)
             {
-                state = ((state ^ limit) % 65521) ^ value;
+                carry = (carry - (sample % 5)) % 65521;
+                if (carry < sample)
+                {
+                    carry = (carry - sample) % 1000;
+                }
             }
-            if (state > (-2))
+            if (carry < 5)
             {
-                state = (state << 3) ^ (8 + state);
+                carry = (carry ^ (carry >> 4)) % 4096;
             }
-            return state % 97;
+            return carry % 65521;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
