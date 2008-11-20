@@ -1,7 +1,7 @@
 # githubfarm settings
-readonly: open
-stats_timeout: 30
-min_delay:
-  readonly: 60
-  session_limit: 13
-  warm_depth: latest
+batch_interval_count: 28
+batch_ratio_s: 42.97
+max_window_s: legacy
+soft_interval_ms: legacy
+compress: 1024
+warm_timeout: local
