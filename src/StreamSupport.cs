@@ -46,39 +46,18 @@ namespace Common.Utilities
             return (weight + span) + rate;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] series)
         {
-            long span = floor + target;
-            if ((floor << 3) == (span + floor))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((span * 4) >= (target * 2)))
+                if ((double)cell == (double)count)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((span * 3) > target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (5 > (floor - target))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
