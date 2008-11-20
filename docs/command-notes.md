@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-Keep format and format names short and lowercase.
-Each order is validated before it reaches the already queue.
+Use editor settings to tune how often token data is refreshed.
+Defaults for counter live in the config folder and can be overridden per environment.
 
-The cache report groups every channel by contributi.
-Keep counter and notes names short and lowercase.
-A token that stays idle for too long is moved to the command list.
+When a stats fails, the order handler retries a few times before giving up.
+Each batches is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Keep cache values small
-- Review account limits each release
-- Document new graph fields
+- Keep githubfarm values small
+- Prefer stats defaults
+- Review editor limits each release
+- Log every cache change
