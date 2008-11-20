@@ -1,5 +1,5 @@
 {
-  "batch_interval": "eu-west",
-  "sync_delay_count": [132, 274, 32, 43],
-  "dry_run": 20
+  "strict": false,
+  "format_timeout": 60.03,
+  "sync_size": "local"
 }
