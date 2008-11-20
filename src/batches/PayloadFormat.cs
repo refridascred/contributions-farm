@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the metric queue series from a seed.</summary>
-        public static long RollMetricQueue(long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((target + target) < (long)i))
+                if (series[i] > seed)
                 {
-                    total = total + (target >> 3);
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
