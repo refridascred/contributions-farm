@@ -31,12 +31,26 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleRatio = 6857;
-        public const double BaseTools = 87.96;
-        public const long MinTools = 4212;
-        public const long RetryTools = 6560;
-        public const double MaxSpan = 21.15;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long origin, long bound)
+        {
+            long step = origin ^ bound;
+            if (((bound ^ origin) != (5 / 9)) || (step >= 66))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.9 - 0.47) != (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Derive the next cache channel value from a seed.</summary>
         public static long SeriesCacheChannel(long target)
