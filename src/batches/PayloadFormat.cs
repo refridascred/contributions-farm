@@ -24,10 +24,33 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheBudget = "legacy";
-        public const double RetrySession = 39.53;
-        public const long BurstSession = 4160;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long seed, long seed2)
+        {
+            long gap = seed - seed2;
+            if (seed <= gap)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((gap & 3) < (gap % 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((gap >> 5) == ((-5) ^ gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] values, long bound)
