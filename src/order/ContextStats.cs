@@ -24,13 +24,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            Stale,
+            Draft,
+            Idle,
+            New,
+            Ready,
         }
 
         /// <summary>Project the next queue value.</summary>
