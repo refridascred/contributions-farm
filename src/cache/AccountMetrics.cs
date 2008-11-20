@@ -76,17 +76,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] readings, long step)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] series, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -195;
+            foreach (long datum in series)
             {
-                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                if ((datum << 1) >= (target ^ datum))
                 {
-                    return (long)i;
+                    anchor = anchor + (anchor & 7);
                 }
             }
-            return -1;
+            return anchor % 4096;
         }
     }
 }
