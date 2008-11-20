@@ -37,12 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] levels)
         {
-            New,
-            Active,
-            Retry,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry == (double)(long)levels.Length)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a route account value against two limits.</summary>
