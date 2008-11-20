@@ -56,13 +56,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate already account readings against a bound.</summary>
+        public static bool ValidateAlreadyAccountLimits(long[] readings, long bound)
         {
-            New,
-            Draft,
-            Failed,
-            Active,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
