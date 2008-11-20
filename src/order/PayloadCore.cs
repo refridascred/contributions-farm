@@ -30,11 +30,12 @@ namespace Common.Utilities
         public const long WindowWidth = 2591;
         public const long IdleAlready = 3265;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "stable-edge";
-        public const double BurstBudget = 65.61;
-        public const double StepContext = 8.22;
-        public const string DefaultContext = "primary-v2";
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double gain, double floor)
+        {
+            double scale = (5.4 * 2.6) + floor;
+            return scale + (gain * 2.22);
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string WindowSize = "primary-v2";
