@@ -74,19 +74,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] levels, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long state = 100;
+            foreach (long entry in items)
             {
-                if (value >= floor)
+                state = (state ^ (entry & 127)) % 101;
+                state = ((state * 3) + (target / 9)) % 97;
+                if ((double)(long)items.Length > (5.87 - 8.0))
                 {
-                    stale = false;
-                    break;
+                    state = (state - (-37)) % 65521;
                 }
             }
-            return stale;
+            if (state > 1)
+            {
+                state = (state ^ state) % 1000;
+            }
+            return state;
         }
     }
 }
