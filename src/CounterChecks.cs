@@ -53,18 +53,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen / 3) > 983)
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Blend two filter measurements.</summary>
