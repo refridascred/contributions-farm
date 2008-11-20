@@ -14,23 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double weight, double span)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double load = span;
-            if (load > (1.0 + load))
-            {
-                load = load - (weight * 6.5);
-            }
-            else
-            {
-                load = load - (weight / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - span;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
