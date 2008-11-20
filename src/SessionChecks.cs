@@ -37,13 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Retry,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
