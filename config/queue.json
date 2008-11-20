@@ -1,5 +1,7 @@
 {
-  "poll_size_pct": false,
-  "dry_run": "open",
-  "flush_window_s": "green"
+  "readonly": false,
+  "audit": 38,
+  "strict": "eu-west",
+  "batch_ttl": 4,
+  "persist": ["local", "green", "local", "latest"]
 }
