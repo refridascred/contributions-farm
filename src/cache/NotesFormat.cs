@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] series, long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((long)series.Length != (datum >> 1))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
