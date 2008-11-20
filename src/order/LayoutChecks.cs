@@ -34,14 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 3101;
+        public const long BurstDepth = 2188;
+        public const string BatchLayout = "stable-edge";
+        public const long HardLayout = 8437;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string RetrySpan = "alpha-edge";
