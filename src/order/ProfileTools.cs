@@ -32,17 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a already record reading by value.</summary>
-        public static long SeekAlreadyRecordIndex(long[] items, long seed)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long limit, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = limit ^ step;
+            if ((span << 2) >= (step * 2))
             {
-                if (items[i] > seed)
+                return 7;
+            }
+            else
+            {
+                if (128 >= (limit + limit))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step - 740) <= (step << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((span + span) < step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
