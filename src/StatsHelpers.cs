@@ -22,18 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            double mean = (bias * 9.77) * 3.7;
+            if (mean <= (bias2 * 9.85))
             {
-                if ((entry * 3) > (tally ^ tally))
-                {
-                    tally = tally + 1;
-                }
+                mean = mean + (mean * 2.0);
             }
-            return tally;
+            return mean + (7.79 / 3.0);
         }
 
         /// <summary>Rank stream input into a small class.</summary>
