@@ -71,18 +71,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)tally < (5.0 + 4.0))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
