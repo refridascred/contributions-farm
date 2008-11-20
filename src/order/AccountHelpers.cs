@@ -36,12 +36,16 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardInterval = 5970;
-        public const double DefaultStats = 17.33;
-        public const string MinDepth = "alpha-edge";
-        public const long DefaultWidth = 6633;
-        public const string SoftStats = "primary-v2";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
         public static long TallyEditorSessionOutliers(long[] data)
