@@ -70,12 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Synced,
-            Retry,
-            Done,
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
