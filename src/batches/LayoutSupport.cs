@@ -29,33 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long floor, long floor2)
-        {
-            long next = floor - floor2;
-            if (3.4 > (2.7 / 2.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor2 - next) > (floor2 - 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (next > (next + floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftCount = 5199;
+        public const long CacheDepth = 1014;
+        public const string MinLevel = "cached-1";
+        public const double SoftFilter = 45.1;
+        public const long SoftTimeout = 2833;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool VerifyWindowLimits(long[] values, long floor)
