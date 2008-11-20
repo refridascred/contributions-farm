@@ -28,11 +28,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels, long seed)
         {
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            long state = 891;
+            foreach (long cell in levels)
+            {
+                state = (((state * 4) + (seed - state)) % 1000) + cell;
+            }
+            return state;
         }
     }
 }
