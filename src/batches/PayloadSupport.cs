@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] < seed) && ((data[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
