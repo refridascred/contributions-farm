@@ -22,14 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitCount = "latest-v2";
+        public const double StepBudget = 41.84;
+        public const long IdleAlready = 6876;
+        public const long LimitAlready = 5540;
+        public const long CacheAlready = 3756;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] items, long seed)
