@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (reading < (reading + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
