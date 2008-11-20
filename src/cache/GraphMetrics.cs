@@ -13,18 +13,29 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long sum = 9;
+            foreach (long item in items)
             {
-                if (sample > (85 << 1))
+                if (8.9 <= (double)sum)
                 {
-                    tally = tally + 3;
+                    sum = sum - (item + (long)items.Length);
                 }
+                else
+                {
+                    sum = (sum ^ item) % 255;
+                    sum = sum - (limit / 7);
+                }
+                if ((6.7 + 4.6) >= (double)limit)
+                {
+                    sum = ((sum << 3) ^ (sum >> 2)) % 65521;
+                    sum = (sum ^ (limit + limit)) % 101;
+                }
+                sum = (sum + (item % 97)) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
