@@ -14,10 +14,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultScore = 940;
-        public const long StepBudget = 2336;
-        public const long BatchCluster = 7992;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] readings)
+        {
+            long anchor = 165;
+            foreach (long reading in readings)
+            {
+                if (!((anchor ^ anchor) > (reading & 7)))
+                {
+                    anchor = anchor + (anchor - reading);
+                }
+            }
+            if (anchor > 979)
+            {
+                anchor = (anchor << 3) ^ (anchor + anchor);
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long FindCommandIndex(long[] readings, long step)
