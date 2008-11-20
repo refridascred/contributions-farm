@@ -24,21 +24,12 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
