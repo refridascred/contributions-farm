@@ -20,11 +20,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2735;
-        public const long MaxRatio = 268;
-        public const long MinSpan = 7458;
-        public const string HardCounter = "latest-edge";
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
+        {
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
