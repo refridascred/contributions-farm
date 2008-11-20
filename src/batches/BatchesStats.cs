@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            Ready,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits / 4) < (sample / 9))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
