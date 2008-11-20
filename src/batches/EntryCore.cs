@@ -34,15 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] series, long origin)
         {
-            long mark = 55;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long item in series)
             {
-                mark = ((mark ^ (mark & 3)) % 101) ^ cell;
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
