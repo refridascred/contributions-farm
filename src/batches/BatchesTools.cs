@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Idle,
-            Dropped,
-            Closed,
-            Failed,
-            Retry,
+            public bool Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
