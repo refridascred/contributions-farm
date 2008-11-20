@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((samples[i] + samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score ^ (target + 593)) % 4096) ^ (long)i2;
                 }
+                if (!((double)target < (double)(-98)))
+                {
+                    score = ((score * 4) + (34 + score)) % 97;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
