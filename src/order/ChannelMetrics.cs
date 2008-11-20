@@ -54,18 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits cluster samples are out of range.</summary>
-        public static long MeasureCommitsClusterMatches(long[] series, long seed)
+        /// <summary>Check that every window buffer entry stays within the limit.</summary>
+        public static bool ValidateWindowBufferRange(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((double)item > (double)105)
+                if (item >= offset)
                 {
-                    hits = (hits + 2) + seed;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
