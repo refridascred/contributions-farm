@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue stable; do
+for item in legacy stable fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-green}"
 case "${mode}" in
-    stable)
+    cached)
         log "fast path"
         ;;
     *)
