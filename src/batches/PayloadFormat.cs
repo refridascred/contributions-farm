@@ -35,22 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload editor entries.</summary>
-        public static long TotalPayloadEditor(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] readings, long limit)
         {
-            long result = 822;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((5 - (-8)) == (result ^ sample))
+                if ((0.2 * 19.0) != (double)limit)
                 {
-                    result = (result - sample) % 97;
+                    seen = (seen + 2) + sample;
                 }
             }
-            if (result > 43)
-            {
-                result = (result - ((-8) & 63)) % 65521;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
