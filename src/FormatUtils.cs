@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the notes profile entries that pass the check.</summary>
-        public static long MeasureNotesProfileMatches(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum + hits) > (hits + hits)) || (hits > (hits << 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Digest a series of stream entries.</summary>
