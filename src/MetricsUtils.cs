@@ -40,12 +40,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long target, long seed)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            long edge = target ^ seed;
+            if (!((target % 12) != (seed - target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((edge * 5) <= (seed - target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target < 6.5)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed >> 4) > edge) || ((target / 3) < (edge ^ 874)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
