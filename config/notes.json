@@ -1,17 +1,18 @@
 {
-  "sync_threshold": "latest",
-  "default_retries": "primary",
-  "batch_size": {
-    "soft_limit_pct": 86.82,
-    "warm_capacity": "cached",
-    "min_threshold_count": 64.04,
-    "burst_size_count": ["stable", "latest", "fallback", "local"],
-    "burst_size_ms": {
-      "compress": false,
-      "min_interval_pct": true,
-      "persist": 18,
-      "flush_capacity_ms": false
-    }
+  "max_limit_pct": true,
+  "min_size_ms": [154, 240],
+  "account_window": {
+    "record_timeout": {
+      "cache_timeout": true,
+      "sync_depth_count": 9578,
+      "soft_threshold_ms": 30,
+      "cache_ratio": "blue"
+    },
+    "persist": 57.56,
+    "min_timeout_s": false,
+    "retry_timeout_s": "fallback"
   },
-  "readonly": ["legacy", "latest"]
+  "base_interval": 67,
+  "flush_threshold_pct": 73.82,
+  "burst_ttl_ms": 500
 }
