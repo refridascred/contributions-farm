@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string WindowRatio = "fallback-1";
         public const long WindowAlready = 9478;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 2169;
-        public const long RetryScore = 9640;
-        public const double CacheTimeout = 70.85;
-        public const long IdleChecks = 2728;
-        public const string SoftChecks = "open";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long target, long limit)
