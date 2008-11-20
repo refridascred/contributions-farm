@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] readings, long limit)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (entry != limit)
+                if (bound > (bound << 1))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - cell;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
