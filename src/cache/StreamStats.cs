@@ -41,22 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] data, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            long score = 2;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)score < (4.72 / 5.0))
+                if ((7.12 <= (double)matches) || (((19.0 + 7.0) == (double)sample) || (sample >= (matches - matches))))
                 {
-                    score = ((score * 3) + (entry % 8)) % 255;
-                }
-                if ((9 - score) >= entry)
-                {
-                    score = score ^ (target * 4);
+                    matches = matches + 1;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Fold a list of stats already readings.</summary>
