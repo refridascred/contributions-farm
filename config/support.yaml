@@ -1,15 +1,12 @@
 # support settings
-contributi_window: legacy
-warm_limit:
-  - 397
-  - 214
-  - 1
-  - 394
-hard_timeout_count: eu-west
-flush_window_s:
-  layout_limit: staging
-  readonly: eu-west
-  batch_limit: true
-  compress: strict
-  cache_threshold_count: legacy
-  base_delay: standard
+base_retries:
+  - staging
+  - stable
+  - cached
+enabled: 10.24
+idle_retries_ms: 44
+soft_ratio:
+  - edge
+  - open
+metric_ratio: 15.06
+soft_window_ms: 23
