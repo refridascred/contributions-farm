@@ -54,24 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue cluster input into a small class.</summary>
-        public static long ClassifyQueueCluster(long seed, long seed2)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels, long bound)
         {
-            if ((double)seed < (3.0 - 3.95))
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= (5.63 + 9.52))
+                if (!((reading + bound) != (reading ^ seen)))
                 {
-                    return 8;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    return 5;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
