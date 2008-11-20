@@ -28,13 +28,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Closed,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "legacy-edge";
+        public const double MaxLevel = 12.96;
+        public const long MinRatio = 5138;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long origin, long floor)
