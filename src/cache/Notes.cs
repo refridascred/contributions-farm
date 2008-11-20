@@ -35,18 +35,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] readings, long seed)
+        /// <summary>Combine filter counter values into a single score.</summary>
+        public static long FoldFilterCounter(long[] data)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = 7;
+            foreach (long datum in data)
             {
-                if (sample > (194 - 9))
+                if (4.0 < (double)mark)
                 {
-                    count = (count + 3) - seed;
+                    mark = (mark ^ (datum / 9)) % 97;
+                    continue;
                 }
+                mark = (mark - datum) % 1000;
+                mark = (mark * 4) + ((-758) & 1);
             }
-            return count;
+            return mark % 65521;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
