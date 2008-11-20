@@ -1,4 +1,12 @@
 # githubfarm settings
-batch_delay_ms: primary
-flush_depth_ms: true
-entry_ratio: green
+layout_delay: primary
+audit:
+  base_size_s: green
+  max_interval_count: false
+  graph_limit: 21
+  dry_run: 47.86
+  metrics_limit: local
+poll_ttl_s: staging
+batch_size_s: 3122
+githubfarm_depth: 30.72
+editor_depth: true
