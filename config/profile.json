@@ -1,8 +1,6 @@
 {
-  "min_threshold_s": 44.77,
-  "cache_limit": 72,
-  "default_window_ms": "staging",
-  "poll_ttl_s": "stable",
-  "default_window_count": 60,
-  "channel_window": "cached"
+  "default_retries": "open",
+  "enabled": 23.38,
+  "sync_ttl_pct": [108, 35, 101],
+  "cache_threshold_ms": ["eu-west", "open", "latest"]
 }
