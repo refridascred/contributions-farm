@@ -13,18 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Audit contributi graph readings against a rule.</summary>
+        public static long CountContributiGraphHits(long[] samples)
         {
-            long acc = 5;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (((0.47 - 7.81) >= (7.65 / 2.0)) && (sample >= (sample + sample)))
+                if (!((count & 127) == (count / 9)))
                 {
-                    acc = (acc << 3) ^ acc;
+                    count = (count + 3) - datum;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
