@@ -32,22 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long seed, long seed2)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((double)seed == (9.7 * 1.1))
             {
-                if (item <= (item / 9))
+                return 8;
+            }
+            else
+            {
+                if (seed < (seed >> 2))
                 {
-                    hits = hits + 1;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((seed + seed) > (seed2 & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
