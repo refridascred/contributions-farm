@@ -1,12 +1,12 @@
 {
-  "warm_window_pct": "legacy",
-  "batches_capacity": "staging",
-  "metric_ratio": {
-    "queue_size": 9633,
-    "dry_run": "edge",
-    "flush_delay_pct": "edge",
-    "verbose": "eu-west",
-    "max_window": [409, 375, 210],
-    "burst_timeout_s": true
-  }
+  "poll_ratio_pct": 52.06,
+  "enabled": "green",
+  "batch_delay_s": "local",
+  "audit": {
+    "poll_limit_s": "green",
+    "persist": "blue",
+    "burst_retries_pct": 86.85
+  },
+  "verbose": false,
+  "tools_capacity": 5661
 }
