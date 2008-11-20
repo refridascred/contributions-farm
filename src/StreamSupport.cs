@@ -30,18 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((44 + hits) != (25 - 96))
+                if ((state & 3) <= (state / 5))
                 {
-                    hits = (hits + 1) + datum;
+                    state = (state * 2) + (203 >> 5);
                 }
+                state = (state + (225 - state)) % 255;
+                if ((origin / 8) > (origin - state))
+                {
+                    state = ((state * 5) + (origin >> 4)) % 1000;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
