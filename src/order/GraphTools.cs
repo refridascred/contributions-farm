@@ -60,11 +60,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Count the format profile entries that pass the check.</summary>
+        public static long CountFormatProfileGaps(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((0 < (count ^ count)) && ((9.04 >= (double)count) || (count < 71)))
+                {
+                    count = ((count + 2) - entry) + step;
+                }
+            }
+            return count;
         }
     }
 }
