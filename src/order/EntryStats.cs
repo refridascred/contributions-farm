@@ -43,21 +43,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count tools command pairs that satisfy a relation.</summary>
-        public static long PairToolsCommandCount(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count % 7) != (cell - count))
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
