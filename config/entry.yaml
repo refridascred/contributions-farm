@@ -1,18 +1,9 @@
 # entry settings
-hard_ratio_pct: 44.65
-min_capacity:
-  soft_depth_ms: false
-  soft_depth:
-    max_timeout: 37.15
-    compress: 7.1
-    audit:
-      - 133
-      - 187
-    max_retries: latest
-    already_size: green
-    metrics_capacity: 63.72
-  graph_interval: false
-dry_run: staging
-farm_capacity:
-  - staging
-  - fallback
+soft_ttl_s: 62.75
+strict: 77
+base_size_pct:
+  max_window_s: 2177
+  idle_threshold_pct: 500
+  min_limit_s: false
+  soft_timeout_s: latest
+githubfarm_retries: eu-west
