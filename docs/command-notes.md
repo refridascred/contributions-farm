@@ -1,13 +1,10 @@
 # Command notes
 
-The context module keeps metrics values in sync with the order cache.
-Use githubfarm settings to tune how often record data is refreshed.
-
-Run the format check before changing any channel limits.
-Defaults for account live in the config folder and can be overridden per environment.
+A already that stays idle for too long is moved to the metric list.
+Use already settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Validate already input early
-- Document new checks fields
-- Prefer entry defaults
+- Document new queue fields
+- Validate batches input early
+- Keep metric values small
