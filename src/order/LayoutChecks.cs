@@ -43,13 +43,17 @@ namespace Common.Utilities
         public const long BaseBuffer = 81;
         public const string DefaultBuffer = "primary-edge";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            Stale,
-            Locked,
-            Draft,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
