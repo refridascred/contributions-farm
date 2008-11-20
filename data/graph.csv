@@ -1,8 +1,6 @@
-id,level,score,token
-1,green,165,blue
-2,165,124,latest
-3,edge,327,blue
-4,21.09,34.99,primary
-5,564,532,fallback
-6,green,stable,88
-7,204,155,14.74
+id,count,owner,score
+1,32.08,legacy,cached
+2,primary,local,704
+3,778,299,97
+4,53.63,eu-west,86.33
+5,609,staging,standard
