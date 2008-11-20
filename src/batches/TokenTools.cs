@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result + result) + (long)i2;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitCounter = "cached-v2";
+        public const double SoftCounter = 44.33;
+        public const string DefaultWidth = "latest-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchRatio = 5272;
