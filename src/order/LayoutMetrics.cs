@@ -27,12 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Synced,
-            Failed,
-            Stale,
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
