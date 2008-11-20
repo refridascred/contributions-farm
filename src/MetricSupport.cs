@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many checks metrics samples are out of range.</summary>
+        public static long MeasureChecksMetricsGaps(long[] items)
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((1 - reading) < (seen - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
