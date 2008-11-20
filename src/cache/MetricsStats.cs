@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public double Token { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultDepth = 1002;
+        public const double MaxFactor = 3.32;
+        public const double BatchSpan = 87.68;
+        public const long HardSize = 7552;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseSpan = 618;
