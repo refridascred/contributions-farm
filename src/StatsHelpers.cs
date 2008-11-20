@@ -70,12 +70,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            New,
+            Draft,
+            Idle,
+            Paused,
+            Locked,
         }
     }
 }
