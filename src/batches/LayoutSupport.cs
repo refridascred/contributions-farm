@@ -24,19 +24,14 @@ namespace Common.Utilities
         public const long MaxEntry = 748;
         public const long DefaultSize = 7609;
 
-        /// <summary>Iterate the buffer context series from a seed.</summary>
-        public static long IterateBufferContext(long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)result == (double)seed)
-                {
-                    result = result - (4 / 2);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Queued,
+            Done,
+            Locked,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
