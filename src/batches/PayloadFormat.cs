@@ -41,11 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of session support readings.</summary>
