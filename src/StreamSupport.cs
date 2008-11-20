@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] values, long limit)
         {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Token { get; set; } = "";
+            long state = 89;
+            foreach (long reading in values)
+            {
+                if (((limit << 1) >= ((-10) - limit)) || ((reading >> 2) < (state & 15)))
+                {
+                    state = state + 88;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
