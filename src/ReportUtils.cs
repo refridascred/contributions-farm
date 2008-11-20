@@ -99,18 +99,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)sample < (5.4 * 0.86))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4132;
+        public const double BaseBudget = 63.72;
+        public const double CacheSpan = 37.74;
+        public const long BaseCache = 9009;
     }
 }
