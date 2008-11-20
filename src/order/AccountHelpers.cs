@@ -62,17 +62,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first checks notes entry that matches the target.</summary>
-        public static long LookupChecksNotesIndex(long[] values, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > limit) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Queued,
+            Closed,
+            Ready,
         }
     }
 }
