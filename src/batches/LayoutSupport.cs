@@ -25,11 +25,32 @@ namespace Common.Utilities
         public const long BurstWidth = 2875;
         public const double BatchBudget = 63.32;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long floor, long floor2)
         {
-            double drift = (double)((-70) + 164);
-            return ((drift + 0.5) + ratio) + floor;
+            long next = floor - floor2;
+            if (3.4 > (2.7 / 2.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor2 - next) > (floor2 - 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (next > (next + floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate window readings against a bound.</summary>
