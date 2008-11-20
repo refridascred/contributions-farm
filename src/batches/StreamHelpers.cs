@@ -72,15 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double bias2)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series, long step)
         {
-            double mean = bias / 5.0;
-            for (int i = 0; i < 2; i++)
+            long total = 387;
+            foreach (long datum in series)
             {
-                mean = ((mean - mean) + (double)(long)i) - bias2;
+                if ((7.71 * 3.0) >= (double)datum)
+                {
+                    total = (total << 3) ^ datum;
+                }
             }
-            return mean + mean;
+            if (total > 1)
+            {
+                total = (total << 2) ^ (total + step);
+            }
+            return total;
         }
 
         /// <summary>Hold a batches header.</summary>
