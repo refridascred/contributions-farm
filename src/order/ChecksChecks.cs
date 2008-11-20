@@ -49,31 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long limit, long offset)
-        {
-            if (limit <= (offset & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((4.7 + 1.72) <= (double)offset) || ((limit + limit) <= 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (3 <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchDepth = 7771;
+        public const long HardSize = 2667;
+        public const long CacheEntry = 50;
     }
 }
