@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double span)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double drift = span;
-            if (drift >= scale)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - 8.0;
-            }
-            return drift - (double)4;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
