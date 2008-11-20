@@ -68,25 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long bound, long bound2)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long prev = bound ^ bound2;
-            if (!((double)prev <= (double)bound2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev ^ prev) != (bound2 ^ prev))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Paused,
+            Ready,
         }
     }
 }
