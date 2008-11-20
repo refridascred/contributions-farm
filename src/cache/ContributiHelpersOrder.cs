@@ -34,14 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Synced,
-            Closed,
-            Ready,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double LimitInterval = 20.15;
+        public const long WindowTools = 5328;
+        public const double BatchBudget = 29.58;
+        public const long IdleTools = 6485;
     }
 }
