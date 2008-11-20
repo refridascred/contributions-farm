@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long target)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (mark - mark) - (long)i2;
+                    mark = (mark << 2) ^ target;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
