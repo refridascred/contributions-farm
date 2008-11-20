@@ -30,16 +30,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 3) + (total + target)) % 97;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Active,
+            New,
+            Queued,
         }
     }
 }
