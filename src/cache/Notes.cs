@@ -35,21 +35,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter counter values into a single score.</summary>
-        public static long FoldFilterCounter(long[] data)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long origin, long step)
         {
-            long mark = 7;
-            foreach (long datum in data)
+            if (!((step * 2) >= (origin ^ step)))
             {
-                if (4.0 < (double)mark)
-                {
-                    mark = (mark ^ (datum / 9)) % 97;
-                    continue;
-                }
-                mark = (mark - datum) % 1000;
-                mark = (mark * 4) + ((-758) & 1);
+                return 6;
             }
-            return mark % 65521;
+            else
+            {
+                if ((1.23 / 4.0) >= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
