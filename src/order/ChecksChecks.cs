@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long seed, long step)
         {
-            double rate = gain;
-            return rate + span;
+            if (!((37 * 4) > step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed * 3) >= (step + step)) || ((step & 31) <= (step ^ step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 1) == (seed + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed & 255) <= (step / 7))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
