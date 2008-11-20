@@ -1,19 +1,8 @@
 {
-  "window_timeout": "local",
-  "profile_ttl": {
-    "schema_limit": "local",
-    "audit": ["open", "primary", "strict"],
-    "min_threshold_ms": 1024
-  },
-  "editor_size": 60,
-  "report_threshold": 89,
-  "flush_threshold_pct": true,
-  "dry_run": {
-    "batch_size_count": 45,
-    "notes_delay": "primary",
-    "base_limit": [136, 172, 378, 285],
-    "compress": "strict",
-    "min_threshold_ms": "edge",
-    "base_capacity": [1, 337, 329, 153]
-  }
+  "compress": 46,
+  "support_ttl": ["standard", "latest"],
+  "hard_timeout_ms": 86.01,
+  "sync_window_ms": true,
+  "tools_threshold": ["standard", "eu-west"],
+  "default_size": "local"
 }
