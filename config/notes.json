@@ -1,6 +1,5 @@
 {
-  "window_window": [179, 321],
-  "window_capacity": 100,
-  "strict": false,
-  "audit": "blue"
+  "warm_ttl": 4109,
+  "default_delay_pct": ["primary", "latest", "fallback", "blue"],
+  "farm_interval": 3595
 }
