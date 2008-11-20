@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long StepStream = 7508;
         public const string SoftStream = "strict-v2";
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] readings, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 1) > ((long)readings.Length * 4))
-                {
-                    count = (count + 3) - step;
-                }
-            }
-            return count;
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
