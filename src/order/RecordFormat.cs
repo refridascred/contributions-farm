@@ -41,18 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window cluster readings against a rule.</summary>
-        public static long TallyWindowClusterGaps(long[] levels, long floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2 - sample) >= ((long)levels.Length - sample))
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
                 {
-                    hits = (hits + 1) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
