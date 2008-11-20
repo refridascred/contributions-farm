@@ -37,19 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] readings, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Retry,
         }
 
         /// <summary>Grade a route account value against two limits.</summary>
