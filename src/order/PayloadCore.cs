@@ -49,19 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] data, long target)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (reading <= target)
+                if ((((double)341 != (double)matches) || ((limit * 3) != ((long)levels.Length + limit))) || (limit >= (limit + limit)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
