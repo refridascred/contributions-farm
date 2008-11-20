@@ -78,12 +78,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Derive the next farm cache value from a seed.</summary>
+        public static long IterateFarmCache(long offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((long)i < (offset - 461))
+                {
+                    long count = offset;
+                    sum = (sum ^ (sum + count)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
