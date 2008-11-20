@@ -12,17 +12,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long target)
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = span;
+            if (drift >= scale)
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                drift = drift + drift;
             }
-            return -1;
+            else
+            {
+                drift = drift - 8.0;
+            }
+            return drift - (double)4;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
