@@ -18,15 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Stale,
-            Failed,
-            Ready,
-            Active,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleFactor = "local";
+        public const long WindowInterval = 6069;
+        public const long RetryWidth = 6041;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long IterateStats(long limit)
