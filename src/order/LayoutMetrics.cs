@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
