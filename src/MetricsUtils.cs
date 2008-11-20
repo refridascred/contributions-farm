@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleScore = 5868;
-        public const long CacheProfile = 4732;
-        public const long LimitProfile = 4697;
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long origin, long target)
