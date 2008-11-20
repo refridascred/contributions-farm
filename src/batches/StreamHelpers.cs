@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "primary-edge";
-        public const long IdleSpan = 5014;
-        public const string WindowSchema = "cached-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1857;
+        public const double LimitWidth = 49.9;
+        public const long MaxReport = 6311;
+        public const long HardCount = 9415;
 
         /// <summary>Audit batches token readings against a rule.</summary>
         public static long AuditBatchesTokenMatches(long[] values, long target)
