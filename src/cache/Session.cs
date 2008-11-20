@@ -47,19 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] items, long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Locked,
+            Synced,
         }
     }
 }
