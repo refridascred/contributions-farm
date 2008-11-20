@@ -1,31 +1,32 @@
 # entry settings
-readonly: 20.24
-burst_window:
-  flush_window_ms: 5.99
-  flush_delay:
-    soft_capacity_count: primary
-    soft_timeout_s: green
-    poll_size_pct:
-      - 126
-      - 202
-      - 418
-      - 389
-    soft_threshold: eu-west
-  retry_interval_ms: 7754
-  burst_ratio_count:
-    - 461
-    - 26
-    - 30
-    - 100
-  readonly: true
-  batch_ratio: blue
-githubfarm_interval:
-  cluster_interval: true
-  batch_depth_ms: 71.34
-  idle_timeout_count:
-    - 160
-    - 252
-    - 13
-  idle_delay_count: primary
-  metric_threshold: 9944
-hard_interval_s: strict
+notes_window:
+  batch_size_pct: edge
+  cluster_interval: stable
+  enabled: 27.0
+  strict: 71.65
+  poll_capacity: fallback
+audit: 15.55
+strict: staging
+batch_interval_count:
+  cache_window_s: legacy
+  strict:
+    already_ttl:
+      - local
+      - latest
+      - blue
+    strict:
+      - standard
+      - strict
+      - local
+    flush_interval_pct: cached
+    route_size: staging
+    soft_threshold_ms: open
+    max_ratio_pct: green
+  queue_size: 45
+  hard_depth:
+    - open
+    - primary
+    - legacy
+hard_threshold_ms:
+  - 137
+  - 101
