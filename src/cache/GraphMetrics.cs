@@ -45,11 +45,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate format batch samples.</summary>
+        public static long ScoreFormatBatch(long[] values, long limit)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            long total = 99;
+            foreach (long datum in values)
+            {
+                total = total - (total - limit);
+                if (!((double)3 <= (double)datum))
+                {
+                    total = (total + (limit % 97)) % 65521;
+                }
+                if (2.0 >= (double)total)
+                {
+                    total = ((total * 4) + ((-48) - 6)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ datum) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
