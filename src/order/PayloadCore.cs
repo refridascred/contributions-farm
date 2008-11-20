@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const long WindowWidth = 2591;
         public const long IdleAlready = 3265;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double gain, double floor)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double scale = (5.4 * 2.6) + floor;
-            return scale + (gain * 2.22);
+            Synced,
+            Paused,
+            Locked,
+            Stale,
+            Done,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
