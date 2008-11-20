@@ -39,39 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long origin, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double offset)
         {
-            long span = origin ^ bound;
-            if ((4 + bound) < (origin % 7))
+            double mean = 16.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 6;
+                mean = ((mean + (offset * 15.0)) + (double)(long)i) + ratio;
             }
-            else
-            {
-                if (((586 - span) >= 14) && ((953 & 63) >= (bound - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 2) <= (origin & 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (0 < (origin & 63))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mean - (offset * 4.36);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
