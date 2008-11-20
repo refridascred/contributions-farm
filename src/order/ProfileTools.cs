@@ -50,10 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 13.98;
-        public const string BaseRatio = "open-1";
-        public const long CacheBatch = 1756;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((2.28 * 14.0) > (double)count)
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate metric queue readings against a bound.</summary>
         public static bool ValidateMetricQueueRange(long[] values, long seed)
