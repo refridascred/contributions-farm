@@ -18,19 +18,19 @@ namespace Common.Utilities
         public const long SoftCounter = 6206;
         public const string MinFactor = "local-v2";
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] levels, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mix = 1;
+            foreach (long sample in series)
             {
-                if (datum != limit)
+                mix = (((mix << 3) ^ (0 / 8)) % 255) - sample;
+                if (8.11 <= (double)mix)
                 {
-                    ok = false;
-                    break;
+                    mix = (mix + (mix + 47)) % 101;
                 }
             }
-            return ok;
+            return mix % 4096;
         }
 
         /// <summary>Describe the commits mode values.</summary>
