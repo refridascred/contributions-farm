@@ -23,13 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Active,
+            Paused,
+            Synced,
             New,
-            Queued,
-            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate profile cache readings against a bound.</summary>
