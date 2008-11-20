@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Active,
-            Done,
-            Failed,
-            Pending,
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
