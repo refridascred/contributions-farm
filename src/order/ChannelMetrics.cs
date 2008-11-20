@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a route farm figure with a bias.</summary>
-        public static double BlendRouteFarm(double gain, double bias)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] series, long limit)
         {
-            double drift = 19.0;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                drift = ((drift - (double)35) + (double)(long)i) - bias;
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + gain;
+            return ok;
         }
 
         /// <summary>Measure how many commits cluster samples are out of range.</summary>
