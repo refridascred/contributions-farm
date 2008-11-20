@@ -1,6 +1,11 @@
 {
-  "entry_depth": true,
-  "enabled": ["cached", "eu-west"],
-  "stream_retries": true,
-  "layout_limit": "cached"
+  "max_timeout_ms": {
+    "min_size_pct": "primary",
+    "base_ratio_ms": false,
+    "verbose": 12,
+    "compress": true
+  },
+  "tools_interval": true,
+  "audit": 2473,
+  "warm_delay": 15.08
 }
