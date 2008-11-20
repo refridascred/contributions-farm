@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 66.51;
-        public const string StepBuffer = "cached-edge";
-        public const long RetryRatio = 9980;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings)
+        {
+            long total = -96;
+            foreach (long sample in readings)
+            {
+                if ((total >> 1) > sample)
+                {
+                    total = (total + (927 / 4)) % 65521;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxLevel = 9079;
