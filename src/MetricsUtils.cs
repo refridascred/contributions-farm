@@ -48,15 +48,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] items, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values, long offset)
         {
-            long carry = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                carry = (carry + reading) + floor;
+                if (offset <= 17)
+                {
+                    tally = (tally + 1) + value;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
