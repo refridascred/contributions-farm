@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long MaxInterval = 7198;
         public const long LimitLevel = 1292;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxLevel = 9831;
-        public const long SoftContributi = 3902;
-        public const double MaxContributi = 5.72;
-        public const long BurstLevel = 8679;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] readings, long limit)
+        {
+            long state = 6;
+            foreach (long value in readings)
+            {
+                state = ((state ^ limit) % 65521) ^ value;
+            }
+            if (state > (-2))
+            {
+                state = (state << 3) ^ (8 + state);
+            }
+            return state % 97;
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] readings, long offset)
