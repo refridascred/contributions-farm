@@ -40,27 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] levels)
         {
-            long carry = 4;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((sample - 33) != (47 & 63))
+                if (((entry + entry) < entry) && !(4 <= (entry ^ 9)))
                 {
-                    carry = (carry << 2) ^ (sample ^ sample);
-                    continue;
-                }
-                else
-                {
-                    carry = (carry - (carry & 127)) % 97;
-                }
-                if ((sample << 1) <= (carry & 7))
-                {
-                    carry = carry ^ (long)items.Length;
+                    matches = matches + 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
