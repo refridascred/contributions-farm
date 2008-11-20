@@ -13,23 +13,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)(long)i == (3.0 - 1.0))
-                {
-                    acc = (acc - floor) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (48 * 3)) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a contributi summary.</summary>
