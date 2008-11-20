@@ -19,32 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long bound, long origin)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            long span = bound + origin;
-            if (!(span >= (span << 3)))
+            double bias = 1.95 - (floor + 3.9);
+            if (bias < (double)49)
             {
-                return 5;
+                bias = (bias + (bias * 4.7)) + weight;
             }
-            else
-            {
-                if ((span << 3) != (origin - 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - 936) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return bias - floor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
