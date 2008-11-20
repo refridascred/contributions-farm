@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] values)
         {
-            long result = 2;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((sample ^ result) < sample)
+                if ((seen >> 2) > (seen ^ 75))
                 {
-                    result = (result ^ result) % 97;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Match up already samples.</summary>
