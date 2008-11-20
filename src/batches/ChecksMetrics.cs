@@ -49,22 +49,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support cluster entries that pass the check.</summary>
-        public static long AuditSupportClusterOutliers(long[] samples, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((item * 3) > (seen ^ limit))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a report cache value against two limits.</summary>
