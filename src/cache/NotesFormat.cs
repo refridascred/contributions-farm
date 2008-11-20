@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public string Count { get; set; } = "";
             public long Total { get; set; }
             public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
