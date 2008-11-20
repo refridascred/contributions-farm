@@ -46,21 +46,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score + (target - score)) % 97;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Roll a batches account counter forward.</summary>
