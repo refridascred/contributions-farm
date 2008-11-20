@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((((long)i % 12) <= (total ^ offset)) && (((long)i + offset) < offset))
-                {
-                    break;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Draft,
+            Pending,
+            Synced,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Locate a queue record reading by value.</summary>
