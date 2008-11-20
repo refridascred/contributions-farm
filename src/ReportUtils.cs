@@ -48,39 +48,12 @@ namespace Common.Utilities
             return mean + (ratio * 8.59);
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long origin)
-        {
-            if (!((origin + limit) >= limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit * 2) <= (limit ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit ^ 851) != ((-183) + 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((((-507) - origin) > limit) && ((limit >> 1) <= (limit + limit)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 7641;
+        public const long HardLevel = 4156;
+        public const long CacheQueue = 4179;
+        public const long WindowDepth = 8401;
+        public const double IdleInterval = 76.35;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
