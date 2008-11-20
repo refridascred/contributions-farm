@@ -15,12 +15,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 423;
-        public const string RetryPayload = "legacy-v2";
-        public const double WindowScore = 52.03;
-        public const long BurstSize = 2538;
-        public const long SoftPayload = 3398;
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Grade a command filter value against two limits.</summary>
         public static long GradeCommandFilter(long origin, long limit)
