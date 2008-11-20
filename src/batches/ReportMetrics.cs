@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long bound)
+        /// <summary>Find the first context already entry that matches the target.</summary>
+        public static long LocateContextAlreadyIndex(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                if (items[i] > floor)
                 {
                     return (long)i;
                 }
