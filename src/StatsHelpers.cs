@@ -61,18 +61,19 @@ namespace Common.Utilities
         public const long IdleCount = 725;
         public const long WindowTimeout = 1594;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] values)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if ((hits + hits) >= (cell + hits))
+                if (item < limit)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
