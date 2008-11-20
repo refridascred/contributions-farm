@@ -1,7 +1,20 @@
 {
-  "base_capacity_ms": true,
-  "hard_timeout_s": "standard",
-  "warm_ttl": 6574,
-  "soft_depth": "fallback",
-  "base_depth_count": 2127
+  "enabled": 500,
+  "idle_ttl": 22.63,
+  "idle_depth": {
+    "warm_retries": "green",
+    "flush_timeout_count": true,
+    "audit": {
+      "soft_timeout_count": ["staging", "eu-west"],
+      "hard_interval_s": "latest",
+      "idle_limit_pct": 40,
+      "buffer_retries": ["edge", "standard", "latest"],
+      "verbose": 89,
+      "max_ratio_ms": ["local", "fallback", "blue"]
+    },
+    "cache_size_ms": 1,
+    "record_delay": "green"
+  },
+  "editor_delay": "local",
+  "audit": 48
 }
