@@ -23,15 +23,23 @@ namespace Common.Utilities
         public const long WindowInterval = 6069;
         public const long RetryWidth = 6041;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 2) + (long)i) % 65521;
+                if ((9 + 716) < (target + mark))
+                {
+                    mark = mark + (mark / 2);
+                }
+                else
+                {
+                    mark = (mark + (mark * 3)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
