@@ -1,7 +1,5 @@
 {
-  "readonly": false,
-  "audit": 38,
-  "strict": "eu-west",
-  "batch_ttl": 4,
-  "persist": ["local", "green", "local", "latest"]
+  "min_window_ms": 21.39,
+  "persist": 250,
+  "readonly": ["strict", "cached", "edge"]
 }
