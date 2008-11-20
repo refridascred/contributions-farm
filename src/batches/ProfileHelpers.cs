@@ -82,26 +82,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long FoldTokenChecks(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long carry = 811;
-            foreach (long sample in values)
-            {
-                if ((720 + carry) > ((-151) << 1))
-                {
-                    carry = (carry - (70 + sample)) % 1000;
-                }
-                if (!((15.0 + 18.0) == (double)sample))
-                {
-                    break;
-                }
-            }
-            if (carry > 590)
-            {
-                carry = carry ^ (722 % 2);
-            }
-            return carry % 97;
+            Dropped,
+            Ready,
+            Queued,
+            Stale,
         }
     }
 }
