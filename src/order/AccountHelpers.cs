@@ -23,12 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinLevel = 4105;
-        public const long BaseWidth = 6195;
-        public const long CacheBudget = 1403;
-        public const double CacheChecks = 9.62;
-        public const long CacheScore = 9950;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen % 8) != (524 + entry))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
