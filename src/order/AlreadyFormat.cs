@@ -51,18 +51,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((4.31 - 0.05) >= (double)value)
+                if ((double)hits < (8.6 - 4.5))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
