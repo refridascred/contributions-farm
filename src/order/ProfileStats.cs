@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many filter metric samples are out of range.</summary>
+        public static long CountFilterMetricGaps(long[] values, long bound)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((84 % 10) > entry))
+                {
+                    tally = (tally + 2) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
