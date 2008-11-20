@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Draft,
-            Active,
-            Synced,
-            Queued,
-            Pending,
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two metrics measurements.</summary>
