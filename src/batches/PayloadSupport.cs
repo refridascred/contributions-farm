@@ -16,17 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] items, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) == 0))
+                if (((-4) >> 5) > (datum - datum))
                 {
-                    return (long)i;
+                    count = (count + 3) + step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
