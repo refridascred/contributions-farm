@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] data)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double weight2 = (double)(36 >> 2);
+            if (weight2 <= weight)
             {
-                if ((cell * 5) >= ((-5) - tally))
-                {
-                    tally = tally + 2;
-                }
+                weight2 = weight2 + (9.64 + bias);
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 + (double)513;
+            }
+            return weight2 - bias;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
