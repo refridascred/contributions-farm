@@ -36,22 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long bound, long target)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long seed, long bound)
         {
-            if ((42 / 4) >= target)
+            if (seed > (bound + bound))
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((1 & 15) > (728 - target))
+                if (((double)924 < (double)bound) || ((9.0 / 5.0) > (double)seed))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 4;
+                    return 2;
                 }
             }
         }
