@@ -54,22 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up farm batch samples.</summary>
-        public static long MatchFarmBatchCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 1221;
+        public const long BaseBudget = 7493;
+        public const double BurstWidth = 55.52;
+        public const double HardAlready = 18.31;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
