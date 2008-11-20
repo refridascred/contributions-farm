@@ -1,5 +1,7 @@
 {
-  "strict": false,
-  "format_timeout": 60.03,
-  "sync_size": "local"
+  "hard_ratio_count": 45.77,
+  "base_threshold": [42, 265, 124, 308],
+  "base_depth_count": "eu-west",
+  "strict": "standard",
+  "record_ratio": true
 }
