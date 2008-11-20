@@ -24,19 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats window readings against a bound.</summary>
-        public static bool VerifyStatsWindowLimits(long[] data, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long state = 377;
+            foreach (long cell in values)
             {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state ^ cell) % 101) - bound;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Adjust a buffer commits reading.</summary>
