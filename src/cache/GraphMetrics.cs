@@ -13,31 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long floor, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] items)
         {
-            if (((-762) / 6) >= (floor % 97))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor + floor) < floor) || (bound >= (bound - floor)))
+                if (sample > (85 << 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((6.32 * 3.96) == (double)floor) || (floor <= (bound >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
