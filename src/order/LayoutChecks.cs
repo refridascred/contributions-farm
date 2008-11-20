@@ -37,22 +37,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetrySpan = "alpha-edge";
+        public const string BurstBuffer = "legacy-v2";
+        public const long BaseBuffer = 81;
+        public const string DefaultBuffer = "primary-edge";
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
