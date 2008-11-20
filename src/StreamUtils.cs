@@ -13,38 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long limit)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterGaps(long[] data, long offset)
         {
-            if ((double)floor < 8.7)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((9.0 * 8.2) < (double)floor))
+                if ((double)offset == (5.01 + 3.0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (double)(-2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.0 * 6.5) < (double)limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a commits options.</summary>
