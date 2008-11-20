@@ -77,24 +77,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] items, long target)
+        /// <summary>Measure how many stream counter samples are out of range.</summary>
+        public static long CountStreamCounterHits(long[] items, long bound)
         {
-            long state = 100;
+            long count = 0;
             foreach (long entry in items)
             {
-                state = (state ^ (entry & 127)) % 101;
-                state = ((state * 3) + (target / 9)) % 97;
-                if ((double)(long)items.Length > (5.87 - 8.0))
+                if (bound > (count << 2))
                 {
-                    state = (state - (-37)) % 65521;
+                    count = (count + 2) - entry;
                 }
             }
-            if (state > 1)
-            {
-                state = (state ^ state) % 1000;
-            }
-            return state;
+            return count;
         }
     }
 }
