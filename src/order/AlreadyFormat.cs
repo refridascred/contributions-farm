@@ -44,12 +44,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((4.31 - 0.05) >= (double)value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
