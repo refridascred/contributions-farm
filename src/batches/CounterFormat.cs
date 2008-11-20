@@ -13,37 +13,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Rank session record input into a small class.</summary>
-        public static long GradeSessionRecord(long bound, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long target, long target2)
         {
-            long step = bound + limit;
-            if (((step - bound) <= (1 % 12)) && ((230 - 8) >= (step + 11)))
+            if (target >= (target - 22))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((171 < (step >> 5)) || ((step - bound) >= step))
+                if ((target + target) <= (target2 - target))
                 {
                     return 6;
                 }
                 else
                 {
-                    if ((68 / 8) > (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step == (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
