@@ -50,13 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            New,
-            Retry,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (18.0 / 8.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit contributi entry readings against a rule.</summary>
