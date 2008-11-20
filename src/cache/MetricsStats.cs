@@ -32,31 +32,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a token buffer value against two limits.</summary>
-        public static long GradeTokenBuffer(long limit, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if (963 >= (limit >> 5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((12.0 >= (double)step) && ((step / 5) != (step & 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - limit) < limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Blend two profile measurements.</summary>
