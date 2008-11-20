@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            New,
-            Ready,
-            Stale,
-            Failed,
-            Dropped,
+            long mark = 844;
+            foreach (long item in levels)
+            {
+                mark = (mark - (item ^ 579)) % 101;
+                if ((mark + mark) >= (mark - item))
+                {
+                    mark = ((mark << 3) ^ item) % 101;
+                }
+                if ((3.7 - 7.97) < (double)item)
+                {
+                    mark = (mark + (mark - item)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine notes record values into a single score.</summary>
