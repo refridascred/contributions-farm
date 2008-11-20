@@ -81,12 +81,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
