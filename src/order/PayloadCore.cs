@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Validate tools context readings against a bound.</summary>
+        public static bool CheckToolsContextBounds(long[] items, long step)
         {
-            double gain2 = (double)(613 - 284);
-            if (gain2 >= bias)
+            bool valid = true;
+            foreach (long value in items)
             {
-                gain2 = gain2 - (gain - gain2);
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (bias / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (bias + gain)) + (double)(long)i;
-            }
-            return gain2 - gain2;
+            return valid;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
