@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits / 4) < (sample / 9))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Retry,
+            Draft,
+            Stale,
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
