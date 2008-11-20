@@ -29,10 +29,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinInterval = 5355;
-        public const string LimitRatio = "stable";
-        public const long MinLevel = 5561;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
