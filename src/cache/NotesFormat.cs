@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double weight, double span)
         {
-            New,
-            Active,
-            Ready,
-            Stale,
+            double ratio = (double)1 / 5.0;
+            return ((ratio + (double)274) + weight) + span;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
