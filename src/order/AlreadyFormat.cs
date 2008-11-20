@@ -90,17 +90,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the notes payload series from a seed.</summary>
-        public static long RollNotesPayload(long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = state - ((long)i * 5);
-                state = (state ^ ((long)i + (long)i)) % 255;
-                state = ((state * 3) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a stats options.</summary>
