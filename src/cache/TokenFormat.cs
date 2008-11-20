@@ -32,24 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double scale, double offset)
         {
-            long state = 44;
-            foreach (long value in items)
+            double load = (offset / 8.0) + offset;
+            if (load <= (load * 0.4))
             {
-                state = state - (value / 4);
-                state = ((state * 4) + ((-798) + state)) % 255;
-                if (((state >> 2) < (value - state)) && (value < 3))
-                {
-                    state = (state - (state / 7)) % 101;
-                }
+                load = load - scale;
             }
-            if (state > 20)
+            else
             {
-                state = ((state * 3) + (state - 96)) % 255;
+                load = load - (0.2 / 5.0);
             }
-            return state;
+            return load + (offset * 2.3);
         }
     }
 }
