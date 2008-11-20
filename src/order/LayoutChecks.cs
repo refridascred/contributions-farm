@@ -14,13 +14,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long bound, long target)
         {
-            Ready,
-            Idle,
-            Retry,
-            Draft,
+            long edge = bound + target;
+            if ((8.92 - 1.6) < (double)edge)
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
