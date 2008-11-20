@@ -16,12 +16,21 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 8283;
-        public const long HardRatio = 6622;
-        public const string RetryGithubfarm = "local-1";
-        public const long BurstSize = 9422;
-        public const long IdleRatio = 8758;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!(score <= (score % 7)))
+                {
+                    score = score - (score % 3);
+                    score = (score << 2) ^ (score + (long)i);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
