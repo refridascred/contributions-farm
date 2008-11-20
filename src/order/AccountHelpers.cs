@@ -46,15 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] items, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)tally != (double)38)
+                {
+                    tally = ((tally + 1) ^ value) - limit;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Measure how many editor session samples are out of range.</summary>
