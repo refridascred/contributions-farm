@@ -68,22 +68,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitSize = 97.31;
+        public const long BatchAlready = 1470;
+        public const string LimitAlready = "strict-v2";
+        public const long BurstSize = 682;
+        public const long StepAlready = 7702;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyMatches(long[] readings)
