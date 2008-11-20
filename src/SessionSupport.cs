@@ -21,13 +21,16 @@ namespace Common.Utilities
         public const long MinSize = 5212;
         public const double BurstEditor = 74.88;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            Paused,
-            Retry,
-            Closed,
-            Done,
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor << 3) ^ (limit * 3);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
