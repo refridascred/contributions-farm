@@ -21,13 +21,24 @@ namespace Common.Utilities
         public const long StepSpan = 1973;
         public const long BaseTools = 3030;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            Idle,
-            Paused,
-            Closed,
-            Stale,
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(((double)seed == (8.76 + 20.0)) || ((seed % 12) >= seed)))
+                {
+                    anchor = anchor - (anchor - anchor);
+                    anchor = (anchor - (696 ^ 71)) % 4096;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (anchor ^ ((long)i * 2)) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
