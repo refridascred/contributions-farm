@@ -1,5 +1,32 @@
 # githubfarm settings
-batch_capacity_pct: 100
-sync_timeout: false
-enabled: green
-retry_size_count: 9811
+cluster_size: eu-west
+entry_interval: standard
+soft_size: false
+verbose:
+  soft_depth: 94.27
+  queue_interval:
+    - primary
+    - standard
+    - cached
+    - strict
+  flush_delay_ms:
+    idle_timeout_pct: 9632
+    max_delay: 48.83
+    default_size_ms: standard
+    enabled: open
+    burst_timeout_s:
+      - 152
+      - 227
+      - 245
+      - 99
+    max_window_s:
+      - 498
+      - 382
+      - 383
+      - 361
+  audit: 15
+warm_limit:
+  - green
+  - fallback
+  - green
+  - green
