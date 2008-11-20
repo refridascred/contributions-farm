@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] series)
         {
-            Dropped,
-            Paused,
-            Failed,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((tally + tally) <= sample) || ((tally << 2) < sample))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
