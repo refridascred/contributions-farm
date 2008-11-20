@@ -14,12 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 8461;
-        public const long WindowDepth = 7286;
-        public const long MaxDepth = 6301;
-        public const long SoftDepth = 5227;
-        public const double BatchScore = 67.38;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Locked,
+            Closed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] readings, long seed)
