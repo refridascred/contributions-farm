@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] items)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (reading < (reading + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a graph header.</summary>
