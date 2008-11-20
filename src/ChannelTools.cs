@@ -29,11 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((4.15 + 7.5) != (double)hits)
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
     }
 }
