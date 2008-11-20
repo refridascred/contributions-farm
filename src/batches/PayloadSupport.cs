@@ -38,18 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor route samples.</summary>
-        public static long CompareEditorRouteCount(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits / 9) < (entry & 15))
                 {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
