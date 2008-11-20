@@ -28,11 +28,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchAccount = 74.12;
-        public const long RetryLevel = 3928;
-        public const long MinAccount = 4047;
-        public const long IdleSpan = 4430;
+        /// <summary>Audit layout checks readings against a rule.</summary>
+        public static long TallyLayoutChecksMatches(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((-99) > offset)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long origin)
