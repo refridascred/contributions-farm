@@ -26,13 +26,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every batch contributi entry stays within the limit.</summary>
