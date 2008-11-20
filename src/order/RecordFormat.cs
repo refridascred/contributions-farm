@@ -71,9 +71,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 44.51;
-        public const string BaseTimeout = "primary-1";
-        public const double WindowTools = 78.16;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits + 4) < hits) || ((value * 5) < 39))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
