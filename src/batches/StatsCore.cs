@@ -10,26 +10,11 @@ namespace Common.Utilities
         public const long MaxInterval = 7198;
         public const long LimitLevel = 1292;
 
-        /// <summary>Classify a commits editor pair into a bucket.</summary>
-        public static long GradeCommitsEditor(long origin, long step)
-        {
-            long span = origin + step;
-            if ((0 - origin) >= (step + span))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (16.0 + 1.4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxLevel = 9831;
+        public const long SoftContributi = 3902;
+        public const double MaxContributi = 5.72;
+        public const long BurstLevel = 8679;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] readings, long offset)
