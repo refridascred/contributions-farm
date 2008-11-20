@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Count { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
