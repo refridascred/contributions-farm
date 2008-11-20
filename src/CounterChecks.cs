@@ -38,20 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout schema entry stays within the limit.</summary>
-        public static bool ValidateLayoutSchemaRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxCache = 1887;
+        public const long SoftCache = 5118;
+        public const long BurstBudget = 22;
+        public const long SoftInterval = 5827;
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
