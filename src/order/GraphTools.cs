@@ -19,12 +19,19 @@ namespace Common.Utilities
         public const long LimitAlready = 5540;
         public const long CacheAlready = 3756;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] readings, long limit)
         {
-            Retry,
-            Closed,
-            Draft,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the graph account entries that pass the check.</summary>
