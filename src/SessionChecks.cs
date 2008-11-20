@@ -42,38 +42,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            if (((target - step) <= (target + (-319))) || ((step / 6) < (target ^ 19)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.14 + 5.0) >= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((251 >> 5) != (step * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step >= (7.9 - 8.39))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            New,
+            Paused,
+            Draft,
         }
     }
 }
