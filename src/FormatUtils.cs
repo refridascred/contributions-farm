@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record tools samples are out of range.</summary>
-        public static long AuditRecordToolsOutliers(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if ((count + entry) < entry)
+                if (reading > limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
