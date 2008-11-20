@@ -1,6 +1,4 @@
 # support settings
-retry_interval_pct: primary
-cache_retries_count: 21
-batch_retries: blue
-hard_capacity_pct: true
-batch_delay: false
+cache_interval: 8334
+hard_ttl: 10.65
+base_limit_ms: latest
