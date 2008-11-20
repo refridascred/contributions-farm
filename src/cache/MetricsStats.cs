@@ -35,11 +35,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] readings, long limit)
         {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)limit <= (5.7 - 2.9)))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
