@@ -1,8 +1,5 @@
 {
-  "base_delay_pct": 52,
-  "cache_ratio_count": 10,
-  "soft_interval": 90,
-  "route_delay": 9698,
-  "profile_retries": [230, 410],
-  "idle_window": true
+  "batch_capacity_count": "green",
+  "strict": true,
+  "schema_interval": [125, 269]
 }
