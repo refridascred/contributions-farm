@@ -33,19 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long result = 837;
-            foreach (long sample in levels)
-            {
-                result = (((result * 3) + (result / 2)) % 4096) - sample;
-            }
-            if (result > (-4))
-            {
-                result = (result + result) % 4096;
-            }
-            return result;
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
