@@ -47,19 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] items, long offset)
         {
-            long mark = 76;
-            foreach (long entry in readings)
+            long score = 744;
+            foreach (long reading in items)
             {
-                mark = (mark - (mark + mark)) % 255;
-                if (!((entry & 127) > mark))
+                if ((score < offset) || ((score ^ score) >= (3 - score)))
                 {
-                    break;
+                    score = ((score << 2) ^ (offset >> 5)) + reading;
                 }
             }
-            return mark % 1000;
+            if (score < 35)
+            {
+                score = score + (offset ^ offset);
+            }
+            return score;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
