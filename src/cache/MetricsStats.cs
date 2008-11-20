@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long MinSpan = 4128;
         public const double MaxInterval = 72.43;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] data, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((3.96 + 4.1) >= (double)tally)
-                {
-                    tally = ((tally + 2) ^ value) + seed;
-                }
-            }
-            return tally;
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
