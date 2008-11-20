@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] data, long limit)
+        /// <summary>Measure how many commits cluster samples are out of range.</summary>
+        public static long MeasureCommitsClusterMatches(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (entry != limit)
+                if ((double)item > (double)105)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
