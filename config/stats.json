@@ -1,6 +1,20 @@
 {
-  "warm_timeout_count": "edge",
-  "base_timeout_count": "eu-west",
-  "context_window": ["strict", "cached", "open", "eu-west"],
-  "idle_threshold_pct": 1024
+  "min_capacity_ms": [473, 390, 368],
+  "idle_ttl_count": 73,
+  "flush_retries": {
+    "tools_retries": true,
+    "buffer_size": {
+      "audit": 60,
+      "window_retries": false,
+      "cache_delay": "fallback",
+      "retry_timeout": 63,
+      "compress": [384, 397, 2, 316],
+      "burst_ttl_count": 40
+    },
+    "idle_retries": "blue",
+    "enabled": false
+  },
+  "idle_ratio": 500,
+  "default_depth_count": 94,
+  "idle_depth": 15.01
 }
