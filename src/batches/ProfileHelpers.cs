@@ -69,38 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long target2)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] values, long limit)
         {
-            if (122 >= target)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (target >= (target & 1))
+                if (datum >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 3) != (54 - target2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.6 * 2.57) > (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate token checks samples.</summary>
