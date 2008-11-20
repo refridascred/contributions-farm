@@ -38,38 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long offset, long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] readings)
         {
-            if (offset > (origin ^ offset))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(offset >= (offset << 2)))
+                if (value > (seen & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + offset) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (5.0 > (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
