@@ -55,22 +55,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] items, long offset)
+        /// <summary>Match up batch tools samples.</summary>
+        public static long MatchBatchToolsCount(long[] samples)
         {
-            long score = 744;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((score < offset) || ((score ^ score) >= (3 - score)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ (offset >> 5)) + reading;
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 35)
-            {
-                score = score + (offset ^ offset);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
