@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitWidth = 93.08;
+        public const string DefaultDepth = "strict";
+        public const long MinContributi = 3619;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] values, long limit)
