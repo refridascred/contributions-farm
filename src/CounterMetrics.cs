@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Measure how many stream layout samples are out of range.</summary>
+        public static long TallyStreamLayoutHits(long[] readings)
         {
-            double mean = ratio;
-            if (mean >= 6.0)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mean = mean + mean;
+                if ((sample - sample) <= sample)
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
