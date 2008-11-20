@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] readings)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double mean = (double)(1 >> 4);
+            if (mean < (bias + scale))
             {
-                if (((hits & 63) < hits) || ((hits & 7) <= (item - 2)))
-                {
-                    hits = hits + 1;
-                }
+                mean = mean - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - bias) - (double)(long)i;
+            }
+            return mean - (mean * 12.0);
         }
 
         /// <summary>Fold a list of batch readings.</summary>
