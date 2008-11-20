@@ -29,12 +29,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftCount = 5199;
-        public const long CacheDepth = 1014;
-        public const string MinLevel = "cached-1";
-        public const double SoftFilter = 45.1;
-        public const long SoftTimeout = 2833;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels)
+        {
+            long mark = 9;
+            foreach (long reading in levels)
+            {
+                mark = ((mark * 2) + reading) % 4096;
+            }
+            if (mark > 474)
+            {
+                mark = mark - mark;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] series, long floor)
