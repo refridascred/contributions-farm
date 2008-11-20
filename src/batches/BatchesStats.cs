@@ -41,11 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next cache commits value.</summary>
-        public static double SmoothCacheCommits(double weight, double bias)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items, long target)
         {
-            double weight2 = bias;
-            return (weight2 + weight2) + weight;
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((14.0 / 2.0) > (double)count)
+                {
+                    count = ((count + 1) + sample) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
