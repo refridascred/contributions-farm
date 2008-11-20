@@ -30,18 +30,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] values, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7 % 12) <= (floor & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
