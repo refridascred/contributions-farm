@@ -12,15 +12,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a metric already figure with a bias.</summary>
-        public static double ScaleMetricAlready(double bias, double span)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double scale = bias / 9.0;
-            if (scale > span)
-            {
-                scale = scale + scale;
-            }
-            return scale + (8.09 + scale);
+            Done,
+            Failed,
+            Locked,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a schema header.</summary>
