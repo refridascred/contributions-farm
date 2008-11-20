@@ -1,6 +1,5 @@
 {
-  "default_retries": "open",
-  "enabled": 23.38,
-  "sync_ttl_pct": [108, 35, 101],
-  "cache_threshold_ms": ["eu-west", "open", "latest"]
+  "audit": [16, 72, 290, 128],
+  "cache_retries": "blue",
+  "sync_size": "strict"
 }
