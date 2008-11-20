@@ -51,11 +51,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftLevel = 67.11;
-        public const string MinRecord = "standard";
-        public const long IdleFactor = 4215;
-        public const double BurstRecord = 91.42;
+        /// <summary>Classify a contributi order pair into a bucket.</summary>
+        public static long SortContributiOrder(long target, long origin)
+        {
+            if (((double)target > 20.0) || ((target + target) > target))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin <= (20 & 63)) && (target > origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
