@@ -1,12 +1,7 @@
 {
-  "readonly": {
-    "strict": 1520,
-    "commits_depth": ["strict", "primary", "blue"],
-    "session_ttl": 30,
-    "layout_delay": [378, 79, 91, 447]
-  },
-  "max_interval_count": 50.25,
-  "idle_ratio": 769,
-  "batch_capacity_count": "fallback",
-  "max_depth_count": [258, 96, 68]
+  "default_timeout_ms": 80.29,
+  "burst_ratio": 12.35,
+  "idle_threshold_pct": 30,
+  "commits_timeout": true,
+  "stream_capacity": 23.43
 }
