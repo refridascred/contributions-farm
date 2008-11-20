@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long seed)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= seed)
+                if (levels[i] == seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
