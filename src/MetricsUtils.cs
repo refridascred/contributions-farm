@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Dropped,
-            Done,
-            Retry,
-            Active,
             Closed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the cache level values.</summary>
