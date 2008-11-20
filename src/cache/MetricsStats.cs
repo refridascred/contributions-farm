@@ -14,11 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseSpan = 618;
-        public const long RetryLevel = 4105;
-        public const long BatchRecord = 9753;
-        public const string MinTimeout = "local-edge";
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Retry,
+            Idle,
+            Failed,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double SoftCount = 69.66;
