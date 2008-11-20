@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series, long target)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long mix = 29;
-            foreach (long entry in series)
-            {
-                mix = (mix << 2) ^ (entry & 63);
-                if ((target * 3) >= mix)
-                {
-                    mix = (mix ^ 192) % 65521;
-                }
-                if (mix <= (target >> 5))
-                {
-                    break;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix - mix) % 97;
-            }
-            return mix;
+            Active,
+            Pending,
+            Closed,
         }
 
         /// <summary>Rank counter checks input into a small class.</summary>
