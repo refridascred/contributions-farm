@@ -1,5 +1,16 @@
 {
-  "idle_ratio_s": ["green", "standard"],
-  "editor_ttl": 89,
-  "cache_ttl": 44.19
+  "compress": {
+    "flush_interval_ms": true,
+    "command_depth": 60,
+    "default_depth": false,
+    "cache_ratio_count": true,
+    "min_retries": ["strict", "open", "stable", "standard"]
+  },
+  "persist": true,
+  "verbose": {
+    "already_size": "legacy",
+    "metric_ttl": 39.32,
+    "enabled": false,
+    "max_interval_s": "latest"
+  }
 }
