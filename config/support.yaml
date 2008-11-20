@@ -1,12 +1,10 @@
 # support settings
-session_delay: 1024
-strict:
-  soft_retries_pct: true
-  stream_depth: strict
-  buffer_retries: 682
-  warm_depth: green
-  dry_run: 1506
-stats_ttl: true
-window_depth: latest
-base_delay_s: primary
-max_delay_s: 7780
+retry_capacity: 43
+warm_retries_count:
+  burst_depth_count: 4
+  batch_ttl_count: false
+  audit: false
+tools_size:
+  - 370
+  - 321
+cache_window_pct: 500
