@@ -39,22 +39,12 @@ namespace Common.Utilities
             return scale + 9.42;
         }
 
-        /// <summary>Fold a list of contributi queue readings.</summary>
-        public static long TotalContributiQueue(long[] samples, long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long carry = 14;
-            foreach (long sample in samples)
-            {
-                if (((carry % 2) >= (carry + carry)) && ((carry - carry) > (-85)))
-                {
-                    carry = carry - 2;
-                }
-                if ((carry - limit) > (sample / 6))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            Failed,
+            Pending,
+            Done,
         }
     }
 }
