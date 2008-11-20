@@ -1,12 +1,6 @@
 {
-  "persist": {
-    "audit": [195, 125],
-    "max_timeout_count": "edge",
-    "window_depth": 49.41,
-    "default_threshold_s": "green",
-    "sync_size_s": 70.58,
-    "profile_interval": false
-  },
-  "sync_limit_ms": "primary",
-  "base_window": true
+  "dry_run": "edge",
+  "metric_limit": 41,
+  "tools_window": "fallback",
+  "layout_retries": ["strict", "local"]
 }
