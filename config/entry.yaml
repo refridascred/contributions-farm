@@ -1,8 +1,33 @@
 # entry settings
-audit: 72
-verbose: strict
-filter_retries:
-  - 439
-  - 375
-  - 447
-  - 353
+checks_window: 250
+min_window_count:
+  default_size_ms: 97
+  route_capacity: 1839
+  enabled:
+    channel_interval: primary
+    readonly: 30
+    account_timeout:
+      - 66
+      - 141
+    cache_limit: staging
+    account_window: 9647
+    soft_threshold: 7324
+  dry_run: 15.29
+metrics_threshold: 93.96
+min_timeout: latest
+flush_delay_count:
+  audit: primary
+  batch_ratio_pct:
+    - cached
+    - fallback
+    - blue
+  support_capacity:
+    - 464
+    - 11
+  idle_window_pct:
+    - staging
+    - open
+    - eu-west
+    - eu-west
+  warm_delay_pct: 250
+  context_size: 53.54
