@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            New,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Combine context values into a single score.</summary>
