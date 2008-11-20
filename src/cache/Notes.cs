@@ -45,18 +45,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] series)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((4 - (-780)) > seen)
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
