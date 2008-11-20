@@ -1,12 +1,7 @@
 {
-  "dry_run": "fallback",
-  "cache_ttl": 30,
-  "batch_ttl_s": true,
-  "enabled": ["latest", "staging"],
-  "channel_depth": {
-    "persist": [354, 329],
-    "audit": 29,
-    "base_size_ms": false,
-    "dry_run": 250
-  }
+  "filter_limit": false,
+  "base_ttl": 83,
+  "cache_size": "cached",
+  "window_retries": 250,
+  "batches_capacity": "primary"
 }
