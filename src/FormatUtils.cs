@@ -40,18 +40,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long mix = 477;
-            foreach (long item in readings)
-            {
-                if ((mix % 10) <= ((long)readings.Length + 7))
-                {
-                    mix = ((mix << 2) ^ (mix ^ mix)) + item;
-                }
-            }
-            return mix % 97;
+            Done,
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a support stats.</summary>
