@@ -23,18 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (!(bound <= 38))
             {
-                if ((seen % 8) != (524 + entry))
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ floor) >= 6)
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((bound + floor) == (bound << 2)) && (floor > bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metric options.</summary>
