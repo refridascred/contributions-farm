@@ -32,21 +32,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Iterate the metric support series from a seed.</summary>
+        public static long DeriveMetricSupport(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long tally = result >> 4;
+                if ((limit + 88) >= tally)
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally * 5) + (result / 4)) % 4096;
+                    break;
                 }
+                else
+                {
+                    result = (result + (result * 3)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
