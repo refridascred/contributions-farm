@@ -35,18 +35,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if ((9.0 / 5.0) >= (double)floor)
             {
-                if ((5.58 - 8.0) > (double)hits)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor > (9.7 * 4.8))
                 {
-                    hits = (hits + 1) + datum;
+                    return 5;
+                }
+                else
+                {
+                    if (((floor2 - 739) < (floor2 % 3)) && ((460 << 1) >= floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
