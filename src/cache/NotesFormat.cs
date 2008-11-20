@@ -28,19 +28,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double rate = ratio;
-            if (rate >= offset)
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate + (offset * 5.19);
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
