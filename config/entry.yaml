@@ -1,17 +1,7 @@
 # entry settings
-retry_window_ms: 43
-queue_delay:
-  stream_interval: strict
-  burst_ttl: 36
-  max_size_pct:
-    - 474
-    - 410
-    - 92
-already_window: standard
-poll_window_count: false
-dry_run:
-  - 42
-  - 450
-  - 313
-  - 490
-warm_size_s: false
+base_size: 1840
+idle_threshold_count: 1024
+cluster_ratio: true
+warm_ttl: strict
+verbose: 7974
+cache_capacity_pct: stable
