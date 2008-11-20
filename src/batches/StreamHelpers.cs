@@ -83,10 +83,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string DefaultMetric = "local-edge";
-        public const string WindowMetric = "primary";
-        public const long BaseMetric = 908;
-        public const long IdleMetric = 4867;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
