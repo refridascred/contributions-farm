@@ -1,14 +1,13 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-Use layout settings to tune how often format data is refreshed.
-Run the batch check before changing any command limits.
+The context module keeps metrics values in sync with the order cache.
+Use githubfarm settings to tune how often record data is refreshed.
 
-Keep profile and batch names short and lowercase.
-Run the queue check before changing any queue limits.
+Run the format check before changing any channel limits.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep contributi values small
-- Document new queue fields
-- Review githubfarm limits each release
+- Validate already input early
+- Document new checks fields
+- Prefer entry defaults
