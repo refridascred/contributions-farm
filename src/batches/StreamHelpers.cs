@@ -54,19 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report already readings against a bound.</summary>
-        public static bool GuardReportAlreadyRange(long[] data, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitSize = 2614;
+        public const double SoftStats = 97.37;
+        public const long LimitFactor = 1377;
+        public const long IdleSize = 8456;
+        public const long WindowRatio = 3137;
     }
 }
