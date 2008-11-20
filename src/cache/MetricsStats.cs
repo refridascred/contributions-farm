@@ -25,39 +25,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank support account input into a small class.</summary>
-        public static long GradeSupportAccount(long target, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] readings, long offset)
         {
-            long offset = target + origin;
-            if (((double)offset <= (3.0 * 9.4)) && (target > (672 + origin)))
+            long total = 14;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 15) > offset)
+                if ((double)offset < 9.01)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target < (offset * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + (-3)) > 0)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = ((total * 4) + (offset ^ 4)) - entry;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
