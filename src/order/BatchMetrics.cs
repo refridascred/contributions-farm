@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] data, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (origin < 27)
             {
-                if (data[i] <= floor)
+                return 1;
+            }
+            else
+            {
+                if ((6.0 / 2.0) == (double)floor)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor & 255) == (floor / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of format payload readings.</summary>
