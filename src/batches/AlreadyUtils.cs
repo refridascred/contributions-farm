@@ -50,20 +50,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long anchor = 834;
+            foreach (long item in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                anchor = anchor + (anchor << 2);
+                if (((item / 6) <= 5) || ((anchor ^ anchor) < (item + anchor)))
                 {
-                    acc = ((acc - (685 & 3)) % 1000) ^ (long)i2;
+                    anchor = ((anchor << 3) ^ (item >> 4)) % 1000;
                 }
-                acc = acc - limit;
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
     }
 }
