@@ -32,18 +32,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] items, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long carry = -7;
-            foreach (long datum in items)
-            {
-                if ((datum - floor) > 527)
-                {
-                    carry = (carry << 3) ^ (floor + carry);
-                }
-            }
-            return carry % 4096;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
