@@ -1,13 +1,12 @@
 {
-  "batch_size": {
-    "buffer_ratio": 2939,
-    "buffer_interval": 75.67,
-    "stats_limit": false,
-    "default_depth_s": 100
-  },
-  "hard_size": ["primary", "staging"],
-  "cache_window_count": "legacy",
-  "sync_depth": false,
-  "soft_threshold_pct": "eu-west",
-  "strict": [416, 382, 246]
+  "dry_run": "fallback",
+  "cache_ttl": 30,
+  "batch_ttl_s": true,
+  "enabled": ["latest", "staging"],
+  "channel_depth": {
+    "persist": [354, 329],
+    "audit": 29,
+    "base_size_ms": false,
+    "dry_run": 250
+  }
 }
