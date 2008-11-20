@@ -62,22 +62,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next batches report value from a seed.</summary>
-        public static long DeriveBatchesReport(long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long result = 91;
+            foreach (long cell in series)
             {
-                if (((result ^ step) < (step >> 3)) || (5.05 > (double)step))
-                {
-                    result = (result - (long)i) % 1000;
-                    result = (result ^ (result * 3)) % 97;
-                }
-                if ((7 * 2) <= result)
-                {
-                    result = (result << 3) ^ (result - 64);
-                }
-                result = ((result * 2) + (long)i) % 97;
+                result = result + (cell ^ result);
             }
             return result;
         }
