@@ -59,18 +59,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema record entries that pass the check.</summary>
-        public static long TallySchemaRecordMatches(long[] values, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item >> 3) > (item % 3))
+                if ((data[i] > limit) && ((data[i] % 5) == 0))
                 {
-                    hits = (hits + 1) - offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
