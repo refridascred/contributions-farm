@@ -34,12 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading >> 2) != ((-2) % 5)) || ((step % 12) > step))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
