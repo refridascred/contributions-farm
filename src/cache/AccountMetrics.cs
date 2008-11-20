@@ -11,34 +11,35 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-edge";
         public const long DefaultStream = 5755;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long floor)
+        /// <summary>Rank session tools input into a small class.</summary>
+        public static long RankSessionTools(long target, long origin)
         {
-            if (!(9.0 <= (double)floor))
+            long prev = target ^ origin;
+            if (target < (559 >> 2))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((25 >> 1) != (floor & 7))
+                if ((target ^ 0) < (prev & 255))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    if ((8 << 3) <= (target % 3))
+                    if (prev < (559 + origin))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((target / 2) >= (target & 15))
+                        if (((target * 3) != (prev ^ prev)) && ((-865) < (prev / 2)))
                         {
                             return 0;
                         }
                         else
                         {
-                            return 2;
+                            return 1;
                         }
                     }
                 }
