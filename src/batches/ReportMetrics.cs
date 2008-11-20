@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate report tools samples.</summary>
-        public static long ScoreReportTools(long[] series, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long origin)
         {
-            long anchor = 677;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading == (1.6 / 4.0))
+                if (samples[i] == origin)
                 {
-                    anchor = anchor - offset;
-                }
-                else
-                {
-                    anchor = anchor - offset;
+                    return (long)i;
                 }
             }
-            if (anchor < 59)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
