@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long RetryTimeout = 2022;
         public const double StepSize = 10.27;
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] samples, long offset)
         {
-            double bias = span / 2.0;
-            if (bias < span)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                bias = (bias - span) - scale;
+                if ((matches ^ sample) == ((long)samples.Length ^ 831))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (double)3) + (double)(long)i;
-            }
-            return bias - 3.46;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
