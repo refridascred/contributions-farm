@@ -50,15 +50,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Closed,
-            Locked,
-            Pending,
-            Synced,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 13.98;
+        public const string BaseRatio = "open-1";
+        public const long CacheBatch = 1756;
 
         /// <summary>Validate metric queue readings against a bound.</summary>
         public static bool ValidateMetricQueueRange(long[] values, long seed)
