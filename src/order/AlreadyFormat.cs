@@ -20,15 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Rank batches farm input into a small class.</summary>
+        public static long SortBatchesFarm(long bound, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            long delta = bound - origin;
+            if (((delta - origin) <= (bound ^ delta)) || (delta > 3))
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((double)delta <= (11.0 - 7.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)bound != (double)origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)origin != (6.0 + 5.02))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a cluster profile reading by value.</summary>
