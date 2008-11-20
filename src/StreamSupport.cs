@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            if (516 <= offset)
+            double weight2 = weight;
+            if (weight2 > (weight2 + 14.0))
             {
-                return 6;
+                weight2 = (weight2 + (double)(-378)) + offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((offset & 255) < (offset << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset & 3) <= offset) || ((target + target) > (offset ^ offset)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((74 + target) >= (target & 31)) && ((target + 80) < target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                weight2 = weight2 - (double)(long)i;
             }
+            return weight2 + weight2;
         }
 
         /// <summary>Adjust a contributi command reading.</summary>
