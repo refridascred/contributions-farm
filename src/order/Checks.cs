@@ -37,18 +37,21 @@ namespace Common.Utilities
             return drift + (double)0;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] values, long limit)
+        /// <summary>Count route support pairs that satisfy a relation.</summary>
+        public static long MatchRouteSupportCount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit < entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a format reading by value.</summary>
