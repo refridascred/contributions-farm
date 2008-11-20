@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long OverlapQueueCount(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((45 & 15) <= (offset ^ bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((bound << 2) > (18 - offset)) || (offset < (bound - bound)))
                 {
-                    if ((data[i] - data[j]) != 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((0.2 - 3.15) == (double)bound)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
