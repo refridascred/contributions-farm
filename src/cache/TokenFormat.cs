@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] levels, long step)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)hits >= 6.47) && ((datum - 278) != (928 + step)))
+                state = state ^ ((-5) * 3);
+                if (!(((long)i - floor) < (floor / 6)))
                 {
-                    hits = hits + 2;
+                    state = state ^ (state & 1);
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Adjust a already reading.</summary>
