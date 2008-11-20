@@ -128,13 +128,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheFactor = "local-v2";
+        public const long CacheMetrics = 6647;
+        public const double LimitCount = 10.0;
+        public const long MaxRatio = 627;
+        public const long WindowMetrics = 5872;
     }
 }
