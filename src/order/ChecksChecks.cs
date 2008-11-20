@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total - 214;
-                if ((target + (long)i) < 251)
+                if (readings[i] > offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 5) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
