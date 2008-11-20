@@ -24,19 +24,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((410 << 2) >= (954 - seen))
-                {
-                    seen = ((seen + 2) ^ cell) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double CacheSize = 55.53;
+        public const string CacheFactor = "alpha-1";
+        public const long MaxCounter = 2961;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
