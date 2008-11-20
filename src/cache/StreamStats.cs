@@ -37,10 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MaxToken = 13.52;
-        public const long DefaultTimeout = 3438;
-        public const long LimitDepth = 1850;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a route account value against two limits.</summary>
         public static long SortRouteAccount(long origin, long offset)
