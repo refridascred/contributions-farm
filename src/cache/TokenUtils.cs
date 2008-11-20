@@ -22,12 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepBudget = 4342;
-        public const long MaxToken = 3184;
-        public const long DefaultFactor = 9282;
-        public const double CacheInterval = 75.37;
-        public const long BaseToken = 4223;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] samples, long bound)
+        {
+            long sum = -154;
+            foreach (long entry in samples)
+            {
+                if (((sum + entry) >= (entry & 127)) && ((double)sum != (double)bound))
+                {
+                    sum = (sum * 3) + (entry + sum);
+                }
+                if ((6.0 + 2.82) < (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] values)
