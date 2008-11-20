@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmLimits(long[] data, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (value < target)
+                if (!((hits % 10) > hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
