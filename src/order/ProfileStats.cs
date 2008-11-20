@@ -32,18 +32,21 @@ namespace Common.Utilities
         public const double MaxProfile = 76.87;
         public const long BurstSpan = 7246;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] samples)
         {
-            long acc = 8;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((offset + acc) >= (datum + datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc ^ 57;
+                    if ((samples[i] ^ samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
