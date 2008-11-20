@@ -32,21 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Match up token farm samples.</summary>
+        public static long PairTokenFarmCount(long[] data)
         {
-            long matches = 0;
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) == 13)
+                    if ((data[i] ^ data[j]) != 16)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
