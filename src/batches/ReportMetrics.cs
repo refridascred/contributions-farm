@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const long WindowInterval = 8818;
         public const long WindowChecks = 1792;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] values)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (matches >= (matches << 2))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
     }
 }
