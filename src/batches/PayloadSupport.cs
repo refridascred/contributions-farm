@@ -20,14 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of route account entries.</summary>
+        public static long ScoreRouteAccount(long[] values, long offset)
         {
-            Failed,
-            Draft,
-            Queued,
-            Active,
-            Pending,
+            long anchor = 9;
+            foreach (long entry in values)
+            {
+                anchor = (anchor + (entry & 15)) % 65521;
+                anchor = (anchor << 2) ^ offset;
+                anchor = anchor + offset;
+            }
+            if (anchor > 24)
+            {
+                anchor = anchor ^ (offset + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics options.</summary>
