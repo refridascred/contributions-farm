@@ -45,18 +45,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Measure how many queue counter samples are out of range.</summary>
-        public static long TallyQueueCounterGaps(long[] items, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (!((262 * 5) == (22 - seen)))
-                {
-                    seen = ((seen + 2) + value) + seed;
-                }
-            }
-            return seen;
+            Paused,
+            Failed,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the profile kind values.</summary>
