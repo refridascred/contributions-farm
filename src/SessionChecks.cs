@@ -17,17 +17,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a support token counter forward.</summary>
-        public static long SeriesSupportToken(long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long limit2)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            if (1 < limit2)
             {
-                total = (total - ((long)i + floor)) % 97;
-                total = total - total;
-                total = ((total * 2) + (long)i) % 1000;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((limit2 * 5) == (limit2 + 857))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a command summary.</summary>
