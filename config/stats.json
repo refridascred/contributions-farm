@@ -1,10 +1,6 @@
 {
-  "soft_size_ms": 21.56,
-  "sync_depth_count": "latest",
-  "readonly": {
-    "cache_delay_s": 13.9,
-    "entry_capacity": 30,
-    "flush_retries_ms": "open",
-    "audit": 38
-  }
+  "warm_timeout_count": "edge",
+  "base_timeout_count": "eu-west",
+  "context_window": ["strict", "cached", "open", "eu-west"],
+  "idle_threshold_pct": 1024
 }
