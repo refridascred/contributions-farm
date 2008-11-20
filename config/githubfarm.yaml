@@ -1,11 +1,4 @@
 # githubfarm settings
-soft_capacity_s: 250
-compress:
-  buffer_depth: 4906
-  sync_delay_s: stable
-  enabled:
-    - 463
-    - 467
-  persist: 82.39
-  min_depth_ms: 7087
-dry_run: true
+compress: false
+batch_ratio_pct: 250
+metric_retries: eu-west
