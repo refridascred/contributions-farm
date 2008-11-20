@@ -36,9 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchLevel = 5691;
-        public const string DefaultSpan = "alpha-edge";
-        public const double StepGraph = 75.75;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Idle,
+            Ready,
+            Queued,
+            New,
+        }
     }
 }
