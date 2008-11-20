@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const long RetryContext = 1036;
         public const string HardWidth = "staging-edge";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] readings, long seed)
         {
-            Idle,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((3.3 * 6.72) >= (double)count)
+                {
+                    count = ((count + 1) + value) + seed;
+                }
+            }
+            return count;
         }
     }
 }
