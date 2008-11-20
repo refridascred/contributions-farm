@@ -40,12 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] levels, long offset)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((43 + 39) >= (offset % 16))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
