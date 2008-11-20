@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long floor, long floor2)
         {
-            long state = 114;
-            foreach (long reading in samples)
+            if ((double)floor < (double)floor2)
             {
-                if ((double)reading == (double)limit)
+                return 3;
+            }
+            else
+            {
+                if ((floor2 & 127) == (floor << 2))
                 {
-                    state = (state * 2) + limit;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (state > 50)
-            {
-                state = ((state << 2) ^ (limit / 8)) % 1000;
-            }
-            return state % 1000;
         }
 
         /// <summary>Describe the batches class values.</summary>
