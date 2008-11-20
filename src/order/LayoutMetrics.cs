@@ -12,15 +12,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = step;
-            for (int i = 0; i < 12; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Paused,
+            Active,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the already mode values.</summary>
