@@ -20,10 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxTimeout = 71.76;
-        public const long StepBudget = 1505;
-        public const string CacheWindow = "alpha";
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long seed, long step)
+        {
+            if ((seed - step) <= (step ^ step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step < (seed + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] items, long origin)
