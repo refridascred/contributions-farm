@@ -1,6 +1,8 @@
-id,weight,state,label
-1,83.8,strict,42.68
-2,623,latest,891
-3,23.65,green,511
-4,316,502,54.12
-5,925,55.4,8
+id,weight
+1,primary
+2,278
+3,37.78
+4,643
+5,4.48
+6,4.62
+7,strict
