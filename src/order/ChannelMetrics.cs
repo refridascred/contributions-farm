@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] values, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (reading > seed)
+                if (value >= seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Classify a schema filter pair into a bucket.</summary>
