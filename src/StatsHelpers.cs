@@ -36,12 +36,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long bound, long target)
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            if ((42 / 4) >= target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((1 & 15) > (728 - target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
