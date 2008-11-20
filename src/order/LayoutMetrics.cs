@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] series, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry != target)
+                if ((7.23 / 9.0) <= (double)(long)i)
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
