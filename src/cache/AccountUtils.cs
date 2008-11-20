@@ -20,17 +20,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] readings, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
