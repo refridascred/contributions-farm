@@ -59,13 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Locked,
-            Retry,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 5957;
+        public const double MinSize = 69.97;
+        public const double HardInterval = 5.43;
+        public const double MaxProfile = 88.35;
+        public const string BurstProfile = "local-1";
     }
 }
