@@ -36,13 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] readings)
         {
-            Queued,
-            Failed,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((long)readings.Length ^ 20) == (23 - 30))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next contributi layout value from a seed.</summary>
