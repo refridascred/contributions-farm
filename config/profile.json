@@ -1,11 +1,12 @@
 {
-  "default_capacity_count": 22.95,
-  "max_interval_count": {
-    "max_delay_pct": 5601,
-    "payload_timeout": ["latest", "local", "edge"],
-    "cache_window": 59.76,
-    "persist": true,
-    "base_capacity_pct": [451, 234, 200]
+  "persist": {
+    "audit": [195, 125],
+    "max_timeout_count": "edge",
+    "window_depth": 49.41,
+    "default_threshold_s": "green",
+    "sync_size_s": 70.58,
+    "profile_interval": false
   },
-  "base_capacity": true
+  "sync_limit_ms": "primary",
+  "base_window": true
 }
