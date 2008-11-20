@@ -27,18 +27,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] items)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((4.15 + 7.5) != (double)hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
