@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long limit, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            if (((bound + bound) <= (limit ^ limit)) && (limit >= (limit ^ bound)))
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((bound << 3) >= (limit ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ limit) >= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((114 / 4) <= (bound - limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
