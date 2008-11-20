@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            Dropped,
-            Failed,
-            Paused,
-            Ready,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
