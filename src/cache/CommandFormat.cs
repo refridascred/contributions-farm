@@ -12,14 +12,18 @@ namespace Common.Utilities
         public const long StepStream = 7508;
         public const string SoftStream = "strict-v2";
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] readings, long step)
         {
-            Active,
-            Pending,
-            New,
-            Ready,
-            Done,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum << 1) > ((long)readings.Length * 4))
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
