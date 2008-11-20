@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long seed)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long mix = 71;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((mix >> 3) != (datum - mix))
                 {
-                    score = ((score ^ (target + 593)) % 4096) ^ (long)i2;
+                    mix = ((mix - (mix & 31)) % 255) + seed;
                 }
-                if (!((double)target < (double)(-98)))
+                else
                 {
-                    score = ((score * 4) + (34 + score)) % 97;
+                    mix = ((mix << 2) ^ (mix - datum)) % 4096;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
