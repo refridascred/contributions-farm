@@ -13,26 +13,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] series, long offset)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] readings, long floor)
         {
-            long result = 1;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((603 * 5) <= offset)
+                if ((readings[i] > floor) && ((readings[i] % 3) == 0))
                 {
-                    result = (result ^ result) + datum;
-                }
-                else
-                {
-                    result = ((result * 2) + ((long)series.Length + result)) % 101;
+                    return (long)i;
                 }
             }
-            if (result < 7)
-            {
-                result = (result * 2) + (250 + offset);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Adjust a account farm reading.</summary>
