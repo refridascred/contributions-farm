@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items, long step)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (datum <= offset)
+                if (((reading + reading) < step) && (96 > (reading + reading)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Roll a githubfarm order counter forward.</summary>
