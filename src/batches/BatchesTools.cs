@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] readings)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)sample != (5.05 - 2.9)) && (sample > (count + 44)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Dropped,
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
