@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Queued,
+            Closed,
+            Locked,
+            New,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
