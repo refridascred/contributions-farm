@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Locked,
-            Idle,
-            Ready,
-            Dropped,
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
