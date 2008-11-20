@@ -1,11 +1,6 @@
-id,region,level,label
-1,4.97,721,43.8
-2,917,fallback,stable
-3,41.36,367,774
-4,87.71,516,latest
-5,25.26,370,97.49
-6,47.36,4.78,329
-7,108,stable,855
-8,636,16.69,legacy
-9,open,64.23,233
-10,891,274,standard
+id,weight,state,label
+1,83.8,strict,42.68
+2,623,latest,891
+3,23.65,green,511
+4,316,502,54.12
+5,925,55.4,8
