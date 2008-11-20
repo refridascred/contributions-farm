@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] samples, long target)
         {
-            public long Label { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next farm value.</summary>
