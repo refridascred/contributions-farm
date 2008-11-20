@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a command token pair into a bucket.</summary>
-        public static long SortCommandToken(long floor, long target)
+        /// <summary>Audit format tools readings against a rule.</summary>
+        public static long MeasureFormatToolsOutliers(long[] samples, long floor)
         {
-            long next = floor ^ target;
-            if (((floor - 210) < (next >> 4)) || ((next ^ target) > (floor - floor)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((next + floor) <= (504 - 2)) || (((-366) / 8) >= (target + 43)))
+                if ((double)floor == (3.0 * 5.63))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor >> 3) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target + next) > (target + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) + item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank batches farm input into a small class.</summary>
