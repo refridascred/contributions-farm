@@ -61,19 +61,14 @@ namespace Common.Utilities
         public const long IdleCount = 725;
         public const long WindowTimeout = 1594;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long limit)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Stale,
+            New,
+            Ready,
+            Queued,
         }
     }
 }
