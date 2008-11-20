@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
-        {
-            Queued,
-            New,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 5173;
+        public const double MinWidth = 82.23;
+        public const long BaseMetric = 9662;
+        public const long BatchMetric = 9632;
+        public const long HardTimeout = 7924;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
