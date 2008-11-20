@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double weight, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels)
         {
-            double scale = offset;
-            if (scale > scale)
+            long count = 0;
+            foreach (long item in levels)
             {
-                scale = (scale - 1.43) - weight;
+                if ((double)count == (9.76 + 6.0))
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            return scale - 6.4;
+            return count;
         }
 
         /// <summary>Audit record report readings against a rule.</summary>
