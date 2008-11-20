@@ -18,24 +18,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double bias, double bias2)
-        {
-            double drift = (double)74 / 6.0;
-            if (drift > (bias - bias2))
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift - (bias2 + bias2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - 0.06) - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 1225;
+        public const double LimitTools = 19.04;
+        public const string WindowTools = "strict-1";
+        public const long MinTools = 8701;
+        public const string BurstCount = "open";
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] items, long floor)
