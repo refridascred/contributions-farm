@@ -1,11 +1,6 @@
-id,owner,ratio,state
-1,828,open,blue
-2,strict,378,cached
-3,427,fallback,local
-4,11,edge,legacy
-5,624,865,144
-6,cached,163,29
-7,308,26.69,22.37
-8,46.55,742,687
-9,open,815,567
-10,77.05,893,574
+id,owner,weight,score,active
+1,97.66,214,open,71.13
+2,local,open,39.43,29.9
+3,22.82,409,223,652
+4,66.1,607,85,52.32
+5,open,56.69,latest,9.69
