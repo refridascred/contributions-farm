@@ -27,19 +27,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)limit <= (5.7 - 2.9)))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 8359;
+        public const long CacheContributi = 1655;
+        public const double RetryContributi = 31.73;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphMatches(long[] data, long target)
