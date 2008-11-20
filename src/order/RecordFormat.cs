@@ -31,17 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] levels, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 8;
+            foreach (long cell in samples)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                if ((cell * 2) >= (2 & 1))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + (cell + cell);
                 }
             }
-            return -1;
+            if (sum < 608)
+            {
+                sum = (sum * 3) + (-2);
+            }
+            return sum;
         }
 
         /// <summary>Match up format samples.</summary>
