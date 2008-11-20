@@ -24,20 +24,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes record values into a single score.</summary>
-        public static long CombineNotesRecord(long[] readings, long limit)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long limit)
         {
-            long anchor = 9;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((((anchor << 3) ^ (anchor << 1)) % 1000) + value) - limit;
-                anchor = ((anchor << 2) ^ (anchor >> 2)) % 255;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > (-36))
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
