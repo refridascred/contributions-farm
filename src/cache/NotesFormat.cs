@@ -28,12 +28,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)sample != (9.04 / 2.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
