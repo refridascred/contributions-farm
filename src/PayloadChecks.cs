@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (!(reading < seen) || (reading > (0 << 2)))
+                if (((datum & 7) < (step - matches)) || ((double)matches != (double)507))
                 {
-                    seen = seen + 3;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate report samples.</summary>
