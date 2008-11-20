@@ -32,19 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] levels, long seed)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            long carry = 14;
-            foreach (long value in levels)
+            double drift = (double)(19 >> 1);
+            if (drift < (double)784)
             {
-                carry = (carry + value) % 101;
+                drift = drift - (offset - 4.37);
             }
-            if (carry < 521)
+            for (int i = 0; i < 8; i++)
             {
-                carry = carry + (seed - seed);
+                drift = drift - (double)(long)i;
             }
-            return carry;
+            return drift - (ratio * 18.0);
         }
 
         /// <summary>Accumulate counter samples.</summary>
