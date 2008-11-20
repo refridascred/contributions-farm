@@ -39,25 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] values, long floor)
         {
-            long step = origin ^ bound;
-            if (((bound ^ origin) != (5 / 9)) || (step >= 66))
+            bool found = true;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.9 - 0.47) != (double)origin)
+                if (value != floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
