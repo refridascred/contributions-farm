@@ -13,11 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 5268;
-        public const long MinFactor = 2106;
-        public const double SoftToken = 59.96;
-        public const long BatchTimeout = 2850;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((limit * 4) <= ((-8) % 8))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long origin, long target)
