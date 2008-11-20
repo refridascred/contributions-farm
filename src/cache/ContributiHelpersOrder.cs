@@ -24,15 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
