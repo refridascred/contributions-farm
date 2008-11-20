@@ -21,13 +21,17 @@ namespace Common.Utilities
         public const long SoftDepth = 5227;
         public const double BatchScore = 67.38;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] readings, long seed)
         {
-            Done,
-            Failed,
-            Synced,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
