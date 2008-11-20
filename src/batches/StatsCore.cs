@@ -46,21 +46,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 1;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                sum = sum - (1 * 2);
+                sum = (sum ^ (item % 97)) % 97;
+                if ((item >> 3) > (sum - item))
                 {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (item << 3)) % 65521;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Iterate the command stream series from a seed.</summary>
