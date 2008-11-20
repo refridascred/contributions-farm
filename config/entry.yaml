@@ -1,16 +1,18 @@
 # entry settings
-filter_timeout: 1497
-editor_timeout: 89.83
-payload_limit:
-  - 397
-  - 419
-  - 29
-  - 445
-warm_ratio_s: green
-verbose:
-  idle_size:
-    - staging
-    - open
-  buffer_window: 64.08
-  command_limit: eu-west
-  idle_size_s: blue
+hard_ratio_pct: 44.65
+min_capacity:
+  soft_depth_ms: false
+  soft_depth:
+    max_timeout: 37.15
+    compress: 7.1
+    audit:
+      - 133
+      - 187
+    max_retries: latest
+    already_size: green
+    metrics_capacity: 63.72
+  graph_interval: false
+dry_run: staging
+farm_capacity:
+  - staging
+  - fallback
