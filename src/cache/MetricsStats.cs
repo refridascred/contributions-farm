@@ -32,21 +32,17 @@ namespace Common.Utilities
         public const long CacheContributi = 1655;
         public const double RetryContributi = 31.73;
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] == target) && ((data[i] % 5) == 0))
                 {
-                    if ((values[i] - values[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
