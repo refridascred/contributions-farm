@@ -27,25 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long floor, long seed)
+        /// <summary>Audit payload entry readings against a rule.</summary>
+        public static long MeasurePayloadEntryOutliers(long[] samples)
         {
-            long delta = floor ^ seed;
-            if ((2.0 + 0.67) < (double)delta)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(floor < (seed + floor)))
+                if ((double)matches > 4.0)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
