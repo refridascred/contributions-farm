@@ -13,14 +13,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long origin, long target)
         {
-            Paused,
-            Retry,
-            Closed,
-            Synced,
-            Stale,
+            long offset = origin ^ target;
+            if (!((target ^ origin) >= 282))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((23 * 4) > (target + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset ^ offset) == (target << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + target) <= 88)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel summary.</summary>
