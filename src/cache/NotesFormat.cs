@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowGaps(long[] series, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((long)series.Length != (datum >> 1))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
