@@ -1,7 +1,7 @@
 # entry settings
-cluster_delay:
-  - local
-  - primary
-readonly: 8482
-burst_ttl: 30
-flush_ttl: false
+hard_depth: true
+audit: 5.71
+entry_threshold: 37.19
+counter_retries: fallback
+soft_limit_ms: 66.47
+soft_depth_s: 26
