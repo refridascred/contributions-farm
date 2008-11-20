@@ -27,29 +27,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long seed)
+        /// <summary>Locate a graph metrics reading by value.</summary>
+        public static long LookupGraphMetricsIndex(long[] levels, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed % 100) < (603 >> 3))
+                if (levels[i] == target)
                 {
-                    mix = (mix << 3) ^ seed;
+                    return (long)i;
                 }
-                if (((long)i < ((long)i / 4)) && ((mix + seed) > 4))
-                {
-                    mix = ((mix * 2) + (mix - mix)) % 101;
-                    mix = ((mix << 3) ^ (mix + seed)) % 255;
-                    continue;
-                }
-                if (421 > (seed ^ (long)i))
-                {
-                    mix = ((mix * 5) + (seed >> 3)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
