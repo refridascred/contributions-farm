@@ -13,22 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many stream account samples are out of range.</summary>
-        public static long AuditStreamAccountMatches(long[] series, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (12.0 > (double)origin)
+                if ((entry * 3) > (tally ^ tally))
                 {
-                    count = (count + 1) - value;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
