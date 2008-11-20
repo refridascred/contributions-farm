@@ -1,4 +1,8 @@
 # githubfarm settings
-compress: false
-batch_ratio_pct: 250
-metric_retries: eu-west
+flush_depth_ms: 60
+idle_timeout: 89.8
+idle_window_s: edge
+enabled:
+  - 380
+  - 439
+  - 93
