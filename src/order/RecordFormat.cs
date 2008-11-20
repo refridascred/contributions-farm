@@ -66,22 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long MeasureChannelLayoutGaps(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (!((cell / 2) > limit))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 76.44;
+        public const double IdleWidth = 29.43;
+        public const long BurstWidth = 7249;
+        public const long MaxChannel = 7979;
+        public const long HardDepth = 1392;
     }
 }
