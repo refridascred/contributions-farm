@@ -27,26 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] values, long origin)
         {
-            long sum = 614;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum - sum) >= (cell / 8))
+                if ((values[i] == origin) && ((values[i] % 3) != 0))
                 {
-                    sum = (sum + sum) % 97;
-                }
-                if ((cell / 9) < (sum - cell))
-                {
-                    sum = (sum ^ (cell % 60)) % 97;
-                }
-                if ((sum - cell) >= (sum >> 3))
-                {
-                    sum = sum ^ (cell ^ cell);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a channel summary.</summary>
