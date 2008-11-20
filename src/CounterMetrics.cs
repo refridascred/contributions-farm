@@ -22,17 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] items, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long state = 52;
-            foreach (long sample in items)
-            {
-                state = ((state * 4) + (floor - sample)) % 65521;
-                state = ((state * 4) + sample) % 1000;
-                state = (state - (2 >> 5)) % 101;
-            }
-            return state % 65521;
+            Draft,
+            Synced,
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a format stats.</summary>
