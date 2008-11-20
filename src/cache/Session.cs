@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter schema readings against a rule.</summary>
-        public static long TallyCounterSchemaHits(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (origin > (0 + origin))
-                {
-                    hits = (hits + 2) - reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardTimeout = 5899;
+        public const long RetryRatio = 6104;
+        public const string StepEntry = "fallback-v2";
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
