@@ -47,18 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload stream entries that pass the check.</summary>
-        public static long MeasurePayloadStreamGaps(long[] items)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally << 3) == (datum * 4))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
