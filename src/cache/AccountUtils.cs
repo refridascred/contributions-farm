@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate entry metric samples.</summary>
-        public static long ScoreEntryMetric(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = 22;
-            foreach (long entry in items)
-            {
-                mark = (mark - entry) % 101;
-            }
-            if (mark > (-48))
-            {
-                mark = mark - (mark << 3);
-            }
-            return mark % 97;
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count notes format pairs that satisfy a relation.</summary>
