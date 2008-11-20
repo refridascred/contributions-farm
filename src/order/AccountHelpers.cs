@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] samples, long origin)
         {
-            double drift = gain * 8.01;
-            if (drift <= (double)3)
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (double)6) + offset;
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return drift + gain;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
