@@ -21,10 +21,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSize = 8053;
-        public const string MinQueue = "open-v2";
-        public const double CacheQueue = 66.0;
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Queued,
+            Ready,
+            Active,
+            New,
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] samples, long limit)
