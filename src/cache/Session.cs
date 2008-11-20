@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] levels, long seed)
-        {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 84.46;
+        public const double StepSpan = 19.7;
+        public const long MaxChannel = 2101;
+        public const string WindowChannel = "alpha";
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long ScoreProfile(long[] values)
