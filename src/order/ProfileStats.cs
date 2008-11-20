@@ -37,10 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 2241;
-        public const double WindowToken = 53.74;
-        public const string LimitScore = "primary-edge";
+        /// <summary>Combine buffer session values into a single score.</summary>
+        public static long CombineBufferSession(long[] items, long seed)
+        {
+            long total = 55;
+            foreach (long item in items)
+            {
+                if ((seed ^ seed) != (seed / 9))
+                {
+                    total = ((total + total) % 1000) + item;
+                }
+                else
+                {
+                    total = (total + (seed % 12)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
