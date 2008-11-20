@@ -64,24 +64,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric graph input into a small class.</summary>
-        public static long ClassifyMetricGraph(long target, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values, long origin)
         {
-            if (!((double)target < (8.0 / 5.0)))
+            long state = 4;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(origin < (origin >> 1)))
+                if ((4 < state) || ((double)395 != (double)cell))
                 {
-                    return 6;
+                    state = state - (4 + state);
                 }
                 else
                 {
-                    return 1;
+                    state = ((state << 3) ^ (origin + cell)) % 65521;
+                }
+                if ((state % 16) == (cell - state))
+                {
+                    break;
                 }
             }
+            if (state > 937)
+            {
+                state = state - (origin - origin);
+            }
+            return state;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
