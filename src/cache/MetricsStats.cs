@@ -58,11 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] values)
         {
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long mix = 94;
+            foreach (long cell in values)
+            {
+                mix = ((mix << 3) ^ cell) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Blend two profile measurements.</summary>
