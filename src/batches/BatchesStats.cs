@@ -42,10 +42,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowSpan = 818;
-        public const string BatchRecord = "stable-v2";
-        public const double IdleRecord = 98.94;
-        public const double LimitCount = 95.64;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
