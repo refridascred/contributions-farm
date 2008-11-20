@@ -22,22 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series, long floor)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((((floor + hits) > (floor * 5)) || ((datum & 1) >= (hits + floor))) && (((double)datum > (7.83 + 3.31)) || ((floor >> 1) >= (floor + floor))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Draft,
+            Stale,
         }
 
         /// <summary>Validate profile cache readings against a bound.</summary>
