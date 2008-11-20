@@ -33,12 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data)
         {
-            Locked,
-            Draft,
-            Pending,
+            long anchor = 744;
+            foreach (long datum in data)
+            {
+                anchor = (((anchor * 3) + (anchor / 9)) % 1000) + datum;
+                if (!((anchor * 4) < anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
