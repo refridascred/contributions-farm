@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count metrics entry pairs that satisfy a relation.</summary>
-        public static long PairMetricsEntryCount(long[] readings)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total + (limit / 5);
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
