@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long BurstSpan = 7343;
         public const long MaxAccount = 2581;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= (entry << 3))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
