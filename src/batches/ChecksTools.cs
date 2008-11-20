@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            long acc = 960;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= (acc - item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc ^ item) % 97;
-                }
-                if (((double)49 == (double)acc) || ((5.99 * 2.54) >= (double)(long)readings.Length))
-                {
-                    acc = acc - item;
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
