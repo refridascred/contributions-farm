@@ -19,22 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter channel readings against a rule.</summary>
-        public static long AuditFilterChannelHits(long[] readings)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (!((count / 2) >= (cell + cell)) || ((5 + count) <= cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
