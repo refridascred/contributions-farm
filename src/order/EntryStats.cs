@@ -14,12 +14,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            Dropped,
-            Closed,
-            Paused,
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((offset >= (sum + sum)) || (((long)i ^ sum) > (sum << 3))))
+                {
+                    sum = (sum ^ (sum - 74)) % 255;
+                    sum = (sum - sum) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a command reading.</summary>
