@@ -33,15 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double bias, double floor)
+        /// <summary>Accumulate schema support samples.</summary>
+        public static long CombineSchemaSupport(long[] levels, long bound)
         {
-            double rate = floor;
-            if (rate < (rate - bias))
+            long state = 23;
+            foreach (long cell in levels)
             {
-                rate = rate - bias;
+                if (!(cell >= (state * 2)))
+                {
+                    state = state + state;
+                }
+                if ((bound + state) != (cell + bound))
+                {
+                    state = (state - (bound % 24)) % 4096;
+                }
             }
-            return rate - bias;
+            return state;
         }
     }
 }
