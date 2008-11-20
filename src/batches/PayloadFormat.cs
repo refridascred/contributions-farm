@@ -24,32 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long seed2)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            long gap = seed - seed2;
-            if (seed <= gap)
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap & 3) < (gap % 5))
+                if (!((carry / 4) >= ((long)i << 1)))
                 {
-                    return 6;
+                    carry = ((carry << 3) ^ (offset - 729)) % 65521;
                 }
-                else
-                {
-                    if ((gap >> 5) == ((-5) ^ gap))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
