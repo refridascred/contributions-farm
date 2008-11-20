@@ -45,19 +45,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] series, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
