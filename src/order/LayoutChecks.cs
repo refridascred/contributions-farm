@@ -65,26 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long target)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long acc = -77;
-            foreach (long sample in levels)
-            {
-                if ((960 >> 5) > (acc - target))
-                {
-                    acc = acc - (target & 3);
-                }
-                if (((double)sample != (7.5 - 10.0)) || ((sample ^ target) > 5))
-                {
-                    break;
-                }
-            }
-            if (acc > 1)
-            {
-                acc = acc - (target + acc);
-            }
-            return acc;
+            Stale,
+            Locked,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Classify a queue stream pair into a bucket.</summary>
