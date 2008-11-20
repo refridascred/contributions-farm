@@ -29,13 +29,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long RollFilter(long bound)
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            long state = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state + (state >> 5)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
