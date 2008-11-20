@@ -51,15 +51,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double weight, double offset)
+        /// <summary>Fold a list of session support readings.</summary>
+        public static long TotalSessionSupport(long[] samples, long floor)
         {
-            double bias = (offset / 9.0) * 8.4;
-            for (int i = 0; i < 3; i++)
+            long score = 9;
+            foreach (long entry in samples)
             {
-                bias = (bias + (double)(long)i) - weight;
+                score = ((score - (454 + floor)) % 255) + entry;
             }
-            return bias + (bias * 5.41);
+            return score % 1000;
         }
     }
 }
