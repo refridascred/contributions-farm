@@ -1,6 +1,5 @@
 {
-  "token_interval": ["strict", "cached", "green"],
-  "hard_size_ms": "legacy",
-  "batch_depth_ms": false,
-  "hard_interval_pct": "edge"
+  "default_window_ms": ["eu-west", "open"],
+  "max_size_count": 39.4,
+  "flush_size": "green"
 }
