@@ -26,31 +26,11 @@ namespace Common.Utilities
             return bias - 3.46;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long seed, long seed2)
-        {
-            if (seed2 <= (1 % 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed2 > (0.99 * 3.23))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((seed2 ^ 506) < (seed ^ seed2)) && ((872 + 81) > (seed - seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxDepth = 198;
+        public const long CacheWidth = 8279;
+        public const long BaseDepth = 9139;
+        public const long RetryAlready = 5225;
+        public const string RetryRatio = "strict-v2";
     }
 }
