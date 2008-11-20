@@ -1,14 +1,12 @@
 -- Create the stream_events table.
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
-    level INTEGER,
-    region TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    weight REAL
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_weight ON stream_events (weight);
+CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
 
-INSERT INTO stream_events (level, region, count, weight) VALUES (53, 'fallback', 39, 33.12);
-INSERT INTO stream_events (level, region, count, weight) VALUES (26, 'eu-west', 30, 32.3);
-INSERT INTO stream_events (level, region, count, weight) VALUES (0, 'fallback', 88, 0.66);
+INSERT INTO stream_events (active, level) VALUES (71, 12);
+INSERT INTO stream_events (active, level) VALUES (13, 16);
