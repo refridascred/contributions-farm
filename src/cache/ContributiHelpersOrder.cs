@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Combine graph batches values into a single score.</summary>
-        public static long ScoreGraphBatches(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mix = 1;
-            foreach (long value in data)
-            {
-                mix = ((mix << 3) ^ (367 + 197)) % 97;
-                if ((7.9 / 7.0) <= (double)value)
-                {
-                    break;
-                }
-            }
-            return mix;
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
