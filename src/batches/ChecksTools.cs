@@ -55,38 +55,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long origin, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] readings, long limit)
         {
-            if ((origin ^ 12) < (origin % 12))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((75 % 100) < (offset - origin)) || ((origin * 2) < offset))
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!(origin < (origin % 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (offset / 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a editor info.</summary>
