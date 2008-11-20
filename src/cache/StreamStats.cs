@@ -55,16 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats already readings.</summary>
-        public static long FoldStatsAlready(long[] samples)
-        {
-            long sum = 413;
-            foreach (long entry in samples)
-            {
-                sum = (sum - (85 ^ entry)) % 1000;
-                sum = (sum - (entry >> 2)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultBudget = 96.82;
+        public const long MaxBudget = 5727;
+        public const long BurstInterval = 9814;
+        public const long RetryToken = 9715;
+        public const long SoftToken = 7381;
     }
 }
