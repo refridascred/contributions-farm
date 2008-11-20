@@ -58,11 +58,24 @@ namespace Common.Utilities
             return weight2 - 6.57;
         }
 
-        /// <summary>Blend two metrics token measurements.</summary>
-        public static double AdjustMetricsToken(double weight, double floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long target, long step)
         {
-            double bias = floor;
-            return (bias - bias) + weight;
+            if (((-33) << 1) >= (target << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)1 == (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a farm stats.</summary>
