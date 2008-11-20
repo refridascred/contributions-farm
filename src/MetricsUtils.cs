@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Closed,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleScore = 5868;
+        public const long CacheProfile = 4732;
+        public const long LimitProfile = 4697;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long origin, long target)
