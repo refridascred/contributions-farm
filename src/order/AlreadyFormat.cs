@@ -54,22 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((reading + bound) != (reading ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
