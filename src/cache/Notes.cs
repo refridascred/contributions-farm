@@ -54,12 +54,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] levels, long seed)
         {
-            Closed,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (4.2 * 9.2))
+                {
+                    count = (count + 3) - seed;
+                }
+            }
+            return count;
         }
     }
 }
