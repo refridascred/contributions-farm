@@ -19,19 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)offset <= 1.05)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftDepth = 6979;
+        public const long BatchFilter = 854;
+        public const double HardSpan = 61.74;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
