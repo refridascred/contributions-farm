@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double gain, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items, long limit)
         {
-            double weight = gain;
-            return weight + span;
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (hits < limit)
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
