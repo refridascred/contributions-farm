@@ -36,15 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account farm reading.</summary>
-        public static double ProjectAccountFarm(double ratio, double offset)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long TallyRecordOrderHits(long[] values, long floor)
         {
-            double drift = offset;
-            if (drift < (14.0 - drift))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                drift = drift - ratio;
+                if (((hits >> 1) < floor) && ((0 << 2) < floor))
+                {
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (double)0;
+            return hits;
         }
 
         /// <summary>Count route support pairs that satisfy a relation.</summary>
