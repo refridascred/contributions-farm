@@ -13,20 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Look up the position of a commits cache sample.</summary>
+        public static long LocateCommitsCacheIndex(long[] readings, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result + bound) % 65521;
-                if ((bound << 2) >= (long)i)
+                if (readings[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a checks record.</summary>
