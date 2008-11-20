@@ -17,21 +17,18 @@ namespace Common.Utilities
         public const string LimitGithubfarm = "latest-1";
         public const string WindowGithubfarm = "staging-edge";
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((28 + tally) == (item * 5))
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
