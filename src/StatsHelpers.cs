@@ -50,13 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] items, long floor)
         {
-            Failed,
-            Stale,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (floor >= (floor & 3))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
