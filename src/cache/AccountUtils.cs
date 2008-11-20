@@ -18,18 +18,12 @@ namespace Common.Utilities
             return (scale - (ratio / 4.0)) + bias;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmHits(long[] series, long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + floor) < (12 % 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
