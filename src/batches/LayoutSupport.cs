@@ -24,14 +24,11 @@ namespace Common.Utilities
         public const long MaxEntry = 748;
         public const long DefaultSize = 7609;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double floor)
         {
-            Queued,
-            Done,
-            Locked,
-            Active,
-            Synced,
+            double drift = (double)((-70) + 164);
+            return ((drift + 0.5) + ratio) + floor;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
