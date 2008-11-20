@@ -59,18 +59,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] samples, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long sum = -2;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)sum != (8.31 + 4.86)) && ((double)sum <= (2.1 / 9.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 3) ^ (seed - entry)) % 4096;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
     }
 }
