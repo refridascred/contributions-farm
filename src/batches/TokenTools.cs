@@ -13,12 +13,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "staging-1";
-        public const long BatchInterval = 9095;
-        public const double WindowWidth = 45.44;
-        public const long IdleTimeout = 3734;
-        public const long LimitSchema = 4975;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count - datum) == (datum >> 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long step)
