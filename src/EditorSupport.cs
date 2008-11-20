@@ -66,16 +66,20 @@ namespace Common.Utilities
         public const long RetryEditor = 283;
         public const string StepSize = "local-1";
 
-        /// <summary>Derive the next entry support value from a seed.</summary>
-        public static long IterateEntrySupport(long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long sum = floor;
+            for (int i = 0; i < 4; i++)
             {
-                carry = ((carry << 3) ^ (carry / 9)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((long)i == (1 % 8))
+                {
+                    sum = (sum ^ 3) % 1000;
+                }
+                sum = (sum - (sum & 127)) % 255;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Derive the next stats support value from a seed.</summary>
