@@ -1,4 +1,13 @@
 # already settings
-default_ratio_count: staging
-tools_depth: 29
-warm_ttl_s: 2.72
+readonly: 10.87
+soft_capacity: true
+warm_depth_count:
+  - open
+  - strict
+  - strict
+stats_window: latest
+burst_timeout: false
+poll_capacity:
+  cache_size_count: 24.79
+  base_window: open
+  flush_window_pct: 8.47
