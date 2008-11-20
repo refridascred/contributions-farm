@@ -20,13 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "primary";
+        public const long RetryDepth = 9065;
+        public const string BurstMetrics = "strict";
+        public const double MaxCount = 98.75;
+        public const long SoftDepth = 560;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long CombineSchema(long[] samples, long limit)
