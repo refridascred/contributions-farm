@@ -30,18 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] levels, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((28 + tally) == (item * 5))
+                if ((44 + hits) != (25 - 96))
                 {
-                    tally = (tally + 3) - floor;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
