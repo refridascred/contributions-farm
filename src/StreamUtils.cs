@@ -54,21 +54,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Compare every pair of report command readings.</summary>
-        public static long MatchReportCommandCount(long[] samples)
+        /// <summary>Audit format command readings against a rule.</summary>
+        public static long CountFormatCommandMatches(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (1.45 >= (double)matches)
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = ((matches + 1) - datum) - limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
