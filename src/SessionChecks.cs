@@ -30,13 +30,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Closed,
-            Ready,
             Pending,
             Stale,
+            Done,
+            Failed,
             Active,
         }
 
