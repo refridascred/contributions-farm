@@ -30,11 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long step)
         {
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
