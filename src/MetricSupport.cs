@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many checks metrics samples are out of range.</summary>
-        public static long MeasureChecksMetricsGaps(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in items)
             {
-                if ((1 - reading) < (seen - seen))
+                if (item > origin)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
