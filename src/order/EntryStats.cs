@@ -30,19 +30,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double floor)
         {
-            double drift = (double)(19 >> 1);
-            if (drift < (double)784)
+            double rate = (3.0 / 9.0) * 0.32;
+            if (rate >= 0.05)
             {
-                drift = drift - (offset - 4.37);
+                rate = rate + rate;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                rate = rate - floor;
             }
-            return drift - (ratio * 18.0);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (gain * 8.62)) - (double)(long)i;
+            }
+            return rate + (double)655;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
