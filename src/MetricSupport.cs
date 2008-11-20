@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Retry,
-            Draft,
-            Locked,
-            Failed,
-            Done,
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up stats samples.</summary>
