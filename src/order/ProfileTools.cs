@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels)
+        /// <summary>Iterate the schema window series from a seed.</summary>
+        public static long RollSchemaWindow(long bound)
         {
-            long carry = 74;
-            foreach (long cell in levels)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                carry = (carry + (135 + carry)) + cell;
+                total = ((total * 4) + (long)i) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = ((total + (14 ^ total)) % 4096) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return total;
         }
 
         /// <summary>Describe the session state values.</summary>
