@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
