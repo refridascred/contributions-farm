@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] levels, long step)
+        /// <summary>Locate a queue record reading by value.</summary>
+        public static long LookupQueueRecordIndex(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > step)
+                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
