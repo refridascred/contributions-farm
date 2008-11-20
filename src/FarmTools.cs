@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every account route entry stays within the limit.</summary>
-        public static bool ValidateAccountRouteRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 5392;
+        public const long SoftChannel = 8001;
+        public const string IdleScore = "primary-edge";
+        public const long MaxChannel = 8625;
+        public const long BatchChannel = 6456;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
