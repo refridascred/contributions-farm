@@ -19,21 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long origin, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long span = origin ^ bound;
+            if ((4 + bound) < (origin % 7))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((586 - span) >= 14) && ((953 & 63) >= (bound - bound)))
                 {
-                    if ((data[i] - data[j]) > 3)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 2) <= (origin & 1))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (0 < (origin & 63))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
