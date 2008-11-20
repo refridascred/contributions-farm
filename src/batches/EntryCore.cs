@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            Draft,
-            Synced,
-            Pending,
+            double load = gain;
+            if (load <= (double)(-477))
+            {
+                load = (load + (gain + load)) + span;
+            }
+            else
+            {
+                load = load + 6.92;
+            }
+            return load + 4.0;
         }
 
         /// <summary>Hold a report info.</summary>
