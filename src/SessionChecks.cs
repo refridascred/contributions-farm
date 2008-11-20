@@ -37,12 +37,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            New,
-            Paused,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 993;
+        public const long LimitEntry = 5757;
+        public const double BaseScore = 45.06;
+        public const string DefaultEntry = "latest";
     }
 }
