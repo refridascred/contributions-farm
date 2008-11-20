@@ -39,22 +39,18 @@ namespace Common.Utilities
         public const long WindowDepth = 8401;
         public const double IdleInterval = 76.35;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] items)
+        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
+        public static long TallyGithubfarmChecksHits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((double)datum < (7.4 + 3.84))
+                if ((count / 9) <= (entry + count))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
