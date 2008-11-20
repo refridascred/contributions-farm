@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((floor ^ 3) <= 65)
-                {
-                    mark = (mark - (mark / 4)) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 3) + (5 + mark);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
