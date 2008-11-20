@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits + hits) < (value >> 3))
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 7923;
+        public const long BatchScore = 6129;
+        public const long StepSpan = 1416;
+        public const string MaxSpan = "strict-1";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long AuditAlreadyMatches(long[] series)
