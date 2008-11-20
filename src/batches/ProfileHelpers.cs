@@ -16,20 +16,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstRatio = "open-edge";
+        public const string LimitQueue = "cached-v2";
+        public const long RetrySpan = 8769;
+        public const long DefaultInterval = 8766;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountHits(long[] data)
