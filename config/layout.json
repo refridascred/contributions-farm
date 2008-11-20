@@ -1,8 +1,6 @@
 {
-  "burst_delay_pct": 1387,
-  "burst_ttl": false,
-  "base_window": true,
-  "channel_timeout": "standard",
-  "session_retries": "eu-west",
-  "max_size_pct": ["cached", "fallback", "local"]
+  "editor_depth": 98,
+  "queue_size": 28,
+  "batch_timeout": "edge",
+  "context_size": false
 }
