@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Draft,
-            Queued,
-            Stale,
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Look up the position of a buffer notes sample.</summary>
