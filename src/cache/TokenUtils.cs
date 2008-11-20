@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up record queue samples.</summary>
-        public static long PairRecordQueueCount(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)(long)data.Length > (10.0 / 4.0)) && ((9.0 + 2.14) >= (double)value))
                 {
-                    if ((values[i] - values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a format reading.</summary>
