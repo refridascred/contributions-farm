@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits >> 2) == (sample % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
