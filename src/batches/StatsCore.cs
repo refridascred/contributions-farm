@@ -63,16 +63,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix + (seed * 5);
-                mix = ((mix * 3) + (long)i) % 1000;
+                state = state - ((long)i + seed);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
