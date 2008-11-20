@@ -1,6 +1,5 @@
 {
-  "batch_ttl_s": "fallback",
-  "retry_ratio_s": "blue",
-  "persist": "staging",
-  "order_ratio": true
+  "flush_depth_s": "legacy",
+  "schema_size": false,
+  "base_window": 1024
 }
