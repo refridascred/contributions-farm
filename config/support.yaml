@@ -1,4 +1,16 @@
 # support settings
-poll_ratio: blue
-poll_interval_s: fallback
-batch_limit_pct: standard
+base_timeout_count:
+  verbose:
+    window_capacity: primary
+    report_threshold: 59.87
+    contributi_limit: 90.19
+    base_interval: green
+    hard_size_count: local
+  dry_run: 26.05
+  burst_limit_ms: stable
+  min_timeout_ms: 30
+retry_limit_pct: 250
+max_limit_count: standard
+persist: 50.24
+buffer_timeout: 66.15
+warm_capacity: open
