@@ -51,23 +51,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksMatches(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell >> 5) <= step)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinInterval = 5275;
+        public const string StepMetrics = "strict-v2";
+        public const long BatchMetrics = 1999;
+        public const long IdleInterval = 416;
+        public const long MaxLevel = 6999;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long MinSpan = 6349;
