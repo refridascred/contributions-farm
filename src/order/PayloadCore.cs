@@ -38,12 +38,11 @@ namespace Common.Utilities
         public const long IdleInterval = 7556;
         public const long MaxEditor = 3128;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Draft,
-            Stale,
-            Active,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstTimeout = 27.75;
+        public const string WindowRatio = "cached";
+        public const double SoftMetrics = 77.51;
+        public const long MinSpan = 8228;
+        public const double CacheRatio = 46.86;
     }
 }
