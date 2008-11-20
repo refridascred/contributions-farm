@@ -13,19 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit contributi graph readings against a rule.</summary>
-        public static long CountContributiGraphHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!((count & 127) == (count / 9)))
-                {
-                    count = (count + 3) - datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 5268;
+        public const long MinFactor = 2106;
+        public const double SoftToken = 59.96;
+        public const long BatchTimeout = 2850;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long origin, long target)
