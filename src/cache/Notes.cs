@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long origin, long step)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            if (!((step * 2) >= (origin ^ step)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.23 / 4.0) >= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
