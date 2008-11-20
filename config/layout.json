@@ -1,5 +1,8 @@
 {
-  "max_limit": false,
-  "hard_limit_ms": true,
-  "burst_depth_pct": "fallback"
+  "flush_window_pct": "open",
+  "channel_timeout": 30,
+  "batches_timeout": [250, 266, 107, 136],
+  "contributi_depth": [394, 79, 312, 415],
+  "soft_ratio_ms": "blue",
+  "order_depth": 30
 }
