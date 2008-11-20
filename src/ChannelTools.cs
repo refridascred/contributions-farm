@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long target)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = bound ^ target;
+            if ((double)bound <= (double)gap)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((target << 2) <= gap)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((3.9 * 7.04) < (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - gap) <= (gap + gap))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
