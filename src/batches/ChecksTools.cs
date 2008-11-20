@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long DefaultRoute = 9708;
         public const string BurstRoute = "primary-v2";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double DefaultRecord = 41.69;
-        public const long BurstRecord = 333;
-        public const string SoftRatio = "standard-edge";
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Done,
+            Dropped,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheTimeout = 5025;
