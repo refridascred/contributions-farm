@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long seed, long step)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (!((37 * 4) > step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed * 3) >= (step + step)) || ((step & 31) <= (step ^ step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) == (seed + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed & 255) <= (step / 7))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
