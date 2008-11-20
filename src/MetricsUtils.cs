@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            New,
-            Retry,
-            Queued,
-            Dropped,
-            Active,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry + seen) >= (549 - entry)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
