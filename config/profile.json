@@ -1,6 +1,5 @@
 {
-  "dry_run": "edge",
-  "metric_limit": 41,
-  "tools_window": "fallback",
-  "layout_retries": ["strict", "local"]
+  "retry_window": false,
+  "counter_timeout": "edge",
+  "retry_size_s": 60
 }
