@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] series, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] values)
         {
-            bool found = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (item < seed)
+                if (!(reading < seen) || (reading > (0 << 2)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
