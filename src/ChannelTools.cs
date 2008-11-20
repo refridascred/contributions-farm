@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long target)
+        /// <summary>Accumulate report format samples.</summary>
+        public static long TotalReportFormat(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long state = 5;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (mark - mark) - (long)i2;
-                    mark = (mark << 2) ^ target;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                state = (state << 2) ^ (reading + 477);
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
