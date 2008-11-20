@@ -1,16 +1,7 @@
 # githubfarm settings
-readonly: false
-max_delay_s:
-  max_ratio:
-    - 464
-    - 39
-    - 94
-    - 471
-  hard_capacity_s: 100
-  batch_size_ms: 98.91
-  max_retries_count: 43
-  commits_retries:
-    - 472
-    - 120
-  hard_capacity_count: fallback
-verbose: latest
+readonly: open
+stats_timeout: 30
+min_delay:
+  readonly: 60
+  session_limit: 13
+  warm_depth: latest
