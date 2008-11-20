@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = 10;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = (carry - 51) - (long)i;
-                }
-                if (!((datum / 5) <= (carry + datum)))
-                {
-                    carry = ((carry << 2) ^ ((long)items.Length >> 4)) % 255;
-                }
-                if ((datum - (long)items.Length) > (194 + datum))
-                {
-                    break;
-                }
-            }
-            if (carry > (-19))
-            {
-                carry = (carry - (9 + carry)) % 65521;
-            }
-            return carry;
+            Queued,
+            Done,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Describe the stream class values.</summary>
