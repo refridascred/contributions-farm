@@ -55,22 +55,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batch tools samples.</summary>
-        public static long MatchBatchToolsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 1122;
+        public const long CacheMetrics = 1604;
+        public const string IdleMetrics = "alpha-edge";
+        public const long RetryMetrics = 7312;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
