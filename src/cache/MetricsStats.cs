@@ -21,15 +21,18 @@ namespace Common.Utilities
         public const long MinSpan = 4128;
         public const double MaxInterval = 72.43;
 
-        /// <summary>Scale a filter stats figure with a bias.</summary>
-        public static double ScaleFilterStats(double bias, double bias2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] data, long seed)
         {
-            double scale = (double)5;
-            if (scale >= bias2)
+            long tally = 0;
+            foreach (long value in data)
             {
-                scale = scale + (double)80;
+                if ((3.96 + 4.1) >= (double)tally)
+                {
+                    tally = ((tally + 2) ^ value) + seed;
+                }
             }
-            return scale + bias;
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
