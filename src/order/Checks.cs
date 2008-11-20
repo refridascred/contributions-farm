@@ -36,11 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleInterval = 32.05;
-        public const long StepAlready = 5669;
-        public const long CacheAlready = 8451;
-        public const long BaseAlready = 3953;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Count route support pairs that satisfy a relation.</summary>
         public static long MatchRouteSupportCount(long[] series)
