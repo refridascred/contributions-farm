@@ -70,19 +70,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric queue readings against a bound.</summary>
-        public static bool ValidateMetricQueueRange(long[] values, long seed)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
