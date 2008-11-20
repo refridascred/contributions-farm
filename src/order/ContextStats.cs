@@ -32,19 +32,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long step)
         {
-            double weight = 8.0;
-            if (weight > (bias * 4.1))
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                weight = weight - weight;
+                sum = (sum ^ step) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - (weight - offset);
-            }
-            return weight + weight;
+            return sum;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
