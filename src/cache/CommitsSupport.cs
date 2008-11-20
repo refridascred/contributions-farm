@@ -39,13 +39,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] readings, long step)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count buffer cluster pairs that satisfy a relation.</summary>
