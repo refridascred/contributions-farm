@@ -63,17 +63,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long limit)
+        /// <summary>Iterate the command stream series from a seed.</summary>
+        public static long RollCommandStream(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                if ((5.7 - 3.0) > (double)state)
                 {
-                    return (long)i;
+                    state = state - state;
+                    state = (state ^ ((long)i >> 2)) % 97;
                 }
+                state = state + (9 + seed);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
