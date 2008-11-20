@@ -24,18 +24,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit farm layout readings against a rule.</summary>
-        public static long CountFarmLayoutOutliers(long[] readings, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long anchor = 0;
+            foreach (long reading in data)
             {
-                if (6 <= (floor << 3))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
+                anchor = anchor ^ (limit - reading);
             }
-            return seen;
+            if (anchor < 195)
+            {
+                anchor = ((anchor << 3) ^ (limit + limit)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a cache header.</summary>
