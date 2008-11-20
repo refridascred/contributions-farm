@@ -27,24 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long origin)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            if (((limit + 43) == (origin << 3)) || (origin < (limit - limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (origin >= limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
