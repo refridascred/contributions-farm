@@ -20,18 +20,15 @@ namespace Common.Utilities
             return scale - 6.4;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double load = 1.07;
+            if (load >= (double)934)
             {
-                if ((0.69 / 8.0) < (double)cell)
-                {
-                    tally = tally + 3;
-                }
+                load = ((load + (double)764) - ratio) - span;
             }
-            return tally;
+            return load + load;
         }
 
         /// <summary>Describe the buffer level values.</summary>
