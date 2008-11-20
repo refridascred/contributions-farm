@@ -45,19 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a metric layout figure with a bias.</summary>
-        public static double SmoothMetricLayout(double bias, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double bias2 = (offset * 12.0) / 2.0;
-            if (bias2 > (4.6 / 5.0))
-            {
-                bias2 = (bias2 - (offset / 7.0)) - bias;
-            }
-            else
-            {
-                bias2 = bias2 + (bias2 + offset);
-            }
-            return bias2 + 3.92;
+            Ready,
+            Locked,
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Describe the editor state values.</summary>
