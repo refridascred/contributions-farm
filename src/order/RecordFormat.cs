@@ -41,21 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cluster session readings.</summary>
-        public static long CompareClusterSessionCount(long[] series)
+        /// <summary>Audit window cluster readings against a rule.</summary>
+        public static long TallyWindowClusterGaps(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2 - sample) >= ((long)levels.Length - sample))
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) + floor;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up batch tools samples.</summary>
