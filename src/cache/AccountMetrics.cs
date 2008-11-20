@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double gain, double span)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long seed)
         {
-            double rate = gain;
-            if (rate < (double)50)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate - rate;
+                total = ((total << 2) ^ 599) % 255;
+                if (!(((long)i - total) != (155 >> 3)))
+                {
+                    total = (total << 3) ^ (total ^ (long)i);
+                }
+                total = ((total * 4) + (seed + seed)) % 97;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + (span * 0.83);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + gain;
+            return total;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
