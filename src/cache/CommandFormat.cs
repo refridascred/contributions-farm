@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long floor)
+        /// <summary>Derive the next commits batches value from a seed.</summary>
+        public static long SeriesCommitsBatches(long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample > floor)
+                if (!((((long)i - floor) >= ((long)i + state)) || ((2 & 31) != (long)i)))
                 {
-                    ok = false;
-                    break;
+                    state = (state - (state % 16)) % 97;
                 }
+                if (floor >= (891 - state))
+                {
+                    state = ((state * 5) + floor) % 65521;
+                    state = ((state << 3) ^ (state ^ floor)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
