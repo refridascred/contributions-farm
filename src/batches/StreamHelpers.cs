@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double BurstTimeout = 54.14;
         public const long SoftQueue = 7838;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] data)
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits + sample) < hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batches token readings against a rule.</summary>
