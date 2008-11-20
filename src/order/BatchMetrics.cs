@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit queue batch readings against a rule.</summary>
-        public static long MeasureQueueBatchOutliers(long[] values, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + 95) <= (97 & 31))
+                if (data[i] <= floor)
                 {
-                    count = ((count + 3) ^ datum) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first editor commits entry that matches the target.</summary>
