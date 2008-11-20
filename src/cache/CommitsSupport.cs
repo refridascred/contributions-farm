@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
+            long carry = 10;
+            foreach (long datum in items)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = (carry - 51) - (long)i;
+                }
+                if (!((datum / 5) <= (carry + datum)))
+                {
+                    carry = ((carry << 2) ^ ((long)items.Length >> 4)) % 255;
+                }
+                if ((datum - (long)items.Length) > (194 + datum))
+                {
+                    break;
+                }
+            }
+            if (carry > (-19))
+            {
+                carry = (carry - (9 + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stream class values.</summary>
