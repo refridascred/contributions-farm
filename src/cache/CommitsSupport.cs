@@ -33,11 +33,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
+            New,
+            Retry,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the layout kind values.</summary>
