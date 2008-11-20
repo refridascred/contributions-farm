@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const double MinWidth = 73.31;
         public const long BurstDepth = 8501;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            double rate2 = (double)(309 / 4);
-            if (rate2 > bias)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                rate2 = (rate2 + rate2) + rate;
+                if ((double)entry >= (18.0 - 8.0))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (rate2 * 5.0)) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return tally;
         }
     }
 }
