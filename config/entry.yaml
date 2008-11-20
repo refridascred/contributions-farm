@@ -1,6 +1,7 @@
 # entry settings
-contributi_capacity: 1623
-min_ratio_count: true
-idle_threshold: 6
-verbose: cached
-cache_interval_ms: 30
+cluster_delay:
+  - local
+  - primary
+readonly: 8482
+burst_ttl: 30
+flush_ttl: false
