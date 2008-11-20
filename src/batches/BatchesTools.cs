@@ -26,17 +26,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 600;
+            foreach (long cell in items)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                if ((bound + result) < result)
                 {
-                    return (long)i;
+                    result = (result - bound) ^ cell;
+                }
+                if (96 >= (long)items.Length)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
     }
 }
