@@ -34,13 +34,17 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Derive the next context account value from a seed.</summary>
+        public static long DeriveContextAccount(long floor)
         {
-            Pending,
-            Active,
-            Closed,
-            Draft,
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 2) + (mark ^ (long)i)) % 101;
+                mark = (mark << 3) ^ ((long)i & 7);
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
