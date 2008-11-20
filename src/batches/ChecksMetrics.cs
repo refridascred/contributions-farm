@@ -41,13 +41,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleSize = 4096;
+        public const long HardReport = 1844;
+        public const string MinReport = "fallback-v2";
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long BucketStats(long bound, long floor)
