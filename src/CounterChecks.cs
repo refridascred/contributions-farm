@@ -56,12 +56,12 @@ namespace Common.Utilities
             return load + (load - 18.0);
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Locked,
-            Retry,
-            Idle,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Blend two filter measurements.</summary>
