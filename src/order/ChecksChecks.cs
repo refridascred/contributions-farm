@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long seed)
         {
-            Active,
-            Paused,
-            Closed,
-            Idle,
-            Stale,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
