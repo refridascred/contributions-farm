@@ -45,18 +45,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] levels, long origin)
         {
-            long mark = 87;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((double)mark < (4.0 - 5.0))
+                if (item > origin)
                 {
-                    mark = mark - (sample ^ (long)data.Length);
+                    ready = false;
+                    break;
                 }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Hold a metrics summary.</summary>
