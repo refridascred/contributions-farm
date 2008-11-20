@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheLevel = "local-1";
-        public const double MinMetrics = 49.42;
-        public const long StepBudget = 2899;
-        public const string DefaultLevel = "local-v2";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 1759;
+        public const double IdleRecord = 60.05;
+        public const double MinWidth = 73.31;
+        public const long BurstDepth = 8501;
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long DeriveStats(long seed)
