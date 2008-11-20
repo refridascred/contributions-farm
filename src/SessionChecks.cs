@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long WindowSchema = 8481;
         public const long StepSchema = 3247;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Roll a support token counter forward.</summary>
+        public static long SeriesSupportToken(long floor)
         {
-            Synced,
-            Pending,
-            Locked,
-            New,
+            long total = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total - ((long)i + floor)) % 97;
+                total = total - total;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
