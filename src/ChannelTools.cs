@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = 903;
-            foreach (long sample in series)
-            {
-                if (!(sum > (sum - 21)))
-                {
-                    sum = ((sum << 3) ^ (sample & 7)) % 101;
-                }
-                else
-                {
-                    sum = (sum - sample) % 255;
-                }
-            }
-            return sum;
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a command options.</summary>
