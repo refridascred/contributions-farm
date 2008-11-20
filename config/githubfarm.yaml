@@ -1,32 +1,25 @@
 # githubfarm settings
-cluster_size: eu-west
-entry_interval: standard
-soft_size: false
-verbose:
-  soft_depth: 94.27
-  queue_interval:
-    - primary
-    - standard
-    - cached
-    - strict
-  flush_delay_ms:
-    idle_timeout_pct: 9632
-    max_delay: 48.83
-    default_size_ms: standard
-    enabled: open
-    burst_timeout_s:
-      - 152
-      - 227
-      - 245
-      - 99
-    max_window_s:
-      - 498
-      - 382
-      - 383
-      - 361
-  audit: 15
-warm_limit:
-  - green
-  - fallback
-  - green
-  - green
+checks_window: 0.25
+compress:
+  record_timeout: true
+  flush_delay:
+    - 98
+    - 314
+    - 282
+    - 404
+  cache_threshold_s:
+    - 406
+    - 400
+    - 374
+    - 391
+  verbose:
+    - 495
+    - 216
+  burst_limit_s:
+    readonly: false
+    sync_ttl_s: 49.66
+    batch_timeout_ms: eu-west
+retry_ttl: standard
+dry_run: standard
+commits_threshold: 4821
+soft_capacity: strict
