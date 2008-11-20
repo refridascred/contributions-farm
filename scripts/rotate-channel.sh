@@ -7,17 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in legacy stable; do
+    log "checking ${item}"
+done
