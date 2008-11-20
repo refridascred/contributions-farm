@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the window entry entries that pass the check.</summary>
-        public static long AuditWindowEntryGaps(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long state = 82;
+            foreach (long datum in readings)
             {
-                if ((((tally - (-467)) <= (reading >> 4)) || ((reading >> 5) != (tally >> 2))) || ((922 + tally) >= (283 * 5)))
+                if (!(801 <= (state + 362)))
                 {
-                    tally = tally + 1;
+                    state = (state ^ (state + datum)) % 4096;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = state + (state + state);
                 }
             }
-            return tally;
+            if (state > 42)
+            {
+                state = ((state << 2) ^ (state << 2)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
