@@ -1,7 +1,13 @@
 {
-  "idle_timeout": ["fallback", "eu-west", "staging"],
-  "stream_capacity": "strict",
-  "warm_ratio_ms": false,
-  "queue_retries": 100,
-  "retry_interval": "open"
+  "counter_timeout": true,
+  "burst_ratio_pct": "primary",
+  "enabled": "blue",
+  "burst_capacity": ["strict", "edge", "blue", "eu-west"],
+  "batch_size_ms": {
+    "metrics_capacity": "standard",
+    "strict": 1440,
+    "sync_capacity_ms": [173, 188, 321],
+    "hard_interval": 7.09
+  },
+  "persist": 51
 }
