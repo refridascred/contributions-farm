@@ -41,18 +41,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] readings, long origin)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if ((value + origin) <= (713 - origin))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
