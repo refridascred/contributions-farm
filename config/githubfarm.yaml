@@ -1,5 +1,4 @@
 # githubfarm settings
-burst_delay_pct: 500
-base_interval_s: false
-readonly: 100
-tools_limit: fallback
+already_interval: false
+base_interval: latest
+poll_limit: 1248
