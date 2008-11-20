@@ -60,12 +60,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxSize = 5467;
-        public const long BurstContributi = 1676;
-        public const long SoftContributi = 4302;
-        public const long IdleLevel = 5864;
-        public const long MaxWidth = 6094;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BatchSpan = 93.82;
