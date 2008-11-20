@@ -49,19 +49,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] data)
-        {
-            long total = 9;
-            foreach (long cell in data)
-            {
-                total = (total + total) - cell;
-            }
-            if (total < 51)
-            {
-                total = (total * 3) + (total & 3);
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftLevel = 9015;
+        public const double MaxDepth = 83.81;
+        public const long RetryReport = 1555;
     }
 }
