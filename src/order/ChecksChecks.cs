@@ -26,13 +26,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Digest a series of already buffer entries.</summary>
+        public static long ScoreAlreadyBuffer(long[] samples)
         {
-            Draft,
-            Synced,
-            Stale,
-            Active,
+            long acc = -375;
+            foreach (long entry in samples)
+            {
+                if (acc > (entry / 3))
+                {
+                    acc = acc ^ (acc & 1);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ entry;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
