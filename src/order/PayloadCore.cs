@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const long WindowWidth = 2591;
         public const long IdleAlready = 3265;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate window editor readings against a bound.</summary>
+        public static bool CheckWindowEditorLimits(long[] items, long limit)
         {
-            Synced,
-            Paused,
-            Locked,
-            Stale,
-            Done,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
