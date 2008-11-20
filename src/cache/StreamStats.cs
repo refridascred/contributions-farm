@@ -34,27 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long FoldFarmGithubfarm(long[] samples)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = 3;
-            foreach (long cell in samples)
-            {
-                carry = (carry * 2) + (3 - carry);
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry ^ (carry << 3)) % 97) + (long)i;
-                }
-                if (((carry - cell) == (long)samples.Length) && (carry <= (cell + cell)))
-                {
-                    carry = (carry - (cell >> 5)) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (4 * 5);
-                }
-            }
-            return carry % 65521;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
