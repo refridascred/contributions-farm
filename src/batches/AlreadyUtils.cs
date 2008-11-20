@@ -73,13 +73,13 @@ namespace Common.Utilities
             return ratio + (double)814;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Synced,
-            Done,
-            Dropped,
-            Paused,
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
