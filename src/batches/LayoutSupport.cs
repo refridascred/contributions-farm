@@ -48,19 +48,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] series, long target)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the commits level values.</summary>
