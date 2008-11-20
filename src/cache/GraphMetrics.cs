@@ -38,20 +38,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] levels, long target)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepFactor = 867;
+        public const long BaseRatio = 7470;
+        public const string DefaultScore = "stable-v2";
+        public const long IdleLevel = 93;
+        public const long MinRatio = 1366;
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long FindEditorIndex(long[] readings, long offset)
