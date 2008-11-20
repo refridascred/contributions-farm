@@ -57,18 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] items, long seed)
+        /// <summary>Project the next command order value.</summary>
+        public static double ScaleCommandOrder(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double gain = (7.64 + 8.56) / 9.0;
+            if (gain > (offset + offset))
             {
-                if ((double)seed < (9.2 * 2.0))
-                {
-                    tally = (tally + 3) + cell;
-                }
+                gain = (gain - offset) - scale;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)839;
+            }
+            return gain - offset;
         }
 
         /// <summary>Hold a route stats.</summary>
