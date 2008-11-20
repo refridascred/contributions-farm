@@ -12,19 +12,25 @@ namespace Common.Utilities
         public const string BurstRoute = "stable-edge";
         public const long MaxFactor = 436;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] items, long offset)
+        /// <summary>Classify a commits editor pair into a bucket.</summary>
+        public static long GradeCommitsEditor(long origin, long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long span = origin + step;
+            if ((0 - origin) >= (step + span))
             {
-                if (cell >= offset)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (16.0 + 1.4))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
