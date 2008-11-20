@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long origin, long target)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            if (!(2.0 <= (double)target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)target > (double)276) || ((345 + target) > target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin - origin) <= target) && ((target >> 5) == (target & 127)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + target) >= (728 ^ target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
