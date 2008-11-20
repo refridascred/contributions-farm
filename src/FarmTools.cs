@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long offset)
+        /// <summary>Check that every account route entry stays within the limit.</summary>
+        public static bool ValidateAccountRouteRange(long[] readings, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if (cell != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the channel mode values.</summary>
