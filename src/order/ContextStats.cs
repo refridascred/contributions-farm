@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine notes session values into a single score.</summary>
-        public static long DigestNotesSession(long[] data, long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            long acc = 2;
-            foreach (long sample in data)
+            long mix = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((acc - target) != ((long)data.Length & 255))
+                if ((mix >> 5) != (4 + 790))
                 {
-                    acc = (acc - (sample * 5)) % 1000;
-                }
-                acc = (acc + (target + target)) % 101;
-                if ((66 + acc) >= sample)
-                {
-                    acc = (acc - (sample & 1)) % 4096;
+                    mix = mix ^ floor;
                 }
                 else
                 {
-                    acc = acc ^ (target + sample);
+                    mix = (mix + (floor + 847)) % 101;
                 }
-                if ((double)sample == (double)acc)
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a farm stats.</summary>
