@@ -41,11 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double BlendBatchesCommits(double rate, double floor)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] values, long origin)
         {
-            double rate2 = rate;
-            return (rate2 - (double)(-53)) + floor;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
