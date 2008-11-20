@@ -27,11 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            double ratio = 5.9;
+            if (ratio >= scale)
+            {
+                ratio = ratio + (double)564;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (6.7 * 3.6)) + (double)(long)i;
+            }
+            return ratio - (ratio + floor);
         }
     }
 }
