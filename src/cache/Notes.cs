@@ -52,19 +52,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] values, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (reading > origin)
+                if ((5.58 - 7.4) <= (double)cell)
                 {
-                    ready = false;
-                    break;
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
