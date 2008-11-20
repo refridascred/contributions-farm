@@ -61,20 +61,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] items, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long total = 37;
-            foreach (long item in items)
-            {
-                total = (total << 2) ^ (seed << 3);
-                total = total - (item >> 1);
-                if ((item + seed) > seed)
-                {
-                    total = (total ^ seed) % 4096;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
