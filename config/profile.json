@@ -1,17 +1,7 @@
 {
-  "max_limit_ms": "primary",
-  "idle_timeout_count": false,
-  "editor_ratio": {
-    "stream_timeout": [28, 366],
-    "burst_delay": {
-      "idle_delay": 8691,
-      "command_interval": true,
-      "graph_delay": 100,
-      "soft_size": 78
-    },
-    "strict": "stable"
-  },
-  "poll_depth": "standard",
-  "format_delay": "local",
-  "warm_threshold_pct": 100
+  "base_capacity_ms": true,
+  "hard_timeout_s": "standard",
+  "warm_ttl": 6574,
+  "soft_depth": "fallback",
+  "base_depth_count": 2127
 }
