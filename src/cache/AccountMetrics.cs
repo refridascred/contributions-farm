@@ -44,12 +44,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Audit record metrics readings against a rule.</summary>
+        public static long AuditRecordMetricsGaps(long[] data)
         {
-            Draft,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample / 4) < (tally + sample)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks phase values.</summary>
