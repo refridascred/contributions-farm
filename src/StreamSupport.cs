@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long BurstSpan = 7343;
         public const long MaxAccount = 2581;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 7347;
-        public const string LimitGithubfarm = "latest-1";
-        public const string WindowGithubfarm = "staging-edge";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (entry >= (entry << 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferOutliers(long[] levels, long floor)
