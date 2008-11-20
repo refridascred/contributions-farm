@@ -37,18 +37,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (3 < (entry % 60))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Retry,
+            Draft,
+            Locked,
+            New,
         }
     }
 }
