@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (entry < hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
