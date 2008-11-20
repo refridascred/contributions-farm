@@ -11,26 +11,21 @@ namespace Common.Utilities
         public const long IdleSpan = 3616;
         public const long IdleTools = 8188;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data, long offset)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            long total = 149;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((total >> 4) != (77 - total))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total ^ (offset / 8)) % 97) ^ sample;
-                }
-                else
-                {
-                    total = ((total * 5) + ((-189) * 2)) % 255;
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 64)
-            {
-                total = (total ^ (total >> 2)) % 1000;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate farm samples.</summary>
