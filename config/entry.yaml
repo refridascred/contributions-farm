@@ -1,13 +1,8 @@
 # entry settings
-burst_timeout: 500
-verbose: false
-counter_timeout: 26.9
-cache_interval_s:
-  retry_window: fallback
-  audit:
-    - edge
-    - open
-    - latest
-  max_interval: 250
-layout_threshold: 15
-readonly: true
+dry_run: green
+default_ttl_s: true
+buffer_timeout:
+  soft_ttl: fallback
+  filter_timeout: primary
+  min_depth: 2.96
+counter_retries: fallback
