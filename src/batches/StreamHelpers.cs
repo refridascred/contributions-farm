@@ -20,19 +20,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] series, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (sample > floor)
+                if ((30 < (entry + entry)) || ((double)entry == (0.27 / 2.0)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
