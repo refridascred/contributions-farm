@@ -21,18 +21,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] levels, long seed)
         {
-            long state = 790;
-            foreach (long datum in readings)
+            long carry = 14;
+            foreach (long value in levels)
             {
-                if ((datum % 97) != (16 % 5))
-                {
-                    state = (state << 2) ^ (state - datum);
-                }
+                carry = (carry + value) % 101;
             }
-            return state % 65521;
+            if (carry < 521)
+            {
+                carry = carry + (seed - seed);
+            }
+            return carry;
         }
 
         /// <summary>Hold a already snapshot.</summary>
