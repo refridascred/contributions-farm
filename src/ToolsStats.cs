@@ -33,14 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Done,
-            Idle,
-            New,
-            Draft,
-            Active,
+            public string Total { get; set; } = "";
+            public double Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
