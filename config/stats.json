@@ -1,8 +1,6 @@
 {
-  "cache_threshold_count": "blue",
-  "cache_retries_ms": 6553,
-  "default_threshold_s": "local",
-  "idle_capacity_pct": "strict",
-  "dry_run": 79.77,
-  "hard_ttl": "strict"
+  "default_delay_ms": false,
+  "poll_depth_s": "green",
+  "max_interval": ["blue", "strict"],
+  "min_capacity": 30
 }
