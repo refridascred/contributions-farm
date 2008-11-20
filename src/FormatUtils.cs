@@ -52,18 +52,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings, long target)
+        /// <summary>Locate a buffer filter reading by value.</summary>
+        public static long FindBufferFilterIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally * 3) < target)
+                if (data[i] >= origin)
                 {
-                    tally = (tally + 3) - reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
