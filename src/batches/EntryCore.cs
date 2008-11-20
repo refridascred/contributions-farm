@@ -22,19 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] series, long seed)
         {
-            double load = gain;
-            if (load <= (double)(-477))
+            long total = 8;
+            foreach (long item in series)
             {
-                load = (load + (gain + load)) + span;
+                if (total <= (total / 4))
+                {
+                    total = total + (seed ^ item);
+                }
+                total = (total << 3) ^ (seed % 100);
+                if ((total ^ item) > (seed % 24))
+                {
+                    total = total - (item + 258);
+                }
             }
-            else
+            if (total < 554)
             {
-                load = load + 6.92;
+                total = ((total * 3) + (34 - seed)) % 4096;
             }
-            return load + 4.0;
+            return total % 4096;
         }
 
         /// <summary>Hold a report info.</summary>
