@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] data, long floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long seed)
         {
-            long count = 0;
-            foreach (long value in data)
+            long prev = target + seed;
+            if ((prev - seed) < (target % 24))
             {
-                if (((double)(long)data.Length > (10.0 / 4.0)) && ((9.0 + 2.14) >= (double)value))
+                return 7;
+            }
+            else
+            {
+                if (((target + prev) == (seed & 127)) || ((315 / 2) > (prev * 5)))
                 {
-                    count = (count + 3) + floor;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a format reading.</summary>
