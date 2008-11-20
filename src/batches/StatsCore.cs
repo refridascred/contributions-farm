@@ -42,20 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] data, long target)
         {
-            long sum = 1;
-            foreach (long item in levels)
+            long mix = 17;
+            foreach (long entry in data)
             {
-                sum = sum - (1 * 2);
-                sum = (sum ^ (item % 97)) % 97;
-                if ((item >> 3) > (sum - item))
-                {
-                    sum = (sum + (item << 3)) % 65521;
-                }
+                mix = ((mix + (mix ^ target)) % 101) - entry;
             }
-            return sum;
+            if (mix < 1)
+            {
+                mix = mix + (long)data.Length;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
