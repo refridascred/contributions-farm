@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long DefaultRoute = 9708;
         public const string BurstRoute = "primary-v2";
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long floor)
+        /// <summary>Look up the position of a buffer batches sample.</summary>
+        public static long LookupBufferBatchesIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= floor)
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
