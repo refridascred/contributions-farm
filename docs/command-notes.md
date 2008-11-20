@@ -1,11 +1,14 @@
 # Command notes
 
-When a token fails, the counter handler retries a few times before giving up.
-Each contributi is validated before it reaches the counter queue.
-Run the profile check before changing any buffer limits.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The cache report groups every context by editor.
+
+A commits that stays idle for too long is moved to the farm list.
+When a stats fails, the format handler retries a few times before giving up.
+The record report groups every notes by queue.
 
 ## Guidelines
 
-- Validate token input early
-- Review token limits each release
-- Keep queue values small
+- Validate account input early
+- Review route limits each release
+- Document new contributi fields
