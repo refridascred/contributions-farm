@@ -14,21 +14,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] series, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] readings, long origin)
         {
-            long carry = 1;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if (carry < ((long)series.Length + carry))
+                if (item < origin)
                 {
-                    carry = (((carry << 3) ^ (origin % 3)) % 101) ^ reading;
-                    carry = carry + (13 - 0);
+                    ready = false;
+                    break;
                 }
-                carry = ((carry << 3) ^ ((long)series.Length + carry)) % 4096;
-                carry = (carry << 3) ^ (2 - 65);
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
