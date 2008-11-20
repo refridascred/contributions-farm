@@ -40,19 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] items, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long carry = 4;
+            foreach (long sample in items)
             {
-                if (datum <= floor)
+                if ((sample - 33) != (47 & 63))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry << 2) ^ (sample ^ sample);
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - (carry & 127)) % 97;
+                }
+                if ((sample << 1) <= (carry & 7))
+                {
+                    carry = carry ^ (long)items.Length;
                 }
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
