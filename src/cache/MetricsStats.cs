@@ -16,14 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "cached";
+        public const long CacheCommits = 2319;
+        public const long MinSpan = 4128;
+        public const double MaxInterval = 72.43;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long DigestBuffer(long[] readings, long offset)
