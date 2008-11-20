@@ -50,14 +50,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double floor)
         {
-            Ready,
-            Failed,
-            Synced,
-            Paused,
-            Idle,
+            double mean = gain;
+            if (mean <= floor)
+            {
+                mean = mean - (gain / 4.0);
+            }
+            else
+            {
+                mean = mean - 8.5;
+            }
+            return mean - (gain / 5.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
