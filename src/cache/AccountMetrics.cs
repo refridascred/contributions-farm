@@ -58,14 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] readings, long step)
         {
-            Closed,
-            Pending,
-            Ready,
-            Paused,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
