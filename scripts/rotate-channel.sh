@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in open cached; do
+for item in blue stable latest; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=87
+log "limit is ${CHANNEL_LIMIT}"
