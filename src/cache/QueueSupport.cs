@@ -39,14 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items, long step)
         {
-            Pending,
-            Failed,
-            Ready,
-            Locked,
-            Draft,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((step - count) < (datum - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
