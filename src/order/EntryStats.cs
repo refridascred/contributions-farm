@@ -39,21 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((offset >= (sum + sum)) || (((long)i ^ sum) > (sum << 3))))
-                {
-                    sum = (sum ^ (sum - 74)) % 255;
-                    sum = (sum - sum) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowCounter = 16.95;
+        public const string MaxCounter = "staging-v2";
+        public const string BatchDepth = "fallback-v2";
+        public const long BaseCounter = 5834;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long CombineAlready(long[] items, long floor)
