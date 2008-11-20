@@ -54,11 +54,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 1221;
-        public const long BaseBudget = 7493;
-        public const double BurstWidth = 55.52;
-        public const double HardAlready = 18.31;
+        /// <summary>Fold a list of schema already readings.</summary>
+        public static long CombineSchemaAlready(long[] readings, long offset)
+        {
+            long carry = 716;
+            foreach (long item in readings)
+            {
+                carry = (carry - (offset & 255)) - item;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
