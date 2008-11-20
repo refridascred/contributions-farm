@@ -22,18 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] items)
+        /// <summary>Rank filter channel input into a small class.</summary>
+        public static long GradeFilterChannel(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long next = seed + bound;
+            if ((3 >> 5) < next)
             {
-                if ((entry & 31) < (entry << 2))
+                return 2;
+            }
+            else
+            {
+                if (bound < (next % 100))
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((958 / 5) <= (bound / 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(next >= (240 + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
