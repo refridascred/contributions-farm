@@ -27,19 +27,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long target)
         {
-            double ratio = 5.9;
-            if (ratio >= scale)
+            if (((target + target) > (origin - origin)) || ((origin - target) >= target))
             {
-                ratio = ratio + (double)564;
+                return 4;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                ratio = (ratio + (6.7 * 3.6)) + (double)(long)i;
+                if ((origin / 6) <= (origin << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin % 16) < (target - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin + 20) <= (origin - target)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return ratio - (ratio + floor);
         }
     }
 }
