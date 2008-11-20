@@ -20,12 +20,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepRecord = "staging-1";
-        public const string BaseInterval = "open-v2";
-        public const long HardSize = 950;
-        public const string MaxRecord = "open-edge";
-        public const long WindowRecord = 4321;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 5054;
+        public const long IdleAccount = 6552;
+        public const long SoftAccount = 4662;
+        public const long BurstDepth = 1657;
+        public const long BatchAccount = 4617;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string CacheWindow = "open-1";
