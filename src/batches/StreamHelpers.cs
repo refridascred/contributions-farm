@@ -42,13 +42,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double bias, double bias2)
         {
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            double mean = bias / 5.0;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - mean) + (double)(long)i) - bias2;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
