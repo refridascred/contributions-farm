@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)readings.Length + limit) > (57 + 40))
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
