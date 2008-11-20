@@ -1,4 +1,17 @@
 # entry settings
-base_retries_ms: eu-west
-default_ttl_pct: 5205
-retry_delay: 94.72
+retry_window_ms: 43
+queue_delay:
+  stream_interval: strict
+  burst_ttl: 36
+  max_size_pct:
+    - 474
+    - 410
+    - 92
+already_window: standard
+poll_window_count: false
+dry_run:
+  - 42
+  - 450
+  - 313
+  - 490
+warm_size_s: false
