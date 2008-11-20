@@ -50,14 +50,18 @@ namespace Common.Utilities
         public const string BaseFilter = "cached-1";
         public const long BurstInterval = 3768;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the account token entries that pass the check.</summary>
+        public static long MeasureAccountTokenHits(long[] items)
         {
-            New,
-            Draft,
-            Idle,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits < (hits + (-274))) && ((hits * 3) >= (item * 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
