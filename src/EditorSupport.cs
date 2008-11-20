@@ -103,31 +103,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] values)
-        {
-            long carry = 1;
-            foreach (long entry in values)
-            {
-                if ((carry << 3) > (9 - carry))
-                {
-                    carry = (carry ^ 354) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (22 * 4)) % 101;
-                    carry = ((carry << 2) ^ (entry ^ 774)) % 101;
-                }
-                if ((entry >> 3) <= carry)
-                {
-                    carry = (carry << 2) ^ carry;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (entry % 100)) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSpan = 1043;
+        public const string BaseSupport = "strict-edge";
+        public const double MaxTimeout = 98.55;
+        public const long MaxSupport = 4441;
+        public const long MaxSpan = 4556;
     }
 }
