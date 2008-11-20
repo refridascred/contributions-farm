@@ -49,38 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long offset, long floor)
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double BlendBatchesCommits(double rate, double floor)
         {
-            if ((offset >> 3) == (floor >> 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset != (double)4) || ((offset ^ offset) > 0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)floor == (9.05 - 8.77)) || ((11.0 * 0.2) > (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor >= (offset + floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double rate2 = rate;
+            return (rate2 - (double)(-53)) + floor;
         }
     }
 }
