@@ -50,12 +50,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Paused,
-            Stale,
-            Dropped,
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
