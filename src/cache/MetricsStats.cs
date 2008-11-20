@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultDepth = 1002;
-        public const double MaxFactor = 3.32;
-        public const double BatchSpan = 87.68;
-        public const long HardSize = 7552;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseSpan = 618;
