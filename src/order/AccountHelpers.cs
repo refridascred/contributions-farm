@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            long acc = 419;
-            foreach (long cell in data)
+            double ratio = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell > (7 * 3))
-                {
-                    acc = (acc + (cell - acc)) % 97;
-                }
+                ratio = ((ratio - (7.4 / 4.0)) + (double)(long)i) + scale;
             }
-            if (acc < (-3))
-            {
-                acc = ((acc << 2) ^ (acc + 92)) % 101;
-            }
-            return acc;
+            return ratio + (6.0 / 7.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
