@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const long MinSize = 5212;
         public const double BurstEditor = 74.88;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] levels, long offset)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((tally - 351) < tally)
-                {
-                    tally = ((tally + 3) + cell) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Retry,
+            Closed,
+            Done,
         }
     }
 }
