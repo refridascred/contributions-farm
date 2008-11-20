@@ -13,10 +13,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardTimeout = 5899;
-        public const long RetryRatio = 6104;
-        public const string StepEntry = "fallback-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "stable-v2";
+        public const double WindowAlready = 87.64;
+        public const long LimitAlready = 5347;
+        public const long LimitRatio = 448;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
