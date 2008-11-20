@@ -1,17 +1,14 @@
 {
-  "compress": [205, 461],
-  "batch_retries_pct": ["staging", "fallback", "staging", "stable"],
-  "batch_retries_s": {
-    "warm_ratio_pct": 30,
-    "base_capacity_pct": [205, 269, 139, 42],
-    "metrics_depth": "edge",
-    "warm_window": "blue"
+  "filter_ttl": "strict",
+  "base_ratio_pct": "open",
+  "hard_window": {
+    "entry_depth": false,
+    "compress": ["stable", "local"],
+    "warm_window_pct": [328, 342],
+    "readonly": "edge",
+    "idle_retries_pct": 19.98
   },
-  "strict": {
-    "batch_size_pct": 62,
-    "retry_retries_pct": 8109,
-    "strict": [404, 438],
-    "filter_window": 60,
-    "enabled": "stable"
-  }
+  "cache_depth": "open",
+  "flush_threshold": "open",
+  "stream_limit": "stable"
 }
