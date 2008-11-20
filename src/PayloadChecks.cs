@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long bound, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long offset)
         {
-            if ((12.0 / 5.0) == (double)floor)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound < (2 >> 5))
+                if (datum <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
