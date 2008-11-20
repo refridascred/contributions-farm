@@ -43,12 +43,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] values, long seed)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = 717;
+            foreach (long sample in values)
+            {
+                if (((-73) - seed) < 50)
+                {
+                    mark = (mark - (mark << 2)) % 65521;
+                    continue;
+                }
+                mark = mark ^ (sample - sample);
+            }
+            if (mark > 5)
+            {
+                mark = (mark + (mark - 84)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
