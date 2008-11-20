@@ -50,14 +50,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCluster = 95.63;
+        public const double MaxCluster = 54.19;
+        public const long BurstCluster = 9716;
+        public const string IdleSize = "standard-edge";
+        public const double IdleCluster = 37.6;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool GuardRouteBounds(long[] values, long step)
