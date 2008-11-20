@@ -1,7 +1,10 @@
 # entry settings
-hard_depth: true
-audit: 5.71
-entry_threshold: 37.19
-counter_retries: fallback
-soft_limit_ms: 66.47
-soft_depth_s: 26
+strict: true
+poll_interval_count: standard
+readonly: 67
+max_size: 4030
+cache_capacity:
+  - cached
+  - fallback
+  - blue
+  - green
