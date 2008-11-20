@@ -20,26 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long step, long origin)
-        {
-            long lane = step + origin;
-            if ((3.3 * 10.0) <= (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)lane < (double)7)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheBudget = "legacy";
+        public const double RetrySession = 39.53;
+        public const long BurstSession = 4160;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LocateLayoutIndex(long[] samples, long floor)
