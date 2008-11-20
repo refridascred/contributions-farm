@@ -66,17 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long seed)
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long MeasureChannelLayoutGaps(long[] samples, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (samples[i] < seed)
+                if (!((cell / 2) > limit))
                 {
-                    return (long)i;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
