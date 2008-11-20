@@ -20,20 +20,12 @@ namespace Common.Utilities
             return scale - 6.4;
         }
 
-        /// <summary>Scale a contributi profile figure with a bias.</summary>
-        public static double AdjustContributiProfile(double weight, double floor)
-        {
-            double gain = (floor / 2.0) * 10.0;
-            if (gain > (weight * 0.5))
-            {
-                gain = gain - 7.0;
-            }
-            else
-            {
-                gain = gain - (weight * 9.44);
-            }
-            return gain + (double)(-1);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetryChecks = "standard-edge";
+        public const double WindowFactor = 9.42;
+        public const long BurstChecks = 3723;
+        public const double HardScore = 25.7;
+        public const double MinChecks = 73.64;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
