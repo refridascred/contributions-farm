@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] items, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mark = 523;
-            foreach (long cell in items)
-            {
-                mark = (mark ^ (mark ^ 871)) - cell;
-            }
-            if (mark > 747)
-            {
-                mark = mark + (step + 6);
-            }
-            return mark % 4096;
+            Done,
+            Stale,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a layout options.</summary>
