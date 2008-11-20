@@ -27,11 +27,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Blend two metrics token measurements.</summary>
+        public static double AdjustMetricsToken(double weight, double floor)
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
+            double bias = floor;
+            return (bias - bias) + weight;
         }
 
         /// <summary>Audit format command readings against a rule.</summary>
