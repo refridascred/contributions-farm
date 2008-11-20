@@ -1,4 +1,4 @@
 # support settings
-commits_window: green
-retry_capacity_pct: 30
-cache_threshold_count: true
+poll_ratio: blue
+poll_interval_s: fallback
+batch_limit_pct: standard
