@@ -51,26 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics support entries.</summary>
-        public static long FoldMetricsSupport(long[] values)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long result = 83;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + result) <= (item * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result << 2) ^ (item + (-102));
-                }
-                else
-                {
-                    result = (result * 3) + (result % 64);
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 938)
-            {
-                result = (result - (result & 127)) % 1000;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
