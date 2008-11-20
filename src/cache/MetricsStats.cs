@@ -16,12 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryWidth = 4026;
-        public const long HardPayload = 6916;
-        public const long MaxSpan = 3775;
-        public const long CacheDepth = 6436;
-        public const string RetryLevel = "cached-1";
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
+        {
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Rank support account input into a small class.</summary>
         public static long GradeSupportAccount(long target, long origin)
