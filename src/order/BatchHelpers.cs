@@ -20,38 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long bound, long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] items, long target)
         {
-            if (((8 & 7) <= (step - 340)) || ((double)step == (3.0 / 4.0)))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step % 10) <= (step + bound))
+                if (entry > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((step % 5) != (654 ^ bound)) && ((18 & 3) < (step + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (20.0 + 19.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
