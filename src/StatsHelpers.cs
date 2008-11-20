@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long MeasureFormatOrderGaps(long[] levels)
+        /// <summary>Measure how many stream account samples are out of range.</summary>
+        public static long AuditStreamAccountMatches(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (!((value * 3) > matches))
+                if (12.0 > (double)origin)
                 {
-                    matches = matches + 1;
+                    count = (count + 1) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
