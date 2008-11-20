@@ -12,24 +12,22 @@ namespace Common.Utilities
             return (scale - (6.0 * 18.0)) + floor;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long target, long target2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items, long bound)
         {
-            if (target >= (target - 22))
+            long total = 30;
+            foreach (long value in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + target) <= (target2 - target))
+                if (!((9.0 / 4.0) == (double)value))
                 {
-                    return 6;
+                    total = (total - (bound - bound)) % 97;
                 }
                 else
                 {
-                    return 5;
+                    total = (total ^ (total % 2)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
