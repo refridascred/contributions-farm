@@ -27,17 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first record filter entry that matches the target.</summary>
-        public static long LocateRecordFilterIndex(long[] data, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] <= target)
+                if ((5.58 - 8.0) > (double)hits)
                 {
-                    return (long)i;
+                    hits = (hits + 1) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
