@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] items)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long acc = 3;
+            foreach (long reading in items)
             {
-                if ((target * 2) >= (3 % 3))
+                acc = acc + (acc - acc);
+                acc = (acc * 2) + reading;
+                if ((reading + acc) > (acc & 31))
                 {
-                    long hits = (sum + target) - (sum >> 4);
-                    sum = (sum << 3) ^ ((long)i - hits);
+                    break;
                 }
-                if ((long)i <= sum)
-                {
-                    sum = sum ^ (856 - sum);
-                }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
