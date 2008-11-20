@@ -24,14 +24,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels, long floor)
         {
-            Draft,
-            Synced,
-            Queued,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((410 << 2) >= (954 - seen))
+                {
+                    seen = ((seen + 2) ^ cell) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format stats.</summary>
