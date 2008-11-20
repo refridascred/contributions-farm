@@ -30,11 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long step)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            long mix = step;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!(step > (mix + step)))
+                {
+                    mix = ((mix << 2) ^ (step << 1)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
