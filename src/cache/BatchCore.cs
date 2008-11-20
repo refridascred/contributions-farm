@@ -47,18 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm cluster samples are out of range.</summary>
-        public static long AuditGithubfarmClusterGaps(long[] readings)
+        /// <summary>Accumulate buffer context samples.</summary>
+        public static long DigestBufferContext(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long acc = 7;
+            foreach (long reading in values)
             {
-                if (!((tally % 10) <= ((long)readings.Length + tally)) || ((sample % 16) > (969 - tally)))
+                if (((17.0 * 3.0) != (double)floor) && ((15.0 / 4.0) != (double)acc))
                 {
-                    tally = tally + 1;
+                    acc = acc - (floor - floor);
+                }
+                if ((floor - reading) < (acc % 60))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
     }
 }
