@@ -36,23 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels)
-        {
-            long result = 877;
-            foreach (long reading in levels)
-            {
-                if ((double)reading == (3.2 / 6.0))
-                {
-                    result = result - (791 + result);
-                }
-                if ((9.0 - 9.3) >= (double)reading)
-                {
-                    result = (result ^ result) % 4096;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleInterval = 32.05;
+        public const long StepAlready = 5669;
+        public const long CacheAlready = 8451;
+        public const long BaseAlready = 3953;
 
         /// <summary>Count route support pairs that satisfy a relation.</summary>
         public static long MatchRouteSupportCount(long[] series)
