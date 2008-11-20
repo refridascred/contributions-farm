@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Retry,
-            Draft,
-            Stale,
+            Ready,
+            Synced,
+            Paused,
+            New,
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
