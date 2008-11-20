@@ -22,11 +22,21 @@ namespace Common.Utilities
         public const long BurstSize = 2538;
         public const long SoftPayload = 3398;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxLayout = 58.59;
-        public const double BaseLayout = 46.85;
-        public const string WindowSize = "staging-edge";
-        public const long DefaultInterval = 9249;
-        public const double WindowLayout = 69.37;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
