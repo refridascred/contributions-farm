@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate cache counter readings against a bound.</summary>
-        public static bool ValidateCacheCounterLimits(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepSize = 1484;
+        public const long HardAccount = 3736;
+        public const string WindowTimeout = "alpha";
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] items, long bound)
