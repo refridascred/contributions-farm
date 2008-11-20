@@ -36,11 +36,10 @@ namespace Common.Utilities
         public const double StepContext = 8.22;
         public const string DefaultContext = "primary-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstTimeout = 27.75;
-        public const string WindowRatio = "cached";
-        public const double SoftMetrics = 77.51;
-        public const long MinSpan = 8228;
-        public const double CacheRatio = 46.86;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSize = "primary-v2";
+        public const double BatchSchema = 17.08;
+        public const long MaxSchema = 2827;
+        public const long WindowCount = 4571;
     }
 }
