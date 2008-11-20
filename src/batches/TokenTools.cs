@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + result) + (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
