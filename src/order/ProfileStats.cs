@@ -48,25 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long target, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings, long origin)
         {
-            long gap = target ^ floor;
-            if (gap <= (1 + target))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target < (floor + target)) && ((double)floor < (double)gap))
+                if ((double)count != (double)origin)
                 {
-                    return 6;
+                    count = (count + 1) ^ cell;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
