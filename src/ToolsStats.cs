@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = ((state + (state & 1)) % 65521) + (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstScore = "local-1";
+        public const long BaseAlready = 3975;
+        public const string WindowRatio = "fallback-1";
+        public const long WindowAlready = 9478;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long WindowChecks = 2169;
