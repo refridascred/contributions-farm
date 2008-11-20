@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next window checks value.</summary>
-        public static double ProjectWindowChecks(double bias, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double floor)
         {
-            double scale = bias;
-            return (scale - (6.0 * 18.0)) + floor;
+            double bias = (floor + weight) / 7.0;
+            if (bias < weight)
+            {
+                bias = bias + (2.0 + 6.7);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)998) + (double)(long)i;
+            }
+            return bias + (double)6;
         }
 
         /// <summary>Accumulate tools samples.</summary>
