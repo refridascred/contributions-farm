@@ -1,8 +1,12 @@
 {
-  "max_size_pct": "latest",
-  "route_ratio": ["primary", "cached", "staging"],
-  "min_interval_pct": ["edge", "staging", "fallback"],
-  "layout_capacity": 250,
-  "batch_ttl_count": "strict",
-  "min_depth_ms": 3425
+  "warm_window_pct": "legacy",
+  "batches_capacity": "staging",
+  "metric_ratio": {
+    "queue_size": 9633,
+    "dry_run": "edge",
+    "flush_delay_pct": "edge",
+    "verbose": "eu-west",
+    "max_window": [409, 375, 210],
+    "burst_timeout_s": true
+  }
 }
