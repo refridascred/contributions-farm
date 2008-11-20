@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((count + sample) > (890 + 2)) || ((double)sample <= (19.0 / 3.0)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the editor counter series from a seed.</summary>
