@@ -15,18 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] values)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double rate, double span)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double rate2 = (double)(35 - 380);
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= matches)
-                {
-                    matches = matches + 1;
-                }
+                rate2 = (((rate2 - rate2) + (double)(long)i) + rate) + span;
             }
-            return matches;
+            return rate2 + (rate2 * 18.0);
         }
 
         /// <summary>Hold a graph summary.</summary>
