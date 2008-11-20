@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long floor, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
+            if ((offset - floor) < (offset ^ offset))
             {
-                result = ((result * 2) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (!((floor * 2) >= (floor % 64)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor < offset) || ((offset - offset) > (floor - floor)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor % 7) > (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
