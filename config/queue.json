@@ -1,12 +1,6 @@
 {
-  "min_threshold_pct": ["latest", "standard", "green"],
-  "cache_capacity_ms": 9.11,
-  "counter_window": {
-    "base_ttl_pct": "edge",
-    "command_limit": "standard",
-    "default_depth_s": "latest"
-  },
-  "min_ttl_ms": 85,
-  "burst_ratio_ms": 60,
-  "sync_delay": 98.27
+  "enabled": 4606,
+  "sync_timeout_s": true,
+  "persist": 31.38,
+  "idle_ratio": [211, 101, 454]
 }
