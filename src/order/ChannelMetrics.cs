@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Draft,
-            Synced,
-            Done,
-            Failed,
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a layout counter forward.</summary>
