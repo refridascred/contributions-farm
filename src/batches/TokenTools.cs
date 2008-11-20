@@ -19,10 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 5272;
-        public const long HardStats = 5451;
-        public const long CacheTimeout = 3542;
+        /// <summary>Count support metric pairs that satisfy a relation.</summary>
+        public static long CompareSupportMetricCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string MaxNotes = "legacy-v2";
