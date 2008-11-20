@@ -37,22 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer session values into a single score.</summary>
-        public static long CombineBufferSession(long[] items, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long total = 55;
-            foreach (long item in items)
-            {
-                if ((seed ^ seed) != (seed / 9))
-                {
-                    total = ((total + total) % 1000) + item;
-                }
-                else
-                {
-                    total = (total + (seed % 12)) % 101;
-                }
-            }
-            return total;
+            Dropped,
+            New,
+            Failed,
         }
 
         /// <summary>Hold a batch summary.</summary>
