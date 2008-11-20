@@ -83,13 +83,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
+            public long Ratio { get; set; }
+            public long Level { get; set; }
             public long Rank { get; set; }
-            public bool Stamp { get; set; }
             public long Total { get; set; }
-            public string Ratio { get; set; } = "";
         }
     }
 }
