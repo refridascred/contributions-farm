@@ -45,11 +45,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstLevel = 4186;
-        public const long DefaultDepth = 1920;
-        public const long CacheWidth = 5795;
-        public const long MinBuffer = 5961;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value >= (1.78 + 5.98))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long CombineFormat(long[] items)
