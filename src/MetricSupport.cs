@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up cluster schema samples.</summary>
-        public static long CompareClusterSchemaCount(long[] items)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = (carry + bound) % 1000;
+                carry = (carry - ((long)i ^ carry)) % 1000;
+                carry = ((carry * 5) + ((long)i & 15)) % 4096;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
