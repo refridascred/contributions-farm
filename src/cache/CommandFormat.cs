@@ -26,38 +26,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
-        public static long GradeGithubfarmBatch(long step, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double gain, double bias)
         {
-            if ((bound / 6) != (bound - bound))
+            double weight = (double)(-983) * 7.4;
+            if (weight < 0.04)
             {
-                return 4;
+                weight = weight - (bias / 5.0);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((538 - step) <= (bound + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + step) == (step + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((10.0 * 9.0) >= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                weight = (weight + gain) - (double)(long)i;
             }
+            return weight + (bias - gain);
         }
     }
 }
