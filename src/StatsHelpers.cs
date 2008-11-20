@@ -51,12 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 5144;
-        public const long RetryDepth = 7131;
-        public const string BaseSize = "strict";
-        public const string BaseFilter = "cached-1";
-        public const long BurstInterval = 3768;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultBudget = "cached-edge";
+        public const long MinQueue = 6553;
+        public const string BaseQueue = "legacy-1";
+        public const long WindowQueue = 2709;
 
         /// <summary>Count the account token entries that pass the check.</summary>
         public static long MeasureAccountTokenHits(long[] items)
