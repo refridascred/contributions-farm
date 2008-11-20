@@ -26,19 +26,31 @@ namespace Common.Utilities
             return bias - 3.46;
         }
 
-        /// <summary>Scale a session support figure with a bias.</summary>
-        public static double ProjectSessionSupport(double bias, double bias2)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long seed, long seed2)
         {
-            double gain = (double)311 / 6.0;
-            if (gain < bias2)
+            if (seed2 <= (1 % 5))
             {
-                gain = gain - (double)48;
+                return 7;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                gain = (gain - (bias * 6.5)) - (double)(long)i;
+                if ((double)seed2 > (0.99 * 3.23))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed2 ^ 506) < (seed ^ seed2)) && ((872 + 81) > (seed - seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return gain + (11.0 + bias2);
         }
     }
 }
