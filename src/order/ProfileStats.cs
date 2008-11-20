@@ -27,11 +27,14 @@ namespace Common.Utilities
             return drift - (double)4;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinInterval = 90.79;
-        public const long BaseTimeout = 944;
-        public const long HardLevel = 2118;
-        public const string CacheRatio = "local-edge";
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            Active,
+            Retry,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] samples)
