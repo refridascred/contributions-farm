@@ -33,11 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double gain = (double)131 + ratio;
-            return (gain + gain) + offset;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
