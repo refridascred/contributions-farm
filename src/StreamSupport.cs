@@ -19,25 +19,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Count the stats payload entries that pass the check.</summary>
+        public static long AuditStatsPayloadHits(long[] series, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((state & 3) <= (state / 5))
+                if ((value - value) < (seen + bound))
                 {
-                    state = (state * 2) + (203 >> 5);
+                    seen = seen + 3;
                 }
-                state = (state + (225 - state)) % 255;
-                if ((origin / 8) > (origin - state))
-                {
-                    state = ((state * 5) + (origin >> 4)) % 1000;
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return seen;
         }
     }
 }
