@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "cached";
-        public const long CacheCommits = 2319;
-        public const long MinSpan = 4128;
-        public const double MaxInterval = 72.43;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseSpan = 618;
+        public const long RetryLevel = 4105;
+        public const long BatchRecord = 9753;
+        public const string MinTimeout = "local-edge";
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
