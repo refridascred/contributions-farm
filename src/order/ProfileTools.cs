@@ -32,39 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long limit, long step)
+        /// <summary>Check that every tools token entry stays within the limit.</summary>
+        public static bool CheckToolsTokenLimits(long[] data, long target)
         {
-            long span = limit ^ step;
-            if ((span << 2) >= (step * 2))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (128 >= (limit + limit))
+                if (cell < target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - 740) <= (step << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((span + span) < step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
