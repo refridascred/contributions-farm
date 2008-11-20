@@ -41,16 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            long mix = target;
-            for (int i = 0; i < 10; i++)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix << 2) ^ (target ^ mix);
-                mix = ((mix * 5) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Hold a format summary.</summary>
