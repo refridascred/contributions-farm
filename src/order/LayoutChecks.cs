@@ -38,17 +38,21 @@ namespace Common.Utilities
         public const long BaseBuffer = 81;
         public const string DefaultBuffer = "primary-edge";
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
+        /// <summary>Compare every pair of record route readings.</summary>
+        public static long OverlapRecordRouteCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a order info.</summary>
