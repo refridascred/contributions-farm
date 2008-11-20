@@ -42,9 +42,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultRatio = 2421;
-        public const long BatchPayload = 9289;
-        public const double LimitScore = 2.72;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowSpan = 818;
+        public const string BatchRecord = "stable-v2";
+        public const double IdleRecord = 98.94;
+        public const double LimitCount = 95.64;
     }
 }
