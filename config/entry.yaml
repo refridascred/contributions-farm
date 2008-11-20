@@ -1,4 +1,5 @@
 # entry settings
-strict: 2.15
-warm_delay_count: local
-flush_window: 31
+command_window: false
+max_window_count: 49.6
+poll_limit: 1024
+buffer_size: false
