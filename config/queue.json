@@ -1,13 +1,39 @@
 {
-  "queue_window": 1024,
-  "default_depth_s": "eu-west",
-  "verbose": true,
-  "cluster_limit": {
-    "hard_capacity_pct": 1011,
-    "default_capacity_count": false,
-    "token_ratio": 100,
-    "compress": 436,
-    "filter_window": 75.65,
-    "command_delay": [14, 66, 176]
-  }
+  "strict": 7067,
+  "soft_limit_pct": {
+    "default_ttl_ms": {
+      "format_interval": false,
+      "verbose": true,
+      "warm_limit_s": [34, 459, 111],
+      "channel_capacity": [449, 459, 343, 178],
+      "sync_delay_ms": 32.95,
+      "burst_depth": "green"
+    },
+    "profile_capacity": "edge",
+    "max_depth_pct": 30,
+    "retry_window": {
+      "audit": false,
+      "burst_retries_count": 190,
+      "soft_ttl_s": ["primary", "eu-west"],
+      "graph_capacity": 3833,
+      "hard_limit": 83.62
+    },
+    "poll_ratio_count": true
+  },
+  "batch_depth": {
+    "poll_depth": "primary",
+    "sync_size": {
+      "route_threshold": 5270,
+      "max_interval": true,
+      "queue_ttl": ["staging", "blue", "eu-west", "strict"],
+      "readonly": [175, 314],
+      "base_limit_pct": [109, 162],
+      "record_depth": [147, 321]
+    },
+    "sync_depth_s": 8479,
+    "max_interval_s": "legacy"
+  },
+  "idle_size_ms": [15, 495],
+  "soft_ratio_ms": "local",
+  "flush_limit_ms": "fallback"
 }
