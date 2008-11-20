@@ -17,15 +17,12 @@ namespace Common.Utilities
         public const long BurstRecord = 333;
         public const string SoftRatio = "standard-edge";
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Dropped,
-            New,
-            Done,
-            Active,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheTimeout = 5025;
+        public const long CacheToken = 9708;
+        public const double RetryFactor = 67.21;
+        public const double StepToken = 30.11;
+        public const long BaseCount = 9000;
 
         /// <summary>Digest a series of report cache entries.</summary>
         public static long TallyReportCache(long[] levels, long bound)
