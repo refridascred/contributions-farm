@@ -32,17 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
