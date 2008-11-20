@@ -1,14 +1,16 @@
 {
-  "default_depth_count": false,
-  "default_window_ms": 11.65,
-  "profile_retries": [77, 36, 255, 437],
-  "dry_run": {
-    "cache_capacity_count": true,
-    "token_size": 8099,
-    "flush_threshold_s": 6042,
-    "compress": 30,
-    "soft_retries": 4656,
-    "support_ttl": 60
+  "verbose": {
+    "retry_ttl": 41.09,
+    "poll_ratio_ms": true,
+    "entry_threshold": "blue",
+    "burst_window_s": "legacy",
+    "enabled": 68.92,
+    "min_timeout_s": 54.46
   },
-  "warm_delay": 1124
+  "dry_run": {
+    "poll_size_pct": ["edge", "eu-west", "green"],
+    "idle_threshold": 1024,
+    "idle_timeout_count": 500
+  },
+  "channel_ttl": [88, 429]
 }
