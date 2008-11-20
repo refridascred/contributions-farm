@@ -19,10 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxDepth = 2966;
-        public const long IdleSchema = 3856;
-        public const long StepSchema = 3521;
+        /// <summary>Classify a support account pair into a bucket.</summary>
+        public static long GradeSupportAccount(long target, long limit)
+        {
+            long lane = target ^ limit;
+            if ((19.0 * 9.01) != (double)lane)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((lane ^ lane) >= (target << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Validate stats window readings against a bound.</summary>
         public static bool VerifyStatsWindowLimits(long[] data, long floor)
