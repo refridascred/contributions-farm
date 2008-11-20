@@ -74,11 +74,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public double Owner { get; set; }
-            public bool Offset { get; set; }
+            Active,
+            Synced,
+            Ready,
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
