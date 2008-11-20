@@ -82,12 +82,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Done,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the batches mode values.</summary>
