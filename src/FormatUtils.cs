@@ -47,22 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Count the payload stream entries that pass the check.</summary>
+        public static long MeasurePayloadStreamGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (((double)seen == (11.0 - 1.09)) && ((long)values.Length >= ((-4) ^ seen)))
+                if ((tally << 3) == (datum * 4))
                 {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
