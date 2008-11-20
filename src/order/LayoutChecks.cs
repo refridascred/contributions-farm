@@ -19,24 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Measure how many metrics graph samples are out of range.</summary>
+        public static long TallyMetricsGraphMatches(long[] items, long target)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (bound >= (long)i)
+                if (!(((double)seen == (3.9 * 1.7)) || (8 < (datum + seen))))
                 {
-                    mix = (mix ^ 85) % 97;
+                    seen = (seen + 3) + target;
                 }
-                else
-                {
-                    mix = (mix - (mix - mix)) % 65521;
-                }
-                mix = ((mix * 3) + (bound ^ bound)) % 1000;
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Find the first session route entry that matches the target.</summary>
