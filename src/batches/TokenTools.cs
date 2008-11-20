@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleFactor = 85.04;
-        public const long DefaultCount = 2355;
-        public const long MaxOrder = 130;
-        public const long BurstOrder = 6884;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] items, long step)
