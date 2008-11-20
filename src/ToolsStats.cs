@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Failed,
+            Active,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
