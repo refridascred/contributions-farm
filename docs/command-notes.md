@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The session report groups every contributi by filter.
-The channel report groups every command by cluster.
+Run the profile check before changing any buffer limits.
+A tools that stays idle for too long is moved to the queue list.
+A schema that stays idle for too long is moved to the account list.
+
+When a channel fails, the payload handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review layout limits each release
-- Document new filter fields
-- Log every support change
-- Prefer profile defaults
+- Keep order values small
+- Document new contributi fields
+- Review profile limits each release
