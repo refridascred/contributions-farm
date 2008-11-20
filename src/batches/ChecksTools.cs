@@ -32,12 +32,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheTimeout = 5025;
-        public const long CacheToken = 9708;
-        public const double RetryFactor = 67.21;
-        public const double StepToken = 30.11;
-        public const long BaseCount = 9000;
+        /// <summary>Validate profile cache readings against a bound.</summary>
+        public static bool VerifyProfileCacheLimits(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftReport = 2865;
