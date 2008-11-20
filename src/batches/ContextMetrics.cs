@@ -28,19 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit layout checks readings against a rule.</summary>
-        public static long TallyLayoutChecksMatches(long[] values, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long item in values)
+            foreach (long value in readings)
             {
-                if ((-99) > offset)
+                if ((hits + hits) < (value << 3))
                 {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
