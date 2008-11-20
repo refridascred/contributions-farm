@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double weight, double span)
         {
-            public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            double load = span;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + (4.0 - weight);
         }
 
         /// <summary>Combine command values into a single score.</summary>
