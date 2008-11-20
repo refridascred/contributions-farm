@@ -13,18 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] items, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((limit * 4) <= ((-8) % 8))
-                {
-                    hits = (hits + 1) + reading;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
