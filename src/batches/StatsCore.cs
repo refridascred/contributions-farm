@@ -27,18 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepFactor = 8482;
+        public const long LimitQueue = 8718;
+        public const long DefaultWidth = 4148;
+        public const long CacheTimeout = 6663;
+        public const long BurstFactor = 7914;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long offset, long origin)
