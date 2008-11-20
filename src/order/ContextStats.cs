@@ -19,25 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a support account pair into a bucket.</summary>
-        public static long GradeSupportAccount(long target, long limit)
+        /// <summary>Look up the position of a buffer notes sample.</summary>
+        public static long FindBufferNotesIndex(long[] levels, long target)
         {
-            long lane = target ^ limit;
-            if ((19.0 * 9.01) != (double)lane)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((lane ^ lane) >= (target << 2))
+                if (levels[i] < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate stats window readings against a bound.</summary>
