@@ -6,19 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in open latest; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=165
+RECORD_LIMIT=332
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
