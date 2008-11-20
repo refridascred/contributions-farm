@@ -31,12 +31,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            Pending,
+            Active,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a session record.</summary>
