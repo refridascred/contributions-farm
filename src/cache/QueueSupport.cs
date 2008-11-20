@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const long LimitStats = 537;
         public const long BatchFactor = 8363;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] values, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] samples, long limit)
         {
-            long acc = 65;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((-2) < (bound + datum))
+                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
                 {
-                    acc = (acc << 3) ^ 4;
-                }
-                if ((double)datum >= (1.6 / 3.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
