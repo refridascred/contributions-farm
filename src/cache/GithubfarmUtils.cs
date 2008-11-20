@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long CacheInterval = 5207;
         public const long BaseRatio = 1124;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long step)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            if ((17.0 - 18.0) > (double)step)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target & 1) <= target) || ((7.0 * 5.13) < (double)target))
+                if (!((seed + total) >= (seed ^ 406)))
                 {
-                    return 2;
+                    total = (total * 2) + total;
                 }
-                else
-                {
-                    if ((step - target) > (target * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Hold a token summary.</summary>
