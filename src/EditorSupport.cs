@@ -56,12 +56,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "alpha-1";
-        public const double DefaultDepth = 93.5;
-        public const long SoftRatio = 7509;
-        public const long RetryEditor = 283;
-        public const string StepSize = "local-1";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long origin)
+        {
+            if ((origin + 499) > (origin - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)origin <= (8.6 / 7.0)) && (bound > (origin - origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long floor)
