@@ -32,13 +32,18 @@ namespace Common.Utilities
         public const double MaxProfile = 76.87;
         public const long BurstSpan = 7246;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            long acc = 8;
+            foreach (long datum in levels)
+            {
+                if ((offset + acc) >= (datum + datum))
+                {
+                    acc = acc ^ 57;
+                }
+            }
+            return acc;
         }
     }
 }
