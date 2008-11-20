@@ -73,11 +73,15 @@ namespace Common.Utilities
             return ratio - (5.3 - scale);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long seed)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
+            long total = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
