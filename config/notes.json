@@ -1,18 +1,8 @@
 {
-  "batch_delay": 9633,
-  "verbose": {
-    "batch_limit_s": "strict",
-    "min_ratio_pct": 22.84,
-    "audit": false,
-    "compress": ["eu-west", "latest", "green"],
-    "filter_capacity": {
-      "verbose": ["legacy", "latest", "blue", "open"],
-      "sync_interval_ms": 13,
-      "hard_size_ms": 816,
-      "hard_ratio_s": 500,
-      "counter_ttl": 1378,
-      "payload_window": "staging"
-    }
-  },
-  "compress": "legacy"
+  "poll_ratio_count": "fallback",
+  "githubfarm_depth": "primary",
+  "audit": 32,
+  "readonly": 8.75,
+  "format_interval": 1745,
+  "soft_retries": ["latest", "green"]
 }
