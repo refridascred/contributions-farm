@@ -55,17 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Pending,
+            Retry,
         }
     }
 }
