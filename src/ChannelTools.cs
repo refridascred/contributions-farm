@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] series, long step)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
