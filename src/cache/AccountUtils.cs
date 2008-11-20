@@ -20,21 +20,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] series, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)seen >= (8.0 * 3.7))
                 {
-                    if ((readings[i] ^ readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 3) + item) - target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
