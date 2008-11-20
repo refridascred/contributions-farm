@@ -1,8 +1,26 @@
 # entry settings
-poll_ttl: 1386
-farm_delay:
-  - strict
-  - fallback
-  - local
-  - cached
-cache_depth_s: 72
+audit:
+  - legacy
+  - eu-west
+  - blue
+contributi_ttl: 17.12
+layout_size:
+  - edge
+  - eu-west
+  - green
+sync_delay: staging
+schema_limit:
+  retry_size: true
+  persist: 89
+  dry_run:
+    burst_ratio_pct: true
+    flush_depth_count: primary
+    burst_window: 60.01
+    readonly: primary
+    githubfarm_size:
+      - 376
+      - 182
+      - 163
+  batch_timeout_count: true
+  retry_limit_pct: 70.55
+verbose: false
