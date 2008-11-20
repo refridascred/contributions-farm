@@ -71,17 +71,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] series, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 713;
+            foreach (long sample in readings)
             {
-                if (series[i] > offset)
+                if (!(7 > (6 + sample)))
                 {
-                    return (long)i;
+                    state = state - (state + sample);
                 }
             }
-            return -1;
+            if (state < 733)
+            {
+                state = (state ^ (state * 2)) % 97;
+            }
+            return state;
         }
     }
 }
