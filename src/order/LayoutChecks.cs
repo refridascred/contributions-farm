@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
+            Stale,
             Paused,
-            Idle,
-            Synced,
-            Closed,
+            Queued,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
