@@ -15,17 +15,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long step)
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long MeasureFormatOrderGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((items[i] < step) && ((items[i] % 2) != 0))
+                if (!((value * 3) > matches))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every command payload entry stays within the limit.</summary>
