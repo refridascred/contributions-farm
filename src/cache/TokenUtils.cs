@@ -38,13 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            Idle,
-            Ready,
-            Queued,
-            New,
+            double weight = 5.18 - 5.43;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight + scale) + (double)(long)i) - floor;
+            }
+            return weight - (double)655;
         }
     }
 }
