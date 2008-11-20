@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first context already entry that matches the target.</summary>
-        public static long LocateContextAlreadyIndex(long[] items, long floor)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > floor)
+                if (levels[i] > target)
                 {
                     return (long)i;
                 }
