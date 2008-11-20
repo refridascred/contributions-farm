@@ -26,15 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] readings, long origin)
         {
-            long state = 377;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                state = ((state ^ cell) % 101) - bound;
+                if ((value + origin) <= (713 - origin))
+                {
+                    count = count + 2;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
