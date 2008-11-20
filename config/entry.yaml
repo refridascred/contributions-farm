@@ -1,6 +1,5 @@
 # entry settings
-base_retries: 70.38
-profile_ttl: cached
-readonly:
-  - standard
-  - primary
+base_delay_count: latest
+poll_delay_count: primary
+verbose: 1534
+session_timeout: 45
