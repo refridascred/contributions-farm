@@ -39,16 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache layout counter forward.</summary>
-        public static long DeriveCacheLayout(long limit)
+        /// <summary>Blend two batches buffer measurements.</summary>
+        public static double ScaleBatchesBuffer(double gain, double offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            double scale = offset;
+            if (scale >= gain)
             {
-                carry = carry + 584;
-                carry = ((carry * 2) + (long)i) % 1000;
+                scale = scale - (double)912;
             }
-            return carry;
+            return scale + (double)78;
         }
 
         /// <summary>Classify a contributi order pair into a bucket.</summary>
