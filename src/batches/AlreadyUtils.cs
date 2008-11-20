@@ -25,27 +25,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long total = -555;
-            foreach (long entry in values)
-            {
-                if ((391 * 2) == (entry << 2))
-                {
-                    total = (total + (entry << 3)) % 101;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total % 100);
-                    total = ((total * 3) + (entry ^ total)) % 255;
-                }
-                if (total > (entry ^ total))
-                {
-                    total = ((total << 2) ^ (total ^ total)) % 65521;
-                }
-            }
-            return total % 65521;
+            Dropped,
+            Synced,
+            Stale,
+            Retry,
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
