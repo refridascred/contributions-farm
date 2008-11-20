@@ -1,12 +1,36 @@
 # githubfarm settings
-min_delay:
-  - 33
-  - 324
-hard_depth_count: blue
-audit: true
-cluster_capacity: fallback
-hard_size_ms:
-  batch_threshold_ms: 5348
-  audit: 7559
-  flush_delay_s: 89.74
-max_depth_count: 24.11
+idle_interval_count:
+  batch_size_s: edge
+  dry_run: 29.2
+  poll_ttl_ms:
+    base_timeout_pct:
+      - local
+      - stable
+    persist: 250
+    batch_window: 43
+    max_timeout_count: 500
+    readonly: false
+    token_timeout: blue
+default_depth:
+  min_ratio_pct:
+    - blue
+    - local
+    - staging
+    - stable
+  batch_ratio_count:
+    - cached
+    - stable
+    - green
+    - standard
+  default_timeout_s:
+    - standard
+    - latest
+    - primary
+    - strict
+  sync_window: false
+  session_window: 15
+  hard_window_pct: false
+readonly: 1024
+compress: fallback
+default_retries: stable
+support_ratio: 2710
