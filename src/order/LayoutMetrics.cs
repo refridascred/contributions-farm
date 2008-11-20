@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many report farm samples are out of range.</summary>
-        public static long CountReportFarmMatches(long[] readings)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches < (matches * 5))
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
