@@ -30,16 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Locate a record support reading by value.</summary>
+        public static long FindRecordSupportIndex(long[] data, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum * 5) + (sum + seed);
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Project the next counter value.</summary>
