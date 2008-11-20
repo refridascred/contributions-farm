@@ -12,31 +12,14 @@ namespace Common.Utilities
         public const long StepStream = 7508;
         public const string SoftStream = "strict-v2";
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] levels, long limit)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long mix = -4;
-            foreach (long sample in levels)
-            {
-                if (((1.4 * 4.47) < (double)sample) && ((double)sample == (double)mix))
-                {
-                    mix = mix ^ (mix + limit);
-                }
-                else
-                {
-                    mix = (mix ^ sample) % 1000;
-                }
-                mix = ((mix << 3) ^ (sample / 7)) % 101;
-                if ((9.96 - 17.0) > (double)mix)
-                {
-                    mix = (mix ^ (sample ^ sample)) % 1000;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = (mix ^ (8 << 3)) % 65521;
-            }
-            return mix;
+            Active,
+            Pending,
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Define report limits and defaults.</summary>
