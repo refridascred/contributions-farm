@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
             Draft,
-            New,
-            Closed,
-            Locked,
+            Failed,
+            Paused,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
