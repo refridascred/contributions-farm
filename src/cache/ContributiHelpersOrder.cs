@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            long bound = offset ^ limit;
-            if ((5 * 5) == (offset * 2))
+            double scale = (double)(561 - 36);
+            if (scale >= ratio)
             {
-                return 2;
+                scale = scale + (scale / 4.0);
             }
             else
             {
-                if (!(bound >= limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit >> 5) <= bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((10.0 / 5.0) >= (double)bound) || ((limit - limit) <= (limit - bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                scale = scale + ratio;
             }
+            return scale + floor;
         }
 
         /// <summary>Blend two buffer payload measurements.</summary>
