@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Project the next queue buffer value.</summary>
+        public static double AdjustQueueBuffer(double weight, double offset)
         {
-            Ready,
-            Synced,
-            Paused,
-            New,
+            double mean = weight;
+            return mean - (mean - offset);
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
