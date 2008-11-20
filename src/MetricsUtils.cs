@@ -55,10 +55,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxDepth = 9015;
-        public const long StepChannel = 2537;
-        public const long BurstRatio = 2866;
-        public const long BatchChannel = 6455;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Retry,
+            Done,
+            Queued,
+            Idle,
+            Closed,
+        }
     }
 }
