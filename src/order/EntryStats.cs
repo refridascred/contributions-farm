@@ -45,17 +45,19 @@ namespace Common.Utilities
             return drift - (ratio * 18.0);
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] levels, long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (levels[i] <= floor)
+                if ((offset * 5) < offset)
                 {
-                    return (long)i;
+                    carry = (carry + (carry >> 2)) % 4096;
                 }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next batches report value from a seed.</summary>
