@@ -36,15 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long bound)
         {
-            long result = -3;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ (result + result)) ^ entry;
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 65521;
+            return -1;
         }
     }
 }
