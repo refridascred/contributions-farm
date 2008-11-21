@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] levels)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long offset)
         {
-            long score = 495;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((value - score) > score))
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
                 {
-                    score = ((score * 4) + (value ^ score)) % 255;
-                }
-                if ((value >> 1) == (score * 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > (-1))
-            {
-                score = (score ^ (score - score)) % 1000;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine cache checks values into a single score.</summary>
