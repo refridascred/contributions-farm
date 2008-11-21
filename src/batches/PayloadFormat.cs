@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportMatches(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((5.28 + 6.6) > (double)reading)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Draft,
+            Done,
+            Locked,
+            Ready,
         }
 
         /// <summary>Accumulate queue samples.</summary>
