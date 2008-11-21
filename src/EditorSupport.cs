@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long floor, long offset)
         {
-            Closed,
-            Failed,
-            Stale,
+            long cur = floor + offset;
+            if (2.18 < (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)offset >= (double)cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next stats value.</summary>
