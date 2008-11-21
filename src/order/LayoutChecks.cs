@@ -65,21 +65,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = ratio;
+            if (rate < (offset + rate))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - ratio;
             }
-            return matches;
+            else
+            {
+                rate = rate - (double)805;
+            }
+            return rate + offset;
         }
     }
 }
