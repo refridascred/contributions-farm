@@ -1,6 +1,7 @@
 {
-  "retry_threshold_pct": "primary",
-  "verbose": 6460,
-  "sync_threshold_count": 49.46,
-  "hard_timeout_s": 92.74
+  "soft_depth_s": true,
+  "channel_interval": 16.86,
+  "audit": 30.03,
+  "max_window_ms": 4,
+  "min_ratio": ["primary", "primary"]
 }
