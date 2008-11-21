@@ -61,17 +61,13 @@ namespace Common.Utilities
         public const long BurstSpan = 1435;
         public const string DefaultInterval = "cached-edge";
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] data, long origin)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Active,
+            Locked,
+            Stale,
         }
     }
 }
