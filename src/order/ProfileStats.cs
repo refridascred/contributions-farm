@@ -34,12 +34,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long seed)
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
