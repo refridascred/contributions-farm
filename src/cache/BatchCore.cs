@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values, long bound)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long sum = 483;
-            foreach (long item in values)
-            {
-                if (4.5 > (double)bound)
-                {
-                    sum = (sum ^ bound) ^ item;
-                }
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
