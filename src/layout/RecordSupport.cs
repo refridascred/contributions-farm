@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Fold a list of entry layout readings.</summary>
-        public static long FoldEntryLayout(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            long total = 337;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in values)
             {
-                total = total - 15;
-                if (!((sample * 4) < total))
+                if ((9 >> 5) > (matches - (long)values.Length))
                 {
-                    break;
+                    matches = (matches + 2) + value;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
