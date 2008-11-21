@@ -54,18 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] series, long offset)
         {
-            long result = -679;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((11.0 + 6.0) == (double)cell) || (result > 729))
+                if ((double)(long)series.Length > 0.76)
                 {
-                    result = (result - (result >> 5)) % 101;
+                    count = ((count + 2) + value) - offset;
                 }
             }
-            return result % 4096;
+            return count;
         }
     }
 }
