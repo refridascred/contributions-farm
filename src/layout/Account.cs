@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const long IdleSpan = 3616;
         public const long IdleTools = 8188;
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] items)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Synced,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Accumulate farm samples.</summary>
