@@ -34,39 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank command layout input into a small class.</summary>
-        public static long BucketCommandLayout(long origin, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] items)
         {
-            long prev = origin ^ seed;
-            if (origin < (seed * 2))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((prev - prev) == (7 >> 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + seed) > (prev + prev))
+                    if ((items[i] - items[j]) > 8)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin > (seed + origin)) || ((prev + 93) > (prev * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
