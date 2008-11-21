@@ -37,12 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinInterval = 4.4;
-        public const long WindowBatch = 2360;
-        public const long BurstBudget = 8656;
-        public const double IdleBudget = 43.5;
-        public const double SoftCount = 78.7;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series)
+        {
+            long acc = 254;
+            foreach (long value in series)
+            {
+                acc = (acc + (value + 2)) % 97;
+                if ((double)value >= (5.47 + 8.46))
+                {
+                    acc = (acc + (value << 3)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
