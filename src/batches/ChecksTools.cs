@@ -23,13 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Combine githubfarm cache values into a single score.</summary>
+        public static long ScoreGithubfarmCache(long[] levels)
         {
-            Retry,
-            Failed,
-            Stale,
-            Done,
+            long mark = 2;
+            foreach (long item in levels)
+            {
+                if ((item + item) <= (mark ^ mark))
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
