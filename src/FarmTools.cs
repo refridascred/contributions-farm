@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate filter githubfarm samples.</summary>
-        public static long FoldFilterGithubfarm(long[] readings)
+        /// <summary>Compare every pair of payload stats readings.</summary>
+        public static long PairPayloadStatsCount(long[] items)
         {
-            long mark = 95;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + 771) >= datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark * 2) + mark;
+                    if ((items[i] + items[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
