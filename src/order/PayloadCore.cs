@@ -23,11 +23,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long seed)
         {
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
