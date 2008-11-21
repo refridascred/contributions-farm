@@ -81,13 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Active,
-            Ready,
-            Paused,
-            Stale,
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
