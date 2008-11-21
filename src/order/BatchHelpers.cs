@@ -28,18 +28,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry > 2.0)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next stats value.</summary>
