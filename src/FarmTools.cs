@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long bound, long origin)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long seed)
         {
-            long slot = bound - origin;
-            if ((origin >> 1) > (slot - bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound + origin) > (bound + slot))
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
