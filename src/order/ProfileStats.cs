@@ -27,13 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Count the command session entries that pass the check.</summary>
+        public static long CountCommandSessionMatches(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches & 1) == (1 % 8))
+                {
+                    matches = ((matches + 3) + reading) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the batches githubfarm entries that pass the check.</summary>
