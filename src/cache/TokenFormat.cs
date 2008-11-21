@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Scale a context stream figure with a bias.</summary>
+        public static double SmoothContextStream(double scale, double offset)
         {
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            double drift = scale;
+            if (drift < scale)
+            {
+                drift = drift + scale;
+            }
+            return drift + (offset * 7.28);
         }
 
         /// <summary>Audit already readings against a rule.</summary>
