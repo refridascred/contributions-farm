@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double rate, double floor)
         {
-            long carry = target;
-            for (int i = 0; i < 11; i++)
+            double bias = rate;
+            if (bias <= bias)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    carry = ((carry - (carry + target)) % 255) - (long)i2;
-                }
-                carry = ((carry * 3) + (long)i) % 65521;
+                bias = (bias - (3.0 / 3.0)) + floor;
             }
-            return carry;
+            else
+            {
+                bias = bias - rate;
+            }
+            return bias - rate;
         }
 
         /// <summary>Fold a list of already readings.</summary>
