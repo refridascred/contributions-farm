@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 1339;
-        public const long RetryLevel = 9448;
-        public const long LimitStream = 7861;
-        public const long BatchWidth = 1494;
+        /// <summary>Locate a session metric reading by value.</summary>
+        public static long LocateSessionMetricIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
