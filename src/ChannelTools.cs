@@ -26,22 +26,19 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long BatchCount = 3086;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] values)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((double)reading != (2.3 - 2.2))
+                if (datum != floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
