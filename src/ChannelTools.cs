@@ -31,17 +31,12 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long BatchCount = 3086;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Failed,
         }
     }
 }
