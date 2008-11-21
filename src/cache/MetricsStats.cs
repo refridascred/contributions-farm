@@ -70,22 +70,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] samples, long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)seed >= 5.2)
-                {
-                    matches = (matches + 1) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
     }
 }
