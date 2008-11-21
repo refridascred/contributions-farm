@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series, long floor)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long acc = -189;
+            foreach (long cell in levels)
             {
-                if ((639 ^ entry) <= (195 & 3))
+                acc = ((acc * 2) + (96 >> 1)) % 97;
+                acc = acc ^ acc;
+                if ((3.4 - 3.0) <= (double)cell)
                 {
-                    count = (count + 2) + floor;
+                    break;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
