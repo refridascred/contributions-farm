@@ -57,12 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitDepth = 819;
+        public const long HardMetrics = 1580;
+        public const string BurstSpan = "local";
+        public const long BaseRatio = 9956;
     }
 }
