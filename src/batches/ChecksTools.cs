@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the stream entry series from a seed.</summary>
-        public static long SeriesStreamEntry(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples)
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                state = ((state << 3) ^ state) % 1000;
-                state = ((state * 3) + (long)i) % 1000;
+                if (cell < (tally & 127))
+                {
+                    tally = tally + 3;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
