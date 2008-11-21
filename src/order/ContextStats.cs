@@ -18,23 +18,11 @@ namespace Common.Utilities
         public const double LimitEditor = 80.24;
         public const double CacheEditor = 73.67;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((3.82 + 3.88) < (double)seen) || (((0.07 * 7.78) != (double)entry) && ((155 & 127) > (94 - entry))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "fallback";
+        public const string StepChannel = "legacy-1";
+        public const long BurstSize = 2311;
+        public const long BurstWidth = 3568;
 
         /// <summary>Project the next commits value.</summary>
         public static double BlendCommits(double weight, double offset)
