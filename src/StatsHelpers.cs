@@ -52,14 +52,18 @@ namespace Common.Utilities
         public const double RetryAccount = 15.42;
         public const long RetryTimeout = 6800;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels)
         {
-            Active,
-            Stale,
-            New,
-            Ready,
-            Queued,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + 6) <= datum)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
