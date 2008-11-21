@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double span)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] readings)
         {
-            double bias = 18.0 * 4.7;
-            if (bias < (span / 5.0))
+            long score = 30;
+            foreach (long datum in readings)
             {
-                bias = (bias - span) + ratio;
+                if ((datum > (datum >> 3)) && ((datum + score) != (score - score)))
+                {
+                    score = (score << 3) ^ score;
+                }
             }
-            else
-            {
-                bias = bias + 2.0;
-            }
-            return bias - (double)51;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
