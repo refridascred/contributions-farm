@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Count the counter batch entries that pass the check.</summary>
+        public static long CountCounterBatchOutliers(long[] values)
         {
-            Closed,
-            Pending,
-            Retry,
-            Ready,
-            Synced,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((double)count < (8.92 / 4.0))
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
