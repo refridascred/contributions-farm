@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowLevel = 8503;
+        public const long RetryChecks = 3744;
+        public const long WindowTimeout = 5414;
+        public const long LimitChecks = 2268;
+        public const double BatchDepth = 91.8;
 
         /// <summary>Count format tools pairs that satisfy a relation.</summary>
         public static long PairFormatToolsCount(long[] data)
