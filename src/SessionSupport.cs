@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate format tools readings against a bound.</summary>
+        public static bool CheckFormatToolsRange(long[] values, long origin)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
+            bool stale = true;
+            foreach (long cell in values)
+            {
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
