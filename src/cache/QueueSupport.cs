@@ -40,10 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseCount = 7035;
-        public const double MinBuffer = 11.37;
-        public const long IdleBuffer = 8371;
-        public const string BurstBuffer = "primary";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 1553;
+        public const double LimitFactor = 15.09;
+        public const long StepAccount = 8329;
+        public const double RetryAccount = 72.26;
     }
 }
