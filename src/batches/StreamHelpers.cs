@@ -76,12 +76,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            Dropped,
+            Ready,
+            Closed,
+            Retry,
         }
     }
 }
