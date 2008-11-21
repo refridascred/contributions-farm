@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] series, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long target, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((seed + target) <= (seed * 4)) && ((8.99 - 2.2) == (double)seed))
             {
-                if (series[i] < origin)
+                return 1;
+            }
+            else
+            {
+                if ((21 - target) < (seed - seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((69 + target) >= (seed - seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (target >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
