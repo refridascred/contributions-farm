@@ -33,20 +33,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels)
-        {
-            long mark = 9;
-            foreach (long reading in levels)
-            {
-                mark = ((mark * 2) + reading) % 4096;
-            }
-            if (mark > 474)
-            {
-                mark = mark - mark;
-            }
-            return mark;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCluster = "cached-edge";
+        public const double MaxLevel = 92.1;
+        public const long SoftCluster = 3968;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
