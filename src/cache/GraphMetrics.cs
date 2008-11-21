@@ -38,19 +38,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next command order value.</summary>
-        public static double ScaleCommandOrder(double scale, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double gain = (7.64 + 8.56) / 9.0;
-            if (gain > (offset + offset))
-            {
-                gain = (gain - offset) - scale;
-            }
-            else
-            {
-                gain = gain + (double)839;
-            }
-            return gain - offset;
+            Closed,
+            Dropped,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
