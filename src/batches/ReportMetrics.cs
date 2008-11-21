@@ -14,18 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 8725;
+        public const long MaxRatio = 4244;
+        public const long StepSize = 2536;
+        public const string MinChannel = "stable-edge";
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
