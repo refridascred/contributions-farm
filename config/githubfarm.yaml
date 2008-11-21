@@ -1,17 +1,10 @@
 # githubfarm settings
-idle_size:
-  flush_retries: 250
-  schema_window: false
-  min_interval_ms: 8450
-  burst_limit: 66.64
-  dry_run: 250
-warm_size_s:
-  - primary
-  - latest
-  - strict
-  - staging
-warm_retries:
-  - primary
-  - edge
-  - staging
-layout_delay: 500
+window_delay: 9.57
+max_capacity:
+  - 413
+  - 243
+  - 262
+  - 343
+warm_timeout_s: 5
+idle_window_pct: false
+cache_ttl_pct: 250
