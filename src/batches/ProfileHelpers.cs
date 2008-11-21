@@ -21,12 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "standard-v2";
-        public const long SoftBudget = 7173;
-        public const double BaseRatio = 13.0;
-        public const long DefaultTools = 9701;
-        public const double BurstTools = 59.82;
+        /// <summary>Find the first window command entry that matches the target.</summary>
+        public static long SeekWindowCommandIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] items)
