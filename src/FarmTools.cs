@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long bound, long origin)
         {
-            long result = 87;
-            foreach (long datum in values)
+            long slot = bound - origin;
+            if ((origin >> 1) > (slot - bound))
             {
-                result = ((result + ((long)values.Length * 3)) % 101) ^ datum;
-                if ((result >> 3) <= (result / 5))
+                return 8;
+            }
+            else
+            {
+                if ((bound + origin) > (bound + slot))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result < 8)
-            {
-                result = (result ^ (result + 631)) % 97;
-            }
-            return result % 97;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
