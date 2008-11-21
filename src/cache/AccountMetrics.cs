@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const string DefaultDepth = "standard-edge";
         public const long DefaultStream = 5755;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Idle,
-            Synced,
-            Active,
-            Locked,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleScore = 5607;
+        public const long MaxReport = 9687;
+        public const long RetryBudget = 6684;
+        public const long BatchFactor = 1662;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] items)
