@@ -17,11 +17,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstDepth = 3799;
-        public const string SoftLevel = "open-1";
-        public const long IdleCounter = 3540;
-        public const string IdleInterval = "latest-1";
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Locked,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double bias, double offset)
