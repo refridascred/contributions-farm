@@ -30,23 +30,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (((mark * 2) + (mark % 12)) % 255) + (long)i2;
-                }
-                if ((limit ^ (long)i) <= (limit & 63))
-                {
-                    mark = (mark << 3) ^ ((long)i + mark);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Measure how many queue stream samples are out of range.</summary>
