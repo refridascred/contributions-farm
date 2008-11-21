@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next stats tools value.</summary>
-        public static double SmoothStatsTools(double ratio, double floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            double ratio2 = ratio;
-            return (ratio2 - (3.4 / 4.0)) + floor;
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (9 <= (reading - tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
