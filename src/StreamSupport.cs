@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] items, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((707 >> 1) != (34 + offset))
+                if (value != offset)
                 {
-                    matches = (matches + 1) + item;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
