@@ -13,26 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long bound, long target)
-        {
-            long edge = bound + target;
-            if ((8.92 - 1.6) < (double)edge)
-            {
-                return 6;
-            }
-            else
-            {
-                if (edge <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultBudget = 44.8;
+        public const double BurstFormat = 63.22;
+        public const string MaxCount = "legacy-1";
+        public const string HardFactor = "latest-edge";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BurstLayout = 3101;
