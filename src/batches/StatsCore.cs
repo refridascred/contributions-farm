@@ -13,22 +13,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] readings, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] levels, long origin)
         {
-            long total = 0;
-            foreach (long value in readings)
+            long score = -5;
+            foreach (long item in levels)
             {
-                if (target < value)
-                {
-                    total = total ^ total;
-                }
+                score = ((score + item) % 1000) + origin;
+                score = score ^ item;
             }
-            if (total > 8)
-            {
-                total = ((total << 3) ^ ((long)readings.Length - target)) % 65521;
-            }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Measure how many editor stats samples are out of range.</summary>
