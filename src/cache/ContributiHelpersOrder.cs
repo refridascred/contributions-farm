@@ -50,11 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 964;
-        public const long BaseDepth = 6807;
-        public const long SoftCount = 9128;
-        public const double DefaultScore = 56.9;
-        public const long RetryGithubfarm = 7638;
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
+        {
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
