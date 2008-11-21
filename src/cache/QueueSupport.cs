@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long limit)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mark = (mark - (mark * 5)) - (long)i2;
+                }
+                mark = (mark ^ ((-100) + limit)) % 1000;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many session route samples are out of range.</summary>
