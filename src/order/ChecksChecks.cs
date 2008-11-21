@@ -16,16 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mark = (mark - (floor >> 4)) % 97;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((((double)count > 7.3) || ((count & 127) > (count + count))) && ((double)sample <= 9.2))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the counter status values.</summary>
