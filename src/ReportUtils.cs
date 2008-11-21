@@ -54,18 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
-        public static long TallyGithubfarmChecksHits(long[] samples, long seed)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count / 9) <= (entry + count))
+                if (data[i] <= origin)
                 {
-                    count = (count + 1) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
