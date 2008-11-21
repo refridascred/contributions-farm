@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double scale, double floor)
+        /// <summary>Classify a stats cache pair into a bucket.</summary>
+        public static long ClassifyStatsCache(long offset, long limit)
         {
-            double weight = floor;
-            if (weight < (3.8 / 7.0))
+            if ((limit - offset) <= limit)
             {
-                weight = (weight - (floor / 8.0)) + scale;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                weight = weight + (double)(long)i;
+                if ((double)480 <= (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-86) / 2) <= (offset << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit / 3) > (offset / 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return weight - floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
