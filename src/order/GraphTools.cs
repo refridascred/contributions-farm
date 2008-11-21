@@ -50,13 +50,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Find the first schema checks entry that matches the target.</summary>
+        public static long SeekSchemaChecksIndex(long[] data, long offset)
         {
-            Ready,
-            Done,
-            Pending,
-            Draft,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the commits record series from a seed.</summary>
