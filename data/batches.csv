@@ -1,7 +1,9 @@
-id,owner,count
-1,84,714
-2,stable,74.15
-3,31.12,220
-4,eu-west,194
-5,fallback,fallback
-6,fallback,cached
+id,label,owner,state,count
+1,74.87,66.55,12.79,green
+2,426,257,45.34,local
+3,409,540,702,10
+4,stable,679,open,primary
+5,7.37,105,eu-west,252
+6,834,534,150,841
+7,cached,63.14,491,712
+8,419,61.72,44.77,44
