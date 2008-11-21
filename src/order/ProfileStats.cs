@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((9.0 / 8.0) <= (double)seed)
-                {
-                    matches = (matches + 1) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinCount = "alpha";
+        public const string MinSupport = "cached";
+        public const long LimitSpan = 9031;
+        public const long LimitSupport = 2717;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
