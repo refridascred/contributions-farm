@@ -29,18 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] levels, long step)
+        /// <summary>Match up stats account samples.</summary>
+        public static long OverlapStatsAccountCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + datum) < (44 % 16))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 2) + step;
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
