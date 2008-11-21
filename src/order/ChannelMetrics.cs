@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long MaxWidth = 2693;
         public const long DefaultCounter = 951;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 7921;
-        public const double SoftWindow = 24.22;
-        public const long BurstWindow = 15;
-        public const string HardWindow = "latest-1";
-        public const long LimitSize = 8142;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string IdleScore = "cached-v2";
