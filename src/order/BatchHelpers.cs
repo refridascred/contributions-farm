@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] levels, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((89 * 5) >= entry)
+                if (datum > seed)
                 {
-                    hits = (hits + 1) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a window summary.</summary>
