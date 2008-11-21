@@ -15,18 +15,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] samples, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((reading & 7) >= (target << 1)) || ((double)target > (14.0 + 3.0)))
+                if ((items[i] <= seed) && ((items[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
