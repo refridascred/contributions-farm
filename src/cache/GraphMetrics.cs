@@ -49,32 +49,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long seed, long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long span = seed - limit;
-            if ((3 - (-26)) <= (seed + span))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed != (1.8 / 4.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((4.08 + 8.89) < (double)limit) || ((span / 2) < (span ^ seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every already command entry stays within the limit.</summary>
