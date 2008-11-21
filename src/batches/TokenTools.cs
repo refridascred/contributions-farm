@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally - datum) <= (tally % 10))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBudget = 4750;
+        public const long BurstBatches = 5763;
+        public const long BurstSpan = 5646;
+        public const long MinBatches = 2452;
+        public const string BaseBatches = "cached";
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double bias, double bias2)
