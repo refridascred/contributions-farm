@@ -28,12 +28,31 @@ namespace Common.Utilities
         public const long MaxCount = 4379;
         public const string MinSize = "cached-v2";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long origin)
         {
-            Locked,
-            Closed,
-            Retry,
+            if ((offset ^ origin) > (origin * 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)origin < 7.62) || ((double)origin < (9.0 / 4.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= (12.0 / 6.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a filter contributi reading.</summary>
