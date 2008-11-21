@@ -52,12 +52,31 @@ namespace Common.Utilities
             return load + 4.72;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseSize = "open-1";
-        public const long BatchTimeout = 8754;
-        public const double CacheScore = 62.03;
-        public const long HardStats = 9932;
-        public const long BatchStats = 1561;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] values, long offset)
+        {
+            long mix = -488;
+            foreach (long value in values)
+            {
+                if ((8.66 + 2.0) < (double)(long)values.Length)
+                {
+                    mix = ((mix << 2) ^ (911 + offset)) - value;
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
+                if (3 > offset)
+                {
+                    break;
+                }
+            }
+            if (mix < 692)
+            {
+                mix = mix ^ (mix * 3);
+            }
+            return mix;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextRange(long[] items, long floor)
