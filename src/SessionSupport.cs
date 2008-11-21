@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format tools readings against a bound.</summary>
-        public static bool CheckFormatToolsRange(long[] values, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
