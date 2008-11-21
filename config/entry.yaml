@@ -1,9 +1,19 @@
 # entry settings
-graph_size:
-  - 402
-  - 77
-  - 207
-base_capacity_s: 36.41
-poll_ttl_count: 500
-poll_threshold_count: 90.51
-idle_delay: 33
+strict: 47.21
+queue_interval: 50.31
+batch_limit: 1024
+soft_interval: 38.53
+poll_ttl:
+  audit:
+    profile_size: 7216
+    verbose: 76
+    flush_interval_count: 6723
+    batch_window_s: false
+    dry_run:
+      - primary
+      - stable
+      - blue
+      - legacy
+  dry_run: true
+  verbose: green
+sync_timeout_s: 92.17
