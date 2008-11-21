@@ -31,11 +31,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double gain, double bias)
+        /// <summary>Find the first already metric entry that matches the target.</summary>
+        public static long LocateAlreadyMetricIndex(long[] levels, long seed)
         {
-            double bias2 = (gain + bias) / 9.0;
-            return bias2 + (bias2 / 2.0);
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
