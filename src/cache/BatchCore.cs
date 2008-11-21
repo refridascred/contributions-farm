@@ -23,12 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = rate;
+            if (load < offset)
+            {
+                load = load - offset;
+            }
+            return load + (7.07 * 9.56);
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
