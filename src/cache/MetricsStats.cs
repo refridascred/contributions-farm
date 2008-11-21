@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            Active,
             Stale,
-            Queued,
-            New,
+            Dropped,
+            Locked,
+            Ready,
+            Failed,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
