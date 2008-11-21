@@ -88,20 +88,21 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] samples, long bound)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long sum = -2;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum << 3) ^ (bound + (-991));
-                sum = (sum * 2) + (sum + value);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum > 46)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            return matches;
         }
     }
 }
