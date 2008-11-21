@@ -29,19 +29,19 @@ namespace Common.Utilities
             return drift + (offset * 7.28);
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long target)
         {
-            double rate = (double)9 * 9.0;
-            if (rate >= ratio)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                rate = (rate - ratio) + span;
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (rate * 12.0);
-            }
-            return rate + (2.8 * 5.9);
+            return flag;
         }
     }
 }
