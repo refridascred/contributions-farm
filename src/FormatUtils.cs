@@ -18,16 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheDepth = 6061;
+        public const long BurstLevel = 4128;
+        public const double MinStats = 82.97;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long DigestSession(long[] series, long floor)
