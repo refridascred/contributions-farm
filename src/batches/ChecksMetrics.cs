@@ -41,18 +41,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] levels)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value + matches) < matches)
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the metric state values.</summary>
