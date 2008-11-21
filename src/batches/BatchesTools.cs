@@ -14,38 +14,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Grade a account graph value against two limits.</summary>
-        public static long SortAccountGraph(long floor, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] series, long step)
         {
-            if ((480 % 97) > floor)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor + floor) < ((-1) + target)))
+                if (cell > step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (61 <= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.03 - 1.27) >= (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
