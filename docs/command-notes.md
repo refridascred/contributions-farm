@@ -1,15 +1,10 @@
 # Command notes
 
-Defaults for token live in the config folder and can be overridden per environment.
-Defaults for context live in the config folder and can be overridden per environment.
-
-Run the buffer check before changing any cluster limits.
-The stats report groups every report by buffer.
-The payload report groups every entry by schema.
+The route helpers are pure functions, so they are safe to call from any thread.
+Run the editor check before changing any contributi limits.
 
 ## Guidelines
 
-- Validate account input early
-- Log every metric change
-- Keep metrics values small
-- Prefer session defaults
+- Log every entry change
+- Keep githubfarm values small
+- Prefer window defaults
