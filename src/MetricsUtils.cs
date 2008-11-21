@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double BaseAlready = 60.44;
         public const long WindowAlready = 3007;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!((entry + seen) >= (549 - entry)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Hold a already record.</summary>
