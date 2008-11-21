@@ -15,13 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Synced,
+            Paused,
+            Pending,
         }
 
         /// <summary>Hold a record header.</summary>
