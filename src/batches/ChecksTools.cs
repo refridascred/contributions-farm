@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const string RetrySession = "strict-edge";
         public const double WindowSession = 5.87;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] series, long seed)
+        /// <summary>Look up the position of a queue batches sample.</summary>
+        public static long SeekQueueBatchesIndex(long[] items, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                if (items[i] < target)
                 {
                     return (long)i;
                 }
