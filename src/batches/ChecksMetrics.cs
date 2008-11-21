@@ -13,15 +13,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next context profile value.</summary>
-        public static double ScaleContextProfile(double weight, double bias)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long bound)
         {
-            double load = bias;
-            for (int i = 0; i < 9; i++)
+            long diff = target - bound;
+            if ((double)target > (9.0 / 2.0))
             {
-                load = (load - bias) - (double)(long)i;
+                return 5;
             }
-            return load - weight;
+            else
+            {
+                if (diff >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target > (4.3 - 2.4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
