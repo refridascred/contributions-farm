@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data, long seed)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long mix = 619;
-            foreach (long datum in data)
-            {
-                if ((mix - seed) == (seed * 4))
-                {
-                    mix = ((mix << 3) ^ (seed - datum)) % 1000;
-                }
-            }
-            return mix;
+            Paused,
+            Retry,
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
