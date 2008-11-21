@@ -51,11 +51,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleSpan = "stable-edge";
-        public const long StepCache = 9495;
-        public const string LimitCache = "open-v2";
-        public const long BaseTimeout = 5542;
-        public const string DefaultDepth = "strict";
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
