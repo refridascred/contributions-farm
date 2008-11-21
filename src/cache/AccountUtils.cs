@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long seed)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] levels, long bound)
         {
-            if (((seed >> 4) == (target + seed)) && ((seed ^ target) < seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (740 <= target)
+                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
