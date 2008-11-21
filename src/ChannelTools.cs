@@ -27,18 +27,25 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long BatchCount = 3086;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] data, long step)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long step = seed - target;
+            if ((step << 3) < (seed % 7))
             {
-                if (!((count ^ step) < count) || ((3.0 - 8.28) == (double)datum))
+                return 0;
+            }
+            else
+            {
+                if ((722 + target) < (-34))
                 {
-                    count = count + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
