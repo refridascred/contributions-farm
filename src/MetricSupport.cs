@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinSpan = 72.12;
-        public const long IdleQueue = 101;
-        public const long RetryQueue = 1506;
-        public const string CacheRatio = "stable-v2";
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double floor)
+        {
+            double drift = (double)(1 << 3);
+            if (drift > drift)
+            {
+                drift = (drift + (rate + drift)) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)926;
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double rate, double offset)
