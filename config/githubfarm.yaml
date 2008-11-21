@@ -1,4 +1,12 @@
 # githubfarm settings
-flush_window_count: 99
-poll_ratio: 30.31
-base_size_count: false
+record_capacity:
+  - 415
+  - 248
+  - 57
+  - 42
+context_delay: blue
+default_ttl_s: 30
+token_depth:
+  - 171
+  - 126
+hard_ttl: green
