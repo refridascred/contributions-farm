@@ -1,12 +1,6 @@
 # githubfarm settings
-tools_timeout: eu-west
-poll_capacity: 33
-dry_run: 16
-window_depth:
-  retry_limit_s: 60
-  readonly: standard
-  format_delay:
-    - 490
-    - 196
-    - 117
-poll_threshold: 35
+sync_capacity_pct: green
+min_interval_s: false
+verbose: 2885
+soft_capacity: blue
+base_retries_pct: false
