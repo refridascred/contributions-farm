@@ -1,5 +1,6 @@
 {
-  "cache_size": [459, 191, 54, 14],
-  "idle_interval_s": [291, 114, 159],
-  "max_threshold": false
+  "burst_size_ms": 45.2,
+  "sync_timeout_count": [477, 294, 495, 404],
+  "batch_limit_count": false,
+  "warm_limit": false
 }
