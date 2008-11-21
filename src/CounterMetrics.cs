@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long limit, long floor)
+        /// <summary>Locate a account tools reading by value.</summary>
+        public static long LookupAccountToolsIndex(long[] data, long origin)
         {
-            if ((floor >> 5) > floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit != (9.8 - 2.38))
+                if (data[i] < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the route class values.</summary>
