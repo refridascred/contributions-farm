@@ -12,18 +12,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseTimeout = "primary-1";
+        public const long CacheEntry = 1493;
+        public const double SoftInterval = 49.0;
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
