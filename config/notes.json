@@ -1,11 +1,17 @@
 {
-  "flush_window_s": {
-    "sync_retries_s": "legacy",
-    "metric_timeout": "cached",
-    "hard_delay_pct": [98, 54],
-    "command_threshold": 250,
-    "enabled": 28.11
+  "persist": 9,
+  "retry_window": {
+    "readonly": false,
+    "idle_timeout": 90.0,
+    "payload_retries": false,
+    "flush_ratio_s": ["blue", "standard", "standard", "local"],
+    "idle_depth": false,
+    "default_limit_s": true
   },
-  "metric_delay": 78.91,
-  "max_ratio_s": true
+  "enabled": 250,
+  "flush_capacity": {
+    "entry_size": false,
+    "profile_window": 11.27,
+    "persist": "eu-west"
+  }
 }
