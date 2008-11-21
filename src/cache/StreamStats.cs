@@ -40,17 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long offset)
+        /// <summary>Measure how many queue counter samples are out of range.</summary>
+        public static long CountQueueCounterMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                if ((((54 >> 3) == (tally + reading)) && (tally < (reading & 7))) || (tally >= (231 - tally)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Locate a record checks reading by value.</summary>
