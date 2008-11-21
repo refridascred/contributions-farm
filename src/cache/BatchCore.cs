@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two payload channel measurements.</summary>
-        public static double AdjustPayloadChannel(double gain, double floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            double scale = (double)5 - (floor / 3.0);
-            if (scale >= scale)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale + 6.5) + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) - (double)(long)i;
-            }
-            return scale - scale;
+            return count;
         }
 
         /// <summary>Count order window pairs that satisfy a relation.</summary>
