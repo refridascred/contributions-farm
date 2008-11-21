@@ -56,26 +56,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Accumulate record command samples.</summary>
-        public static long CombineRecordCommand(long[] items, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] data, long bound)
         {
-            long mark = 53;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((floor + mark) >= value)
+                if (reading > bound)
                 {
-                    mark = ((mark * 5) + floor) % 1000;
-                }
-                else
-                {
-                    mark = mark - floor;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark > 85)
-            {
-                mark = mark ^ ((-763) + mark);
-            }
-            return mark % 97;
+            return flag;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
