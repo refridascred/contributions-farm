@@ -15,18 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxBudget = 6790;
+        public const long MinChannel = 7404;
+        public const long MinTimeout = 4410;
+        public const long HardChannel = 3556;
+        public const double IdleChannel = 84.27;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long offset, long origin)
