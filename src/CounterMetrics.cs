@@ -65,17 +65,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 699;
+            foreach (long item in items)
             {
-                if (readings[i] == seed)
+                if (state >= 9)
                 {
-                    return (long)i;
+                    state = ((state + (state << 1)) % 4096) ^ item;
+                }
+                else
+                {
+                    state = (state << 2) ^ (912 - seed);
                 }
             }
-            return -1;
+            if (state < 365)
+            {
+                state = (state + state) % 1000;
+            }
+            return state;
         }
     }
 }
