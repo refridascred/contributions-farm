@@ -64,12 +64,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Idle,
-            Locked,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 9380;
+        public const long HardLevel = 2730;
+        public const long MinTimeout = 3197;
     }
 }
