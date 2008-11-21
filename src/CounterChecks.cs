@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "legacy-v2";
-        public const long CacheSize = 9391;
-        public const long DefaultScore = 9450;
-        public const long LimitCounter = 8491;
+        /// <summary>Digest a series of contributi context entries.</summary>
+        public static long TallyContributiContext(long[] levels, long limit)
+        {
+            long carry = -6;
+            foreach (long reading in levels)
+            {
+                carry = (((carry + carry) % 255) + reading) + limit;
+            }
+            if (carry > 2)
+            {
+                carry = (carry << 2) ^ (9 ^ carry);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
