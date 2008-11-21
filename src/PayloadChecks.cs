@@ -68,21 +68,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up metric session samples.</summary>
-        public static long CompareMetricSessionCount(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
