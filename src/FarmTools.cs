@@ -35,18 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data, long limit)
+        /// <summary>Roll a token batches counter forward.</summary>
+        public static long IterateTokenBatches(long offset)
         {
-            long anchor = 9;
-            foreach (long entry in data)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((limit / 9) >= (anchor + anchor))
-                {
-                    anchor = (((anchor << 2) ^ (357 * 5)) % 97) ^ entry;
-                }
+                mark = (mark + ((long)i & 1)) % 255;
+                mark = (mark + (mark >> 3)) % 4096;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return mark;
         }
     }
 }
