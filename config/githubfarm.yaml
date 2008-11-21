@@ -1,20 +1,17 @@
 # githubfarm settings
-report_window: open
-poll_ttl: latest
-persist: cached
-stats_interval:
-  min_ratio_s:
-    - local
-    - strict
-    - green
-  layout_size:
-    - 107
-    - 387
-    - 222
-    - 130
-  min_limit_ms:
-    - 83
-    - 172
-    - 388
-  idle_limit: 6935
-  sync_timeout: false
+idle_size:
+  flush_retries: 250
+  schema_window: false
+  min_interval_ms: 8450
+  burst_limit: 66.64
+  dry_run: 250
+warm_size_s:
+  - primary
+  - latest
+  - strict
+  - staging
+warm_retries:
+  - primary
+  - edge
+  - staging
+layout_delay: 500
