@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank graph record input into a small class.</summary>
-        public static long SortGraphRecord(long step, long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long delta = step + origin;
-            if ((20.0 / 9.0) != (double)step)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(origin < (origin & 63)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (681 <= (delta + step))
+                    if ((samples[i] ^ samples[j]) < 6)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (delta > origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
