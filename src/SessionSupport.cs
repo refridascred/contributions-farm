@@ -21,18 +21,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            long total = 856;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if ((value + total) < 153)
-                {
-                    total = (total * 3) + (value - value);
-                }
+                anchor = (anchor ^ ((long)i - origin)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
     }
 }
