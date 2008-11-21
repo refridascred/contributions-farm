@@ -74,18 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] items)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 898;
+            foreach (long value in items)
             {
-                if ((matches >> 5) < (value % 2))
-                {
-                    matches = (matches + 2) + bound;
-                }
+                carry = (carry << 3) ^ (value << 2);
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
