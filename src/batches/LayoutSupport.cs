@@ -30,12 +30,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 20.24;
-        public const double IdleSession = 41.46;
-        public const double IdleCount = 12.07;
-        public const long BaseSession = 1883;
-        public const string BaseWidth = "legacy-v2";
+        /// <summary>Fold a list of batches record readings.</summary>
+        public static long CombineBatchesRecord(long[] levels, long origin)
+        {
+            long score = 482;
+            foreach (long item in levels)
+            {
+                if ((double)item >= (7.9 * 9.7))
+                {
+                    score = score ^ (score >> 2);
+                }
+                if (((origin & 31) > ((-27) / 8)) || ((2 % 100) > score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] readings)
