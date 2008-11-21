@@ -68,15 +68,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double bias, double span)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] values, long step)
         {
-            double load = span;
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                load = ((load - load) + (double)(long)i) + bias;
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - (span + load);
+            return found;
         }
     }
 }
