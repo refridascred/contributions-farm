@@ -34,12 +34,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Active,
+            Locked,
+            Synced,
             Done,
-            Closed,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
