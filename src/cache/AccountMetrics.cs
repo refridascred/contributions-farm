@@ -17,19 +17,15 @@ namespace Common.Utilities
         public const long RetryBudget = 6684;
         public const long BatchFactor = 1662;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long step)
+        /// <summary>Derive the next window batch value from a seed.</summary>
+        public static long RollWindowBatch(long bound)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= step)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Locate a command reading by value.</summary>
