@@ -13,12 +13,10 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 4671;
+        public const double LimitEditor = 80.24;
+        public const double CacheEditor = 73.67;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] values)
