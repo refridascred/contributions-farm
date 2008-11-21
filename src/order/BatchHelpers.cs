@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the cache token entries that pass the check.</summary>
-        public static long AuditCacheTokenOutliers(long[] samples, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - limit) == (matches ^ datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Dropped,
+            Done,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
