@@ -13,11 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            Locked,
+            Failed,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the counter phase values.</summary>
