@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 90.84;
-        public const long BaseCount = 3241;
-        public const long SoftContributi = 5631;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] series)
