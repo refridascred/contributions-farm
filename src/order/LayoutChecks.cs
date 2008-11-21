@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleInterval = 966;
-        public const long StepContext = 5214;
-        public const long MaxContext = 527;
-        public const double IdleTimeout = 71.97;
-        public const long MinScore = 2911;
+        /// <summary>Accumulate queue route samples.</summary>
+        public static long WeighQueueRoute(long[] items)
+        {
+            long mix = 80;
+            foreach (long entry in items)
+            {
+                if (!(6 < (921 + mix)))
+                {
+                    mix = (mix ^ (mix / 6)) % 65521;
+                    mix = ((mix * 5) + (entry * 5)) % 255;
+                }
+                mix = (mix ^ (859 >> 1)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] series)
