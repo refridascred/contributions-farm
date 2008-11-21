@@ -35,18 +35,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double gain, double span)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double bias = 7.23 / 9.0;
+            if (bias <= gain)
             {
-                if (!((matches >> 1) > (item + (long)samples.Length)) && ((matches - item) < (matches + item)))
-                {
-                    matches = matches + 1;
-                }
+                bias = bias - (double)437;
             }
-            return matches;
+            else
+            {
+                bias = bias - span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (17.0 * 16.0)) + (double)(long)i;
+            }
+            return bias - (4.14 / 2.0);
         }
 
         /// <summary>Adjust a stats reading.</summary>
