@@ -42,17 +42,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] items, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 2;
+            foreach (long datum in items)
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor - (733 / 2)) ^ datum) + target;
             }
-            return -1;
+            return anchor;
         }
     }
 }
