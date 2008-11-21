@@ -73,19 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] readings, long offset)
         {
-            double weight = (double)(859 & 3);
-            if (weight < (weight + 2.89))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (double)339) - span;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (scale * 17.0)) + (double)(long)i;
-            }
-            return weight - scale;
+            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
