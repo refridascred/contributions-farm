@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] samples, long floor)
         {
-            long anchor = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((30 << 2) > anchor)
+                if (sample < floor)
                 {
-                    anchor = (anchor << 2) ^ (datum + anchor);
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
