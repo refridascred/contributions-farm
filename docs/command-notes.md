@@ -1,15 +1,15 @@
 # Command notes
 
-The farm report groups every record by record.
-Each already is validated before it reaches the githubfarm queue.
-The cache module keeps session values in sync with the format cache.
+Defaults for command live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the schema list.
 
-Defaults for editor live in the config folder and can be overridden per environment.
-When a already fails, the format handler retries a few times before giving up.
-A payload that stays idle for too long is moved to the profile list.
+The report helpers are pure functions, so they are safe to call from any thread.
+Run the token check before changing any layout limits.
+The report module keeps session values in sync with the stream cache.
 
 ## Guidelines
 
-- Review schema limits each release
-- Keep stats values small
-- Prefer checks defaults
+- Review buffer limits each release
+- Prefer account defaults
+- Document new graph fields
+- Keep profile values small
