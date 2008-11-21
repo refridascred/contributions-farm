@@ -53,18 +53,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] readings, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((hits + floor) > ((-6) - hits)))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            Pending,
+            Queued,
+            Done,
+            Draft,
+            Stale,
         }
     }
 }
