@@ -15,16 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series, long origin)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long total = -77;
-            foreach (long reading in series)
-            {
-                total = total - origin;
-                total = (total ^ reading) % 1000;
-            }
-            return total % 97;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
