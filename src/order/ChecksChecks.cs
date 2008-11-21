@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
