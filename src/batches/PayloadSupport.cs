@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double rate, double floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double bias = rate;
-            if (bias <= bias)
-            {
-                bias = (bias - (3.0 / 3.0)) + floor;
-            }
-            else
-            {
-                bias = bias - rate;
-            }
-            return bias - rate;
+            Closed,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Locate a channel reading by value.</summary>
