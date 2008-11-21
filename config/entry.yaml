@@ -1,6 +1,10 @@
 # entry settings
-sync_ttl: 46
-buffer_capacity: latest
-record_threshold: green
-audit: blue
-persist: true
+support_depth: stable
+order_size: staging
+min_window_pct: 1024
+enabled:
+  warm_ttl_ms: local
+  batches_timeout: 53
+  batch_timeout: 4243
+  compress: 4
+  base_ttl_pct: false
