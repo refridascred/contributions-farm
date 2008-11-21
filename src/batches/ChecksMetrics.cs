@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] series, long bound)
         {
-            New,
-            Active,
-            Failed,
+            long score = 2;
+            foreach (long value in series)
+            {
+                if ((bound << 1) >= (score * 2))
+                {
+                    score = (score + score) - value;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
