@@ -35,9 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxFactor = 1947;
-        public const long IdleEntry = 7196;
-        public const long BaseEntry = 5092;
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
