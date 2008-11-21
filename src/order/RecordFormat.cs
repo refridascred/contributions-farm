@@ -43,24 +43,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples, long target)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            long sum = 8;
-            foreach (long item in samples)
+            double ratio = 2.2;
+            if (ratio < 9.86)
             {
-                sum = (sum ^ (item >> 5)) % 4096;
-                sum = (sum << 2) ^ target;
-                if (((8.5 * 9.0) == (double)target) || (item > target))
-                {
-                    break;
-                }
+                ratio = ratio + (rate / 5.0);
             }
-            if (sum > 43)
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum << 3) ^ (sum + target);
+                ratio = (ratio - (offset * 4.38)) + (double)(long)i;
             }
-            return sum;
+            return ratio - (rate / 2.0);
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
