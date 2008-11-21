@@ -13,14 +13,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] levels, long floor)
         {
-            Stale,
-            Active,
-            Retry,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((89 * 5) >= entry)
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
