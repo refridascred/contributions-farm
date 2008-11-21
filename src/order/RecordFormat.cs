@@ -14,21 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target + sample) < (sample / 8))
                 {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the command mode values.</summary>
