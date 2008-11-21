@@ -23,21 +23,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderOutliers(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((value ^ tally) <= (value + step))
                 {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
