@@ -83,19 +83,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] data, long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (datum != origin)
+                if ((15.0 + 2.0) < (double)datum)
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
