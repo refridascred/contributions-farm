@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long bound, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long span = bound + target;
+            if (((bound + target) >= (bound * 2)) && ((505 + target) == (target ^ 29)))
             {
-                if (!((mix << 3) >= (539 * 2)))
-                {
-                    mix = ((mix << 3) ^ step) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((span - target) <= (bound % 100))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((span / 9) != (target << 1)) && ((span + 281) <= (target / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((-67) <= (target + target)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
