@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long diff = limit ^ origin;
-            if (!(origin < (limit - diff)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit << 3) <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff ^ diff) <= (origin ^ 961))
+                    if ((data[i] + data[j]) == 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
