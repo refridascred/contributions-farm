@@ -20,12 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
         {
-            Synced,
-            Active,
-            Closed,
+            long carry = 501;
+            foreach (long item in samples)
+            {
+                carry = (carry ^ (item ^ item)) % 255;
+            }
+            if (carry < 2)
+            {
+                carry = ((carry * 2) + carry) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
