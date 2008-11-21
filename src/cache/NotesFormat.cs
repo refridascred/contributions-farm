@@ -15,13 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
+        public static bool GuardContributiLayoutLimits(long[] levels, long bound)
         {
-            Stale,
-            Synced,
-            Paused,
-            Pending,
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a record header.</summary>
