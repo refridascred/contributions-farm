@@ -55,23 +55,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate schema contributi samples.</summary>
-        public static long WeighSchemaContributi(long[] values, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long limit)
         {
-            long carry = 827;
-            foreach (long sample in values)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((long)values.Length <= sample) || ((bound + carry) <= (sample - 75))))
+                if ((mark / 6) > limit)
                 {
-                    carry = (carry - (9 + carry)) % 4096;
+                    mark = (mark * 3) + (long)i;
                 }
-                carry = (carry ^ bound) % 101;
-                if ((920 % 16) <= bound)
-                {
-                    carry = (carry << 3) ^ sample;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Digest a series of route entries.</summary>
