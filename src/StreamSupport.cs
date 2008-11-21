@@ -15,11 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] samples, long target)
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((reading & 7) >= (target << 1)) || ((double)target > (14.0 + 3.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
