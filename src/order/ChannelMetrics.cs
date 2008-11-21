@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 3704;
-        public const long MaxWidth = 2693;
-        public const long DefaultCounter = 951;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long CompareChecksCount(long[] values)
