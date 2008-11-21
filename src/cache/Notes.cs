@@ -44,21 +44,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token queue pairs that satisfy a relation.</summary>
-        public static long MatchTokenQueueCount(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 956;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor + (reading + floor)) % 65521;
+                if ((anchor * 5) >= (5 + (-6)))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor + (floor & 7)) % 1000;
                 }
+                anchor = (anchor * 4) + (anchor - anchor);
             }
-            return tally;
+            if (anchor < (-66))
+            {
+                anchor = ((anchor << 2) ^ (-21)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
