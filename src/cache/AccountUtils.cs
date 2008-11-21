@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((((hits % 8) > hits) || ((9.7 / 3.0) <= (double)sample)) && ((4.0 / 6.0) == (double)sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
