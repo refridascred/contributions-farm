@@ -39,24 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long seed, long bound)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long offset)
         {
-            if (seed > (bound + bound))
+            bool ready = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)924 < (double)bound) || ((9.0 / 5.0) > (double)seed))
+                if (item <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define account limits and defaults.</summary>
