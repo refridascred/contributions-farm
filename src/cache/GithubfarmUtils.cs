@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a schema command pair into a bucket.</summary>
-        public static long SortSchemaCommand(long limit, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] data, long bound)
         {
-            if (((double)offset < (0.72 / 7.0)) && ((double)offset < 9.5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((62 & 255) <= (offset << 3)) || ((offset >> 1) > (limit % 10)))
+                if (data[i] < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit & 63) > (168 >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
