@@ -94,18 +94,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmHits(long[] values, long step)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (cell < (18 % 100))
+                if (value <= limit)
                 {
-                    hits = (hits + 1) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
