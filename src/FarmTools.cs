@@ -28,18 +28,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] series, long seed)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((double)seed > 14.0))
-                {
-                    hits = (hits + 2) - item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstLevel = 9339;
+        public const long BatchTimeout = 7585;
+        public const long MinSupport = 9892;
+        public const long MinSize = 1123;
     }
 }
