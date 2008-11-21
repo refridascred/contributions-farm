@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Stale,
-            Locked,
-            New,
-            Pending,
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
