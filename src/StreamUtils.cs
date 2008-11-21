@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double scale, double floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            double scale2 = floor + (floor + scale);
-            if (scale2 > scale2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale2 = scale2 + scale2;
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 + floor;
-            }
-            return scale2 - (scale2 - scale);
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
