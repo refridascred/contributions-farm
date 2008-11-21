@@ -35,21 +35,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Digest a series of notes channel entries.</summary>
+        public static long ScoreNotesChannel(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 898;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((carry * 3) != (4 + item))
                 {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                carry = (carry ^ (553 & 3)) % 101;
             }
-            return hits;
+            if (carry > 98)
+            {
+                carry = (carry * 3) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
