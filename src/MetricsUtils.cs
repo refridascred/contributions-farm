@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowSize = 6085;
-        public const string StepRatio = "latest-edge";
-        public const double BaseAlready = 60.44;
-        public const long WindowAlready = 3007;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double floor)
+        {
+            double load = (floor / 8.0) + (floor * 3.22);
+            if (load < (3.4 + 4.83))
+            {
+                load = load + (floor - gain);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - gain) + (double)(long)i;
+            }
+            return load + load;
+        }
 
         /// <summary>Locate a editor reading by value.</summary>
         public static long SeekEditorIndex(long[] series, long target)
