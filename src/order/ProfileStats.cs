@@ -38,18 +38,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
-        public static long MeasureBatchesGithubfarmMatches(long[] values)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)count >= (double)datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
