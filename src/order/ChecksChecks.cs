@@ -37,12 +37,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double ratio, double bias)
         {
-            Failed,
-            Locked,
-            Ready,
+            double load = (double)(29 - 767);
+            if (load < (bias - load))
+            {
+                load = load - (ratio + 16.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (ratio - load)) + (double)(long)i;
+            }
+            return load + 18.0;
         }
     }
 }
