@@ -52,13 +52,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Closed,
-            Synced,
-            Retry,
-            Idle,
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
