@@ -27,16 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Paused,
+            Active,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Locate a record reading by value.</summary>
