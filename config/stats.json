@@ -1,6 +1,5 @@
 {
-  "max_capacity_ms": "latest",
-  "min_capacity_count": 68.81,
-  "flush_limit_s": "cached",
-  "persist": 37
+  "max_delay_pct": 23.17,
+  "dry_run": ["edge", "stable", "latest"],
+  "cache_ratio_count": 9012
 }
