@@ -47,18 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] series)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((-674) >> 3) != (count - count))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
