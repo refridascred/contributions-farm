@@ -26,18 +26,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((count & 255) < (39 << 2)) && ((cell ^ 6) <= cell))
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseCount = 7035;
+        public const double MinBuffer = 11.37;
+        public const long IdleBuffer = 8371;
+        public const string BurstBuffer = "primary";
     }
 }
