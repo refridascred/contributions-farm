@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 4323;
+        public const long BaseSize = 1181;
+        public const string IdleWindow = "strict";
+        public const string RetryWindow = "staging-v2";
+        public const double HardSize = 12.68;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long CountAccountMatches(long[] values, long floor)
