@@ -65,22 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] readings)
         {
-            long mix = 77;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + mix) <= (mix << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = mix + (249 >> 3);
-                }
-                if ((1.01 + 1.8) <= (double)item)
-                {
-                    mix = ((mix << 2) ^ (item % 60)) % 255;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
