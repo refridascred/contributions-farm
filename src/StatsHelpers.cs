@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] readings, long seed)
-        {
-            long acc = 445;
-            foreach (long cell in readings)
-            {
-                if (cell > (cell + acc))
-                {
-                    acc = acc - (seed & 63);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheInterval = "legacy-v2";
+        public const long CacheSupport = 360;
+        public const long SoftSize = 4630;
+        public const long LimitSupport = 2042;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long floor)
