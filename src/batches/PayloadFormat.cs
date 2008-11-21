@@ -39,15 +39,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long offset)
         {
-            double gain2 = (double)(977 >> 3);
-            if (gain2 > (double)9)
+            long bound = step ^ offset;
+            if (!((offset / 5) <= (bound - offset)))
             {
-                gain2 = (gain2 + (double)7) - gain;
+                return 2;
             }
-            return gain2 - (gain2 - floor);
+            else
+            {
+                if ((4.0 + 19.0) != (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a editor info.</summary>
