@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmMatches(long[] values)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (!((hits % 10) > hits))
+                if (item < target)
                 {
-                    hits = (hits + 1) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a session record.</summary>
