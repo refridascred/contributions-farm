@@ -34,13 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public double Token { get; set; }
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
