@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmEntryCount(long[] data)
+        /// <summary>Digest a series of order stats entries.</summary>
+        public static long WeighOrderStats(long[] readings, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 58;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum - reading) % 1000) - bound;
             }
-            return hits;
+            if (sum > (-83))
+            {
+                sum = ((sum << 2) ^ (sum + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define token limits and defaults.</summary>
