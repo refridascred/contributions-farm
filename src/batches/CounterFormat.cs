@@ -19,21 +19,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of token notes readings.</summary>
-        public static long PairTokenNotesCount(long[] values)
+        /// <summary>Fold a list of buffer contributi readings.</summary>
+        public static long DigestBufferContributi(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 1;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)state >= (3.0 * 8.7)))
                 {
-                    if ((values[i] - values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (state >> 2);
+                }
+                else
+                {
+                    state = (state - (state - state)) % 1000;
+                }
+                if ((state - reading) <= state)
+                {
+                    state = ((state << 2) ^ reading) % 255;
                 }
             }
-            return matches;
+            if (state > 18)
+            {
+                state = (state ^ (state << 1)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
