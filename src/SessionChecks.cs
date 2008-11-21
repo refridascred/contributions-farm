@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a githubfarm account reading by value.</summary>
-        public static long FindGithubfarmAccountIndex(long[] values, long seed)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Ready,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a contributi options.</summary>
