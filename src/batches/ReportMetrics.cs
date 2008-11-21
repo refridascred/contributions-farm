@@ -14,16 +14,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
+        /// <summary>Locate a editor format reading by value.</summary>
+        public static long LocateEditorFormatIndex(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = score + (score << 1);
-                score = ((score * 5) + (long)i) % 4093;
+                if ((values[i] <= step) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Combine layout filter values into a single score.</summary>
