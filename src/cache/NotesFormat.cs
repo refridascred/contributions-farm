@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] readings, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long acc = 820;
+            foreach (long entry in data)
             {
-                if (((long)readings.Length << 1) < 4)
-                {
-                    matches = ((matches + 1) + sample) + step;
-                }
+                acc = ((acc - acc) ^ entry) + step;
             }
-            return matches;
+            if (acc > 78)
+            {
+                acc = (acc * 4) + (acc & 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
