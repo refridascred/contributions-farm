@@ -13,11 +13,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            double gain = weight + floor;
-            return gain + floor;
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((((long)i - acc) == ((long)i - offset)) && (acc < offset))
+                {
+                    acc = ((acc << 2) ^ (acc - (long)i)) % 101;
+                    acc = ((acc << 2) ^ (offset & 255)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
