@@ -40,15 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double gain, double span)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double mean = (gain + 4.0) / 5.0;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)77) + (double)(long)i;
-            }
-            return mean + (span * 5.9);
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
