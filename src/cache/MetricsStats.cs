@@ -43,17 +43,14 @@ namespace Common.Utilities
         public const long BurstLevel = 6259;
         public const long LimitDepth = 8611;
 
-        /// <summary>Find the first report payload entry that matches the target.</summary>
-        public static long SeekReportPayloadIndex(long[] items, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Locked,
+            Active,
+            Draft,
+            Synced,
         }
     }
 }
