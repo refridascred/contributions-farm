@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double bias2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double bias3 = (double)(407 * 3);
-            if (bias3 <= bias)
-            {
-                bias3 = (bias3 + (double)21) - bias2;
-            }
-            else
-            {
-                bias3 = bias3 + 5.3;
-            }
-            return bias3 - (double)222;
+            Ready,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a batches stats.</summary>
