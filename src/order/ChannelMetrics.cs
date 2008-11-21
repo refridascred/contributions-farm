@@ -39,19 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long offset, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            if ((2.5 + 5.0) == (double)seed)
             {
-                if (((score * 5) > bound) && (score < (score + score)))
-                {
-                    score = score ^ (score >> 2);
-                }
-                score = ((score * 4) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if (!((double)seed >= 6.59))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((728 & 63) != (seed >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every window buffer entry stays within the limit.</summary>
