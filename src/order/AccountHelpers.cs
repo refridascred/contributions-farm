@@ -12,38 +12,11 @@ namespace Common.Utilities
         public const string WindowMetrics = "fallback-v2";
         public const long BaseSpan = 7378;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long limit, long step)
+        /// <summary>Project the next notes metric value.</summary>
+        public static double ScaleNotesMetric(double gain, double bias)
         {
-            if ((limit << 3) > ((-304) & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (limit + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit + limit) == (step << 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit + step) <= limit)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double rate = (double)((-3) & 63);
+            return ((rate - (double)21) + gain) + bias;
         }
 
         /// <summary>Grade a token schema value against two limits.</summary>
