@@ -20,21 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] samples, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 690;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit > (limit % 97)) && ((sum - value) == ((-796) - sum)))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 3) + (limit * 4)) % 65521;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
