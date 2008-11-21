@@ -62,11 +62,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdleDepth = "fallback-edge";
-        public const long StepSize = 2383;
-        public const double BatchSpan = 31.42;
-        public const double HardPayload = 38.3;
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
+        {
+            Active,
+            Idle,
+            New,
+            Paused,
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] data, long step)
