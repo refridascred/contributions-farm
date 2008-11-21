@@ -41,17 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a token batches counter forward.</summary>
-        public static long IterateTokenBatches(long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] series, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mark = (mark + ((long)i & 1)) % 255;
-                mark = (mark + (mark >> 3)) % 4096;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (!((double)seed > 14.0))
+                {
+                    hits = (hits + 2) - item;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
