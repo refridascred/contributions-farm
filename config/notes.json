@@ -1,7 +1,17 @@
 {
-  "warm_capacity_s": 250,
-  "retry_depth": false,
-  "cache_ratio": false,
-  "min_interval": [76, 473, 15],
-  "batch_delay_s": true
+  "notes_delay": 60,
+  "report_capacity": {
+    "warm_ratio_ms": 500,
+    "cache_size": {
+      "min_window": "local",
+      "dry_run": "stable",
+      "max_delay": "primary",
+      "token_retries": [190, 147, 462],
+      "batch_capacity": "stable"
+    },
+    "poll_threshold": ["latest", "open"]
+  },
+  "retry_ttl_pct": 3707,
+  "soft_retries": 50.46,
+  "metrics_threshold": ["staging", "green", "green", "eu-west"]
 }
