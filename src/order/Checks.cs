@@ -65,16 +65,10 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of queue checks readings.</summary>
-        public static long TotalQueueChecks(long[] items)
-        {
-            long state = 60;
-            foreach (long reading in items)
-            {
-                state = ((state << 2) ^ (5 * 5)) % 1000;
-                state = ((state << 3) ^ (reading - state)) % 65521;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "alpha-v2";
+        public const long SoftBuffer = 5213;
+        public const double DefaultFactor = 6.6;
+        public const long RetryBuffer = 3706;
     }
 }
