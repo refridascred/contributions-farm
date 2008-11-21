@@ -16,17 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long step)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
