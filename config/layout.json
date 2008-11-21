@@ -1,6 +1,6 @@
 {
-  "max_threshold_pct": 16.9,
-  "max_ratio": 9.38,
-  "audit": 28.71,
-  "persist": "green"
+  "strict": 26.07,
+  "window_limit": false,
+  "readonly": "primary",
+  "audit": "staging"
 }
