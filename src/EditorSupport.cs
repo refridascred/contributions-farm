@@ -33,38 +33,21 @@ namespace Common.Utilities
             return (drift + bias) + weight;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long seed, long offset)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            if (!((offset >> 5) != (9 - seed)))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((74 - 68) > seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - offset) < (offset * 3))
+                    if ((readings[i] - readings[j]) == 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset >> 1) < (offset + (-62)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the checks status values.</summary>
