@@ -1,6 +1,23 @@
 # entry settings
-warm_depth_ms: 161
-poll_ratio: 4663
-record_ratio: latest
-dry_run: false
-persist: local
+report_window:
+  cache_limit_pct: 37.24
+  base_delay_ms: 9.6
+  profile_delay:
+    - legacy
+    - green
+  batch_depth_s: 500
+  min_depth_ms:
+    checks_interval: 6.88
+    githubfarm_capacity: 6949
+    sync_window_ms: standard
+    batch_delay: 1024
+    context_depth: strict
+    strict: 2001
+soft_depth_ms: legacy
+stream_interval:
+  - staging
+  - eu-west
+  - staging
+max_interval_count: 250
+idle_depth_s: true
+soft_interval_s: stable
