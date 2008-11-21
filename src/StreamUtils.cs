@@ -48,39 +48,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long target, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            long edge = target - step;
-            if (!((6.4 - 1.3) <= (double)edge))
+            long acc = 793;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(step >= (edge - step)))
+                if ((acc - acc) <= (187 << 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((288 << 3) > (step - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    acc = (acc - (value + value)) % 1000;
                 }
             }
+            if (acc > 17)
+            {
+                acc = ((acc * 3) + (acc / 7)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
