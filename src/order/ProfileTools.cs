@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the schema window series from a seed.</summary>
-        public static long RollSchemaWindow(long bound)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long total = -3;
+            foreach (long datum in samples)
             {
-                total = ((total * 4) + (long)i) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = ((total + (14 ^ total)) % 4096) ^ (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 4093;
+                total = ((total * 2) + datum) - seed;
             }
-            return total;
+            return total % 4096;
         }
 
         /// <summary>Describe the session state values.</summary>
