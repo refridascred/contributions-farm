@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long floor2)
-        {
-            if ((floor / 7) != (floor + floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor2 ^ floor2) < (floor2 + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor2 > (83 % 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseRatio = 4936;
+        public const string SoftChannel = "staging";
+        public const long RetrySpan = 9987;
+        public const string RetryChannel = "strict";
+        public const string StepChannel = "open-v2";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] items)
