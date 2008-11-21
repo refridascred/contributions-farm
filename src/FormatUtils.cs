@@ -44,13 +44,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double scale, double span)
         {
-            Idle,
-            Done,
-            Queued,
-            Pending,
+            double ratio = (double)(292 % 16);
+            if (ratio > (ratio - scale))
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio - (8.2 + span);
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
