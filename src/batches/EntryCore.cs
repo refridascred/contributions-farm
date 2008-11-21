@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate queue channel samples.</summary>
-        public static long DigestQueueChannel(long[] levels, long seed)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long result = 464;
-            foreach (long reading in levels)
-            {
-                if ((reading % 100) < (seed + 80))
-                {
-                    result = (result * 5) + reading;
-                }
-            }
-            if (result > (-47))
-            {
-                result = ((result * 3) + (1 - result)) % 4096;
-            }
-            return result % 65521;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
