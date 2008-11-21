@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double ratio, double span)
         {
-            Stale,
-            Ready,
-            Idle,
-            New,
-            Closed,
+            double rate = (double)(89 + 80);
+            if (rate <= (double)96)
+            {
+                rate = ((rate - rate) + ratio) + span;
+            }
+            return rate + 9.86;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
