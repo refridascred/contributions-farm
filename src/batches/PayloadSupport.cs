@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double weight, double span)
         {
-            Closed,
-            Draft,
-            Stale,
-            Active,
+            double bias = (double)0;
+            if (bias >= span)
+            {
+                bias = (bias - bias) - weight;
+            }
+            return bias - (bias / 9.0);
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
