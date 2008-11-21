@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long WindowInterval = 5652;
         public const long BatchScore = 6843;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Synced,
-            Paused,
+            Active,
+            Idle,
             New,
-            Draft,
+            Ready,
         }
 
         /// <summary>Adjust a already order reading.</summary>
