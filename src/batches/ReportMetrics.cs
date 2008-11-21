@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] values, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long floor)
         {
-            long carry = 0;
-            foreach (long sample in values)
+            long mix = 203;
+            foreach (long datum in series)
             {
-                if ((carry - carry) != (4 >> 5))
+                if (!(floor < (datum >> 4)))
                 {
-                    carry = (((carry << 3) ^ (1 * 2)) - sample) - target;
+                    mix = mix + (floor + 7);
+                }
+                else
+                {
+                    mix = (mix - (11 ^ datum)) % 1000;
                 }
             }
-            return carry % 97;
+            if (mix < 3)
+            {
+                mix = (mix << 2) ^ (32 * 5);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
