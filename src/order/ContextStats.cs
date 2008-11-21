@@ -36,12 +36,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
