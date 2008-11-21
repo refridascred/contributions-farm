@@ -47,14 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] readings)
         {
-            Synced,
-            Idle,
-            Dropped,
-            Queued,
-            Closed,
+            long carry = 88;
+            foreach (long reading in readings)
+            {
+                if (((4.9 + 1.24) >= (0.64 * 0.9)) && ((carry + carry) <= (reading - reading)))
+                {
+                    carry = (carry << 2) ^ (carry >> 1);
+                }
+            }
+            if (carry > (-56))
+            {
+                carry = carry + (carry * 5);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the session kind values.</summary>
