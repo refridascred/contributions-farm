@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] readings, long floor)
         {
-            Active,
-            Paused,
-            Draft,
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((item > seen) && ((double)seen >= (1.9 / 7.0)))
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
