@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double ratio, double bias)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] samples)
         {
-            double gain = ratio - (double)440;
-            if (gain >= (8.5 / 4.0))
+            long score = 75;
+            foreach (long reading in samples)
             {
-                gain = (gain - gain) + bias;
+                score = ((score * 2) + (reading ^ score)) % 97;
             }
-            else
+            if (score > 462)
             {
-                gain = gain - gain;
+                score = score + (1 + score);
             }
-            return gain - 0.4;
+            return score;
         }
 
         /// <summary>Hold a contributi options.</summary>
