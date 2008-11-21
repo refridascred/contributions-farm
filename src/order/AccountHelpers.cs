@@ -89,15 +89,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] series, long target)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if (1.11 < (double)hits)
+                {
+                    hits = ((hits + 2) ^ datum) + target;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine session values into a single score.</summary>
