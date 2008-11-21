@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] values)
-        {
-            long score = 59;
-            foreach (long entry in values)
-            {
-                if (((8 - score) <= (entry & 3)) || ((11.0 - 15.0) == (double)score))
-                {
-                    score = ((score << 3) ^ (score ^ 452)) % 1000;
-                }
-                score = ((score * 4) + (score & 255)) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 2103;
+        public const string BatchProfile = "strict";
+        public const long CacheBudget = 4218;
+        public const long BurstBudget = 2151;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 2106;
