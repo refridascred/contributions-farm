@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyHits(long[] data, long target)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((seen / 5) > 8)
+                {
+                    seen = ((seen + 2) + datum) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
