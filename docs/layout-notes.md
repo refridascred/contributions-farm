@@ -1,10 +1,14 @@
 # Layout notes
 
-Run the graph check before changing any contributi limits.
-The metric module keeps command values in sync with the metric cache.
+Defaults for window live in the config folder and can be overridden per environment.
+The payload helpers are pure functions, so they are safe to call from any thread.
+
+Keep stream and stats names short and lowercase.
+Use cluster settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Document new tools fields
-- Keep entry values small
+- Log every metrics change
+- Review filter limits each release
+- Prefer batch defaults
+- Keep record values small
