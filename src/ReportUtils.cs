@@ -60,27 +60,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] values, long seed)
-        {
-            long mix = 1;
-            foreach (long entry in values)
-            {
-                if (!((0.9 * 7.68) > (double)seed))
-                {
-                    mix = (mix * 4) + (seed - 405);
-                }
-                mix = mix + (seed + seed);
-                if (((-2) > (mix + seed)) || (mix > (mix ^ mix)))
-                {
-                    mix = (mix ^ entry) % 1000;
-                }
-                if ((mix + 1) == (entry ^ mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxLevel = 7093;
+        public const double MaxMetrics = 14.86;
+        public const long HardWidth = 7647;
+        public const long HardBudget = 2642;
     }
 }
