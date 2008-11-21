@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Compare every pair of payload command readings.</summary>
+        public static long MatchPayloadCommandCount(long[] levels)
         {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ origin;
-                total = (total - (long)i) % 97;
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
