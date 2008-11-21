@@ -68,11 +68,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinMetrics = 62.5;
-        public const double BatchMetrics = 55.68;
-        public const long BaseSize = 722;
-        public const double HardMetrics = 25.83;
-        public const long MinSize = 8177;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultSpan = 77.03;
+        public const long CacheCluster = 8112;
+        public const long SoftSize = 5059;
+        public const long IdleCluster = 2818;
     }
 }
