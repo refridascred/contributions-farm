@@ -38,19 +38,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] values, long step)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
