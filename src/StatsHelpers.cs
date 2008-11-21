@@ -46,19 +46,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the entry support entries that pass the check.</summary>
-        public static long TallyEntrySupportMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (reading >= (84 % 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstInterval = 5116;
+        public const long SoftBudget = 8320;
+        public const long DefaultCache = 5248;
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] levels)
