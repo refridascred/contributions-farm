@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    staging)
         log "fast path"
         ;;
     *)
@@ -16,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in staging cached; do
+for item in edge local; do
     log "checking ${item}"
 done
