@@ -1,11 +1,11 @@
 # support settings
-buffer_limit: legacy
-warm_ttl_count: standard
-batch_interval:
-  poll_limit: 9128
-  notes_interval: 2040
-  flush_ratio_s: 26.46
-  sync_ttl_ms: 41
-  dry_run: primary
-  checks_interval: 51
-warm_delay_s: true
+warm_timeout: 47.48
+cache_limit_pct: 24.83
+warm_retries: 100
+sync_window_pct:
+  warm_window_ms: blue
+  record_window: local
+  audit: fallback
+  compress: 9516
+  hard_delay_pct: 30
+  dry_run: false
