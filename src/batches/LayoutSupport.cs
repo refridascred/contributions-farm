@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate entry contributi samples.</summary>
-        public static long TallyEntryContributi(long[] series, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] items, long bound)
         {
-            long state = 7;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                state = (((state << 2) ^ (step & 15)) % 101) ^ sample;
+                if (value < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
