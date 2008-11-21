@@ -1,5 +1,4 @@
 # githubfarm settings
-queue_ttl: 1860
-max_size_s: true
-cache_threshold_count: true
-batches_interval: strict
+flush_timeout_pct: 94
+retry_ratio_pct: legacy
+entry_depth: 68
