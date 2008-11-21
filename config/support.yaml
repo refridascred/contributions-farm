@@ -1,4 +1,12 @@
 # support settings
-max_timeout_pct: strict
-soft_window_count: green
-sync_window_s: 100
+support_depth:
+  - 147
+  - 190
+  - 135
+base_timeout: 1574
+cache_retries: 82
+cache_depth:
+  - 414
+  - 365
+persist: blue
+compress: edge
