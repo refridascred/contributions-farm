@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = sum ^ (floor + sum);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "strict-1";
+        public const string SoftFactor = "alpha-edge";
+        public const double DefaultDepth = 26.47;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
