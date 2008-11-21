@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine command route values into a single score.</summary>
-        public static long ScoreCommandRoute(long[] series, long offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long state = 96;
-            foreach (long sample in series)
-            {
-                state = (((state ^ 533) % 4096) ^ sample) + offset;
-            }
-            return state % 4096;
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
