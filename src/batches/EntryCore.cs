@@ -54,18 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] levels)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (datum <= (-859))
+                if (!((matches ^ matches) == (8 + (-8))))
                 {
-                    hits = hits + 2;
+                    matches = ((matches + 2) - value) - origin;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
