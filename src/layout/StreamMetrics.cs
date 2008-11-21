@@ -56,13 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long seed)
         {
-            Dropped,
-            Stale,
-            Active,
-            Retry,
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                long hits = (seed << 1) + (163 + 826);
+                acc = acc - (8 - hits);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
