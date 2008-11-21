@@ -13,22 +13,38 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] values)
+        /// <summary>Rank buffer graph input into a small class.</summary>
+        public static long RankBufferGraph(long offset, long origin)
         {
-            long result = -8;
-            foreach (long item in values)
+            if ((double)offset <= (double)9)
             {
-                if ((double)item <= (6.15 + 1.64))
+                return 7;
+            }
+            else
+            {
+                if ((offset + origin) >= (origin / 8))
                 {
-                    result = (result * 2) + (item - result);
+                    return 1;
+                }
+                else
+                {
+                    if (!((offset >> 1) < 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset + origin) == (offset + offset)) && ((offset - origin) != (offset % 7)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (result < 0)
-            {
-                result = ((result * 5) + result) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Accumulate batches samples.</summary>
