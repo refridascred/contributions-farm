@@ -20,40 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long seed, long target)
-        {
-            long offset = seed + target;
-            if ((offset + 8) >= target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target > (-69)) && ((6.82 + 3.49) < (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + 82) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed - offset) > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardTimeout = "alpha-1";
+        public const double BurstInterval = 7.02;
+        public const long BatchTimeout = 6157;
 
         /// <summary>Look up the position of a farm session sample.</summary>
         public static long LookupFarmSessionIndex(long[] values, long floor)
