@@ -52,30 +52,13 @@ namespace Common.Utilities
             return load + 4.72;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] values, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long mix = -488;
-            foreach (long value in values)
-            {
-                if ((8.66 + 2.0) < (double)(long)values.Length)
-                {
-                    mix = ((mix << 2) ^ (911 + offset)) - value;
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
-                if (3 > offset)
-                {
-                    break;
-                }
-            }
-            if (mix < 692)
-            {
-                mix = mix ^ (mix * 3);
-            }
-            return mix;
+            Ready,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
