@@ -67,21 +67,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (count > (167 >> 1))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 2) - cell) - step;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
