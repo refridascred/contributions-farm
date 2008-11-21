@@ -29,20 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long total = -18;
+            foreach (long reading in items)
             {
-                if (!((mix >> 4) <= mix))
+                if ((offset / 9) == (159 >> 1))
                 {
-                    mix = (mix - ((long)i & 255)) % 1000;
+                    total = (total - total) ^ reading;
                 }
-                mix = ((mix << 2) ^ (origin * 3)) % 101;
-                mix = ((mix * 5) + (long)i) % 1000;
+                else
+                {
+                    total = ((total * 3) + (36 + offset)) % 65521;
+                }
             }
-            return mix;
+            return total;
         }
     }
 }
