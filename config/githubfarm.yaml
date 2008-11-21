@@ -1,5 +1,6 @@
 # githubfarm settings
-enabled: false
-cache_interval_ms: 500
-base_retries: 1967
-cluster_window: latest
+base_timeout_count: 8.8
+readonly: latest
+stream_window: 1055
+hard_capacity: false
+strict: false
