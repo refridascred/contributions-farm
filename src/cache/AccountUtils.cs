@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many contributi profile samples are out of range.</summary>
-        public static long MeasureContributiProfileGaps(long[] readings)
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long FoldProfileCache(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long score = 7;
+            foreach (long entry in levels)
             {
-                if ((entry + hits) >= (hits - entry))
+                if (((double)(-717) >= (double)score) || ((entry + entry) >= 36))
                 {
-                    hits = hits + 3;
+                    score = score + (score * 5);
                 }
             }
-            return hits;
+            if (score < 3)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
