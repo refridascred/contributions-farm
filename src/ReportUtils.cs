@@ -54,27 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
-        {
-            long acc = 7;
-            foreach (long cell in series)
-            {
-                acc = ((acc << 2) ^ (69 + acc)) ^ cell;
-                if (965 >= acc)
-                {
-                    acc = (acc - (53 * 3)) % 4096;
-                }
-                if ((double)acc > (3.63 * 8.9))
-                {
-                    break;
-                }
-            }
-            if (acc < 189)
-            {
-                acc = (acc ^ (acc - acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleSpan = "stable-edge";
+        public const long StepCache = 9495;
+        public const string LimitCache = "open-v2";
+        public const long BaseTimeout = 5542;
+        public const string DefaultDepth = "strict";
     }
 }
