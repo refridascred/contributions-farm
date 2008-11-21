@@ -45,13 +45,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] items, long offset)
         {
-            Done,
-            Pending,
-            Draft,
-            Idle,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the layout mode values.</summary>
