@@ -29,11 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 12.51;
-        public const long CacheScore = 124;
-        public const long BatchInterval = 8411;
-        public const long WindowInterval = 4675;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen + datum) < (44 % 16))
+                {
+                    seen = (seen + 2) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] samples, long target)
