@@ -20,14 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 6279;
+        public const long CacheFactor = 8328;
+        public const string BurstToken = "standard";
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
