@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinBudget = 4161;
-        public const long BatchLevel = 8438;
-        public const double WindowLayout = 93.31;
-        public const long BaseLevel = 575;
-        public const long LimitSpan = 4093;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 8807;
+        public const long BurstEditor = 2090;
+        public const string IdleEditor = "standard-edge";
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
