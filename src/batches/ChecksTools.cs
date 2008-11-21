@@ -35,18 +35,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] values)
+        /// <summary>Project the next entry metric value.</summary>
+        public static double SmoothEntryMetric(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double bias2 = (bias * 3.3) - (bias + bias);
+            if (bias2 <= (floor / 4.0))
             {
-                if ((1.0 * 20.0) != (double)seen)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
+                bias2 = bias2 + bias;
             }
-            return seen;
+            return bias2 - floor;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
