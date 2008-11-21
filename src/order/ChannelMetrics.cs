@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleTimeout = 6963;
-        public const double MaxRatio = 64.49;
-        public const long DefaultLevel = 1416;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 644;
