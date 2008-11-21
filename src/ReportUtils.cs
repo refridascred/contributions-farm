@@ -37,12 +37,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] series, long target)
         {
-            Ready,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((target << 3) < target)
+                {
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
