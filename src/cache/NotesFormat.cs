@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long bound, long offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] levels)
         {
-            long bound2 = bound ^ offset;
-            if ((bound / 3) > (bound2 * 5))
+            long score = 495;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (bound + bound2))
+                if (!((value - score) > score))
                 {
-                    return 3;
+                    score = ((score * 4) + (value ^ score)) % 255;
                 }
-                else
+                if ((value >> 1) == (score * 4))
                 {
-                    return 1;
+                    break;
                 }
             }
+            if (score > (-1))
+            {
+                score = (score ^ (score - score)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Combine cache checks values into a single score.</summary>
