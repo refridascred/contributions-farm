@@ -13,19 +13,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            if ((double)limit <= (8.0 / 3.0))
             {
-                if (!((carry / 4) >= ((long)i << 1)))
-                {
-                    carry = ((carry << 3) ^ (offset - 729)) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((limit ^ target) <= limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((limit % 3) != (47 >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank report input into a small class.</summary>
