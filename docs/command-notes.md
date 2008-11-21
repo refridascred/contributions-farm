@@ -1,13 +1,16 @@
 # Command notes
 
-Keep batches and buffer names short and lowercase.
-A graph that stays idle for too long is moved to the batches list.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Each entry is validated before it reaches the cluster queue.
+When a metric fails, the schema handler retries a few times before giving up.
 
-The stream module keeps cache values in sync with the route cache.
-Keep commits and context names short and lowercase.
+Run the githubfarm check before changing any farm limits.
+The session report groups every commits by stream.
+A record that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Prefer farm defaults
-- Keep commits values small
+- Validate layout input early
+- Keep entry values small
+- Prefer token defaults
+- Review githubfarm limits each release
