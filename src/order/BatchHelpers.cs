@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank already checks input into a small class.</summary>
-        public static long ClassifyAlreadyChecks(long bound, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] values)
         {
-            if ((bound / 5) > floor)
+            long score = 59;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound * 3) < bound)
+                if (((8 - score) <= (entry & 3)) || ((11.0 - 15.0) == (double)score))
                 {
-                    return 8;
+                    score = ((score << 3) ^ (score ^ 452)) % 1000;
                 }
-                else
-                {
-                    if ((double)floor >= 4.0)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                score = ((score * 4) + (score & 255)) % 65521;
             }
+            return score % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
