@@ -23,18 +23,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine githubfarm cache values into a single score.</summary>
-        public static long ScoreGithubfarmCache(long[] levels)
+        /// <summary>Iterate the stream entry series from a seed.</summary>
+        public static long SeriesStreamEntry(long floor)
         {
-            long mark = 2;
-            foreach (long item in levels)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item + item) <= (mark ^ mark))
-                {
-                    mark = (mark << 2) ^ mark;
-                }
+                state = ((state << 3) ^ state) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mark % 65521;
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
