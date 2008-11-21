@@ -62,20 +62,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)i == (1 % 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum ^ 3) % 1000;
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum - (sum & 127)) % 255;
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
