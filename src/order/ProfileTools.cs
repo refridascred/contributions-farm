@@ -41,27 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long total = 61;
-            foreach (long datum in levels)
-            {
-                total = total - (datum << 3);
-                if (((datum ^ total) < (datum >> 4)) && ((datum / 8) < (datum * 3)))
-                {
-                    total = (total * 2) + (datum % 10);
-                }
-                if ((3.7 * 3.0) <= (double)datum)
-                {
-                    break;
-                }
-            }
-            if (total < (-19))
-            {
-                total = total + (floor ^ floor);
-            }
-            return total;
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
