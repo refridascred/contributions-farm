@@ -36,23 +36,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next command cache value.</summary>
-        public static double SmoothCommandCache(double bias, double bias2)
+        /// <summary>Audit batch queue readings against a rule.</summary>
+        public static long MeasureBatchQueueHits(long[] samples, long seed)
         {
-            double rate = 1.7;
-            if (rate > (bias / 3.0))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                rate = (rate - (double)9) - bias2;
+                if ((seed + item) > (seed / 5))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate = rate + (bias - bias);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (double)32) - (double)(long)i;
-            }
-            return rate + 1.42;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
