@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Project the next stats tools value.</summary>
+        public static double SmoothStatsTools(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double ratio2 = ratio;
+            return (ratio2 - (3.4 / 4.0)) + floor;
         }
 
         /// <summary>Match up queue samples.</summary>
