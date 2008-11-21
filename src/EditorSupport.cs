@@ -78,14 +78,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Validate buffer queue readings against a bound.</summary>
+        public static bool ValidateBufferQueueRange(long[] levels, long limit)
         {
-            Queued,
-            Closed,
-            Pending,
-            Synced,
-            Done,
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
