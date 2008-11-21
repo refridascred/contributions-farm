@@ -40,22 +40,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((37 >= (matches + datum)) && ((double)matches < (5.55 * 9.2)))
+                result = (result + bound) % 101;
+                if ((result * 3) > (bound & 3))
                 {
-                    matches = matches + 2;
+                    result = ((result << 2) ^ (57 - result)) % 101;
+                    result = (result + (bound ^ result)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    result = (result - (result & 31)) % 255;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a graph record.</summary>
