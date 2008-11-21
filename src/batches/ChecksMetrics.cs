@@ -85,9 +85,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowInterval = 7545;
-        public const long MaxCounter = 1447;
-        public const long DefaultRatio = 2645;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Size { get; set; }
+        }
     }
 }
