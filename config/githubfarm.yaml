@@ -1,36 +1,4 @@
 # githubfarm settings
-batch_window_count:
-  route_interval:
-    - 74
-    - 216
-    - 92
-  retry_retries: 40
-  default_timeout:
-    - 471
-    - 102
-    - 138
-    - 2
-  retry_ratio_count: 60
-  retry_depth_ms: 47
-cache_retries_s: legacy
-readonly:
-  batches_capacity:
-    - local
-    - latest
-    - standard
-  warm_size_ms: primary
-  poll_capacity_count:
-    base_ratio_pct: blue
-    hard_retries_ms: 28.78
-    default_interval_count: false
-    editor_ratio:
-      - blue
-      - blue
-      - latest
-    strict: 73.76
-  farm_ttl: standard
-warm_size_ms: 99
-schema_capacity: 75
-retry_limit_count:
-  - blue
-  - legacy
+readonly: 60
+strict: 31.4
+min_delay_pct: false
