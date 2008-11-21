@@ -33,18 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCount = "legacy-1";
+        public const string BaseFactor = "primary";
+        public const long BurstCache = 3233;
+        public const string MinSpan = "standard-edge";
+        public const long DefaultCount = 7631;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
