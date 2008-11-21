@@ -46,11 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 8752;
-        public const long StepAccount = 225;
-        public const double RetryAccount = 15.42;
-        public const long RetryTimeout = 6800;
+        /// <summary>Count the entry support entries that pass the check.</summary>
+        public static long TallyEntrySupportMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (reading >= (84 % 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] levels)
