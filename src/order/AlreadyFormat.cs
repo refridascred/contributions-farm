@@ -40,18 +40,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long diff = limit ^ step;
+            if (((step + limit) == (step + 97)) || ((limit + step) < limit))
             {
-                if ((0.6 / 9.0) != (double)cell)
+                return 8;
+            }
+            else
+            {
+                if (((double)step >= (double)diff) || (step >= (step + limit)))
                 {
-                    count = count + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 3) != (diff >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit <= (634 - limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
