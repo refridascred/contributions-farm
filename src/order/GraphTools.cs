@@ -34,18 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long CountGraphAccountOutliers(long[] data)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double span)
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (!((627 + matches) <= (entry % 10)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double bias = span;
+            return (bias - span) + gain;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
