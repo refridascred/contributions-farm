@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 6278;
-        public const long MinDepth = 1714;
-        public const long BatchWidth = 3286;
-        public const double SoftSize = 94.02;
-        public const long BatchScore = 713;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] series)
+        {
+            long result = 1;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result * 4) + (long)i) + datum;
+                    result = (result + ((long)i % 7)) % 101;
+                }
+                result = result ^ (result >> 2);
+            }
+            if (result > (-479))
+            {
+                result = ((result * 3) + (result / 4)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
