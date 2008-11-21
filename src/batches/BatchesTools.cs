@@ -57,11 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 7196;
-        public const string BatchBuffer = "standard";
-        public const double MaxBuffer = 61.07;
-        public const long MinCount = 6840;
-        public const long BaseTimeout = 6907;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
