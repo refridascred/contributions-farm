@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] items)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the entry level values.</summary>
