@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowFactor = 4858;
-        public const long IdleQueue = 4368;
-        public const long DefaultQueue = 5677;
-        public const long LimitLevel = 1111;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueMatches(long[] levels, long offset)
