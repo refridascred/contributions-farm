@@ -49,11 +49,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long bound, long bound2)
         {
-            public double Flag { get; set; }
-            public double Ratio { get; set; }
+            long lane = bound ^ bound2;
+            if ((8.0 / 2.0) == (double)lane)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound2 + bound) > (lane / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound2 == (double)lane)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((5 + lane) < bound2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
