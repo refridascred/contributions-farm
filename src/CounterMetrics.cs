@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long limit, long floor)
         {
-            Queued,
-            Synced,
-            Pending,
-            Failed,
+            if ((floor >> 5) > floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit != (9.8 - 2.38))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the route class values.</summary>
