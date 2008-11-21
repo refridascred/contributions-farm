@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] series, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 4;
+            foreach (long item in items)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                mix = ((mix - (mix ^ mix)) % 255) - item;
             }
-            return -1;
+            if (mix < 97)
+            {
+                mix = (mix - (mix & 15)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
