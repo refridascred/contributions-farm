@@ -42,21 +42,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double gain, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = offset;
+            if (bias < (double)245)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + (offset * 16.0);
             }
-            return seen;
+            else
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias - (bias * 14.0);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
