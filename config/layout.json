@@ -1,14 +1,5 @@
 {
-  "sync_timeout": 4681,
-  "warm_size_pct": {
-    "poll_window_ms": 5,
-    "dry_run": "primary",
-    "compress": 60,
-    "retry_depth": 49,
-    "channel_limit": [203, 26, 148],
-    "context_ttl": 8717
-  },
-  "min_depth": 99,
-  "hard_depth_ms": 482,
-  "base_threshold": 10.8
+  "farm_retries": "primary",
+  "hard_retries": true,
+  "readonly": "cached"
 }
