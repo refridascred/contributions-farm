@@ -1,8 +1,7 @@
 {
-  "batch_interval_count": "legacy",
-  "counter_retries": 6091,
-  "editor_window": ["staging", "strict"],
-  "max_retries_ms": ["local", "stable", "edge", "fallback"],
-  "compress": "eu-west",
-  "base_ratio_ms": "green"
+  "verbose": "legacy",
+  "compress": 89.75,
+  "enabled": false,
+  "readonly": "primary",
+  "batch_window_s": 1576
 }
