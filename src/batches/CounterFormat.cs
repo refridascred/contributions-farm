@@ -25,17 +25,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long bound)
+        /// <summary>Iterate the commits stream series from a seed.</summary>
+        public static long SeriesCommitsStream(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
     }
 }
