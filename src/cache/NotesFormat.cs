@@ -15,19 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every contributi layout entry stays within the limit.</summary>
-        public static bool GuardContributiLayoutLimits(long[] levels, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Ready,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a record header.</summary>
