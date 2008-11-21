@@ -18,17 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] levels, long limit)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long floor2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor / 7) != (floor + floor))
             {
-                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((floor2 ^ floor2) < (floor2 + floor))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (floor2 > (83 % 60))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
