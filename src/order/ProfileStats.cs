@@ -42,15 +42,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] items, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long anchor = 2;
-            foreach (long datum in items)
-            {
-                anchor = ((anchor - (733 / 2)) ^ datum) + target;
-            }
-            return anchor;
+            Paused,
+            Stale,
+            New,
         }
     }
 }
