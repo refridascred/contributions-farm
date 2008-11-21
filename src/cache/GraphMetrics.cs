@@ -30,18 +30,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of filter support entries.</summary>
-        public static long DigestFilterSupport(long[] readings, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long seed, long limit)
         {
-            long anchor = 54;
-            foreach (long value in readings)
+            long span = seed - limit;
+            if ((3 - (-26)) <= (seed + span))
             {
-                if ((value + offset) > (value - value))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (1.8 / 4.0))
                 {
-                    anchor = ((anchor * 3) + anchor) % 101;
+                    return 2;
+                }
+                else
+                {
+                    if (((4.08 + 8.89) < (double)limit) || ((span / 2) < (span ^ seed)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
