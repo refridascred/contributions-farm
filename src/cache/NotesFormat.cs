@@ -19,24 +19,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a queue report pair into a bucket.</summary>
-        public static long BucketQueueReport(long offset, long offset2)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long step)
         {
-            if ((double)offset > (1.0 / 2.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset2 >> 2) >= 813)
+                if (readings[i] <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
