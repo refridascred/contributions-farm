@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a channel command figure with a bias.</summary>
-        public static double ScaleChannelCommand(double gain, double floor)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            double weight = 2.3 + floor;
-            if (weight <= weight)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight - 5.1) - gain;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (weight + 16.0);
+            return seen;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
