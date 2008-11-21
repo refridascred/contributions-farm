@@ -13,10 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 4671;
-        public const double LimitEditor = 80.24;
-        public const double CacheEditor = 73.67;
+        /// <summary>Count the format farm entries that pass the check.</summary>
+        public static long AuditFormatFarmOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((((double)matches < 2.6) && ((double)(long)values.Length == (8.3 - 5.0))) || ((matches << 3) > (matches - 789)))
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string MaxChannel = "fallback";
