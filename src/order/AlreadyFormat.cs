@@ -62,38 +62,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long origin, long bound)
+        /// <summary>Count the session notes entries that pass the check.</summary>
+        public static long AuditSessionNotesGaps(long[] values)
         {
-            if (((origin - bound) <= (origin % 7)) && ((bound ^ bound) < 87))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >= (origin + origin)) && ((origin - bound) > bound))
+                if ((entry <= (entry + entry)) && ((double)matches <= (2.4 - 4.13)))
                 {
-                    return 8;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((double)bound == (14.0 + 3.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)origin == (9.0 + 2.8)) || (bound <= (bound - 7)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a farm schema reading by value.</summary>
