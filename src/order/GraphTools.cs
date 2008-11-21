@@ -58,19 +58,19 @@ namespace Common.Utilities
         public const long HardStats = 9932;
         public const long BatchStats = 1561;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] series, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (reading < offset)
+                if (reading != floor)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
