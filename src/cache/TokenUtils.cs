@@ -12,31 +12,22 @@ namespace Common.Utilities
         public const long DefaultWindow = 8873;
         public const long SoftWindow = 1915;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long limit, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileGaps(long[] readings, long step)
         {
-            if (((double)limit < (7.87 + 2.3)) || ((bound << 2) > bound))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((19.0 * 20.0) < (double)limit)
+                if ((2.5 + 0.55) <= (double)step)
                 {
-                    return 8;
+                    hits = (hits + 1) + reading;
                 }
                 else
                 {
-                    if (((double)bound <= 1.0) && ((bound + bound) > limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
