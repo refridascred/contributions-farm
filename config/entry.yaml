@@ -1,6 +1,11 @@
 # entry settings
-max_window_ms: 48
-channel_limit: 96.41
-audit: 87.47
-min_limit_pct: 63
-poll_delay: cached
+burst_capacity_ms:
+  base_size: 5.25
+  idle_retries_ms: legacy
+  burst_interval_pct: 60
+  profile_interval: 4236
+  audit: 69.54
+readonly: 30
+batch_size_count: 40.95
+tools_delay: true
+audit: 6136
