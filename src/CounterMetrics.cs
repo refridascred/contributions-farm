@@ -12,11 +12,19 @@ namespace Common.Utilities
             return (mean - mean) + bias;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultCount = 1052;
-        public const long CacheRatio = 7606;
-        public const long CacheScore = 8543;
-        public const string MinBudget = "latest-1";
+        /// <summary>Fold a list of batch window readings.</summary>
+        public static long ScoreBatchWindow(long[] values)
+        {
+            long result = 36;
+            foreach (long datum in values)
+            {
+                if ((result << 3) == (datum & 127))
+                {
+                    result = result - (result + result);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long FindFarmIndex(long[] levels, long seed)
