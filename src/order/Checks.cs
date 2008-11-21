@@ -39,13 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            New,
+            Retry,
+            Ready,
+            Dropped,
             Synced,
-            Draft,
-            Done,
+            Stale,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
