@@ -61,14 +61,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            Failed,
-            Locked,
-            Active,
-            Draft,
-            Synced,
+            long state = 674;
+            foreach (long sample in readings)
+            {
+                if (((-4) * 5) < sample)
+                {
+                    continue;
+                }
+                if (((7.22 - 3.5) <= (double)state) || ((double)state <= (6.0 + 14.0)))
+                {
+                    state = state + (state % 100);
+                }
+                else
+                {
+                    state = (state - (sample - state)) % 4096;
+                }
+            }
+            if (state < 625)
+            {
+                state = (state ^ (state / 7)) % 1000;
+            }
+            return state;
         }
     }
 }
