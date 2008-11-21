@@ -1,13 +1,9 @@
 # entry settings
-route_retries:
-  - stable
-  - green
-  - green
-order_threshold: 67
-enabled:
-  - 49
-  - 115
-  - 333
-  - 209
-max_threshold_pct: staging
-tools_limit: 70.61
+warm_interval_count:
+  - 402
+  - 252
+  - 189
+  - 254
+hard_ratio_count: 2668
+idle_capacity_pct: true
+verbose: 250
