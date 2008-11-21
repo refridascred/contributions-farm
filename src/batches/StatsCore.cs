@@ -13,13 +13,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] readings, long target)
         {
-            Idle,
-            Ready,
-            Locked,
-            Dropped,
+            long total = 0;
+            foreach (long value in readings)
+            {
+                if (target < value)
+                {
+                    total = total ^ total;
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total << 3) ^ ((long)readings.Length - target)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Measure how many editor stats samples are out of range.</summary>
