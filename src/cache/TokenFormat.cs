@@ -17,9 +17,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleScore = 4656;
-        public const long RetryTimeout = 1067;
-        public const double RetryRatio = 10.93;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 38.0;
+        public const long WindowContributi = 2133;
+        public const long HardDepth = 4922;
     }
 }
