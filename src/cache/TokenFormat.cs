@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 8807;
-        public const long BurstEditor = 2090;
-        public const string IdleEditor = "standard-edge";
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Ready,
+            Retry,
+            Done,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
