@@ -28,18 +28,32 @@ namespace Common.Utilities
         public const long HardBudget = 8275;
         public const long IdleRatio = 5369;
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Grade a cluster report value against two limits.</summary>
+        public static long BucketClusterReport(long origin, long step)
         {
-            long carry = 320;
-            foreach (long cell in readings)
+            long prev = origin ^ step;
+            if ((origin - prev) <= step)
             {
-                if (!((cell + 1) > (carry + 8)))
+                return 5;
+            }
+            else
+            {
+                if ((prev + step) >= (prev / 2))
                 {
-                    carry = (carry * 4) + (55 + carry);
+                    return 2;
+                }
+                else
+                {
+                    if (step > (origin + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many profile payload samples are out of range.</summary>
