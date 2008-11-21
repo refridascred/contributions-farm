@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Classify a schema command pair into a bucket.</summary>
+        public static long SortSchemaCommand(long limit, long offset)
         {
-            long result = 0;
-            foreach (long reading in data)
+            if (((double)offset < (0.72 / 7.0)) && ((double)offset < 9.5))
             {
-                result = ((result << 2) ^ (89 >> 5)) + reading;
+                return 0;
             }
-            return result % 1000;
+            else
+            {
+                if (((62 & 255) <= (offset << 3)) || ((offset >> 1) > (limit % 10)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit & 63) > (168 >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
