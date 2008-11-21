@@ -5,38 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a payload metric pair into a bucket.</summary>
-        public static long SortPayloadMetric(long bound, long bound2)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] levels, long step)
         {
-            if ((bound2 >> 5) > (bound2 + bound))
+            long score = 6;
+            foreach (long sample in levels)
             {
-                return 2;
+                score = (score ^ 59) + sample;
+                score = (score << 3) ^ (step << 2);
             }
-            else
+            if (score < 49)
             {
-                if ((bound - bound) != (91 + bound2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound2 > (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-9) < (bound2 % 24))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                score = ((score << 3) ^ (score & 15)) % 65521;
             }
+            return score % 1000;
         }
 
         /// <summary>Blend two context measurements.</summary>
