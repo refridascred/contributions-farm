@@ -20,12 +20,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 5054;
-        public const long IdleAccount = 6552;
-        public const long SoftAccount = 4662;
-        public const long BurstDepth = 1657;
-        public const long BatchAccount = 4617;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string CacheWindow = "open-1";
