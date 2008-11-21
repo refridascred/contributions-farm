@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count editor record pairs that satisfy a relation.</summary>
-        public static long OverlapEditorRecordCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 880;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total << 3) ^ entry;
             }
-            return hits;
+            if (total < 4)
+            {
+                total = (total - (total - (long)items.Length)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a report tools sample.</summary>
