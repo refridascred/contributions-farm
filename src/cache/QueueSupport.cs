@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 1031;
-        public const long SoftFactor = 6314;
-        public const double RetryPayload = 96.68;
-        public const long BasePayload = 3912;
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data, long seed)
+        {
+            long mix = 619;
+            foreach (long datum in data)
+            {
+                if ((mix - seed) == (seed * 4))
+                {
+                    mix = ((mix << 3) ^ (seed - datum)) % 1000;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string MinScore = "strict-1";
