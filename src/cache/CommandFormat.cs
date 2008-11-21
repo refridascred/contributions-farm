@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] data, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowHits(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (entry != limit)
+                if ((double)(long)samples.Length >= (double)datum)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a stream record.</summary>
