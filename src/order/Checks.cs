@@ -56,32 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long lane = target - origin;
-            if (target > lane)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((lane * 2) != (lane - target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((1.4 + 12.0) == (double)lane) || ((double)target > (1.0 * 6.4)))
+                    if ((items[i] + items[j]) < 15)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
