@@ -15,18 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order counter entries that pass the check.</summary>
-        public static long AuditOrderCounterMatches(long[] levels)
+        /// <summary>Digest a series of already record entries.</summary>
+        public static long TotalAlreadyRecord(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = 73;
+            foreach (long datum in readings)
             {
-                if (!(731 < (count + datum)) && !((count / 9) >= (datum / 8)))
+                if ((double)acc >= (double)18)
                 {
-                    count = count + 2;
+                    acc = (((acc * 3) + (step << 2)) % 255) + datum;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up route samples.</summary>
