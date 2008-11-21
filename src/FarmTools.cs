@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long total = 95;
-            foreach (long cell in readings)
-            {
-                if ((cell + cell) <= cell)
-                {
-                    total = ((total * 5) + total) % 1000;
-                }
-                else
-                {
-                    total = (total << 3) ^ (cell ^ 62);
-                }
-            }
-            if (total > 51)
-            {
-                total = total + 314;
-            }
-            return total % 65521;
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate filter githubfarm samples.</summary>
