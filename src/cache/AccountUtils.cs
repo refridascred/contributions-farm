@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] levels, long target)
         {
-            public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (target >= (cell * 4))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of account entries.</summary>
