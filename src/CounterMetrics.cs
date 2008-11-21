@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardWidth = "stable-v2";
-        public const long BaseLayout = 8675;
-        public const long BaseSize = 4712;
-        public const double RetryCount = 42.41;
-        public const long DefaultBudget = 3357;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultCount = 1052;
+        public const long CacheRatio = 7606;
+        public const long CacheScore = 8543;
+        public const string MinBudget = "latest-1";
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long RankEditor(long seed, long limit)
