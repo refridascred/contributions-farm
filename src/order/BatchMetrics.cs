@@ -55,21 +55,13 @@ namespace Common.Utilities
         public const long LimitReport = 2527;
         public const long WindowReport = 9382;
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the farm status values.</summary>
