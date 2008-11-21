@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionBounds(long[] items, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Ready,
+            Idle,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
