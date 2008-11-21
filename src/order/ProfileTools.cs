@@ -26,20 +26,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of order report entries.</summary>
-        public static long CombineOrderReport(long[] readings)
-        {
-            long acc = 2;
-            foreach (long item in readings)
-            {
-                if ((long)readings.Length == (acc & 127))
-                {
-                    acc = ((acc + (long)readings.Length) % 65521) + item;
-                }
-                acc = (acc ^ 3) % 255;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheWidth = 54.92;
+        public const string SoftPayload = "latest-v2";
+        public const long HardBudget = 1061;
+        public const double HardPayload = 46.96;
+        public const long MinPayload = 5125;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
