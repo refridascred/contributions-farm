@@ -16,12 +16,25 @@ namespace Common.Utilities
             return weight + (weight + 16.0);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxCount = "fallback-edge";
-        public const long DefaultDepth = 3087;
-        public const string SoftRatio = "fallback-1";
-        public const long BatchRatio = 3080;
-        public const double SoftSize = 49.78;
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long origin, long step)
+        {
+            if ((step - step) == (origin & 63))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((step ^ origin) < (-55)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryTimeout = 17.62;
