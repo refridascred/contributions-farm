@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Audit session githubfarm readings against a rule.</summary>
+        public static long AuditSessionGithubfarmOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!(3.5 <= (double)count) || (((double)count <= 9.0) && (count < (value + 763))))
+                if (tally < (reading + 7))
                 {
-                    count = count + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a contributi options.</summary>
