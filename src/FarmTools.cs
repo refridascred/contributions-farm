@@ -18,29 +18,22 @@ namespace Common.Utilities
         public const long LimitCache = 4781;
         public const double WindowCache = 27.43;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] levels)
         {
-            long state = 811;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((state & 7) < (reading + state))
+                if (((long)levels.Length >> 1) == (count * 5))
                 {
-                    state = state - state;
-                    state = state ^ (4 + reading);
+                    count = (count + 3) + reading;
                 }
-                if (!((state / 2) > (state - reading)))
+                else
                 {
-                    state = ((state << 3) ^ reading) % 65521;
-                    break;
-                }
-                state = (state * 2) + (state / 3);
-                if ((46 + state) <= (5 / 3))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
     }
 }
