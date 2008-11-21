@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate batch window readings against a bound.</summary>
-        public static bool CheckBatchWindowBounds(long[] data, long origin)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long target, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            if (limit < (limit * 5))
             {
-                if (item > origin)
+                return 6;
+            }
+            else
+            {
+                if (((limit % 64) < target) || (343 > (limit + 4)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((target + target) <= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0.6 + 11.0) > (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the report class values.</summary>
