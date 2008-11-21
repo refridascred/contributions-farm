@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftCount = 6.79;
-        public const long WindowGithubfarm = 6928;
-        public const double MinGithubfarm = 35.61;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (seen < (datum * 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long StepContributi(long floor)
