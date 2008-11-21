@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long offset, long origin)
+        /// <summary>Derive the next token entry value from a seed.</summary>
+        public static long SeriesTokenEntry(long seed)
         {
-            if (offset >= (70 % 5))
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                sum = sum - (sum - seed);
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset < (origin + offset)) || ((offset & 15) >= offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (origin + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4.0 - 7.6) <= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Match up schema samples.</summary>
