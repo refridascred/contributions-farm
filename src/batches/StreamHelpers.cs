@@ -34,18 +34,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] levels)
+        /// <summary>Combine support editor values into a single score.</summary>
+        public static long TallySupportEditor(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long acc = 63;
+            foreach (long sample in readings)
             {
-                if ((30 < (entry + entry)) || ((double)entry == (0.27 / 2.0)))
+                if (((target ^ target) > (target ^ sample)) || ((target * 5) <= sample))
                 {
-                    hits = hits + 1;
+                    acc = (acc + (5 - sample)) % 101;
+                }
+                if (((-8) << 1) == (acc * 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 126)
+            {
+                acc = ((acc * 3) + target) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
