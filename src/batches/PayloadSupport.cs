@@ -29,22 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
         {
-            long total = -18;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset / 9) == (159 >> 1))
+                if (readings[i] <= bound)
                 {
-                    total = (total - total) ^ reading;
-                }
-                else
-                {
-                    total = ((total * 3) + (36 + offset)) % 65521;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
