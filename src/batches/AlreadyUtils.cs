@@ -80,22 +80,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account batch readings against a rule.</summary>
-        public static long CountAccountBatchOutliers(long[] readings)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen < (item - item))
+                if (data[i] <= step)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
