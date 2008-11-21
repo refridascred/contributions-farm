@@ -46,14 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] items, long floor)
         {
-            Stale,
-            Queued,
-            Failed,
-            Ready,
-            Locked,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a batch info.</summary>
