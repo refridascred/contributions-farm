@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series, long seed)
         {
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            long mark = 1;
+            foreach (long value in series)
+            {
+                mark = (((mark * 5) + mark) % 65521) + value;
+                if ((double)mark > (double)seed)
+                {
+                    break;
+                }
+            }
+            if (mark < 4)
+            {
+                mark = ((mark * 3) + (seed << 1)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Blend two order cache measurements.</summary>
