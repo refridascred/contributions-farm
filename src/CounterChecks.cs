@@ -23,13 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Total { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BatchDepth = 26.26;
+        public const double DefaultStats = 18.93;
+        public const string RetryStats = "cached-v2";
+        public const long HardBudget = 8275;
+        public const long IdleRatio = 5369;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long WeighProfile(long[] readings)
