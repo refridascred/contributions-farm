@@ -52,10 +52,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 7158;
-        public const double BurstSchema = 7.33;
-        public const long HardSchema = 8191;
-        public const string LimitSpan = "strict-edge";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Ready,
+            New,
+            Paused,
+            Idle,
+            Done,
+        }
     }
 }
