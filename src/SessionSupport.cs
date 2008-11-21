@@ -35,19 +35,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepChannel = "cached";
+        public const double SoftSize = 89.39;
+        public const string LimitBudget = "alpha-1";
     }
 }
