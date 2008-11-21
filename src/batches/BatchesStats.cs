@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] levels)
         {
-            double mean = (bias - bias) / 3.0;
-            if (mean >= (bias / 3.0))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                mean = (mean + mean) + span;
+                if (((count ^ 27) < (entry + count)) || (248 >= count))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - 7.0;
+            return count;
         }
 
         /// <summary>Accumulate counter samples.</summary>
