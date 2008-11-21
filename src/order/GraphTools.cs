@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double scale, double floor)
         {
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            double weight = floor;
+            if (weight < (3.8 / 7.0))
+            {
+                weight = (weight - (floor / 8.0)) + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
