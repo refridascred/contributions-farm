@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Audit batch stream readings against a rule.</summary>
+        public static long TallyBatchStreamGaps(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen & 15) > (reading * 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the order token entries that pass the check.</summary>
