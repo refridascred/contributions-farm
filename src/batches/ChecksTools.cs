@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long ScoreChecksProfile(long[] items, long seed)
+        /// <summary>Count the graph stream entries that pass the check.</summary>
+        public static long AuditGraphStreamHits(long[] items)
         {
-            long anchor = 672;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((reading - 8) == (reading % 5))
+                if ((count * 4) >= (value + (long)items.Length))
                 {
-                    anchor = ((anchor ^ anchor) % 1000) + seed;
-                }
-                else
-                {
-                    anchor = anchor + (anchor + anchor);
+                    count = count + 3;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the stream entry series from a seed.</summary>
