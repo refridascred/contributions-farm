@@ -54,17 +54,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 7;
+            foreach (long cell in series)
             {
-                if (data[i] <= origin)
+                acc = ((acc << 2) ^ (69 + acc)) ^ cell;
+                if (965 >= acc)
                 {
-                    return (long)i;
+                    acc = (acc - (53 * 3)) % 4096;
+                }
+                if ((double)acc > (3.63 * 8.9))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 189)
+            {
+                acc = (acc ^ (acc - acc)) % 97;
+            }
+            return acc;
         }
     }
 }
