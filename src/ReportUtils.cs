@@ -36,19 +36,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] values, long origin)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (cell <= origin)
+                if (entry >= origin)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Hold a already header.</summary>
