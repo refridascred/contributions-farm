@@ -22,12 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] samples, long seed)
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the context mode values.</summary>
