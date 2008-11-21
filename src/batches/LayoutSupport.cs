@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate route batches readings against a bound.</summary>
-        public static bool ValidateRouteBatchesRange(long[] items, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
