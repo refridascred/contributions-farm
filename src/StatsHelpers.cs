@@ -59,15 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Ready,
-            Queued,
-            New,
-            Active,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 8752;
+        public const long StepAccount = 225;
+        public const double RetryAccount = 15.42;
+        public const long RetryTimeout = 6800;
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
