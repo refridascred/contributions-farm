@@ -25,14 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] levels, long floor)
         {
-            Stale,
-            Draft,
-            Idle,
-            New,
-            Ready,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate farm samples.</summary>
