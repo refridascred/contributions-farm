@@ -31,18 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 4071;
+        public const long HardLevel = 3502;
+        public const long SoftNotes = 6291;
+        public const long StepNotes = 7982;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long SoftRatio = 2782;
