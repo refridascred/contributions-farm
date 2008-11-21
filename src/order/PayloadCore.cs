@@ -22,15 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] items, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long state = 0;
+            foreach (long cell in items)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((double)1 > (double)state)
+                {
+                    state = ((state - 458) - cell) - origin;
+                }
+                if ((282 - 6) <= (long)items.Length)
+                {
+                    break;
+                }
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Hold a route header.</summary>
