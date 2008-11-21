@@ -40,19 +40,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] data, long floor)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Done,
+            Stale,
+            Paused,
         }
     }
 }
