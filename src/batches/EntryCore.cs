@@ -24,18 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] samples, long step)
+        /// <summary>Check that every entry format entry stays within the limit.</summary>
+        public static bool CheckEntryFormatBounds(long[] levels, long step)
         {
-            long mix = 4;
-            foreach (long cell in samples)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((double)cell == (5.43 * 5.6))
+                if (value < step)
                 {
-                    mix = mix + (step - 80);
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a window info.</summary>
