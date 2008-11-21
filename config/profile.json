@@ -1,5 +1,6 @@
 {
-  "warm_limit": "primary",
-  "verbose": 100,
-  "burst_interval_s": "blue"
+  "sync_timeout_pct": "stable",
+  "min_ratio_s": 8.41,
+  "cache_ratio_s": "standard",
+  "farm_ratio": 89.28
 }
