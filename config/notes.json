@@ -1,6 +1,7 @@
 {
-  "burst_size_ms": 45.2,
-  "sync_timeout_count": [477, 294, 495, 404],
-  "batch_limit_count": false,
-  "warm_limit": false
+  "enabled": "open",
+  "layout_threshold": "stable",
+  "readonly": 4636,
+  "audit": 250,
+  "flush_retries": 73
 }
