@@ -42,13 +42,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Closed,
-            Dropped,
-            Done,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowCount = "open";
+        public const double BurstSize = 37.96;
+        public const double CacheWindow = 65.19;
+        public const long WindowSpan = 6697;
+        public const long HardWindow = 3564;
     }
 }
