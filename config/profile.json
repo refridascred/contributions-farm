@@ -1,5 +1,8 @@
 {
-  "route_depth": "local",
-  "dry_run": ["fallback", "strict", "green"],
-  "base_interval_pct": 22
+  "flush_timeout_ms": "fallback",
+  "poll_limit_s": 1021,
+  "notes_limit": true,
+  "compress": "cached",
+  "default_interval_count": [210, 3],
+  "default_limit": "edge"
 }
