@@ -35,16 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
+            long total = 49;
+            foreach (long entry in samples)
             {
-                sum = (sum ^ step) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                total = total ^ (entry << 2);
+                if ((entry + total) > (total ^ entry))
+                {
+                    total = (total + (entry + entry)) % 255;
+                }
             }
-            return sum;
+            return total % 65521;
         }
 
         /// <summary>Define command limits and defaults.</summary>
