@@ -1,6 +1,8 @@
 # githubfarm settings
-sync_capacity_pct: green
-min_interval_s: false
-verbose: 2885
-soft_capacity: blue
-base_retries_pct: false
+enabled: 36
+githubfarm_depth: fallback
+default_delay:
+  - latest
+  - green
+  - strict
+  - blue
