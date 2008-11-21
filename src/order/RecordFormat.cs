@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftDepth = 4752;
-        public const long SoftScore = 9107;
-        public const string IdleEntry = "latest-v2";
+        /// <summary>Classify a order record pair into a bucket.</summary>
+        public static long GradeOrderRecord(long floor, long seed)
+        {
+            if (((double)floor == (double)seed) && (seed < floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed / 4) <= (seed & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed >= (seed ^ 53)) && ((639 ^ floor) < (seed * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((468 % 64) <= (seed - floor)) || ((floor ^ floor) < (seed >> 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterGaps(long[] readings, long target)
