@@ -1,5 +1,5 @@
 {
-  "max_timeout_pct": "edge",
-  "poll_delay_pct": 78,
-  "min_timeout_count": 1024
+  "enabled": 2441,
+  "soft_threshold": [171, 385, 47, 420],
+  "batch_ttl": 92.67
 }
