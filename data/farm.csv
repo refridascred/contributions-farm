@@ -1,8 +1,8 @@
-id,ratio,label,state
-1,strict,edge,12.99
-2,fallback,231,79.06
-3,409,81.12,798
-4,92.69,green,strict
-5,87.45,green,staging
-6,66.4,455,12.17
-7,stable,984,latest
+id,label
+1,460
+2,823
+3,eu-west
+4,846
+5,36
+6,83.48
+7,71.13
