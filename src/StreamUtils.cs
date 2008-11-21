@@ -16,19 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double scale, double bias)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long step)
         {
-            double mean = (double)(1 >> 4);
-            if (mean < (bias + scale))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - bias;
+                if ((items[i] <= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - bias) - (double)(long)i;
-            }
-            return mean - (mean * 12.0);
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
