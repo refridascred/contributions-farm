@@ -48,20 +48,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long floor)
+        /// <summary>Classify a already githubfarm pair into a bucket.</summary>
+        public static long ClassifyAlreadyGithubfarm(long offset, long offset2)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long cur = offset + offset2;
+            if (((cur - offset2) >= (849 - 83)) && ((7.0 * 4.0) != (double)offset2))
             {
-                result = (result ^ (427 + result)) % 1000;
-                if ((floor - 648) >= (result + (long)i))
-                {
-                    result = result - (9 * 2);
-                }
-                result = ((result * 3) + (long)i) % 101;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((double)offset2 <= (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
