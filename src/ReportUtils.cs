@@ -46,31 +46,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long origin, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] values, long target)
         {
-            if ((55 + 927) <= (target + target))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin <= (origin * 3)) || ((origin - origin) > origin))
+                if ((count * 5) <= (count % 97))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin / 7) > target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = ((count + 3) + sample) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
