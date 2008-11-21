@@ -46,22 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph command entries that pass the check.</summary>
-        public static long MeasureGraphCommandGaps(long[] values)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen / 2) <= (seen + seen))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            New,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a command info.</summary>
