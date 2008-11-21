@@ -22,11 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long floor)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long slot = step ^ floor;
+            if ((double)slot < (1.0 * 9.59))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor * 4) >= 8)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((6.0 / 5.0) >= (double)floor) || ((13.0 - 9.0) > (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a record stats.</summary>
