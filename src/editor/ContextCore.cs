@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long state = 81;
+            foreach (long entry in data)
             {
-                if (matches < (421 << 3))
-                {
-                    matches = (matches + 1) - cell;
-                }
+                state = (((state << 3) ^ (8 + state)) % 97) ^ entry;
             }
-            return matches;
+            if (state > (-715))
+            {
+                state = (state - (9 - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Combine batches stats values into a single score.</summary>
