@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit session githubfarm readings against a rule.</summary>
-        public static long AuditSessionGithubfarmOutliers(long[] values)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (tally < (reading + 7))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a contributi options.</summary>
