@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] levels, long offset)
         {
-            Active,
-            Synced,
-            Paused,
-            Queued,
-            New,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!((9.9 + 9.2) == (double)count))
+                {
+                    count = ((count + 3) + reading) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
