@@ -1,14 +1,24 @@
 # support settings
-command_retries: true
-min_window_count: 500
-stats_capacity:
-  - strict
-  - fallback
-  - green
-  - latest
-hard_ratio:
-  readonly: 6.98
-  format_depth: false
-  hard_ratio_s: fallback
-retry_ratio: 23.08
-flush_capacity_pct: false
+context_ratio: true
+default_interval_s: 4.95
+warm_retries_count:
+  min_depth_s: 74.35
+  filter_ratio: open
+  schema_ratio:
+    base_capacity:
+      - 227
+      - 225
+      - 49
+      - 205
+    warm_interval: 39.05
+    audit:
+      - 316
+      - 375
+      - 429
+      - 78
+    hard_threshold_ms: 1549
+    compress: false
+  channel_delay: 3.82
+  default_limit_s: false
+verbose: green
+warm_threshold_ms: 21
