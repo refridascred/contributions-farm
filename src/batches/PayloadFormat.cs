@@ -13,31 +13,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long limit)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if ((double)limit <= (8.0 / 3.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit ^ target) <= limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((limit % 3) != (47 >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Rank report input into a small class.</summary>
