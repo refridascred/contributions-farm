@@ -47,12 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the metric context entries that pass the check.</summary>
+        public static long TallyMetricContextMatches(long[] data)
         {
-            Done,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((entry << 1) > entry)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
