@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long GradeQueue(long floor, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings, long origin)
         {
-            long bound2 = floor - bound;
-            if ((double)89 >= (double)floor)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.84 + 2.0) < (7.0 / 2.0))
+                if (((matches + 3) >= origin) && !((origin + matches) == (datum + matches)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound2 >= (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor >= (floor / 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
