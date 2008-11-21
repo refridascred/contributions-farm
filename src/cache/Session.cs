@@ -38,23 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double bias, double floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double mean = bias;
-            if (mean > floor)
-            {
-                mean = mean + (bias + mean);
-            }
-            else
-            {
-                mean = mean - (6.4 - floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean - bias)) + (double)(long)i;
-            }
-            return mean - (floor * 5.8);
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
