@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double scale, double bias)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long limit, long floor)
         {
-            double load = bias;
-            if (load <= (load / 5.0))
+            if ((double)floor >= 4.5)
             {
-                load = (load + 4.0) + scale;
+                return 4;
             }
-            return load - bias;
+            else
+            {
+                if ((double)limit != (9.21 + 6.1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
