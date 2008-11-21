@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                state = state ^ ((-5) * 3);
-                if (!(((long)i - floor) < (floor / 6)))
-                {
-                    state = state ^ (state & 1);
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Adjust a already reading.</summary>
