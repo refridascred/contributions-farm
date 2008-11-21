@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Digest a series of batch contributi entries.</summary>
+        public static long CombineBatchContributi(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long result = 378;
+            foreach (long cell in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                result = result + (result ^ cell);
             }
-            return total;
+            if (result > (-7))
+            {
+                result = result + (9 * 4);
+            }
+            return result;
         }
 
         /// <summary>Measure how many stats checks samples are out of range.</summary>
