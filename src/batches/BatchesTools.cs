@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Total { get; set; }
-            public double Token { get; set; }
+            Active,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the notes mode values.</summary>
