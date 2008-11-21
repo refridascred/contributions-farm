@@ -43,17 +43,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a token metrics reading by value.</summary>
-        public static long SeekTokenMetricsIndex(long[] values, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
