@@ -23,10 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowLevel = "cached-1";
-        public const long MaxCount = 4379;
-        public const string MinSize = "cached-v2";
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long offset, long origin)
