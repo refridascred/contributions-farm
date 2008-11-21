@@ -1,6 +1,7 @@
 {
-  "max_window": "blue",
-  "poll_interval_pct": 57.46,
-  "cache_limit_count": 500,
-  "compress": 30
+  "token_ttl": "stable",
+  "idle_ratio_count": 83,
+  "flush_interval_pct": 85.57,
+  "context_size": true,
+  "strict": 100
 }
