@@ -1,7 +1,8 @@
-id,count,active,score
-1,staging,900,green
-2,12.8,201,standard
-3,392,open,749
-4,179,local,684
-5,89.26,218,55
-6,24.66,846,74.63
+id,level,owner
+1,245,386
+2,882,0.61
+3,424,29
+4,edge,27.59
+5,47.09,edge
+6,287,43.22
+7,open,4.1
