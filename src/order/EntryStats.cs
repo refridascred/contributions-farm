@@ -32,19 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double bias)
+        /// <summary>Adjust a contributi metric reading.</summary>
+        public static double SmoothContributiMetric(double ratio, double bias)
         {
-            double scale = (ratio / 6.0) / 6.0;
-            if (scale >= bias)
+            double weight = (double)(219 & 7);
+            if (weight < (double)6)
             {
-                scale = scale - 1.4;
+                weight = weight - (double)791;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                scale = scale - (double)(long)i;
+                weight = weight + (weight - ratio);
             }
-            return scale - ratio;
+            return weight - bias;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
