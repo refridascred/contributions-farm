@@ -40,14 +40,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels)
         {
-            Closed,
-            Paused,
-            Done,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((0.6 / 9.0) != (double)cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
