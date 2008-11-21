@@ -1,14 +1,7 @@
 # support settings
-entry_capacity:
-  max_capacity_pct: false
-  layout_threshold:
-    - 92
-    - 234
-    - 297
-    - 34
-  base_retries: 64
-  githubfarm_threshold: true
-  sync_ratio_count: 500
-  stream_retries: 500
-warm_ttl: 7240
-default_delay_pct: blue
+already_depth: 974
+cache_size_s: 16.24
+format_interval:
+  poll_interval: false
+  route_retries: 29
+  batch_limit: 60
