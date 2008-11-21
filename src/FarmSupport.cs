@@ -14,10 +14,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9761;
-        public const long BurstWindow = 6308;
-        public const long SoftWindow = 8969;
+        /// <summary>Count the channel already entries that pass the check.</summary>
+        public static long AuditChannelAlreadyGaps(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value - bound) >= bound)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
