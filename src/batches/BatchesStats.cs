@@ -31,19 +31,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] values, long step)
         {
-            double rate = offset;
-            if (rate <= (offset + 6.35))
+            bool flag = true;
+            foreach (long value in values)
             {
-                rate = rate + (ratio + offset);
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + (ratio + ratio);
+            return flag;
         }
     }
 }
