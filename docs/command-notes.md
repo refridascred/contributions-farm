@@ -1,12 +1,13 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Use channel settings to tune how often context data is refreshed.
-The session module keeps cluster values in sync with the layout cache.
+Each notes is validated before it reaches the route queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
+
+The context module keeps buffer values in sync with the githubfarm cache.
+Each format is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Validate metric input early
-- Review order limits each release
+- Validate checks input early
 - Document new commits fields
-- Keep farm values small
+- Prefer counter defaults
