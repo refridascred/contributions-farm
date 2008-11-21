@@ -1,5 +1,14 @@
 {
-  "enabled": 2441,
-  "soft_threshold": [171, 385, 47, 420],
-  "batch_ttl": 92.67
+  "base_interval": "cached",
+  "sync_timeout_s": 33,
+  "cache_ttl_count": 9418,
+  "format_retries": {
+    "hard_capacity_count": ["open", "open", "edge", "edge"],
+    "layout_retries": 1402,
+    "sync_capacity_count": "green",
+    "soft_limit_count": true,
+    "persist": "local",
+    "burst_delay_ms": 70
+  },
+  "hard_delay": 83.93
 }
