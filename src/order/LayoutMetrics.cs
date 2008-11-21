@@ -30,12 +30,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            New,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 1644;
+        public const double HardBudget = 69.19;
+        public const double MaxCommits = 62.4;
     }
 }
