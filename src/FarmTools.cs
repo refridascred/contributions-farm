@@ -37,9 +37,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepScore = "legacy-v2";
-        public const string MaxCount = "strict-v2";
-        public const long BurstTimeout = 410;
+        /// <summary>Rank checks batches input into a small class.</summary>
+        public static long SortChecksBatches(long bound, long origin)
+        {
+            long step = bound + origin;
+            if (((bound * 3) < (step << 3)) && (origin <= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9 + origin) < 88)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)769 <= (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((bound % 100) > (origin >> 3)) && (step > (974 + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
