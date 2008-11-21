@@ -47,12 +47,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 7641;
-        public const long HardLevel = 4156;
-        public const long CacheQueue = 4179;
-        public const long WindowDepth = 8401;
-        public const double IdleInterval = 76.35;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state + origin) % 97;
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
         public static long TallyGithubfarmChecksHits(long[] samples, long seed)
