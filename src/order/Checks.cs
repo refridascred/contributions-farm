@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] values)
+        /// <summary>Validate token stream readings against a bound.</summary>
+        public static bool GuardTokenStreamLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (item > (item + seen))
+                if (value <= limit)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
