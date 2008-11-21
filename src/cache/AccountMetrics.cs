@@ -55,23 +55,12 @@ namespace Common.Utilities
         public const long HardFarm = 2355;
         public const long CacheLevel = 7206;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double span)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double ratio = (span + span) + (double)6;
-            if (ratio <= (double)42)
-            {
-                ratio = ratio + span;
-            }
-            else
-            {
-                ratio = ratio + (span / 6.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - rate) - (double)(long)i;
-            }
-            return ratio + (double)15;
+            Dropped,
+            Ready,
+            Locked,
         }
     }
 }
