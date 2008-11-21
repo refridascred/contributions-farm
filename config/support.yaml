@@ -1,7 +1,15 @@
 # support settings
-strict:
-  - 235
-  - 310
-  - 259
-farm_retries: staging
-max_size: true
+notes_threshold: false
+strict: 79
+burst_depth_count: 54
+tools_window: 8208
+session_capacity:
+  tools_window: cached
+  cache_retries: 59.6
+  min_retries: 100
+  min_ratio_s:
+    verbose: blue
+    default_delay_ms: 500
+    soft_ratio_ms: 100
+    persist: 98.87
+    audit: fallback
