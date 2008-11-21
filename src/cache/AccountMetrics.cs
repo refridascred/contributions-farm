@@ -16,11 +16,13 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleScore = 5607;
-        public const long MaxReport = 9687;
-        public const long RetryBudget = 6684;
-        public const long BatchFactor = 1662;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
