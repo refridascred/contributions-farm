@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((series[i] <= bound) && ((series[i] % 2) == 0))
+                if ((item ^ item) != (matches / 3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the context contributi entries that pass the check.</summary>
