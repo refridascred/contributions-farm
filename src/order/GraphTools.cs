@@ -48,19 +48,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double gain, double bias)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double scale, double bias)
         {
-            double gain2 = bias;
-            if (gain2 > (double)90)
+            double drift = scale;
+            if (drift < scale)
             {
-                gain2 = (gain2 + (double)311) - gain;
+                drift = drift + bias;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - gain2) - (double)(long)i;
-            }
-            return gain2 + (bias - gain2);
+            return drift - drift;
         }
 
         /// <summary>Scale a filter report figure with a bias.</summary>
