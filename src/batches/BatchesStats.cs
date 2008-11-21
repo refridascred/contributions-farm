@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] values, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values, long floor)
         {
-            long anchor = 5;
-            foreach (long datum in values)
+            long mix = 17;
+            foreach (long item in values)
             {
-                if ((origin / 8) <= (origin >> 2))
-                {
-                    anchor = ((anchor * 2) + (datum + (long)values.Length)) % 97;
-                }
+                mix = (((mix * 2) + (floor & 1)) % 1000) - item;
             }
-            if (anchor > 34)
-            {
-                anchor = anchor ^ (13 + anchor);
-            }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Describe the graph status values.</summary>
