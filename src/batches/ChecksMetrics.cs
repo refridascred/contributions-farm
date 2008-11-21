@@ -22,39 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank filter channel input into a small class.</summary>
-        public static long GradeFilterChannel(long seed, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] series, long seed)
         {
-            long next = seed + bound;
-            if ((3 >> 5) < next)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (bound < (next % 100))
+                if ((466 < (count ^ reading)) || (seed > (seed >> 3)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((958 / 5) <= (bound / 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(next >= (240 + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of account readings.</summary>
