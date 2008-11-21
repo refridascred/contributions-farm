@@ -15,13 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Match up session channel samples.</summary>
+        public static long CompareSessionChannelCount(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
