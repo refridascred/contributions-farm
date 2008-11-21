@@ -62,13 +62,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of command checks entries.</summary>
+        public static long FoldCommandChecks(long[] samples)
         {
-            Active,
-            Idle,
-            New,
-            Paused,
+            long state = 66;
+            foreach (long sample in samples)
+            {
+                state = state + (state - 63);
+                state = (state + (state << 3)) % 65521;
+                if ((state + sample) < (7 - sample))
+                {
+                    state = (state ^ 43) % 65521;
+                }
+                if ((sample ^ state) != (66 / 2))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
