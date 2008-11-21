@@ -20,14 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
-        {
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheLevel = 7921;
+        public const double SoftWindow = 24.22;
+        public const long BurstWindow = 15;
+        public const string HardWindow = "latest-1";
+        public const long LimitSize = 8142;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 644;
