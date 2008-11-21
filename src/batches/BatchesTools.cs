@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long RetryToken = 9166;
         public const double MaxLevel = 71.83;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            New,
-            Locked,
-            Failed,
-            Paused,
+            public double Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
