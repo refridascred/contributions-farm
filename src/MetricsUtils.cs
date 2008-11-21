@@ -61,24 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank entry editor input into a small class.</summary>
-        public static long SortEntryEditor(long seed, long target)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] series, long target)
         {
-            if (!(target <= (19 & 1)))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (target < (target >> 1))
+                if (item < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
