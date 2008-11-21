@@ -14,17 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Stale,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
