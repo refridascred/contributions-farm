@@ -31,13 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Failed,
-            Active,
-            Ready,
-            Idle,
+            Dropped,
+            Stale,
+            Retry,
         }
     }
 }
