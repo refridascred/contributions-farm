@@ -33,19 +33,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long sum = 64;
-            foreach (long entry in data)
-            {
-                sum = ((sum ^ (740 * 4)) % 97) + entry;
-            }
-            if (sum < 667)
-            {
-                sum = ((sum * 4) + (0 & 7)) % 101;
-            }
-            return sum;
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count metric profile pairs that satisfy a relation.</summary>
