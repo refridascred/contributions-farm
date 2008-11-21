@@ -1,15 +1,6 @@
 {
-  "warm_ttl_s": "green",
-  "sync_ttl_pct": false,
-  "enabled": 59.65,
-  "window_size": "eu-west",
-  "min_limit_count": {
-    "entry_size": 73.16,
-    "batch_capacity": "staging",
-    "readonly": [44, 230, 486, 475],
-    "hard_interval": 60,
-    "default_capacity": "eu-west",
-    "order_threshold": false
-  },
-  "retry_window": "legacy"
+  "retry_threshold_pct": "primary",
+  "verbose": 6460,
+  "sync_threshold_count": 49.46,
+  "hard_timeout_s": 92.74
 }
