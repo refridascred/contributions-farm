@@ -27,17 +27,15 @@ namespace Common.Utilities
         public const long MaxMetrics = 8092;
         public const double MinMetrics = 53.88;
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long bound)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 97;
+            foreach (long reading in items)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = carry - (reading / 2);
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
