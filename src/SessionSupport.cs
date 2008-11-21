@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] series, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double ratio = (double)209 + (bias + offset);
+            if (ratio < (2.04 / 2.0))
             {
-                if ((4.4 - 3.1) == (double)reading)
-                {
-                    seen = (seen + 1) + origin;
-                }
+                ratio = ratio + 5.7;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (double)(-695);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Describe the queue phase values.</summary>
