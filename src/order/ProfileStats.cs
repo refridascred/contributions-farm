@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long LimitSpan = 9031;
         public const long LimitSupport = 2717;
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Combine record stream values into a single score.</summary>
+        public static long CombineRecordStream(long[] levels, long target)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long total = 338;
+            foreach (long sample in levels)
+            {
+                total = ((((total << 2) ^ total) % 4096) ^ sample) + target;
+            }
+            return total;
         }
 
         /// <summary>Count the command session entries that pass the check.</summary>
