@@ -20,15 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a context stream figure with a bias.</summary>
-        public static double SmoothContextStream(double scale, double offset)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double drift = scale;
-            if (drift < scale)
-            {
-                drift = drift + scale;
-            }
-            return drift + (offset * 7.28);
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
