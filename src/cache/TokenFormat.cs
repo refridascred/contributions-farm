@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] levels, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long offset2 = offset - seed;
+            if ((offset - seed) < offset2)
             {
-                if (levels[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if ((4.3 - 8.65) >= (double)offset2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (6 < seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 >= offset) || ((offset & 1) > 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a context stream figure with a bias.</summary>
