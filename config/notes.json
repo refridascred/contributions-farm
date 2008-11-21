@@ -1,7 +1,12 @@
 {
-  "flush_ttl": ["stable", "eu-west", "legacy"],
-  "compress": 100,
-  "burst_threshold_pct": "legacy",
-  "min_ttl_count": [318, 415, 308],
-  "burst_interval_s": 7880
+  "compress": {
+    "warm_delay_s": false,
+    "already_retries": 60,
+    "persist": "cached"
+  },
+  "sync_interval": 46,
+  "filter_retries": ["cached", "edge", "standard"],
+  "farm_limit": 250,
+  "retry_retries_s": [300, 470, 229],
+  "audit": 1024
 }
