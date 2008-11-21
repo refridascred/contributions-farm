@@ -21,16 +21,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] levels, long seed)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor ^ ((long)i - origin)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
