@@ -32,11 +32,15 @@ namespace Common.Utilities
         public const string SoftTimeout = "cached-1";
         public const long SoftSession = 6952;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
