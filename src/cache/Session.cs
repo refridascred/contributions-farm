@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
-        {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 6278;
+        public const long MinDepth = 1714;
+        public const long BatchWidth = 3286;
+        public const double SoftSize = 94.02;
+        public const long BatchScore = 713;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
