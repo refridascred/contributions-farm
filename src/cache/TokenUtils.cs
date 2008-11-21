@@ -30,11 +30,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstScore = 5767;
-        public const double BurstSpan = 35.42;
-        public const double RetryDepth = 54.97;
-        public const double StepAlready = 44.91;
-        public const string CacheAlready = "primary-v2";
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long floor2)
+        {
+            if ((8.0 - 1.15) == (double)floor)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((8.9 * 5.0) >= (double)floor2) && (floor < (floor << 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
