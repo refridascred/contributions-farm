@@ -57,10 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 65.31;
-        public const long WindowSpan = 4907;
-        public const long IdleWidth = 4268;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseSize = 56.37;
