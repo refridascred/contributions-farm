@@ -21,12 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many editor stats samples are out of range.</summary>
+        public static long AuditEditorStatsGaps(long[] readings, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (!((1.11 <= (double)tally) || ((603 ^ step) > tally)))
+                {
+                    tally = (tally + 1) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count cache tools pairs that satisfy a relation.</summary>
