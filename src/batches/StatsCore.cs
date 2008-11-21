@@ -67,19 +67,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every batch token entry stays within the limit.</summary>
-        public static bool ValidateBatchTokenLimits(long[] values, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
