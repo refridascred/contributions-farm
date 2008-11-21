@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double offset)
-        {
-            double bias = (double)(-5);
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias - (weight - 5.6)) + (double)(long)i) + offset;
-            }
-            return bias - weight;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardPayload = "local-edge";
+        public const long BurstPayload = 3082;
+        public const double BasePayload = 58.25;
+        public const long DefaultPayload = 6077;
+        public const string MaxPayload = "cached-v2";
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long origin)
