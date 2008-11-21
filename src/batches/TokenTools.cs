@@ -33,12 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
