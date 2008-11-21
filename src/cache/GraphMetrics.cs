@@ -58,15 +58,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Count the metric entry entries that pass the check.</summary>
+        public static long MeasureMetricEntryGaps(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                if ((double)datum >= (double)hits)
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the channel level values.</summary>
