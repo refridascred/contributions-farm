@@ -15,18 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] values)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((double)seen == (8.7 - 0.3))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
