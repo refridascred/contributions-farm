@@ -1,4 +1,4 @@
 # githubfarm settings
-readonly: 60
-strict: 31.4
-min_delay_pct: false
+flush_window_count: 99
+poll_ratio: 30.31
+base_size_count: false
