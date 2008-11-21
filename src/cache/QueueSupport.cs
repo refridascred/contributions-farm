@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double mean = scale;
-            if (mean < (3.8 * 0.17))
-            {
-                mean = mean + (mean + mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - scale;
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many session route samples are out of range.</summary>
