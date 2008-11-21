@@ -62,18 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] readings)
+        /// <summary>Find the first report payload entry that matches the target.</summary>
+        public static long SeekReportPayloadIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen - seen) > (cell - seen))
+                if ((items[i] == limit) && ((items[i] % 5) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
