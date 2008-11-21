@@ -54,18 +54,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long TallySupportNotesMatches(long[] data)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits - hits) != (hits + cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Dropped,
         }
     }
 }
