@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] readings, long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Idle,
+            Paused,
+            Pending,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
