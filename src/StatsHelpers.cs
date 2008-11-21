@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheInterval = "legacy-v2";
-        public const long CacheSupport = 360;
-        public const long SoftSize = 4630;
-        public const long LimitSupport = 2042;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowScore = 7536;
+        public const double IdleBatch = 14.04;
+        public const double HardBatch = 72.83;
+        public const long BurstBatch = 5649;
 
         /// <summary>Find the first batches profile entry that matches the target.</summary>
         public static long SeekBatchesProfileIndex(long[] values, long origin)
