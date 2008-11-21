@@ -20,18 +20,17 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] readings)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] values, long step)
         {
-            long sum = 613;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((2.0 + 1.99) > (double)sample)
+                if ((values[i] > step) && ((values[i] % 2) != 0))
                 {
-                    sum = sum - sum;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Hold a route stats.</summary>
