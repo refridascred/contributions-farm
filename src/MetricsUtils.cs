@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long step, long floor)
-        {
-            if ((floor / 4) != ((-8) / 5))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + step) == (floor + 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0.8 + 1.0) >= 3.1)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 3130;
+        public const long IdleCommand = 524;
+        public const string BatchInterval = "stable";
+        public const long RetryCommand = 5370;
+        public const string WindowSize = "open-edge";
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] items)
