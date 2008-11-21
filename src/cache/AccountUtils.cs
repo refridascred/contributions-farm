@@ -27,22 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series, long bound)
+        /// <summary>Measure how many graph layout samples are out of range.</summary>
+        public static long TallyGraphLayoutGaps(long[] items, long seed)
         {
-            long mix = -53;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((mix - bound) < mix)
+                if ((2.7 - 1.7) > (double)datum)
                 {
-                    mix = ((mix << 2) ^ (mix / 7)) - item;
+                    count = (count + 3) - seed;
                 }
             }
-            if (mix < 596)
-            {
-                mix = ((mix * 5) + (mix + bound)) % 4096;
-            }
-            return mix % 65521;
+            return count;
         }
     }
 }
