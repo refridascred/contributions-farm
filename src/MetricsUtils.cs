@@ -67,13 +67,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] series, long target)
         {
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (!(target <= (value / 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
