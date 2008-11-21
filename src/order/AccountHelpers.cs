@@ -35,21 +35,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 71;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (7.3 > (double)sample)
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix - sample) % 65521) + origin;
+                }
+                else
+                {
+                    mix = mix + (sample - 2);
+                }
+                if ((mix + sample) < (6 + sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix > 17)
+            {
+                mix = (mix + (706 - (-3))) % 255;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
