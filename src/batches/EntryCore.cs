@@ -59,13 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double weight, double offset)
         {
-            Retry,
-            Pending,
-            Queued,
-            Done,
+            double gain = weight;
+            if (gain >= weight)
+            {
+                gain = (gain - (gain / 8.0)) + offset;
+            }
+            return gain + gain;
         }
     }
 }
