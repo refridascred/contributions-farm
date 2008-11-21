@@ -29,19 +29,21 @@ namespace Common.Utilities
             return drift + (offset * 7.28);
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] items, long target)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
