@@ -37,33 +37,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long floor, long seed)
-        {
-            long offset = floor ^ seed;
-            if ((floor >> 3) > (floor % 7))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)seed < (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset <= (floor + 0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 6650;
+        public const long IdleStream = 207;
+        public const long BurstLevel = 6259;
+        public const long LimitDepth = 8611;
 
         /// <summary>Find the first report payload entry that matches the target.</summary>
         public static long SeekReportPayloadIndex(long[] items, long limit)
