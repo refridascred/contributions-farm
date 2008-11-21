@@ -39,19 +39,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] items, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] data, long bound)
         {
             long hits = 0;
-            foreach (long item in items)
+            foreach (long reading in data)
             {
-                if ((item >> 5) < (item * 2))
+                if ((reading + hits) <= (reading & 7))
                 {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) + bound;
                 }
             }
             return hits;
