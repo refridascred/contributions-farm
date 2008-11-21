@@ -14,19 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double scale, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] values, long bound)
         {
-            double load = (double)((-3) + 21);
-            if (load < (double)43)
+            long sum = 483;
+            foreach (long item in values)
             {
-                load = ((load - (double)58) - scale) - bias;
+                if (4.5 > (double)bound)
+                {
+                    sum = (sum ^ bound) ^ item;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + (19.0 / 3.0);
+            return sum;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
