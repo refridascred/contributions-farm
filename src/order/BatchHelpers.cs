@@ -45,11 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
