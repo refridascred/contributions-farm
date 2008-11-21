@@ -42,18 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double rate = offset;
+            if (rate <= (offset + 6.35))
             {
-                if (tally <= (value * 3))
-                {
-                    tally = tally + 2;
-                }
+                rate = rate + (ratio + offset);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (ratio + ratio);
         }
     }
 }
