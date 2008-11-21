@@ -40,15 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Match up contributi profile samples.</summary>
+        public static long PairContributiProfileCount(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Match up entry samples.</summary>
