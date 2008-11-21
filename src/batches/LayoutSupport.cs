@@ -33,17 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a cluster payload reading by value.</summary>
-        public static long LookupClusterPayloadIndex(long[] data, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (data[i] == seed)
+                if ((entry << 1) > seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the window status values.</summary>
