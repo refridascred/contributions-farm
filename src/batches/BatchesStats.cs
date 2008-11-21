@@ -56,19 +56,39 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double scale, double span)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long seed)
         {
-            double scale2 = span * 8.0;
-            if (scale2 <= scale)
+            long prev = floor ^ seed;
+            if ((double)floor <= (5.0 - 3.69))
             {
-                scale2 = scale2 - (scale2 / 8.0);
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale2 = (scale2 + span) - (double)(long)i;
+                if ((double)floor <= (double)502)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((seed ^ seed) < (prev + 70)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (double)floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return scale2 + scale2;
         }
     }
 }
