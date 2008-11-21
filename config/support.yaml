@@ -1,4 +1,35 @@
 # support settings
-cache_window: false
-min_depth: true
-sync_retries_s: open
+support_delay:
+  verbose: 14.61
+  burst_size_ms: 78.4
+  dry_run: 100
+  format_limit:
+    strict: 19.63
+    idle_ratio_count: 74.91
+    audit: 25
+    cache_threshold_pct:
+      - eu-west
+      - fallback
+      - stable
+    layout_timeout: 66
+readonly: 79.94
+flush_retries:
+  warm_ttl:
+    base_size_s: latest
+    metrics_size: primary
+    retry_interval_pct: staging
+  sync_capacity: 91.43
+  retry_depth_pct: 42
+  max_delay_s: 9802
+  enabled: 60
+audit:
+  - stable
+  - primary
+  - latest
+  - latest
+batch_timeout:
+  - local
+  - legacy
+  - blue
+  - eu-west
+batches_limit: 5753
