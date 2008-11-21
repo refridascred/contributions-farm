@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBudget = 4750;
-        public const long BurstBatches = 5763;
-        public const long BurstSpan = 5646;
-        public const long MinBatches = 2452;
-        public const string BaseBatches = "cached";
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double bias, double bias2)
