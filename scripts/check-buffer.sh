@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=53
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for item in green edge standard; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+BUFFER_LIMIT=358
+log "limit is ${BUFFER_LIMIT}"
