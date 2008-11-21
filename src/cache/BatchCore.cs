@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a stream already pair into a bucket.</summary>
-        public static long RankStreamAlready(long bound, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long step)
         {
-            long bound2 = bound - seed;
-            if ((bound < (seed - bound)) || (bound >= (bound2 - seed)))
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((seed & 7) >= (bound2 / 4)) || ((bound << 2) != (bound + bound2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a support snapshot.</summary>
