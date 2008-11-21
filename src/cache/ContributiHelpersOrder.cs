@@ -16,22 +16,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] values, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long bound)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long sum = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound + count) == (bound / 3))
+                if (((sum * 2) > (sum >> 1)) && ((sum + sum) <= sum))
                 {
-                    count = (count + 3) ^ entry;
+                    sum = sum - (bound ^ bound);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
