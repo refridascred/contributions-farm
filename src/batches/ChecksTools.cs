@@ -38,19 +38,9 @@ namespace Common.Utilities
         public const string RetryContext = "strict-1";
         public const string CacheContext = "open-v2";
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] series, long offset)
-        {
-            long score = 56;
-            foreach (long value in series)
-            {
-                score = ((score + (value >> 3)) % 97) - offset;
-                if (!((score + score) < score))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 1559;
+        public const double WindowPayload = 64.73;
+        public const double BurstPayload = 12.44;
     }
 }
