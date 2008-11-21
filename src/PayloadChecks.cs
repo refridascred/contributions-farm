@@ -32,18 +32,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] values)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((10.0 * 8.0) > (double)tally)
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Combine command values into a single score.</summary>
