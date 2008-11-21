@@ -1,19 +1,13 @@
 # entry settings
-strict: 47.21
-queue_interval: 50.31
-batch_limit: 1024
-soft_interval: 38.53
-poll_ttl:
-  audit:
-    profile_size: 7216
-    verbose: 76
-    flush_interval_count: 6723
-    batch_window_s: false
-    dry_run:
-      - primary
-      - stable
-      - blue
-      - legacy
-  dry_run: true
-  verbose: green
-sync_timeout_s: 92.17
+route_retries:
+  - stable
+  - green
+  - green
+order_threshold: 67
+enabled:
+  - 49
+  - 115
+  - 333
+  - 209
+max_threshold_pct: staging
+tools_limit: 70.61
