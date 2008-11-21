@@ -1,10 +1,20 @@
 # githubfarm settings
-batches_window:
-  - stable
-  - fallback
-  - edge
-session_window:
-  - latest
-  - latest
-  - cached
-batch_threshold_ms: legacy
+report_window: open
+poll_ttl: latest
+persist: cached
+stats_interval:
+  min_ratio_s:
+    - local
+    - strict
+    - green
+  layout_size:
+    - 107
+    - 387
+    - 222
+    - 130
+  min_limit_ms:
+    - 83
+    - 172
+    - 388
+  idle_limit: 6935
+  sync_timeout: false
