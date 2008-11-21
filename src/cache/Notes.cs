@@ -45,26 +45,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] items, long seed)
+        /// <summary>Count token queue pairs that satisfy a relation.</summary>
+        public static long MatchTokenQueueCount(long[] readings)
         {
-            long sum = 1;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)sum == (8.33 - 0.75))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum << 2) ^ seed;
-                }
-                else
-                {
-                    sum = (sum ^ (reading + 56)) % 4096;
-                }
-                if (((6.69 / 9.0) >= (double)seed) && (19 <= (sum + seed)))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
