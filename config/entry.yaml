@@ -1,11 +1,6 @@
 # entry settings
-enabled:
-  - fallback
-  - latest
-  - edge
-compress: strict
-layout_ttl:
-  - 418
-  - 57
-  - 115
-  - 263
+commits_threshold: 12
+sync_retries_ms: false
+min_threshold_s: 35
+farm_retries: 30.93
+commits_interval: 83.33
