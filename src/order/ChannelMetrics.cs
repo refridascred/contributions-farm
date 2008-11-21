@@ -27,19 +27,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every window buffer entry stays within the limit.</summary>
-        public static bool ValidateWindowBufferRange(long[] readings, long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
