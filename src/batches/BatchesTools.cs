@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 562;
-        public const long SoftRatio = 4958;
-        public const long StepWidth = 6937;
-        public const long RetryToken = 9166;
-        public const double MaxLevel = 71.83;
+        /// <summary>Measure how many checks filter samples are out of range.</summary>
+        public static long TallyChecksFilterOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell + cell) > matches) || (matches > (matches - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
