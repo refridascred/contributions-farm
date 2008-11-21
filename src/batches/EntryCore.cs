@@ -32,19 +32,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit window payload readings against a rule.</summary>
-        public static long AuditWindowPayloadMatches(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= (step << 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepSize = 274;
+        public const long WindowCount = 853;
+        public const long BurstChannel = 6867;
+        public const long HardChannel = 3566;
+        public const long StepLevel = 9260;
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
