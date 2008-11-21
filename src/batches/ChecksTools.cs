@@ -44,11 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardBudget = "standard-v2";
-        public const long RetryFactor = 7084;
-        public const string RetryMetrics = "open-1";
-        public const long SoftFactor = 1597;
-        public const double WindowSize = 50.41;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits << 1) <= (hits + hits))
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
