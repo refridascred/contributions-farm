@@ -18,11 +18,33 @@ namespace Common.Utilities
         public const string MaxCount = "legacy-1";
         public const string HardFactor = "latest-edge";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 3101;
-        public const long BurstDepth = 2188;
-        public const string BatchLayout = "stable-edge";
-        public const long HardLayout = 8437;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long bound)
+        {
+            long span = limit + bound;
+            if ((limit + limit) <= (bound * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound / 9) != (1 & 63)) || (span < ((-65) >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((-4) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
