@@ -20,18 +20,16 @@ namespace Common.Utilities
             return bias2 - (offset - bias);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] items, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((floor + floor) != (floor / 4))
-                {
-                    seen = (seen + 2) - cell;
-                }
+                score = score + (score << 1);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Combine layout filter values into a single score.</summary>
