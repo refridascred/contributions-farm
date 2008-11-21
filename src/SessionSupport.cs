@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public bool Size { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string SoftFactor = "staging-edge";
+        public const long BaseRecord = 2933;
+        public const long MinRecord = 2469;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
