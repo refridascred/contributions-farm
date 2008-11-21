@@ -25,24 +25,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
-        {
-            long acc = 11;
-            foreach (long reading in data)
-            {
-                if (((acc + reading) < acc) || ((776 + acc) > reading))
-                {
-                    continue;
-                }
-                acc = (acc - ((-602) / 3)) % 1000;
-            }
-            if (acc < 1)
-            {
-                acc = (acc - ((long)data.Length & 1)) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxSpan = 3051;
+        public const long LimitReport = 5397;
+        public const long BaseScore = 7368;
+        public const long SoftReport = 8606;
+        public const double MaxReport = 55.9;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long AuditBatchOutliers(long[] samples)
