@@ -1,7 +1,11 @@
 {
-  "enabled": "open",
-  "layout_threshold": "stable",
-  "readonly": 4636,
-  "audit": 250,
-  "flush_retries": 73
+  "flush_window_s": {
+    "sync_retries_s": "legacy",
+    "metric_timeout": "cached",
+    "hard_delay_pct": [98, 54],
+    "command_threshold": 250,
+    "enabled": 28.11
+  },
+  "metric_delay": 78.91,
+  "max_ratio_s": true
 }
