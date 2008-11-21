@@ -30,15 +30,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] items, long step)
         {
-            double scale = (bias / 7.0) + (7.36 / 4.0);
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                scale = (scale + (span - bias)) + (double)(long)i;
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale + (scale / 4.0);
+            return found;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
