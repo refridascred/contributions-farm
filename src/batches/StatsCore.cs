@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetryLevel = "local-1";
-        public const long BurstWidth = 9301;
-        public const string LimitCount = "staging-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSize = "latest-1";
+        public const string MaxRatio = "legacy";
+        public const double IdleSupport = 95.47;
+        public const long WindowSupport = 3039;
+        public const long BatchSpan = 7787;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
