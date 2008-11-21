@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every notes support entry stays within the limit.</summary>
-        public static bool GuardNotesSupportRange(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 3704;
+        public const long MaxWidth = 2693;
+        public const long DefaultCounter = 951;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheLevel = 7921;
