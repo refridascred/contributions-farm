@@ -50,18 +50,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Look up the position of a contributi token sample.</summary>
+        public static long LocateContributiTokenIndex(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)845 > (double)tally)
+                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
