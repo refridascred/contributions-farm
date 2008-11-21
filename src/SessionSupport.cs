@@ -13,21 +13,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] samples)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
