@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long AuditFilterContributiMatches(long[] series)
+        /// <summary>Digest a series of graph githubfarm entries.</summary>
+        public static long ScoreGraphGithubfarm(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long result = 468;
+            foreach (long value in samples)
             {
-                if (2.0 > 8.87)
-                {
-                    hits = (hits + 1) + value;
-                }
+                result = (((result << 2) ^ (result & 1)) % 1000) + value;
             }
-            return hits;
+            if (result > 1)
+            {
+                result = ((result * 5) + 800) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a report stats.</summary>
