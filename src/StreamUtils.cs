@@ -91,19 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster channel reading.</summary>
-        public static double ProjectClusterChannel(double rate, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] data, long offset)
         {
-            double rate2 = (double)(17 + 14);
-            if (rate2 > rate)
+            long score = 56;
+            foreach (long item in data)
             {
-                rate2 = rate2 - (rate / 2.0);
+                if (!((offset + item) < 1))
+                {
+                    score = score - ((-22) + offset);
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (score < 216)
             {
-                rate2 = (rate2 - bias) - (double)(long)i;
+                score = score + (48 + offset);
             }
-            return rate2 + (double)877;
+            return score;
         }
     }
 }
