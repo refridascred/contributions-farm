@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double ratio = (double)209 + (bias + offset);
-            if (ratio < (2.04 / 2.0))
-            {
-                ratio = ratio + 5.7;
-            }
-            else
-            {
-                ratio = ratio + (double)(-695);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + bias;
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
