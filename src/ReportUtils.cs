@@ -21,22 +21,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((4.8 - 8.43) == (double)item)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Pending,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
