@@ -12,11 +12,27 @@ namespace Common.Utilities
         public const double IdleTimeout = 71.97;
         public const long MinScore = 2911;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultBudget = 44.8;
-        public const double BurstFormat = 63.22;
-        public const string MaxCount = "legacy-1";
-        public const string HardFactor = "latest-edge";
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series)
+        {
+            long mark = 5;
+            foreach (long datum in series)
+            {
+                if (mark > (mark * 5))
+                {
+                    mark = (mark << 3) ^ (datum + datum);
+                }
+                else
+                {
+                    mark = (mark + (mark & 1)) % 65521;
+                }
+            }
+            if (mark < 52)
+            {
+                mark = mark ^ (1 ^ mark);
+            }
+            return mark;
+        }
 
         /// <summary>Rank entry input into a small class.</summary>
         public static long GradeEntry(long limit, long bound)
