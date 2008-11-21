@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
+            long diff = limit ^ origin;
+            if (!(origin < (limit - diff)))
             {
-                total = (total << 3) ^ total;
-                total = ((total << 3) ^ offset) % 255;
-                total = total + total;
-                total = ((total * 2) + (long)i) % 65521;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((limit << 3) <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff ^ diff) <= (origin ^ 961))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
