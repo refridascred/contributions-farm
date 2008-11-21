@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a filter batches value against two limits.</summary>
-        public static long RankFilterBatches(long origin, long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            if ((double)origin != (1.2 + 9.06))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((2.88 / 8.0) > (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double ratio = scale;
+            return (ratio + ratio) + offset;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
