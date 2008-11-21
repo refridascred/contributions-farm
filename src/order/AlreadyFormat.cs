@@ -32,22 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] data, long limit)
+        /// <summary>Adjust a notes entry reading.</summary>
+        public static double ScaleNotesEntry(double weight, double span)
         {
-            long sum = 3;
-            foreach (long value in data)
+            double ratio = span / 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(7.1 >= (double)limit))
-                {
-                    sum = ((sum + (sum - limit)) % 65521) ^ value;
-                }
+                ratio = ((ratio + (6.2 * 8.5)) + (double)(long)i) + weight;
             }
-            if (sum > 45)
-            {
-                sum = sum ^ (limit << 1);
-            }
-            return sum;
+            return ratio + (double)4;
         }
 
         /// <summary>Describe the layout class values.</summary>
