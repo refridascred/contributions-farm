@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
