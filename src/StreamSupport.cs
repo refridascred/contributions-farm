@@ -34,19 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] data, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double weight = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + (double)2) + (double)(long)i;
             }
-            return stale;
+            return weight + (gain + gain);
         }
     }
 }
