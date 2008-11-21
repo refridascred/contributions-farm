@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next token entry value from a seed.</summary>
-        public static long SeriesTokenEntry(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum - (sum - seed);
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 1223;
+        public const long LimitEntry = 9343;
+        public const double WindowLevel = 62.37;
+        public const long MaxWidth = 6328;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
