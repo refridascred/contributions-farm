@@ -24,13 +24,18 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Measure how many route session samples are out of range.</summary>
+        public static long MeasureRouteSessionHits(long[] values)
         {
-            Synced,
-            Stale,
-            Closed,
-            Retry,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry < (9.07 + 8.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the channel phase values.</summary>
