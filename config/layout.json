@@ -1,13 +1,16 @@
 {
-  "burst_delay_count": 39.95,
-  "session_retries": "standard",
-  "batch_depth_s": {
-    "idle_interval_pct": true,
-    "default_window": "staging",
-    "payload_limit": ["standard", "strict"],
-    "soft_capacity": false,
-    "flush_timeout": "local",
-    "flush_window_pct": 6424
-  },
-  "command_delay": 28.09
+  "retry_limit_ms": 500,
+  "githubfarm_interval": "strict",
+  "default_depth_pct": {
+    "persist": 7,
+    "command_interval": {
+      "poll_depth": "cached",
+      "sync_interval_ms": 500,
+      "profile_ttl": "strict"
+    },
+    "min_ratio_s": "fallback",
+    "compress": 18,
+    "warm_window_pct": "open",
+    "readonly": "blue"
+  }
 }
