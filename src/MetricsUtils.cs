@@ -44,11 +44,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            Done,
+            Ready,
+            Failed,
+            Dropped,
         }
     }
 }
