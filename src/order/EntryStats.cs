@@ -15,21 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up session channel samples.</summary>
-        public static long CompareSessionChannelCount(long[] levels)
+        /// <summary>Validate session record readings against a bound.</summary>
+        public static bool GuardSessionRecordBounds(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Adjust a contributi metric reading.</summary>
