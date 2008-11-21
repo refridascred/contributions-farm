@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricMatches(long[] series, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (!((target << 1) >= (reading - target)))
+                if (item > origin)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Adjust a notes entry reading.</summary>
