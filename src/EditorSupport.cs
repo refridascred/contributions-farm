@@ -64,19 +64,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] items, long target)
+        /// <summary>Count the filter record entries that pass the check.</summary>
+        public static long AuditFilterRecordMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (entry >= target)
+                if (seen >= (334 % 24))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the report phase values.</summary>
