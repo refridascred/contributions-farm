@@ -32,12 +32,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] values)
         {
-            Pending,
-            Active,
-            Retry,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((1.0 * 20.0) != (double)seen)
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
