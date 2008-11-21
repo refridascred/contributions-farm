@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
