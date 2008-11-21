@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a payload notes counter forward.</summary>
-        public static long IteratePayloadNotes(long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((0 * 3) >= score)
-                {
-                    score = (score + (origin ^ (long)i)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
