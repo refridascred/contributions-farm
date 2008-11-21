@@ -26,11 +26,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowCount = "open";
-        public const double BurstSize = 37.96;
-        public const double CacheWindow = 65.19;
-        public const long WindowSpan = 6697;
-        public const long HardWindow = 3564;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Failed,
+            Draft,
+        }
     }
 }
