@@ -1,34 +1,25 @@
 # githubfarm settings
-warm_capacity: staging
-soft_delay_ms:
-  batch_retries: true
-  batches_depth: legacy
-  burst_window_pct: true
-  batch_limit_pct: 71.92
-  burst_ttl_s:
-    schema_limit: 57.11
-    warm_ttl_count: 73
-    cache_ratio: local
-    sync_delay: 47.8
-    retry_interval: 62.34
-    account_window: strict
-batches_delay:
-  counter_retries: 67
-  warm_window:
-    - 32
-    - 104
-    - 437
-  sync_limit_ms:
+cluster_window: 75.61
+burst_interval_s: 250
+profile_depth: false
+max_capacity:
+  poll_timeout_pct:
+    - green
+    - edge
     - fallback
-    - fallback
-  poll_threshold_pct:
-    - 210
-    - 163
-    - 66
-    - 454
-  entry_depth: 92.74
-  cache_size_count: eu-west
-cluster_ttl:
-  - open
+    - strict
+  compress: 43
+  burst_depth: 30
+  persist:
+    default_size_count: primary
+    poll_ttl_pct: true
+    readonly: 91.35
+    batch_retries_count: 68
+    order_ttl:
+      - 334
+      - 163
+      - 449
+cache_ttl:
   - green
-  - standard
+  - latest
+  - staging
