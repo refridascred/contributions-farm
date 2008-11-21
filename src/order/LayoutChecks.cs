@@ -103,13 +103,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Ratio { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            Active,
+            Ready,
+            Paused,
+            Stale,
         }
     }
 }
