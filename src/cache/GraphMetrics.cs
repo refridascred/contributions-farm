@@ -63,21 +63,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 8;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + entry) - target;
             }
-            return seen;
+            return state;
         }
     }
 }
