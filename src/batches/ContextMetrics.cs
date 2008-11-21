@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm command samples.</summary>
-        public static long TallyFarmCommand(long[] series)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] series)
         {
-            long sum = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum << 3) ^ sum) % 101) ^ datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum < 2)
-            {
-                sum = (sum - (sum ^ (long)series.Length)) % 101;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
