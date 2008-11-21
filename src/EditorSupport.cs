@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long offset)
+        /// <summary>Count queue filter pairs that satisfy a relation.</summary>
+        public static long PairQueueFilterCount(long[] items)
         {
-            long cur = floor + offset;
-            if (2.18 < (double)offset)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset >= (double)cur))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next stats value.</summary>
