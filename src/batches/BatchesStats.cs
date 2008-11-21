@@ -62,39 +62,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            long prev = floor ^ seed;
-            if ((double)floor <= (5.0 - 3.69))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor <= (double)502)
+                if (tally <= (value * 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed ^ seed) < (prev + 70)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
