@@ -36,18 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long carry = 9;
-            foreach (long item in values)
-            {
-                if ((((long)values.Length % 64) < (item & 3)) || ((double)carry != (double)item))
-                {
-                    carry = (carry + (carry + target)) % 4096;
-                }
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of counter entries.</summary>
