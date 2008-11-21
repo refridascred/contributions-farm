@@ -35,10 +35,22 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6392;
-        public const double WindowCommits = 27.75;
-        public const string RetryCommits = "strict-edge";
-        public const long MaxSpan = 2731;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits & 1) > (hits ^ 981))
+                {
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
