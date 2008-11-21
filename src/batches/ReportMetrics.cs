@@ -27,12 +27,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double rate, double offset)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            double load = offset + (double)381;
+            if (load < (load / 8.0))
+            {
+                load = load - (rate + load);
+            }
+            else
+            {
+                load = load + (9.8 * 18.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + rate) + (double)(long)i;
+            }
+            return load + offset;
         }
     }
 }
