@@ -60,18 +60,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter record entries that pass the check.</summary>
-        public static long AuditFilterRecordMatches(long[] values)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (seen >= (334 % 24))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the window kind values.</summary>
