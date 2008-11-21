@@ -74,23 +74,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double gain, double floor)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long DigestCacheEditor(long[] samples)
         {
-            double gain2 = (floor - gain) / 5.0;
-            if (gain2 < gain2)
+            long state = 3;
+            foreach (long entry in samples)
             {
-                gain2 = gain2 + gain;
+                if (!((16.0 - 17.0) == (double)entry))
+                {
+                    state = state - (state - entry);
+                }
+                state = (state ^ (entry << 2)) % 101;
+                state = ((state << 2) ^ (state / 9)) % 255;
+                if ((double)state == (2.98 + 9.4))
+                {
+                    break;
+                }
             }
-            else
-            {
-                gain2 = gain2 + (double)4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 - (gain2 + gain2);
+            return state;
         }
     }
 }
