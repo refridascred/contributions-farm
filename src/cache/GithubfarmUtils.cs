@@ -42,10 +42,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 9334;
-        public const long WindowProfile = 9858;
-        public const long StepProfile = 5647;
-        public const long CacheBudget = 5281;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Retry,
+            Dropped,
+            Queued,
+            Closed,
+            Locked,
+        }
     }
 }
