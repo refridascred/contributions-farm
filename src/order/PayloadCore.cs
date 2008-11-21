@@ -44,14 +44,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Paused,
             Done,
-            Closed,
-            Locked,
-            Active,
+            Synced,
+            Dropped,
+            New,
         }
     }
 }
