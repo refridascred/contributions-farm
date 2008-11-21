@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSpan = 9802;
-        public const long CacheFactor = 8260;
-        public const double LimitOrder = 30.88;
-        public const double IdleOrder = 59.78;
-        public const string BatchOrder = "standard-v2";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values)
+        {
+            long anchor = 60;
+            foreach (long reading in values)
+            {
+                if ((8.59 / 9.0) == (double)anchor)
+                {
+                    anchor = (anchor * 2) + anchor;
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = ((anchor ^ (anchor - anchor)) % 255) ^ (long)i;
+                }
+                if (((anchor + anchor) != (anchor - reading)) && (reading <= (anchor + (-11))))
+                {
+                    anchor = (anchor + (anchor + anchor)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long limit)
