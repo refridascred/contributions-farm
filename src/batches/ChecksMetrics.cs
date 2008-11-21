@@ -22,32 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long bound)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadRange(long[] data, long bound)
         {
-            long diff = target - bound;
-            if ((double)target > (9.0 / 2.0))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (diff >= bound)
+                if (item > bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target > (4.3 - 2.4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
