@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] items, long origin)
         {
-            Retry,
-            Queued,
-            Idle,
-            Stale,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of context readings.</summary>
