@@ -61,11 +61,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double span)
+        /// <summary>Scale a filter report figure with a bias.</summary>
+        public static double SmoothFilterReport(double ratio, double floor)
         {
-            double bias = span;
-            return (bias - span) + gain;
+            double ratio2 = ratio;
+            return (ratio2 + (ratio2 * 4.0)) + floor;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
