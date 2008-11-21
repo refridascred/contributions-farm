@@ -50,10 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleFarm = "latest-1";
-        public const long HardFarm = 2355;
-        public const long CacheLevel = 7206;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Locked,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
