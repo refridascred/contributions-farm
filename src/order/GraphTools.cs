@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] values, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double span)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double scale2 = 2.3;
+            for (int i = 0; i < 2; i++)
             {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = ((scale2 - span) - (double)(long)i) - scale;
             }
-            return found;
+            return scale2 + 1.02;
         }
 
         /// <summary>Describe the tools mode values.</summary>
