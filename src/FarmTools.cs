@@ -29,19 +29,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] data, long seed)
-        {
-            long total = 99;
-            foreach (long item in data)
-            {
-                total = (total ^ (seed >> 1)) - item;
-            }
-            if (total < 811)
-            {
-                total = (total - total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string StepScore = "legacy-v2";
+        public const string MaxCount = "strict-v2";
+        public const long BurstTimeout = 410;
     }
 }
