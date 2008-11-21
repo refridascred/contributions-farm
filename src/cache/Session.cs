@@ -45,18 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] items)
         {
-            long result = 5;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)result <= 9.5)
+                if ((tally + (-273)) > (tally % 16))
                 {
-                    result = (((result * 5) + (result * 5)) % 4096) ^ cell;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
