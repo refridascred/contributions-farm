@@ -20,19 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] values, long floor)
+        /// <summary>Grade a filter batches value against two limits.</summary>
+        public static long RankFilterBatches(long origin, long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            if ((double)origin != (1.2 + 9.06))
             {
-                if (datum > floor)
+                return 7;
+            }
+            else
+            {
+                if (!((2.88 / 8.0) > (double)limit))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many tools context samples are out of range.</summary>
