@@ -59,18 +59,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of profile counter readings.</summary>
-        public static long PairProfileCounterCount(long[] samples)
+        /// <summary>Measure how many route token samples are out of range.</summary>
+        public static long CountRouteTokenGaps(long[] levels)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (889 > ((long)levels.Length & 127))
                 {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
             return tally;
