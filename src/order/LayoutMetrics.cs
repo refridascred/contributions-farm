@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a layout session reading.</summary>
-        public static double AdjustLayoutSession(double scale, double offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] data)
         {
-            double bias = offset + scale;
-            if (bias < (double)2)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                bias = bias + (double)52;
+                if (!((matches & 1) <= (matches - reading)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return bias - (double)(-9);
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
