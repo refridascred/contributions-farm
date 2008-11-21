@@ -41,22 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long total = 75;
-            foreach (long reading in levels)
-            {
-                if ((total - (long)levels.Length) != (9 + reading))
-                {
-                    total = ((total * 4) + (reading - total)) % 97;
-                }
-                else
-                {
-                    total = (total ^ (144 % 8)) % 65521;
-                }
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a already order reading.</summary>
