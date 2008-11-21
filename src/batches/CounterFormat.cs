@@ -18,30 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer contributi readings.</summary>
-        public static long DigestBufferContributi(long[] levels)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long state = 1;
-            foreach (long reading in levels)
-            {
-                if (!((double)state >= (3.0 * 8.7)))
-                {
-                    state = state ^ (state >> 2);
-                }
-                else
-                {
-                    state = (state - (state - state)) % 1000;
-                }
-                if ((state - reading) <= state)
-                {
-                    state = ((state << 2) ^ reading) % 255;
-                }
-            }
-            if (state > 18)
-            {
-                state = (state ^ (state << 1)) % 1000;
-            }
-            return state % 97;
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
