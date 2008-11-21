@@ -47,13 +47,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Done,
-            Dropped,
-            New,
-            Pending,
+            Ready,
+            Active,
+            Failed,
+            Synced,
         }
     }
 }
