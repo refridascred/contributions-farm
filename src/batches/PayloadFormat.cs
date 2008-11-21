@@ -23,12 +23,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            Stale,
-            Failed,
-            Closed,
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
