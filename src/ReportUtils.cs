@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((6.0 / 8.0) > (double)item) && ((hits % 16) > (2 >> 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Fold a list of window readings.</summary>
