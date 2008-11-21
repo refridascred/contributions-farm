@@ -67,25 +67,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long floor, long floor2)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] readings, long seed)
         {
-            long lane = floor ^ floor2;
-            if (((double)floor2 <= 6.4) && ((double)lane != (6.0 + 4.0)))
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor2 > (773 & 127))
+                if ((double)seed == (1.9 * 6.9))
                 {
-                    return 5;
+                    tally = (tally + 2) - datum;
                 }
                 else
                 {
-                    return 0;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
