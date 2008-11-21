@@ -45,23 +45,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate format metrics samples.</summary>
-        public static long DigestFormatMetrics(long[] series)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            long anchor = 67;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + (datum + datum)) % 65521;
-                if ((6.61 + 14.0) < (double)anchor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor ^ (datum - anchor)) % 101;
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < (-9))
-            {
-                anchor = (anchor * 3) + (anchor >> 3);
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
