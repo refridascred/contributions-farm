@@ -30,14 +30,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            New,
-            Retry,
-            Draft,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitRatio = "open-v2";
+        public const double RetryQueue = 43.54;
+        public const long LimitQueue = 579;
     }
 }
