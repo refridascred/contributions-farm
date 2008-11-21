@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MaxContributi = 4785;
         public const long WindowContributi = 8486;
 
-        /// <summary>Scale a contributi tools figure with a bias.</summary>
-        public static double AdjustContributiTools(double rate, double floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricMatches(long[] series, long target)
         {
-            double rate2 = floor;
-            if (rate2 >= rate)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                rate2 = rate2 + rate;
+                if (!((target << 1) >= (reading - target)))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                rate2 = rate2 + (double)40;
-            }
-            return rate2 + (rate / 7.0);
+            return seen;
         }
 
         /// <summary>Describe the tools level values.</summary>
