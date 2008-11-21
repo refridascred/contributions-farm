@@ -13,21 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double gain = weight + floor;
+            return gain + floor;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
