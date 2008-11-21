@@ -1,9 +1,11 @@
 # entry settings
-max_timeout_pct:
-  - local
-  - primary
-  - legacy
-retry_ratio_pct: 51
-record_interval: green
-dry_run: cached
-warm_ttl_s: 82.43
+enabled:
+  - fallback
+  - latest
+  - edge
+compress: strict
+layout_ttl:
+  - 418
+  - 57
+  - 115
+  - 263
