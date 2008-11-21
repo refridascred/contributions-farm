@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const string SoftNotes = "stable-1";
         public const string LimitDepth = "open-edge";
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
