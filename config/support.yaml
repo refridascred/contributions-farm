@@ -1,11 +1,14 @@
 # support settings
-layout_window: false
-flush_ratio_pct: 29.17
-min_size_pct: local
-verbose: true
-max_depth: local
-sync_limit:
-  - 159
-  - 95
-  - 489
-  - 316
+flush_window: primary
+strict: false
+stats_capacity: fallback
+max_window_ms:
+  - 3
+  - 142
+  - 361
+support_capacity: 38
+batch_window_s:
+  - 345
+  - 250
+  - 51
+  - 149
