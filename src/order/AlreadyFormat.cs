@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string DefaultAccount = "latest-v2";
+        public const long WindowScore = 344;
+        public const double BatchCount = 12.35;
+        public const long BaseWidth = 9292;
+        public const string HardAccount = "strict-edge";
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
