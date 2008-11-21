@@ -79,20 +79,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result ^ 84) % 65521;
-                if ((result ^ result) <= (result - result))
-                {
-                    result = result - (seed + 326);
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public double Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
