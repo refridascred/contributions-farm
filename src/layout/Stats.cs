@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers.</summary>
     public static class Stats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinSize = "primary";
-        public const long MaxChannel = 8678;
-        public const long MinChannel = 8868;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long offset)
+        {
+            long slot = seed ^ offset;
+            if ((slot / 9) < (67 + slot))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset == (18.0 + 5.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long BucketCache(long step, long bound)
