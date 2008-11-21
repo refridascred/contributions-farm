@@ -45,25 +45,10 @@ namespace Common.Utilities
         public const long CacheScore = 8543;
         public const string MinBudget = "latest-1";
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long RankEditor(long seed, long limit)
-        {
-            if ((seed & 31) > seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit / 6) <= 40) && ((seed * 5) <= limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchBudget = 4235;
+        public const long LimitSchema = 3502;
+        public const string RetryLevel = "alpha";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] items, long seed)
