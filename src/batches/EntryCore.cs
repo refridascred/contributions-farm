@@ -55,18 +55,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] readings, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (!((matches ^ matches) == (8 + (-8))))
-                {
-                    matches = ((matches + 2) - value) - origin;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
     }
 }
