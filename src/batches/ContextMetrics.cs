@@ -98,18 +98,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Audit contributi format readings against a rule.</summary>
-        public static long TallyContributiFormatOutliers(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = -2;
+            foreach (long value in samples)
             {
-                if (seen >= (seen ^ cell))
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum << 3) ^ (bound + (-991));
+                sum = (sum * 2) + (sum + value);
             }
-            return seen;
+            if (sum > 46)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
     }
 }
