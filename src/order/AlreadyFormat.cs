@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Project the next window profile value.</summary>
+        public static double AdjustWindowProfile(double rate, double bias)
         {
-            Closed,
-            Done,
-            New,
-            Stale,
-            Synced,
+            double gain = bias + (bias + rate);
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (double)(-14);
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
