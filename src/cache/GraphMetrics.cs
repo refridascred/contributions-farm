@@ -33,12 +33,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitRatio = "cached-1";
-        public const long MaxRatio = 1803;
-        public const long StepTimeout = 4748;
-        public const long CacheSchema = 4405;
-        public const long MaxSchema = 9584;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
