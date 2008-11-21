@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long BurstWidth = 9301;
         public const string LimitCount = "staging-1";
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            Idle,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a checks options.</summary>
