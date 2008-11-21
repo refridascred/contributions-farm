@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long bound)
+        /// <summary>Locate a commits metrics reading by value.</summary>
+        public static long LookupCommitsMetricsIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 3) != 0))
+                if (levels[i] >= origin)
                 {
                     return (long)i;
                 }
