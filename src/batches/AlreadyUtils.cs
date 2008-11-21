@@ -69,17 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] series, long step)
+        /// <summary>Iterate the report order series from a seed.</summary>
+        public static long StepReportOrder(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
