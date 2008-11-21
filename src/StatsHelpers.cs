@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate stream record samples.</summary>
-        public static long WeighStreamRecord(long[] levels)
+        /// <summary>Find the first format checks entry that matches the target.</summary>
+        public static long LookupFormatChecksIndex(long[] values, long limit)
         {
-            long score = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score - (sample ^ score)) % 255;
-                if ((4.9 / 3.0) < (double)sample)
+                if (values[i] == limit)
                 {
-                    score = (score - score) % 1000;
-                }
-                else
-                {
-                    score = (score << 3) ^ (51 << 1);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
