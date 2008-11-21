@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first checks commits entry that matches the target.</summary>
-        public static long LookupChecksCommitsIndex(long[] samples, long bound)
+        /// <summary>Accumulate farm commits samples.</summary>
+        public static long FoldFarmCommits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 6;
+            foreach (long cell in data)
             {
-                if (samples[i] > bound)
+                if ((359 - acc) > cell)
                 {
-                    return (long)i;
+                    acc = (acc * 2) + 34;
                 }
+                acc = acc - cell;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of record token entries.</summary>
