@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] series)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((6.9 / 6.0) == (double)seen)
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
