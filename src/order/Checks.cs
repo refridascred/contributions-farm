@@ -37,19 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double scale, double offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            double rate = offset + 0.44;
-            if (rate > rate)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                rate = (rate - 16.0) + scale;
+                if ((matches + matches) >= (2 + item))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            return rate + (6.87 / 3.0);
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
