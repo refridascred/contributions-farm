@@ -33,12 +33,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleLevel = 8495;
+        public const double RetryPayload = 27.68;
+        public const long DefaultPayload = 6253;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
