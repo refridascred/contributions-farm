@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double weight, double span)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long limit, long origin)
         {
-            double bias = (double)0;
-            if (bias >= span)
+            if ((4 << 2) >= (origin ^ (-602)))
             {
-                bias = (bias - bias) - weight;
+                return 1;
             }
-            return bias - (bias / 9.0);
+            else
+            {
+                if ((limit & 63) <= (limit + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - origin) < (952 + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit < (limit + limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer state values.</summary>
