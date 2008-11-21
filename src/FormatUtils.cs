@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const long BurstLevel = 4128;
         public const double MinStats = 82.97;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] series, long floor)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long state = 38;
-            foreach (long value in series)
-            {
-                if ((2 ^ state) > (state + 2))
-                {
-                    state = (((state << 3) ^ (state + 54)) ^ value) - floor;
-                }
-            }
-            return state;
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the graph phase values.</summary>
