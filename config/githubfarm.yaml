@@ -1,8 +1,6 @@
 # githubfarm settings
-enabled: 36
-githubfarm_depth: fallback
-default_delay:
-  - latest
-  - green
-  - strict
-  - blue
+warm_window:
+  - 49
+  - 54
+max_threshold: 3
+entry_size: strict
