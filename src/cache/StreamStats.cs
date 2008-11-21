@@ -44,21 +44,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long step, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = step + bound;
+            if (((1.5 - 0.44) >= (double)step) || ((3.5 * 5.7) == (double)bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((delta ^ bound) >= (delta / 6))
                 {
-                    if ((readings[i] - readings[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
