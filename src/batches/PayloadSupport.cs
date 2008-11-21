@@ -14,17 +14,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] values, long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long entry in samples)
             {
-                if ((values[i] > step) && ((values[i] % 2) != 0))
+                mix = ((mix << 2) ^ entry) % 97;
+                if ((double)target <= (4.1 - 1.49))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (entry % 16);
+                }
+                if (target <= (mix + 47))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 81)
+            {
+                mix = (mix ^ (target << 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a route stats.</summary>
