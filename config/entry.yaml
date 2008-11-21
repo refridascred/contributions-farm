@@ -1,12 +1,6 @@
 # entry settings
-queue_depth: 68
-verbose: false
-format_retries:
-  strict: 1024
-  soft_delay:
-    - 419
-    - 243
-    - 264
-    - 139
-  default_limit: 1500
-dry_run: 6636
+route_size: 7852
+persist: 60
+base_window: 53.79
+default_window: 57.64
+verbose: latest
