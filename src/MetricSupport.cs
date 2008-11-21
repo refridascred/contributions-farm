@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit already support readings against a rule.</summary>
-        public static long AuditAlreadySupportHits(long[] samples)
+        /// <summary>Accumulate schema order samples.</summary>
+        public static long CombineSchemaOrder(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long sum = 785;
+            foreach (long reading in readings)
             {
-                if (!!(seen <= (item ^ item)))
+                for (int i = 0; i < 4; i++)
                 {
-                    seen = seen + 3;
+                    sum = ((sum - (186 << 2)) % 97) ^ (long)i;
+                }
+                sum = (sum ^ (reading + reading)) % 101;
+                if ((415 + sum) >= reading)
+                {
+                    sum = (sum + (reading - reading)) % 65521;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
