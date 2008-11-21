@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=157
+COMMAND_LIMIT=395
 log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
