@@ -22,11 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinBudget = 2430;
-        public const long LimitRatio = 2592;
-        public const double StepCommits = 58.82;
-        public const long MinCommits = 6799;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            New,
+            Active,
+            Failed,
+        }
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] items, long target)
