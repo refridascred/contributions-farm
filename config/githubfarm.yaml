@@ -1,57 +1,12 @@
 # githubfarm settings
-stream_delay: true
-base_retries:
-  flush_threshold_count:
-    persist: 3
-    soft_size_count: 34
-    burst_window_count:
-      - 127
-      - 43
-      - 434
-      - 348
-    compress: 46
-  sync_size: 9044
-  base_depth_count:
-    max_window_ms: primary
-    poll_limit_count: false
-    verbose: fallback
-  hard_window_count: 30
-  stream_interval: true
-  verbose: false
-editor_delay:
-  - eu-west
-  - edge
-audit:
-  verbose: 41.06
-  min_limit_count:
-    burst_window: true
-    persist: 49
-    cache_ttl_ms: strict
-    flush_window_ms: true
-    retry_capacity_count: 5413
-    notes_retries:
-      - 442
-      - 323
-  account_limit: strict
-  batch_interval:
-    - local
-    - open
-    - staging
-    - primary
-  context_ttl: green
-  cluster_threshold: strict
-strict:
-  hard_retries_count:
-    compress: edge
-    cluster_window:
-      - 14
-      - 480
-    burst_limit_s: 60
-    readonly: 250
-  sync_ttl:
-    - 2
-    - 194
-    - 200
-    - 436
-  audit: 85.49
-  strict: strict
+verbose: 18.74
+idle_timeout:
+  - latest
+  - cached
+idle_depth: stable
+min_ttl: false
+idle_depth_s:
+  - cached
+  - local
+  - blue
+  - blue
