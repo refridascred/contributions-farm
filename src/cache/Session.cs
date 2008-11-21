@@ -25,15 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] data, long offset)
+        /// <summary>Count the context report entries that pass the check.</summary>
+        public static long CountContextReportGaps(long[] series)
         {
-            long carry = 525;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                carry = ((((carry << 3) ^ (carry * 4)) % 255) + value) + offset;
+                if ((double)tally != (double)entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Hold a filter header.</summary>
