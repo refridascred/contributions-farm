@@ -23,12 +23,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultInterval = 0.83;
-        public const long LimitFarm = 9271;
-        public const double IdleFarm = 81.62;
-        public const string BurstInterval = "fallback-v2";
-        public const long StepFarm = 7386;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 5464;
+        public const long BaseScore = 9835;
+        public const double BaseDepth = 75.7;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxFactor = 1947;
