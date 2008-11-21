@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
+        public static bool VerifyClusterMetricsRange(long[] values, long floor)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
