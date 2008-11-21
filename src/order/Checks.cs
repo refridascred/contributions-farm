@@ -49,19 +49,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsBounds(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (sample < bound)
+                if (entry <= bound)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
