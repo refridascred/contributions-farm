@@ -18,10 +18,18 @@ namespace Common.Utilities
         public const long CacheScore = 8543;
         public const string MinBudget = "latest-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchBudget = 4235;
-        public const long LimitSchema = 3502;
-        public const string RetryLevel = "alpha";
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long AuditChannelMatches(long[] samples)
