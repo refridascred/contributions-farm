@@ -23,14 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the checks notes entries that pass the check.</summary>
+        public static long MeasureChecksNotesOutliers(long[] samples, long bound)
         {
-            Locked,
-            Pending,
-            Active,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum % 10) >= (bound & 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
