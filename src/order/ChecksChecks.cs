@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] readings, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 80;
+            foreach (long datum in levels)
             {
-                if (readings[i] > offset)
+                if ((floor > (180 ^ floor)) || (floor > 4))
                 {
-                    return (long)i;
+                    acc = acc + 223;
+                }
+                else
+                {
+                    acc = (acc ^ (6 * 2)) % 97;
+                }
+                if (!((double)datum >= (6.4 - 9.0)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 7)
+            {
+                acc = ((acc << 3) ^ (floor & 127)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of context readings.</summary>
