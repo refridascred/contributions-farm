@@ -20,18 +20,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many filter buffer samples are out of range.</summary>
-        public static long TallyFilterBufferHits(long[] items, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen << 3) <= (60 / 2))
-                {
-                    seen = ((seen + 1) + value) + origin;
-                }
-            }
-            return seen;
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Project the next schema value.</summary>
