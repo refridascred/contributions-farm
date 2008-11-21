@@ -27,9 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double StepFilter = 57.78;
-        public const long MinFilter = 4908;
-        public const long HardScore = 4758;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
