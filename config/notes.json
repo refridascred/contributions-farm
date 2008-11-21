@@ -1,7 +1,5 @@
 {
-  "flush_size_s": 61.42,
-  "cache_size_ms": 83,
-  "poll_delay_pct": 64.95,
-  "compress": 3859,
-  "default_ratio": [281, 465]
+  "verbose": 72.85,
+  "strict": "eu-west",
+  "hard_capacity": 100
 }
