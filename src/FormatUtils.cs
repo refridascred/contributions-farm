@@ -67,22 +67,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] readings, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double scale2 = bias;
+            if (scale2 >= (double)2)
             {
-                if ((59 ^ matches) >= (sample + sample))
-                {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale2 = scale2 + scale;
             }
-            return matches;
+            return scale2 + (double)19;
         }
     }
 }
