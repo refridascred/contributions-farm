@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count queue filter pairs that satisfy a relation.</summary>
-        public static long PairQueueFilterCount(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
