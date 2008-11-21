@@ -44,13 +44,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Done,
-            Synced,
-            Dropped,
-            New,
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
