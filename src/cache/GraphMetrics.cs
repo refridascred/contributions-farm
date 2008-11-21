@@ -30,14 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Ready,
-            Done,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "legacy";
+        public const long HardAccount = 3456;
+        public const double BurstSize = 48.14;
+        public const long IdleCount = 3267;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleLevel = 8495;
