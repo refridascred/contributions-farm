@@ -21,24 +21,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long target, long target2)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            if (((-25) + target) != (target + target2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target2 >> 2) != (target2 / 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Accumulate format metrics samples.</summary>
