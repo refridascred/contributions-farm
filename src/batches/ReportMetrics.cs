@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitSize = 7436;
-        public const long DefaultOrder = 7744;
-        public const long MaxOrder = 9334;
-        public const string RetryOrder = "strict-edge";
-        public const long CacheWidth = 6546;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double bias, double offset)
+        {
+            double bias2 = (double)8 - (bias / 6.0);
+            if (bias2 <= offset)
+            {
+                bias2 = bias2 + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + (bias2 / 2.0)) + (double)(long)i;
+            }
+            return bias2 - (offset - bias);
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatMatches(long[] items, long floor)
