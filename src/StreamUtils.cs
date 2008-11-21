@@ -96,17 +96,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric order reading by value.</summary>
-        public static long LookupMetricOrderIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxInterval = 2607;
+        public const double SoftSupport = 48.5;
+        public const double CacheDepth = 35.83;
     }
 }
