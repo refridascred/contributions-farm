@@ -38,11 +38,19 @@ namespace Common.Utilities
             return load - (double)8;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public long Score { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first notes account entry that matches the target.</summary>
