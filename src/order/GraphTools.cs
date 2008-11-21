@@ -41,15 +41,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double scale, double bias)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double drift = scale;
-            if (drift < scale)
-            {
-                drift = drift + bias;
-            }
-            return drift - drift;
+            Ready,
+            Retry,
+            Stale,
+            Queued,
+            Active,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
