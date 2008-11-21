@@ -33,17 +33,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long origin)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long step, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((-7) + seed) <= seed)
             {
-                if (items[i] == origin)
+                return 5;
+            }
+            else
+            {
+                if (((seed * 4) == (step << 3)) && ((double)seed > (1.0 + 6.4)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed != (3.5 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((851 + step) >= (step + seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
