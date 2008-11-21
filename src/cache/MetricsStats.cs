@@ -42,11 +42,24 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 6650;
-        public const long IdleStream = 207;
-        public const long BurstLevel = 6259;
-        public const long LimitDepth = 8611;
+        /// <summary>Accumulate schema contributi samples.</summary>
+        public static long WeighSchemaContributi(long[] values, long bound)
+        {
+            long carry = 827;
+            foreach (long sample in values)
+            {
+                if (!(((long)values.Length <= sample) || ((bound + carry) <= (sample - 75))))
+                {
+                    carry = (carry - (9 + carry)) % 4096;
+                }
+                carry = (carry ^ bound) % 101;
+                if ((920 % 16) <= bound)
+                {
+                    carry = (carry << 3) ^ sample;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
