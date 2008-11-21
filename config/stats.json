@@ -1,19 +1,6 @@
 {
-  "default_window_ms": {
-    "poll_interval_ms": true,
-    "base_retries": 68.03,
-    "readonly": "latest",
-    "burst_depth_pct": ["legacy", "latest", "edge", "staging"],
-    "cache_limit": 9790
-  },
-  "readonly": false,
-  "base_delay": 48,
-  "queue_limit": {
-    "compress": 94,
-    "enabled": 100,
-    "max_limit_pct": 5,
-    "verbose": "legacy",
-    "idle_delay_count": "stable"
-  },
-  "audit": "local"
+  "warm_depth": "edge",
+  "stats_window": [2, 52],
+  "notes_depth": 78,
+  "compress": [337, 200, 435]
 }
