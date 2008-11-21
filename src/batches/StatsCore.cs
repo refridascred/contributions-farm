@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSize = "latest-1";
-        public const string MaxRatio = "legacy";
-        public const double IdleSupport = 95.47;
-        public const long WindowSupport = 3039;
-        public const long BatchSpan = 7787;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
