@@ -27,19 +27,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            double scale = (ratio / 6.0) / 6.0;
+            if (scale >= bias)
             {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = scale - 1.4;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Measure how many cluster counter samples are out of range.</summary>
