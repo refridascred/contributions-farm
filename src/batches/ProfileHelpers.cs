@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 9343;
-        public const long StepLevel = 5312;
-        public const long BurstLevel = 310;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long limit, long limit2)
