@@ -1,7 +1,10 @@
 {
-  "default_window_pct": 8003,
-  "soft_timeout": "fallback",
-  "idle_window": 1091,
-  "min_timeout_ms": "latest",
-  "filter_delay": "standard"
+  "burst_window_ms": 37.31,
+  "readonly": true,
+  "soft_delay_ms": {
+    "compress": "green",
+    "idle_capacity": "cached",
+    "poll_retries_s": "eu-west"
+  },
+  "min_window_count": 1024
 }
