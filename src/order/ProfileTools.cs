@@ -19,12 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "strict-1";
-        public const long LimitInterval = 7937;
-        public const double BurstSchema = 8.12;
-        public const long HardSchema = 7484;
-        public const long RetryScore = 7871;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Locked,
+            Closed,
+            Failed,
+            Draft,
+            Active,
+        }
 
         /// <summary>Digest a series of order report entries.</summary>
         public static long CombineOrderReport(long[] readings)
