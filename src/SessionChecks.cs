@@ -13,12 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowRatio = "cached-1";
-        public const long LimitEntry = 2311;
-        public const long MinEntry = 1391;
-        public const long CacheBudget = 6509;
-        public const long BaseEntry = 8462;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long RollFarm(long limit)
