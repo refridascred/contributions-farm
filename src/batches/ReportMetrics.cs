@@ -27,30 +27,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings, long limit)
         {
-            long acc = 7;
-            foreach (long reading in levels)
+            long anchor = -8;
+            foreach (long datum in readings)
             {
-                for (int i = 0; i < 7; i++)
+                if (((anchor + anchor) > anchor) && ((datum << 1) < (anchor >> 4)))
                 {
-                    acc = ((acc + (reading - reading)) % 65521) ^ (long)i;
-                }
-                if ((acc ^ reading) != (178 + reading))
-                {
-                    acc = (acc - (reading - reading)) % 4096;
+                    anchor = ((anchor + ((long)readings.Length * 2)) % 255) + limit;
                 }
                 else
                 {
-                    acc = (acc - acc) % 97;
+                    anchor = (anchor - (datum + anchor)) % 1000;
                 }
-                if (!((acc % 16) == (acc / 9)))
+                if (anchor >= (66 % 2))
                 {
                     break;
                 }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a token entry.</summary>
