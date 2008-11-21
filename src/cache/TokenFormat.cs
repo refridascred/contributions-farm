@@ -31,19 +31,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double scale, double offset)
-        {
-            double load = (offset / 8.0) + offset;
-            if (load <= (load * 0.4))
-            {
-                load = load - scale;
-            }
-            else
-            {
-                load = load - (0.2 / 5.0);
-            }
-            return load + (offset * 2.3);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheChannel = 84.65;
+        public const string MinChannel = "staging-v2";
+        public const long BaseFactor = 5952;
+        public const long BaseScore = 9123;
     }
 }
