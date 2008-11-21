@@ -18,17 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Combine stream channel values into a single score.</summary>
+        public static long TotalStreamChannel(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long result = 57;
+            foreach (long reading in levels)
             {
-                long edge = score;
-                score = score - (score + edge);
-                score = ((score * 3) + (long)i) % 65521;
+                if ((reading % 7) != (reading * 3))
+                {
+                    result = (result * 4) + reading;
+                }
             }
-            return score;
+            if (result > 252)
+            {
+                result = ((result << 2) ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Derive the next commits layout value from a seed.</summary>
