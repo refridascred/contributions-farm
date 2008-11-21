@@ -77,18 +77,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] readings, long step)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((step > (875 + tally)) && ((double)step > 9.8))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Pending,
         }
     }
 }
