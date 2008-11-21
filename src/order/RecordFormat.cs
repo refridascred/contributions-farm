@@ -19,21 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + origin) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Match up stats account samples.</summary>
