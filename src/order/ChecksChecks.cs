@@ -49,16 +49,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double scale, double span)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            double gain = scale / 4.0;
+            if (gain > (gain / 7.0))
             {
-                mark = (mark - ((long)i << 2)) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
+                gain = (gain - gain) - span;
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
