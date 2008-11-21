@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 84.46;
-        public const double StepSpan = 19.7;
-        public const long MaxChannel = 2101;
-        public const string WindowChannel = "alpha";
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
