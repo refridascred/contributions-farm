@@ -43,18 +43,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] samples)
+        /// <summary>Count the entry queue entries that pass the check.</summary>
+        public static long CountEntryQueueGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((4.67 / 5.0) != (double)matches)
+                if ((9.0 * 1.8) >= (double)seen)
                 {
-                    matches = (matches + 3) + sample;
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
