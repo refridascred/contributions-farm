@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long BurstLevel = 4128;
         public const double MinStats = 82.97;
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool CheckFormatStatsBounds(long[] data, long step)
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the graph phase values.</summary>
