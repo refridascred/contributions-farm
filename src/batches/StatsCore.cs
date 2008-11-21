@@ -67,11 +67,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every batch token entry stays within the limit.</summary>
+        public static bool ValidateBatchTokenLimits(long[] values, long limit)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
