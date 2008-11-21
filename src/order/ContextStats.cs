@@ -13,19 +13,23 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] levels, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double weight, double offset)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            double bias = offset;
+            if (bias < (6.01 - offset))
             {
-                if (value <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias + (double)2;
             }
-            return ready;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - 14.0) + (double)(long)i;
+            }
+            return bias - (weight - offset);
         }
 
         /// <summary>Define context limits and defaults.</summary>
