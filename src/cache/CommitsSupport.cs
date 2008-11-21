@@ -67,11 +67,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "cached-1";
-        public const long SoftLevel = 7977;
-        public const double IdleRatio = 89.48;
-        public const long LimitBatch = 5453;
-        public const long MaxBatch = 2191;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Ready,
+            Queued,
+            Draft,
+            Failed,
+        }
     }
 }
