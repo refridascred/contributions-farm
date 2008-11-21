@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every cluster contributi entry stays within the limit.</summary>
+        public static bool ValidateClusterContributiRange(long[] readings, long bound)
         {
-            Ready,
-            Retry,
-            Done,
-            Paused,
-            Pending,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a stats summary.</summary>
