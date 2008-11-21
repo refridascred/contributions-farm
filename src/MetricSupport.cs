@@ -19,15 +19,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support account values into a single score.</summary>
-        public static long TallySupportAccount(long[] samples, long offset)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long sum = 686;
-            foreach (long reading in samples)
-            {
-                sum = ((sum << 3) ^ reading) - offset;
-            }
-            return sum % 4096;
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
