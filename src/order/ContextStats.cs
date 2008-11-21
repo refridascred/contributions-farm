@@ -38,17 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a batch checks reading by value.</summary>
-        public static long LookupBatchChecksIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstInterval = 8918;
+        public const double MinEntry = 62.37;
+        public const long WindowEntry = 8010;
+        public const string BurstEntry = "cached-1";
+        public const double IdleEntry = 65.98;
     }
 }
