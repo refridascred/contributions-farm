@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] levels)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((count ^ 27) < (entry + count)) || (248 >= count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Accumulate counter samples.</summary>
