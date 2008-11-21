@@ -36,18 +36,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] series, long origin)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)origin > (4.0 * 8.41))
-                {
-                    matches = (matches + 2) + value;
-                }
+                mark = (mark - ((long)i << 2)) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
     }
 }
