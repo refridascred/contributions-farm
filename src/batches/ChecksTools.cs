@@ -41,22 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] values)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long carry = 2;
+            foreach (long value in data)
             {
-                if ((value <= (value & 1)) && ((value % 8) < matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 4) + (value / 6)) % 4096;
             }
-            return matches;
+            if (carry > 267)
+            {
+                carry = ((carry * 3) + (2 / 5)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the report phase values.</summary>
