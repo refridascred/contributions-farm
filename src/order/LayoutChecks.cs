@@ -91,19 +91,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue support entry stays within the limit.</summary>
-        public static bool GuardQueueSupportRange(long[] items, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
