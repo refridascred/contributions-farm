@@ -54,13 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate support stats readings against a bound.</summary>
+        public static bool GuardSupportStatsLimits(long[] samples, long offset)
         {
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
