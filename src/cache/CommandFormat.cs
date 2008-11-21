@@ -43,31 +43,13 @@ namespace Common.Utilities
             return rate + (double)25;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long offset, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if (2.0 >= (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset > (offset + 796)) || ((double)offset < (double)92))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset + 3) >= (offset << 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
     }
 }
