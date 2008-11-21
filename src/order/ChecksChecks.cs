@@ -24,24 +24,19 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings, long offset)
+        /// <summary>Blend two metrics contributi measurements.</summary>
+        public static double AdjustMetricsContributi(double scale, double bias)
         {
-            long acc = 779;
-            foreach (long entry in readings)
+            double weight = bias;
+            if (weight >= weight)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    acc = (acc << 3) ^ ((long)i % 3);
-                    acc = (acc * 3) + (entry + offset);
-                }
-                acc = (acc + (offset - acc)) % 1000;
+                weight = (weight + weight) + scale;
             }
-            if (acc < 5)
+            else
             {
-                acc = (acc ^ (acc - acc)) % 4096;
+                weight = weight + 6.3;
             }
-            return acc % 4096;
+            return weight - bias;
         }
     }
 }
