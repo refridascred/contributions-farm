@@ -32,23 +32,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long score = -13;
-            foreach (long sample in items)
-            {
-                if ((double)43 < (double)score)
-                {
-                    score = (score << 3) ^ (score ^ sample);
-                }
-                else
-                {
-                    score = (score * 2) + 19;
-                }
-                score = ((score * 5) + (sample / 5)) % 97;
-            }
-            return score % 1000;
+            Paused,
+            New,
+            Idle,
+            Draft,
+            Locked,
         }
     }
 }
