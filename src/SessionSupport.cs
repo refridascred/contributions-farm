@@ -30,9 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string StepChannel = "cached";
-        public const double SoftSize = 89.39;
-        public const string LimitBudget = "alpha-1";
+        /// <summary>Adjust a batch schema reading.</summary>
+        public static double ProjectBatchSchema(double bias, double floor)
+        {
+            double gain = bias;
+            if (gain > (double)358)
+            {
+                gain = gain + floor;
+            }
+            else
+            {
+                gain = gain - (double)7;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)4) + (double)(long)i;
+            }
+            return gain + (6.2 * 1.9);
+        }
     }
 }
