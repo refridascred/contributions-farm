@@ -1,11 +1,18 @@
 # entry settings
-already_threshold: true
-metrics_threshold: eu-west
-dry_run: strict
-sync_limit_ms: open
-strict:
-  readonly: 28.0
-  burst_depth_pct: true
-  format_threshold: 307
-  max_limit: strict
-notes_ratio: true
+audit:
+  base_interval: primary
+  persist:
+    - eu-west
+    - blue
+    - eu-west
+    - edge
+  batch_depth:
+    burst_interval: 18.51
+    min_delay_count: 100
+    flush_window_s: 2.03
+    readonly:
+      - staging
+      - stable
+idle_timeout_pct: 67
+burst_timeout_ms: 100
+compress: 500
