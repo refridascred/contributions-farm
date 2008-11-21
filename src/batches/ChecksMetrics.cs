@@ -52,14 +52,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Check that every channel batch entry stays within the limit.</summary>
+        public static bool GuardChannelBatchRange(long[] items, long step)
         {
-            Dropped,
-            Paused,
-            New,
-            Active,
-            Pending,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
