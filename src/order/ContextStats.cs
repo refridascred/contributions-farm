@@ -55,11 +55,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 5275;
-        public const long BatchCommand = 1374;
-        public const long LimitLevel = 9869;
-        public const string MinScore = "primary-edge";
-        public const long IdleCommand = 3033;
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
+        {
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
