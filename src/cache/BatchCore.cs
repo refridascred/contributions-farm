@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Idle,
-            Ready,
-            Draft,
+            Active,
+            Stale,
             Retry,
         }
 
