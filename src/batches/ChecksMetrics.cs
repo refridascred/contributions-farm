@@ -13,18 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] series, long bound)
+        /// <summary>Project the next context profile value.</summary>
+        public static double ScaleContextProfile(double weight, double bias)
         {
-            long score = 2;
-            foreach (long value in series)
+            double load = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((bound << 1) >= (score * 2))
-                {
-                    score = (score + score) - value;
-                }
+                load = (load - bias) - (double)(long)i;
             }
-            return score;
+            return load - weight;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
