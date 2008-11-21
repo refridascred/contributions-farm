@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long HardSchema = 7484;
         public const long RetryScore = 7871;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] data)
+        /// <summary>Digest a series of order report entries.</summary>
+        public static long CombineOrderReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long acc = 2;
+            foreach (long item in readings)
             {
-                if (299 <= (datum * 2))
+                if ((long)readings.Length == (acc & 127))
                 {
-                    matches = matches + 3;
+                    acc = ((acc + (long)readings.Length) % 65521) + item;
                 }
+                acc = (acc ^ 3) % 255;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the filter level values.</summary>
