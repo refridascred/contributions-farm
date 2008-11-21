@@ -72,18 +72,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] readings, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (((limit + limit) == (cell ^ limit)) && !((cell >> 4) > (matches / 2)))
+                if (sample >= limit)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
