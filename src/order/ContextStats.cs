@@ -32,11 +32,23 @@ namespace Common.Utilities
             return bias - (weight - offset);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseInterval = 5914;
-        public const long BurstInterval = 9542;
-        public const double BatchLevel = 28.7;
-        public const long WindowContext = 72;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((3.82 + 3.88) < (double)seen) || (((0.07 * 7.78) != (double)entry) && ((155 & 127) > (94 - entry))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
