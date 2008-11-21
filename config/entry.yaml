@@ -1,13 +1,31 @@
 # entry settings
-idle_limit_s: 7
-burst_interval_ms:
-  - fallback
-  - open
-schema_timeout:
-  - strict
-  - legacy
+contributi_interval: strict
+strict: 4480
+entry_ratio:
+  default_window: fallback
+  batch_depth_count: stable
+  flush_retries:
+    min_size: 8999
+    dry_run: 68
+    audit:
+      - staging
+      - staging
+    metrics_ttl: false
+  window_window:
+    retry_size_count:
+      - 187
+      - 489
+      - 487
+      - 212
+    sync_delay: 60
+    window_threshold: eu-west
+  editor_limit: latest
+route_depth: edge
+retry_window:
   - standard
+  - staging
   - primary
-hard_limit: edge
-base_capacity_pct: 11.91
-burst_size_s: 74.58
+sync_ttl:
+  - 60
+  - 210
+  - 60
