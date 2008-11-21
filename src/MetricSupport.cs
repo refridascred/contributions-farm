@@ -32,10 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstWidth = 54;
-        public const long LimitBudget = 5576;
-        public const string WindowInterval = "strict-1";
-        public const double CacheRoute = 15.69;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data, long seed)
+        {
+            long total = 4;
+            foreach (long sample in data)
+            {
+                if (total < (total & 3))
+                {
+                    total = ((total ^ total) ^ sample) + seed;
+                }
+            }
+            return total;
+        }
     }
 }
