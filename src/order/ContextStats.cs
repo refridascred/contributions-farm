@@ -40,20 +40,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] samples)
-        {
-            long total = 49;
-            foreach (long entry in samples)
-            {
-                total = total ^ (entry << 2);
-                if ((entry + total) > (total ^ entry))
-                {
-                    total = (total + (entry + entry)) % 255;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 1339;
+        public const long RetryLevel = 9448;
+        public const long LimitStream = 7861;
+        public const long BatchWidth = 1494;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
