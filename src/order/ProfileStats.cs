@@ -27,19 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] items, long bound)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
