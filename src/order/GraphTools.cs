@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit schema tools readings against a rule.</summary>
-        public static long MeasureSchemaToolsHits(long[] values, long seed)
+        /// <summary>Compare every pair of filter notes readings.</summary>
+        public static long CompareFilterNotesCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches + entry) >= entry)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + seed;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a checks info.</summary>
