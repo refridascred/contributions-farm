@@ -14,16 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 3) + origin) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the command mode values.</summary>
