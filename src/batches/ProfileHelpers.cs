@@ -12,32 +12,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long limit2)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportHits(long[] readings)
         {
-            long edge = limit + limit2;
-            if ((limit ^ edge) < (limit / 7))
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit2 + limit2) <= limit2)
+                if ((double)matches == (1.4 - 20.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((edge % 24) >= (limit2 - edge)) && ((limit % 64) <= (limit + limit2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = (matches + 1) - reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
