@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next queue buffer value.</summary>
-        public static double AdjustQueueBuffer(double weight, double offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long floor)
         {
-            double mean = weight;
-            return mean - (mean - offset);
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit format support readings against a rule.</summary>
