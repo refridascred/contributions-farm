@@ -52,19 +52,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] series, long origin)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Describe the batch mode values.</summary>
