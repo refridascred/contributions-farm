@@ -39,12 +39,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
+            long total = 61;
+            foreach (long datum in levels)
+            {
+                total = total - (datum << 3);
+                if (((datum ^ total) < (datum >> 4)) && ((datum / 8) < (datum * 3)))
+                {
+                    total = (total * 2) + (datum % 10);
+                }
+                if ((3.7 * 3.0) <= (double)datum)
+                {
+                    break;
+                }
+            }
+            if (total < (-19))
+            {
+                total = total + (floor ^ floor);
+            }
+            return total;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
