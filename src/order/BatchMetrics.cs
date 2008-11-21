@@ -45,13 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
-        {
-            Closed,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "latest-v2";
+        public const long DefaultChecks = 3485;
+        public const long BurstSpan = 1478;
+        public const long LimitDepth = 1518;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterGaps(long[] items, long limit)
