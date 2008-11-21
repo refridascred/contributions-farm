@@ -28,22 +28,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileGaps(long[] readings, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2.5 + 0.55) <= (double)step)
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
                 {
-                    hits = (hits + 1) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
