@@ -1,6 +1,5 @@
 {
-  "poll_ttl_pct": ["local", "strict", "eu-west", "standard"],
-  "hard_threshold_ms": 100,
-  "burst_ratio": "open",
-  "soft_delay_ms": "stable"
+  "min_retries_ms": 1.88,
+  "max_limit_pct": 30,
+  "poll_delay_pct": 9699
 }
