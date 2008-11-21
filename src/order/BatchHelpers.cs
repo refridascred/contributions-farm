@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] samples, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 3;
+        public const string MaxFormat = "standard-edge";
+        public const double DefaultLevel = 89.22;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
