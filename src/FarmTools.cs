@@ -13,10 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCount = 6369;
-        public const long LimitCache = 4781;
-        public const double WindowCache = 27.43;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterMatches(long[] levels)
