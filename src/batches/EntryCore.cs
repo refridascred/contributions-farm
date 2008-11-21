@@ -39,12 +39,18 @@ namespace Common.Utilities
         public const long HardChannel = 3566;
         public const long StepLevel = 9260;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] items, long offset)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((offset >> 2) == (sample << 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order class values.</summary>
