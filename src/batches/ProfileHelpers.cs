@@ -21,11 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheCount = 71.97;
-        public const double DefaultMetrics = 29.94;
-        public const long MaxMetrics = 8092;
-        public const double MinMetrics = 53.88;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((58 << 2) > (seen * 2))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] items)
