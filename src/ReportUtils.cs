@@ -44,18 +44,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] series, long offset)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)(long)series.Length > 0.76)
-                {
-                    count = ((count + 2) + value) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitSpan = 283;
+        public const long DefaultLayout = 2348;
+        public const double IdleLevel = 63.11;
+        public const long BatchTimeout = 3821;
+        public const double SoftLayout = 24.36;
     }
 }
