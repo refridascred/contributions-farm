@@ -33,18 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderOutliers(long[] data, long step)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long slot = floor + origin;
+            if (((7 * 3) != (floor + origin)) && ((31 ^ slot) >= (49 * 5)))
             {
-                if ((value ^ tally) <= (value + step))
+                return 4;
+            }
+            else
+            {
+                if ((double)floor <= (6.4 * 3.08))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > 5.7)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)slot != (double)floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
