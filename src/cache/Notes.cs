@@ -30,19 +30,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] items, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (reading < step)
+                if ((reading & 15) != (reading + reading))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + floor;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count token queue pairs that satisfy a relation.</summary>
