@@ -33,19 +33,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] levels, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long origin, long target)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            if ((55 + 927) <= (target + target))
             {
-                if (entry >= origin)
+                return 3;
+            }
+            else
+            {
+                if ((origin <= (origin * 3)) || ((origin - origin) > origin))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 7) > target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
