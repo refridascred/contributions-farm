@@ -1,11 +1,12 @@
 {
-  "burst_ratio_count": {
-    "idle_threshold_pct": [90, 354, 322],
-    "cache_interval_s": 500,
-    "min_delay_s": 3296,
-    "retry_ttl_count": true
-  },
-  "compress": 66.85,
-  "idle_retries": "eu-west",
-  "max_limit": "eu-west"
+  "flush_depth_pct": 65.96,
+  "idle_ttl": 56,
+  "warm_size_pct": 87.31,
+  "sync_timeout_count": false,
+  "burst_capacity": 95.46,
+  "burst_window_pct": {
+    "enabled": 100,
+    "metrics_delay": false,
+    "soft_size_s": 62
+  }
 }
