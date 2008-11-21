@@ -22,18 +22,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] samples, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((95 << 3) < (986 ^ item))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            New,
+            Retry,
+            Idle,
         }
     }
 }
