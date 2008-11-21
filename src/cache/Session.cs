@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm stats reading by value.</summary>
-        public static long SeekFarmStatsIndex(long[] samples, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 525;
+            foreach (long value in data)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = ((((carry << 3) ^ (carry * 4)) % 255) + value) + offset;
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Hold a filter header.</summary>
