@@ -1,7 +1,4 @@
 # entry settings
-readonly: true
-hard_depth_ms: green
-enabled: 2
-min_ratio_s: 39.39
-default_size_ms: false
-notes_interval: 60
+burst_depth: 20.19
+hard_limit_pct: true
+max_threshold_count: fallback
