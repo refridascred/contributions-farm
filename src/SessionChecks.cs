@@ -21,12 +21,23 @@ namespace Common.Utilities
         public const long CacheBudget = 6509;
         public const long BaseEntry = 8462;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public long Total { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = (((mark * 2) + (mark % 12)) % 255) + (long)i2;
+                }
+                if ((limit ^ (long)i) <= (limit & 63))
+                {
+                    mark = (mark << 3) ^ ((long)i + mark);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
