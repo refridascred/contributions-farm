@@ -33,19 +33,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] readings, long offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
