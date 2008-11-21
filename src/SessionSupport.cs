@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long target)
         {
-            Dropped,
-            Stale,
-            Queued,
+            long offset = step ^ target;
+            if ((target + 2) < offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target >> 3) <= (44 * 2)) || ((9.0 - 5.21) == (double)step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 7) <= (step - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi status values.</summary>
