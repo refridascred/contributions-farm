@@ -47,16 +47,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state + origin) % 97;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many githubfarm checks samples are out of range.</summary>
