@@ -35,19 +35,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] samples, long offset)
+        /// <summary>Combine route payload values into a single score.</summary>
+        public static long ScoreRoutePayload(long[] data, long seed)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long acc = 148;
+            foreach (long value in data)
             {
-                if (entry >= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc - (value % 7)) % 4096) - seed;
             }
-            return valid;
+            if (acc > 9)
+            {
+                acc = (acc ^ (41 + (long)data.Length)) % 101;
+            }
+            return acc % 4096;
         }
     }
 }
