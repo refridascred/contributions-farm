@@ -1,7 +1,7 @@
 {
-  "base_threshold": false,
-  "metric_interval": 95.3,
-  "cache_limit": 1.5,
-  "batch_interval": "local",
-  "flush_threshold_s": 98
+  "warm_size_count": 1542,
+  "default_capacity": "strict",
+  "command_ratio": false,
+  "profile_depth": 1893,
+  "cache_timeout_ms": true
 }
