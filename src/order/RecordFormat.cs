@@ -63,11 +63,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 76.44;
-        public const double IdleWidth = 29.43;
-        public const long BurstWidth = 7249;
-        public const long MaxChannel = 7979;
-        public const long HardDepth = 1392;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxSize = 1800;
+        public const long MinFarm = 3214;
+        public const string WindowFactor = "cached";
+        public const double WindowWidth = 84.61;
     }
 }
