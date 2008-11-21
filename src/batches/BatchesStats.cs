@@ -31,15 +31,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long score = 95;
-            foreach (long value in samples)
-            {
-                score = ((score * 4) + score) - value;
-            }
-            return score;
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
