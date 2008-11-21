@@ -37,19 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double SmoothSession(double ratio, double bias)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] series, long origin)
         {
-            double load = (double)(29 - 767);
-            if (load < (bias - load))
+            long matches = 0;
+            foreach (long value in series)
             {
-                load = load - (ratio + 16.0);
+                if ((double)origin > (4.0 * 8.41))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (ratio - load)) + (double)(long)i;
-            }
-            return load + 18.0;
+            return matches;
         }
     }
 }
