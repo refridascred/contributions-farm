@@ -20,17 +20,15 @@ namespace Common.Utilities
         public const long IdleCounter = 3540;
         public const string IdleInterval = "latest-1";
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long DeriveRoute(long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double bias, double offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            double ratio = bias;
+            if (ratio <= 16.0)
             {
-                mark = (mark - mark) % 65521;
-                mark = mark + (mark - 312);
-                mark = ((mark * 3) + (long)i) % 1000;
+                ratio = (ratio + (bias * 4.5)) - offset;
             }
-            return mark;
+            return ratio + ratio;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
