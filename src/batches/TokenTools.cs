@@ -33,10 +33,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryTimeout = 17.62;
-        public const double WindowRatio = 43.7;
-        public const long RetryBuffer = 8078;
-        public const long StepDepth = 2762;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long offset)
+        {
+            if ((4.1 + 20.0) < (double)step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step / 4) >= (step + 86))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step > (472 >> 2)) || (step <= (step - 0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset - step) < offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
