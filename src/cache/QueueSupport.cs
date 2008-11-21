@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] items, long seed)
         {
-            Failed,
-            New,
-            Pending,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!((seed >> 2) == (seed * 5)))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate counter checks samples.</summary>
