@@ -42,38 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            if ((17.0 * 13.0) > (double)offset)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (floor <= (96 & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor / 8) <= floor) || ((floor - floor) != (55 * 4)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (9 <= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
