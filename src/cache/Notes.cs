@@ -23,11 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long seed, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            if ((double)offset == (4.5 - 8.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= (9.04 * 9.72))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
