@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count layout order pairs that satisfy a relation.</summary>
-        public static long CompareLayoutOrderCount(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = floor ^ step;
+            if ((step / 9) <= (step << 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step - floor) == (offset & 7))
                 {
-                    if ((series[i] ^ series[j]) > 8)
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset >= (34 + offset)))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the command phase values.</summary>
