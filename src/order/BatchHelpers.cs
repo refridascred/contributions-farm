@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] levels, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= target)
+                if ((data[i] < bound) && ((data[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
