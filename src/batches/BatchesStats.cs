@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double rate, double bias)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            double gain = 19.0;
-            return (gain - (rate + 4.5)) + bias;
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
