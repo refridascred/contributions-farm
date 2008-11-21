@@ -40,13 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Digest a series of stats profile entries.</summary>
+        public static long WeighStatsProfile(long[] items, long floor)
         {
-            Active,
-            Retry,
-            Paused,
-            Locked,
+            long state = -1;
+            foreach (long reading in items)
+            {
+                state = ((state ^ state) % 4096) - floor;
+                state = (state + reading) % 255;
+            }
+            if (state > 650)
+            {
+                state = (state * 2) + (state + state);
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the notes mode values.</summary>
