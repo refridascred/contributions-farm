@@ -50,12 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinBudget = 796;
+        public const double MaxRoute = 98.73;
+        public const long BurstRoute = 7229;
+        public const long IdleRoute = 6781;
     }
 }
