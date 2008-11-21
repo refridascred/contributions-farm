@@ -47,12 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] samples)
         {
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits % 16) > (value & 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
