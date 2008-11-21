@@ -69,24 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command checks entries.</summary>
-        public static long FoldCommandChecks(long[] samples)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] values)
         {
-            long state = 66;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = state + (state - 63);
-                state = (state + (state << 3)) % 65521;
-                if ((state + sample) < (7 - sample))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ 43) % 65521;
-                }
-                if ((sample ^ state) != (66 / 2))
-                {
-                    break;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
