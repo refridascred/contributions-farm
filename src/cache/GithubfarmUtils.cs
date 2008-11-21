@@ -40,13 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            New,
-            Done,
-            Stale,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 9334;
+        public const long WindowProfile = 9858;
+        public const long StepProfile = 5647;
+        public const long CacheBudget = 5281;
     }
 }
