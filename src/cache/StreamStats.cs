@@ -35,18 +35,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long state = -594;
+            foreach (long entry in items)
             {
-                if ((7.12 <= (double)matches) || (((19.0 + 7.0) == (double)sample) || (sample >= (matches - matches))))
-                {
-                    matches = matches + 1;
-                }
+                state = (state + (entry / 4)) % 65521;
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
