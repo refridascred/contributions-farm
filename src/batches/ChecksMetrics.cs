@@ -86,17 +86,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
+                state = state - (step << 3);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
