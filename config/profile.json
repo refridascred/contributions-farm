@@ -1,5 +1,6 @@
 {
-  "max_threshold_pct": ["latest", "open", "primary"],
-  "sync_timeout_pct": 64.82,
-  "verbose": "standard"
+  "max_window": "blue",
+  "poll_interval_pct": 57.46,
+  "cache_limit_count": 500,
+  "compress": 30
 }
