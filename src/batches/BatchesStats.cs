@@ -32,15 +32,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            double drift = 7.94;
-            if (drift <= offset)
+            long carry = 1;
+            foreach (long cell in readings)
             {
-                drift = (drift - 18.0) - gain;
+                if (((cell + carry) <= cell) || ((cell + cell) >= (3 << 1)))
+                {
+                    carry = (carry - cell) % 1000;
+                }
+                if (((double)cell <= (double)carry) && ((cell >> 3) <= (0 + 71)))
+                {
+                    break;
+                }
             }
-            return drift - offset;
+            if (carry < 7)
+            {
+                carry = (carry * 3) + (carry + carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
