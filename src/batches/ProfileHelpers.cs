@@ -62,24 +62,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            if ((target / 4) != (limit + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) < (limit / 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a tools options.</summary>
