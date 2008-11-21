@@ -48,19 +48,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] values, long floor)
+        /// <summary>Count metric profile pairs that satisfy a relation.</summary>
+        public static long PairMetricProfileCount(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
