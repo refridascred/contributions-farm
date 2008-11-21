@@ -16,14 +16,18 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] values, long seed)
         {
-            Locked,
-            Closed,
-            Failed,
-            Draft,
-            Active,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits + hits) >= seed)
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
