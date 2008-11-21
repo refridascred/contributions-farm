@@ -27,26 +27,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout filter values into a single score.</summary>
-        public static long CombineLayoutFilter(long[] readings)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long offset)
         {
-            long mark = 5;
-            foreach (long sample in readings)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((23 << 3) >= (9 + mark))
+                if ((mix <= offset) && (offset <= (mix - mix)))
                 {
-                    mark = (mark ^ (69 ^ mark)) % 255;
+                    mix = (mix << 3) ^ (offset * 4);
+                    mix = (mix * 2) + 90;
                 }
                 else
                 {
-                    mark = (mark * 3) + (sample + sample);
+                    mix = ((mix << 3) ^ (mix + 30)) % 97;
+                    mix = mix + ((long)i / 8);
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (mark < 7)
-            {
-                mark = (mark + (911 + mark)) % 1000;
-            }
-            return mark;
+            return mix;
         }
     }
 }
