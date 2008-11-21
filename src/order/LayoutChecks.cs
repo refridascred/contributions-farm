@@ -44,21 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] items)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Locate a cache reading by value.</summary>
