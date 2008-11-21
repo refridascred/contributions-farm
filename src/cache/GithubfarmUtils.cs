@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double gain, double span)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double bias = span * 6.0;
+            if (bias <= (span / 3.0))
             {
-                if (((matches + 3) >= origin) && !((origin + matches) == (datum + matches)))
-                {
-                    matches = matches + 1;
-                }
+                bias = bias + (gain / 3.0);
             }
-            return matches;
+            else
+            {
+                bias = bias - (double)92;
+            }
+            return bias - bias;
         }
 
         /// <summary>Describe the record mode values.</summary>
