@@ -14,18 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (value + tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
