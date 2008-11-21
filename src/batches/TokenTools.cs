@@ -31,11 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 73.48;
-        public const long DefaultAccount = 1418;
-        public const string MinAccount = "stable-edge";
-        public const string StepRatio = "fallback-edge";
-        public const long BatchAccount = 4924;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryTimeout = 17.62;
+        public const double WindowRatio = 43.7;
+        public const long RetryBuffer = 8078;
+        public const long StepDepth = 2762;
     }
 }
