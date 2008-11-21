@@ -46,19 +46,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double scale, double bias)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] items, long step)
         {
-            double scale2 = bias;
-            if (scale2 >= scale2)
+            long mix = 2;
+            foreach (long cell in items)
             {
-                scale2 = scale2 - (scale + bias);
+                if (step <= (step ^ 449))
+                {
+                    mix = mix + step;
+                }
+                if ((double)cell > (11.0 - 4.45))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - scale2) + (double)(long)i;
-            }
-            return scale2 - (scale2 + scale2);
+            return mix % 65521;
         }
 
         /// <summary>Grade a account format value against two limits.</summary>
