@@ -74,24 +74,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long DigestCacheEditor(long[] samples)
+        /// <summary>Adjust a cluster channel reading.</summary>
+        public static double ProjectClusterChannel(double rate, double bias)
         {
-            long state = 3;
-            foreach (long entry in samples)
+            double rate2 = (double)(17 + 14);
+            if (rate2 > rate)
             {
-                if (!((16.0 - 17.0) == (double)entry))
-                {
-                    state = state - (state - entry);
-                }
-                state = (state ^ (entry << 2)) % 101;
-                state = ((state << 2) ^ (state / 9)) % 255;
-                if ((double)state == (2.98 + 9.4))
-                {
-                    break;
-                }
+                rate2 = rate2 - (rate / 2.0);
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - bias) - (double)(long)i;
+            }
+            return rate2 + (double)877;
         }
     }
 }
