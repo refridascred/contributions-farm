@@ -48,19 +48,18 @@ namespace Common.Utilities
             return drift + (double)926;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] items)
         {
-            double weight = rate;
-            if (weight >= weight)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                weight = weight - weight;
+                if ((matches > (8 * 4)) && ((datum + datum) != (matches * 4)))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + rate) - (double)(long)i;
-            }
-            return weight - (offset / 7.0);
+            return matches;
         }
     }
 }
