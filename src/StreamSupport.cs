@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] samples, long limit)
         {
-            double gain = floor;
-            if (gain < gain)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                gain = (gain + floor) + weight;
+                if (cell <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain + (1.0 + floor);
+            return valid;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
