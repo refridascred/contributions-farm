@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] data, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long offset)
         {
-            long acc = 5;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target + value) >= value)
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
                 {
-                    acc = ((acc * 5) + (6 >> 3)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
