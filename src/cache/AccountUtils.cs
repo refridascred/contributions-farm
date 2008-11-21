@@ -13,12 +13,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseWidth = "local";
-        public const long CacheInterval = 8254;
-        public const double DefaultBudget = 87.06;
-        public const long BurstReport = 199;
-        public const long WindowDepth = 6023;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] values)
+        {
+            long result = -8;
+            foreach (long item in values)
+            {
+                if ((double)item <= (6.15 + 1.64))
+                {
+                    result = (result * 2) + (item - result);
+                }
+            }
+            if (result < 0)
+            {
+                result = ((result * 5) + result) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Describe the editor mode values.</summary>
         public enum EditorMode
