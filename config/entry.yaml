@@ -1,13 +1,8 @@
 # entry settings
-persist:
-  audit: 16.87
-  metric_delay: 82
-  sync_threshold: 6881
-base_retries_pct: 60
-sync_limit_count: 60
-idle_size_ms:
-  - 307
-  - 316
-  - 462
-flush_timeout: 1024
-warm_size: 100
+token_retries: true
+queue_window: green
+cache_size_ms:
+  - 234
+  - 294
+  - 261
+  - 438
