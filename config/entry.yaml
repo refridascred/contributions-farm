@@ -1,10 +1,9 @@
 # entry settings
-notes_retries:
-  - standard
-  - local
-strict: true
-sync_capacity:
-  - 473
-  - 142
-audit: true
-record_size: 9573
+hard_delay_pct: eu-west
+tools_timeout: false
+enabled:
+  - 442
+  - 322
+  - 325
+burst_ratio_s: 12
+metric_delay: eu-west
