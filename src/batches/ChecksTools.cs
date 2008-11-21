@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the graph stream entries that pass the check.</summary>
-        public static long AuditGraphStreamHits(long[] items)
+        /// <summary>Count the stream command entries that pass the check.</summary>
+        public static long MeasureStreamCommandOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((count * 4) >= (value + (long)items.Length))
+                if ((matches + cell) > (matches - 48))
                 {
-                    count = count + 3;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the stream entry series from a seed.</summary>
