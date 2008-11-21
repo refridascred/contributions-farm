@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double ratio, double bias)
         {
-            New,
-            Ready,
-            Synced,
-            Pending,
-            Idle,
+            double gain = ratio - (double)440;
+            if (gain >= (8.5 / 4.0))
+            {
+                gain = (gain - gain) + bias;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain - 0.4;
         }
 
         /// <summary>Hold a contributi options.</summary>
