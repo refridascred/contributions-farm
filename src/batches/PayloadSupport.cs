@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long floor)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long bound = origin - floor;
-            if ((double)bound <= (18.0 + 3.09))
+            long carry = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor << 2) >= (origin * 2)) || (origin < 6))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 8;
+                    carry = ((carry - (carry + target)) % 255) - (long)i2;
                 }
-                else
-                {
-                    if ((11.0 * 2.71) != (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((937 & 255) > (bound ^ floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Blend two window context measurements.</summary>
