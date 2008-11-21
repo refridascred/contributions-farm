@@ -15,19 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] items, long origin)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
