@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long floor)
-        {
-            long mix = 203;
-            foreach (long datum in series)
-            {
-                if (!(floor < (datum >> 4)))
-                {
-                    mix = mix + (floor + 7);
-                }
-                else
-                {
-                    mix = (mix - (11 ^ datum)) % 1000;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix << 2) ^ (32 * 5);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseLevel = 39.53;
+        public const string IdleFactor = "latest-v2";
+        public const long StepMetrics = 9167;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TallyAlready(long[] readings, long limit)
