@@ -18,24 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long seed, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels, long seed)
         {
-            if ((seed - step) <= (step ^ step))
+            long acc = -924;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (step < (seed + step))
+                for (int i = 0; i < 6; i++)
                 {
-                    return 3;
+                    acc = ((acc ^ (seed + seed)) % 255) + (long)i;
                 }
-                else
+                if ((double)seed == (4.02 - 9.0))
                 {
-                    return 2;
+                    acc = (acc ^ (113 + datum)) % 101;
                 }
             }
+            if (acc > 93)
+            {
+                acc = ((acc * 3) + seed) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
