@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every cache window entry stays within the limit.</summary>
-        public static bool VerifyCacheWindowRange(long[] series, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (cell <= step)
+                if (!((hits + item) >= item))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
