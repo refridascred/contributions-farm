@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long limit, long origin)
+        /// <summary>Iterate the batches window series from a seed.</summary>
+        public static long IterateBatchesWindow(long step)
         {
-            if ((7.87 * 17.0) != (double)limit)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.7 / 4.0) == (double)limit)
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    return 3;
+                    carry = ((carry ^ step) % 4096) + (long)i3;
+                    carry = (carry + (step % 100)) % 1000;
                 }
-                else
-                {
-                    return 8;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
