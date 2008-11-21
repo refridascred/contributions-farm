@@ -78,10 +78,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MinFarm = 54.33;
-        public const string RetrySpan = "latest-edge";
-        public const long IdleSpan = 6662;
-        public const double BaseSpan = 93.48;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
