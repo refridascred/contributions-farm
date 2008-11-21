@@ -61,19 +61,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel batch entry stays within the limit.</summary>
-        public static bool GuardChannelBatchRange(long[] items, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long value in items)
+            double rate2 = (double)756;
+            if (rate2 <= (rate + rate2))
             {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                rate2 = (rate2 + rate2) + bias;
             }
-            return ready;
+            else
+            {
+                rate2 = rate2 - (rate + 5.42);
+            }
+            return rate2 - (double)82;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
