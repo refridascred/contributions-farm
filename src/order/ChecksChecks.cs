@@ -14,12 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryLevel = 2786;
-        public const double IdleCount = 30.52;
-        public const string LimitPayload = "local-v2";
-        public const double SoftSize = 20.94;
-        public const long BurstPayload = 6933;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
         public static double AdjustMetricsContributi(double scale, double bias)
