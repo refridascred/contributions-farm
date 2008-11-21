@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            Retry,
+            Ready,
+            Done,
         }
 
         /// <summary>Combine filter values into a single score.</summary>
