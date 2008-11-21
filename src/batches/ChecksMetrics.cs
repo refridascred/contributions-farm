@@ -41,28 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                total = (total << 3) ^ (floor ^ total);
-                if ((total - (long)i) <= (floor / 3))
-                {
-                    total = ((total << 2) ^ (floor / 6)) % 255;
-                    continue;
-                }
-                else
-                {
-                    total = total - (floor * 4);
-                    total = total + (6 / 3);
-                }
-                total = ((total * 3) + (748 * 5)) % 255;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "stable-edge";
+        public const string DefaultContext = "local-1";
+        public const string MaxFactor = "fallback-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowCommand = 6075;
