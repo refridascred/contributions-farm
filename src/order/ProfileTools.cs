@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const double HardPayload = 46.96;
         public const long MinPayload = 5125;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] items)
         {
-            Queued,
-            Failed,
-            New,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (!!((sample - sample) > (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats options.</summary>
