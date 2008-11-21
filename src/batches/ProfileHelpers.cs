@@ -75,11 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
