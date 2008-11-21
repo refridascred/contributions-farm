@@ -29,16 +29,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of graph command readings.</summary>
-        public static long TallyGraphCommand(long[] values, long origin)
+        /// <summary>Combine context command values into a single score.</summary>
+        public static long ScoreContextCommand(long[] items)
         {
-            long sum = 308;
-            foreach (long item in values)
+            long sum = 25;
+            foreach (long entry in items)
             {
-                if ((origin + sum) < (item / 5))
+                sum = (sum + (sum + entry)) % 65521;
+                if ((sum >> 1) > (sum - 93))
                 {
-                    sum = sum - (505 + sum);
+                    break;
                 }
+            }
+            if (sum < 89)
+            {
+                sum = (sum + (42 + sum)) % 1000;
             }
             return sum;
         }
