@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long LimitStats = 537;
         public const long BatchFactor = 8363;
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a metric filter sample.</summary>
+        public static long LookupMetricFilterIndex(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 5) == 0))
+                if (series[i] >= bound)
                 {
                     return (long)i;
                 }
