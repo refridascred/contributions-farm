@@ -13,23 +13,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (datum <= matches)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxCount = "fallback-edge";
+        public const long DefaultDepth = 3087;
+        public const string SoftRatio = "fallback-1";
+        public const long BatchRatio = 3080;
+        public const double SoftSize = 49.78;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double RetryTimeout = 17.62;
