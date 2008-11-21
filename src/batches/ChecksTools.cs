@@ -36,12 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 4522;
-        public const long MaxNotes = 1739;
-        public const long WindowCount = 7941;
-        public const long BurstSpan = 1435;
-        public const string DefaultInterval = "cached-edge";
+        /// <summary>Measure how many profile layout samples are out of range.</summary>
+        public static long AuditProfileLayoutOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally % 97) > (entry + entry))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
