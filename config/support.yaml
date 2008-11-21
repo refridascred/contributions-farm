@@ -1,11 +1,4 @@
 # support settings
-soft_size: local
-soft_size_s:
-  soft_capacity:
-    - 434
-    - 360
-  batch_ratio_pct: true
-  retry_size_s: 7411
-  poll_size_count: primary
-  verbose: 49
-metrics_limit: blue
+cache_window: false
+min_depth: true
+sync_retries_s: open
