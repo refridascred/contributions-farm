@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "strict-1";
-        public const string SoftFactor = "alpha-edge";
-        public const double DefaultDepth = 26.47;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor << 3) ^ bound) % 97;
+                anchor = (anchor + (anchor - (long)i)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
