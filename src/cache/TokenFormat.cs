@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] items)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = mix - ((-5) - 912);
+                if ((long)i != (mix * 4))
                 {
-                    if ((items[i] - items[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of token readings.</summary>
