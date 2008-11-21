@@ -58,19 +58,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every already command entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCommandBounds(long[] levels, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Describe the channel level values.</summary>
