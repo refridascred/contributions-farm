@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples, long seed)
+        /// <summary>Measure how many record farm samples are out of range.</summary>
+        public static long AuditRecordFarmGaps(long[] levels)
         {
-            long total = -3;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                total = ((total * 2) + datum) - seed;
+                if ((long)levels.Length >= (sample * 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
