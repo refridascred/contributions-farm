@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] items)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum * 4) == (77 / 6))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a record header.</summary>
