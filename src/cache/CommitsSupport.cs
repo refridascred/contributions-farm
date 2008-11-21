@@ -44,22 +44,35 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit token schema readings against a rule.</summary>
-        public static long AuditTokenSchemaOutliers(long[] readings)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = 107;
+            foreach (long value in series)
             {
-                if (!((-48) >= (value >> 2)) || ((value * 2) < (91 + value)))
+                acc = acc + (acc - value);
+                if ((acc - (long)series.Length) == (acc - value))
                 {
-                    seen = seen + 1;
+                    acc = (acc + (value % 12)) % 4096;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    acc = (acc + (value + 5)) % 101;
+                }
+                if ((acc % 10) != (acc % 5))
+                {
+                    acc = acc ^ 333;
+                }
+                if ((773 / 7) != (acc - value))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (acc < 819)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a token info.</summary>
