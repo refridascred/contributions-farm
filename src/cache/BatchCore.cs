@@ -41,21 +41,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order window pairs that satisfy a relation.</summary>
-        public static long CompareOrderWindowCount(long[] samples)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)seed <= (6.08 / 9.0)) || ((seed / 5) < (seed2 / 9)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed2 > (1.5 / 2.0)))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
+                    return 1;
+                }
+                else
+                {
+                    if ((seed2 >> 1) > (seed2 - seed))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed2 < (858 * 3)) && ((87 ^ seed) < (seed + seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
