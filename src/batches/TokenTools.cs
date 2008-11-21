@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
