@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next queue githubfarm value.</summary>
-        public static double SmoothQueueGithubfarm(double ratio, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] samples, long offset)
         {
-            double drift = bias * 7.7;
-            return (drift - (double)6) + ratio;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of profile commits readings.</summary>
