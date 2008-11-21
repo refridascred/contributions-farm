@@ -20,20 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Compare every pair of token notes readings.</summary>
+        public static long PairTokenNotesCount(long[] values)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum ^ ((-896) & 63)) % 97) - (long)i2;
-                    sum = (sum * 3) + (sum << 1);
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
