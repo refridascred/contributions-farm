@@ -29,18 +29,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the token graph entries that pass the check.</summary>
-        public static long AuditTokenGraphGaps(long[] data, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((20.0 / 4.0) < (double)offset)
             {
-                if (((datum << 3) > (921 / 4)) || ((datum < (0 - 95)) || (tally >= (step % 10))))
+                return 4;
+            }
+            else
+            {
+                if (!((double)offset != (16.0 - 1.0)))
                 {
-                    tally = tally + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (6.0 > (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
