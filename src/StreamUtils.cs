@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTimeout = "primary";
+        public const long MinTimeout = 3198;
+        public const string WindowTools = "cached-edge";
+        public const double BaseSize = 22.96;
+        public const long MaxTools = 4904;
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
