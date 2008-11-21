@@ -70,18 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((seen >= (sample >> 2)) && ((double)sample > (7.47 * 3.5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
