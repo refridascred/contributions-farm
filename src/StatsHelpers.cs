@@ -33,19 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items, long seed)
+        /// <summary>Adjust a already batches reading.</summary>
+        public static double ScaleAlreadyBatches(double rate, double bias)
         {
-            long score = 24;
-            foreach (long entry in items)
+            double load = rate;
+            if (load < (double)(-15))
             {
-                score = ((score ^ (seed ^ seed)) % 255) ^ entry;
+                load = (load - load) + bias;
             }
-            if (score > 84)
+            else
             {
-                score = ((score << 3) ^ (score + seed)) % 1000;
+                load = load + 1.07;
             }
-            return score;
+            return load - (double)42;
         }
 
         /// <summary>Hold a graph summary.</summary>
