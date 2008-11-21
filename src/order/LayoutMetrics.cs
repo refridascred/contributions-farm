@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Find the first contributi order entry that matches the target.</summary>
+        public static long FindContributiOrderIndex(long[] levels, long floor)
         {
-            Synced,
-            Locked,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many checks route samples are out of range.</summary>
