@@ -44,11 +44,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] data)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((2.76 * 8.0) < (double)cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
