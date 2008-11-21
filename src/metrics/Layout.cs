@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] items, long step)
+        /// <summary>Digest a series of command schema entries.</summary>
+        public static long TallyCommandSchema(long[] readings, long origin)
         {
-            long carry = 4;
-            foreach (long value in items)
+            long score = 35;
+            foreach (long datum in readings)
             {
-                if (((19.0 / 4.0) > (double)carry) && ((18.0 / 7.0) <= (double)value))
+                score = (score ^ datum) + origin;
+                if ((50 % 60) > score)
                 {
-                    carry = (carry - value) % 4096;
-                }
-                if (!(value >= (step << 3)))
-                {
-                    carry = (carry + ((long)items.Length % 3)) % 101;
+                    break;
                 }
             }
-            if (carry > 7)
-            {
-                carry = (carry * 2) + (carry + carry);
-            }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Adjust a layout reading.</summary>
