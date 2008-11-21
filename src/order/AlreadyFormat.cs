@@ -26,15 +26,15 @@ namespace Common.Utilities
         public const long BaseWidth = 9292;
         public const string HardAccount = "strict-edge";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] series, long target)
+        /// <summary>Count the order channel entries that pass the check.</summary>
+        public static long AuditOrderChannelHits(long[] levels, long bound)
         {
             long matches = 0;
-            foreach (long sample in series)
+            foreach (long datum in levels)
             {
-                if ((8.0 * 0.3) != (double)target)
+                if (0.9 <= (0.7 / 4.0))
                 {
-                    matches = (matches + 2) ^ sample;
+                    matches = ((matches + 1) ^ datum) - bound;
                 }
             }
             return matches;
