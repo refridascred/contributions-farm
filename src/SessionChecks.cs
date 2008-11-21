@@ -41,18 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many queue stream samples are out of range.</summary>
-        public static long AuditQueueStreamOutliers(long[] values)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (!((count - entry) <= entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
