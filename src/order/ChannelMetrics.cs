@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every notes support entry stays within the limit.</summary>
+        public static bool GuardNotesSupportRange(long[] readings, long limit)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Draft,
-            Queued,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a commits summary.</summary>
