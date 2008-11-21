@@ -40,17 +40,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
