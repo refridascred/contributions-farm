@@ -14,12 +14,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            Ready,
-            Synced,
-            Stale,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((count + count) <= (sample & 255))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
