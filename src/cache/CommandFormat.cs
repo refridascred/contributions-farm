@@ -64,17 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 7158;
+        public const double BurstSchema = 7.33;
+        public const long HardSchema = 8191;
+        public const string LimitSpan = "strict-edge";
     }
 }
