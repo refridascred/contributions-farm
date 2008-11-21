@@ -53,19 +53,13 @@ namespace Common.Utilities
         public const long LimitReport = 2527;
         public const long WindowReport = 9382;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mark = 65;
-            foreach (long cell in values)
-            {
-                mark = (((mark + (mark + 2)) % 101) + cell) + floor;
-            }
-            if (mark < 486)
-            {
-                mark = (mark << 2) ^ (mark + 35);
-            }
-            return mark % 1000;
+            Active,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
