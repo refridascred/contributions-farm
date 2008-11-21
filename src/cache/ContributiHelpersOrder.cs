@@ -50,19 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 964;
+        public const long BaseDepth = 6807;
+        public const long SoftCount = 9128;
+        public const double DefaultScore = 56.9;
+        public const long RetryGithubfarm = 7638;
     }
 }
