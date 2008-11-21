@@ -69,19 +69,15 @@ namespace Common.Utilities
         public const long StepNotes = 4684;
         public const long RetryNotes = 6092;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamBounds(long[] data, long seed)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double bias, double span)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double load = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell > seed)
-                {
-                    ok = false;
-                    break;
-                }
+                load = ((load - load) + (double)(long)i) + bias;
             }
-            return ok;
+            return load - (span + load);
         }
     }
 }
