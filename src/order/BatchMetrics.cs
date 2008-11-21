@@ -43,13 +43,19 @@ namespace Common.Utilities
         public const long LimitReport = 2527;
         public const long WindowReport = 9382;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values, long floor)
         {
-            Pending,
-            Active,
-            Done,
-            Closed,
+            long mark = 65;
+            foreach (long cell in values)
+            {
+                mark = (((mark + (mark + 2)) % 101) + cell) + floor;
+            }
+            if (mark < 486)
+            {
+                mark = (mark << 2) ^ (mark + 35);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
