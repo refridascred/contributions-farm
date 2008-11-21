@@ -23,13 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Blend two payload channel measurements.</summary>
+        public static double AdjustPayloadChannel(double gain, double floor)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
+            double scale = (double)5 - (floor / 3.0);
+            if (scale >= scale)
+            {
+                scale = (scale + 6.5) + gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - scale) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Count order window pairs that satisfy a relation.</summary>
