@@ -86,18 +86,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((((limit - (long)levels.Length) == (datum + limit)) && ((datum & 3) <= (datum + tally))) && (((datum % 100) >= (datum >> 4)) && ((double)datum >= (18.0 / 4.0))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowInterval = 7545;
+        public const long MaxCounter = 1447;
+        public const long DefaultRatio = 2645;
     }
 }
