@@ -1,8 +1,8 @@
-id,level,ratio
-1,33.06,904
-2,1.73,fallback
-3,446,open
-4,450,cached
-5,standard,17.58
-6,stable,86.82
-7,909,599
+id,active,rank
+1,28.41,legacy
+2,open,846
+3,514,22.58
+4,eu-west,0.2
+5,standard,21.81
+6,401,240
+7,staging,26.32
