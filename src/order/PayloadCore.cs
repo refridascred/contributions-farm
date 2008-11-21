@@ -33,13 +33,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long floor)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = (acc ^ 45) % 97;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of order entries.</summary>
