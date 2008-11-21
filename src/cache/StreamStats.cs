@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] series, long seed)
         {
-            long acc = 44;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                acc = (((acc << 3) ^ (acc * 4)) % 255) + reading;
+                if (entry > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
