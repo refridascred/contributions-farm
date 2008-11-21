@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] levels)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long origin)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            long sum = 9;
+            foreach (long reading in values)
             {
-                mark = ((mark + 92) % 97) + datum;
+                sum = ((sum * 3) + (reading * 5)) - origin;
             }
-            return mark % 1000;
+            return sum % 4096;
         }
 
         /// <summary>Combine account values into a single score.</summary>
