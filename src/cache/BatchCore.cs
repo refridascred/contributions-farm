@@ -28,38 +28,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long seed2)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double gain, double bias)
         {
-            if (((double)seed <= (6.08 / 9.0)) || ((seed / 5) < (seed2 / 9)))
+            double mean = (gain + bias) - gain;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                mean = (mean + bias) + (double)(long)i;
             }
-            else
-            {
-                if (!((double)seed2 > (1.5 / 2.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed2 >> 1) > (seed2 - seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed2 < (858 * 3)) && ((87 ^ seed) < (seed + seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean + (double)9;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
