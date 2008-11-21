@@ -1,6 +1,8 @@
 {
-  "persist": "green",
-  "poll_delay_ms": 60,
-  "graph_depth": true,
-  "soft_ttl_s": true
+  "batch_interval_count": "legacy",
+  "counter_retries": 6091,
+  "editor_window": ["staging", "strict"],
+  "max_retries_ms": ["local", "stable", "edge", "fallback"],
+  "compress": "eu-west",
+  "base_ratio_ms": "green"
 }
