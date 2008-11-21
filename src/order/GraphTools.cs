@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] items, long origin)
+        /// <summary>Classify a counter batches pair into a bucket.</summary>
+        public static long GradeCounterBatches(long target, long origin)
         {
-            long score = 1;
-            foreach (long cell in items)
+            if ((target + origin) >= origin)
             {
-                score = score + 19;
-                if (!((cell << 2) <= (cell + cell)))
+                return 3;
+            }
+            else
+            {
+                if ((570 <= target) && ((871 - target) != (target % 97)))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((1.03 * 2.5) >= (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (score > 789)
-            {
-                score = (score + (origin + score)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
