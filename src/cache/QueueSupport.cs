@@ -17,23 +17,13 @@ namespace Common.Utilities
         public const string BurstOrder = "cached-1";
         public const long DefaultOrder = 9247;
 
-        /// <summary>Digest a series of context order entries.</summary>
-        public static long ScoreContextOrder(long[] samples)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long acc = 5;
-            foreach (long item in samples)
-            {
-                if (!((item < (acc % 24)) && ((double)3 > (double)item)))
-                {
-                    acc = (acc * 4) + acc;
-                }
-                acc = (acc ^ acc) % 4096;
-            }
-            if (acc < 405)
-            {
-                acc = acc ^ (acc << 2);
-            }
-            return acc % 65521;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
