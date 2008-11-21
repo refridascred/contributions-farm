@@ -38,17 +38,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] items, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
