@@ -23,11 +23,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 338;
-        public const long RetryMetric = 3018;
-        public const double BaseMetric = 67.98;
-        public const double LimitLevel = 83.31;
-        public const long WindowTimeout = 5318;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values, long target)
+        {
+            long score = 674;
+            foreach (long datum in values)
+            {
+                score = (((score * 2) + (target * 3)) % 97) - datum;
+                if ((2 - score) < (298 * 5))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
