@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const long SoftSize = 4630;
         public const long LimitSupport = 2042;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long floor)
+        /// <summary>Find the first batches profile entry that matches the target.</summary>
+        public static long SeekBatchesProfileIndex(long[] values, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((7.0 * 1.4) >= (double)floor)
+                if (values[i] > origin)
                 {
-                    result = (result * 5) + (floor + floor);
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result * 4) + floor;
-                }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
