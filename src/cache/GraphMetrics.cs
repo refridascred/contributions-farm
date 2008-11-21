@@ -65,12 +65,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            New,
             Ready,
-            Closed,
+            Failed,
+            Dropped,
         }
     }
 }
