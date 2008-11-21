@@ -36,17 +36,27 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] readings, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long datum in readings)
             {
-                if (readings[i] <= target)
+                if ((state << 1) == (datum - datum))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ datum) % 4096;
                 }
+                else
+                {
+                    state = (state ^ (datum / 7)) % 65521;
+                }
+                if ((408 * 2) < (state * 3))
+                {
+                    break;
+                }
+                state = (state - datum) % 4096;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the stats phase values.</summary>
