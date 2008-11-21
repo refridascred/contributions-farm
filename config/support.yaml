@@ -1,16 +1,4 @@
 # support settings
-max_depth_s: 60
-hard_timeout_ms: latest
-verbose: 39.6
-poll_limit:
-  audit: true
-  idle_limit: false
-  hard_limit: 2
-  context_delay: 48
-  sync_limit: 60
-  burst_limit:
-    - primary
-    - green
-    - green
-    - staging
-cache_retries: 500
+max_timeout_pct: strict
+soft_window_count: green
+sync_window_s: 100
