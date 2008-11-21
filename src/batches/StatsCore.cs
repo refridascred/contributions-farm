@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 1739;
+        public const long WindowCluster = 3825;
+        public const string StepLevel = "standard-edge";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] levels, long origin)
