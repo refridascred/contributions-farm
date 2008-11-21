@@ -20,22 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 7540;
+        public const string MaxRecord = "latest-1";
+        public const long WindowRecord = 8263;
+        public const string LimitRecord = "primary-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaRange(long[] data, long seed)
