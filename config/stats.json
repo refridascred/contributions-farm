@@ -1,7 +1,5 @@
 {
-  "audit": 97,
-  "cache_ratio_s": ["strict", "staging", "primary"],
-  "enabled": "strict",
-  "stats_retries": [34, 279, 373],
-  "verbose": 6.39
+  "soft_delay_ms": ["stable", "legacy"],
+  "default_timeout_ms": "blue",
+  "dry_run": 85
 }
