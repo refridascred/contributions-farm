@@ -36,10 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 27.68;
-        public const long MaxFarm = 5449;
-        public const long HardInterval = 9132;
-        public const string BurstLevel = "legacy-edge";
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
