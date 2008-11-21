@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks layout values into a single score.</summary>
-        public static long TotalChecksLayout(long[] readings, long seed)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long result = 82;
-            foreach (long sample in readings)
-            {
-                result = (result ^ (seed + result)) ^ sample;
-                if (((9.0 - 3.38) >= (double)result) && ((0.4 + 0.8) >= (double)seed))
-                {
-                    result = ((result * 2) + seed) % 1000;
-                }
-            }
-            return result;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
