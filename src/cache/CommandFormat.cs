@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series, long floor)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((639 ^ entry) <= (195 & 3))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
