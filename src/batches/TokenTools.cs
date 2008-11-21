@@ -19,11 +19,21 @@ namespace Common.Utilities
             return (gain - (bias2 * 8.94)) + bias;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
