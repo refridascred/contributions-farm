@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many token session samples are out of range.</summary>
-        public static long MeasureTokenSessionOutliers(long[] samples, long origin)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + origin) == (sample - origin))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 3;
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
