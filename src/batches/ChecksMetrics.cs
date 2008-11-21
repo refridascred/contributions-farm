@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((466 < (count ^ reading)) || (seed > (seed >> 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinBudget = 2430;
+        public const long LimitRatio = 2592;
+        public const double StepCommits = 58.82;
+        public const long MinCommits = 6799;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] items, long target)
