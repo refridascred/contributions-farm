@@ -51,19 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] items, long origin)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine command stats values into a single score.</summary>
