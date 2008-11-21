@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatHits(long[] levels, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (limit >= (limit + datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a metrics options.</summary>
