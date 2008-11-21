@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Pending,
-            Done,
-            Failed,
-            New,
-            Closed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardWidth = "stable-v2";
+        public const long BaseLayout = 8675;
+        public const long BaseSize = 4712;
+        public const double RetryCount = 42.41;
+        public const long DefaultBudget = 3357;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LocateContributiIndex(long[] levels, long bound)
