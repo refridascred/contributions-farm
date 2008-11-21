@@ -41,11 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] items, long step)
         {
-            double load = 3.4;
-            return (load + span) + ratio;
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
