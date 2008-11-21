@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] samples)
+        /// <summary>Iterate the channel support series from a seed.</summary>
+        public static long StepChannelSupport(long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((tally >> 4) >= (tally % 16))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = (tally + 3) + value;
+                    anchor = (anchor - (anchor >> 1)) ^ (long)i2;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor - (832 << 2)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
