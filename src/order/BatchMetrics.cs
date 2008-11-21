@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
-        public static bool CheckGithubfarmChannelBounds(long[] readings, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
