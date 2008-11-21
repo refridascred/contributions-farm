@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] series, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (sample > limit)
+                if ((tally >> 4) >= (tally % 16))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
