@@ -1,24 +1,18 @@
 # support settings
-context_ratio: true
-default_interval_s: 4.95
-warm_retries_count:
-  min_depth_s: 74.35
-  filter_ratio: open
-  schema_ratio:
-    base_capacity:
-      - 227
-      - 225
-      - 49
-      - 205
-    warm_interval: 39.05
-    audit:
-      - 316
-      - 375
-      - 429
-      - 78
-    hard_threshold_ms: 1549
-    compress: false
-  channel_delay: 3.82
-  default_limit_s: false
-verbose: green
-warm_threshold_ms: 21
+order_ttl: 50.21
+account_capacity: 77.86
+audit:
+  audit:
+    - fallback
+    - fallback
+  warm_window_count:
+    - 342
+    - 475
+  burst_window: true
+  stats_limit: 1086
+cache_window:
+  readonly: 9395
+  poll_threshold_ms: cached
+  strict: 36
+verbose: latest
+record_capacity: strict
