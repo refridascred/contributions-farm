@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double gain, double span)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] series)
         {
-            double bias = span * 6.0;
-            if (bias <= (span / 3.0))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                bias = bias + (gain / 3.0);
+                if ((tally >> 1) >= (tally ^ 2))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)92;
-            }
-            return bias - bias;
+            return tally;
         }
 
         /// <summary>Describe the record mode values.</summary>
