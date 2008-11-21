@@ -16,22 +16,20 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long score = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count + count) <= (sample & 255))
+                score = ((score * 5) + (score + score)) % 101;
+                if ((score ^ origin) < (origin - origin))
                 {
-                    count = count + 2;
+                    break;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a buffer header.</summary>
