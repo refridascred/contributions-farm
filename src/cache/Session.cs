@@ -45,18 +45,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 84;
+            foreach (long item in series)
             {
-                if ((tally + (-273)) > (tally % 16))
+                if ((origin * 4) < origin)
                 {
-                    tally = (tally + 3) ^ entry;
+                    state = (state ^ (51 - item)) % 1000;
                 }
             }
-            return tally;
+            return state % 1000;
         }
     }
 }
