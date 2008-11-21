@@ -45,18 +45,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] items, long offset)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long step, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long next = step - limit;
+            if ((next <= (next << 1)) && (limit > (57 + next)))
             {
-                if ((offset >> 2) == (sample << 1))
+                return 0;
+            }
+            else
+            {
+                if ((2.0 * 0.3) <= (double)step)
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step <= (19.0 / 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next buffer value.</summary>
