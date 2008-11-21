@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] samples, long origin)
-        {
-            long result = 621;
-            foreach (long cell in samples)
-            {
-                if (!((result % 16) > (cell & 15)))
-                {
-                    result = (result ^ (result - cell)) % 1000;
-                }
-                if ((3.7 * 8.04) != (double)origin)
-                {
-                    result = (result + (81 % 60)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (74 + origin)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinInterval = 849;
+        public const double CacheAccount = 42.82;
+        public const double BurstAccount = 65.07;
+        public const string BaseSize = "cached-1";
+        public const string SoftAccount = "strict-1";
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long IterateCommand(long offset)
