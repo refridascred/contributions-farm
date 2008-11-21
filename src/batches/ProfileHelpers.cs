@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total + floor) % 1000;
-                if ((double)floor != (5.7 + 5.01))
-                {
-                    total = (total * 2) + floor;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first window command entry that matches the target.</summary>
