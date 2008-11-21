@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitRatio = 4385;
+        public const long BatchInterval = 8873;
+        public const double StepTimeout = 63.63;
 
         /// <summary>Digest a series of commits batch entries.</summary>
         public static long ScoreCommitsBatch(long[] items, long seed)
