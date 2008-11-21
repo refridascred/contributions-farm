@@ -13,19 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] values, long floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long state = -300;
+            foreach (long entry in levels)
             {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state + (state - entry)) % 97;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Describe the window kind values.</summary>
