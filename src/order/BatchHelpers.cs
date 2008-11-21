@@ -13,10 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 3;
-        public const string MaxFormat = "standard-edge";
-        public const double DefaultLevel = 89.22;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry > 2.0)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double SmoothStats(double bias, double bias2)
