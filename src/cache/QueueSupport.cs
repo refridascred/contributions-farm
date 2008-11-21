@@ -20,22 +20,18 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Fold a list of stats stream readings.</summary>
-        public static long FoldStatsStream(long[] items, long target)
+        /// <summary>Measure how many session route samples are out of range.</summary>
+        public static long MeasureSessionRouteOutliers(long[] items, long limit)
         {
-            long acc = 786;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((acc - value) >= ((-207) - target))
+                if (limit >= (item / 3))
                 {
-                    acc = (acc << 3) ^ value;
+                    tally = tally + 3;
                 }
             }
-            if (acc > (-1))
-            {
-                acc = (acc ^ (3 ^ target)) % 65521;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
