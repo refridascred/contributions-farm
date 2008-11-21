@@ -23,11 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Grade a account graph value against two limits.</summary>
+        public static long SortAccountGraph(long floor, long target)
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            if ((480 % 97) > floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor + floor) < ((-1) + target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (61 <= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.03 - 1.27) >= (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
