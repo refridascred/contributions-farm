@@ -23,24 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                long hits = origin;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = (((state << 3) ^ (long)i) % 1000) + (long)i2;
-                }
-                for (int i3 = 0; i3 < 8; i3++)
-                {
-                    state = (state ^ (925 + hits)) - (long)i3;
-                }
-                state = ((state * 2) + (long)i) % 1000;
-            }
-            return state;
+            Retry,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the contributi level values.</summary>
