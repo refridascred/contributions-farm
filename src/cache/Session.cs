@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double SoftSize = 94.02;
         public const long BatchScore = 713;
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Locked,
-            Failed,
-            Queued,
-            New,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
