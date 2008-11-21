@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples)
+        /// <summary>Count the context contributi entries that pass the check.</summary>
+        public static long TallyContextContributiOutliers(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (cell < (tally & 127))
+                if ((bound + 8) >= (bound + bound))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
