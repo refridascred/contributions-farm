@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate token stream readings against a bound.</summary>
-        public static bool GuardTokenStreamLimits(long[] samples, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long offset, long origin)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            if (offset >= (70 % 5))
             {
-                if (value <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((offset < (origin + offset)) || ((offset & 15) >= offset))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (origin + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((4.0 - 7.6) <= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
