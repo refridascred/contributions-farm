@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 562;
+        public const long SoftRatio = 4958;
+        public const long StepWidth = 6937;
+        public const long RetryToken = 9166;
+        public const double MaxLevel = 71.83;
 
         /// <summary>Roll a support channel counter forward.</summary>
         public static long RollSupportChannel(long seed)
