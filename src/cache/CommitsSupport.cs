@@ -94,19 +94,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading + reading) != (hits + reading)) && ((hits ^ hits) <= 71))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] ^ samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
