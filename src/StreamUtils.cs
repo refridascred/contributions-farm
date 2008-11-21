@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long SoftReport = 8606;
         public const double MaxReport = 55.9;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] samples)
+        /// <summary>Check that every metrics buffer entry stays within the limit.</summary>
+        public static bool ValidateMetricsBufferRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (2.0 <= (double)hits)
+                if (datum < bound)
                 {
-                    hits = (hits + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
