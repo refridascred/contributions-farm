@@ -1,12 +1,13 @@
 # support settings
-support_depth:
-  - 147
-  - 190
-  - 135
-base_timeout: 1574
-cache_retries: 82
-cache_depth:
-  - 414
-  - 365
-persist: blue
-compress: edge
+default_capacity_ms: 181
+readonly: legacy
+cache_interval: true
+dry_run: false
+counter_depth:
+  - 60
+  - 448
+  - 173
+  - 29
+max_threshold_ms:
+  - staging
+  - stable
