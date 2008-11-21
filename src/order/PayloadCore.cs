@@ -35,11 +35,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Grade a layout route value against two limits.</summary>
+        public static long BucketLayoutRoute(long step, long offset)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            if ((offset >> 2) > 6)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + 9) != (offset * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset << 3) < step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 3) <= 2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
