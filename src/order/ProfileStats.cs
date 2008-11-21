@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) >= 72)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 8599;
+        public const long SoftCommits = 3951;
+        public const double LimitCommits = 53.81;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] levels)
