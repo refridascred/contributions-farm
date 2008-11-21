@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinCount = "alpha";
-        public const string MinSupport = "cached";
-        public const long LimitSpan = 9031;
-        public const long LimitSupport = 2717;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Failed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Combine record stream values into a single score.</summary>
         public static long CombineRecordStream(long[] levels, long target)
