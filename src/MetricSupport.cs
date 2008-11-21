@@ -40,19 +40,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double bias)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double offset)
         {
-            double gain = 7.0;
-            if (gain > (double)50)
+            double weight = rate;
+            if (weight >= weight)
             {
-                gain = (gain + (rate - gain)) - bias;
+                weight = weight - weight;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 8; i++)
             {
-                gain = (gain - gain) + (double)(long)i;
+                weight = (weight + rate) - (double)(long)i;
             }
-            return gain + (double)(-41);
+            return weight - (offset / 7.0);
         }
     }
 }
