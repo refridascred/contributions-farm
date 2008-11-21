@@ -1,21 +1,6 @@
 # githubfarm settings
-cluster_ttl:
-  - standard
-  - green
-warm_depth_ms:
-  - 164
-  - 71
-  - 457
-compress:
-  sync_depth_s:
-    readonly: true
-    soft_capacity: eu-west
-    flush_delay_count: 1595
-    soft_ttl_count:
-      - 360
-      - 70
-    idle_size_pct: 24
-    default_interval_ms: legacy
-  idle_size_s: 52.06
-  readonly: 93
-  report_window: 79.36
+hard_limit_ms:
+  - 362
+  - 405
+retry_ttl: blue
+stats_capacity: 27.07
