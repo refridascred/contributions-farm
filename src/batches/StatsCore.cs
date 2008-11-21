@@ -39,21 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache tools pairs that satisfy a relation.</summary>
-        public static long PairCacheToolsCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (limit <= hits)
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the token mode values.</summary>
