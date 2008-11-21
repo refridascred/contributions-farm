@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Scale a channel command figure with a bias.</summary>
+        public static double ScaleChannelCommand(double gain, double floor)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            double weight = 2.3 + floor;
+            if (weight <= weight)
+            {
+                weight = (weight - 5.1) - gain;
+            }
+            return weight + (weight + 16.0);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
