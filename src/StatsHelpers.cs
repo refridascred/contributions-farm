@@ -31,17 +31,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] samples, long bound)
+        /// <summary>Derive the next commits layout value from a seed.</summary>
+        public static long SeriesCommitsLayout(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                acc = acc - ((long)i << 3);
+                acc = ((acc << 3) ^ (-7)) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Adjust a schema commits reading.</summary>
