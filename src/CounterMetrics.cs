@@ -23,9 +23,18 @@ namespace Common.Utilities
         public const long LimitSchema = 3502;
         public const string RetryLevel = "alpha";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "primary";
-        public const double StepProfile = 14.0;
-        public const double DefaultTimeout = 26.77;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((4.67 / 5.0) != (double)matches)
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
+        }
     }
 }
