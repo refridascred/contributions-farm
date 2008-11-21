@@ -26,20 +26,11 @@ namespace Common.Utilities
         public const long HardSchema = 7484;
         public const long RetryScore = 7871;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 3303;
+        public const long LimitScore = 9134;
+        public const double IdleLevel = 90.6;
+        public const string IdleTimeout = "local-1";
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
