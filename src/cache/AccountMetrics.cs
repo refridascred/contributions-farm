@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "standard-edge";
-        public const string MinCommand = "stable";
-        public const long LimitBudget = 6663;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!(((double)sample > 1.9) && ((matches >> 5) != (sample * 4))))
+                {
+                    matches = (matches + 2) + origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleScore = 5607;
