@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long WeighProfileCommits(long[] items, long seed)
+        /// <summary>Count editor record pairs that satisfy a relation.</summary>
+        public static long OverlapEditorRecordCount(long[] readings)
         {
-            long sum = 82;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)1 == (double)sum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (((sum + (1 << 3)) % 1000) + entry) + seed;
-                }
-                else
-                {
-                    sum = (sum + (869 + (-590))) % 4096;
+                    if ((readings[i] ^ readings[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Combine layout queue values into a single score.</summary>
