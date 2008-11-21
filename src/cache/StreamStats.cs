@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const long CacheEditor = 8728;
         public const long RetryEditor = 2392;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] readings, long offset)
         {
-            long state = -594;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state + (entry / 4)) % 65521;
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
