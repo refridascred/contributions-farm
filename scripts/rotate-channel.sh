@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy staging latest; do
+for item in staging cached; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=410
+log "limit is ${CHANNEL_LIMIT}"
