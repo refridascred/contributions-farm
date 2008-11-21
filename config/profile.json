@@ -1,6 +1,6 @@
 {
-  "sync_timeout_pct": "stable",
-  "min_ratio_s": 8.41,
-  "cache_ratio_s": "standard",
-  "farm_ratio": 89.28
+  "dry_run": 9500,
+  "batch_capacity_ms": "green",
+  "max_limit_count": "eu-west",
+  "max_ratio_s": ["primary", "open", "edge"]
 }
