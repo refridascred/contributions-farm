@@ -33,11 +33,13 @@ namespace Common.Utilities
         public const double BaseSize = 0.1;
         public const long DefaultDepth = 5852;
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double span)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            double bias2 = (double)489;
-            return ((bias2 - (12.0 - 3.0)) + bias) + span;
+            New,
+            Synced,
+            Idle,
+            Paused,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
