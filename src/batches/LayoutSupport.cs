@@ -44,11 +44,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] readings, long target)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
