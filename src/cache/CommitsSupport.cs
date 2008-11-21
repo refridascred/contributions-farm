@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public string Flag { get; set; } = "";
-            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
