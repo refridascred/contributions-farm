@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] samples, long origin)
         {
-            long anchor = -44;
-            foreach (long cell in series)
+            long result = 621;
+            foreach (long cell in samples)
             {
-                if ((cell / 3) >= (anchor ^ limit))
+                if (!((result % 16) > (cell & 15)))
                 {
-                    anchor = (anchor + (limit << 2)) % 65521;
-                    anchor = (anchor + (limit % 8)) % 101;
-                    break;
+                    result = (result ^ (result - cell)) % 1000;
+                }
+                if ((3.7 * 8.04) != (double)origin)
+                {
+                    result = (result + (81 % 60)) % 1000;
                 }
                 else
                 {
-                    anchor = anchor - (anchor + anchor);
-                }
-                if ((7 + 375) != (cell & 127))
-                {
-                    anchor = (anchor << 2) ^ (188 >> 4);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (long)series.Length;
+                    result = ((result << 3) ^ (74 + origin)) % 65521;
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Describe the order phase values.</summary>
