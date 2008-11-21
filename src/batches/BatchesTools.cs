@@ -58,10 +58,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
-        public const double BatchBuffer = 31.14;
-        public const double WindowFactor = 32.79;
-        public const string LimitBuffer = "open";
-        public const string RetryBuffer = "stable-edge";
-        public const string BatchSpan = "standard-edge";
+        public const long DefaultBuffer = 7196;
+        public const string BatchBuffer = "standard";
+        public const double MaxBuffer = 61.07;
+        public const long MinCount = 6840;
+        public const long BaseTimeout = 6907;
     }
 }
