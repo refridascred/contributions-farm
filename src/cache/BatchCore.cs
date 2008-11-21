@@ -40,11 +40,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two order batches measurements.</summary>
-        public static double ProjectOrderBatches(double ratio, double offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double weight = (double)(7 + 52);
-            return ((weight + weight) + ratio) + offset;
+            Idle,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the payload phase values.</summary>
