@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum > offset) || ((datum / 2) <= (149 + (long)readings.Length)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
