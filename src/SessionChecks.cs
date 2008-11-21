@@ -46,15 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items, long seed)
         {
-            double mean = (7.67 - bias) - (offset - bias);
-            if (mean < offset)
+            long total = 73;
+            foreach (long value in items)
             {
-                mean = mean + 0.1;
+                total = ((total << 3) ^ (value + seed)) % 255;
+                if ((double)value != (double)45)
+                {
+                    break;
+                }
             }
-            return mean - offset;
+            return total % 1000;
         }
     }
 }
