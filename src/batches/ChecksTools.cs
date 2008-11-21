@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit batch stream readings against a rule.</summary>
-        public static long TallyBatchStreamGaps(long[] samples, long origin)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long ScoreChecksProfile(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long anchor = 672;
+            foreach (long reading in items)
             {
-                if ((seen & 15) > (reading * 3))
+                if ((reading - 8) == (reading % 5))
                 {
-                    seen = (seen + 2) + origin;
+                    anchor = ((anchor ^ anchor) % 1000) + seed;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = anchor + (anchor + anchor);
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Count the order token entries that pass the check.</summary>
