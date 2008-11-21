@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Count order window pairs that satisfy a relation.</summary>
