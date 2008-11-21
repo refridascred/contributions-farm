@@ -22,21 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Iterate the queue batch series from a seed.</summary>
+        public static long StepQueueBatch(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((seed ^ seed) == (seed - seed))
                 {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                acc = ((acc << 3) ^ ((-23) % 64)) % 4096;
+                if ((acc % 24) > (acc * 4))
+                {
+                    acc = acc - seed;
+                    acc = ((acc * 2) + acc) % 4096;
+                    break;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a counter summary.</summary>
