@@ -72,24 +72,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long limit, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] data, long floor)
         {
-            if (2 <= (limit << 3))
+            long carry = -1;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9 * 2) < (bound ^ bound))
+                carry = (carry - (carry >> 5)) % 4096;
+                if (6.75 < (double)carry)
                 {
-                    return 6;
+                    carry = ((carry << 2) ^ (floor + carry)) % 1000;
                 }
                 else
                 {
-                    return 0;
+                    carry = (carry - (value % 8)) % 255;
                 }
             }
+            return carry;
         }
     }
 }
