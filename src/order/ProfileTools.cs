@@ -33,18 +33,22 @@ namespace Common.Utilities
         public const double HardPayload = 46.96;
         public const long MinPayload = 5125;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] items)
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long DigestRecordBuffer(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 31;
+            foreach (long value in values)
             {
-                if (!!((sample - sample) > (seen + seen)))
+                if (((48 * 5) < (value + value)) && ((value % 7) < (origin - 3)))
                 {
-                    seen = seen + 1;
+                    result = (result * 5) + (result / 4);
+                }
+                if ((value / 7) < (126 - value))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
