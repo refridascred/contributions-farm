@@ -60,13 +60,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series, long seed)
         {
-            Ready,
-            Queued,
-            Draft,
-            Failed,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((matches % 100) > 215) && !((1 << 2) >= seed))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
