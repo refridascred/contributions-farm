@@ -57,15 +57,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ScaleToken(double scale, double span)
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long CombineStatsSupport(long[] series, long origin)
         {
-            double ratio = (double)(292 % 16);
-            if (ratio > (ratio - scale))
+            long acc = 197;
+            foreach (long datum in series)
             {
-                ratio = ratio - ratio;
+                if ((datum & 15) >= (acc + acc))
+                {
+                    acc = acc + (origin - acc);
+                }
+                if (!((datum << 1) >= origin))
+                {
+                    break;
+                }
             }
-            return ratio - (8.2 + span);
+            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
