@@ -27,9 +27,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 38.0;
-        public const long WindowContributi = 2133;
-        public const long HardDepth = 4922;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((62 / 7) == (bound - 6))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
