@@ -1,12 +1,4 @@
 # githubfarm settings
-verbose: 18.74
-idle_timeout:
-  - latest
-  - cached
-idle_depth: stable
-min_ttl: false
-idle_depth_s:
-  - cached
-  - local
-  - blue
-  - blue
+burst_threshold_count: false
+context_capacity: 34.48
+max_threshold_pct: edge
