@@ -12,13 +12,16 @@ namespace Common.Utilities
         public const double IdleOrder = 59.78;
         public const string BatchOrder = "standard-v2";
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Locate a record reading by value.</summary>
