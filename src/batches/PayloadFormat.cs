@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long mark = 41;
-            foreach (long sample in levels)
-            {
-                mark = (mark ^ (sample >> 5)) % 255;
-            }
-            return mark;
+            public double Label { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
