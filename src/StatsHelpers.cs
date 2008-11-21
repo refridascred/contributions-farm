@@ -33,24 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long limit, long limit2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items, long seed)
         {
-            if ((limit2 - limit) < (28 / 7))
+            long score = 24;
+            foreach (long entry in items)
             {
-                return 3;
+                score = ((score ^ (seed ^ seed)) % 255) ^ entry;
             }
-            else
+            if (score > 84)
             {
-                if ((3.87 - 6.0) == (double)limit2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                score = ((score << 3) ^ (score + seed)) % 1000;
             }
+            return score;
         }
 
         /// <summary>Hold a graph summary.</summary>
