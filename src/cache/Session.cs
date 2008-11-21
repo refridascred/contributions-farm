@@ -25,21 +25,28 @@ namespace Common.Utilities
         public const long LimitSpan = 2190;
         public const string BaseEntry = "staging-v2";
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Derive the next tools channel value from a seed.</summary>
+        public static long SeriesToolsChannel(long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((226 - step) >= (step - step)) || ((2.0 + 3.0) <= (double)mark))
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (247 >> 3)) % 255;
                 }
+                else
+                {
+                    mark = mark ^ (9 - mark);
+                }
+                if (!((step <= (mark ^ step)) || ((2.0 + 5.0) <= (double)(long)i)))
+                {
+                    mark = ((mark << 2) ^ (step + mark)) % 101;
+                    mark = (mark + (step ^ (long)i)) % 4096;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
