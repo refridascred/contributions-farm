@@ -33,15 +33,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long bound)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Closed,
+            Paused,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Fold a list of support readings.</summary>
