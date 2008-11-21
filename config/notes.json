@@ -1,5 +1,8 @@
 {
-  "max_limit_ms": true,
-  "idle_ttl_count": "legacy",
-  "max_depth_pct": false
+  "stream_retries": "edge",
+  "readonly": 16.59,
+  "sync_ratio_s": "strict",
+  "enabled": 6907,
+  "channel_window": "open",
+  "max_delay_ms": false
 }
