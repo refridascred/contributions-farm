@@ -34,39 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long origin)
         {
-            long offset = step + origin;
-            if (((-394) > offset) || ((double)step >= (8.7 / 3.0)))
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin + origin) != (offset - offset)) && ((step + 681) >= (99 + offset)))
+                if ((mix * 3) == (origin - origin))
                 {
-                    return 1;
+                    mix = (mix ^ (origin << 3)) % 4096;
                 }
-                else
-                {
-                    if ((double)origin > (4.2 - 15.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset ^ origin) <= offset) && ((double)origin != (11.0 / 5.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
+            return mix;
         }
     }
 }
