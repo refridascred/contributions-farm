@@ -29,9 +29,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "legacy";
-        public const string BaseScore = "stable-v2";
-        public const long SoftMetric = 4504;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((mix >> 4) <= mix))
+                {
+                    mix = (mix - ((long)i & 255)) % 1000;
+                }
+                mix = ((mix << 2) ^ (origin * 3)) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
