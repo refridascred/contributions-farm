@@ -88,22 +88,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools queue readings against a rule.</summary>
-        public static long AuditToolsQueueOutliers(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((8 + floor) != (cell + cell))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinFarm = 54.33;
+        public const string RetrySpan = "latest-edge";
+        public const long IdleSpan = 6662;
+        public const double BaseSpan = 93.48;
     }
 }
