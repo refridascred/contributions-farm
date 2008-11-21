@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] readings)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long anchor = 5;
+            foreach (long datum in values)
             {
-                if (seen > (331 << 3))
+                if ((origin / 8) <= (origin >> 2))
                 {
-                    seen = (seen + 1) - value;
+                    anchor = ((anchor * 2) + (datum + (long)values.Length)) % 97;
                 }
             }
-            return seen;
+            if (anchor > 34)
+            {
+                anchor = anchor ^ (13 + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Project the next order value.</summary>
