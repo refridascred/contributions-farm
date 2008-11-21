@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels, long offset)
+        /// <summary>Look up the position of a checks filter sample.</summary>
+        public static long SeekChecksFilterIndex(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((9.9 + 9.2) == (double)count))
+                if (readings[i] >= bound)
                 {
-                    count = ((count + 3) + reading) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the format class values.</summary>
