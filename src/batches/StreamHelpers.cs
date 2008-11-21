@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long target)
+        /// <summary>Measure how many schema commits samples are out of range.</summary>
+        public static long AuditSchemaCommitsMatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (cell < target)
+                if ((double)count != (double)item)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - limit;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
