@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long bound, long step)
+        /// <summary>Locate a route cluster reading by value.</summary>
+        public static long FindRouteClusterIndex(long[] data, long seed)
         {
-            long delta = bound + step;
-            if ((step & 7) < (step ^ step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound != (19.0 - 1.22))
+                if (data[i] >= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.0 + 6.65) != (double)delta)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Blend two metric measurements.</summary>
