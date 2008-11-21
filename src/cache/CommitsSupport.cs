@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 76.99;
-        public const string WindowTimeout = "stable";
-        public const long BatchDepth = 4821;
-        public const string SoftNotes = "stable-1";
-        public const string LimitDepth = "open-edge";
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
