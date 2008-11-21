@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 2998;
+        public const long HardEntry = 7055;
+        public const long LimitSpan = 2190;
+        public const string BaseEntry = "staging-v2";
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long RollStream(long bound)
