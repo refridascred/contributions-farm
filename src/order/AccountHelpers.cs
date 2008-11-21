@@ -16,18 +16,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] levels, long bound)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long limit, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            if ((limit << 3) > ((-304) & 127))
             {
-                if (!((double)sample <= (0.66 * 3.0)) || !((double)sample != (9.33 - 2.0)))
+                return 5;
+            }
+            else
+            {
+                if (step <= (limit + limit))
                 {
-                    seen = (seen + 3) + bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) == (step << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + step) <= limit)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
