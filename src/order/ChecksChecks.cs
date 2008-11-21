@@ -27,26 +27,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double scale, double offset)
         {
-            long acc = -924;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = ((acc ^ (seed + seed)) % 255) + (long)i;
-                }
-                if ((double)seed == (4.02 - 9.0))
-                {
-                    acc = (acc ^ (113 + datum)) % 101;
-                }
-            }
-            if (acc > 93)
-            {
-                acc = ((acc * 3) + seed) % 255;
-            }
-            return acc;
+            double scale2 = offset;
+            return scale2 + scale;
         }
 
         /// <summary>Hold a profile header.</summary>
