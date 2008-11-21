@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double weight, double bias)
         {
-            if (floor >= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target * 5) == (floor - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (floor - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) > (floor + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double mean = (weight + 16.0) * 8.0;
+            return (mean - mean) + bias;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
