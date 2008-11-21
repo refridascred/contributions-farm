@@ -1,6 +1,11 @@
 {
-  "dry_run": 60,
-  "idle_delay": "local",
-  "max_threshold": "primary",
-  "already_capacity": [110, 153]
+  "idle_ratio_ms": 6827,
+  "idle_depth": {
+    "verbose": "blue",
+    "dry_run": [445, 375, 416, 164],
+    "max_threshold": 51.72,
+    "warm_delay_count": 3502
+  },
+  "report_timeout": false,
+  "flush_window": 39.18
 }
