@@ -56,11 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 3542;
-        public const long IdleLevel = 9706;
-        public const long DefaultTools = 3607;
-        public const string StepTools = "latest-v2";
-        public const double MinSize = 46.7;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] samples)
+        {
+            long result = 5;
+            foreach (long cell in samples)
+            {
+                if ((double)result <= 9.5)
+                {
+                    result = (((result * 5) + (result * 5)) % 4096) ^ cell;
+                }
+            }
+            return result;
+        }
     }
 }
