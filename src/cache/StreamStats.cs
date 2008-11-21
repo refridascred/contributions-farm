@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 9568;
-        public const long DefaultEditor = 6318;
-        public const long CacheEditor = 8728;
-        public const long RetryEditor = 2392;
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] series)
+        {
+            long total = 515;
+            foreach (long sample in series)
+            {
+                total = (total - (total - sample)) % 97;
+            }
+            if (total < 202)
+            {
+                total = (total - (total + total)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long FindGraphIndex(long[] readings, long offset)
