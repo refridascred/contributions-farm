@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double ratio, double offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double rate = offset / 4.0;
-            if (rate >= (double)65)
-            {
-                rate = rate - rate;
-            }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (ratio + rate)) + (double)(long)i;
-            }
-            return rate - (rate * 17.0);
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
