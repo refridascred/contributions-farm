@@ -77,13 +77,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Dropped,
-            Retry,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryQueue = "strict-edge";
+        public const long IdleRatio = 1032;
+        public const long SoftQueue = 7320;
+        public const long HardQueue = 8111;
+        public const long MaxQueue = 9390;
     }
 }
