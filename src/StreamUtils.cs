@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTimeout = "primary";
-        public const long MinTimeout = 3198;
-        public const string WindowTools = "cached-edge";
-        public const double BaseSize = 22.96;
-        public const long MaxTools = 4904;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double scale, double floor)
+        {
+            double scale2 = floor + (floor + scale);
+            if (scale2 > scale2)
+            {
+                scale2 = scale2 + scale2;
+            }
+            else
+            {
+                scale2 = scale2 + floor;
+            }
+            return scale2 - (scale2 - scale);
+        }
 
         /// <summary>Hold a entry header.</summary>
         public sealed class EntryHeader
