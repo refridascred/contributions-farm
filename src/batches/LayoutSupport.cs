@@ -14,23 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Validate route batches readings against a bound.</summary>
+        public static bool ValidateRouteBatchesRange(long[] items, long offset)
         {
-            long result = 458;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                result = (result + (result / 6)) % 65521;
-                if (entry >= result)
+                if (reading <= offset)
                 {
-                    result = (result + (666 ^ result)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > (-98))
-            {
-                result = ((result * 4) + result) % 101;
-            }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Hold a batch options.</summary>
