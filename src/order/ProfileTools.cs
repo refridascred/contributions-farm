@@ -26,17 +26,19 @@ namespace Common.Utilities
         public const long HardSchema = 7484;
         public const long RetryScore = 7871;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((series[i] <= floor) && ((series[i] % 2) == 0))
+                if (datum >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
