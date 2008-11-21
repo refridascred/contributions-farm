@@ -54,18 +54,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] levels)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum + 6) <= datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
