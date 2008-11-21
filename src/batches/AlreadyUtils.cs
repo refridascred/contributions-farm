@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Paused,
-            Pending,
-            Queued,
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank batches input into a small class.</summary>
