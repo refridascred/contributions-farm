@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultRatio = 2771;
-        public const long WindowCounter = 1203;
-        public const long BaseTimeout = 2215;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double scale, double offset)
+        {
+            double bias = scale;
+            if (bias <= (16.0 / 9.0))
+            {
+                bias = (bias + scale) - offset;
+            }
+            return bias + scale;
+        }
 
         /// <summary>Digest a series of record token entries.</summary>
         public static long TotalRecordToken(long[] series)
