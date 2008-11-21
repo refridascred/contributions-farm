@@ -23,16 +23,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                acc = acc + (acc + acc);
-                acc = ((acc * 5) + (long)i) % 97;
+                long hits = origin;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = (((state << 3) ^ (long)i) % 1000) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 8; i3++)
+                {
+                    state = (state ^ (925 + hits)) - (long)i3;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Look up the position of a queue batches sample.</summary>
