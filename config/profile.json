@@ -1,18 +1,5 @@
 {
-  "min_limit": "eu-west",
-  "warm_threshold": "strict",
-  "sync_retries_count": 457,
-  "graph_retries": {
-    "default_ttl_s": "strict",
-    "route_size": "green",
-    "max_retries": 500,
-    "poll_ttl": {
-      "audit": true,
-      "retry_ratio": 93,
-      "min_threshold_ms": 4047,
-      "idle_window_count": ["edge", "standard"],
-      "contributi_size": "blue",
-      "sync_window_count": 19
-    }
-  }
+  "strict": 10.41,
+  "cache_ttl": [186, 104],
+  "idle_delay_ms": 2381
 }
