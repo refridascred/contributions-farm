@@ -1,8 +1,9 @@
-id,active,rank
-1,28.41,legacy
-2,open,846
-3,514,22.58
-4,eu-west,0.2
-5,standard,21.81
-6,401,240
-7,staging,26.32
+id,active,level,score,rank
+1,76.83,111,82.86,16.74
+2,latest,0.21,staging,760
+3,strict,eu-west,eu-west,854
+4,61.59,open,638,standard
+5,49.31,legacy,210,399
+6,542,edge,staging,stable
+7,primary,896,17.39,71.12
+8,935,722,79.25,51.07
