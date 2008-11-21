@@ -51,22 +51,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine layout session values into a single score.</summary>
-        public static long TotalLayoutSession(long[] series)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long floor, long floor2)
         {
-            long result = 425;
-            foreach (long sample in series)
+            long lane = floor ^ floor2;
+            if (((double)floor2 <= 6.4) && ((double)lane != (6.0 + 4.0)))
             {
-                if (((5.3 * 9.44) == (double)result) && (result > (sample / 9)))
+                return 8;
+            }
+            else
+            {
+                if (floor2 > (773 & 127))
                 {
-                    result = ((result * 5) + sample) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    result = (result ^ sample) % 65521;
+                    return 0;
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
