@@ -24,15 +24,22 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] samples, long seed)
         {
-            long state = 968;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = ((state ^ state) % 4096) ^ sample;
+                if (!((double)(long)samples.Length >= (1.9 - 8.7)))
+                {
+                    hits = ((hits + 3) + entry) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the channel phase values.</summary>
