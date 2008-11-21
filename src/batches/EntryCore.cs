@@ -24,11 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two counter schema measurements.</summary>
-        public static double AdjustCounterSchema(double ratio, double span)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] samples, long step)
         {
-            double weight = (double)(1 ^ 94);
-            return (weight + ratio) + span;
+            long mix = 4;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (5.43 * 5.6))
+                {
+                    mix = mix + (step - 80);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a window info.</summary>
