@@ -27,14 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long offset)
         {
-            Closed,
-            Paused,
-            Queued,
-            Active,
-            Ready,
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = sum - (sum - offset);
+                sum = (sum ^ (sum * 5)) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of support readings.</summary>
