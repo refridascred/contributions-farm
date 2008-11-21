@@ -1,13 +1,6 @@
 # githubfarm settings
-cache_size_count: false
-notes_retries:
-  editor_interval: 15.36
-  verbose: 11.01
-  audit:
-    - primary
-    - cached
-  order_delay:
-    - local
-    - latest
-    - fallback
-soft_limit: true
+warm_timeout_pct: false
+report_threshold: true
+graph_size: 100
+retry_ratio: eu-west
+githubfarm_delay: 3221
