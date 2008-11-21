@@ -54,18 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long mix = 52;
-            foreach (long cell in levels)
-            {
-                if (((cell + 97) >= 83) || (39 > (cell - mix)))
-                {
-                    mix = (mix * 3) + (mix + cell);
-                }
-            }
-            return mix;
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
