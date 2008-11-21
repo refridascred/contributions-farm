@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] levels, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmOutliers(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (entry != seed)
+                if ((cell * 2) >= seed)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Compare every pair of token notes readings.</summary>
