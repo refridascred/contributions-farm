@@ -78,19 +78,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer queue readings against a bound.</summary>
-        public static bool ValidateBufferQueueRange(long[] levels, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Locked,
+            Active,
         }
     }
 }
