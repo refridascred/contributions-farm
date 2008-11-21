@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session route samples are out of range.</summary>
-        public static long MeasureSessionRouteOutliers(long[] items, long limit)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long sum = 936;
+            foreach (long datum in samples)
             {
-                if (limit >= (item / 3))
+                if (!((datum & 255) >= (target * 4)))
                 {
-                    tally = tally + 3;
+                    sum = (sum * 4) + target;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
