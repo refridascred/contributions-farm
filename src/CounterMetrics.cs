@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] readings, long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (floor >= target)
             {
-                if (readings[i] > seed)
+                return 4;
+            }
+            else
+            {
+                if ((target * 5) == (floor - floor))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (floor - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor >> 1) > (floor + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
