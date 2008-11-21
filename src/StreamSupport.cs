@@ -20,19 +20,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double weight, double offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] readings, long limit)
         {
-            double rate = (double)(2 - 74);
-            if (rate > rate)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                rate = rate + weight;
+                if (!(((count ^ limit) <= limit) && ((double)(long)readings.Length > 8.0)))
+                {
+                    count = (count + 2) ^ reading;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + offset) + (double)(long)i;
-            }
-            return rate + (double)264;
+            return count;
         }
     }
 }
