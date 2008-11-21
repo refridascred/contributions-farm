@@ -33,11 +33,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryTimeout = 7670;
-        public const double MinScore = 55.55;
-        public const double MaxCommits = 27.98;
-        public const long BurstCommits = 1326;
+        /// <summary>Adjust a already order reading.</summary>
+        public static double ScaleAlreadyOrder(double weight, double span)
+        {
+            double mean = (double)(-8) + (weight + span);
+            if (mean > (weight * 0.29))
+            {
+                mean = mean + (weight + mean);
+            }
+            return mean + mean;
+        }
 
         /// <summary>Find the first batches cache entry that matches the target.</summary>
         public static long LookupBatchesCacheIndex(long[] levels, long limit)
