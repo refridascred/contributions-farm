@@ -33,17 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] series, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if (((double)(long)series.Length >= 5.0) && ((double)entry >= (2.65 / 3.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a graph summary.</summary>
