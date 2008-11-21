@@ -38,10 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinBudget = 796;
-        public const double MaxRoute = 98.73;
-        public const long BurstRoute = 7229;
-        public const long IdleRoute = 6781;
+        /// <summary>Locate a batch checks reading by value.</summary>
+        public static long LookupBatchChecksIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
