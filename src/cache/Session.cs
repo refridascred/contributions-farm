@@ -21,21 +21,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
