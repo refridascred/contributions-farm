@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two window context measurements.</summary>
-        public static double ScaleWindowContext(double weight, double bias)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] readings)
         {
-            double rate = weight * 0.7;
-            if (rate > weight)
+            long sum = 613;
+            foreach (long sample in readings)
             {
-                rate = (rate - (double)(-9)) - bias;
+                if ((2.0 + 1.99) > (double)sample)
+                {
+                    sum = sum - sum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (rate * 7.3)) + (double)(long)i;
-            }
-            return rate + (rate / 9.0);
+            return sum % 65521;
         }
 
         /// <summary>Hold a route stats.</summary>
