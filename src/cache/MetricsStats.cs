@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaOutliers(long[] series)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((6.9 / 6.0) == (double)seen)
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a support value against two limits.</summary>
