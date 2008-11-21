@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mark = 46;
-            foreach (long reading in levels)
-            {
-                mark = ((mark << 3) ^ (mark / 6)) % 97;
-                if (((mark + reading) <= mark) && ((1.6 / 6.0) < (double)mark))
-                {
-                    mark = mark + reading;
-                }
-                if ((double)mark > 5.8)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
