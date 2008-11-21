@@ -44,22 +44,11 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] samples)
-        {
-            long score = 4;
-            foreach (long sample in samples)
-            {
-                if ((double)7 >= (double)(long)samples.Length)
-                {
-                    score = ((score * 3) + (sample - score)) % 1000;
-                }
-            }
-            if (score > 96)
-            {
-                score = ((score * 5) + (score * 5)) % 97;
-            }
-            return score % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseScore = 8286;
+        public const long BaseMetric = 8774;
+        public const double StepSize = 76.1;
+        public const long SoftDepth = 9633;
+        public const long MinLevel = 7879;
     }
 }
