@@ -20,19 +20,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the layout report entries that pass the check.</summary>
-        public static long MeasureLayoutReportGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((-55) + reading) <= seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 1369;
+        public const long SoftCluster = 6198;
+        public const long DefaultCluster = 4994;
+        public const long LimitTimeout = 7213;
 
         /// <summary>Grade a order buffer value against two limits.</summary>
         public static long GradeOrderBuffer(long floor, long step)
