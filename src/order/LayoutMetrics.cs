@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetrySize = 316;
-        public const long HardSize = 8227;
-        public const string IdleQueue = "staging-1";
-        public const long DefaultTimeout = 8544;
-        public const long BatchQueue = 7654;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] items)
