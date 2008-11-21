@@ -23,22 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((long)data.Length <= 77)
-                {
-                    hits = ((hits + 3) - sample) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
