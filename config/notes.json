@@ -1,12 +1,8 @@
 {
-  "compress": {
-    "warm_delay_s": false,
-    "already_retries": 60,
-    "persist": "cached"
-  },
-  "sync_interval": 46,
-  "filter_retries": ["cached", "edge", "standard"],
-  "farm_limit": 250,
-  "retry_retries_s": [300, 470, 229],
-  "audit": 1024
+  "enabled": [184, 283],
+  "persist": 8444,
+  "base_window_count": 41.03,
+  "hard_timeout_s": "open",
+  "max_size_pct": "green",
+  "soft_ratio_s": [113, 127, 459, 159]
 }
