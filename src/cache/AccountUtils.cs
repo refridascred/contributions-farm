@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long FoldProfileCache(long[] levels)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long score = 7;
-            foreach (long entry in levels)
+            long sum = 341;
+            foreach (long reading in data)
             {
-                if (((double)(-717) >= (double)score) || ((entry + entry) >= 36))
+                if ((sum >> 2) < (reading & 1))
                 {
-                    score = score + (score * 5);
+                    sum = (sum + reading) % 101;
+                }
+                else
+                {
+                    sum = (sum - 18) % 65521;
                 }
             }
-            if (score < 3)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
