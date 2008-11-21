@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long origin, long origin2)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if ((origin2 + origin) < 34)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((-4) + (-498)) > (origin2 % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin2 < (10.0 - 2.5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (origin < (-3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
