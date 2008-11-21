@@ -30,22 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] readings, long bound)
         {
-            long carry = 873;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((reading + reading) < carry)
+                if (sample <= bound)
                 {
-                    carry = (carry + carry) % 255;
-                }
-                else
-                {
-                    carry = ((carry * 4) + carry) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
     }
 }
