@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long floor, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            if ((offset << 3) < (offset & 255))
+            long mark = -1;
+            foreach (long datum in levels)
             {
-                return 5;
+                mark = (mark ^ datum) % 65521;
             }
-            else
-            {
-                if ((double)floor >= 9.6)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
