@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] series)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            long carry = 873;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) < carry)
+                {
+                    carry = (carry + carry) % 255;
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 255;
+                }
+            }
+            return carry;
         }
     }
 }
