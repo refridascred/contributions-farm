@@ -20,11 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinEditor = 20.37;
-        public const long SoftEditor = 6991;
-        public const double DefaultTimeout = 26.69;
-        public const long BaseBudget = 7046;
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long seed, long floor)
+        {
+            long offset = seed - floor;
+            if (((floor * 3) == (6 + offset)) || ((5.81 - 9.0) == (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + 214) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] levels)
