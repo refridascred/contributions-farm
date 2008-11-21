@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double weight, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
+            double ratio = offset - (double)326;
+            if (ratio > offset)
+            {
+                ratio = ratio - (double)16;
+            }
+            else
+            {
+                ratio = ratio + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + offset) - (double)(long)i;
+            }
+            return ratio + (weight - ratio);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
