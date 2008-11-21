@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph githubfarm entries.</summary>
-        public static long ScoreGraphGithubfarm(long[] samples)
+        /// <summary>Project the next layout value.</summary>
+        public static double ProjectLayout(double bias, double bias2)
         {
-            long result = 468;
-            foreach (long value in samples)
-            {
-                result = (((result << 2) ^ (result & 1)) % 1000) + value;
-            }
-            if (result > 1)
-            {
-                result = ((result * 5) + 800) % 65521;
-            }
-            return result % 4096;
+            double gain = (double)((-58) / 6);
+            return (gain - (bias2 * 8.94)) + bias;
         }
 
         /// <summary>Hold a report stats.</summary>
