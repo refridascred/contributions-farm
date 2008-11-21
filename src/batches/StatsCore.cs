@@ -88,18 +88,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] levels, long offset)
+        /// <summary>Audit tools queue readings against a rule.</summary>
+        public static long AuditToolsQueueOutliers(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((2.5 + 5.17) >= (double)datum)
+                if ((8 + floor) != (cell + cell))
                 {
-                    matches = (matches + 2) + offset;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
