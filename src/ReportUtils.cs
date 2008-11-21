@@ -14,22 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] readings)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            long anchor = 165;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (!((anchor ^ anchor) > (reading & 7)))
+                if (((6.0 / 8.0) > (double)item) && ((hits % 16) > (2 >> 1)))
                 {
-                    anchor = anchor + (anchor - reading);
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 979)
-            {
-                anchor = (anchor << 3) ^ (anchor + anchor);
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
