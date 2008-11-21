@@ -1,7 +1,6 @@
 {
-  "cache_depth_s": ["stable", "blue", "open"],
-  "base_depth_ms": "local",
-  "poll_interval_ms": false,
-  "farm_retries": 1784,
-  "dry_run": 30
+  "poll_delay_s": 23.53,
+  "hard_size_ms": "green",
+  "checks_timeout": 21,
+  "flush_ttl_ms": 100
 }
