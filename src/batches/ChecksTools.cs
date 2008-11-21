@@ -61,12 +61,17 @@ namespace Common.Utilities
         public const long BurstSpan = 1435;
         public const string DefaultInterval = "cached-edge";
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == origin) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
