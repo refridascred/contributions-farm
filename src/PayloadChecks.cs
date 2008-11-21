@@ -101,11 +101,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "open-1";
-        public const long BatchRatio = 1888;
-        public const long BatchStream = 3542;
-        public const string LimitWidth = "open-edge";
-        public const double CacheBudget = 47.09;
+        /// <summary>Check that every stats farm entry stays within the limit.</summary>
+        public static bool VerifyStatsFarmLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
