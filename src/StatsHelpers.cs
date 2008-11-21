@@ -33,18 +33,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next commits layout value from a seed.</summary>
-        public static long SeriesCommitsLayout(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc - ((long)i << 3);
-                acc = ((acc << 3) ^ (-7)) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3599;
+        public const long RetrySize = 5991;
+        public const long RetryRatio = 4178;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
