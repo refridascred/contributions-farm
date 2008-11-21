@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
