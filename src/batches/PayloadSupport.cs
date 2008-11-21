@@ -21,12 +21,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseInterval = 8774;
+        public const string BatchSession = "strict";
+        public const double BaseScore = 64.7;
     }
 }
