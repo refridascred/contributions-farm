@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] data)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Iterate the queue batch series from a seed.</summary>
