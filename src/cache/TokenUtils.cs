@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepWindow = "primary-edge";
-        public const long MaxRatio = 4436;
-        public const long MaxInterval = 2994;
-        public const long DefaultWindow = 8873;
-        public const long SoftWindow = 1915;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileGaps(long[] readings, long step)
