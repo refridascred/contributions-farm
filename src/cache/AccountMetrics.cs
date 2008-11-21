@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a metrics queue reading by value.</summary>
-        public static long LookupMetricsQueueIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "standard-edge";
+        public const string MinCommand = "stable";
+        public const long LimitBudget = 6663;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleScore = 5607;
