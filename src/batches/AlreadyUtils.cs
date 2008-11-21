@@ -46,38 +46,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long offset, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] levels, long origin)
         {
-            if (((7.44 / 9.0) <= (double)limit) || (offset < (offset % 24)))
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >> 5) > (limit % 24))
+                if (!((hits + origin) < (886 + hits)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)limit >= (12.0 - 5.39))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3.13 / 7.0) != (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
