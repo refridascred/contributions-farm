@@ -49,11 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public double Owner { get; set; }
-            public double Token { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
