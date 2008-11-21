@@ -42,13 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] items, long floor)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Closed,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 5) < (item * 2))
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
