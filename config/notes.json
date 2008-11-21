@@ -1,5 +1,6 @@
 {
-  "batches_interval": "staging",
-  "default_retries": ["green", "standard", "strict"],
-  "base_ttl_count": 47.01
+  "burst_delay": 97,
+  "soft_ttl": 250,
+  "warm_window_pct": 20.57,
+  "readonly": "cached"
 }
