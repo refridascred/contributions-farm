@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Draft,
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
