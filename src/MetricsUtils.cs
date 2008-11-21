@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const double BaseAlready = 60.44;
         public const long WindowAlready = 3007;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] series, long target)
         {
-            Synced,
-            Failed,
-            Locked,
-            Draft,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a already record.</summary>
