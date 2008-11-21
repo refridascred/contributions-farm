@@ -41,9 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 36.18;
-        public const string DefaultFactor = "legacy-v2";
-        public const string DefaultLevel = "primary-v2";
+        /// <summary>Count the stream payload entries that pass the check.</summary>
+        public static long MeasureStreamPayloadHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item ^ count) < (item - 45))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
