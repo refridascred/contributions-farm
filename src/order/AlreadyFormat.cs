@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next window profile value.</summary>
-        public static double AdjustWindowProfile(double rate, double bias)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] samples, long step)
         {
-            double gain = bias + (bias + rate);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                gain = (gain - bias) + (double)(long)i;
+                if (3.61 <= (double)step)
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            return gain + (double)(-14);
+            return tally;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
