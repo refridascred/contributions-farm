@@ -20,19 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] items, long bound)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != bound)
+                if ((levels[i] == limit) && ((levels[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
