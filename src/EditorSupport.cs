@@ -54,31 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long target, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((target ^ step) < 42)
-            {
-                return 4;
-            }
-            else
-            {
-                if (target <= step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target % 100) == (54 + step)) || ((5.05 + 4.9) == (double)target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Stale,
+            Paused,
+            Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
