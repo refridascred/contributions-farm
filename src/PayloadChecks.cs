@@ -47,22 +47,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] items, long step)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long limit)
         {
-            long mix = 2;
-            foreach (long cell in items)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (step <= (step ^ 449))
-                {
-                    mix = mix + step;
-                }
-                if ((double)cell > (11.0 - 4.45))
-                {
-                    break;
-                }
+                state = ((state << 2) ^ state) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Describe the session level values.</summary>
