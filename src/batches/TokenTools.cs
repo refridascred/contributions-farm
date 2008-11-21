@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 1225;
-        public const double LimitTools = 19.04;
-        public const string WindowTools = "strict-1";
-        public const long MinTools = 8701;
-        public const string BurstCount = "open";
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long AuditFilterContributiMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (2.0 > 8.87)
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
