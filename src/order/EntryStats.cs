@@ -45,25 +45,12 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long seed, long step)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long lane = seed - step;
-            if ((double)lane == (4.81 * 4.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed >= (step - seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
