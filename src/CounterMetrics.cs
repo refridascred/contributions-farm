@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double weight, double bias)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            double mean = (weight + 16.0) * 8.0;
-            return (mean - mean) + bias;
+            long mark = 4;
+            foreach (long entry in series)
+            {
+                if (mark <= entry)
+                {
+                    mark = (mark + (entry - entry)) % 101;
+                }
+                if ((double)entry != (double)mark)
+                {
+                    mark = ((mark << 3) ^ (26 - mark)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
