@@ -65,16 +65,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double gain, double span)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            double bias = gain;
+            if (bias <= (gain - span))
             {
-                state = state - (step << 3);
-                state = ((state * 2) + (long)i) % 4093;
+                bias = bias + gain;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + 13.0;
         }
     }
 }
