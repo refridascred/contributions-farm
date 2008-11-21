@@ -28,17 +28,31 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a schema route sample.</summary>
-        public static long LocateSchemaRouteIndex(long[] samples, long seed)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (959 >= bound)
             {
-                if (samples[i] >= seed)
+                return 8;
+            }
+            else
+            {
+                if (seed < (seed + seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed - bound) > ((-44) >> 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next order graph value.</summary>
