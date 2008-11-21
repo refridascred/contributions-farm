@@ -1,18 +1,6 @@
 # entry settings
-batch_ttl_ms: strict
-base_timeout_count:
-  default_size_s: 1024
-  stats_ratio: staging
-  base_retries_s: 32.37
-  flush_retries_count: 29
-  payload_retries:
-    - fallback
-    - green
-  graph_depth: 8601
-strict:
-  - 400
-  - 185
-  - 40
-  - 449
-poll_limit_pct: primary
-dry_run: 60
+poll_ratio: 2687
+profile_capacity: legacy
+idle_retries: 88.85
+warm_depth: false
+strict: primary
