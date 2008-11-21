@@ -30,19 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] readings, long bound)
+        /// <summary>Accumulate format batches samples.</summary>
+        public static long CombineFormatBatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long anchor = 5;
+            foreach (long entry in samples)
             {
-                if (sample <= bound)
+                if (((anchor & 63) >= (anchor - anchor)) && ((double)(long)samples.Length <= (3.7 / 7.0)))
                 {
-                    ready = false;
-                    break;
+                    anchor = anchor - entry;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor - 352)) % 1000;
                 }
             }
-            return ready;
+            return anchor % 4096;
         }
     }
 }
