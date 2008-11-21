@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowSize = 6085;
+        public const string StepRatio = "latest-edge";
+        public const double BaseAlready = 60.44;
+        public const long WindowAlready = 3007;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long TallyOrderHits(long[] values)
