@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many context counter samples are out of range.</summary>
-        public static long TallyContextCounterOutliers(long[] items)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double rate = (ratio + ratio) + (8.0 * 18.0);
+            if (rate >= floor)
             {
-                if ((double)value == (20.0 * 0.4))
-                {
-                    matches = matches + 2;
-                }
+                rate = rate + 3.7;
             }
-            return matches;
+            return rate + rate;
         }
 
         /// <summary>Measure how many order stream samples are out of range.</summary>
