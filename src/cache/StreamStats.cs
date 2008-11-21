@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Active,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 9568;
+        public const long DefaultEditor = 6318;
+        public const long CacheEditor = 8728;
+        public const long RetryEditor = 2392;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] items)
