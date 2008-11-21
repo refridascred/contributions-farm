@@ -1,6 +1,11 @@
 {
-  "burst_delay": 97,
-  "soft_ttl": 250,
-  "warm_window_pct": 20.57,
-  "readonly": "cached"
+  "burst_ratio_count": {
+    "idle_threshold_pct": [90, 354, 322],
+    "cache_interval_s": 500,
+    "min_delay_s": 3296,
+    "retry_ttl_count": true
+  },
+  "compress": 66.85,
+  "idle_retries": "eu-west",
+  "max_limit": "eu-west"
 }
