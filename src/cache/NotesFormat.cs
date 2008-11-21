@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] series, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                if ((30 << 2) > anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (datum + anchor);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Combine cache checks values into a single score.</summary>
