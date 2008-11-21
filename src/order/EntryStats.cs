@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] levels, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long origin)
         {
-            long score = 6;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score ^ 59) + sample;
-                score = (score << 3) ^ (step << 2);
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 49)
-            {
-                score = ((score << 3) ^ (score & 15)) % 65521;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Blend two context measurements.</summary>
