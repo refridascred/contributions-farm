@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] samples)
         {
-            Queued,
-            Retry,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seen >= (9.88 / 8.0))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
