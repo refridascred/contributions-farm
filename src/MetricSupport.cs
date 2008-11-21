@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftRatio = 4690;
-        public const long CacheStats = 1091;
-        public const long MaxStats = 9239;
-        public const string WindowRatio = "primary-v2";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Queued,
+            Retry,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstWidth = 54;
