@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit format tools readings against a rule.</summary>
-        public static long MeasureFormatToolsOutliers(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((double)floor == (3.0 * 5.63))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardLevel = 3029;
+        public const long MaxContributi = 4785;
+        public const long WindowContributi = 8486;
 
         /// <summary>Rank batches farm input into a small class.</summary>
         public static long SortBatchesFarm(long bound, long origin)
