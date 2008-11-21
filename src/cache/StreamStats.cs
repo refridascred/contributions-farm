@@ -53,12 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm counter entry that matches the target.</summary>
-        public static long SeekGithubfarmCounterIndex(long[] items, long origin)
+        /// <summary>Locate a record checks reading by value.</summary>
+        public static long LookupRecordChecksIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
