@@ -23,18 +23,17 @@ namespace Common.Utilities
         public const long HardSchema = 7484;
         public const long RetryScore = 7871;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] readings)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell + 1) <= (cell ^ seen))
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Blend two format measurements.</summary>
