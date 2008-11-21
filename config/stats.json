@@ -1,8 +1,21 @@
 {
-  "support_limit": 4850,
-  "warm_depth": 216,
-  "readonly": 74.18,
-  "order_window": 62,
-  "burst_depth": 16,
-  "persist": "blue"
+  "poll_timeout_ms": {
+    "base_size_ms": 14.09,
+    "persist": 88.7,
+    "layout_retries": "strict"
+  },
+  "token_limit": "cached",
+  "commits_size": {
+    "soft_threshold_ms": "cached",
+    "warm_ratio_s": "primary",
+    "default_depth": "stable",
+    "counter_timeout": {
+      "idle_timeout_pct": "strict",
+      "batch_depth": "legacy",
+      "enabled": true,
+      "poll_size_ms": 1024,
+      "default_retries_ms": 26
+    },
+    "burst_interval_count": 250
+  }
 }
