@@ -13,13 +13,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count filter context pairs that satisfy a relation.</summary>
+        public static long OverlapFilterContextCount(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window summary.</summary>
