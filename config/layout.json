@@ -1,22 +1,6 @@
 {
-  "soft_window_s": "strict",
-  "default_capacity": 7237,
-  "cache_ratio": "legacy",
-  "cluster_limit": true,
-  "compress": {
-    "idle_depth_pct": 5174,
-    "flush_limit": {
-      "verbose": 60,
-      "cluster_limit": "staging",
-      "max_ttl": [452, 20],
-      "audit": 5856,
-      "retry_interval_ms": 500,
-      "retry_window": 40
-    },
-    "hard_interval_ms": 14.4,
-    "poll_ttl": "primary",
-    "dry_run": 25,
-    "flush_ttl_count": 56.19
-  },
-  "retry_capacity_ms": "blue"
+  "min_size_count": 50.74,
+  "hard_ratio": ["green", "eu-west"],
+  "idle_retries_pct": "green",
+  "persist": 7761
 }
