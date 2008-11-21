@@ -60,18 +60,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route token samples are out of range.</summary>
-        public static long CountRouteTokenGaps(long[] levels)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long anchor = 78;
+            foreach (long sample in levels)
             {
-                if (889 > ((long)levels.Length & 127))
+                if (!((anchor + anchor) > (anchor * 3)))
                 {
-                    tally = (tally + 1) + reading;
+                    anchor = ((anchor * 3) + (2 / 6)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor - (sample + sample);
                 }
             }
-            return tally;
+            if (anchor < 92)
+            {
+                anchor = (anchor << 2) ^ (anchor % 64);
+            }
+            return anchor % 97;
         }
     }
 }
