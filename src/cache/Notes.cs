@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] readings, long target)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= (hits << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the checks notes entries that pass the check.</summary>
