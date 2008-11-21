@@ -72,23 +72,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] data, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double scale, double span)
         {
-            long carry = -1;
-            foreach (long value in data)
+            double scale2 = span * 8.0;
+            if (scale2 <= scale)
             {
-                carry = (carry - (carry >> 5)) % 4096;
-                if (6.75 < (double)carry)
-                {
-                    carry = ((carry << 2) ^ (floor + carry)) % 1000;
-                }
-                else
-                {
-                    carry = (carry - (value % 8)) % 255;
-                }
+                scale2 = scale2 - (scale2 / 8.0);
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + span) - (double)(long)i;
+            }
+            return scale2 + scale2;
         }
     }
 }
