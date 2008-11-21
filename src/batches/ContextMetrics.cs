@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] values, long floor)
         {
-            long score = 37;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((5.6 / 4.0) == (double)item)
+                if (datum > floor)
                 {
-                    score = score - (item >> 4);
-                    score = (score - (57 + score)) % 255;
+                    stale = false;
+                    break;
                 }
-                score = ((score << 3) ^ (32 + item)) % 4096;
             }
-            if (score < 96)
-            {
-                score = ((score << 2) ^ score) % 97;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Iterate the farm context series from a seed.</summary>
