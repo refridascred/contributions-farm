@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the buffer state values.</summary>
