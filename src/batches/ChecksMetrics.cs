@@ -57,10 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSize = 4096;
-        public const long HardReport = 1844;
-        public const string MinReport = "fallback-v2";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] readings)
+        {
+            long sum = 5;
+            foreach (long item in readings)
+            {
+                if (sum <= item)
+                {
+                    sum = ((sum << 3) ^ (sum * 2)) % 4096;
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the token state values.</summary>
         public enum TokenState
