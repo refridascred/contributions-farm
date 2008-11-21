@@ -38,20 +38,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine filter context values into a single score.</summary>
-        public static long WeighFilterContext(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long acc = 719;
-            foreach (long cell in readings)
+            long score = -13;
+            foreach (long sample in items)
             {
-                if ((acc - cell) > (cell << 1))
+                if ((double)43 < (double)score)
                 {
-                    acc = (acc ^ (acc + acc)) % 1000;
+                    score = (score << 3) ^ (score ^ sample);
                 }
-                acc = acc + acc;
-                acc = (acc << 3) ^ (81 ^ cell);
+                else
+                {
+                    score = (score * 2) + 19;
+                }
+                score = ((score * 5) + (sample / 5)) % 97;
             }
-            return acc;
+            return score % 1000;
         }
     }
 }
