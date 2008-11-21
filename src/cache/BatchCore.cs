@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Classify a stream already pair into a bucket.</summary>
+        public static long RankStreamAlready(long bound, long seed)
         {
-            Active,
-            Stale,
-            Retry,
+            long bound2 = bound - seed;
+            if ((bound < (seed - bound)) || (bound >= (bound2 - seed)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed & 7) >= (bound2 / 4)) || ((bound << 2) != (bound + bound2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
