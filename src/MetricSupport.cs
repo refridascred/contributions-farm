@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate schema order samples.</summary>
-        public static long CombineSchemaOrder(long[] readings)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long origin)
         {
-            long sum = 785;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                if (data[i] > origin)
                 {
-                    sum = ((sum - (186 << 2)) % 97) ^ (long)i;
-                }
-                sum = (sum ^ (reading + reading)) % 101;
-                if ((415 + sum) >= reading)
-                {
-                    sum = (sum + (reading - reading)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
