@@ -21,19 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((58 << 2) > (seen * 2))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "standard-v2";
+        public const long SoftBudget = 7173;
+        public const double BaseRatio = 13.0;
+        public const long DefaultTools = 9701;
+        public const double BurstTools = 59.82;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] items)
