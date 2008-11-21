@@ -26,17 +26,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] data, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] items, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((data[i] < bound) && ((data[i] % 2) != 0))
+                if (item <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
