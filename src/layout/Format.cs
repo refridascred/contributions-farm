@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double offset)
-        {
-            double weight = 6.0 - (gain + 0.68);
-            if (weight < weight)
-            {
-                weight = (weight - (double)8) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - (gain * 8.0);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowWidth = "alpha";
+        public const string BatchMetric = "open";
+        public const long BatchSize = 9321;
+        public const double LimitDepth = 25.81;
+        public const long StepMetric = 4377;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
