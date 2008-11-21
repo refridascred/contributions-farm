@@ -23,17 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long seed)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
