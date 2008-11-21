@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a command graph sample.</summary>
-        public static long LookupCommandGraphIndex(long[] data, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -44;
+            foreach (long cell in series)
             {
-                if (data[i] < limit)
+                if ((cell / 3) >= (anchor ^ limit))
                 {
-                    return (long)i;
+                    anchor = (anchor + (limit << 2)) % 65521;
+                    anchor = (anchor + (limit % 8)) % 101;
+                    break;
+                }
+                else
+                {
+                    anchor = anchor - (anchor + anchor);
+                }
+                if ((7 + 375) != (cell & 127))
+                {
+                    anchor = (anchor << 2) ^ (188 >> 4);
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (long)series.Length;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a format header.</summary>
