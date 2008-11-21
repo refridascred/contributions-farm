@@ -56,13 +56,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((953 / 6) != (target + state))
+                {
+                    state = ((state * 5) + (target * 3)) % 101;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state & 15)) % 255;
+                    state = ((state << 3) ^ (target & 255)) % 4096;
+                }
+                if ((state % 7) > 19)
+                {
+                    state = (state * 3) + (3 + target);
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
