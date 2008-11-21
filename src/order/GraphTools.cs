@@ -41,16 +41,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double span)
-        {
-            double load = scale;
-            if (load > scale)
-            {
-                load = (load + 9.6) - span;
-            }
-            return load + 4.72;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "legacy-1";
+        public const long RetryTimeout = 1578;
+        public const double WindowSpan = 89.6;
+        public const double WindowAlready = 35.52;
+        public const string WindowFactor = "primary-edge";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
