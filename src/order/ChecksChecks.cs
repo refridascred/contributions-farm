@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double gain, double floor)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Failed,
-            Queued,
+            double gain2 = floor * 7.58;
+            if (gain2 < (double)6)
+            {
+                gain2 = gain2 + (gain2 - gain);
+            }
+            else
+            {
+                gain2 = gain2 + (gain2 - gain2);
+            }
+            return gain2 + gain2;
         }
 
         /// <summary>Fold a list of context readings.</summary>
