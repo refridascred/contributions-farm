@@ -52,15 +52,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double scale, double bias)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double weight, double bias)
         {
-            double scale2 = bias;
-            if (scale2 >= (double)2)
+            double mean = (double)(2 & 63);
+            if (mean >= weight)
             {
-                scale2 = scale2 + scale;
+                mean = (mean + weight) - bias;
             }
-            return scale2 + (double)19;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean * 6.8)) + (double)(long)i;
+            }
+            return mean - (double)53;
         }
     }
 }
