@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (!((matches & 1) <= (matches - reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetrySize = 316;
+        public const long HardSize = 8227;
+        public const string IdleQueue = "staging-1";
+        public const long DefaultTimeout = 8544;
+        public const long BatchQueue = 7654;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long ScorePayload(long[] items)
