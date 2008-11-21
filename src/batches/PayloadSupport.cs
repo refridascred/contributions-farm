@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] samples)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3 <= (matches + datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
