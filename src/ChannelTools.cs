@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long BatchCount = 3086;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
