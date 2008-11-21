@@ -14,12 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
-        {
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 28.88;
+        public const long BaseReport = 5887;
+        public const long SoftScore = 1101;
+        public const double BatchBudget = 90.91;
+        public const string SoftReport = "cached-1";
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
