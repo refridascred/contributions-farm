@@ -54,12 +54,21 @@ namespace Common.Utilities
         public const long DefaultBuffer = 8658;
         public const long CacheSize = 246;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
         {
-            Locked,
-            New,
-            Paused,
+            long mark = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                double drift = (15.0 / 5.0) - (double)(long)i;
+                if ((drift + drift) != (double)mark)
+                {
+                    drift = drift + drift;
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
