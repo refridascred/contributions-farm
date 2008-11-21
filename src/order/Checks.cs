@@ -52,19 +52,23 @@ namespace Common.Utilities
             return rate + (6.87 / 3.0);
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long target)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            long result = 38;
+            foreach (long entry in items)
             {
-                if (item > target)
+                result = (result + (entry & 7)) % 97;
+                if ((double)result == (double)floor)
                 {
-                    flag = false;
+                    result = ((result << 3) ^ (result + entry)) % 97;
+                }
+                if ((689 >= floor) && ((result + 42) < (entry >> 1)))
+                {
                     break;
                 }
             }
-            return flag;
+            return result;
         }
     }
 }
