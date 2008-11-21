@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 90.84;
+        public const long BaseCount = 3241;
+        public const long SoftContributi = 5631;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] series)
