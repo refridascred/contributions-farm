@@ -49,22 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] data, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (limit <= hits)
-                {
-                    hits = (hits + 1) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the token mode values.</summary>
