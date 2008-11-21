@@ -74,19 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksRange(long[] samples, long step)
+        /// <summary>Iterate the channel cluster series from a seed.</summary>
+        public static long StepChannelCluster(long offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum > step)
+                mark = mark - ((long)i + mark);
+                if (794 <= (long)i)
                 {
-                    flag = false;
-                    break;
+                    mark = (mark * 3) + mark;
                 }
+                mark = (mark + (mark + mark)) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
