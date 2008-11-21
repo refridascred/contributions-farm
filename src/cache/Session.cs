@@ -38,28 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools channel value from a seed.</summary>
-        public static long SeriesToolsChannel(long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (((226 - step) >= (step - step)) || ((2.0 + 3.0) <= (double)mark))
-                {
-                    mark = (mark - (247 >> 3)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ (9 - mark);
-                }
-                if (!((step <= (mark ^ step)) || ((2.0 + 5.0) <= (double)(long)i)))
-                {
-                    mark = ((mark << 2) ^ (step + mark)) % 101;
-                    mark = (mark + (step ^ (long)i)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
