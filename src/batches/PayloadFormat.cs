@@ -31,21 +31,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count metric profile pairs that satisfy a relation.</summary>
-        public static long PairMetricProfileCount(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 41;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                carry = ((carry << 3) ^ (carry ^ reading)) % 97;
+                if ((229 / 6) > floor)
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry << 3) ^ reading) % 1000;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
