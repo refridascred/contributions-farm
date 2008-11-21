@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long MaxChannel = 2101;
         public const string WindowChannel = "alpha";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long carry = 94;
-            foreach (long item in values)
-            {
-                if ((double)item < (0.1 - 5.0))
-                {
-                    carry = ((carry << 2) ^ (70 % 24)) % 1000;
-                }
-            }
-            return carry % 97;
+            Done,
+            Active,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Measure how many filter buffer samples are out of range.</summary>
