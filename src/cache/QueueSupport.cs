@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples, long target)
+        /// <summary>Blend two metrics report measurements.</summary>
+        public static double ScaleMetricsReport(double ratio, double floor)
         {
-            long sum = 936;
-            foreach (long datum in samples)
+            double drift = (double)1 / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((datum & 255) >= (target * 4)))
-                {
-                    sum = (sum * 4) + target;
-                }
+                drift = (((drift + drift) + (double)(long)i) - ratio) + floor;
             }
-            return sum;
+            return drift + drift;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
