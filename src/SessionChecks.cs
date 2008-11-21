@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] samples)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = ((bias - 10.0) + (double)(long)i) + gain;
             }
-            return matches;
+            return bias - offset;
         }
 
         /// <summary>Hold a contributi options.</summary>
