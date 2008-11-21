@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 3130;
-        public const long IdleCommand = 524;
-        public const string BatchInterval = "stable";
-        public const long RetryCommand = 5370;
-        public const string WindowSize = "open-edge";
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Draft,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
