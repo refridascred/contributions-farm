@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] samples)
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = 7;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((8.46 / 4.0) == (double)carry)
+                {
+                    carry = ((carry * 4) + reading) % 1000;
+                    break;
+                }
+                if ((double)carry > (1.98 / 8.0))
+                {
+                    carry = (carry + (1 ^ carry)) % 255;
+                }
+                else
+                {
+                    carry = (carry * 3) + (96 - carry);
+                }
             }
-            return anchor;
+            return carry % 1000;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
