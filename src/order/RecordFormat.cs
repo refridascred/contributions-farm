@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] readings, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = 80;
+            foreach (long value in values)
             {
-                if ((target + sample) < (sample / 8))
+                if ((acc ^ value) <= value)
                 {
-                    seen = seen + 3;
+                    acc = (acc - 34) % 1000;
                 }
-                else
+                if ((value + value) >= acc)
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Count the filter contributi entries that pass the check.</summary>
