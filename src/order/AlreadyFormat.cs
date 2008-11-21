@@ -50,12 +50,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 7969;
-        public const long CacheSize = 378;
-        public const string DefaultTools = "cached";
-        public const string LimitLevel = "primary-1";
-        public const long MinFactor = 183;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Closed,
+            Paused,
+            Done,
+            Draft,
+            New,
+        }
 
         /// <summary>Locate a farm schema reading by value.</summary>
         public static long LocateFarmSchemaIndex(long[] readings, long target)
