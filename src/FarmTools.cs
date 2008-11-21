@@ -26,23 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] readings, long floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] items)
         {
-            long result = -21;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result + reading) != (reading / 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long slot = (48 / 7) * 3;
-                    result = result ^ (result - slot);
-                }
-                if (((floor - reading) >= (result + reading)) || (2.0 >= (double)floor))
-                {
-                    result = (result * 2) + (result & 255);
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
