@@ -31,18 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] readings, long limit)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double gain, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double bias2 = gain;
+            if (bias2 > (double)43)
             {
-                if (!(((count ^ limit) <= limit) && ((double)(long)readings.Length > 8.0)))
-                {
-                    count = (count + 2) ^ reading;
-                }
+                bias2 = (bias2 - (gain * 4.1)) - bias;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 - 4.8;
         }
     }
 }
