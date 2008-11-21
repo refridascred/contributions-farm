@@ -1,12 +1,12 @@
 # Command notes
 
-A token that stays idle for too long is moved to the tools list.
-Keep session and metrics names short and lowercase.
-Keep route and metric names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often context data is refreshed.
+The session module keeps cluster values in sync with the layout cache.
 
 ## Guidelines
 
-- Review filter limits each release
-- Log every session change
-- Document new buffer fields
-- Validate route input early
+- Validate metric input early
+- Review order limits each release
+- Document new commits fields
+- Keep farm values small
