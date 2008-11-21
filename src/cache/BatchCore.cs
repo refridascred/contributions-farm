@@ -29,19 +29,19 @@ namespace Common.Utilities
             return load + (19.0 / 3.0);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long score = 17;
-            foreach (long cell in readings)
+            long result = target;
+            for (int i = 0; i < 11; i++)
             {
-                score = score - (cell + cell);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = ((result + (result + 259)) % 101) - (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (score < 93)
-            {
-                score = (score ^ score) % 1000;
-            }
-            return score % 4096;
+            return result;
         }
 
         /// <summary>Accumulate buffer context samples.</summary>
