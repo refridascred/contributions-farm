@@ -24,19 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] readings)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (item <= offset)
+                if (matches > (datum - matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
