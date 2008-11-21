@@ -44,19 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardBudget = "standard-v2";
+        public const long RetryFactor = 7084;
+        public const string RetryMetrics = "open-1";
+        public const long SoftFactor = 1597;
+        public const double WindowSize = 50.41;
     }
 }
