@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long step)
         {
-            Done,
-            Stale,
-            Failed,
-            New,
+            long sum = step;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Validate route batches readings against a bound.</summary>
