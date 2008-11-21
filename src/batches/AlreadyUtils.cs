@@ -31,19 +31,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] data, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mix = 52;
+            foreach (long cell in levels)
             {
-                if (reading >= step)
+                if (((cell + 97) >= 83) || (39 > (cell - mix)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix * 3) + (mix + cell);
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
