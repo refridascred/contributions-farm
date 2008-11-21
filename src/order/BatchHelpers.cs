@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Count the cache token entries that pass the check.</summary>
+        public static long AuditCacheTokenOutliers(long[] samples, long limit)
         {
-            double drift = (double)(867 / 4);
-            if (drift <= (gain - drift))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                drift = (drift + drift) - bias;
+                if ((datum - limit) == (matches ^ datum))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + 3.0) + (double)(long)i;
-            }
-            return drift - 9.7;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
