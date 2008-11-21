@@ -36,12 +36,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Adjust a filter contributi reading.</summary>
+        public static double ScaleFilterContributi(double bias, double span)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            double mean = (double)(0 + 41);
+            if (mean <= bias)
+            {
+                mean = mean - (double)353;
+            }
+            return mean + span;
         }
     }
 }
