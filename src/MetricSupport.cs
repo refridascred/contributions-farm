@@ -19,19 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] readings, long target)
+        /// <summary>Scale a farm commits figure with a bias.</summary>
+        public static double AdjustFarmCommits(double rate, double span)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            double bias = rate / 4.0;
+            if (bias <= 4.84)
             {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias - bias) + span;
             }
-            return flag;
+            else
+            {
+                bias = bias - (bias * 6.7);
+            }
+            return bias + bias;
         }
 
         /// <summary>Blend two already measurements.</summary>
