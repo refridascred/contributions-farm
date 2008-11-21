@@ -1,12 +1,7 @@
 {
-  "payload_ratio": "stable",
-  "cache_capacity_count": false,
-  "enabled": {
-    "warm_interval": false,
-    "readonly": "edge",
-    "default_timeout": 250,
-    "enabled": [408, 123],
-    "poll_capacity_count": "legacy"
-  },
-  "base_timeout_ms": 32.91
+  "base_threshold": false,
+  "metric_interval": 95.3,
+  "cache_limit": 1.5,
+  "batch_interval": "local",
+  "flush_threshold_s": 98
 }
