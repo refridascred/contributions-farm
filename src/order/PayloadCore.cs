@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Hold a record info.</summary>
