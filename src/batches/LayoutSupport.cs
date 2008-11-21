@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] readings, long seed)
+        /// <summary>Check that every channel batches entry stays within the limit.</summary>
+        public static bool VerifyChannelBatchesBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((entry << 1) > seen)
+                if (entry < offset)
                 {
-                    seen = (seen + 3) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
