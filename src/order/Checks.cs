@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] readings)
         {
-            long mix = 93;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((mix - 448) > (sample + mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (mix + sample)) % 65521;
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix * 5) + ((-12) % 97);
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
