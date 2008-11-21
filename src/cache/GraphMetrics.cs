@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "stable";
-        public const double SoftSpan = 47.14;
-        public const long LimitInterval = 6637;
-        public const double BaseLayout = 23.15;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
