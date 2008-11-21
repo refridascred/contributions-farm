@@ -31,31 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long offset, long seed)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            if ((2.5 + 5.0) == (double)seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)seed >= 6.59))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((728 & 63) != (seed >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every window buffer entry stays within the limit.</summary>
