@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseWidth = 8625;
+        public const long LimitCount = 8835;
+        public const long CacheTimeout = 8480;
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double BlendGithubfarm(double scale, double floor)
