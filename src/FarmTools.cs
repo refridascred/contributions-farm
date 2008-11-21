@@ -14,21 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = mark ^ (item % 7);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Roll a token batches counter forward.</summary>
