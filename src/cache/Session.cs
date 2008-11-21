@@ -38,17 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] values, long offset)
+        /// <summary>Combine filter context values into a single score.</summary>
+        public static long WeighFilterContext(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 719;
+            foreach (long cell in readings)
             {
-                if (values[i] > offset)
+                if ((acc - cell) > (cell << 1))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc + acc)) % 1000;
                 }
+                acc = acc + acc;
+                acc = (acc << 3) ^ (81 ^ cell);
             }
-            return -1;
+            return acc;
         }
     }
 }
