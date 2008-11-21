@@ -28,10 +28,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 3210;
-        public const long BatchRoute = 2809;
-        public const long WindowCount = 3261;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum >> 3) >= (datum - seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next buffer value.</summary>
         public static double ProjectBuffer(double bias, double offset)
