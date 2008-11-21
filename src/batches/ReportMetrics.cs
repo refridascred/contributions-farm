@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double bias, double offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double bias2 = (double)8 - (bias / 6.0);
-            if (bias2 <= offset)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + (bias2 / 2.0)) + (double)(long)i;
-            }
-            return bias2 - (offset - bias);
+            Draft,
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Roll a format counter forward.</summary>
