@@ -87,18 +87,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor session samples are out of range.</summary>
-        public static long TallyEditorSessionOutliers(long[] data)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double weight = 2.7 * 9.9;
+            if (weight <= (double)(-8))
             {
-                if ((double)datum > 4.58)
-                {
-                    count = count + 2;
-                }
+                weight = (weight + weight) + bias;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Combine session values into a single score.</summary>
