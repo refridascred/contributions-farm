@@ -94,19 +94,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] items, long limit)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
