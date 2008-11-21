@@ -14,12 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 28.88;
-        public const long BaseReport = 5887;
-        public const long SoftScore = 1101;
-        public const double BatchBudget = 90.91;
-        public const string SoftReport = "cached-1";
+        /// <summary>Iterate the format checks series from a seed.</summary>
+        public static long IterateFormatChecks(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i ^ state) >= 41)
+                {
+                    state = ((state * 3) + (state - step)) % 65521;
+                    continue;
+                }
+                state = (state - 972) % 4096;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
