@@ -1,11 +1,16 @@
 # Command notes
 
-Each profile is validated before it reaches the contributi queue.
-A report that stays idle for too long is moved to the command list.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Keep window and metrics names short and lowercase.
+A session that stays idle for too long is moved to the batch list.
+Use tools settings to tune how often contributi data is refreshed.
+
+The session helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the order handler retries a few times before giving up.
+The checks module keeps notes values in sync with the report cache.
 
 ## Guidelines
 
-- Validate layout input early
-- Keep entry values small
-- Log every graph change
+- Document new schema fields
+- Prefer cluster defaults
+- Keep metric values small
+- Review order limits each release
