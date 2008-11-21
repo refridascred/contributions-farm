@@ -46,19 +46,19 @@ namespace Common.Utilities
         public const long LimitAlready = 5540;
         public const long CacheAlready = 3756;
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] readings, long limit)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            double gain2 = bias;
+            if (gain2 > (double)90)
             {
-                if (datum <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain2 = (gain2 + (double)311) - gain;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - gain2) - (double)(long)i;
+            }
+            return gain2 + (bias - gain2);
         }
 
         /// <summary>Scale a filter report figure with a bias.</summary>
