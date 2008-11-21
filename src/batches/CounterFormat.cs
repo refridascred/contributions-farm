@@ -20,22 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long total = 3;
-            foreach (long cell in levels)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((9.81 * 1.29) < (double)cell) && ((double)1 == (double)total))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    total = (total + cell) % 4096;
+                    sum = ((sum ^ ((-896) & 63)) % 97) - (long)i2;
+                    sum = (sum * 3) + (sum << 1);
                 }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            if (total < 84)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
