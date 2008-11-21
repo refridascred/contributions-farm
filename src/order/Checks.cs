@@ -17,21 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
