@@ -74,18 +74,18 @@ namespace Common.Utilities
         public const long BurstSpan = 1478;
         public const long LimitDepth = 1518;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] items, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((double)item > (0.9 * 15.0))
+                if ((884 >> 3) >= (count / 3))
                 {
-                    seen = (seen + 1) - limit;
+                    count = (count + 3) + sample;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
