@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] series, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (cell != target)
+                if (datum != step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Fold a list of token readings.</summary>
