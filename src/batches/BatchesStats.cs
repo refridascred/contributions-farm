@@ -19,17 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = ((mix << 2) ^ (long)i) % 97;
-                mix = (mix * 5) + (mix + bound);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            double gain = 19.0;
+            return (gain - (rate + 4.5)) + bias;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
