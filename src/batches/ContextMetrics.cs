@@ -39,21 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up contributi profile samples.</summary>
-        public static long PairContributiProfileCount(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= target)
                 {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Match up entry samples.</summary>
