@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Idle,
-            New,
-            Done,
-            Active,
-            Retry,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepFactor = "legacy";
+        public const long BatchFactor = 2635;
+        public const double BatchBudget = 32.84;
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] items, long bound)
