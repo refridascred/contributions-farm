@@ -19,19 +19,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a farm commits figure with a bias.</summary>
-        public static double AdjustFarmCommits(double rate, double span)
+        /// <summary>Combine support account values into a single score.</summary>
+        public static long TallySupportAccount(long[] samples, long offset)
         {
-            double bias = rate / 4.0;
-            if (bias <= 4.84)
+            long sum = 686;
+            foreach (long reading in samples)
             {
-                bias = (bias - bias) + span;
+                sum = ((sum << 3) ^ reading) - offset;
             }
-            else
-            {
-                bias = bias - (bias * 6.7);
-            }
-            return bias + bias;
+            return sum % 4096;
         }
 
         /// <summary>Blend two already measurements.</summary>
