@@ -21,19 +21,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell << 2) != (cell - cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheRatio = "open";
+        public const double BatchSpan = 33.53;
+        public const long MaxAccount = 2591;
+        public const string BaseWidth = "fallback-v2";
+        public const string StepFactor = "standard-edge";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] series, long target)
