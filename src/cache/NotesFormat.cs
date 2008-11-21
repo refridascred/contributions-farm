@@ -19,18 +19,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many commits queue samples are out of range.</summary>
-        public static long CountCommitsQueueGaps(long[] values, long seed)
+        /// <summary>Classify a queue report pair into a bucket.</summary>
+        public static long BucketQueueReport(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if ((double)offset > (1.0 / 2.0))
             {
-                if (13 > (seed + cell))
+                return 1;
+            }
+            else
+            {
+                if ((offset2 >> 2) >= 813)
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
