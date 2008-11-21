@@ -29,13 +29,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            Locked,
+            Queued,
+            Ready,
+            Retry,
+            Closed,
             Paused,
-            New,
-            Draft,
         }
     }
 }
