@@ -14,10 +14,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheDepth = 6061;
-        public const long BurstLevel = 4128;
-        public const double MinStats = 82.97;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double LimitSession = 28.88;
