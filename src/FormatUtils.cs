@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
