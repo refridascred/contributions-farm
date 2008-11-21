@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 1208;
-        public const double LimitMetrics = 66.89;
-        public const string DefaultMetrics = "strict-v2";
-        public const string WindowMetrics = "fallback-v2";
-        public const long BaseSpan = 7378;
+        /// <summary>Rank notes githubfarm input into a small class.</summary>
+        public static long BucketNotesGithubfarm(long target, long floor)
+        {
+            long lane = target ^ floor;
+            if ((lane / 6) != (2 ^ lane))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((33 + target) != (lane + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor != (9.0 * 2.6))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target << 1) > lane)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next notes metric value.</summary>
         public static double ScaleNotesMetric(double gain, double bias)
