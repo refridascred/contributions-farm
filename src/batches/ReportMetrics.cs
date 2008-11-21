@@ -24,17 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] samples, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] items, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 17;
+            foreach (long cell in items)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                acc = (((acc << 3) ^ (long)items.Length) % 101) ^ cell;
+                if ((acc - acc) < (525 + acc))
                 {
-                    return (long)i;
+                    acc = (acc << 2) ^ seed;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of format commits entries.</summary>
