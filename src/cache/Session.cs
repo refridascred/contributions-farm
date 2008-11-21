@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context report entries that pass the check.</summary>
-        public static long CountContextReportGaps(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((double)tally != (double)entry)
+                if (datum >= offset)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a filter header.</summary>
