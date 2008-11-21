@@ -35,18 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout queue values into a single score.</summary>
-        public static long TallyLayoutQueue(long[] readings)
+        /// <summary>Derive the next editor stream value from a seed.</summary>
+        public static long RollEditorStream(long target)
         {
-            long result = 72;
-            foreach (long value in readings)
+            long result = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((value % 5) == (2 + 1))
+                result = ((result * 3) + target) % 1000;
+                if (!(result > target))
                 {
-                    result = ((result * 2) + (54 + value)) % 255;
+                    result = ((result * 3) + (result & 63)) % 97;
+                    result = (result - (result - target)) % 255;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return result % 1000;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
