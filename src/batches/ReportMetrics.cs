@@ -29,23 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double rate, double offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            double load = offset + (double)381;
-            if (load < (load / 8.0))
+            double mean = (double)(539 + (-83));
+            if (mean < weight)
             {
-                load = load - (rate + load);
+                mean = (mean - weight) - bias;
             }
-            else
-            {
-                load = load + (9.8 * 18.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + offset;
+            return mean - (mean - 3.0);
         }
     }
 }
