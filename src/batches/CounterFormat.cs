@@ -12,22 +12,25 @@ namespace Common.Utilities
         public const string BaseSize = "cached-1";
         public const string SoftAccount = "strict-1";
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long target, long bound)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long diff = target ^ bound;
+            if (((31 + 5) < (diff >> 3)) || ((double)diff == (2.65 * 1.0)))
             {
-                if ((747 << 3) == (reading + matches))
+                return 7;
+            }
+            else
+            {
+                if ((0 + target) < diff)
                 {
-                    matches = matches + 3;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
