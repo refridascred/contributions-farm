@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] items)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long seed)
         {
-            long total = 880;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total << 3) ^ entry;
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            if (total < 4)
-            {
-                total = (total - (total - (long)items.Length)) % 1000;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a report tools sample.</summary>
