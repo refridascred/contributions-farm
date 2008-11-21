@@ -64,13 +64,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double scale, double offset)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            double rate = offset + 0.44;
+            if (rate > rate)
+            {
+                rate = (rate - 16.0) + scale;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            return rate + (6.87 / 3.0);
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
