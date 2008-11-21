@@ -1,15 +1,7 @@
 {
-  "batch_size_ms": 100,
-  "min_window_count": ["staging", "green"],
-  "entry_retries": 1066,
-  "max_capacity_ms": "stable",
-  "enabled": "primary",
-  "burst_interval_ms": {
-    "batches_interval": 24,
-    "soft_window_ms": [153, 280],
-    "metrics_retries": "open",
-    "hard_limit": 92.82,
-    "hard_ratio_pct": "cached",
-    "cache_limit_s": [308, 105, 2, 388]
-  }
+  "warm_interval_ms": "staging",
+  "batch_ratio_s": "edge",
+  "min_capacity_s": 45,
+  "warm_ttl_pct": true,
+  "graph_limit": "strict"
 }
