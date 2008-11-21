@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double rate = offset;
-            if (rate < (double)0)
-            {
-                rate = (rate - offset) - ratio;
-            }
-            return rate - (double)9;
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
