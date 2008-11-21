@@ -33,19 +33,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a already batches reading.</summary>
-        public static double ScaleAlreadyBatches(double rate, double bias)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] readings, long target)
         {
-            double load = rate;
-            if (load < (double)(-15))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = (load - load) + bias;
+                if ((readings[i] == target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + 1.07;
-            }
-            return load - (double)42;
+            return -1;
         }
 
         /// <summary>Hold a graph summary.</summary>
