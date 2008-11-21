@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mark = -1;
-            foreach (long datum in levels)
-            {
-                mark = (mark ^ datum) % 65521;
-            }
-            return mark;
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
