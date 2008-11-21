@@ -21,12 +21,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCount = 6369;
+        public const long LimitCache = 4781;
+        public const double WindowCache = 27.43;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstLevel = 9339;
