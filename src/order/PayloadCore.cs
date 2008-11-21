@@ -16,22 +16,22 @@ namespace Common.Utilities
         public const double BurstToken = 16.31;
         public const string IdleToken = "alpha-v2";
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] items, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] series, long limit)
         {
-            long state = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)1 > (double)state)
+                if ((double)matches >= (3.56 + 8.88))
                 {
-                    state = ((state - 458) - cell) - origin;
+                    matches = ((matches + 2) + sample) - limit;
                 }
-                if ((282 - 6) <= (long)items.Length)
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
