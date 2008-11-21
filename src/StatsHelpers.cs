@@ -33,12 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCount = "legacy-1";
-        public const string BaseFactor = "primary";
-        public const long BurstCache = 3233;
-        public const string MinSpan = "standard-edge";
-        public const long DefaultCount = 7631;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
