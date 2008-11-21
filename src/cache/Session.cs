@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Done,
-            Active,
-            Idle,
-            Dropped,
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many filter buffer samples are out of range.</summary>
