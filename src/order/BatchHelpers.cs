@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Locate a commits metrics reading by value.</summary>
-        public static long LookupCommitsMetricsIndex(long[] levels, long origin)
+        /// <summary>Validate session order readings against a bound.</summary>
+        public static bool VerifySessionOrderBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (levels[i] >= origin)
+                if (entry >= origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
