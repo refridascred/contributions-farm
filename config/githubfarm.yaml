@@ -1,19 +1,5 @@
 # githubfarm settings
-min_size_pct: false
-default_timeout_pct:
-  warm_interval_ms: false
-  retry_window_s: open
-  burst_ratio:
-    - 346
-    - 178
-    - 449
-  checks_interval: 43.69
-  soft_delay_s:
-    - stable
-    - stable
-    - green
-    - primary
-  warm_delay_s: blue
-hard_depth_count: staging
-sync_size: cached
-max_retries: 250
+cache_interval_pct: false
+persist: true
+cluster_threshold: 28.69
+base_ttl: true
