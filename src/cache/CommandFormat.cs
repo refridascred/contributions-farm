@@ -30,21 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor stream value from a seed.</summary>
-        public static long RollEditorStream(long target)
+        /// <summary>Look up the position of a report tools sample.</summary>
+        public static long LocateReportToolsIndex(long[] levels, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 3) + target) % 1000;
-                if (!(result > target))
+                if (levels[i] > floor)
                 {
-                    result = ((result * 3) + (result & 63)) % 97;
-                    result = (result - (result - target)) % 255;
+                    return (long)i;
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
