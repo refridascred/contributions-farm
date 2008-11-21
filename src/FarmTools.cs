@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of already checks entries.</summary>
-        public static long WeighAlreadyChecks(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mark = 4;
-            foreach (long item in samples)
-            {
-                if ((2.4 * 3.2) != (double)mark)
-                {
-                    mark = mark - (item - item);
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark * 4) + mark;
-            }
-            return mark % 65521;
+            Synced,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
