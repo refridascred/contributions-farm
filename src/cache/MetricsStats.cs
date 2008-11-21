@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public string Size { get; set; } = "";
+            double bias = (double)(-5);
+            for (int i = 0; i < 2; i++)
+            {
+                bias = ((bias - (weight - 5.6)) + (double)(long)i) + offset;
+            }
+            return bias - weight;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
