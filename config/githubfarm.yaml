@@ -1,6 +1,8 @@
 # githubfarm settings
-base_timeout_count: 8.8
-readonly: latest
-stream_window: 1055
-hard_capacity: false
-strict: false
+max_retries_pct: 1837
+strict: standard
+githubfarm_window:
+  - blue
+  - cached
+  - green
+warm_depth: 91
