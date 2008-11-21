@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double bias)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            double weight2 = 9.72 - (double)667;
-            for (int i = 0; i < 6; i++)
+            double drift = (double)(867 / 4);
+            if (drift <= (gain - drift))
             {
-                weight2 = ((weight2 - bias) + (double)(long)i) - weight;
+                drift = (drift + drift) - bias;
             }
-            return weight2 - 7.2;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + 3.0) + (double)(long)i;
+            }
+            return drift - 9.7;
         }
 
         /// <summary>Define format limits and defaults.</summary>
