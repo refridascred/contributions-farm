@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
