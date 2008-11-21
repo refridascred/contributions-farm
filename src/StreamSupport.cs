@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Closed,
-            Locked,
-            Stale,
-            New,
+            Active,
             Synced,
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
