@@ -26,17 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long offset)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = -21;
+            foreach (long reading in readings)
             {
-                if (series[i] >= offset)
+                if ((result + reading) != (reading / 4))
                 {
-                    return (long)i;
+                    long slot = (48 / 7) * 3;
+                    result = result ^ (result - slot);
+                }
+                if (((floor - reading) >= (result + reading)) || (2.0 >= (double)floor))
+                {
+                    result = (result * 2) + (result & 255);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
