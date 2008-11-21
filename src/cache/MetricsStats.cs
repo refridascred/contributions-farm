@@ -70,30 +70,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] samples, long seed)
         {
-            long state = 674;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (((-4) * 5) < sample)
+                if ((double)seed >= 5.2)
                 {
-                    continue;
-                }
-                if (((7.22 - 3.5) <= (double)state) || ((double)state <= (6.0 + 14.0)))
-                {
-                    state = state + (state % 100);
+                    matches = (matches + 1) - entry;
                 }
                 else
                 {
-                    state = (state - (sample - state)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            if (state < 625)
-            {
-                state = (state ^ (state / 7)) % 1000;
-            }
-            return state;
+            return matches;
         }
     }
 }
