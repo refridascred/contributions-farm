@@ -24,21 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
-        public static long PairProfileContributiCount(long[] data)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Dropped,
+            Paused,
+            Done,
+            Queued,
         }
 
         /// <summary>Count the batches githubfarm entries that pass the check.</summary>
