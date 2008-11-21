@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double floor)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long origin)
         {
-            double load = (floor / 8.0) + (floor * 3.22);
-            if (load < (3.4 + 4.83))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (floor - gain);
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - gain) + (double)(long)i;
-            }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
