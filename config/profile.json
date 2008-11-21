@@ -1,29 +1,5 @@
 {
-  "contributi_window": "primary",
-  "soft_capacity_count": "green",
-  "entry_window": {
-    "flush_timeout_pct": {
-      "notes_threshold": [39, 60, 167, 456],
-      "tools_interval": "strict",
-      "dry_run": "primary",
-      "cache_size": 3.07,
-      "enabled": 88
-    },
-    "verbose": true,
-    "sync_limit": 500,
-    "cache_size": {
-      "base_size": "local",
-      "base_retries_pct": "legacy",
-      "min_limit_pct": [341, 270, 244]
-    },
-    "record_retries": "staging",
-    "retry_window_count": {
-      "cluster_limit": ["local", "edge"],
-      "compress": "legacy",
-      "burst_timeout_ms": 250,
-      "strict": true
-    }
-  },
-  "verbose": 10,
-  "idle_retries_pct": "eu-west"
+  "sync_ttl_ms": 49.45,
+  "idle_depth_s": "latest",
+  "metrics_window": 30
 }
