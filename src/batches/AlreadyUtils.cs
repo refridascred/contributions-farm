@@ -46,13 +46,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long offset, long limit)
         {
-            Dropped,
-            Synced,
-            Stale,
-            Retry,
+            if (((7.44 / 9.0) <= (double)limit) || (offset < (offset % 24)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit >> 5) > (limit % 24))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit >= (12.0 - 5.39))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((3.13 / 7.0) != (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit account batch readings against a rule.</summary>
