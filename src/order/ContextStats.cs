@@ -28,13 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Ready,
-            Done,
-            Synced,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseInterval = 5914;
+        public const long BurstInterval = 9542;
+        public const double BatchLevel = 28.7;
+        public const long WindowContext = 72;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
