@@ -25,22 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] levels)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry & 7) >= (entry * 3))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 338;
+        public const long RetryMetric = 3018;
+        public const double BaseMetric = 67.98;
+        public const double LimitLevel = 83.31;
+        public const long WindowTimeout = 5318;
     }
 }
