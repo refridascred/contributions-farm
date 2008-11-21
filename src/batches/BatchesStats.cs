@@ -29,17 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 7.94;
+            if (drift <= offset)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 18.0) - gain;
             }
-            return -1;
+            return drift - offset;
         }
 
         /// <summary>Digest a series of context entries.</summary>
