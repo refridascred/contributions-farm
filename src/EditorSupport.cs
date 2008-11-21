@@ -64,12 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Locate a farm cluster reading by value.</summary>
+        public static long FindFarmClusterIndex(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
