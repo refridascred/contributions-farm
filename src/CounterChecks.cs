@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] series, long limit)
         {
-            Ready,
-            Done,
-            Pending,
-            Paused,
-            Synced,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
