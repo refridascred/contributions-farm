@@ -51,17 +51,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a farm schema reading by value.</summary>
-        public static long LocateFarmSchemaIndex(long[] readings, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((readings[i] <= target) && ((readings[i] % 5) != 0))
+                if (item <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
