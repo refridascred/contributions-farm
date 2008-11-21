@@ -26,19 +26,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long state = 284;
-            foreach (long item in samples)
-            {
-                state = ((state * 4) + (state - item)) % 1000;
-            }
-            if (state < 2)
-            {
-                state = (state + (state - state)) % 255;
-            }
-            return state % 65521;
+            Dropped,
+            Retry,
+            New,
+            Closed,
         }
 
         /// <summary>Compare every pair of session readings.</summary>
