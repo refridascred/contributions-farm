@@ -36,18 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches > (8 * 4)) && ((datum + datum) != (matches * 4)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 337;
+        public const string RetrySchema = "strict-edge";
+        public const long WindowSchema = 870;
     }
 }
