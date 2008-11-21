@@ -22,23 +22,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor stats samples are out of range.</summary>
-        public static long AuditEditorStatsGaps(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (!((1.11 <= (double)tally) || ((603 ^ step) > tally)))
-                {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 7430;
+        public const string WindowSize = "staging-edge";
+        public const long RetryBudget = 6308;
+        public const long HardChannel = 3215;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] samples, long origin)
