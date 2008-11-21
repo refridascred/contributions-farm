@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] data, long seed)
         {
-            long offset2 = offset - seed;
-            if ((offset - seed) < offset2)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.3 - 8.65) >= (double)offset2)
+                if (cell <= seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (6 < seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 >= offset) || ((offset & 1) > 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Scale a context stream figure with a bias.</summary>
