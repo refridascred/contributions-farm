@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many schema layout samples are out of range.</summary>
-        public static long MeasureSchemaLayoutMatches(long[] levels, long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            if (((seed >> 4) == (target + seed)) && ((seed ^ target) < seed))
             {
-                if (((seed * 2) < (datum % 64)) || ((datum + datum) > (seed + 0)))
+                return 4;
+            }
+            else
+            {
+                if (740 <= target)
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
