@@ -14,14 +14,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            Retry,
-            Idle,
-            Failed,
-            Queued,
-            Pending,
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
