@@ -34,13 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double scale, double offset)
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            double scale2 = scale;
+            if (scale2 > (double)8)
+            {
+                scale2 = scale2 + 4.4;
+            }
+            else
+            {
+                scale2 = scale2 - offset;
+            }
+            return scale2 - scale2;
         }
     }
 }
