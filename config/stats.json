@@ -1,6 +1,12 @@
 {
-  "warm_depth": "edge",
-  "stats_window": [2, 52],
-  "notes_depth": 78,
-  "compress": [337, 200, 435]
+  "strict": {
+    "sync_threshold_pct": 38,
+    "cache_ratio": ["local", "standard", "local"],
+    "idle_size_s": 250,
+    "persist": 5668
+  },
+  "enabled": 1024,
+  "idle_limit_pct": 1024,
+  "burst_window": 0.5,
+  "base_retries": 500
 }
