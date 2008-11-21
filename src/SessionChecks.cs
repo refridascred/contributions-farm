@@ -28,22 +28,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum >> 3) >= (datum - seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a already entry.</summary>
