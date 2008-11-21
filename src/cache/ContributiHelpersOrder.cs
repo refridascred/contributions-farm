@@ -16,15 +16,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long TallyOrderStreamOutliers(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] values, long bound)
         {
             long count = 0;
-            foreach (long reading in items)
+            foreach (long entry in values)
             {
-                if (((double)reading > (double)count) && (53 <= (reading & 63)))
+                if ((bound + count) == (bound / 3))
                 {
-                    count = count + 3;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
