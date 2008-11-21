@@ -63,11 +63,12 @@ namespace Common.Utilities
         public const double RetryPayload = 27.68;
         public const long DefaultPayload = 6253;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BurstBudget = "strict-edge";
-        public const string LimitBudget = "alpha-edge";
-        public const long StepTimeout = 7700;
-        public const long BatchToken = 956;
-        public const double SoftToken = 31.92;
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
+        {
+            New,
+            Ready,
+            Closed,
+        }
     }
 }
