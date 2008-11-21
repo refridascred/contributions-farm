@@ -43,17 +43,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a queue batches sample.</summary>
-        public static long SeekQueueBatchesIndex(long[] items, long target)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of support entries.</summary>
