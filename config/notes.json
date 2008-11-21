@@ -1,8 +1,6 @@
 {
-  "enabled": [184, 283],
-  "persist": 8444,
-  "base_window_count": 41.03,
-  "hard_timeout_s": "open",
-  "max_size_pct": "green",
-  "soft_ratio_s": [113, 127, 459, 159]
+  "default_ttl_count": 2,
+  "compress": 66.54,
+  "warm_interval_pct": ["fallback", "stable", "primary"],
+  "audit": 7302
 }
