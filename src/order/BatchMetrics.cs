@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long floor, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
+            if ((offset << 3) < (offset & 255))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor >= 9.6)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
