@@ -78,10 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "alpha-v2";
-        public const long SoftBuffer = 5213;
-        public const double DefaultFactor = 6.6;
-        public const long RetryBuffer = 3706;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
