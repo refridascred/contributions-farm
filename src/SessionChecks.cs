@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Active,
-            Closed,
+            Retry,
             Queued,
-            Paused,
-            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Project the next cache value.</summary>
