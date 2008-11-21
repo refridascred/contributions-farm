@@ -22,14 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            New,
-            Synced,
-            Dropped,
-            Done,
+            Closed,
             Pending,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
