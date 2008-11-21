@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster metrics entry stays within the limit.</summary>
-        public static bool VerifyClusterMetricsRange(long[] values, long floor)
+        /// <summary>Blend two window context measurements.</summary>
+        public static double ScaleWindowContext(double weight, double bias)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double rate = weight * 0.7;
+            if (rate > weight)
             {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
+                rate = (rate - (double)(-9)) - bias;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (rate * 7.3)) + (double)(long)i;
+            }
+            return rate + (rate / 9.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
