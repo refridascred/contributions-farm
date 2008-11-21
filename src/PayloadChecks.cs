@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 3382;
-        public const long BaseContext = 3758;
-        public const string DefaultContext = "strict";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
+        {
+            long mark = 809;
+            foreach (long cell in values)
+            {
+                mark = (mark ^ ((long)values.Length + cell)) % 4096;
+                mark = mark ^ mark;
+                if ((mark + mark) > cell)
+                {
+                    mark = (mark << 3) ^ (mark >> 4);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepCluster = 82.8;
