@@ -34,21 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (sample < origin)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate farm samples.</summary>
