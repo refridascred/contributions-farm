@@ -47,31 +47,18 @@ namespace Common.Utilities
             return ratio - (8.2 + span);
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data, long step)
         {
-            if ((target >= (target - offset)) || ((offset >> 4) <= offset))
+            long mix = 75;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target - target) < offset) && (offset > (target - target)))
+                if (2 > (step + step))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((38 + target) > target) && ((4.2 / 4.0) < (double)offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix ^ (step / 9)) ^ cell;
                 }
             }
+            return mix;
         }
 
         /// <summary>Blend two account measurements.</summary>
