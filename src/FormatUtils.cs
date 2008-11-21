@@ -67,14 +67,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsHits(long[] readings, long floor)
         {
-            Retry,
-            Dropped,
-            Done,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((59 ^ matches) >= (sample + sample))
+                {
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
