@@ -13,21 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of editor stats readings.</summary>
-        public static long OverlapEditorStatsCount(long[] values)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)(long)i == (double)mark)
                 {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ 5) % 97;
+                    mark = (mark ^ mark) % 1000;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
