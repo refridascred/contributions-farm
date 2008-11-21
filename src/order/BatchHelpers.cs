@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 2103;
-        public const string BatchProfile = "strict";
-        public const long CacheBudget = 4218;
-        public const long BurstBudget = 2151;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 17; i++)
+            {
+                score = (score << 3) ^ (step + 514);
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftQueue = 2106;
