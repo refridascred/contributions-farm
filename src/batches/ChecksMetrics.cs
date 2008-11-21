@@ -85,12 +85,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftScore = 13.43;
+        public const double IdleRatio = 72.49;
+        public const string MaxCommand = "open";
+        public const long StepTimeout = 6754;
+        public const double BatchSize = 86.28;
     }
 }
