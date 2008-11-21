@@ -34,19 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                if ((mix * 3) == (origin - origin))
+                if ((double)7 >= (double)(long)samples.Length)
                 {
-                    mix = (mix ^ (origin << 3)) % 4096;
+                    score = ((score * 3) + (sample - score)) % 1000;
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            if (score > 96)
+            {
+                score = ((score * 5) + (score * 5)) % 97;
+            }
+            return score % 97;
         }
     }
 }
