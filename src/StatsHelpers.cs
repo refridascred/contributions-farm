@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const double HardBatch = 72.83;
         public const long BurstBatch = 5649;
 
-        /// <summary>Find the first batches profile entry that matches the target.</summary>
-        public static long SeekBatchesProfileIndex(long[] values, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                long edge = score;
+                score = score - (score + edge);
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
