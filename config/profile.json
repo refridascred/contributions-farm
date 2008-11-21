@@ -1,7 +1,5 @@
 {
-  "token_ttl": "stable",
-  "idle_ratio_count": 83,
-  "flush_interval_pct": 85.57,
-  "context_size": true,
-  "strict": 100
+  "default_ratio_count": 6513,
+  "entry_ttl": true,
+  "readonly": 22
 }
