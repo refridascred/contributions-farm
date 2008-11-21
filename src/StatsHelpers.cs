@@ -44,19 +44,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a schema commits reading.</summary>
-        public static double ScaleSchemaCommits(double ratio, double bias)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double load = bias;
-            if (load <= load)
-            {
-                load = load - (load / 7.0);
-            }
-            else
-            {
-                load = load - ratio;
-            }
-            return load - ratio;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Match up buffer samples.</summary>
