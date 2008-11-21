@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate queue samples.</summary>
