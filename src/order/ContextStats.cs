@@ -38,11 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstInterval = 8918;
-        public const double MinEntry = 62.37;
-        public const long WindowEntry = 8010;
-        public const string BurstEntry = "cached-1";
-        public const double IdleEntry = 65.98;
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double weight, double offset)
+        {
+            double rate = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + rate;
+        }
     }
 }
