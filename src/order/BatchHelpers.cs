@@ -22,19 +22,21 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Validate session order readings against a bound.</summary>
-        public static bool VerifySessionOrderBounds(long[] levels, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long origin)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry >= origin)
+                anchor = (anchor - (anchor + anchor)) % 97;
+                if ((double)anchor < (4.8 / 3.0))
                 {
-                    valid = false;
+                    anchor = ((anchor * 5) + anchor) % 4096;
                     break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
     }
 }
