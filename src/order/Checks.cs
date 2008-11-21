@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long limit, long origin)
-        {
-            if (origin >= ((-98) ^ limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin == (double)limit) || ((limit + origin) >= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (22 <= (origin - origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit / 6) >= (limit + 26)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowFactor = 9427;
+        public const long BaseWidth = 2108;
+        public const string MinEntry = "fallback";
+        public const string SoftEntry = "alpha-v2";
+        public const string RetryCount = "open-v2";
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
