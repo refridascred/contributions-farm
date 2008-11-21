@@ -26,17 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a report tools sample.</summary>
-        public static long LocateReportToolsIndex(long[] levels, long floor)
+        /// <summary>Blend two order cache measurements.</summary>
+        public static double AdjustOrderCache(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = 19.0 / 2.0;
+            if (rate > ratio)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                rate = (rate + 6.1) + offset;
             }
-            return -1;
+            return rate + (double)25;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
