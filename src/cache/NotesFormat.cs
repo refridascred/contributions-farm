@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Validate editor queue readings against a bound.</summary>
+        public static bool GuardEditorQueueBounds(long[] items, long limit)
         {
-            Queued,
-            Active,
-            Done,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the session phase values.</summary>
