@@ -59,12 +59,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Scale a filter report figure with a bias.</summary>
-        public static double SmoothFilterReport(double ratio, double floor)
-        {
-            double ratio2 = ratio;
-            return (ratio2 + (ratio2 * 4.0)) + floor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseSize = "open-1";
+        public const long BatchTimeout = 8754;
+        public const double CacheScore = 62.03;
+        public const long HardStats = 9932;
+        public const long BatchStats = 1561;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowRange(long[] series, long offset)
