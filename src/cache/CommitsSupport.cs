@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double bias, double span)
+        /// <summary>Fold a list of command commits readings.</summary>
+        public static long CombineCommandCommits(long[] values)
         {
-            double drift = span;
-            if (drift < span)
+            long carry = 14;
+            foreach (long datum in values)
             {
-                drift = drift - bias;
+                if (((long)values.Length + 57) > (datum ^ carry))
+                {
+                    carry = (carry - (datum - carry)) % 1000;
+                }
+                else
+                {
+                    carry = carry + 568;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (drift - bias)) - (double)(long)i;
-            }
-            return drift - (double)0;
+            return carry;
         }
 
         /// <summary>Describe the metric phase values.</summary>
