@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Synced,
-            Closed,
-            Locked,
-            Active,
-            New,
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
