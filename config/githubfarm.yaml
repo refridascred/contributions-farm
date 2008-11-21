@@ -1,26 +1,22 @@
 # githubfarm settings
-verbose:
-  idle_ratio:
-    - 196
-    - 337
-    - 399
-    - 457
-  report_retries: 1024
-  soft_size_ms: green
+retry_threshold_ms:
+  poll_window_s:
+    enabled:
+      - 12
+      - 112
+    dry_run: 20.33
+    cache_capacity: 17
+    audit: stable
   strict:
-    enabled: edge
-    batch_retries: staging
-    base_interval: 1024
-    buffer_retries: true
-    report_ratio: eu-west
-    metric_ttl: 89
-idle_interval_count:
-  - staging
-  - blue
-  - latest
-flush_interval: 8529
-queue_retries:
-  - 93
+    githubfarm_timeout: 74.75
+    strict: 91
+    min_retries: 63
+    farm_interval: 72
+  burst_delay: 1024
+  hard_depth_pct: 100
+  soft_depth_count: 30
+buffer_timeout: true
+enabled:
   - 158
-  - 118
-  - 194
+  - 487
+  - 330
