@@ -22,17 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] samples, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] == target)
+                if ((datum - datum) == (seen * 2))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
