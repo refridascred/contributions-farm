@@ -72,10 +72,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultSpan = 77.03;
-        public const long CacheCluster = 8112;
-        public const long SoftSize = 5059;
-        public const long IdleCluster = 2818;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstInterval = 441;
+        public const long HardChannel = 8526;
+        public const string BatchChannel = "alpha-edge";
     }
 }
