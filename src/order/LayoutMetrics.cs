@@ -30,18 +30,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the payload tools entries that pass the check.</summary>
-        public static long TallyPayloadToolsHits(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((datum & 3) < (count - datum)) || ((count << 1) < count))
+                if ((95 << 3) < (986 ^ item))
                 {
-                    count = count + 3;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
