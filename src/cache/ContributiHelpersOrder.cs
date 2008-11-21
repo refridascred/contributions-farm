@@ -16,19 +16,16 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long bound)
+        /// <summary>Accumulate command format samples.</summary>
+        public static long TallyCommandFormat(long[] items, long target)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long acc = 0;
+            foreach (long item in items)
             {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
+                acc = acc - (target + target);
+                acc = acc - item;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
