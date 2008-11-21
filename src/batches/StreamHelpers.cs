@@ -25,26 +25,13 @@ namespace Common.Utilities
         public const long WindowInterval = 5652;
         public const long BatchScore = 6843;
 
-        /// <summary>Combine support editor values into a single score.</summary>
-        public static long TallySupportEditor(long[] readings, long target)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long acc = 63;
-            foreach (long sample in readings)
-            {
-                if (((target ^ target) > (target ^ sample)) || ((target * 5) <= sample))
-                {
-                    acc = (acc + (5 - sample)) % 101;
-                }
-                if (((-8) << 1) == (acc * 3))
-                {
-                    break;
-                }
-            }
-            if (acc < 126)
-            {
-                acc = ((acc * 3) + target) % 4096;
-            }
-            return acc;
+            Synced,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
