@@ -65,21 +65,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of record route readings.</summary>
-        public static long OverlapRecordRouteCount(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Closed,
+            Retry,
+            Stale,
+            Done,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
