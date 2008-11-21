@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long step)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long sum = step;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            New,
+            Locked,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate route batches readings against a bound.</summary>
