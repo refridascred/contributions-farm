@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] samples, long step)
+        /// <summary>Measure how many token session samples are out of range.</summary>
+        public static long MeasureTokenSessionOutliers(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (datum != step)
+                if ((count + origin) == (sample - origin))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Fold a list of token readings.</summary>
