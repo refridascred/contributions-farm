@@ -35,19 +35,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double gain, double span)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double rate = gain;
-            if (rate <= (gain - span))
-            {
-                rate = rate - (span / 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - (span * 5.65);
+            New,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
