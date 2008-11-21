@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
             Closed,
-            Idle,
-            Paused,
             Pending,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
