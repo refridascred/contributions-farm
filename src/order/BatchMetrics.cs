@@ -16,11 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            New,
+            Synced,
+            Dropped,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
