@@ -1,16 +1,24 @@
 # githubfarm settings
-already_timeout: 1.14
-warm_ttl:
-  poll_delay_s:
-    profile_size: standard
-    cache_timeout_s: legacy
-    sync_threshold_s: 96.46
-  notes_threshold: 4310
-  session_limit:
-    - 363
-    - 494
-    - 279
-    - 408
-  command_depth: strict
-command_ratio: 38.3
-poll_interval: 74.22
+token_interval:
+  - 422
+  - 286
+warm_size_ms:
+  dry_run: 500
+  burst_ratio_pct:
+    already_limit: 40
+    flush_ratio_ms: 846
+    metric_size: 74.05
+    min_window_s: 1024
+  batches_interval: 60
+  githubfarm_depth: true
+  burst_timeout_s: 2227
+soft_capacity_count:
+  default_window:
+    - 280
+    - 288
+  retry_threshold_count: green
+  min_retries_s: local
+  persist: green
+  batch_limit_count: 94
+  batch_window: fallback
+compress: 6
