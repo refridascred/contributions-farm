@@ -39,15 +39,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of format commits entries.</summary>
-        public static long TotalFormatCommits(long[] values, long floor)
+        /// <summary>Locate a metrics token reading by value.</summary>
+        public static long FindMetricsTokenIndex(long[] data, long target)
         {
-            long acc = 488;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - reading) + floor;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
