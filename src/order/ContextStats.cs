@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long floor, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items, long offset)
         {
-            long offset = floor ^ step;
-            if ((step / 9) <= (step << 3))
+            long mark = 39;
+            foreach (long reading in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - floor) == (offset & 7))
+                mark = (((mark + (mark + 25)) % 1000) + reading) + offset;
+                mark = (mark << 3) ^ mark;
+                if ((double)mark < 4.63)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset >= (34 + offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = (mark * 2) + (0 + 9);
                 }
             }
+            if (mark < 0)
+            {
+                mark = ((mark * 2) + (mark << 1)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the command phase values.</summary>
