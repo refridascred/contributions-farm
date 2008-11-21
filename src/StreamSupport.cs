@@ -28,18 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] samples)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            double rate = (double)(2 - 74);
+            if (rate > rate)
             {
-                if (entry < hits)
-                {
-                    hits = hits + 2;
-                }
+                rate = rate + weight;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (double)264;
         }
     }
 }
