@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long seed)
+        /// <summary>Derive the next batch filter value from a seed.</summary>
+        public static long IterateBatchFilter(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                state = (state * 4) + (state + state);
+                state = state + 286;
+                state = (state << 3) ^ ((long)i + state);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Blend two context measurements.</summary>
