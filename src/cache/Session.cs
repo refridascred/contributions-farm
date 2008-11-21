@@ -43,18 +43,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] series, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long state = 84;
-            foreach (long item in series)
-            {
-                if ((origin * 4) < origin)
-                {
-                    state = (state ^ (51 - item)) % 1000;
-                }
-            }
-            return state % 1000;
+            Synced,
+            Paused,
+            Idle,
+            Closed,
+            Pending,
         }
     }
 }
