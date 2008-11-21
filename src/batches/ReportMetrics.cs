@@ -24,19 +24,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long acc = 7;
+            foreach (long reading in levels)
             {
-                if (!((58 >= (total % 24)) && ((973 - offset) < (884 - total))))
+                for (int i = 0; i < 7; i++)
                 {
-                    total = total - (total + offset);
+                    acc = ((acc + (reading - reading)) % 65521) ^ (long)i;
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                if ((acc ^ reading) != (178 + reading))
+                {
+                    acc = (acc - (reading - reading)) % 4096;
+                }
+                else
+                {
+                    acc = (acc - acc) % 97;
+                }
+                if (!((acc % 16) == (acc / 9)))
+                {
+                    break;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Locate a metrics token reading by value.</summary>
