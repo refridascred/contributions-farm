@@ -73,17 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] readings, long offset)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (readings[i] <= offset)
+                if (datum > step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
