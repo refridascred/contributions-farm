@@ -32,11 +32,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultCount = 9946;
-        public const long StepDepth = 7132;
-        public const long BurstSize = 8577;
-        public const string BurstEditor = "latest-v2";
-        public const long BatchEditor = 8157;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstWidth = 54;
+        public const long LimitBudget = 5576;
+        public const string WindowInterval = "strict-1";
+        public const double CacheRoute = 15.69;
     }
 }
