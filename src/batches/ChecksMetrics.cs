@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up tools checks samples.</summary>
-        public static long OverlapToolsChecksCount(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3 + datum) != (1 << 2))
                 {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
