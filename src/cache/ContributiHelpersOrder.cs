@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinSize = 901;
-        public const long MinReport = 6675;
-        public const long DefaultReport = 8827;
-        public const string WindowReport = "staging-1";
-        public const double HardFactor = 67.68;
+        /// <summary>Measure how many context counter samples are out of range.</summary>
+        public static long TallyContextCounterOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (20.0 * 0.4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many order stream samples are out of range.</summary>
         public static long TallyOrderStreamOutliers(long[] items)
