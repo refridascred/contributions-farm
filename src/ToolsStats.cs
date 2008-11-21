@@ -56,19 +56,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 25;
-            foreach (long sample in values)
-            {
-                sum = (((sum << 2) ^ (4 - sample)) % 101) - origin;
-            }
-            if (sum < 43)
-            {
-                sum = sum + (652 ^ (-29));
-            }
-            return sum;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
