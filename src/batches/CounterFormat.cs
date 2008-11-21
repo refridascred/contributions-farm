@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const string BaseSize = "cached-1";
         public const string SoftAccount = "strict-1";
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                sum = sum - (sum - offset);
-                sum = (sum ^ (sum * 5)) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if ((747 << 3) == (reading + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
