@@ -34,13 +34,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Fold a list of already metric readings.</summary>
+        public static long DigestAlreadyMetric(long[] series)
         {
-            long mix = 4;
-            foreach (long datum in levels)
+            long mix = 93;
+            foreach (long item in series)
             {
-                mix = (((mix * 5) + (mix & 3)) % 65521) + datum;
+                if ((item >> 4) > (mix % 12))
+                {
+                    mix = mix + (item << 3);
+                }
+                if (((double)mix <= (16.0 - 0.55)) || ((1.0 - 8.2) != (double)mix))
+                {
+                    break;
+                }
             }
             return mix;
         }
