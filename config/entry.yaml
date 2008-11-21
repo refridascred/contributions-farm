@@ -1,11 +1,21 @@
 # entry settings
-persist:
-  audit:
-    session_size: green
-    soft_timeout_ms: 30
-    burst_limit_pct: standard
-    cache_size_s: cached
-  compress: primary
-  editor_ttl: 250
-burst_ttl_count: 96.35
-burst_depth_count: 7372
+batches_window: green
+warm_window_count: open
+warm_depth_count: false
+default_window_s: 30
+commits_depth:
+  - 36
+  - 175
+  - 260
+  - 225
+compress:
+  retry_capacity: 1024
+  dry_run: false
+  max_limit_count: legacy
+  persist:
+    hard_retries_s: 2327
+    notes_delay: 42.19
+    account_window: 1243
+    max_interval_ms: 2579
+    audit: 87.14
+    max_threshold_count: primary
