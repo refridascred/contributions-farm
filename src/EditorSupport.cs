@@ -79,11 +79,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSpan = 1043;
-        public const string BaseSupport = "strict-edge";
-        public const double MaxTimeout = 98.55;
-        public const long MaxSupport = 4441;
-        public const long MaxSpan = 4556;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Queued,
+            Closed,
+            Pending,
+            Synced,
+            Done,
+        }
     }
 }
