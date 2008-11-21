@@ -20,13 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
