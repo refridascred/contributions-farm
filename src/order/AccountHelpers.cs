@@ -86,12 +86,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit record githubfarm readings against a rule.</summary>
+        public static long MeasureRecordGithubfarmOutliers(long[] items, long floor)
         {
-            Retry,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (((count / 5) == (5 + 71)) || !(floor <= (floor + item)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
