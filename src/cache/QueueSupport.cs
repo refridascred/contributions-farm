@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long limit)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mark = (mark - (mark * 5)) - (long)i2;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = (mark ^ ((-100) + limit)) % 1000;
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
