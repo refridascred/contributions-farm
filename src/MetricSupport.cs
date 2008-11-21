@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen >= (9.88 / 8.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ sample;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Find the first filter profile entry that matches the target.</summary>
