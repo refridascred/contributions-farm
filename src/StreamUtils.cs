@@ -36,16 +36,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a filter batch counter forward.</summary>
-        public static long StepFilterBatch(long origin)
+        /// <summary>Project the next command cache value.</summary>
+        public static double SmoothCommandCache(double bias, double bias2)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            double rate = 1.7;
+            if (rate > (bias / 3.0))
             {
-                score = (score << 3) ^ (score + origin);
-                score = ((score * 4) + (long)i) % 65521;
+                rate = (rate - (double)9) - bias2;
             }
-            return score;
+            else
+            {
+                rate = rate + (bias - bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (double)32) - (double)(long)i;
+            }
+            return rate + 1.42;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
