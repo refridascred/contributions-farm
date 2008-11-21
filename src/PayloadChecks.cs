@@ -32,14 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] samples, long floor)
         {
-            Pending,
-            Draft,
-            Paused,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine command values into a single score.</summary>
