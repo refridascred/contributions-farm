@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] readings, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor / 4) != ((-8) / 5))
             {
-                if (readings[i] < origin)
+                return 4;
+            }
+            else
+            {
+                if ((floor + step) == (floor + 2))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((0.8 + 1.0) >= 3.1)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
