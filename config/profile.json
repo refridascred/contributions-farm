@@ -1,21 +1,6 @@
 {
-  "max_window_s": false,
-  "sync_ratio": 3,
-  "retry_threshold": {
-    "hard_retries": {
-      "warm_ttl": true,
-      "queue_interval": "legacy",
-      "checks_ttl": "edge",
-      "flush_limit": 57.48,
-      "cache_size": [13, 59, 464, 495],
-      "enabled": 8875
-    },
-    "retry_retries_ms": "latest",
-    "poll_delay": 56,
-    "poll_ttl_s": ["blue", "local"],
-    "channel_delay": 55.39,
-    "poll_threshold_s": [336, 81]
-  },
-  "sync_capacity_s": 3941,
-  "strict": "cached"
+  "persist": "green",
+  "poll_delay_ms": 60,
+  "graph_depth": true,
+  "soft_ttl_s": true
 }
