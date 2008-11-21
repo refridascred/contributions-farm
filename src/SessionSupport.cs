@@ -42,13 +42,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values)
         {
-            Pending,
-            Active,
-            Idle,
-            Retry,
+            long carry = 1;
+            foreach (long value in values)
+            {
+                carry = carry + (value ^ carry);
+            }
+            return carry % 97;
         }
     }
 }
