@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Validate layout notes readings against a bound.</summary>
+        public static bool CheckLayoutNotesBounds(long[] series, long target)
         {
-            Queued,
-            Done,
-            Stale,
-            Failed,
-            Paused,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank channel input into a small class.</summary>
