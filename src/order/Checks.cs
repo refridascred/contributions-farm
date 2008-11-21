@@ -63,22 +63,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] series, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally % 100) <= (floor - floor))
-                {
-                    tally = (tally + 2) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
