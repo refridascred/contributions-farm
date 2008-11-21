@@ -15,12 +15,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long seed, long offset)
         {
-            Stale,
-            Idle,
-            Failed,
+            long cur = seed + offset;
+            if (((offset + seed) == (cur + seed)) && (offset > (cur / 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(60 <= cur))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the order level values.</summary>
