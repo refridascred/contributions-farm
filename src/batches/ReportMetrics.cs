@@ -29,15 +29,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long offset)
         {
-            double mean = (double)(539 + (-83));
-            if (mean < weight)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                mean = (mean - weight) - bias;
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean - (mean - 3.0);
+            return found;
         }
     }
 }
