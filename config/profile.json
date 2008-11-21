@@ -1,7 +1,24 @@
 {
-  "verbose": "legacy",
-  "compress": 89.75,
-  "enabled": false,
-  "readonly": "primary",
-  "batch_window_s": 1576
+  "idle_delay_ms": 84,
+  "batch_ratio": "standard",
+  "idle_depth": "standard",
+  "persist": {
+    "persist": 30,
+    "warm_window": {
+      "notes_depth": true,
+      "hard_capacity_count": 22.2,
+      "burst_threshold_count": "blue"
+    },
+    "warm_depth_pct": false,
+    "burst_timeout_ms": ["eu-west", "standard", "latest"]
+  },
+  "route_capacity": {
+    "channel_timeout": 95,
+    "batch_threshold": 1622,
+    "tools_depth": true,
+    "cache_window_pct": 1024,
+    "hard_retries_count": "legacy",
+    "flush_timeout_ms": 47.43
+  },
+  "strict": 30
 }
