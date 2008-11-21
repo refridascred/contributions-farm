@@ -16,12 +16,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] series, long limit)
         {
-            Failed,
-            Retry,
-            Queued,
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
