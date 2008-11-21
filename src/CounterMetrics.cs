@@ -24,21 +24,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total * 4) + (total + 128);
-                if ((double)total > (6.0 - 3.7))
-                {
-                    total = ((total * 2) + (total % 16)) % 65521;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
