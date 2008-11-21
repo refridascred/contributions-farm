@@ -44,24 +44,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values)
         {
-            if (((double)offset >= (double)floor) && ((63 + floor) != (offset << 3)))
+            long state = 23;
+            foreach (long datum in values)
             {
-                return 1;
+                state = state + datum;
             }
-            else
-            {
-                if ((offset >> 2) >= 1)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
     }
 }
