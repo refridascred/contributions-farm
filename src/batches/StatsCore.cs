@@ -43,12 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] samples, long origin)
         {
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-            public string Label { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token mode values.</summary>
