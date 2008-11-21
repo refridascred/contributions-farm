@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Locked,
-            Queued,
-            Closed,
+            public double Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Project the next cache value.</summary>
