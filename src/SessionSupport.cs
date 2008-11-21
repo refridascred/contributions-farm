@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] series, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double ratio = (offset - rate) / 4.0;
+            if (ratio < (rate + rate))
             {
-                if ((item - matches) < 34)
-                {
-                    matches = (matches + 1) + target;
-                }
+                ratio = ratio - (rate + ratio);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio / 6.0)) + (double)(long)i;
+            }
+            return ratio - (offset + 5.0);
         }
 
         /// <summary>Describe the contributi status values.</summary>
