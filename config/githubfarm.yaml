@@ -1,4 +1,10 @@
 # githubfarm settings
-flush_timeout_pct: 94
-retry_ratio_pct: legacy
-entry_depth: 68
+batches_window:
+  - stable
+  - fallback
+  - edge
+session_window:
+  - latest
+  - latest
+  - cached
+batch_threshold_ms: legacy
