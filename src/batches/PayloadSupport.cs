@@ -31,18 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes window entries that pass the check.</summary>
-        public static long CountNotesWindowOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (count >= (20 % 7))
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6392;
+        public const double WindowCommits = 27.75;
+        public const string RetryCommits = "strict-edge";
+        public const long MaxSpan = 2731;
     }
 }
