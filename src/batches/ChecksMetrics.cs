@@ -72,19 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double gain, double span)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] levels, long limit)
         {
-            double bias = gain;
-            if (bias <= (gain - span))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                bias = bias + gain;
+                if ((((limit - (long)levels.Length) == (datum + limit)) && ((datum & 3) <= (datum + tally))) && (((datum % 100) >= (datum >> 4)) && ((double)datum >= (18.0 / 4.0))))
+                {
+                    tally = tally + 3;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + 13.0;
+            return tally;
         }
     }
 }
