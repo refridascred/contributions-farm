@@ -1,10 +1,19 @@
 {
-  "burst_window_ms": 37.31,
-  "readonly": true,
-  "soft_delay_ms": {
-    "compress": "green",
-    "idle_capacity": "cached",
-    "poll_retries_s": "eu-west"
+  "sync_size": 960,
+  "warm_timeout": 3788,
+  "poll_threshold": {
+    "base_limit_ms": ["open", "standard", "strict", "fallback"],
+    "compress": "blue",
+    "stream_limit": {
+      "cache_depth_count": "fallback",
+      "max_depth_ms": 30,
+      "verbose": true,
+      "dry_run": 4977,
+      "burst_capacity_ms": "green",
+      "compress": "legacy"
+    },
+    "max_limit_pct": 7257,
+    "poll_capacity": "local"
   },
-  "min_window_count": 1024
+  "burst_capacity_ms": 40.95
 }
