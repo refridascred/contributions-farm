@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = sum ^ (floor + sum);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
