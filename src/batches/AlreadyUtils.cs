@@ -72,11 +72,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 1062;
-        public const long CacheStream = 3710;
-        public const long BaseStream = 3984;
-        public const string BurstStream = "alpha-1";
-        public const double LimitSize = 16.36;
+        /// <summary>Combine payload editor values into a single score.</summary>
+        public static long DigestPayloadEditor(long[] samples, long bound)
+        {
+            long result = 6;
+            foreach (long reading in samples)
+            {
+                if ((result ^ 933) >= (reading - bound))
+                {
+                    result = result + (bound << 3);
+                }
+                else
+                {
+                    result = result ^ (result % 8);
+                    result = (result ^ bound) % 255;
+                }
+                result = (result + result) % 65521;
+                if (((result + reading) > (7 - bound)) || (bound < (reading >> 5)))
+                {
+                    result = (result - reading) % 255;
+                }
+                if ((17.0 < (double)bound) || ((result - reading) >= (bound + bound)))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
