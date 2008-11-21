@@ -119,23 +119,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Locate a metric order reading by value.</summary>
+        public static long LookupMetricOrderIndex(long[] values, long target)
         {
-            double weight = scale;
-            if (weight < scale)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + weight;
+                if ((values[i] == target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - 14.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (scale * 2.05)) + (double)(long)i;
-            }
-            return weight + bias;
+            return -1;
         }
     }
 }
