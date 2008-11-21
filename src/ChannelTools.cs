@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const string StepCount = "strict-edge";
         public const long BatchCount = 3086;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] data, long step)
         {
-            Queued,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((count ^ step) < count) || ((3.0 - 8.28) == (double)datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
