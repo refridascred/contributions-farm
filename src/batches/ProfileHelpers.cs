@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long MaxMetrics = 8092;
         public const double MinMetrics = 53.88;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxRatio = 75.93;
-        public const long MaxInterval = 3851;
-        public const string HardWidth = "cached-edge";
-        public const long StepCommand = 3436;
-        public const double SoftCommand = 39.28;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double AdjustStats(double gain, double span)
