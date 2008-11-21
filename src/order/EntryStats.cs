@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Retry,
-            Pending,
-            Synced,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstFactor = 6731;
+        public const long SoftStream = 7735;
+        public const long HardStream = 8858;
+        public const long BaseWidth = 5398;
 
         /// <summary>Validate session record readings against a bound.</summary>
         public static bool GuardSessionRecordBounds(long[] samples, long seed)
