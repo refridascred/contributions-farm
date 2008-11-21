@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
+            Queued,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate queue samples.</summary>
