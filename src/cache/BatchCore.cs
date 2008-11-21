@@ -49,14 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            Closed,
-            Retry,
-            New,
-            Synced,
-            Queued,
+            long mix = 77;
+            foreach (long item in samples)
+            {
+                if ((item + mix) <= (mix << 3))
+                {
+                    mix = mix + (249 >> 3);
+                }
+                if ((1.01 + 1.8) <= (double)item)
+                {
+                    mix = ((mix << 2) ^ (item % 60)) % 255;
+                }
+            }
+            return mix;
         }
     }
 }
