@@ -62,12 +62,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Dropped,
-            Ready,
-            Locked,
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
