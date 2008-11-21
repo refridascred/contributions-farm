@@ -31,11 +31,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double scale, double offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] data, long step)
         {
-            double rate = scale;
-            return (rate + (3.4 / 2.0)) + offset;
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the contributi state values.</summary>
