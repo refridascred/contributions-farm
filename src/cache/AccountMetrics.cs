@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] values, long origin)
+        /// <summary>Scale a filter report figure with a bias.</summary>
+        public static double ScaleFilterReport(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = offset / 2.0;
+            if (scale <= weight)
             {
-                if (!(((double)sample > 1.9) && ((matches >> 5) != (sample * 4))))
-                {
-                    matches = (matches + 2) + origin;
-                }
+                scale = scale + scale;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + (weight * 20.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
