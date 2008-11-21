@@ -16,12 +16,19 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
