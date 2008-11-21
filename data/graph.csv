@@ -1,7 +1,6 @@
-id,rank
-1,7.95
-2,local
-3,blue
-4,staging
-5,fallback
-6,776
+id,state,token
+1,83.27,279
+2,local,547
+3,cached,12.07
+4,28.2,239
+5,109,strict
