@@ -29,38 +29,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long origin)
+        /// <summary>Count cache tools pairs that satisfy a relation.</summary>
+        public static long PairCacheToolsCount(long[] data)
         {
-            if ((double)264 <= (double)offset)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((6.0 - 6.1) <= (double)origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (1.7 <= (double)offset)
+                    if ((data[i] ^ data[j]) < 11)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin & 127) <= (origin + origin))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the graph command entries that pass the check.</summary>
