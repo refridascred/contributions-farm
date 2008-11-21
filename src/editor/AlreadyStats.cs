@@ -42,14 +42,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long target, long limit)
         {
-            Paused,
-            Active,
-            Closed,
-            Dropped,
-            Pending,
+            if ((588 - target) <= limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit - 673) <= (2 / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (54 <= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((1.7 + 2.83) >= (double)target) || (limit <= (7 - limit)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
