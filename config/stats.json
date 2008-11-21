@@ -1,27 +1,6 @@
 {
-  "readonly": {
-    "persist": [485, 197, 302, 488],
-    "queue_size": [297, 244, 409],
-    "min_capacity_pct": {
-      "min_ratio": false,
-      "record_timeout": ["primary", "stable"],
-      "persist": [219, 425, 2, 150],
-      "hard_ttl": ["staging", "green", "edge", "strict"]
-    }
-  },
-  "token_interval": 8.61,
-  "warm_ratio": ["open", "eu-west"],
-  "idle_retries_pct": {
-    "min_delay_s": true,
-    "max_depth": "stable",
-    "soft_delay": "latest",
-    "checks_depth": 100,
-    "soft_retries_s": [259, 473, 197, 492]
-  },
-  "record_ratio": {
-    "warm_interval_count": 500,
-    "warm_timeout_pct": true,
-    "enabled": false
-  },
-  "max_capacity_pct": "fallback"
+  "context_depth": 89.72,
+  "default_limit_pct": 3954,
+  "burst_interval_count": "legacy",
+  "audit": true
 }
