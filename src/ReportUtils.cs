@@ -23,12 +23,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Paused,
-            Locked,
+            Dropped,
+            Retry,
             Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
