@@ -41,13 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!!(347 >= ((long)i * 3)))
+                {
+                    state = (state - (seed << 1)) % 101;
+                }
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of command entries.</summary>
