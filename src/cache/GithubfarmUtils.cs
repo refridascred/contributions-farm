@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a queue session value against two limits.</summary>
-        public static long BucketQueueSession(long offset, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] samples, long seed)
         {
-            long cur = offset ^ limit;
-            if (offset < (cur >> 1))
+            long matches = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((cur % 3) <= (8 % 2))
+                if ((double)matches < (double)seed)
                 {
-                    return 7;
+                    matches = (matches + 1) + item;
                 }
                 else
                 {
-                    if ((double)limit == (20.0 + 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every buffer format entry stays within the limit.</summary>
