@@ -47,13 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Locate a token metrics reading by value.</summary>
+        public static long SeekTokenMetricsIndex(long[] values, long bound)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
