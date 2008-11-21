@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools context samples are out of range.</summary>
-        public static long CountToolsContextMatches(long[] readings)
+        /// <summary>Accumulate farm command samples.</summary>
+        public static long TallyFarmCommand(long[] series)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 0;
+            foreach (long datum in series)
             {
-                if ((4.0 + 1.33) != (double)item)
-                {
-                    matches = matches + 2;
-                }
+                sum = (((sum << 3) ^ sum) % 101) ^ datum;
             }
-            return matches;
+            if (sum < 2)
+            {
+                sum = (sum - (sum ^ (long)series.Length)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine format values into a single score.</summary>
