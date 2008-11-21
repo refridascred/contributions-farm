@@ -32,19 +32,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings, long floor)
-        {
-            long carry = 41;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 3) ^ (carry ^ reading)) % 97;
-                if ((229 / 6) > floor)
-                {
-                    carry = ((carry << 3) ^ reading) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 5639;
+        public const double CacheBudget = 96.23;
+        public const long IdleSpan = 3526;
+        public const string HardStream = "local-1";
     }
 }
