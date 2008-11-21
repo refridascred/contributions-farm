@@ -19,20 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long floor, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 22; i++)
+            if ((double)origin <= (2.3 + 12.0))
             {
-                score = ((score * 5) + (score + score)) % 101;
-                if ((score ^ origin) < (origin - origin))
-                {
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)origin > (4.29 + 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - 97) <= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((7.36 * 0.9) > (double)floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer header.</summary>
