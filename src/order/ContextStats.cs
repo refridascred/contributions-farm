@@ -12,22 +12,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] readings, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((count - datum) <= (datum ^ floor))
+                if ((sample < floor) || !((1.0 / 6.0) < (double)floor))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
