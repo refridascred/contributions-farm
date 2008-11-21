@@ -47,13 +47,20 @@ namespace Common.Utilities
             return scale + offset;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long state = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)limit == (17.0 + 3.5))
+                {
+                    state = state + (long)i;
+                    state = (state + (long)i) % 97;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
