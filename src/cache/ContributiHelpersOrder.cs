@@ -19,26 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the queue batch series from a seed.</summary>
-        public static long StepQueueBatch(long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((seed ^ seed) == (seed - seed))
+                if (seen >= (step / 6))
                 {
-                    break;
+                    seen = (seen + 2) ^ value;
                 }
-                acc = ((acc << 3) ^ ((-23) % 64)) % 4096;
-                if ((acc % 24) > (acc * 4))
-                {
-                    acc = acc - seed;
-                    acc = ((acc * 2) + acc) % 4096;
-                    break;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
