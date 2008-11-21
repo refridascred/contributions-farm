@@ -49,11 +49,26 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate record command samples.</summary>
+        public static long CombineRecordCommand(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            long mark = 53;
+            foreach (long value in items)
+            {
+                if ((floor + mark) >= value)
+                {
+                    mark = ((mark * 5) + floor) % 1000;
+                }
+                else
+                {
+                    mark = mark - floor;
+                }
+            }
+            if (mark > 85)
+            {
+                mark = mark ^ ((-763) + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
