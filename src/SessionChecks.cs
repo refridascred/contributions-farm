@@ -30,16 +30,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 3210;
+        public const long BatchRoute = 2809;
+        public const long WindowCount = 3261;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
