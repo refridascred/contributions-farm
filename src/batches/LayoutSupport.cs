@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long floor)
         {
-            Retry,
-            New,
-            Locked,
-            Ready,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate route batches readings against a bound.</summary>
