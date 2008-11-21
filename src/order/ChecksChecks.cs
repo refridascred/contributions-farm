@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double gain, double floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            double gain2 = floor * 7.58;
-            if (gain2 < (double)6)
-            {
-                gain2 = gain2 + (gain2 - gain);
-            }
-            else
-            {
-                gain2 = gain2 + (gain2 - gain2);
-            }
-            return gain2 + gain2;
+            Pending,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Fold a list of context readings.</summary>
