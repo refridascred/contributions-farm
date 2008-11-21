@@ -1,5 +1,11 @@
 {
-  "burst_interval_s": "green",
-  "strict": ["stable", "cached", "green", "staging"],
-  "flush_capacity_ms": "edge"
+  "idle_limit_ms": false,
+  "flush_delay_pct": 41.88,
+  "cache_depth": {
+    "payload_size": "green",
+    "cache_retries": "green",
+    "default_depth_s": true
+  },
+  "persist": 79.27,
+  "verbose": ["local", "strict", "stable", "green"]
 }
