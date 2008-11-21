@@ -66,19 +66,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] levels, long origin)
+        /// <summary>Combine command stats values into a single score.</summary>
+        public static long ScoreCommandStats(long[] items)
         {
-            long acc = 6;
-            foreach (long entry in levels)
+            long score = 440;
+            foreach (long reading in items)
             {
-                acc = ((acc + 43) % 101) + entry;
-                if ((7.0 * 7.5) > (double)origin)
-                {
-                    break;
-                }
+                score = score + (reading >> 2);
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
