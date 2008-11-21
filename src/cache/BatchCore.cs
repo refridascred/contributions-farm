@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double load = rate;
-            if (load < offset)
-            {
-                load = load - offset;
-            }
-            return load + (7.07 * 9.56);
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
