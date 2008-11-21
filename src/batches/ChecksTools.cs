@@ -31,18 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first already metric entry that matches the target.</summary>
-        public static long LocateAlreadyMetricIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "fallback-v2";
+        public const double MinContext = 66.7;
+        public const string LimitInterval = "fallback-1";
+        public const string RetryContext = "strict-1";
+        public const string CacheContext = "open-v2";
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] series)
