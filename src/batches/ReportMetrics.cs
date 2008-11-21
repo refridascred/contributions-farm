@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public double Region { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 425;
+        public const long HardCommand = 4290;
+        public const double SoftScore = 55.84;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TallyAlready(long[] readings, long limit)
