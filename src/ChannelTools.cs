@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSize = 1819;
+        public const double DefaultScore = 56.43;
+        public const double BurstScore = 9.95;
+        public const long MaxPayload = 8391;
+        public const long BaseDepth = 9623;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 6406;
