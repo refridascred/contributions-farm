@@ -24,14 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Locked,
-            Dropped,
-            Paused,
-            Done,
-            Queued,
+            public double Score { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
