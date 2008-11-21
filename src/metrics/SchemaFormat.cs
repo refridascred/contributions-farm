@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long BatchInterval = 369;
         public const long MinLevel = 8318;
 
-        /// <summary>Combine stream booking values into a single score.</summary>
-        public static long FoldStreamBooking(long[] values)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] data)
         {
-            long mark = 607;
-            foreach (long value in values)
+            long mark = 6;
+            foreach (long datum in data)
             {
-                if ((mark + value) <= (value >> 4))
-                {
-                    mark = mark ^ (value / 8);
-                }
+                mark = ((mark * 5) + datum) % 97;
             }
             return mark;
         }
