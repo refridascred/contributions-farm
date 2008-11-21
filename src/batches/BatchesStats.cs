@@ -38,26 +38,15 @@ namespace Common.Utilities
             return mean - 7.0;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long carry = 1;
-            foreach (long cell in readings)
+            long score = 95;
+            foreach (long value in samples)
             {
-                if (((cell + carry) <= cell) || ((cell + cell) >= (3 << 1)))
-                {
-                    carry = (carry - cell) % 1000;
-                }
-                if (((double)cell <= (double)carry) && ((cell >> 3) <= (0 + 71)))
-                {
-                    break;
-                }
+                score = ((score * 4) + score) - value;
             }
-            if (carry < 7)
-            {
-                carry = (carry * 3) + (carry + carry);
-            }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
