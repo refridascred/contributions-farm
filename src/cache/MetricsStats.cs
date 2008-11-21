@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardPayload = "local-edge";
-        public const long BurstPayload = 3082;
-        public const double BasePayload = 58.25;
-        public const long DefaultPayload = 6077;
-        public const string MaxPayload = "cached-v2";
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Active,
+            Stale,
+            Queued,
+            New,
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long origin)
