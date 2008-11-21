@@ -20,26 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long offset)
-        {
-            long cur = seed + offset;
-            if (((offset + seed) == (cur + seed)) && (offset > (cur / 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(60 <= cur))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 132;
+        public const string MinTimeout = "open-1";
+        public const long MinTools = 4125;
+        public const double RetryBudget = 79.46;
+        public const long StepRatio = 2995;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
