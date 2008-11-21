@@ -30,23 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch schema reading.</summary>
-        public static double ProjectBatchSchema(double bias, double floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            double gain = bias;
-            if (gain > (double)358)
-            {
-                gain = gain + floor;
-            }
-            else
-            {
-                gain = gain - (double)7;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)4) + (double)(long)i;
-            }
-            return gain + (6.2 * 1.9);
+            Failed,
+            Locked,
+            New,
+            Stale,
         }
     }
 }
