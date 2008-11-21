@@ -1,7 +1,7 @@
 {
-  "warm_threshold": 23.32,
-  "min_ratio_ms": true,
-  "min_delay_s": true,
-  "tools_retries": true,
-  "min_ttl_pct": "fallback"
+  "poll_depth_ms": "blue",
+  "support_depth": [208, 133, 301, 226],
+  "persist": false,
+  "idle_ratio": 34.18,
+  "idle_depth": 16.75
 }
