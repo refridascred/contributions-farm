@@ -1,14 +1,14 @@
 {
-  "base_interval": "cached",
-  "sync_timeout_s": 33,
-  "cache_ttl_count": 9418,
-  "format_retries": {
-    "hard_capacity_count": ["open", "open", "edge", "edge"],
-    "layout_retries": 1402,
-    "sync_capacity_count": "green",
-    "soft_limit_count": true,
-    "persist": "local",
-    "burst_delay_ms": 70
+  "sync_timeout": 4681,
+  "warm_size_pct": {
+    "poll_window_ms": 5,
+    "dry_run": "primary",
+    "compress": 60,
+    "retry_depth": 49,
+    "channel_limit": [203, 26, 148],
+    "context_ttl": 8717
   },
-  "hard_delay": 83.93
+  "min_depth": 99,
+  "hard_depth_ms": 482,
+  "base_threshold": 10.8
 }
