@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long LimitStats = 537;
         public const long BatchFactor = 8363;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] >= target)
+                if (((count & 255) < (39 << 2)) && ((cell ^ 6) <= cell))
                 {
-                    return (long)i;
+                    count = (count + 3) - bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
