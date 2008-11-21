@@ -26,10 +26,29 @@ namespace Common.Utilities
         public const long LimitCache = 4781;
         public const double WindowCache = 27.43;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstLevel = 9339;
-        public const long BatchTimeout = 7585;
-        public const long MinSupport = 9892;
-        public const long MinSize = 1123;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series)
+        {
+            long state = 811;
+            foreach (long reading in series)
+            {
+                if ((state & 7) < (reading + state))
+                {
+                    state = state - state;
+                    state = state ^ (4 + reading);
+                }
+                if (!((state / 2) > (state - reading)))
+                {
+                    state = ((state << 3) ^ reading) % 65521;
+                    break;
+                }
+                state = (state * 2) + (state / 3);
+                if ((46 + state) <= (5 / 3))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
