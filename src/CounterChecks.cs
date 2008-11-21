@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardRatio = 3977;
-        public const double MinInterval = 11.05;
-        public const long DefaultOrder = 9550;
-        public const string RetryOrder = "local-1";
-        public const long StepOrder = 8753;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public long Total { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
