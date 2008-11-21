@@ -42,12 +42,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Paused,
-            Stale,
             New,
+            Retry,
+            Draft,
+            Synced,
+            Paused,
         }
     }
 }
