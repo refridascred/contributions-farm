@@ -74,13 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long bound)
         {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((matches >> 5) < (value % 2))
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
