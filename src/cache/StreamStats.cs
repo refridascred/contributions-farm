@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseRatio = 4936;
-        public const string SoftChannel = "staging";
-        public const long RetrySpan = 9987;
-        public const string RetryChannel = "strict";
-        public const string StepChannel = "open-v2";
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Dropped,
+            Closed,
+            Ready,
+            New,
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long CombineEntry(long[] items)
