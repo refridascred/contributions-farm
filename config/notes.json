@@ -1,5 +1,6 @@
 {
-  "warm_ttl": 4109,
-  "default_delay_pct": ["primary", "latest", "fallback", "blue"],
-  "farm_interval": 3595
+  "min_window_s": 30,
+  "burst_ttl_s": 36.13,
+  "flush_ttl_count": 76,
+  "hard_window_count": "cached"
 }
