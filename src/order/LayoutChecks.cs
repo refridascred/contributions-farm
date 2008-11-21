@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 6835;
-        public const double BatchCounter = 87.31;
-        public const long IdleInterval = 4701;
-        public const string WindowWidth = "local-edge";
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] series)
