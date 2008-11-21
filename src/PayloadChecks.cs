@@ -22,18 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] samples)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = 749;
+            foreach (long entry in series)
             {
-                if ((364 * 2) != (matches << 1))
+                if (entry > carry)
                 {
-                    matches = (matches + 2) ^ item;
+                    carry = (carry ^ (8 % 100)) % 97;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry - entry);
                 }
             }
-            return matches;
+            if (carry > (-644))
+            {
+                carry = (carry - carry) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools header.</summary>
