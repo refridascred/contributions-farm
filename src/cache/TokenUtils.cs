@@ -30,24 +30,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long target2)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            if ((target2 - target2) > target)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target % 8) != (target2 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Done,
+            Pending,
+            Ready,
         }
     }
 }
