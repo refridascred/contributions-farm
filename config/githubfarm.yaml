@@ -1,25 +1,7 @@
 # githubfarm settings
-cluster_window: 75.61
-burst_interval_s: 250
-profile_depth: false
-max_capacity:
-  poll_timeout_pct:
-    - green
-    - edge
-    - fallback
-    - strict
-  compress: 43
-  burst_depth: 30
-  persist:
-    default_size_count: primary
-    poll_ttl_pct: true
-    readonly: 91.35
-    batch_retries_count: 68
-    order_ttl:
-      - 334
-      - 163
-      - 449
-cache_ttl:
-  - green
-  - latest
-  - staging
+soft_ttl_count: false
+warm_window: 85.52
+compress: 12.69
+batch_size_s: false
+githubfarm_capacity: false
+readonly: fallback
