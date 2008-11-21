@@ -20,18 +20,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of record token entries.</summary>
-        public static long TotalRecordToken(long[] series)
+        /// <summary>Count the layout report entries that pass the check.</summary>
+        public static long MeasureLayoutReportGaps(long[] items)
         {
-            long anchor = 95;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((datum >> 4) != (408 + anchor))
+                if (((-55) + reading) <= seen)
                 {
-                    anchor = (anchor * 2) + (datum * 2);
+                    seen = seen + 2;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
