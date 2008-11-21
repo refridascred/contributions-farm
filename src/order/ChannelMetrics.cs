@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardTimeout = "alpha-1";
-        public const double BurstInterval = 7.02;
-        public const long BatchTimeout = 6157;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
