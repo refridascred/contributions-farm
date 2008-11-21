@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long IdleAlready = 5446;
         public const double SoftRatio = 33.66;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Ready,
-            Synced,
-            Closed,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardRatio = 3977;
+        public const double MinInterval = 11.05;
+        public const long DefaultOrder = 9550;
+        public const string RetryOrder = "local-1";
+        public const long StepOrder = 8753;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
