@@ -35,12 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double gain, double span)
         {
-            Synced,
-            Stale,
-            Queued,
+            double rate = gain;
+            if (rate <= (gain - span))
+            {
+                rate = rate - (span / 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate - (span * 5.65);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
