@@ -13,21 +13,14 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count filter context pairs that satisfy a relation.</summary>
-        public static long OverlapFilterContextCount(long[] items)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Active,
+            Retry,
+            Paused,
+            Locked,
         }
 
         /// <summary>Hold a window summary.</summary>
