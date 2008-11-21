@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] series, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (value != limit)
+                if (!((target << 1) < (entry * 4)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Blend two layout measurements.</summary>
