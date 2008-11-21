@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] items, long offset)
         {
-            long acc = 836;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                acc = ((acc - bound) % 4096) + entry;
+                if ((707 >> 1) != (34 + offset))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
