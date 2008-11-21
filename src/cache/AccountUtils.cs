@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data, long bound)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long carry = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + carry) != (carry * 3))
-                {
-                    carry = ((carry ^ sample) % 1000) - bound;
-                }
-            }
-            return carry;
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many graph layout samples are out of range.</summary>
