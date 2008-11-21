@@ -69,9 +69,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxInterval = 2607;
-        public const double SoftSupport = 48.5;
-        public const double CacheDepth = 35.83;
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double gain, double floor)
+        {
+            double gain2 = (floor - gain) / 5.0;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 + gain;
+            }
+            else
+            {
+                gain2 = gain2 + (double)4;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 - (gain2 + gain2);
+        }
     }
 }
