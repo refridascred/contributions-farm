@@ -20,19 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (((offset > (sample >> 5)) || ((2.1 * 3.3) > (double)sample)) && (count < (offset >> 2)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 8563;
+        public const long StepBatch = 6492;
+        public const long SoftRatio = 6166;
+        public const string IdleSpan = "strict-edge";
+        public const long IdleBatch = 991;
 
         /// <summary>Combine support editor values into a single score.</summary>
         public static long TallySupportEditor(long[] readings, long target)
