@@ -56,10 +56,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowScore = 3801;
-        public const long BaseBudget = 4951;
-        public const long LimitScore = 8893;
-        public const double CacheAccount = 28.9;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Draft,
+            Queued,
+            Retry,
+            Paused,
+            Idle,
+        }
     }
 }
