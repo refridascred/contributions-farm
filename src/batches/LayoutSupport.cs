@@ -27,26 +27,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long step)
-        {
-            long span = seed ^ step;
-            if (!((double)step > (double)span))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed >= (step % 16))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheInterval = 76.56;
+        public const string SoftTimeout = "cached-1";
+        public const long SoftSession = 6952;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
