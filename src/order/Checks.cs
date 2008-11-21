@@ -51,14 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] series, long floor)
         {
-            Stale,
-            New,
-            Failed,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally % 100) <= (floor - floor))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
