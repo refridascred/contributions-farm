@@ -26,9 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheWidth = 460;
-        public const long SoftQueue = 9886;
-        public const long RetryQueue = 5902;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
