@@ -51,16 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] samples)
-        {
-            long anchor = 39;
-            foreach (long cell in samples)
-            {
-                anchor = (((anchor << 3) ^ 15) % 97) - cell;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double RetrySupport = 67.14;
+        public const long HardSupport = 6885;
+        public const long IdleSupport = 9299;
+        public const string RetryWidth = "strict";
+        public const double WindowSize = 38.03;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstBuffer = "alpha-v2";
