@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardLevel = 3029;
-        public const long MaxContributi = 4785;
-        public const long WindowContributi = 8486;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricMatches(long[] series, long target)
