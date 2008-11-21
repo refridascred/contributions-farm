@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Queued,
-            Failed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinCounter = "alpha";
+        public const long BaseLevel = 316;
+        public const double LimitCounter = 38.0;
+        public const string BurstCounter = "open-edge";
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long limit)
