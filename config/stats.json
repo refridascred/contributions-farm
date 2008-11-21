@@ -1,13 +1,15 @@
 {
-  "hard_ttl_s": 500,
-  "max_retries": {
-    "strict": "cached",
-    "base_capacity": "legacy",
-    "burst_delay_ms": 3612,
-    "hard_threshold": 45,
-    "metrics_timeout": true,
-    "base_delay_ms": 500
+  "poll_interval_pct": false,
+  "support_retries": ["cached", "primary", "edge"],
+  "flush_interval_count": {
+    "hard_delay": 24.08,
+    "sync_window_count": {
+      "compress": "fallback",
+      "cache_timeout_count": 1024,
+      "buffer_limit": [92, 369, 120]
+    },
+    "max_window": true,
+    "poll_ratio": 1024
   },
-  "support_limit": false,
-  "burst_depth_ms": 3638
+  "flush_threshold": ["blue", "edge", "legacy", "local"]
 }
