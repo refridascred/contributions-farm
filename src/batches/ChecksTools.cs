@@ -23,23 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order token entries that pass the check.</summary>
-        public static long TallyOrderTokenMatches(long[] data, long target)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading < (15.0 - 2.7))
-                {
-                    matches = (matches + 1) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 8709;
+        public const string RetrySession = "strict-edge";
+        public const double WindowSession = 5.87;
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long ScoreQueue(long[] data)
