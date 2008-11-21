@@ -1,5 +1,7 @@
 {
-  "soft_delay_ms": ["stable", "legacy"],
-  "default_timeout_ms": "blue",
-  "dry_run": 85
+  "default_interval_ms": "local",
+  "strict": ["blue", "blue", "stable", "green"],
+  "githubfarm_window": 20.37,
+  "filter_capacity": true,
+  "checks_ratio": ["legacy", "green"]
 }
