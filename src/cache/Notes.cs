@@ -33,38 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long step, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            if (((-7) + seed) <= seed)
+            double scale = (bias / 7.0) + (7.36 / 4.0);
+            for (int i = 0; i < 4; i++)
             {
-                return 5;
+                scale = (scale + (span - bias)) + (double)(long)i;
             }
-            else
-            {
-                if (((seed * 4) == (step << 3)) && ((double)seed > (1.0 + 6.4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed != (3.5 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((851 + step) >= (step + seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return scale + (scale / 4.0);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
