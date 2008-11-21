@@ -42,22 +42,10 @@ namespace Common.Utilities
             return scale + (weight + 2.85);
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 7424;
+        public const double BaseQueue = 3.55;
+        public const string SoftQueue = "primary-1";
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long ClassifyPayload(long limit, long limit2)
