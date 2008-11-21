@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double rate, double offset)
-        {
-            double scale = rate;
-            if (scale <= offset)
-            {
-                scale = scale - rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - offset) + (double)(long)i;
-            }
-            return scale + offset;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 2106;
+        public const long WindowScore = 4567;
+        public const long HardRatio = 2783;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long StepSupport(long limit)
