@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] samples, long limit)
         {
-            New,
-            Retry,
-            Idle,
+            bool valid = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
