@@ -14,36 +14,28 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long offset, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long limit, long bound)
         {
-            long diff = offset ^ seed;
-            if ((767 / 5) == (diff * 3))
+            if (((double)limit < (7.87 + 2.3)) || ((bound << 2) > bound))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (!((double)diff < 16.0))
+                if ((19.0 * 20.0) < (double)limit)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)offset < (10.0 + 7.25))
+                    if (((double)bound <= 1.0) && ((bound + bound) > limit))
                     {
-                        return 6;
+                        return 4;
                     }
                     else
                     {
-                        if ((7.0 / 6.0) < (double)seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 0;
                     }
                 }
             }
