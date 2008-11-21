@@ -21,12 +21,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxSpan = 3051;
-        public const long LimitReport = 5397;
-        public const long BaseScore = 7368;
-        public const long SoftReport = 8606;
-        public const double MaxReport = 55.9;
+        /// <summary>Fold a list of graph command readings.</summary>
+        public static long TallyGraphCommand(long[] values, long origin)
+        {
+            long sum = 308;
+            foreach (long item in values)
+            {
+                if ((origin + sum) < (item / 5))
+                {
+                    sum = sum - (505 + sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Check that every metrics buffer entry stays within the limit.</summary>
         public static bool ValidateMetricsBufferRange(long[] values, long bound)
