@@ -1,5 +1,5 @@
 {
-  "verbose": 72.85,
-  "strict": "eu-west",
-  "hard_capacity": 100
+  "max_limit_ms": true,
+  "idle_ttl_count": "legacy",
+  "max_depth_pct": false
 }
