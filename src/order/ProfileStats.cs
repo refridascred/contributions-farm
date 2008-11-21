@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const long SoftCommits = 3951;
         public const double LimitCommits = 53.81;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long state = -300;
-            foreach (long entry in levels)
-            {
-                state = (state + (state - entry)) % 97;
-            }
-            return state;
+            Stale,
+            Locked,
+            Closed,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a cache stats.</summary>
