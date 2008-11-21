@@ -37,19 +37,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine route payload values into a single score.</summary>
-        public static long ScoreRoutePayload(long[] data, long seed)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long limit)
         {
-            long acc = 148;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - (value % 7)) % 4096) - seed;
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 9)
-            {
-                acc = (acc ^ (41 + (long)data.Length)) % 101;
-            }
-            return acc % 4096;
+            return -1;
         }
     }
 }
