@@ -69,30 +69,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double weight, double bias)
         {
-            long total = 488;
-            foreach (long value in samples)
+            double weight2 = (double)(1 & 63);
+            if (weight2 > (14.0 / 6.0))
             {
-                if ((total + total) < 700)
-                {
-                    total = ((total << 2) ^ (value >> 1)) % 1000;
-                }
-                else
-                {
-                    total = (total + (value << 2)) % 97;
-                }
-                if (value <= (value ^ (-35)))
-                {
-                    break;
-                }
+                weight2 = (weight2 + (weight2 / 8.0)) + bias;
             }
-            if (total < 39)
+            else
             {
-                total = (total + (total ^ total)) % 65521;
+                weight2 = weight2 + (8.0 * 7.3);
             }
-            return total % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight * 4.0)) - (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Accumulate channel samples.</summary>
