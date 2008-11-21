@@ -40,14 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] data, long floor)
         {
-            New,
-            Failed,
-            Queued,
-            Stale,
-            Pending,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
