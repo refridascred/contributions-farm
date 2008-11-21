@@ -94,11 +94,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardWidth = 7907;
-        public const string MinSchema = "latest-v2";
-        public const string RetryLevel = "legacy-v2";
-        public const long RetrySchema = 4022;
-        public const double SoftLevel = 52.59;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading + reading) != (hits + reading)) && ((hits ^ hits) <= 71))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
