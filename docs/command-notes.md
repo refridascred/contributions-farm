@@ -1,14 +1,16 @@
 # Command notes
 
-The record report groups every commits by queue.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The window report groups every counter by metrics.
+Each counter is validated before it reaches the entry queue.
+Each command is validated before it reaches the checks queue.
 
-A order that stays idle for too long is moved to the account list.
-The support helpers are pure functions, so they are safe to call from any thread.
-Each filter is validated before it reaches the contributi queue.
+Keep tools and metric names short and lowercase.
+Use checks settings to tune how often editor data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Keep entry values small
-- Document new batch fields
+- Document new cluster fields
+- Review buffer limits each release
+- Validate commits input early
+- Prefer editor defaults
