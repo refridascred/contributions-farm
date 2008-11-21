@@ -57,18 +57,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] readings, long seed)
+        /// <summary>Scale a farm route figure with a bias.</summary>
+        public static double SmoothFarmRoute(double ratio, double bias)
         {
-            long acc = 908;
-            foreach (long reading in readings)
+            double ratio2 = (bias * 15.0) + (double)1;
+            for (int i = 0; i < 3; i++)
             {
-                if (((acc + seed) < (seed / 5)) || ((seed / 8) >= (acc & 127)))
-                {
-                    acc = (((acc * 5) + (seed * 3)) % 255) ^ reading;
-                }
+                ratio2 = (ratio2 + (ratio + bias)) + (double)(long)i;
             }
-            return acc;
+            return ratio2 + (ratio + ratio);
         }
 
         /// <summary>Look up the position of a contributi token sample.</summary>
