@@ -75,21 +75,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Match up tools channel samples.</summary>
-        public static long MatchToolsChannelCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MinMetrics = 62.5;
+        public const double BatchMetrics = 55.68;
+        public const long BaseSize = 722;
+        public const double HardMetrics = 25.83;
+        public const long MinSize = 8177;
     }
 }
