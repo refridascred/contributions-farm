@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long step)
         {
-            double ratio = (offset - rate) / 4.0;
-            if (ratio < (rate + rate))
+            long next = target ^ step;
+            if ((target <= step) || (target >= (step - next)))
             {
-                ratio = ratio - (rate + ratio);
+                return 4;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = (ratio - (ratio / 6.0)) + (double)(long)i;
+                if ((next <= (target ^ step)) || ((next * 5) > target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((double)target < (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (next >= (next + 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return ratio - (offset + 5.0);
         }
 
         /// <summary>Describe the contributi status values.</summary>
