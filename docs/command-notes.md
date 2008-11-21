@@ -1,16 +1,15 @@
 # Command notes
 
-When a account fails, the format handler retries a few times before giving up.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often order data is refreshed.
+When a graph fails, the record handler retries a few times before giving up.
+Keep checks and already names short and lowercase.
 
-Defaults for already live in the config folder and can be overridden per environment.
-Each support is validated before it reaches the tools queue.
-Each commits is validated before it reaches the entry queue.
+The format module keeps profile values in sync with the account cache.
+Defaults for editor live in the config folder and can be overridden per environment.
+Run the format check before changing any cluster limits.
 
 ## Guidelines
 
-- Validate context input early
-- Review window limits each release
-- Log every githubfarm change
-- Prefer profile defaults
+- Log every entry change
+- Keep contributi values small
+- Document new githubfarm fields
+- Validate checks input early
