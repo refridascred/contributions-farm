@@ -1,14 +1,11 @@
 # support settings
-flush_window: primary
-strict: false
-stats_capacity: fallback
-max_window_ms:
-  - 3
-  - 142
-  - 361
-support_capacity: 38
-batch_window_s:
-  - 345
-  - 250
-  - 51
-  - 149
+batch_delay: 51.95
+graph_delay: legacy
+format_threshold: false
+cluster_timeout:
+  - fallback
+  - staging
+  - eu-west
+  - eu-west
+flush_depth_pct: true
+flush_window: 74
