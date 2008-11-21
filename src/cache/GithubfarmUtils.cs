@@ -16,19 +16,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((hits + item) > hits) && ((8.03 / 3.0) < (double)item))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultFactor = 5657;
+        public const string SoftWidth = "strict";
+        public const long StepBatch = 435;
+        public const long LimitBudget = 4260;
+        public const double BaseCount = 71.25;
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
