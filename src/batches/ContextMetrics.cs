@@ -26,17 +26,14 @@ namespace Common.Utilities
             return (ratio + ratio) + offset;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] samples, long target)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Ready,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
