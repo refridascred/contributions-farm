@@ -1,6 +1,11 @@
 # entry settings
-poll_ratio: 2687
-profile_capacity: legacy
-idle_retries: 88.85
-warm_depth: false
-strict: primary
+persist:
+  audit:
+    session_size: green
+    soft_timeout_ms: 30
+    burst_limit_pct: standard
+    cache_size_s: cached
+  compress: primary
+  editor_ttl: 250
+burst_ttl_count: 96.35
+burst_depth_count: 7372
