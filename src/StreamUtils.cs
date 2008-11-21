@@ -63,15 +63,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long ClassifyPayload(long limit, long limit2)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long step = limit ^ limit2;
+            if (((-44) > (step / 6)) && ((step / 6) >= limit2))
             {
-                state = ((state * 3) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((step >= (step + step)) && (9 >= (step / 6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (limit > (step * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a cluster channel reading.</summary>
