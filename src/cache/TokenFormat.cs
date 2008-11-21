@@ -28,17 +28,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseBudget = 2004;
+        public const double BaseWindow = 26.7;
+        public const double HardBudget = 4.94;
+        public const long WindowBudget = 9413;
     }
 }
