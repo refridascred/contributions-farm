@@ -33,24 +33,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a payload batch pair into a bucket.</summary>
-        public static long ClassifyPayloadBatch(long limit, long seed)
+        /// <summary>Count the payload tools entries that pass the check.</summary>
+        public static long TallyPayloadToolsHits(long[] readings)
         {
-            if ((limit + seed) > 14)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((7 * 4) <= limit)
+                if (((datum & 3) < (count - datum)) || ((count << 1) < count))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
