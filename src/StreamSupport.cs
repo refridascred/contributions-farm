@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            bool found = true;
-            foreach (long value in series)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (value != offset)
-                {
-                    found = false;
-                    break;
-                }
+                state = ((state << 2) ^ state) % 255;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
