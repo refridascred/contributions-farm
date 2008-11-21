@@ -13,20 +13,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Count format tools pairs that satisfy a relation.</summary>
+        public static long PairFormatToolsCount(long[] data)
         {
-            long mark = origin;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)origin > 9.4)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = ((mark * 3) + ((long)i + mark)) % 97;
-                    mark = (mark - ((long)i - origin)) % 255;
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
