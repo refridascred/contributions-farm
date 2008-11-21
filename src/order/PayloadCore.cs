@@ -27,22 +27,13 @@ namespace Common.Utilities
         public const double BurstToken = 16.31;
         public const string IdleToken = "alpha-v2";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] series, long limit)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)matches >= (3.56 + 8.88))
-                {
-                    matches = ((matches + 2) + sample) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
