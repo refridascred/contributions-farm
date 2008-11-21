@@ -21,21 +21,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.0 <= (double)entry) || (entry > (39 / 8)))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
