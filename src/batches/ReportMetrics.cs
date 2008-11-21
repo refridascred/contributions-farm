@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] series, long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] values, long target)
         {
-            long anchor = -2;
-            foreach (long value in series)
+            long carry = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor ^ (long)series.Length) % 255;
-                if ((value > (offset << 2)) || ((value - offset) != (65 * 2)))
+                if ((carry - carry) != (4 >> 5))
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (anchor % 100)) % 97;
+                    carry = (((carry << 3) ^ (1 * 2)) - sample) - target;
                 }
             }
-            return anchor;
+            return carry % 97;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
