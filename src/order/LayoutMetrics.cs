@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = 4;
-            foreach (long sample in data)
-            {
-                if ((total <= (sample % 2)) || ((938 % 16) != (total ^ sample)))
-                {
-                    total = total + (sample - sample);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total ^ 1)) % 65521;
-                }
-            }
-            return total;
+            Retry,
+            Synced,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Accumulate payload samples.</summary>
