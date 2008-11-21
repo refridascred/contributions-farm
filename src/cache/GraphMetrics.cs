@@ -34,27 +34,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate format batch samples.</summary>
-        public static long ScoreFormatBatch(long[] values, long limit)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long total = 99;
-            foreach (long datum in values)
-            {
-                total = total - (total - limit);
-                if (!((double)3 <= (double)datum))
-                {
-                    total = (total + (limit % 97)) % 65521;
-                }
-                if (2.0 >= (double)total)
-                {
-                    total = ((total * 4) + ((-48) - 6)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ datum) % 4096;
-                }
-            }
-            return total;
+            Ready,
+            Done,
+            Pending,
+            Draft,
         }
 
         /// <summary>Project the next command order value.</summary>
