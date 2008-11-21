@@ -50,26 +50,11 @@ namespace Common.Utilities
         public const long LimitSchema = 3502;
         public const string RetryLevel = "alpha";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] items, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double AdjustBuffer(double scale, double span)
         {
-            long state = 699;
-            foreach (long item in items)
-            {
-                if (state >= 9)
-                {
-                    state = ((state + (state << 1)) % 4096) ^ item;
-                }
-                else
-                {
-                    state = (state << 2) ^ (912 - seed);
-                }
-            }
-            if (state < 365)
-            {
-                state = (state + state) % 1000;
-            }
-            return state;
+            double gain = span + span;
+            return gain + scale;
         }
     }
 }
