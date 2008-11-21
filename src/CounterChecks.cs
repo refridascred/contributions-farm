@@ -81,21 +81,32 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsCount(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = bound ^ floor;
+            if (((gap - bound) != (gap / 4)) && ((9.55 + 4.84) >= (double)bound))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 3) <= (floor + 50))
                 {
-                    if ((data[i] + data[j]) != 13)
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor > (3.4 / 6.0)) && ((double)gap >= (9.02 + 9.32)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
