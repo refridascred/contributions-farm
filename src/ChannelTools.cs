@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the batches window series from a seed.</summary>
-        public static long IterateBatchesWindow(long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] levels, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                for (int i3 = 0; i3 < 10; i3++)
+                if (datum < floor)
                 {
-                    carry = ((carry ^ step) % 4096) + (long)i3;
-                    carry = (carry + (step % 100)) % 1000;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
