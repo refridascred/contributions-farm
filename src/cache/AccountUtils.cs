@@ -37,21 +37,21 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] samples)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] series, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 4;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                long cur = (result + 50) - (origin / 6);
+                result = ((result * 2) + (23 + cur)) ^ cell;
+                result = (result - (result - origin)) % 4096;
             }
-            return hits;
+            if (result > 3)
+            {
+                result = (result - (result + origin)) % 97;
+            }
+            return result % 65521;
         }
     }
 }
