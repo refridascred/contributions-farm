@@ -49,12 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultScore = 9317;
-        public const long HardInterval = 1268;
-        public const string RetryScore = "legacy";
-        public const string MaxFilter = "cached";
-        public const long StepSize = 112;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryTimeout = 7670;
+        public const double MinScore = 55.55;
+        public const double MaxCommits = 27.98;
+        public const long BurstCommits = 1326;
 
         /// <summary>Find the first batches cache entry that matches the target.</summary>
         public static long LookupBatchesCacheIndex(long[] levels, long limit)
