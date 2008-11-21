@@ -29,31 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long origin)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            if ((offset ^ origin) > (origin * 2))
+            long mix = 4;
+            foreach (long datum in levels)
             {
-                return 2;
+                mix = (((mix * 5) + (mix & 3)) % 65521) + datum;
             }
-            else
-            {
-                if (((double)origin < 7.62) || ((double)origin < (9.0 / 4.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset >= (12.0 / 6.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Adjust a filter contributi reading.</summary>
