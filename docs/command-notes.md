@@ -1,11 +1,12 @@
 # Command notes
 
-Each counter is validated before it reaches the record queue.
-Keep session and token names short and lowercase.
+A entry that stays idle for too long is moved to the stats list.
+Each counter is validated before it reaches the cache queue.
+Run the command check before changing any order limits.
 
 ## Guidelines
 
-- Review order limits each release
-- Log every buffer change
-- Prefer entry defaults
-- Validate support input early
+- Validate record input early
+- Log every batches change
+- Prefer metric defaults
+- Keep filter values small
