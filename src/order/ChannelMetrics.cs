@@ -20,14 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleTimeout = 6963;
+        public const double MaxRatio = 64.49;
+        public const long DefaultLevel = 1416;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long WindowContributi = 644;
