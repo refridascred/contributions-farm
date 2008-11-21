@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Paused,
-            Draft,
-            Pending,
-            Synced,
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
