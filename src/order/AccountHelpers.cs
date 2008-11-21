@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of window entry entries.</summary>
-        public static long DigestWindowEntry(long[] items, long bound)
-        {
-            long carry = 39;
-            foreach (long cell in items)
-            {
-                if ((bound << 3) > bound)
-                {
-                    carry = (((carry * 4) + (bound - 2)) % 4096) + cell;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 1208;
+        public const double LimitMetrics = 66.89;
+        public const string DefaultMetrics = "strict-v2";
+        public const string WindowMetrics = "fallback-v2";
+        public const long BaseSpan = 7378;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long SortRoute(long limit, long step)
