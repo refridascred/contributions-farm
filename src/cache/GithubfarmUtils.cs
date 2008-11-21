@@ -23,20 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every buffer format entry stays within the limit.</summary>
-        public static bool CheckBufferFormatLimits(long[] series, long seed)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowLevel = "cached-1";
+        public const long MaxCount = 4379;
+        public const string MinSize = "cached-v2";
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long PairBatchCount(long[] values)
