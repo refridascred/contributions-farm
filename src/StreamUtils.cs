@@ -41,32 +41,12 @@ namespace Common.Utilities
         public const double BaseQueue = 3.55;
         public const string SoftQueue = "primary-1";
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long limit, long limit2)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long step = limit ^ limit2;
-            if (((-44) > (step / 6)) && ((step / 6) >= limit2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step >= (step + step)) && (9 >= (step / 6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (limit > (step * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
