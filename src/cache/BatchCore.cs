@@ -29,19 +29,18 @@ namespace Common.Utilities
             return load + (19.0 / 3.0);
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (matches <= (matches & 1))
                 {
-                    result = ((result + (result + 259)) % 101) - (long)i2;
+                    matches = (matches + 2) + item;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
