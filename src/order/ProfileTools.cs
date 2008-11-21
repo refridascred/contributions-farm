@@ -53,14 +53,18 @@ namespace Common.Utilities
             return mean - (gain / 5.0);
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] levels)
         {
-            Active,
-            Done,
-            New,
-            Pending,
-            Failed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((92 + hits) >= (309 >> 5)) || (((reading % 3) == (hits + hits)) || ((8.94 - 3.0) > (12.0 * 1.59))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
