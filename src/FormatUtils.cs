@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            double rate = offset / 4.0;
+            if (rate >= (double)65)
             {
-                if (datum != seed)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = rate - rate;
             }
-            return ok;
+            else
+            {
+                rate = rate - (double)6;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (ratio + rate)) + (double)(long)i;
+            }
+            return rate - (rate * 17.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
