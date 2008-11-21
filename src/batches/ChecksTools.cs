@@ -28,19 +28,17 @@ namespace Common.Utilities
         public const string RetrySession = "strict-edge";
         public const double WindowSession = 5.87;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] series, long seed)
         {
-            long carry = 2;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 4) + (value / 6)) % 4096;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 267)
-            {
-                carry = ((carry * 3) + (2 / 5)) % 97;
-            }
-            return carry % 1000;
+            return -1;
         }
 
         /// <summary>Describe the report phase values.</summary>
