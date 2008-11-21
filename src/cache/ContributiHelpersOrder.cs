@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings, long step)
         {
-            Dropped,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry < 18.0)
+                {
+                    seen = (seen + 1) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the queue batch series from a seed.</summary>
