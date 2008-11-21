@@ -1,14 +1,5 @@
 {
-  "channel_size": "strict",
-  "batch_ratio_ms": "blue",
-  "metric_delay": 82,
-  "commits_size": 9751,
-  "enabled": {
-    "readonly": 20,
-    "sync_window": "cached",
-    "sync_capacity_ms": 4206,
-    "contributi_threshold": true,
-    "already_limit": "staging",
-    "base_threshold_ms": "staging"
-  }
+  "burst_interval_s": "green",
+  "strict": ["stable", "cached", "green", "staging"],
+  "flush_capacity_ms": "edge"
 }
