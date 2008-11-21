@@ -31,17 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] values, long target)
+        /// <summary>Count the notes window entries that pass the check.</summary>
+        public static long CountNotesWindowOutliers(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (values[i] >= target)
+                if (count >= (20 % 7))
                 {
-                    return (long)i;
+                    count = (count + 1) - entry;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
