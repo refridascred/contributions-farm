@@ -14,11 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            public bool Region { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
