@@ -41,12 +41,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long bound)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            if ((limit + bound) <= (limit ^ limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((882 & 31) == (limit - limit)) && ((double)limit < (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
