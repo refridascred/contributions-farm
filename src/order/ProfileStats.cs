@@ -13,15 +13,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine record stream values into a single score.</summary>
-        public static long CombineRecordStream(long[] levels, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] values, long floor)
         {
-            long total = 338;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                total = ((((total << 2) ^ total) % 4096) ^ sample) + target;
+                if (datum >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Describe the window kind values.</summary>
