@@ -34,12 +34,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long offset, long seed)
         {
-            Synced,
-            Idle,
-            Done,
+            if (offset >= (816 & 15))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.94 - 0.79) == (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (420 < (seed >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch state values.</summary>
