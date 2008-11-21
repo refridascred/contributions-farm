@@ -23,25 +23,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long bound = step ^ offset;
-            if (!((offset / 5) <= (bound - offset)))
+            long total = 69;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 + 19.0) != (double)bound)
+                if ((cell + total) >= (cell << 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    total = ((total << 3) ^ (total >> 1)) % 1000;
                 }
             }
+            if (total > 98)
+            {
+                total = (total - (total >> 4)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
