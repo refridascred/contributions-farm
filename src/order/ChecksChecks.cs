@@ -49,19 +49,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double scale, double span)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            double gain = scale / 4.0;
-            if (gain > (gain / 7.0))
-            {
-                gain = (gain - gain) - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain - gain;
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
