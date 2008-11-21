@@ -61,11 +61,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Rank entry editor input into a small class.</summary>
+        public static long SortEntryEditor(long seed, long target)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            if (!(target <= (19 & 1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target < (target >> 1))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
