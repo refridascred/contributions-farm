@@ -22,17 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long limit)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = gain;
+            if (drift <= offset)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                drift = drift - (offset + 8.8);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (drift - gain)) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Match up account samples.</summary>
