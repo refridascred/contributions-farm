@@ -13,38 +13,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank buffer graph input into a small class.</summary>
-        public static long RankBufferGraph(long offset, long origin)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            if ((double)offset <= (double)9)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + origin) >= (origin / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset >> 1) < 7))
+                    if ((samples[i] ^ samples[j]) < 18)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset + origin) == (offset + offset)) && ((offset - origin) != (offset % 7)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
