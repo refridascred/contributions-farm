@@ -62,13 +62,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Grade a queue record value against two limits.</summary>
+        public static long RankQueueRecord(long limit, long origin)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
+            if ((double)94 <= (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin < (origin >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
