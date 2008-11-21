@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmOutliers(long[] data, long seed)
+        /// <summary>Look up the position of a command graph sample.</summary>
+        public static long LookupCommandGraphIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell * 2) >= seed)
+                if (data[i] < limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer contributi readings.</summary>
