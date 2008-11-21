@@ -63,12 +63,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
+            Dropped,
+            Retry,
             Queued,
-            New,
-            Draft,
+            Closed,
         }
     }
 }
