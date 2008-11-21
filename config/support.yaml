@@ -1,7 +1,14 @@
 # support settings
-already_depth: 974
-cache_size_s: 16.24
-format_interval:
-  poll_interval: false
-  route_retries: 29
-  batch_limit: 60
+command_retries: true
+min_window_count: 500
+stats_capacity:
+  - strict
+  - fallback
+  - green
+  - latest
+hard_ratio:
+  readonly: 6.98
+  format_depth: false
+  hard_ratio_s: fallback
+retry_ratio: 23.08
+flush_capacity_pct: false
