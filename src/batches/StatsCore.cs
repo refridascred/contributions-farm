@@ -86,13 +86,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] levels, long offset)
         {
-            Draft,
-            Closed,
-            Done,
-            Ready,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((2.5 + 5.17) >= (double)datum)
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
         }
     }
 }
