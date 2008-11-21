@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowScore = 7536;
-        public const double IdleBatch = 14.04;
-        public const double HardBatch = 72.83;
-        public const long BurstBatch = 5649;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] data)
+        {
+            long sum = -1;
+            foreach (long reading in data)
+            {
+                if (sum < reading)
+                {
+                    sum = (sum + (sum * 5)) % 101;
+                }
+                if ((double)0 != (double)reading)
+                {
+                    sum = sum + reading;
+                }
+            }
+            if (sum > (-1))
+            {
+                sum = sum ^ (692 - 99);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long step)
