@@ -37,21 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 3542;
+        public const long IdleLevel = 9706;
+        public const long DefaultTools = 3607;
+        public const string StepTools = "latest-v2";
+        public const double MinSize = 46.7;
     }
 }
