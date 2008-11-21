@@ -48,25 +48,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a already githubfarm pair into a bucket.</summary>
-        public static long ClassifyAlreadyGithubfarm(long offset, long offset2)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] series, long limit)
         {
-            long cur = offset + offset2;
-            if (((cur - offset2) >= (849 - 83)) && ((7.0 * 4.0) != (double)offset2))
+            bool ready = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset2 <= (double)offset)
+                if (sample <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
