@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally ^ tally) != (limit * 5))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 9698;
+        public const double WindowInterval = 57.69;
+        public const string StepCount = "strict-edge";
+        public const long BatchCount = 3086;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] items, long bound)
