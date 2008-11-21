@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] values, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long carry = 9;
+            foreach (long item in values)
             {
-                if ((reading & 15) != (reading + reading))
+                if ((((long)values.Length % 64) < (item & 3)) || ((double)carry != (double)item))
                 {
-                    count = (count + 1) + floor;
+                    carry = (carry + (carry + target)) % 4096;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
