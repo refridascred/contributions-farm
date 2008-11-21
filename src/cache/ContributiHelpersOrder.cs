@@ -26,10 +26,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double LimitInterval = 20.15;
-        public const long WindowTools = 5328;
-        public const double BatchBudget = 29.58;
-        public const long IdleTools = 6485;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheWidth = 460;
+        public const long SoftQueue = 9886;
+        public const long RetryQueue = 5902;
     }
 }
