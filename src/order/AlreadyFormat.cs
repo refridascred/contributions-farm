@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] values, long limit)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < limit) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
