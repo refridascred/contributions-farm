@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double weight2 = 9.72 - (double)667;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum > offset) || ((datum / 2) <= (149 + (long)readings.Length)))
-                {
-                    tally = tally + 2;
-                }
+                weight2 = ((weight2 - bias) + (double)(long)i) - weight;
             }
-            return tally;
+            return weight2 - 7.2;
         }
 
         /// <summary>Define format limits and defaults.</summary>
