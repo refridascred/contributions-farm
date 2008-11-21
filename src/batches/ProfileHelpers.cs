@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportHits(long[] readings)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)matches == (1.4 - 20.0))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
