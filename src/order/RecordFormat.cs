@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Pending,
-            Idle,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftDepth = 4752;
+        public const long SoftScore = 9107;
+        public const string IdleEntry = "latest-v2";
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterGaps(long[] readings, long target)
