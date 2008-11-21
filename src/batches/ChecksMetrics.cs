@@ -41,10 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "stable-edge";
-        public const string DefaultContext = "local-1";
-        public const string MaxFactor = "fallback-1";
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Dropped,
+            Paused,
+            New,
+            Active,
+            Pending,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long WindowCommand = 6075;
