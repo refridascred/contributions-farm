@@ -31,12 +31,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series, long bound)
         {
-            Dropped,
-            Stale,
-            Retry,
+            long mix = -53;
+            foreach (long item in series)
+            {
+                if ((mix - bound) < mix)
+                {
+                    mix = ((mix << 2) ^ (mix / 7)) - item;
+                }
+            }
+            if (mix < 596)
+            {
+                mix = ((mix * 5) + (mix + bound)) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
