@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long step)
         {
-            New,
-            Locked,
-            Dropped,
-            Idle,
-            Active,
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Measure how many stats checks samples are out of range.</summary>
