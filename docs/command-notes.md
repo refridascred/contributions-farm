@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-A channel that stays idle for too long is moved to the checks list.
+When a account fails, the format handler retries a few times before giving up.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use session settings to tune how often order data is refreshed.
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Use schema settings to tune how often context data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
+Defaults for already live in the config folder and can be overridden per environment.
+Each support is validated before it reaches the tools queue.
+Each commits is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new counter fields
-- Keep tools values small
-- Review checks limits each release
+- Validate context input early
+- Review window limits each release
+- Log every githubfarm change
+- Prefer profile defaults
