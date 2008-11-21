@@ -53,13 +53,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] items, long limit)
         {
-            Active,
-            Synced,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)item > (0.9 * 15.0))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the session schema series from a seed.</summary>
