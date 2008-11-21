@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Retry,
-            Queued,
-            Synced,
+            Paused,
+            Pending,
             Done,
         }
 
