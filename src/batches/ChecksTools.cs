@@ -51,18 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] items, long limit)
         {
-            long score = 727;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if ((entry >> 3) <= (score << 1))
+                if (datum <= limit)
                 {
-                    score = (score - (2 << 2)) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return stale;
         }
     }
 }
