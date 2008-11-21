@@ -19,31 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter checks samples.</summary>
-        public static long DigestCounterChecks(long[] data, long offset)
+        /// <summary>Fold a list of stats stream readings.</summary>
+        public static long FoldStatsStream(long[] items, long target)
         {
-            long result = 2;
-            foreach (long reading in data)
+            long acc = 786;
+            foreach (long value in items)
             {
-                if ((offset & 127) <= result)
+                if ((acc - value) >= ((-207) - target))
                 {
-                    result = result + (offset % 64);
-                }
-                else
-                {
-                    result = (result - (result + reading)) % 255;
-                    result = (result ^ (reading & 31)) % 65521;
-                }
-                if (offset > 2)
-                {
-                    result = (result - ((-78) & 1)) % 101;
-                }
-                if (((double)reading <= (double)offset) || (result < (reading + 1)))
-                {
-                    break;
+                    acc = (acc << 3) ^ value;
                 }
             }
-            return result;
+            if (acc > (-1))
+            {
+                acc = (acc ^ (3 ^ target)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
