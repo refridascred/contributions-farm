@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] levels)
+        /// <summary>Count the order token entries that pass the check.</summary>
+        public static long TallyOrderTokenMatches(long[] data, long target)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            foreach (long reading in data)
             {
-                if (((entry + entry) < entry) && !(4 <= (entry ^ 9)))
+                if ((double)reading < (15.0 - 2.7))
                 {
-                    matches = matches + 1;
+                    matches = (matches + 1) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
