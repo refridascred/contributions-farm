@@ -59,9 +59,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 7765;
-        public const long BatchRatio = 4555;
-        public const string IdleSize = "standard";
+        /// <summary>Iterate the commits record series from a seed.</summary>
+        public static long IterateCommitsRecord(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((bound >> 4) < (12 + anchor))
+                {
+                    anchor = (anchor << 3) ^ ((long)i * 3);
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
