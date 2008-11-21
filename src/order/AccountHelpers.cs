@@ -80,18 +80,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit record githubfarm readings against a rule.</summary>
-        public static long MeasureRecordGithubfarmOutliers(long[] items, long floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 21;
+            foreach (long datum in data)
             {
-                if (((count / 5) == (5 + 71)) || !(floor <= (floor + item)))
+                mark = (mark + mark) % 65521;
+                if (!(((mark - datum) > 89) || ((datum + datum) > (mark + (long)data.Length))))
                 {
-                    count = count + 2;
+                    mark = ((mark << 2) ^ (datum + datum)) % 97;
                 }
+                mark = mark - 8;
             }
-            return count;
+            return mark;
         }
     }
 }
