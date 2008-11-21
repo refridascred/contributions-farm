@@ -44,22 +44,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer context samples.</summary>
-        public static long DigestBufferContext(long[] values, long floor)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long bound)
         {
-            long acc = 7;
-            foreach (long reading in values)
+            long state = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((17.0 * 3.0) != (double)floor) && ((15.0 / 4.0) != (double)acc))
+                if ((state & 15) > (long)i)
                 {
-                    acc = acc - (floor - floor);
+                    state = (state * 3) + (state * 3);
                 }
-                if ((floor - reading) < (acc % 60))
-                {
-                    break;
-                }
+                state = (state + state) % 255;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return acc % 1000;
+            return state;
         }
     }
 }
