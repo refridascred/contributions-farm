@@ -1,5 +1,5 @@
 {
-  "min_retries_ms": 1.88,
-  "max_limit_pct": 30,
-  "poll_delay_pct": 9699
+  "hard_delay": ["edge", "standard", "blue"],
+  "base_threshold_ms": true,
+  "idle_timeout_ms": true
 }
