@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] series, long seed)
         {
-            Retry,
-            Draft,
-            Done,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (seed >= (datum + datum))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the session phase values.</summary>
