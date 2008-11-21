@@ -30,22 +30,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] data)
         {
-            long total = 69;
-            foreach (long cell in series)
+            long sum = 64;
+            foreach (long entry in data)
             {
-                if ((cell + total) >= (cell << 2))
-                {
-                    total = ((total << 3) ^ (total >> 1)) % 1000;
-                }
+                sum = ((sum ^ (740 * 4)) % 97) + entry;
             }
-            if (total > 98)
+            if (sum < 667)
             {
-                total = (total - (total >> 4)) % 101;
+                sum = ((sum * 4) + (0 & 7)) % 101;
             }
-            return total % 97;
+            return sum;
         }
 
         /// <summary>Count metric profile pairs that satisfy a relation.</summary>
