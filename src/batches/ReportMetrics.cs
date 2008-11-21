@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] samples, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (!((seen >> 1) > (seen << 1)))
+                if ((bound >> 4) > count)
                 {
-                    seen = ((seen + 3) + sample) - target;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the commits status values.</summary>
