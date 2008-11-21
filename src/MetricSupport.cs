@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((long)data.Length != (seen + sample)) || !(((-965) << 1) > (seen << 1)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftRatio = 4690;
+        public const long CacheStats = 1091;
+        public const long MaxStats = 9239;
+        public const string WindowRatio = "primary-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstWidth = 54;
