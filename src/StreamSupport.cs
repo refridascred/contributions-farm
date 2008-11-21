@@ -40,22 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] levels)
+        /// <summary>Project the next order graph value.</summary>
+        public static double AdjustOrderGraph(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double weight = 4.8;
+            if (weight <= (3.6 * 16.0))
             {
-                if ((double)hits < (0.98 * 0.7))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = ((weight + (double)7) + gain) - span;
             }
-            return hits;
+            return weight - (double)725;
         }
     }
 }
