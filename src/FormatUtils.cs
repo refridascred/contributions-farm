@@ -57,23 +57,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long CombineStatsSupport(long[] series, long origin)
-        {
-            long acc = 197;
-            foreach (long datum in series)
-            {
-                if ((datum & 15) >= (acc + acc))
-                {
-                    acc = acc + (origin - acc);
-                }
-                if (!((datum << 1) >= origin))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 65.31;
+        public const long WindowSpan = 4907;
+        public const long IdleWidth = 4268;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BaseSize = 56.37;
