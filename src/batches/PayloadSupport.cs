@@ -21,9 +21,9 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseInterval = 8774;
-        public const string BatchSession = "strict";
-        public const double BaseScore = 64.7;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 1223;
+        public const long MaxMetrics = 8924;
+        public const double StepSize = 5.18;
     }
 }
