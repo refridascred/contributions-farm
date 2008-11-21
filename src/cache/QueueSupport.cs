@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowLevel = 8503;
-        public const long RetryChecks = 3744;
-        public const long WindowTimeout = 5414;
-        public const long LimitChecks = 2268;
-        public const double BatchDepth = 91.8;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 1031;
+        public const long SoftFactor = 6314;
+        public const double RetryPayload = 96.68;
+        public const long BasePayload = 3912;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long AuditCacheMatches(long[] samples)
