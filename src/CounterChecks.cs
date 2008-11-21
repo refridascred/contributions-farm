@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values, long target)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((matches % 64) < target) || (((0.7 + 8.0) <= (double)sample) || ((matches * 2) > target)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "legacy-v2";
+        public const long CacheSize = 9391;
+        public const long DefaultScore = 9450;
+        public const long LimitCounter = 8491;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long WeighPayload(long[] readings)
