@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long delta = bound + offset;
+            if ((offset + delta) > bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset ^ delta) < (bound & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the entry level values.</summary>
