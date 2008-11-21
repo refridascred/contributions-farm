@@ -61,19 +61,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 7765;
+        public const long BatchRatio = 4555;
+        public const string IdleSize = "standard";
     }
 }
