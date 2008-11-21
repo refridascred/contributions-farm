@@ -30,38 +30,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long bound, long step)
+        /// <summary>Combine layout queue values into a single score.</summary>
+        public static long TallyLayoutQueue(long[] readings)
         {
-            if ((step / 7) > step)
+            long result = 72;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step + bound) == ((-12) * 4))
+                if ((value % 5) == (2 + 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step < bound) || (step > (4 - bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound >> 2) >= (bound & 15))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = ((result * 2) + (54 + value)) % 255;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
