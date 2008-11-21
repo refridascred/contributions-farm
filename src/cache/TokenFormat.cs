@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long DeriveFormat(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = mix - ((-5) - 912);
-                if ((long)i != (mix * 4))
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinBudget = 4161;
+        public const long BatchLevel = 8438;
+        public const double WindowLayout = 93.31;
+        public const long BaseLevel = 575;
+        public const long LimitSpan = 4093;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
