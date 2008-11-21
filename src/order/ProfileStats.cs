@@ -21,13 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Dropped,
-            Paused,
-            Failed,
-            Closed,
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
