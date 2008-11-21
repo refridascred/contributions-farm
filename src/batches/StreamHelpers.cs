@@ -83,12 +83,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
