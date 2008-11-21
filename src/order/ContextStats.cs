@@ -33,17 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a session metric reading by value.</summary>
-        public static long LocateSessionMetricIndex(long[] items, long limit)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Done,
+            Synced,
         }
 
         /// <summary>Hold a record stats.</summary>
