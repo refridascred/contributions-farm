@@ -46,13 +46,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
