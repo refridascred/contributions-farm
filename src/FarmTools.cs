@@ -14,15 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples)
+        /// <summary>Combine session account values into a single score.</summary>
+        public static long CombineSessionAccount(long[] data, long limit)
         {
-            long mark = 0;
-            foreach (long item in samples)
+            long carry = 3;
+            foreach (long cell in data)
             {
-                mark = mark ^ (item % 7);
+                for (int i = 0; i < 11; i++)
+                {
+                    carry = ((carry ^ 9) % 65521) ^ (long)i;
+                    carry = (carry * 3) + (carry + 72);
+                }
+                if ((double)cell >= 9.0)
+                {
+                    carry = carry + limit;
+                }
+                if ((cell / 2) >= cell)
+                {
+                    carry = (carry ^ 22) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (cell & 63);
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Roll a token batches counter forward.</summary>
