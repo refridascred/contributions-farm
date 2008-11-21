@@ -30,12 +30,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public double Weight { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 20.24;
+        public const double IdleSession = 41.46;
+        public const double IdleCount = 12.07;
+        public const long BaseSession = 1883;
+        public const string BaseWidth = "legacy-v2";
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long DigestSchema(long[] readings)
