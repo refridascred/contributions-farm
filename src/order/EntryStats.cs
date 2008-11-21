@@ -39,23 +39,12 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long TallyClusterCounterHits(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((bound - 318) >= tally)
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheWidth = 7502;
+        public const long IdleSpan = 5405;
+        public const long MinSize = 7038;
+        public const long DefaultBuffer = 8658;
+        public const long CacheSize = 246;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TotalFarm(long[] levels)
