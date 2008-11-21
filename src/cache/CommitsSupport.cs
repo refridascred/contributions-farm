@@ -29,20 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series)
-        {
-            long acc = 254;
-            foreach (long value in series)
-            {
-                acc = (acc + (value + 2)) % 97;
-                if ((double)value >= (5.47 + 8.46))
-                {
-                    acc = (acc + (value << 3)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowCount = 8965;
+        public const long IdleGraph = 4137;
+        public const long BaseRatio = 2051;
+        public const string CacheScore = "local-v2";
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
