@@ -54,13 +54,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
