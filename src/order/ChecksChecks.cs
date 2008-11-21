@@ -53,10 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitDepth = 37.3;
-        public const double MinLevel = 66.46;
-        public const long BatchDepth = 5017;
-        public const double CacheDepth = 54.37;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Closed,
+            Queued,
+            Paused,
+        }
     }
 }
