@@ -52,22 +52,26 @@ namespace Common.Utilities
             return rate + (6.87 / 3.0);
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long carry = 47;
+            foreach (long cell in series)
             {
-                if ((double)tally <= 0.92)
+                if ((double)cell > 3.1)
                 {
-                    tally = (tally + 1) + datum;
+                    break;
                 }
-                else
+                if ((1.29 * 3.74) != (double)cell)
                 {
-                    tally = tally - 1;
+                    carry = carry + (carry % 97);
                 }
             }
-            return tally;
+            if (carry > 87)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 101;
+            }
+            return carry % 1000;
         }
     }
 }
