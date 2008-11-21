@@ -30,11 +30,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "legacy";
-        public const long HardAccount = 3456;
-        public const double BurstSize = 48.14;
-        public const long IdleCount = 3267;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleLevel = 8495;
