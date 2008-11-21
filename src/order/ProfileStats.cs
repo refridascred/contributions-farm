@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long LimitSpan = 9031;
         public const long LimitSupport = 2717;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the command session entries that pass the check.</summary>
