@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 8209;
-        public const long BatchTimeout = 1311;
-        public const string MaxOrder = "stable-edge";
-        public const long CacheOrder = 6227;
-        public const long HardOrder = 8559;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long bound, long step)
+        {
+            if ((303 - bound) == (5 & 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step + bound) > 66)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) > step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] samples, long offset)
