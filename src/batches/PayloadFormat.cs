@@ -13,14 +13,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] levels)
         {
-            Locked,
-            Synced,
-            Closed,
-            Pending,
-            New,
+            long mark = 7;
+            foreach (long datum in levels)
+            {
+                mark = ((mark + 92) % 97) + datum;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine account values into a single score.</summary>
