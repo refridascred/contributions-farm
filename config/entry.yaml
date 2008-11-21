@@ -1,15 +1,10 @@
 # entry settings
-record_size: open
-farm_delay:
+notes_retries:
   - standard
-  - latest
-soft_delay_count:
-  default_delay: 34.54
-  enabled: 93.37
-  max_delay: 4291
-  strict:
-    - blue
-    - standard
-    - local
-    - primary
-min_depth_count: false
+  - local
+strict: true
+sync_capacity:
+  - 473
+  - 142
+audit: true
+record_size: 9573
