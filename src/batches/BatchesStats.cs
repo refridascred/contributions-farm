@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long target, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] readings)
         {
-            if (((seed + target) <= (seed * 4)) && ((8.99 - 2.2) == (double)seed))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((21 - target) < (seed - seed))
+                if (seen > (331 << 3))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((69 + target) >= (seed - seed)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (target >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 1) - value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next order value.</summary>
