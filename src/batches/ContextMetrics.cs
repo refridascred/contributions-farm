@@ -35,24 +35,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double gain, double span)
-        {
-            double bias = 7.23 / 9.0;
-            if (bias <= gain)
-            {
-                bias = bias - (double)437;
-            }
-            else
-            {
-                bias = bias - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (17.0 * 16.0)) + (double)(long)i;
-            }
-            return bias - (4.14 / 2.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double CacheMetrics = 22.83;
+        public const long LimitMetrics = 5042;
+        public const double BurstMetrics = 14.63;
 
         /// <summary>Adjust a stats reading.</summary>
         public static double AdjustStats(double weight, double bias)
