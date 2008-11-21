@@ -37,19 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double gain, double bias)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] data, long seed)
         {
-            double bias2 = gain;
-            if (bias2 > (double)43)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                bias2 = (bias2 - (gain * 4.1)) - bias;
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 - 4.8;
+            return stale;
         }
     }
 }
