@@ -16,16 +16,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Accumulate command format samples.</summary>
-        public static long TallyCommandFormat(long[] items, long target)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long acc = 0;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = acc - (target + target);
-                acc = acc - item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
