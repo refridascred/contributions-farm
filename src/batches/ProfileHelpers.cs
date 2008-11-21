@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 9343;
+        public const long StepLevel = 5312;
+        public const long BurstLevel = 310;
 
         /// <summary>Find the first window command entry that matches the target.</summary>
         public static long SeekWindowCommandIndex(long[] items, long step)
