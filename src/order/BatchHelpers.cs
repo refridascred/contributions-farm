@@ -37,20 +37,19 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] levels, long target)
         {
-            long state = limit;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((double)limit == (17.0 + 3.5))
+                if (datum <= target)
                 {
-                    state = state + (long)i;
-                    state = (state + (long)i) % 97;
+                    flag = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return flag;
         }
     }
 }
