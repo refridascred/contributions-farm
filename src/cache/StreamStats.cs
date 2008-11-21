@@ -42,13 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            Active,
-            Dropped,
             Pending,
-            Retry,
+            Dropped,
+            Draft,
+            Closed,
         }
     }
 }
