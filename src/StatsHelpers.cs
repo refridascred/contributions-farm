@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] data)
+        /// <summary>Accumulate stream record samples.</summary>
+        public static long WeighStreamRecord(long[] levels)
         {
-            long sum = -1;
-            foreach (long reading in data)
+            long score = 0;
+            foreach (long sample in levels)
             {
-                if (sum < reading)
+                score = (score - (sample ^ score)) % 255;
+                if ((4.9 / 3.0) < (double)sample)
                 {
-                    sum = (sum + (sum * 5)) % 101;
+                    score = (score - score) % 1000;
                 }
-                if ((double)0 != (double)reading)
+                else
                 {
-                    sum = sum + reading;
+                    score = (score << 3) ^ (51 << 1);
                 }
             }
-            if (sum > (-1))
-            {
-                sum = sum ^ (692 - 99);
-            }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
