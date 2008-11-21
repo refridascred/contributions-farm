@@ -40,16 +40,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] data, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            long state = 8;
+            foreach (long reading in data)
             {
-                mix = (mix << 3) ^ mix;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((4.7 > (double)offset) && ((reading & 31) == (offset ^ offset)))
+                {
+                    state = ((state << 3) ^ (offset >> 2)) % 65521;
+                }
+                else
+                {
+                    state = state - (reading - reading);
+                    state = (state << 2) ^ offset;
+                }
+                state = (state + (state + reading)) % 97;
             }
-            return mix;
+            if (state < 6)
+            {
+                state = ((state << 3) ^ offset) % 255;
+            }
+            return state;
         }
 
         /// <summary>Locate a record reading by value.</summary>
