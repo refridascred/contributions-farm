@@ -48,12 +48,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Done,
-            Synced,
-            Dropped,
+            Queued,
+            New,
+            Draft,
         }
     }
 }
