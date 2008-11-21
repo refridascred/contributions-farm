@@ -46,26 +46,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + bound) % 101;
-                if ((result * 3) > (bound & 3))
-                {
-                    result = ((result << 2) ^ (57 - result)) % 101;
-                    result = (result + (bound ^ result)) % 97;
-                }
-                else
-                {
-                    result = (result - (result & 31)) % 255;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxTimeout = 3194;
+        public const long LimitTimeout = 2359;
+        public const long LimitSize = 7221;
+        public const long StepNotes = 4684;
+        public const long RetryNotes = 6092;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long MeasureChecksGaps(long[] series, long target)
