@@ -14,16 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double rate, double span)
-        {
-            double rate2 = (double)(35 - 380);
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (((rate2 - rate2) + (double)(long)i) + rate) + span;
-            }
-            return rate2 + (rate2 * 18.0);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowRatio = "cached-1";
+        public const long LimitEntry = 2311;
+        public const long MinEntry = 1391;
+        public const long CacheBudget = 6509;
+        public const long BaseEntry = 8462;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
