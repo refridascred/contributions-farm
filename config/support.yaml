@@ -1,13 +1,9 @@
 # support settings
-default_capacity_ms: 181
-readonly: legacy
-cache_interval: true
-dry_run: false
-counter_depth:
-  - 60
-  - 448
-  - 173
-  - 29
-max_threshold_ms:
-  - staging
+default_ttl_ms: 12.37
+order_capacity: 92
+flush_retries_pct:
+  - legacy
+  - fallback
   - stable
+retry_size_pct: 1713
+verbose: 1024
