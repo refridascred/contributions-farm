@@ -28,19 +28,12 @@ namespace Common.Utilities
         public const long MaxCount = 4379;
         public const string MinSize = "cached-v2";
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double rate, double offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = rate / 9.0;
-            if (mean < mean)
-            {
-                mean = (mean - (mean + mean)) - offset;
-            }
-            else
-            {
-                mean = mean - (rate * 8.3);
-            }
-            return mean - rate;
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the notes phase values.</summary>
