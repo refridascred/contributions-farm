@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long mark = 4;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (mark <= entry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark + (entry - entry)) % 101;
-                }
-                if ((double)entry != (double)mark)
-                {
-                    mark = ((mark << 3) ^ (26 - mark)) % 97;
+                    if ((values[i] ^ values[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of batch window readings.</summary>
