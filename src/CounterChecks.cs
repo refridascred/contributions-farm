@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long DefaultScore = 9450;
         public const long LimitCounter = 8491;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long state = 491;
-            foreach (long item in readings)
-            {
-                if ((item + item) == (state % 10))
-                {
-                    state = ((state << 2) ^ (state ^ state)) % 97;
-                }
-                else
-                {
-                    state = state ^ (state + 57);
-                }
-            }
-            return state % 97;
+            Ready,
+            Synced,
+            Closed,
+            Pending,
+            Failed,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
