@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftTimeout = 663;
-        public const long SoftScore = 2700;
-        public const long MaxOrder = 4570;
-        public const long RetryOrder = 400;
-        public const long BaseOrder = 7706;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels, long bound)
+        {
+            long acc = 836;
+            foreach (long entry in levels)
+            {
+                acc = ((acc - bound) % 4096) + entry;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
