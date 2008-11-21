@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinSpan = 72.12;
+        public const long IdleQueue = 101;
+        public const long RetryQueue = 1506;
+        public const string CacheRatio = "stable-v2";
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double rate, double offset)
