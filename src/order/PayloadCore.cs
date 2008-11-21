@@ -29,12 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double span)
         {
-            public double Count { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            double scale = gain + span;
+            if (scale <= (double)25)
+            {
+                scale = scale + (scale + scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (scale * 0.27)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Digest a series of order entries.</summary>
