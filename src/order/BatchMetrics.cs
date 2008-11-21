@@ -37,12 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 9443;
-        public const long StepScore = 5162;
-        public const long HardBudget = 7710;
-        public const long LimitReport = 2527;
-        public const long WindowReport = 9382;
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            Closed,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the record class values.</summary>
         public enum RecordClass
