@@ -68,15 +68,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ScaleGithubfarm(double rate, double span)
+        /// <summary>Count the graph command entries that pass the check.</summary>
+        public static long MeasureGraphCommandGaps(long[] values)
         {
-            double ratio = span;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                ratio = ((ratio - (span / 5.0)) - (double)(long)i) - rate;
+                if ((seen / 2) <= (seen + seen))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio - span;
+            return seen;
         }
 
         /// <summary>Describe the entry status values.</summary>
