@@ -43,24 +43,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] samples, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] readings, long seed)
         {
-            long anchor = 956;
-            foreach (long reading in samples)
+            long acc = 908;
+            foreach (long reading in readings)
             {
-                anchor = (anchor + (reading + floor)) % 65521;
-                if ((anchor * 5) >= (5 + (-6)))
+                if (((acc + seed) < (seed / 5)) || ((seed / 8) >= (acc & 127)))
                 {
-                    anchor = (anchor + (floor & 7)) % 1000;
+                    acc = (((acc * 5) + (seed * 3)) % 255) ^ reading;
                 }
-                anchor = (anchor * 4) + (anchor - anchor);
             }
-            if (anchor < (-66))
-            {
-                anchor = ((anchor << 2) ^ (-21)) % 97;
-            }
-            return anchor % 1000;
+            return acc;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
