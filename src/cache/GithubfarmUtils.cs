@@ -18,12 +18,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultFactor = 5657;
-        public const string SoftWidth = "strict";
-        public const long StepBatch = 435;
-        public const long LimitBudget = 4260;
-        public const double BaseCount = 71.25;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long GradeQueue(long floor, long bound)
+        {
+            long bound2 = floor - bound;
+            if ((double)89 >= (double)floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.84 + 2.0) < (7.0 / 2.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound2 >= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor >= (floor / 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] items)
