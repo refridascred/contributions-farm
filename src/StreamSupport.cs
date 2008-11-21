@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ state) % 255;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 5795;
+        public const long SoftCommits = 9750;
+        public const long IdleLevel = 3981;
+        public const long HardCommits = 5716;
+        public const string LimitInterval = "fallback";
 
         /// <summary>Digest a series of editor farm entries.</summary>
         public static long CombineEditorFarm(long[] readings)
