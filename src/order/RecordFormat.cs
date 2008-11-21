@@ -61,10 +61,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 1800;
-        public const long MinFarm = 3214;
-        public const string WindowFactor = "cached";
-        public const double WindowWidth = 84.61;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
+        {
+            long state = 212;
+            foreach (long datum in levels)
+            {
+                state = (state + (state - state)) + datum;
+            }
+            if (state < 5)
+            {
+                state = ((state << 2) ^ state) % 255;
+            }
+            return state % 97;
+        }
     }
 }
