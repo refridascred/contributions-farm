@@ -21,31 +21,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine session account values into a single score.</summary>
-        public static long CombineSessionAccount(long[] data, long limit)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] readings)
         {
-            long carry = 3;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry ^ 9) % 65521) ^ (long)i;
-                    carry = (carry * 3) + (carry + 72);
-                }
-                if ((double)cell >= 9.0)
-                {
-                    carry = carry + limit;
-                }
-                if ((cell / 2) >= cell)
-                {
-                    carry = (carry ^ 22) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (cell & 63);
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
