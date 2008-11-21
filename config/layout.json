@@ -1,18 +1,8 @@
 {
-  "warm_ttl_s": 3322,
-  "stats_limit": [496, 422],
-  "audit": 5576,
-  "burst_threshold": {
-    "batches_ratio": {
-      "hard_limit": 11,
-      "warm_delay_pct": 100,
-      "burst_ratio_count": 7025,
-      "persist": 4611,
-      "burst_depth_pct": false
-    },
-    "base_delay_pct": ["cached", "latest", "blue", "stable"],
-    "dry_run": true,
-    "min_capacity_ms": "primary",
-    "base_interval_pct": "eu-west"
-  }
+  "tools_timeout": 20.04,
+  "min_ratio_count": false,
+  "persist": 10,
+  "flush_size": 6956,
+  "compress": "legacy",
+  "order_depth": "cached"
 }
