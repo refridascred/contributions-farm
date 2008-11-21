@@ -52,35 +52,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] series, long origin)
         {
-            long acc = 107;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                acc = acc + (acc - value);
-                if ((acc - (long)series.Length) == (acc - value))
+                if (cell < origin)
                 {
-                    acc = (acc + (value % 12)) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (value + 5)) % 101;
-                }
-                if ((acc % 10) != (acc % 5))
-                {
-                    acc = acc ^ 333;
-                }
-                if ((773 / 7) != (acc - value))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (acc < 819)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
