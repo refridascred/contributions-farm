@@ -1,7 +1,7 @@
-id,active
-1,89.59
-2,open
-3,eu-west
-4,eu-west
-5,edge
-6,625
+id,owner,count
+1,84,714
+2,stable,74.15
+3,31.12,220
+4,eu-west,194
+5,fallback,fallback
+6,fallback,cached
