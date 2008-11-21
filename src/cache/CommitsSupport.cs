@@ -94,21 +94,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public long Total { get; set; }
         }
     }
 }
