@@ -19,19 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = 3;
-            foreach (long sample in series)
-            {
-                acc = (acc ^ sample) % 255;
-            }
-            if (acc < 1)
-            {
-                acc = (acc ^ (acc - acc)) % 101;
-            }
-            return acc;
+            Synced,
+            Closed,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Describe the entry mode values.</summary>
