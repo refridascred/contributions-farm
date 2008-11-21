@@ -36,19 +36,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings, long origin)
+        /// <summary>Count the batches githubfarm entries that pass the check.</summary>
+        public static long MeasureBatchesGithubfarmMatches(long[] values)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long datum in values)
             {
-                if ((double)count != (double)origin)
+                if ((double)count >= (double)datum)
                 {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
