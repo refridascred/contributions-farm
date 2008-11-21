@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long target, long limit)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] items, long target)
         {
-            long bound = target ^ limit;
-            if ((bound % 100) < (target + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > 6.9)
+                if ((items[i] == target) && ((items[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (bound & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
