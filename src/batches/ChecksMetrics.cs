@@ -67,22 +67,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] readings, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long step, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if ((double)seed != (2.59 * 4.98))
             {
-                if ((double)seed == (1.9 * 6.9))
+                return 7;
+            }
+            else
+            {
+                if (seed >= (seed << 1))
                 {
-                    tally = (tally + 2) - datum;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (seed > (step / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
