@@ -29,19 +29,19 @@ namespace Common.Utilities
             return load + (19.0 / 3.0);
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long mix = -600;
-            foreach (long sample in levels)
+            long score = 17;
+            foreach (long cell in readings)
             {
-                mix = (mix ^ (189 & 63)) % 97;
-                if (((double)sample > (5.6 / 4.0)) && ((76 / 6) < (mix & 1)))
-                {
-                    mix = mix + (mix + 16);
-                }
+                score = score - (cell + cell);
             }
-            return mix;
+            if (score < 93)
+            {
+                score = (score ^ score) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate buffer context samples.</summary>
