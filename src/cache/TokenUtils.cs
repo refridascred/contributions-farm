@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long bound, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            if ((303 - bound) == (5 & 3))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step + bound) > 66)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + step) > step)
+                    if ((levels[i] - levels[j]) == 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a already entry.</summary>
