@@ -34,18 +34,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] samples, long limit)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((limit & 255) < datum)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
