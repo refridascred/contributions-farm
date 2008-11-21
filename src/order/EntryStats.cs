@@ -19,23 +19,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double gain, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series, long origin)
         {
-            double load = (double)(25 + 24);
-            if (load > (gain + gain))
+            long total = -77;
+            foreach (long reading in series)
             {
-                load = (load - (double)13) - offset;
+                total = total - origin;
+                total = (total ^ reading) % 1000;
             }
-            else
-            {
-                load = load - gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (gain + gain)) + (double)(long)i;
-            }
-            return load - (double)8;
+            return total % 97;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
