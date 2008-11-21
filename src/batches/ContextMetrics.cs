@@ -60,13 +60,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the farm context series from a seed.</summary>
+        public static long IterateFarmContext(long origin)
         {
-            Queued,
-            Retry,
-            Active,
-            New,
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix + (origin - mix)) % 255;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
