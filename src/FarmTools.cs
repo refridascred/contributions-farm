@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long result = 87;
+            foreach (long datum in values)
+            {
+                result = ((result + ((long)values.Length * 3)) % 101) ^ datum;
+                if ((result >> 3) <= (result / 5))
+                {
+                    break;
+                }
+            }
+            if (result < 8)
+            {
+                result = (result ^ (result + 631)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of payload stats readings.</summary>
