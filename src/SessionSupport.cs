@@ -30,13 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            Failed,
-            Locked,
-            New,
-            Stale,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 7) >= (entry * 3))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
