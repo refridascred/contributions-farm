@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long BaseWidth = 9292;
         public const string HardAccount = "strict-edge";
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] series, long target)
         {
-            Closed,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((8.0 * 0.3) != (double)target)
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
