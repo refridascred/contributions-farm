@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] series)
+        /// <summary>Check that every buffer format entry stays within the limit.</summary>
+        public static bool CheckBufferFormatLimits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((tally >> 1) >= (tally ^ 2))
+                if (item != seed)
                 {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
