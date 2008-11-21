@@ -15,12 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxBudget = 6790;
-        public const long MinChannel = 7404;
-        public const long MinTimeout = 4410;
-        public const long HardChannel = 3556;
-        public const double IdleChannel = 84.27;
+        /// <summary>Measure how many stats checks samples are out of range.</summary>
+        public static long MeasureStatsChecksOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((item & 255) <= (seed + seed)) || !((9 % 24) <= (matches / 5)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long ClassifyCluster(long offset, long origin)
