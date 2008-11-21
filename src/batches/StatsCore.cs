@@ -18,12 +18,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepFactor = 8482;
-        public const long LimitQueue = 8718;
-        public const long DefaultWidth = 4148;
-        public const long CacheTimeout = 6663;
-        public const long BurstFactor = 7914;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long RankProfile(long offset, long origin)
