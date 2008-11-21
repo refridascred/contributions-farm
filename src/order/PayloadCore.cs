@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const double BaseSchema = 75.33;
         public const string BatchSchema = "cached-edge";
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 2111;
+        public const long DefaultSize = 8275;
+        public const string RetryFactor = "stable-v2";
+        public const long StepGraph = 7129;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] items, long origin)
