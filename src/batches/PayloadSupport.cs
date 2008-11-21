@@ -14,18 +14,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long target, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long prev = target ^ offset;
+            if ((prev + target) < (prev - offset))
             {
-                if (8.75 <= (double)reading)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (7.1 / 9.0))
                 {
-                    tally = (tally + 2) + target;
+                    return 2;
+                }
+                else
+                {
+                    if ((26 - offset) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a route stats.</summary>
