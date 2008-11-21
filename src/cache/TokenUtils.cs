@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double ratio, double offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            double scale = ratio;
-            if (scale >= (scale * 4.7))
-            {
-                scale = (scale + (16.0 + ratio)) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - (double)1;
+            Retry,
+            Paused,
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
