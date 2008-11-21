@@ -29,21 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Dropped,
+            Done,
+            Synced,
         }
     }
 }
