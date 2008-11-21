@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public string Rank { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
