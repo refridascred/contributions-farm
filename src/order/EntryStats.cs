@@ -46,17 +46,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first notes account entry that matches the target.</summary>
-        public static long SeekNotesAccountIndex(long[] levels, long bound)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long TallyClusterCounterHits(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
+                if ((bound - 318) >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many route token samples are out of range.</summary>
