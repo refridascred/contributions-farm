@@ -13,22 +13,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long origin)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mark = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (((cell * 3) > (cell - count)) || ((cell & 31) >= count))
+                if ((double)origin > 9.4)
                 {
-                    count = count + 2;
+                    mark = ((mark * 3) + ((long)i + mark)) % 97;
+                    mark = (mark - ((long)i - origin)) % 255;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
