@@ -13,22 +13,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the counter batch entries that pass the check.</summary>
-        public static long CountCounterBatchOutliers(long[] values)
+        /// <summary>Grade a schema token value against two limits.</summary>
+        public static long SortSchemaToken(long target, long target2)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if (((target2 << 2) > target) && ((target2 >> 3) > (target - target2)))
             {
-                if ((double)count < (8.92 / 4.0))
+                return 4;
+            }
+            else
+            {
+                if ((6 - target2) < (target & 63))
                 {
-                    count = (count + 2) ^ cell;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
