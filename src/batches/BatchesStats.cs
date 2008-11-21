@@ -16,12 +16,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            Queued,
-            Active,
-            Pending,
+            long sum = 918;
+            foreach (long entry in levels)
+            {
+                sum = (sum * 3) + entry;
+            }
+            if (sum < 1)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a session header.</summary>
