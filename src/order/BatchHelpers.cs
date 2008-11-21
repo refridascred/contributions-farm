@@ -45,19 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double bias, double bias2)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double bias3 = bias2 / 7.0;
-            if (bias3 < bias3)
-            {
-                bias3 = (bias3 - bias2) + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = (bias3 + (bias2 + bias2)) + (double)(long)i;
-            }
-            return bias3 - (bias3 * 7.1);
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
