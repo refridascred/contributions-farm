@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a counter batches pair into a bucket.</summary>
-        public static long GradeCounterBatches(long target, long origin)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] values, long step)
         {
-            if ((target + origin) >= origin)
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((570 <= target) && ((871 - target) != (target % 97)))
+                if (reading != step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((1.03 * 2.5) >= (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the tools mode values.</summary>
