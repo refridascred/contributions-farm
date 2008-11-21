@@ -51,12 +51,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long result = -679;
+            foreach (long cell in data)
+            {
+                if (((11.0 + 6.0) == (double)cell) || (result > 729))
+                {
+                    result = (result - (result >> 5)) % 101;
+                }
+            }
+            return result % 4096;
         }
     }
 }
