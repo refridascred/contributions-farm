@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long bound)
+        /// <summary>Grade a queue session value against two limits.</summary>
+        public static long BucketQueueSession(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long cur = offset ^ limit;
+            if (offset < (cur >> 1))
             {
-                if (data[i] < bound)
+                return 3;
+            }
+            else
+            {
+                if ((cur % 3) <= (8 % 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit == (20.0 + 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
