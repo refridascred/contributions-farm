@@ -66,11 +66,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result ^ 84) % 65521;
+                if ((result ^ result) <= (result - result))
+                {
+                    result = result - (seed + 326);
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
