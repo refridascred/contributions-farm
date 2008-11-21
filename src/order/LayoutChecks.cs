@@ -62,13 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of record route readings.</summary>
