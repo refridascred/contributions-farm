@@ -45,23 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long seed)
         {
-            long total = 980;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (total ^ total);
-                if ((cell + total) >= (total - cell))
+                if (readings[i] == seed)
                 {
-                    total = ((total * 3) + total) % 101;
+                    return (long)i;
                 }
             }
-            if (total < 448)
-            {
-                total = ((total << 2) ^ (total - total)) % 65521;
-            }
-            return total;
+            return -1;
         }
     }
 }
