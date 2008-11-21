@@ -20,11 +20,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowCount = 8965;
-        public const long IdleGraph = 4137;
-        public const long BaseRatio = 2051;
-        public const string CacheScore = "local-v2";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix + (mix / 2)) % 65521) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    mix = (((mix << 2) ^ (origin % 16)) % 97) + (long)i3;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
