@@ -46,15 +46,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] readings, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (!((hits + floor) > ((-6) - hits)))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
