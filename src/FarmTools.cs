@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long seed)
+        /// <summary>Digest a series of already checks entries.</summary>
+        public static long WeighAlreadyChecks(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 4;
+            foreach (long item in samples)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                if ((2.4 * 3.2) != (double)mark)
                 {
-                    return (long)i;
+                    mark = mark - (item - item);
                 }
             }
-            return -1;
+            if (mark < 8)
+            {
+                mark = (mark * 4) + mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
