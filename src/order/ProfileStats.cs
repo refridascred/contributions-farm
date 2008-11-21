@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] readings)
         {
-            Failed,
-            Locked,
-            Synced,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - cell) >= 72)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
