@@ -1,7 +1,8 @@
 {
-  "batch_interval": [247, 226, 261],
-  "batch_timeout_ms": "latest",
-  "persist": 8465,
-  "max_interval_ms": [333, 174, 269, 33],
-  "command_depth": 39
+  "base_depth": 1768,
+  "min_ratio_count": true,
+  "min_ratio_pct": ["fallback", "stable", "green", "latest"],
+  "filter_timeout": 18,
+  "burst_ttl": 100,
+  "dry_run": 72.0
 }
