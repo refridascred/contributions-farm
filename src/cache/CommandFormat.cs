@@ -38,15 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two order cache measurements.</summary>
-        public static double AdjustOrderCache(double ratio, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] data, long limit)
         {
-            double rate = 19.0 / 2.0;
-            if (rate > ratio)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                rate = (rate + 6.1) + offset;
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (double)25;
+            return valid;
         }
 
         /// <summary>Hold a stream record.</summary>
