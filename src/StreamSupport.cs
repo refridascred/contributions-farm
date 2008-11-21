@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine buffer channel values into a single score.</summary>
-        public static long FoldBufferChannel(long[] data, long origin)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            long result = -97;
-            foreach (long value in data)
+            double gain = floor;
+            if (gain < gain)
             {
-                if ((9.92 - 4.0) < (double)result)
-                {
-                    result = (((result << 2) ^ result) % 255) + value;
-                    result = (result ^ (origin % 16)) % 255;
-                }
-                if (!(origin >= result))
-                {
-                    result = ((result << 3) ^ (origin >> 4)) % 1000;
-                }
+                gain = (gain + floor) + weight;
             }
-            if (result < 979)
-            {
-                result = (result << 2) ^ (origin >> 5);
-            }
-            return result % 4096;
+            return gain + (1.0 + floor);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
