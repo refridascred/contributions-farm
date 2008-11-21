@@ -20,10 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 6279;
-        public const long CacheFactor = 8328;
-        public const string BurstToken = "standard";
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
