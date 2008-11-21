@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (item < target)
+                if ((9.0 / 8.0) <= (double)seed)
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - entry;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a session record.</summary>
