@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-eu-west}"
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    green)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in primary legacy open; do
+for item in strict eu-west stable; do
     log "checking ${item}"
 done
