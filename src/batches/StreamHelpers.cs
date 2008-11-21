@@ -53,17 +53,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Find the first batches cache entry that matches the target.</summary>
-        public static long LookupBatchesCacheIndex(long[] levels, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                if (cell >= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the channel class values.</summary>
