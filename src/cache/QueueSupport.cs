@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics report measurements.</summary>
-        public static double ScaleMetricsReport(double ratio, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] samples)
         {
-            double drift = (double)1 / 7.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                drift = (((drift + drift) + (double)(long)i) - ratio) + floor;
+                if (((cell * 3) > (cell - count)) || ((cell & 31) >= count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift + drift;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
