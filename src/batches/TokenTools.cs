@@ -31,21 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 73.48;
+        public const long DefaultAccount = 1418;
+        public const string MinAccount = "stable-edge";
+        public const string StepRatio = "fallback-edge";
+        public const long BatchAccount = 4924;
     }
 }
