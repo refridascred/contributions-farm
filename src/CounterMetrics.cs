@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long seed)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long mix = 71;
-            foreach (long datum in series)
-            {
-                if ((mix >> 3) != (datum - mix))
-                {
-                    mix = ((mix - (mix & 31)) % 255) + seed;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix - datum)) % 4096;
-                }
-            }
-            return mix;
+            Queued,
+            Synced,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the route class values.</summary>
