@@ -21,19 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 501;
-            foreach (long item in samples)
-            {
-                carry = (carry ^ (item ^ item)) % 255;
-            }
-            if (carry < 2)
-            {
-                carry = ((carry * 2) + carry) % 4096;
-            }
-            return carry % 1000;
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
