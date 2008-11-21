@@ -60,13 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Dropped,
-            Ready,
-            Queued,
-            Stale,
+            public double Flag { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
