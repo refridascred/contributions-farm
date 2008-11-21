@@ -17,19 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] samples, long origin)
+        /// <summary>Digest a series of editor farm entries.</summary>
+        public static long CombineEditorFarm(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long acc = -62;
+            foreach (long datum in readings)
             {
-                if (sample >= origin)
+                acc = (acc * 3) + (acc / 7);
+                if (1.0 > (double)datum)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ ((long)readings.Length + acc)) % 4096;
                 }
             }
-            return flag;
+            return acc % 97;
         }
 
         /// <summary>Project the next metrics value.</summary>
