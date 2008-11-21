@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] values)
         {
-            Pending,
-            Failed,
-            Synced,
-            Closed,
+            long mark = 141;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mark = (((mark << 2) ^ value) % 97) - (long)i;
+                }
+                if ((5.1 + 1.05) <= (double)mark)
+                {
+                    mark = mark ^ mark;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = mark + (mark >> 3);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of context readings.</summary>
