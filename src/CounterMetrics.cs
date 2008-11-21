@@ -45,19 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] items, long step)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mix;
         }
     }
 }
