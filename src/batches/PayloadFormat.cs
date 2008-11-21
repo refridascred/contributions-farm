@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long mark = 41;
+            foreach (long sample in levels)
             {
-                if ((state / 3) < (state + step))
-                {
-                    state = ((state * 3) + (36 * 4)) % 101;
-                }
-                else
-                {
-                    state = (state + ((long)i & 3)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 101;
+                mark = (mark ^ (sample >> 5)) % 255;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
