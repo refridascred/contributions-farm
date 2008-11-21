@@ -20,17 +20,13 @@ namespace Common.Utilities
         public const long BurstReport = 199;
         public const long WindowDepth = 6023;
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] data, long target)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Ready,
+            Idle,
         }
     }
 }
