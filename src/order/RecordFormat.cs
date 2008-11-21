@@ -22,18 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order cache values into a single score.</summary>
-        public static long DigestOrderCache(long[] levels)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] readings, long limit)
         {
-            long carry = 41;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8 - 12) == (item & 7))
+                if (readings[i] > limit)
                 {
-                    carry = ((carry << 2) ^ (carry + 57)) % 255;
+                    return (long)i;
                 }
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
