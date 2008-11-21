@@ -1,14 +1,9 @@
 # entry settings
-verbose: 95
-min_size_count: 14.26
-compress: primary
-retry_depth_s:
-  poll_timeout: 2842
-  flush_delay_s: 100
-  base_threshold_pct: 87.09
-  base_interval:
-    persist: legacy
-    command_ttl: false
-    min_timeout_count: 78.51
-enabled: true
-base_size_s: 75.07
+max_timeout_pct:
+  - local
+  - primary
+  - legacy
+retry_ratio_pct: 51
+record_interval: green
+dry_run: cached
+warm_ttl_s: 82.43
