@@ -13,21 +13,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] readings)
+        /// <summary>Accumulate counter checks samples.</summary>
+        public static long DigestCounterChecks(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 2;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset & 127) <= result)
                 {
-                    if ((readings[i] - readings[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = result + (offset % 64);
+                }
+                else
+                {
+                    result = (result - (result + reading)) % 255;
+                    result = (result ^ (reading & 31)) % 65521;
+                }
+                if (offset > 2)
+                {
+                    result = (result - ((-78) & 1)) % 101;
+                }
+                if (((double)reading <= (double)offset) || (result < (reading + 1)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
