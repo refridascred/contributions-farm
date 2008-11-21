@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a notes stream value against two limits.</summary>
-        public static long RankNotesStream(long offset, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long gap = offset ^ seed;
-            if (((double)offset <= (0.55 + 4.7)) || ((gap << 2) == (gap >> 1)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((gap - offset) > (offset - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset > (3.5 / 7.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((offset - 5) <= (seed - (-2))))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Draft,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
