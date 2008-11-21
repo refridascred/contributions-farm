@@ -23,11 +23,9 @@ namespace Common.Utilities
         public const long LimitSchema = 3502;
         public const string RetryLevel = "alpha";
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double AdjustBuffer(double scale, double span)
-        {
-            double gain = span + span;
-            return gain + scale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "primary";
+        public const double StepProfile = 14.0;
+        public const double DefaultTimeout = 26.77;
     }
 }
