@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
