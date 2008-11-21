@@ -26,21 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stats account samples.</summary>
-        public static long OverlapStatsAccountCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 284;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state * 4) + (state - item)) % 1000;
             }
-            return hits;
+            if (state < 2)
+            {
+                state = (state + (state - state)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
