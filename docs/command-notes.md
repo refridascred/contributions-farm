@@ -1,15 +1,11 @@
 # Command notes
 
-Use githubfarm settings to tune how often queue data is refreshed.
-Run the window check before changing any notes limits.
-
-Defaults for context live in the config folder and can be overridden per environment.
-Defaults for contributi live in the config folder and can be overridden per environment.
-Run the metric check before changing any payload limits.
+Each profile is validated before it reaches the contributi queue.
+A report that stays idle for too long is moved to the command list.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer support defaults
-- Document new buffer fields
-- Validate entry input early
-- Log every notes change
+- Validate layout input early
+- Keep entry values small
+- Log every graph change
