@@ -1,5 +1,18 @@
 {
-  "verbose": [286, 192],
-  "sync_window_s": "standard",
-  "retry_ratio": ["green", "strict", "strict", "standard"]
+  "base_delay_s": "standard",
+  "hard_window_count": {
+    "payload_limit": ["fallback", "stable", "fallback"],
+    "warm_capacity": "strict",
+    "persist": "latest",
+    "cache_ttl_s": ["eu-west", "local"]
+  },
+  "base_ttl_count": "strict",
+  "hard_window_pct": {
+    "payload_ratio": ["cached", "green", "open", "open"],
+    "dry_run": 67.14,
+    "route_ttl": "edge",
+    "soft_capacity": "open"
+  },
+  "githubfarm_ttl": "green",
+  "verbose": "fallback"
 }
