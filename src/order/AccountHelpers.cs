@@ -77,27 +77,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support checks values into a single score.</summary>
-        public static long WeighSupportChecks(long[] samples)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = 35;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor << 2) ^ (item >> 1)) % 1000;
-                if (((-446) - item) != (1 - 6))
-                {
-                    anchor = (anchor + (32 - item)) % 97;
-                }
-                else
-                {
-                    anchor = anchor + (anchor << 2);
-                }
-            }
-            if (anchor < 918)
-            {
-                anchor = (anchor ^ (anchor - anchor)) % 4096;
-            }
-            return anchor;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
