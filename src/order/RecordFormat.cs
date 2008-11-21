@@ -94,19 +94,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double gain, double floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] values, long seed)
         {
-            double gain2 = gain;
-            if (gain2 > floor)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                gain2 = gain2 - gain;
+                if (!((matches % 7) < ((long)values.Length / 2)))
+                {
+                    matches = ((matches + 1) + datum) - seed;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = gain2 + (double)(long)i;
-            }
-            return gain2 + gain2;
+            return matches;
         }
     }
 }
