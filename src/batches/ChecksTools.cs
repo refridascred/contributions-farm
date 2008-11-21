@@ -31,15 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next entry metric value.</summary>
-        public static double SmoothEntryMetric(double bias, double floor)
+        /// <summary>Project the next token value.</summary>
+        public static double ScaleToken(double gain, double bias)
         {
-            double bias2 = (bias * 3.3) - (bias + bias);
-            if (bias2 <= (floor / 4.0))
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - floor;
+            double bias2 = (gain + bias) / 9.0;
+            return bias2 + (bias2 / 2.0);
         }
 
         /// <summary>Validate format readings against a bound.</summary>
