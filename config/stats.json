@@ -1,7 +1,11 @@
 {
-  "record_size": ["standard", "latest", "legacy", "staging"],
-  "poll_window_s": ["legacy", "strict"],
-  "idle_window": "cached",
-  "idle_depth": [468, 203, 225],
-  "verbose": 5339
+  "graph_interval": 21,
+  "queue_interval": false,
+  "retry_timeout_count": {
+    "poll_ttl_pct": ["blue", "stable", "fallback", "edge"],
+    "retry_interval_ms": 87.01,
+    "entry_limit": "fallback",
+    "stream_timeout": "green"
+  },
+  "min_window": 59
 }
