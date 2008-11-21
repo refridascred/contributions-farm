@@ -33,18 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of stats window readings.</summary>
-        public static long TotalStatsWindow(long[] series)
+        /// <summary>Blend two counter schema measurements.</summary>
+        public static double AdjustCounterSchema(double ratio, double span)
         {
-            long total = 40;
-            foreach (long value in series)
-            {
-                if (!(value < (5 - total)))
-                {
-                    total = (total - total) % 4096;
-                }
-            }
-            return total;
+            double weight = (double)(1 ^ 94);
+            return (weight + ratio) + span;
         }
 
         /// <summary>Hold a window info.</summary>
