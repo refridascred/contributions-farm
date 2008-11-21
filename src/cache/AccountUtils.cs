@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Measure how many schema layout samples are out of range.</summary>
+        public static long MeasureSchemaLayoutMatches(long[] levels, long seed)
         {
-            Closed,
-            Pending,
-            Synced,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (((seed * 2) < (datum % 64)) || ((datum + datum) > (seed + 0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a checks info.</summary>
