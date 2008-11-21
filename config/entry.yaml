@@ -1,4 +1,6 @@
 # entry settings
-burst_depth: 20.19
-hard_limit_pct: true
-max_threshold_count: fallback
+max_window_ms: 48
+channel_limit: 96.41
+audit: 87.47
+min_limit_pct: 63
+poll_delay: cached
