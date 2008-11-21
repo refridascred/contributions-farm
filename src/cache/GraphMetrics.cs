@@ -58,18 +58,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count the metric entry entries that pass the check.</summary>
-        public static long MeasureMetricEntryGaps(long[] series)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (double)hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
