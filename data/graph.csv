@@ -1,10 +1,7 @@
-id,count,region,rank,ratio
-1,88,814,840,open
-2,18.86,primary,689,33.75
-3,blue,82.5,40.9,stable
-4,654,latest,529,364
-5,326,539,64.81,815
-6,fallback,50.66,709,cached
-7,62.61,482,45.37,fallback
-8,130,211,515,14
-9,green,cached,887,632
+id,region,weight,rank
+1,16,edge,12.91
+2,530,954,local
+3,834,902,62.09
+4,cached,311,fallback
+5,69.68,998,46.03
+6,96,831,stable
