@@ -33,15 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a notes entry reading.</summary>
-        public static double ScaleNotesEntry(double weight, double span)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double ratio = span / 2.0;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + (6.2 * 8.5)) + (double)(long)i) + weight;
-            }
-            return ratio + (double)4;
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the layout class values.</summary>
