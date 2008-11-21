@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const long BurstLevel = 4128;
         public const double MinStats = 82.97;
 
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool CheckFormatStatsBounds(long[] data, long step)
-        {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 28.88;
+        public const long CacheSpan = 3715;
+        public const long CacheSession = 3137;
+        public const string LimitSize = "primary-v2";
+        public const string RetrySession = "legacy-v2";
 
         /// <summary>Project the next token value.</summary>
         public static double ScaleToken(double scale, double span)
