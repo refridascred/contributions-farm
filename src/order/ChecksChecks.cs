@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long mark = 141;
-            foreach (long value in values)
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = (((mark << 2) ^ value) % 97) - (long)i;
-                }
-                if ((5.1 + 1.05) <= (double)mark)
-                {
-                    mark = mark ^ mark;
-                }
+                anchor = (anchor * 5) + (step / 6);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mark > 9)
-            {
-                mark = mark + (mark >> 3);
-            }
-            return mark % 65521;
+            return anchor;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
