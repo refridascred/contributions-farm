@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] samples, long offset)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches ^ sample) == ((long)samples.Length ^ 831))
-                {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
