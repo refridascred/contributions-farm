@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream channel values into a single score.</summary>
-        public static long TotalStreamChannel(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricBounds(long[] data, long bound)
         {
-            long result = 57;
-            foreach (long reading in levels)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((reading % 7) != (reading * 3))
+                if (datum <= bound)
                 {
-                    result = (result * 4) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 252)
-            {
-                result = ((result << 2) ^ result) % 65521;
-            }
-            return result;
+            return ok;
         }
 
         /// <summary>Derive the next commits layout value from a seed.</summary>
