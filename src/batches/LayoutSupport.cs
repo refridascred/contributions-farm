@@ -33,10 +33,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "cached-edge";
-        public const double MaxLevel = 92.1;
-        public const long SoftCluster = 3968;
+        /// <summary>Locate a cluster payload reading by value.</summary>
+        public static long LookupClusterPayloadIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
