@@ -12,22 +12,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] samples, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (!((double)(long)samples.Length >= (1.9 - 8.7)))
-                {
-                    hits = ((hits + 3) + entry) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
