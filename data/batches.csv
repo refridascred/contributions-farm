@@ -1,8 +1,6 @@
-id,active,region,rank
-1,primary,legacy,38.55
-2,91.83,209,standard
-3,91.12,standard,75.06
-4,22.13,535,primary
-5,336,21.99,legacy
-6,standard,706,blue
-7,48.85,16.11,fallback
+id,score,ratio
+1,stable,818
+2,blue,open
+3,271,cached
+4,2.4,459
+5,38.07,160
