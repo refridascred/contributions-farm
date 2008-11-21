@@ -36,12 +36,19 @@ namespace Common.Utilities
         public const string RetryRatio = "strict-edge";
         public const long BatchInterval = 3648;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] data)
         {
-            Locked,
-            Queued,
-            Dropped,
+            long total = 5;
+            foreach (long sample in data)
+            {
+                total = ((total - (9 + total)) % 101) ^ sample;
+            }
+            if (total > 800)
+            {
+                total = (total * 2) + total;
+            }
+            return total;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
