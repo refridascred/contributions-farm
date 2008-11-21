@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] readings, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = -2;
+            foreach (long value in series)
             {
-                if ((bound >> 4) > count)
+                anchor = (anchor ^ (long)series.Length) % 255;
+                if ((value > (offset << 2)) || ((value - offset) != (65 * 2)))
                 {
-                    count = (count + 1) ^ reading;
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor % 100)) % 97;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the commits status values.</summary>
