@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!((seed >> 2) == (seed * 5)))
-                {
-                    seen = (seen + 2) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitScore = 84.09;
+        public const long DefaultLevel = 2999;
+        public const long LimitContributi = 3378;
 
         /// <summary>Fold a list of stats stream readings.</summary>
         public static long FoldStatsStream(long[] items, long target)
