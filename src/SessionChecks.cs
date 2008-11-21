@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long score = 75;
-            foreach (long reading in samples)
+            long anchor = 79;
+            foreach (long item in items)
             {
-                score = ((score * 2) + (reading ^ score)) % 97;
+                if (((double)(long)items.Length != (17.0 / 4.0)) && (9.3 >= (double)anchor))
+                {
+                    anchor = anchor - (item >> 3);
+                }
+                if ((double)item == (2.3 + 4.68))
+                {
+                    break;
+                }
             }
-            if (score > 462)
-            {
-                score = score + (1 + score);
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
