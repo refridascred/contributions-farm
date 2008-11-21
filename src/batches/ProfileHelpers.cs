@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            Pending,
+            Active,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
