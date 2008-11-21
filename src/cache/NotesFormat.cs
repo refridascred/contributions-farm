@@ -13,11 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1782;
-        public const long StepFactor = 5411;
-        public const string DefaultCount = "staging";
-        public const long BatchWidth = 9682;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum * 4) == (77 / 6))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double StepFilter = 57.78;
