@@ -36,19 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] samples, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 27.68;
+        public const long MaxFarm = 5449;
+        public const long HardInterval = 9132;
+        public const string BurstLevel = "legacy-edge";
     }
 }
