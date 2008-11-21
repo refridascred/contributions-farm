@@ -44,12 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] data)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + datum) <= (tally >> 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next editor value.</summary>
