@@ -1,6 +1,6 @@
 # entry settings
-route_size: 7852
-persist: 60
-base_window: 53.79
-default_window: 57.64
-verbose: latest
+sync_ttl: 46
+buffer_capacity: latest
+record_threshold: green
+audit: blue
+persist: true
