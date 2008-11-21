@@ -55,19 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double gain, double floor)
         {
-            long state = 212;
-            foreach (long datum in levels)
+            double gain2 = gain;
+            if (gain2 > floor)
             {
-                state = (state + (state - state)) + datum;
+                gain2 = gain2 - gain;
             }
-            if (state < 5)
+            for (int i = 0; i < 2; i++)
             {
-                state = ((state << 2) ^ state) % 255;
+                gain2 = gain2 + (double)(long)i;
             }
-            return state % 97;
+            return gain2 + gain2;
         }
     }
 }
