@@ -64,32 +64,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a account format value against two limits.</summary>
-        public static long SortAccountFormat(long bound, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long cur = bound ^ floor;
-            if ((cur - 0) != (3 ^ cur))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 100) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (59 >= (cur - bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            New,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
