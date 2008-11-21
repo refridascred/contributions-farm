@@ -12,14 +12,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            Paused,
-            Closed,
-            Stale,
-            Draft,
-            Active,
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
