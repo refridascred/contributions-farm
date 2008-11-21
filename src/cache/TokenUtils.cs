@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Retry,
-            Paused,
-            Idle,
-            Closed,
-            Dropped,
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
