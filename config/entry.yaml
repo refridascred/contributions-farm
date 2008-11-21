@@ -1,10 +1,6 @@
 # entry settings
-metrics_size:
-  - 168
-  - 272
-tools_delay:
-  - 447
-  - 322
-  - 341
-flush_size_s: 21.1
-burst_timeout_ms: eu-west
+warm_depth_ms: 161
+poll_ratio: 4663
+record_ratio: latest
+dry_run: false
+persist: local
