@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const long WindowInterval = 5652;
         public const long BatchScore = 6843;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            Active,
-            Idle,
-            New,
-            Ready,
+            long total = 75;
+            foreach (long reading in levels)
+            {
+                if ((total - (long)levels.Length) != (9 + reading))
+                {
+                    total = ((total * 4) + (reading - total)) % 97;
+                }
+                else
+                {
+                    total = (total ^ (144 % 8)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Adjust a already order reading.</summary>
