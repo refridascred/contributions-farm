@@ -54,26 +54,12 @@ namespace Common.Utilities
         public const long DefaultBuffer = 8658;
         public const long CacheSize = 246;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long anchor = 78;
-            foreach (long sample in levels)
-            {
-                if (!((anchor + anchor) > (anchor * 3)))
-                {
-                    anchor = ((anchor * 3) + (2 / 6)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor - (sample + sample);
-                }
-            }
-            if (anchor < 92)
-            {
-                anchor = (anchor << 2) ^ (anchor % 64);
-            }
-            return anchor % 97;
+            Locked,
+            New,
+            Paused,
         }
     }
 }
