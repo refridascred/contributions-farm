@@ -52,14 +52,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Ready,
-            New,
-            Paused,
-            Idle,
             Done,
+            Dropped,
+            New,
+            Pending,
         }
     }
 }
