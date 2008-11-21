@@ -44,24 +44,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] values, long seed)
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            long mark = 717;
-            foreach (long sample in values)
+            double scale2 = bias;
+            if (scale2 >= scale2)
             {
-                if (((-73) - seed) < 50)
-                {
-                    mark = (mark - (mark << 2)) % 65521;
-                    continue;
-                }
-                mark = mark ^ (sample - sample);
+                scale2 = scale2 - (scale + bias);
             }
-            if (mark > 5)
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark + (mark - 84)) % 101;
+                scale2 = (scale2 - scale2) + (double)(long)i;
             }
-            return mark;
+            return scale2 - (scale2 + scale2);
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
