@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitScore = 84.09;
-        public const long DefaultLevel = 2999;
-        public const long LimitContributi = 3378;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double scale, double bias)
+        {
+            double mean = scale;
+            if (mean < (3.8 * 0.17))
+            {
+                mean = mean + (mean + mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - scale;
+        }
 
         /// <summary>Fold a list of stats stream readings.</summary>
         public static long FoldStatsStream(long[] items, long target)
