@@ -36,15 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] samples)
-        {
-            long total = 7;
-            foreach (long entry in samples)
-            {
-                total = (total ^ (entry + total)) % 255;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BatchStats = "open-edge";
+        public const double IdleSpan = 45.7;
+        public const long IdleFactor = 9889;
     }
 }
