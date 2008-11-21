@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long anchor = 60;
-            foreach (long reading in values)
-            {
-                if ((8.59 / 9.0) == (double)anchor)
-                {
-                    anchor = (anchor * 2) + anchor;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = ((anchor ^ (anchor - anchor)) % 255) ^ (long)i;
-                }
-                if (((anchor + anchor) != (anchor - reading)) && (reading <= (anchor + (-11))))
-                {
-                    anchor = (anchor + (anchor + anchor)) % 1000;
-                }
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
