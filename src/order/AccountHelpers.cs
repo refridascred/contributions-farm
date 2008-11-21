@@ -85,18 +85,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] series, long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (1.11 < (double)hits)
+                if (entry >= offset)
                 {
-                    hits = ((hits + 2) ^ datum) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
