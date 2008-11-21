@@ -17,18 +17,23 @@ namespace Common.Utilities
         public const string BurstOrder = "cached-1";
         public const long DefaultOrder = 9247;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] levels)
+        /// <summary>Digest a series of context order entries.</summary>
+        public static long ScoreContextOrder(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long acc = 5;
+            foreach (long item in samples)
             {
-                if ((matches % 10) > (matches + matches))
+                if (!((item < (acc % 24)) && ((double)3 > (double)item)))
                 {
-                    matches = (matches + 1) ^ datum;
+                    acc = (acc * 4) + acc;
                 }
+                acc = (acc ^ acc) % 4096;
             }
-            return matches;
+            if (acc < 405)
+            {
+                acc = acc ^ (acc << 2);
+            }
+            return acc % 65521;
         }
     }
 }
