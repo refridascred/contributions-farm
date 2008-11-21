@@ -1,15 +1,11 @@
 # Command notes
 
-When a graph fails, the record handler retries a few times before giving up.
-Keep checks and already names short and lowercase.
-
-The format module keeps profile values in sync with the account cache.
-Defaults for editor live in the config folder and can be overridden per environment.
-Run the format check before changing any cluster limits.
+Each counter is validated before it reaches the record queue.
+Keep session and token names short and lowercase.
 
 ## Guidelines
 
-- Log every entry change
-- Keep contributi values small
-- Document new githubfarm fields
-- Validate checks input early
+- Review order limits each release
+- Log every buffer change
+- Prefer entry defaults
+- Validate support input early
