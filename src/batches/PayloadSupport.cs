@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = origin - floor;
+            if ((double)bound <= (18.0 + 3.09))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((floor << 2) >= (origin * 2)) || (origin < 6))
                 {
-                    if ((data[i] - data[j]) == 7)
+                    return 8;
+                }
+                else
+                {
+                    if ((11.0 * 2.71) != (double)floor)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((937 & 255) > (bound ^ floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Blend two window context measurements.</summary>
