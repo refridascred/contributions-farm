@@ -86,11 +86,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit contributi format readings against a rule.</summary>
+        public static long TallyContributiFormatOutliers(long[] items)
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (seen >= (seen ^ cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
