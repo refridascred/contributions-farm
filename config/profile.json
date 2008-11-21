@@ -1,8 +1,5 @@
 {
-  "flush_timeout_ms": "fallback",
-  "poll_limit_s": 1021,
-  "notes_limit": true,
-  "compress": "cached",
-  "default_interval_count": [210, 3],
-  "default_limit": "edge"
+  "report_interval": 6.87,
+  "flush_ratio_s": [225, 489, 386],
+  "strict": "eu-west"
 }
