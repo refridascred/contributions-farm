@@ -68,13 +68,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Dropped,
-            Ready,
-            Closed,
-            Retry,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
