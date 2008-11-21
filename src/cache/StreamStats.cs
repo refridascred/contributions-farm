@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Stale,
-            Closed,
-            Locked,
+            Idle,
+            New,
+            Done,
+            Active,
+            Retry,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
