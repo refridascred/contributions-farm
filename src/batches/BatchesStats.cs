@@ -19,18 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format support readings against a rule.</summary>
-        public static long MeasureFormatSupportHits(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((hits >> 1) < (hits / 5))
-                {
-                    hits = (hits + 3) - datum;
-                }
+                mix = ((mix << 2) ^ (long)i) % 97;
+                mix = (mix * 5) + (mix + bound);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
