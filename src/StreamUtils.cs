@@ -27,23 +27,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine context command values into a single score.</summary>
-        public static long ScoreContextCommand(long[] items)
+        /// <summary>Blend two cluster stats measurements.</summary>
+        public static double AdjustClusterStats(double weight, double offset)
         {
-            long sum = 25;
-            foreach (long entry in items)
+            double scale = (double)60 * 7.46;
+            if (scale < (double)685)
             {
-                sum = (sum + (sum + entry)) % 65521;
-                if ((sum >> 1) > (sum - 93))
-                {
-                    break;
-                }
+                scale = (scale - 16.0) - offset;
             }
-            if (sum < 89)
+            else
             {
-                sum = (sum + (42 + sum)) % 1000;
+                scale = scale - (double)752;
             }
-            return sum;
+            return scale + (weight + 2.85);
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
