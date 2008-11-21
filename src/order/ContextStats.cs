@@ -13,23 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double weight, double offset)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double bias = offset;
-            if (bias < (6.01 - offset))
-            {
-                bias = bias + (double)2;
-            }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - 14.0) + (double)(long)i;
-            }
-            return bias - (weight - offset);
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
