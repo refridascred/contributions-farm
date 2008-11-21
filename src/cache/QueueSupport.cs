@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double RetryPayload = 96.68;
         public const long BasePayload = 3912;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits ^ hits) >= hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MinScore = "strict-1";
+        public const double IdleBudget = 40.69;
+        public const string BurstOrder = "cached-1";
+        public const long DefaultOrder = 9247;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheAccount = 1553;
