@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate batch window readings against a bound.</summary>
+        public static bool CheckBatchWindowBounds(long[] data, long origin)
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public double Size { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the report class values.</summary>
