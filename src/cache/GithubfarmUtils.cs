@@ -28,21 +28,19 @@ namespace Common.Utilities
         public const long MaxCount = 4379;
         public const string MinSize = "cached-v2";
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] values)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double rate, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = rate / 9.0;
+            if (mean < mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean - (mean + mean)) - offset;
             }
-            return matches;
+            else
+            {
+                mean = mean - (rate * 8.3);
+            }
+            return mean - rate;
         }
 
         /// <summary>Describe the notes phase values.</summary>
