@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const long BatchRoute = 2809;
         public const long WindowCount = 3261;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double offset)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Label { get; set; }
+            double mean = (7.67 - bias) - (offset - bias);
+            if (mean < offset)
+            {
+                mean = mean + 0.1;
+            }
+            return mean - offset;
         }
     }
 }
