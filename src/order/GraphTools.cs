@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double span)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double scale2 = 2.3;
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = ((scale2 - span) - (double)(long)i) - scale;
-            }
-            return scale2 + 1.02;
+            Ready,
+            Draft,
+            Done,
+            Idle,
         }
 
         /// <summary>Hold a checks info.</summary>
