@@ -44,14 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Adjust a schema commits reading.</summary>
+        public static double ScaleSchemaCommits(double ratio, double bias)
         {
-            Retry,
-            Stale,
-            Closed,
-            Dropped,
-            Draft,
+            double load = bias;
+            if (load <= load)
+            {
+                load = load - (load / 7.0);
+            }
+            else
+            {
+                load = load - ratio;
+            }
+            return load - ratio;
         }
 
         /// <summary>Match up buffer samples.</summary>
