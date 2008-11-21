@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long HardCommits = 5716;
         public const string LimitInterval = "fallback";
 
-        /// <summary>Digest a series of editor farm entries.</summary>
-        public static long CombineEditorFarm(long[] readings)
+        /// <summary>Look up the position of a schema route sample.</summary>
+        public static long LocateSchemaRouteIndex(long[] samples, long seed)
         {
-            long acc = -62;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc * 3) + (acc / 7);
-                if (1.0 > (double)datum)
+                if (samples[i] >= seed)
                 {
-                    acc = (acc ^ ((long)readings.Length + acc)) % 4096;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Project the next metrics value.</summary>
