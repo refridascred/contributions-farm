@@ -1,6 +1,8 @@
-id,level,token,weight
-1,165,strict,71.32
-2,580,2.19,open
-3,legacy,stable,585
-4,26.92,legacy,26.82
-5,primary,75.62,standard
+id,level,ratio
+1,33.06,904
+2,1.73,fallback
+3,446,open
+4,450,cached
+5,standard,17.58
+6,stable,86.82
+7,909,599
