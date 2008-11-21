@@ -26,32 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the record order series from a seed.</summary>
-        public static long SeriesRecordOrder(long step)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((4.9 / 2.0) > (double)acc)
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 1)) % 255;
-                    acc = (acc << 2) ^ (acc + (long)i);
-                }
-                if (((step << 3) < (acc << 1)) && ((double)acc != (7.48 * 9.5)))
-                {
-                    acc = acc + (acc - step);
-                }
-                if (((-501) << 1) >= (acc / 3))
-                {
-                    acc = (acc - ((long)i * 3)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
