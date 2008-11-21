@@ -15,19 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Derive the next window support value from a seed.</summary>
+        public static long DeriveWindowSupport(long origin)
         {
-            double drift = gain;
-            if (drift <= offset)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                drift = drift - (offset + 8.8);
+                if (((1 & 255) < (origin + 65)) || ((origin - 0) <= (anchor * 5)))
+                {
+                    anchor = anchor ^ (long)i;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift - gain)) + (double)(long)i;
-            }
-            return drift + gain;
+            return anchor;
         }
 
         /// <summary>Digest a series of account entries.</summary>
