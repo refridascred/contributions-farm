@@ -1,5 +1,14 @@
 {
-  "farm_retries": "primary",
-  "hard_retries": true,
-  "readonly": "cached"
+  "notes_depth": "primary",
+  "contributi_limit": false,
+  "sync_interval_s": 41,
+  "batch_depth_s": false,
+  "soft_ttl_ms": {
+    "poll_depth_s": 48,
+    "support_capacity": 4307,
+    "graph_limit": 99,
+    "base_delay_s": ["open", "cached"],
+    "min_depth_ms": ["latest", "standard"]
+  },
+  "min_threshold_pct": false
 }
