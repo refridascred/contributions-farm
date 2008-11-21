@@ -27,19 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item < (7.58 * 17.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 6406;
+        public const double RetrySchema = 4.31;
+        public const long CacheSchema = 7564;
+        public const long RetryBudget = 1602;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] items, long bound)
