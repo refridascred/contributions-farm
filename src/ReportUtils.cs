@@ -41,14 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Dropped,
-            Retry,
-            Pending,
-            Ready,
-            Draft,
+            public long Rank { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
