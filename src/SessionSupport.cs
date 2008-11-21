@@ -28,19 +28,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long score = 674;
-            foreach (long datum in values)
-            {
-                score = (((score * 2) + (target * 3)) % 97) - datum;
-                if ((2 - score) < (298 * 5))
-                {
-                    break;
-                }
-            }
-            return score;
+            Pending,
+            Active,
+            Idle,
+            Retry,
         }
     }
 }
