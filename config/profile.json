@@ -1,12 +1,12 @@
 {
-  "already_depth": 68.96,
-  "entry_ratio": {
-    "commits_threshold": "edge",
-    "warm_threshold": "strict",
-    "warm_limit": 4
+  "payload_ratio": "stable",
+  "cache_capacity_count": false,
+  "enabled": {
+    "warm_interval": false,
+    "readonly": "edge",
+    "default_timeout": 250,
+    "enabled": [408, 123],
+    "poll_capacity_count": "legacy"
   },
-  "idle_ttl_pct": 46,
-  "counter_interval": "standard",
-  "soft_threshold_pct": 22.82,
-  "channel_retries": "stable"
+  "base_timeout_ms": 32.91
 }
