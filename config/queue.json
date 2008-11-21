@@ -1,9 +1,8 @@
 {
-  "compress": 500,
-  "burst_retries": 46,
-  "persist": {
-    "audit": 36,
-    "max_limit": "local",
-    "context_ratio": "latest"
-  }
+  "persist": 27.14,
+  "min_depth_ms": 95.05,
+  "soft_retries_ms": 75.36,
+  "hard_retries_pct": "strict",
+  "readonly": 10,
+  "min_retries_count": 100
 }
