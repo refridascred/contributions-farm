@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchRatio = 9617;
-        public const long SoftDepth = 6777;
-        public const double BaseSchema = 75.33;
-        public const string BatchSchema = "cached-edge";
+        /// <summary>Count githubfarm entry pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmEntryCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double DefaultToken = 85.53;
