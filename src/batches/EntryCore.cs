@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)sample > (2.4 / 9.0)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultRatio = 2771;
+        public const long WindowCounter = 1203;
+        public const long BaseTimeout = 2215;
 
         /// <summary>Digest a series of record token entries.</summary>
         public static long TotalRecordToken(long[] series)
