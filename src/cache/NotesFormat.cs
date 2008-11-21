@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] data, long step)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long acc = 820;
-            foreach (long entry in data)
-            {
-                acc = ((acc - acc) ^ entry) + step;
-            }
-            if (acc > 78)
-            {
-                acc = (acc * 4) + (acc & 3);
-            }
-            return acc % 1000;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
