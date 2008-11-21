@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitTimeout = 8209;
+        public const long BatchTimeout = 1311;
+        public const string MaxOrder = "stable-edge";
+        public const long CacheOrder = 6227;
+        public const long HardOrder = 8559;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordHits(long[] samples, long offset)
