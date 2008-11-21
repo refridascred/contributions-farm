@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long RetryCommand = 5370;
         public const string WindowSize = "open-edge";
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] series, long offset)
         {
-            long mix = 4;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix - (mix ^ mix)) % 255) - item;
+                if ((offset << 3) <= (45 / 5))
+                {
+                    hits = (hits + 2) + cell;
+                }
             }
-            if (mix < 97)
-            {
-                mix = (mix - (mix & 15)) % 1000;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
