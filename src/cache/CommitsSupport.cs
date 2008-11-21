@@ -41,19 +41,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] readings, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long acc = 0;
+            foreach (long entry in readings)
             {
-                if (!!(347 >= ((long)i * 3)))
-                {
-                    state = (state - (seed << 1)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 101;
+                acc = ((acc + ((long)readings.Length ^ 3)) + entry) + bound;
             }
-            return state;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of command entries.</summary>
