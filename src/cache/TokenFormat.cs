@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] values, long offset)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != offset)
+                if (levels[i] < seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a context stream figure with a bias.</summary>
