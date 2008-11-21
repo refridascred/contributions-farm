@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long score = 2;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((score + cell) >= score)
+                {
+                    score = (((score * 4) + (cell + 712)) % 101) - offset;
+                }
+                if ((20.0 * 7.62) >= (double)score)
+                {
+                    break;
+                }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a batches stats.</summary>
