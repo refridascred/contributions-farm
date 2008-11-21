@@ -49,15 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] data, long bound)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] readings)
         {
             long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading + hits) <= (reading & 7))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + bound;
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
