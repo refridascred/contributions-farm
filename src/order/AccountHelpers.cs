@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Digest a series of window entry entries.</summary>
+        public static long DigestWindowEntry(long[] items, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long carry = 39;
+            foreach (long cell in items)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((bound << 3) > bound)
+                {
+                    carry = (((carry * 4) + (bound - 2)) % 4096) + cell;
+                }
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
