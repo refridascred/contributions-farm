@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "fallback-v2";
-        public const string WindowSpan = "legacy-v2";
-        public const long BaseFactor = 9438;
-        public const string HardBatch = "alpha-1";
-        public const double MinBatch = 57.56;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public bool Total { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
