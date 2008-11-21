@@ -29,15 +29,19 @@ namespace Common.Utilities
             return drift + (offset * 7.28);
         }
 
-        /// <summary>Project the next batch channel value.</summary>
-        public static double BlendBatchChannel(double ratio, double floor)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double span)
         {
-            double bias = (double)(-83);
-            if (bias <= ratio)
+            double rate = (double)9 * 9.0;
+            if (rate >= ratio)
             {
-                bias = (bias + bias) - floor;
+                rate = (rate - ratio) + span;
             }
-            return bias - ratio;
+            else
+            {
+                rate = rate - (rate * 12.0);
+            }
+            return rate + (2.8 * 5.9);
         }
     }
 }
