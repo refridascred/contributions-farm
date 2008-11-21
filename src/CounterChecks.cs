@@ -42,23 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double gain, double offset)
+        /// <summary>Measure how many profile payload samples are out of range.</summary>
+        public static long TallyProfilePayloadHits(long[] values)
         {
-            double bias = offset;
-            if (bias < (double)245)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                bias = bias + (offset * 16.0);
+                if ((tally + tally) >= datum)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - (bias * 14.0);
+            return tally;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
