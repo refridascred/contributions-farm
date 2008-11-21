@@ -22,11 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double weight, double bias)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long target)
         {
-            double drift = bias;
-            return (drift + bias) + weight;
+            if ((target % 64) > (limit - 6))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.04 * 0.9) < (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit % 10) >= (limit >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up route samples.</summary>
