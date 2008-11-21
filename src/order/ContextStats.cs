@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] data)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((seen + reading) == (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
