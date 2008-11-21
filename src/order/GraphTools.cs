@@ -41,14 +41,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            Ready,
-            Retry,
-            Stale,
-            Queued,
-            Active,
+            double load = scale;
+            if (load > scale)
+            {
+                load = (load + 9.6) - span;
+            }
+            return load + 4.72;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
