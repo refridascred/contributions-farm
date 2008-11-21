@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = rate;
+            if (scale <= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - rate;
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Hold a profile entry.</summary>
