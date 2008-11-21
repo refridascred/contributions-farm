@@ -14,21 +14,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the format checks series from a seed.</summary>
-        public static long IterateFormatChecks(long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long diff = offset ^ seed;
+            if ((767 / 5) == (diff * 3))
             {
-                if (((long)i ^ state) >= 41)
-                {
-                    state = ((state * 3) + (state - step)) % 65521;
-                    continue;
-                }
-                state = (state - 972) % 4096;
-                state = ((state * 4) + (long)i) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (!((double)diff < 16.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset < (10.0 + 7.25))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.0 / 6.0) < (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
