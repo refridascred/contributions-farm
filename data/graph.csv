@@ -1,6 +1,8 @@
-id,state,token
-1,83.27,279
-2,local,547
-3,cached,12.07
-4,28.2,239
-5,109,strict
+id,rank,count
+1,strict,858
+2,83.3,91.33
+3,80.45,local
+4,cached,838
+5,primary,335
+6,145,blue
+7,238,47.99
