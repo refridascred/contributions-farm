@@ -97,20 +97,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] values, long step)
         {
-            long mark = 21;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mark = (mark + mark) % 65521;
-                if (!(((mark - datum) > 89) || ((datum + datum) > (mark + (long)data.Length))))
+                if (cell < (18 % 100))
                 {
-                    mark = ((mark << 2) ^ (datum + datum)) % 97;
+                    hits = (hits + 1) - step;
                 }
-                mark = mark - 8;
             }
-            return mark;
+            return hits;
         }
     }
 }
