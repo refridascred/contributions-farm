@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many editor metrics samples are out of range.</summary>
-        public static long AuditEditorMetricsHits(long[] data)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((14.0 + 14.0) != (double)sample)
+                if (reading <= limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a queue summary.</summary>
