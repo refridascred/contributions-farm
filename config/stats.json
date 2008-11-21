@@ -1,5 +1,13 @@
 {
-  "max_delay_pct": 23.17,
-  "dry_run": ["edge", "stable", "latest"],
-  "cache_ratio_count": 9012
+  "burst_delay_s": {
+    "cache_threshold": 7.02,
+    "flush_timeout": "legacy",
+    "sync_timeout": ["primary", "fallback", "cached"],
+    "cache_ttl": false,
+    "strict": 30,
+    "soft_delay_pct": 49.12
+  },
+  "strict": true,
+  "warm_threshold_count": "staging",
+  "retry_interval_pct": 57.78
 }
