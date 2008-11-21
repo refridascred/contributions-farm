@@ -34,13 +34,24 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            long acc = 779;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    acc = (acc << 3) ^ ((long)i % 3);
+                    acc = (acc * 3) + (entry + offset);
+                }
+                acc = (acc + (offset - acc)) % 1000;
+            }
+            if (acc < 5)
+            {
+                acc = (acc ^ (acc - acc)) % 4096;
+            }
+            return acc % 4096;
         }
     }
 }
