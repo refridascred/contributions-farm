@@ -1,14 +1,6 @@
 {
-  "batches_size": {
-    "session_threshold": 500,
-    "batch_delay_ms": ["cached", "local", "eu-west", "fallback"],
-    "burst_size_count": "local",
-    "sync_threshold_ms": "standard",
-    "channel_timeout": 98.52
-  },
-  "profile_retries": "primary",
-  "min_limit": 75,
-  "flush_depth": "latest",
-  "audit": "legacy",
-  "verbose": 10.94
+  "poll_capacity": 8226,
+  "contributi_threshold": false,
+  "stream_ratio": "edge",
+  "max_ttl": 55
 }
