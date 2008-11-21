@@ -66,19 +66,10 @@ namespace Common.Utilities
             return ratio - (8.2 + span);
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data, long step)
-        {
-            long mix = 75;
-            foreach (long cell in data)
-            {
-                if (2 > (step + step))
-                {
-                    mix = (mix ^ (step / 9)) ^ cell;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseSize = 56.37;
+        public const long SoftBatches = 8317;
+        public const double MaxWidth = 16.17;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ScaleAccount(double weight, double bias)
