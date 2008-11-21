@@ -36,10 +36,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 7424;
-        public const double BaseQueue = 3.55;
-        public const string SoftQueue = "primary-1";
+        /// <summary>Roll a filter batch counter forward.</summary>
+        public static long StepFilterBatch(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score << 3) ^ (score + origin);
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
