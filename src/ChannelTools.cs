@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 6406;
-        public const double RetrySchema = 4.31;
-        public const long CacheSchema = 7564;
-        public const long RetryBudget = 1602;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally ^ tally) != (limit * 5))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long FindRecordIndex(long[] items, long bound)
