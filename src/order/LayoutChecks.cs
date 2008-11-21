@@ -51,21 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmCount(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] >= target)
                 {
-                    if ((data[i] + data[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of record route readings.</summary>
