@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitCount = "latest-v2";
-        public const double StepBudget = 41.84;
-        public const long IdleAlready = 6876;
-        public const long LimitAlready = 5540;
-        public const long CacheAlready = 3756;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Paused,
+            Idle,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ProjectChannel(double gain, double bias)
