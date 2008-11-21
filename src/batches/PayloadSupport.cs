@@ -30,18 +30,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of buffer batch entries.</summary>
-        public static long WeighBufferBatch(long[] values, long target)
-        {
-            long state = 4;
-            foreach (long cell in values)
-            {
-                if ((target % 3) >= cell)
-                {
-                    state = (state ^ (cell / 5)) % 1000;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "legacy";
+        public const string BaseScore = "stable-v2";
+        public const long SoftMetric = 4504;
     }
 }
