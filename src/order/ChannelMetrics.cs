@@ -29,14 +29,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Queued,
-            Ready,
-            Retry,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 644;
+        public const long IdleWidth = 8940;
+        public const double BatchSpan = 34.93;
     }
 }
