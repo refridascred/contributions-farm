@@ -25,12 +25,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftCount = 69.66;
-        public const double WindowProfile = 65.23;
-        public const double BurstProfile = 58.03;
-        public const long IdleProfile = 8596;
-        public const long HardInterval = 9397;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public double Token { get; set; }
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long BucketCluster(long floor, long seed)
