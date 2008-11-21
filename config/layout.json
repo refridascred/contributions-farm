@@ -1,7 +1,13 @@
 {
-  "poll_depth_ms": "blue",
-  "support_depth": [208, 133, 301, 226],
-  "persist": false,
-  "idle_ratio": 34.18,
-  "idle_depth": 16.75
+  "burst_delay_count": 39.95,
+  "session_retries": "standard",
+  "batch_depth_s": {
+    "idle_interval_pct": true,
+    "default_window": "staging",
+    "payload_limit": ["standard", "strict"],
+    "soft_capacity": false,
+    "flush_timeout": "local",
+    "flush_window_pct": 6424
+  },
+  "command_delay": 28.09
 }
