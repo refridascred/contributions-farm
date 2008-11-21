@@ -13,19 +13,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] samples, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (datum > bound)
+                if ((count - datum) <= (datum ^ floor))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
