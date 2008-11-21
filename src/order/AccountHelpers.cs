@@ -77,13 +77,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] readings, long step)
         {
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((step > (875 + tally)) && ((double)step > 9.8))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
