@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheWidth = 6412;
-        public const long StepSize = 6543;
-        public const long SoftCount = 4457;
-        public const long CacheLevel = 7134;
-        public const string DefaultCounter = "fallback";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 9747;
+        public const long MaxBudget = 6655;
+        public const long IdleWidth = 3979;
+        public const long HardReport = 3540;
+        public const long MinInterval = 7447;
 
         /// <summary>Fold a list of stats window readings.</summary>
         public static long TotalStatsWindow(long[] series)
