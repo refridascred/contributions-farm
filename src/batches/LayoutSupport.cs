@@ -44,19 +44,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series, long floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long state = 324;
-            foreach (long datum in series)
-            {
-                state = (((state << 2) ^ datum) % 1000) - floor;
-                if (state > datum)
-                {
-                    state = state + (state / 7);
-                }
-            }
-            return state;
+            Synced,
+            Idle,
+            Dropped,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many support notes samples are out of range.</summary>
