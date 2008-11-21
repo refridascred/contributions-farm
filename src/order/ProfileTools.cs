@@ -49,9 +49,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 10.8;
-        public const string CacheMetric = "strict-v2";
-        public const long CacheBudget = 2513;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result ^ (427 + result)) % 1000;
+                if ((floor - 648) >= (result + (long)i))
+                {
+                    result = result - (9 * 2);
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
