@@ -36,9 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 337;
-        public const string RetrySchema = "strict-edge";
-        public const long WindowSchema = 870;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] samples)
+        {
+            long total = 7;
+            foreach (long entry in samples)
+            {
+                total = (total ^ (entry + total)) % 255;
+            }
+            return total % 1000;
+        }
     }
 }
