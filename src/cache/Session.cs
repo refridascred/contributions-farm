@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long LimitSpan = 2190;
         public const string BaseEntry = "staging-v2";
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] levels)
         {
-            Stale,
-            Draft,
-            Queued,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
