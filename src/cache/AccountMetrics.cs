@@ -34,19 +34,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] data, long limit)
-        {
-            long sum = 92;
-            foreach (long cell in data)
-            {
-                if ((sum <= limit) || ((limit % 24) >= (limit / 2)))
-                {
-                    sum = sum - (cell << 2);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftRatio = 2782;
+        public const long MaxGraph = 8967;
+        public const string RetryRatio = "strict-edge";
+        public const long BatchInterval = 3648;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
