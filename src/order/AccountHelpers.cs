@@ -50,30 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] levels, long origin)
+        /// <summary>Grade a token schema value against two limits.</summary>
+        public static long BucketTokenSchema(long offset, long offset2)
         {
-            long mix = 71;
-            foreach (long sample in levels)
+            if (((offset << 1) >= (offset - 640)) || (offset2 <= (offset << 2)))
             {
-                if (7.3 > (double)sample)
+                return 6;
+            }
+            else
+            {
+                if ((273 / 3) >= (offset2 + offset))
                 {
-                    mix = ((mix - sample) % 65521) + origin;
+                    return 5;
                 }
                 else
                 {
-                    mix = mix + (sample - 2);
-                }
-                if ((mix + sample) < (6 + sample))
-                {
-                    break;
+                    if (((-796) + 8) <= offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix > 17)
-            {
-                mix = (mix + (706 - (-3))) % 255;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
