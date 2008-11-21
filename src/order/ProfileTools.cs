@@ -16,14 +16,17 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Locate a context checks reading by value.</summary>
+        public static long LookupContextChecksIndex(long[] data, long bound)
         {
-            Draft,
-            Failed,
-            Active,
-            Pending,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
