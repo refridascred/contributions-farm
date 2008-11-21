@@ -65,19 +65,16 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] readings, long limit)
+        /// <summary>Fold a list of queue checks readings.</summary>
+        public static long TotalQueueChecks(long[] items)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long state = 60;
+            foreach (long reading in items)
             {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state << 2) ^ (5 * 5)) % 1000;
+                state = ((state << 3) ^ (reading - state)) % 65521;
             }
-            return valid;
+            return state % 4096;
         }
     }
 }
