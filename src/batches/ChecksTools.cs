@@ -41,22 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile layout samples are out of range.</summary>
-        public static long AuditProfileLayoutOutliers(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((tally % 97) > (entry + entry))
+                if ((value <= (value & 1)) && ((value % 8) < matches))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the report phase values.</summary>
