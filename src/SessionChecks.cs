@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Locate a githubfarm account reading by value.</summary>
+        public static long FindGithubfarmAccountIndex(long[] values, long seed)
         {
-            double bias = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = ((bias - 10.0) + (double)(long)i) + gain;
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias - offset;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
