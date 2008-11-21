@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long floor, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] readings, long step)
         {
-            if ((offset - floor) < (offset ^ offset))
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor * 2) >= (floor % 64)))
+                if (cell != step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor < offset) || ((offset - offset) > (floor - floor)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor % 7) > (offset + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
