@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseLevel = 39.53;
-        public const string IdleFactor = "latest-v2";
-        public const long StepMetrics = 9167;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public double Region { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TallyAlready(long[] readings, long limit)
