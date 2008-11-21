@@ -13,18 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long MeasureChecksRouteGaps(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits * 4) < (datum + hits))
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
