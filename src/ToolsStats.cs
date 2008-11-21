@@ -61,18 +61,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] data, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)item < (double)step)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
