@@ -29,19 +29,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double span)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double bias, double floor)
         {
-            double scale = gain + span;
-            if (scale <= (double)25)
+            double bias2 = 10.0;
+            if (bias2 >= bias2)
             {
-                scale = scale + (scale + scale);
+                bias2 = (bias2 - (bias * 7.29)) - floor;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale - (scale * 0.27)) + (double)(long)i;
+                bias2 = bias2 - bias;
             }
-            return scale + scale;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - (double)82;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
