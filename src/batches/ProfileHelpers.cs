@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double AdjustCommits(double weight, double bias)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            double drift = (weight + weight) * 9.0;
-            for (int i = 0; i < 2; i++)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                drift = (drift + (double)(long)i) - bias;
+                total = (total + floor) % 1000;
+                if ((double)floor != (5.7 + 5.01))
+                {
+                    total = (total * 2) + floor;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return drift + (weight + 3.39);
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
