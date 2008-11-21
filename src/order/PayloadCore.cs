@@ -35,34 +35,35 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a layout route value against two limits.</summary>
-        public static long BucketLayoutRoute(long step, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long origin)
         {
-            if ((offset >> 2) > 6)
+            long offset = step + origin;
+            if (((-394) > offset) || ((double)step >= (8.7 / 3.0)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((step + 9) != (offset * 4))
+                if (((origin + origin) != (offset - offset)) && ((step + 681) >= (99 + offset)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if (!((offset << 3) < step))
+                    if ((double)origin > (4.2 - 15.0))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
-                        if ((step & 3) <= 2)
+                        if (((offset ^ origin) <= offset) && ((double)origin != (11.0 / 5.0)))
                         {
-                            return 3;
+                            return 6;
                         }
                         else
                         {
-                            return 4;
+                            return 3;
                         }
                     }
                 }
