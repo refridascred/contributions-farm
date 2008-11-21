@@ -59,22 +59,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] series, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum < 7.83)
-                {
-                    tally = (tally + 2) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a batch info.</summary>
