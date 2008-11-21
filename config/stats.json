@@ -1,15 +1,6 @@
 {
-  "poll_interval_pct": false,
-  "support_retries": ["cached", "primary", "edge"],
-  "flush_interval_count": {
-    "hard_delay": 24.08,
-    "sync_window_count": {
-      "compress": "fallback",
-      "cache_timeout_count": 1024,
-      "buffer_limit": [92, 369, 120]
-    },
-    "max_window": true,
-    "poll_ratio": 1024
-  },
-  "flush_threshold": ["blue", "edge", "legacy", "local"]
+  "poll_ttl_pct": ["local", "strict", "eu-west", "standard"],
+  "hard_threshold_ms": 100,
+  "burst_ratio": "open",
+  "soft_delay_ms": "stable"
 }
