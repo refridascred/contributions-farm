@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Audit schema tools readings against a rule.</summary>
+        public static long MeasureSchemaToolsHits(long[] values, long seed)
         {
-            Ready,
-            Draft,
-            Done,
-            Idle,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches + entry) >= entry)
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a checks info.</summary>
