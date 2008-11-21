@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long sum = 341;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum >> 2) < (reading & 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum + reading) % 101;
-                }
-                else
-                {
-                    sum = (sum - 18) % 65521;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
