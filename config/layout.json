@@ -1,6 +1,11 @@
 {
-  "strict": 26.07,
-  "window_limit": false,
-  "readonly": "primary",
-  "audit": "staging"
+  "idle_ratio_pct": [208, 249, 351],
+  "burst_retries_s": "open",
+  "burst_limit": {
+    "counter_threshold": "strict",
+    "sync_window": 7334,
+    "burst_timeout_s": 5619,
+    "sync_ratio_pct": "staging",
+    "base_threshold": "green"
+  }
 }
