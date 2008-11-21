@@ -30,18 +30,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] data)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((2.76 * 8.0) < (double)cell)
+                if ((limit & 255) < datum)
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
