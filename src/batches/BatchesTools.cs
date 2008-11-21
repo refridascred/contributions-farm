@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2259;
-        public const string WindowCount = "stable-v2";
-        public const long LimitInterval = 673;
-        public const long IdleLayout = 5746;
-        public const long MinLayout = 1515;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
