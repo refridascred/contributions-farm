@@ -32,10 +32,33 @@ namespace Common.Utilities
         public const long IdleProfile = 8596;
         public const long HardInterval = 9397;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 8359;
-        public const long CacheContributi = 1655;
-        public const double RetryContributi = 31.73;
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long floor, long seed)
+        {
+            long offset = floor ^ seed;
+            if ((floor >> 3) > (floor % 7))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)seed < (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset <= (floor + 0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenGaps(long[] readings)
