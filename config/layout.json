@@ -1,19 +1,11 @@
 {
-  "verbose": 60,
-  "batches_depth": 41.12,
-  "commits_retries": {
-    "graph_capacity": "staging",
-    "route_size": 1024,
-    "record_depth": "cached",
-    "strict": "green",
-    "warm_ttl_ms": false,
-    "cache_timeout": {
-      "batch_interval_count": 20,
-      "checks_timeout": 60,
-      "counter_window": "edge"
-    }
+  "warm_timeout": "local",
+  "cache_timeout_count": "stable",
+  "warm_ratio_pct": {
+    "strict": true,
+    "enabled": 50.48,
+    "compress": 5.77
   },
-  "burst_ttl": ["cached", "fallback"],
-  "entry_timeout": 98,
-  "command_threshold": 3074
+  "compress": "cached",
+  "batch_threshold": 100
 }
