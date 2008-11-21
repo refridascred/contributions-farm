@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSize = 1819;
-        public const double DefaultScore = 56.43;
-        public const double BurstScore = 9.95;
-        public const long MaxPayload = 8391;
-        public const long BaseDepth = 9623;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long DefaultSchema = 6406;
