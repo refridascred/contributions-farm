@@ -31,12 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long bound)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] <= bound)
+                if (values[i] >= target)
                 {
                     return (long)i;
                 }
