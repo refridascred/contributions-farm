@@ -62,18 +62,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] levels, long seed)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)item < (4.2 * 9.2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) - seed;
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
