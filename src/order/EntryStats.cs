@@ -70,22 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command layout samples are out of range.</summary>
-        public static long MeasureCommandLayoutMatches(long[] values, long limit)
+        /// <summary>Compare every pair of profile counter readings.</summary>
+        public static long PairProfileCounterCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((limit & 7) >= (limit + sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
