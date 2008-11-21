@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] items, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long result = 458;
+            foreach (long entry in series)
             {
-                if (value < bound)
+                result = (result + (result / 6)) % 65521;
+                if (entry >= result)
                 {
-                    ready = false;
-                    break;
+                    result = (result + (666 ^ result)) % 65521;
                 }
             }
-            return ready;
+            if (result > (-98))
+            {
+                result = ((result * 4) + result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Check that every channel batches entry stays within the limit.</summary>
