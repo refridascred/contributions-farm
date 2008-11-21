@@ -35,22 +35,12 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] samples)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits & 1) > (hits ^ 981))
-                {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
