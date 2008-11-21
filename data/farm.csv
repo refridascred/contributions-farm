@@ -1,9 +1,8 @@
-id,active,count
-1,725,261
-2,748,39.1
-3,22.52,local
-4,fallback,strict
-5,364,811
-6,open,88.41
-7,79.07,green
-8,172,27.01
+id,ratio,label,state
+1,strict,edge,12.99
+2,fallback,231,79.06
+3,409,81.12,798
+4,92.69,green,strict
+5,87.45,green,staging
+6,66.4,455,12.17
+7,stable,984,latest
