@@ -14,32 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long target, long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long prev = target ^ offset;
-            if ((prev + target) < (prev - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset <= (7.1 / 9.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((26 - offset) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a route stats.</summary>
