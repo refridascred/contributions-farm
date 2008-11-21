@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a stats cache pair into a bucket.</summary>
-        public static long ClassifyStatsCache(long offset, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] items, long origin)
         {
-            if ((limit - offset) <= limit)
+            long score = 1;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)480 <= (double)limit)
+                score = score + 19;
+                if (!((cell << 2) <= (cell + cell)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-86) / 2) <= (offset << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit / 3) > (offset / 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 789)
+            {
+                score = (score + (origin + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
