@@ -1,6 +1,8 @@
 {
-  "context_depth": 89.72,
-  "default_limit_pct": 3954,
-  "burst_interval_count": "legacy",
-  "audit": true
+  "support_limit": 4850,
+  "warm_depth": 216,
+  "readonly": 74.18,
+  "order_window": 62,
+  "burst_depth": 16,
+  "persist": "blue"
 }
