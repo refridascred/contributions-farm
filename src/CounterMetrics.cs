@@ -25,17 +25,24 @@ namespace Common.Utilities
         public const double RetryCount = 42.41;
         public const long DefaultBudget = 3357;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long RankEditor(long seed, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed & 31) > seed)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((limit / 6) <= 40) && ((seed * 5) <= limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
