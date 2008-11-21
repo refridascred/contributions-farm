@@ -46,19 +46,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long total = 73;
-            foreach (long value in items)
-            {
-                total = ((total << 3) ^ (value + seed)) % 255;
-                if ((double)value != (double)45)
-                {
-                    break;
-                }
-            }
-            return total % 1000;
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
