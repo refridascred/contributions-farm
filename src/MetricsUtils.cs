@@ -48,19 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long anchor = 79;
-            foreach (long value in samples)
-            {
-                anchor = (((anchor * 5) + (63 / 9)) - value) - target;
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor + (4 ^ 92)) % 65521;
-            }
-            return anchor % 65521;
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
