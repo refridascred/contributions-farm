@@ -36,18 +36,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] readings)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long target)
         {
-            long sum = 5;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sum <= item)
+                if (items[i] <= target)
                 {
-                    sum = ((sum << 3) ^ (sum * 2)) % 4096;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
