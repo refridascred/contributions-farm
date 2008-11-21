@@ -12,22 +12,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long sum = 19;
-            foreach (long datum in items)
-            {
-                if (((490 + sum) >= sum) && ((datum / 6) > (sum << 3)))
-                {
-                    sum = sum ^ (843 + datum);
-                }
-            }
-            if (sum > 897)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum % 4096;
+            New,
+            Closed,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
