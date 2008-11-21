@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
+        public static bool CheckGithubfarmChannelBounds(long[] readings, long step)
         {
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up counter samples.</summary>
