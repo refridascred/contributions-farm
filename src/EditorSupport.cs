@@ -66,14 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] series, long floor)
         {
-            Stale,
-            Paused,
-            Active,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum < 7.83)
+                {
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batch info.</summary>
