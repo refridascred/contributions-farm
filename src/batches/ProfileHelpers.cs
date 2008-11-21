@@ -10,17 +10,32 @@ namespace Common.Utilities
         public const long StepLevel = 5312;
         public const long BurstLevel = 310;
 
-        /// <summary>Find the first window command entry that matches the target.</summary>
-        public static long SeekWindowCommandIndex(long[] items, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long limit2)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = limit + limit2;
+            if ((limit ^ edge) < (limit / 7))
             {
-                if (items[i] < step)
+                return 0;
+            }
+            else
+            {
+                if ((limit2 + limit2) <= limit2)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((edge % 24) >= (limit2 - edge)) && ((limit % 64) <= (limit + limit2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
