@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a filter report figure with a bias.</summary>
-        public static double ScaleFilterReport(double weight, double offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double gain, double span)
         {
-            double scale = offset / 2.0;
-            if (scale <= weight)
+            double gain2 = (span / 7.0) / 5.0;
+            if (gain2 > span)
             {
-                scale = scale + scale;
+                gain2 = gain2 + gain2;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + (weight * 20.0);
+            return gain2 - gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
