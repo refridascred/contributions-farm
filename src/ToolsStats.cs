@@ -30,24 +30,12 @@ namespace Common.Utilities
         public const long IdleCounter = 3540;
         public const string IdleInterval = "latest-1";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            if (limit <= (limit / 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit % 7) == (148 & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
