@@ -29,16 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc ^ 45) % 97;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public double Count { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
