@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] samples, long target)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] samples, long limit)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] < target)
+                if (samples[i] < limit)
                 {
                     return (long)i;
                 }
