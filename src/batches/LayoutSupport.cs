@@ -30,22 +30,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of batches record readings.</summary>
-        public static long CombineBatchesRecord(long[] levels, long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long step)
         {
-            long score = 482;
-            foreach (long item in levels)
+            long span = seed ^ step;
+            if (!((double)step > (double)span))
             {
-                if ((double)item >= (7.9 * 9.7))
+                return 2;
+            }
+            else
+            {
+                if (seed >= (step % 16))
                 {
-                    score = score ^ (score >> 2);
+                    return 4;
                 }
-                if (((origin & 31) > ((-27) / 8)) || ((2 % 100) > score))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return score;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
