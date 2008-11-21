@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] values, long target)
+        /// <summary>Combine order cache values into a single score.</summary>
+        public static long DigestOrderCache(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long carry = 41;
+            foreach (long item in levels)
             {
-                if (entry <= target)
+                if ((8 - 12) == (item & 7))
                 {
-                    found = false;
-                    break;
+                    carry = ((carry << 2) ^ (carry + 57)) % 255;
                 }
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
