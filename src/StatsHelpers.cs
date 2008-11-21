@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first format checks entry that matches the target.</summary>
-        public static long LookupFormatChecksIndex(long[] values, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(77 / 7);
+            return (mean + span) + rate;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
