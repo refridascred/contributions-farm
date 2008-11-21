@@ -54,19 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support stats readings against a bound.</summary>
-        public static bool GuardSupportStatsLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleCount = 1186;
+        public const long SoftContext = 642;
+        public const string WindowBudget = "local-1";
+        public const long MaxWidth = 4457;
+        public const string DefaultDepth = "open-edge";
     }
 }
