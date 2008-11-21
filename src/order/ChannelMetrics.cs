@@ -34,11 +34,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleScore = "cached-v2";
-        public const long WindowToken = 9949;
-        public const double DefaultToken = 62.59;
-        public const string CacheSize = "local-1";
-        public const long IdleToken = 1164;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public double Count { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
