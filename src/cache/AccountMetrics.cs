@@ -17,21 +17,19 @@ namespace Common.Utilities
         public const long RetryBudget = 6684;
         public const long BatchFactor = 1662;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= step)
                 {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Locate a command reading by value.</summary>
