@@ -1,10 +1,13 @@
 # githubfarm settings
-soft_interval_count:
-  sync_interval_s: true
-  metric_size: 22.69
-  hard_limit_ms: true
-  retry_timeout_ms: standard
-  channel_window: green
-readonly: 100
-metric_interval: true
-support_window: 13.17
+cache_size_count: false
+notes_retries:
+  editor_interval: 15.36
+  verbose: 11.01
+  audit:
+    - primary
+    - cached
+  order_delay:
+    - local
+    - latest
+    - fallback
+soft_limit: true
