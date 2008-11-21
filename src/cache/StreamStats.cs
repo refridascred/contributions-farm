@@ -46,25 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long step, long bound)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long FindCommitsIndex(long[] readings, long step)
         {
-            long delta = step + bound;
-            if (((1.5 - 0.44) >= (double)step) || ((3.5 * 5.7) == (double)bound))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta ^ bound) >= (delta / 6))
+                if (readings[i] == step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
