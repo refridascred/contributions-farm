@@ -14,22 +14,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings, long offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double bias2)
         {
-            long score = 2;
-            foreach (long cell in readings)
+            double bias3 = (double)(407 * 3);
+            if (bias3 <= bias)
             {
-                if ((score + cell) >= score)
-                {
-                    score = (((score * 4) + (cell + 712)) % 101) - offset;
-                }
-                if ((20.0 * 7.62) >= (double)score)
-                {
-                    break;
-                }
+                bias3 = (bias3 + (double)21) - bias2;
             }
-            return score;
+            else
+            {
+                bias3 = bias3 + 5.3;
+            }
+            return bias3 - (double)222;
         }
 
         /// <summary>Hold a batches stats.</summary>
