@@ -40,32 +40,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a contributi format pair into a bucket.</summary>
-        public static long BucketContributiFormat(long bound, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] items, long seed)
         {
-            long delta = bound + origin;
-            if ((delta / 5) >= bound)
+            long sum = 1;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (227 >= origin)
+                if ((double)sum == (8.33 - 0.75))
                 {
-                    return 2;
+                    sum = (sum << 2) ^ seed;
                 }
                 else
                 {
-                    if (delta >= (bound * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = (sum ^ (reading + 56)) % 4096;
+                }
+                if (((6.69 / 9.0) >= (double)seed) && (19 <= (sum + seed)))
+                {
+                    break;
                 }
             }
+            return sum % 65521;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
