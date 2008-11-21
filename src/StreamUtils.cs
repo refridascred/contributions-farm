@@ -58,22 +58,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] data, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long score = 56;
-            foreach (long item in data)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((offset + item) < 1))
-                {
-                    score = score - ((-22) + offset);
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (score < 216)
-            {
-                score = score + (48 + offset);
-            }
-            return score;
+            return state;
         }
     }
 }
