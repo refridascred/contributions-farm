@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long RetryCommand = 5370;
         public const string WindowSize = "open-edge";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] series, long offset)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((offset << 3) <= (45 / 5))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
