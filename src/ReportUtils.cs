@@ -46,11 +46,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitSpan = 283;
-        public const long DefaultLayout = 2348;
-        public const double IdleLevel = 63.11;
-        public const long BatchTimeout = 3821;
-        public const double SoftLayout = 24.36;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] values, long seed)
+        {
+            long mix = 1;
+            foreach (long entry in values)
+            {
+                if (!((0.9 * 7.68) > (double)seed))
+                {
+                    mix = (mix * 4) + (seed - 405);
+                }
+                mix = mix + (seed + seed);
+                if (((-2) > (mix + seed)) || (mix > (mix ^ mix)))
+                {
+                    mix = (mix ^ entry) % 1000;
+                }
+                if ((mix + 1) == (entry ^ mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
