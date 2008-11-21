@@ -49,19 +49,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] series, long limit)
-        {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 36.18;
+        public const string DefaultFactor = "legacy-v2";
+        public const string DefaultLevel = "primary-v2";
     }
 }
