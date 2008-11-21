@@ -32,19 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metrics contributi measurements.</summary>
-        public static double AdjustMetricsContributi(double scale, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double weight = bias;
-            if (weight >= weight)
-            {
-                weight = (weight + weight) + scale;
-            }
-            else
-            {
-                weight = weight + 6.3;
-            }
-            return weight - bias;
+            Active,
+            Idle,
+            Pending,
         }
     }
 }
