@@ -45,20 +45,12 @@ namespace Common.Utilities
             return ratio - (8.2 + span);
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseFilter = "cached-edge";
+        public const long StepFilter = 5468;
+        public const long StepBudget = 7710;
+        public const long CacheScore = 4106;
+        public const long MaxFilter = 5304;
 
         /// <summary>Blend two account measurements.</summary>
         public static double ScaleAccount(double weight, double bias)
