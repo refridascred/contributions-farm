@@ -21,15 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many graph layout samples are out of range.</summary>
-        public static long TallyGraphLayoutGaps(long[] items, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
         {
             long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((2.7 - 1.7) > (double)datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - seed;
+                    if ((series[i] ^ series[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
