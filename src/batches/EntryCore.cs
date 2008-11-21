@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 1369;
-        public const long SoftCluster = 6198;
-        public const long DefaultCluster = 4994;
-        public const long LimitTimeout = 7213;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double BlendGithubfarm(double scale, double floor)
+        {
+            double load = floor;
+            return load - (scale - 6.5);
+        }
 
         /// <summary>Grade a order buffer value against two limits.</summary>
         public static long GradeOrderBuffer(long floor, long step)
