@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Grade a notes stream value against two limits.</summary>
+        public static long RankNotesStream(long offset, long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long gap = offset ^ seed;
+            if (((double)offset <= (0.55 + 4.7)) || ((gap << 2) == (gap >> 1)))
             {
-                if (((count + (long)readings.Length) == (5 + cell)) || (cell <= (cell - 8)))
+                return 4;
+            }
+            else
+            {
+                if ((gap - offset) > (offset - seed))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (3.5 / 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((offset - 5) <= (seed - (-2))))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
