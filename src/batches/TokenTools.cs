@@ -16,15 +16,17 @@ namespace Common.Utilities
             return weight + (weight + 16.0);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] items)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long limit)
         {
-            long score = 7;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score - (score * 5)) + entry;
+                if (series[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
