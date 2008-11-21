@@ -64,12 +64,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
