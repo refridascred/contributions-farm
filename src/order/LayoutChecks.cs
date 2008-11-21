@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
-        {
-            Stale,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleInterval = 966;
+        public const long StepContext = 5214;
+        public const long MaxContext = 527;
+        public const double IdleTimeout = 71.97;
+        public const long MinScore = 2911;
 
         /// <summary>Define format limits and defaults.</summary>
         public const double DefaultBudget = 44.8;
