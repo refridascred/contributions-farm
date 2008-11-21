@@ -18,14 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            Done,
-            Retry,
-            New,
-            Locked,
-            Pending,
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
