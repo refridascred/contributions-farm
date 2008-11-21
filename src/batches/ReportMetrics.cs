@@ -14,11 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 8725;
-        public const long MaxRatio = 4244;
-        public const long StepSize = 2536;
-        public const string MinChannel = "stable-edge";
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
