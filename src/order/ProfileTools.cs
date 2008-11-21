@@ -41,18 +41,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the stream payload entries that pass the check.</summary>
-        public static long MeasureStreamPayloadHits(long[] samples)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item ^ count) < (item - 45))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
