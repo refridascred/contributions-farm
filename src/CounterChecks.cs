@@ -75,24 +75,21 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long bound)
+        /// <summary>Match up tools channel samples.</summary>
+        public static long MatchToolsChannelCount(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)i < (bound - bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor - (bound + anchor)) % 255;
-                    continue;
+                    if ((levels[i] ^ levels[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor - ((long)i << 2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
     }
 }
