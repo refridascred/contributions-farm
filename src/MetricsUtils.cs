@@ -61,12 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxTimeout = 3194;
-        public const long LimitTimeout = 2359;
-        public const long LimitSize = 7221;
-        public const long StepNotes = 4684;
-        public const long RetryNotes = 6092;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public long Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Project the next stats value.</summary>
         public static double AdjustStats(double bias, double span)
