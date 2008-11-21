@@ -56,22 +56,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long carry = 88;
-            foreach (long reading in readings)
-            {
-                if (((4.9 + 1.24) >= (0.64 * 0.9)) && ((carry + carry) <= (reading - reading)))
-                {
-                    carry = (carry << 2) ^ (carry >> 1);
-                }
-            }
-            if (carry > (-56))
-            {
-                carry = carry + (carry * 5);
-            }
-            return carry % 65521;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
