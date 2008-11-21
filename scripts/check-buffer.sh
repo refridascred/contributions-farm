@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    standard)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in primary local standard edge; do
+for item in cached blue; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=384
-log "limit is ${BUFFER_LIMIT}"
