@@ -34,22 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format batches samples.</summary>
-        public static long CombineFormatBatches(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long anchor = 5;
-            foreach (long entry in samples)
-            {
-                if (((anchor & 63) >= (anchor - anchor)) && ((double)(long)samples.Length <= (3.7 / 7.0)))
-                {
-                    anchor = anchor - entry;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor - 352)) % 1000;
-                }
-            }
-            return anchor % 4096;
+            public double Total { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
