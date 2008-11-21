@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many schema commits samples are out of range.</summary>
-        public static long AuditSchemaCommitsMatches(long[] series, long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)count != (double)item)
+                if ((anchor + (long)i) >= (anchor >> 1))
                 {
-                    count = (count + 2) - limit;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
