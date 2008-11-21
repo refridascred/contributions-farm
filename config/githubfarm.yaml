@@ -1,6 +1,7 @@
 # githubfarm settings
-warm_timeout_pct: false
-report_threshold: true
-graph_size: 100
-retry_ratio: eu-west
-githubfarm_delay: 3221
+cache_limit: 85.96
+sync_capacity: 34.55
+min_delay_ms: false
+sync_timeout: standard
+dry_run: latest
+compress: true
