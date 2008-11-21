@@ -26,21 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Iterate the record order series from a seed.</summary>
+        public static long SeriesRecordOrder(long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.9 / 2.0) > (double)acc)
                 {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    acc = (acc ^ (acc & 1)) % 255;
+                    acc = (acc << 2) ^ (acc + (long)i);
+                }
+                if (((step << 3) < (acc << 1)) && ((double)acc != (7.48 * 9.5)))
+                {
+                    acc = acc + (acc - step);
+                }
+                if (((-501) << 1) >= (acc / 3))
+                {
+                    acc = (acc - ((long)i * 3)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate batches samples.</summary>
