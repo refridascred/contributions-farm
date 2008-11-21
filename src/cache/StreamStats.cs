@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepFactor = "legacy";
-        public const long BatchFactor = 2635;
-        public const double BatchBudget = 32.84;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool VerifyEntryBounds(long[] items, long bound)
