@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string SoftNotes = "stable-1";
         public const string LimitDepth = "open-edge";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Idle,
+            Stale,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
