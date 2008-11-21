@@ -37,24 +37,11 @@ namespace Common.Utilities
             return load - (double)8;
         }
 
-        /// <summary>Classify a contributi order pair into a bucket.</summary>
-        public static long SortContributiOrder(long target, long origin)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            if (((double)target > 20.0) || ((target + target) > target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin <= (20 & 63)) && (target > origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Find the first notes account entry that matches the target.</summary>
