@@ -51,18 +51,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] samples)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((hits % 16) > (value & 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Closed,
+            Idle,
+            Dropped,
         }
     }
 }
