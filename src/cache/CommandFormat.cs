@@ -64,12 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order batch entry that matches the target.</summary>
-        public static long LookupOrderBatchIndex(long[] series, long floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] < floor)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
