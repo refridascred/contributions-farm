@@ -28,12 +28,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] series, long floor)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            long state = 38;
+            foreach (long value in series)
+            {
+                if ((2 ^ state) > (state + 2))
+                {
+                    state = (((state << 3) ^ (state + 54)) ^ value) - floor;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the graph phase values.</summary>
