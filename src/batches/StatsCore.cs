@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
-        {
-            Locked,
-            Draft,
-            Idle,
-            New,
-            Failed,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetryLevel = "local-1";
+        public const long BurstWidth = 9301;
+        public const string LimitCount = "staging-1";
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
