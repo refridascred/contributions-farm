@@ -1,6 +1,11 @@
 {
-  "hard_ttl": ["local", "latest", "standard", "legacy"],
-  "readonly": 91.36,
-  "route_depth": "green",
-  "burst_ttl_pct": "cached"
+  "flush_size_pct": 100,
+  "max_timeout_s": 92.77,
+  "enabled": {
+    "flush_depth": 51.7,
+    "enabled": "local",
+    "sync_window_count": [21, 294]
+  },
+  "account_window": "standard",
+  "compress": true
 }
