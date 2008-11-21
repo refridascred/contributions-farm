@@ -53,17 +53,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a metrics token reading by value.</summary>
-        public static long FindMetricsTokenIndex(long[] data, long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
