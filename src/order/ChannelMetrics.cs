@@ -16,18 +16,31 @@ namespace Common.Utilities
             return rate + 9.86;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] samples, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long offset, long step)
         {
-            long sum = 690;
-            foreach (long value in samples)
+            if (((offset - offset) > step) || ((4.9 - 9.5) < (double)offset))
             {
-                if ((limit > (limit % 97)) && ((sum - value) == ((-796) - sum)))
+                return 1;
+            }
+            else
+            {
+                if ((step << 3) < (offset - step))
                 {
-                    sum = ((sum * 3) + (limit * 4)) % 65521;
+                    return 6;
+                }
+                else
+                {
+                    if (step > 6)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Hold a editor entry.</summary>
