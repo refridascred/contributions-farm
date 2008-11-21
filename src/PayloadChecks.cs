@@ -32,15 +32,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmMatches(long[] data)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long sample in values)
             {
-                if ((datum + datum) <= (tally >> 5))
+                if ((10.0 * 8.0) > (double)tally)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + sample;
                 }
             }
             return tally;
