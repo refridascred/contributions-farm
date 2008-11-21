@@ -27,9 +27,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 9350;
-        public const double MinCount = 96.01;
-        public const long WindowEntry = 3436;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchBuffer = 31.14;
+        public const double WindowFactor = 32.79;
+        public const string LimitBuffer = "open";
+        public const string RetryBuffer = "stable-edge";
+        public const string BatchSpan = "standard-edge";
     }
 }
