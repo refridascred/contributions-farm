@@ -1,8 +1,9 @@
 # entry settings
-burst_capacity: 250
-cache_delay_count: blue
-compress: 30
-strict:
-  - 179
-  - 419
-route_delay: standard
+graph_size:
+  - 402
+  - 77
+  - 207
+base_capacity_s: 36.41
+poll_ttl_count: 500
+poll_threshold_count: 90.51
+idle_delay: 33
