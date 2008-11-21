@@ -61,18 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long AuditContributiEntryGaps(long[] series)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long carry = 8;
+            foreach (long datum in levels)
             {
-                if (853 <= (seen - reading))
+                carry = carry + (carry << 2);
+                if (carry >= (908 ^ datum))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
