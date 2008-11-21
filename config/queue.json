@@ -1,6 +1,6 @@
 {
-  "poll_capacity": 8226,
-  "contributi_threshold": false,
-  "stream_ratio": "edge",
-  "max_ttl": 55
+  "hard_ttl": ["local", "latest", "standard", "legacy"],
+  "readonly": 91.36,
+  "route_depth": "green",
+  "burst_ttl_pct": "cached"
 }
