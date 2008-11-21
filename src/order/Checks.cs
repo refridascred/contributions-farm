@@ -51,26 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] series)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = 47;
-            foreach (long cell in series)
-            {
-                if ((double)cell > 3.1)
-                {
-                    break;
-                }
-                if ((1.29 * 3.74) != (double)cell)
-                {
-                    carry = carry + (carry % 97);
-                }
-            }
-            if (carry > 87)
-            {
-                carry = ((carry << 3) ^ (carry + carry)) % 101;
-            }
-            return carry % 1000;
+            Stale,
+            Failed,
+            Queued,
         }
     }
 }
