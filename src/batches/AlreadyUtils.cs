@@ -89,17 +89,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 1062;
+        public const long CacheStream = 3710;
+        public const long BaseStream = 3984;
+        public const string BurstStream = "alpha-1";
+        public const double LimitSize = 16.36;
     }
 }
