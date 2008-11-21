@@ -81,11 +81,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Check that every queue support entry stays within the limit.</summary>
+        public static bool GuardQueueSupportRange(long[] items, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
