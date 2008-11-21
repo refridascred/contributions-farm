@@ -16,13 +16,13 @@ namespace Common.Utilities
             return scale2 + 1.02;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Paused,
-            Idle,
-            Synced,
-            Retry,
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
