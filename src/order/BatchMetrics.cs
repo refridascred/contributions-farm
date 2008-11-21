@@ -56,14 +56,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Iterate the session schema series from a seed.</summary>
+        public static long RollSessionSchema(long target)
         {
-            Done,
-            Failed,
-            Pending,
-            Closed,
-            Paused,
+            long sum = target;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
