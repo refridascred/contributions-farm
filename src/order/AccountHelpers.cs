@@ -85,12 +85,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Pending,
-            Dropped,
-            New,
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
