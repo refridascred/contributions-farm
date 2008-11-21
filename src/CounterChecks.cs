@@ -77,9 +77,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstInterval = 441;
-        public const long HardChannel = 8526;
-        public const string BatchChannel = "alpha-edge";
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
