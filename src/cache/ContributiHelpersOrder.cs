@@ -16,19 +16,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (((sum * 2) > (sum >> 1)) && ((sum + sum) <= sum))
+                if (datum > bound)
                 {
-                    sum = sum - (bound ^ bound);
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
