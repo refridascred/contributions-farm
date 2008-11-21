@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const double BaseSchema = 75.33;
         public const string BatchSchema = "cached-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 2111;
-        public const long DefaultSize = 8275;
-        public const string RetryFactor = "stable-v2";
-        public const long StepGraph = 7129;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double DefaultToken = 85.53;
+        public const double BurstToken = 16.31;
+        public const string IdleToken = "alpha-v2";
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] items, long origin)
