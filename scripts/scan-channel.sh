@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=334
+CHANNEL_LIMIT=454
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,7 +20,7 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
