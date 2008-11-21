@@ -36,22 +36,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] series, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((target << 3) < target)
+                if (cell <= origin)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
