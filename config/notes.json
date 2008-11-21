@@ -1,6 +1,6 @@
 {
-  "default_ttl_count": 2,
-  "compress": 66.54,
-  "warm_interval_pct": ["fallback", "stable", "primary"],
-  "audit": 7302
+  "max_interval": "staging",
+  "min_depth": "edge",
+  "poll_threshold": 34.09,
+  "dry_run": 30
 }
