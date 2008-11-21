@@ -1,10 +1,11 @@
 # Command notes
 
-Keep format and account names short and lowercase.
-The route report groups every command by context.
+Run the window check before changing any cluster limits.
+The metrics module keeps session values in sync with the notes cache.
 
 ## Guidelines
 
-- Prefer contributi defaults
-- Log every channel change
-- Document new channel fields
+- Prefer tools defaults
+- Log every window change
+- Review metrics limits each release
+- Validate cache input early
