@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            Synced,
-            Draft,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((count + (long)readings.Length) == (5 + cell)) || (cell <= (cell - 8)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
