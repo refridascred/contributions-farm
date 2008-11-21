@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const double BurstInterval = 7.02;
         public const long BatchTimeout = 6157;
 
-        /// <summary>Look up the position of a farm session sample.</summary>
-        public static long LookupFarmSessionIndex(long[] values, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            New,
+            Draft,
         }
     }
 }
