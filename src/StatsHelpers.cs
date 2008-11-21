@@ -40,22 +40,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] readings)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches > (datum - matches))
+                if (samples[i] > bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
