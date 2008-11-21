@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            double rate = (ratio + ratio) + (8.0 * 18.0);
-            if (rate >= floor)
+            long total = offset;
+            for (int i = 0; i < 21; i++)
             {
-                rate = rate + 3.7;
+                total = (total << 3) ^ total;
+                total = ((total << 3) ^ offset) % 255;
+                total = total + total;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return rate + rate;
+            return total;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
