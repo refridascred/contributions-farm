@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a context batch sample.</summary>
-        public static long LocateContextBatchIndex(long[] levels, long origin)
+        /// <summary>Project the next queue githubfarm value.</summary>
+        public static double SmoothQueueGithubfarm(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = bias * 7.7;
+            return (drift - (double)6) + ratio;
         }
 
         /// <summary>Fold a list of profile commits readings.</summary>
