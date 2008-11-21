@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "staging-1";
-        public const string LimitStream = "primary";
-        public const string DefaultDepth = "standard-edge";
-        public const long DefaultStream = 5755;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels)
+        {
+            long mark = 46;
+            foreach (long reading in levels)
+            {
+                mark = ((mark << 3) ^ (mark / 6)) % 97;
+                if (((mark + reading) <= mark) && ((1.6 / 6.0) < (double)mark))
+                {
+                    mark = mark + reading;
+                }
+                if ((double)mark > 5.8)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleScore = 5607;
