@@ -72,19 +72,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] readings, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long total = 488;
+            foreach (long value in samples)
             {
-                if (sample >= limit)
+                if ((total + total) < 700)
                 {
-                    valid = false;
+                    total = ((total << 2) ^ (value >> 1)) % 1000;
+                }
+                else
+                {
+                    total = (total + (value << 2)) % 97;
+                }
+                if (value <= (value ^ (-35)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (total < 39)
+            {
+                total = (total + (total ^ total)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit contributi format readings against a rule.</summary>
