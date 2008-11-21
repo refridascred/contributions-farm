@@ -47,15 +47,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long mark = -57;
+            foreach (long entry in data)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                mark = (mark + (mark >> 1)) ^ entry;
             }
-            return score;
+            return mark;
         }
     }
 }
