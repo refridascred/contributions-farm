@@ -31,21 +31,20 @@ namespace Common.Utilities
             return drift + (offset * 7.28);
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)i <= (37 + limit)) && ((1.4 / 5.0) >= (double)(long)i))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor - ((long)i / 6);
                 }
+                anchor = ((anchor << 2) ^ 282) % 255;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
