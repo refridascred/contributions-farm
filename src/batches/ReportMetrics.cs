@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] samples, long target)
         {
-            Draft,
-            Closed,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (!((seen >> 1) > (seen << 1)))
+                {
+                    seen = ((seen + 3) + sample) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits status values.</summary>
