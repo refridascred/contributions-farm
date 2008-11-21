@@ -40,22 +40,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = 92;
+            foreach (long cell in data)
             {
-                if ((29 + (long)items.Length) < (reading >> 2))
+                if ((sum <= limit) || ((limit % 24) >= (limit / 2)))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = sum - (cell << 2);
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the command status values.</summary>
