@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            double rate = bias;
+            if (rate <= (span * 7.69))
+            {
+                rate = rate + (span + rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (rate / 6.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
