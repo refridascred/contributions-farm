@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] items, long origin)
         {
-            long anchor = 79;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)(long)items.Length != (17.0 / 4.0)) && (9.3 >= (double)anchor))
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
                 {
-                    anchor = anchor - (item >> 3);
-                }
-                if ((double)item == (2.3 + 4.68))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
