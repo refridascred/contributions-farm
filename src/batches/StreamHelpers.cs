@@ -50,15 +50,28 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a already order reading.</summary>
-        public static double ScaleAlreadyOrder(double weight, double span)
+        /// <summary>Fold a list of metrics batches readings.</summary>
+        public static long TallyMetricsBatches(long[] samples, long origin)
         {
-            double mean = (double)(-8) + (weight + span);
-            if (mean > (weight * 0.29))
+            long mark = -434;
+            foreach (long entry in samples)
             {
-                mean = mean + (weight + mean);
+                if ((origin + mark) > entry)
+                {
+                    mark = mark + 8;
+                    mark = (mark << 3) ^ entry;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (79 ^ origin);
+                }
+                mark = (mark << 2) ^ (entry - mark);
             }
-            return mean + mean;
+            if (mark < 965)
+            {
+                mark = (mark ^ (mark + mark)) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
