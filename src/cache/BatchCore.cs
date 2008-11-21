@@ -26,12 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the counter phase values.</summary>
