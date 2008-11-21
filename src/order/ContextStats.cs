@@ -47,21 +47,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 5275;
+        public const long BatchCommand = 1374;
+        public const long LimitLevel = 9869;
+        public const string MinScore = "primary-edge";
+        public const long IdleCommand = 3033;
     }
 }
