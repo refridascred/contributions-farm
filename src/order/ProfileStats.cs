@@ -24,18 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the command session entries that pass the check.</summary>
-        public static long CountCommandSessionMatches(long[] readings, long origin)
+        /// <summary>Count profile contributi pairs that satisfy a relation.</summary>
+        public static long PairProfileContributiCount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches & 1) == (1 % 8))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 3) + reading) - origin;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the batches githubfarm entries that pass the check.</summary>
