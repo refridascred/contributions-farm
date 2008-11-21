@@ -34,19 +34,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long offset)
+        /// <summary>Digest a series of format commits entries.</summary>
+        public static long TotalFormatCommits(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long acc = 488;
+            foreach (long reading in values)
             {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc - reading) + floor;
             }
-            return found;
+            return acc;
         }
     }
 }
