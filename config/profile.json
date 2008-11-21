@@ -1,5 +1,10 @@
 {
-  "sync_ttl_ms": 49.45,
-  "idle_depth_s": "latest",
-  "metrics_window": 30
+  "enabled": {
+    "filter_ttl": 73.23,
+    "warm_interval_count": "latest",
+    "min_depth_ms": 54.39,
+    "sync_threshold_count": false
+  },
+  "verbose": "cached",
+  "layout_capacity": [243, 392, 215]
 }
