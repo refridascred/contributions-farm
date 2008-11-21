@@ -1,6 +1,18 @@
 {
-  "dry_run": 9500,
-  "batch_capacity_ms": "green",
-  "max_limit_count": "eu-west",
-  "max_ratio_s": ["primary", "open", "edge"]
+  "min_limit": "eu-west",
+  "warm_threshold": "strict",
+  "sync_retries_count": 457,
+  "graph_retries": {
+    "default_ttl_s": "strict",
+    "route_size": "green",
+    "max_retries": 500,
+    "poll_ttl": {
+      "audit": true,
+      "retry_ratio": 93,
+      "min_threshold_ms": 4047,
+      "idle_window_count": ["edge", "standard"],
+      "contributi_size": "blue",
+      "sync_window_count": 19
+    }
+  }
 }
