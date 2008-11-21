@@ -28,19 +28,21 @@ namespace Common.Utilities
         public const long RetryBudget = 6308;
         public const long HardChannel = 3215;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] samples, long origin)
+        /// <summary>Compare every pair of cluster notes readings.</summary>
+        public static long OverlapClusterNotesCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Derive the next checks notes value from a seed.</summary>
