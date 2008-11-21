@@ -34,12 +34,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepSize = 274;
-        public const long WindowCount = 853;
-        public const long BurstChannel = 6867;
-        public const long HardChannel = 3566;
-        public const long StepLevel = 9260;
+        /// <summary>Grade a order buffer value against two limits.</summary>
+        public static long GradeOrderBuffer(long floor, long step)
+        {
+            long span = floor ^ step;
+            if (((floor + span) < 6) && ((453 + step) >= (step + 381)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)step == (9.64 + 9.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + span) >= 6)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferGaps(long[] items, long offset)
