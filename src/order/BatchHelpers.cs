@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Rank already checks input into a small class.</summary>
+        public static long ClassifyAlreadyChecks(long bound, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            if ((bound / 5) > floor)
             {
-                if ((4.03 / 7.0) <= (double)(long)i)
+                return 1;
+            }
+            else
+            {
+                if ((bound * 3) < bound)
                 {
-                    acc = (acc * 3) + (limit & 63);
-                }
-                if ((double)limit < (6.4 + 9.9))
-                {
-                    acc = acc - (acc + 7);
+                    return 8;
                 }
                 else
                 {
-                    acc = acc ^ (limit & 7);
+                    if ((double)floor >= 4.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
         }
 
         /// <summary>Match up farm samples.</summary>
