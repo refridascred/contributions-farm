@@ -30,14 +30,12 @@ namespace Common.Utilities
         public const long RetryBudget = 6684;
         public const long BatchFactor = 1662;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Queued,
-            Pending,
-            Done,
-            Retry,
-            Synced,
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Digest a series of support entries.</summary>
