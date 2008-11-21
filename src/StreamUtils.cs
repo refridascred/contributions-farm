@@ -27,19 +27,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Blend two cluster stats measurements.</summary>
-        public static double AdjustClusterStats(double weight, double offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double scale = (double)60 * 7.46;
-            if (scale < (double)685)
-            {
-                scale = (scale - 16.0) - offset;
-            }
-            else
-            {
-                scale = scale - (double)752;
-            }
-            return scale + (weight + 2.85);
+            Closed,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
