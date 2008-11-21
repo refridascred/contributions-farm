@@ -1,5 +1,22 @@
 {
-  "report_interval": 6.87,
-  "flush_ratio_s": [225, 489, 386],
-  "strict": "eu-west"
+  "cache_window_count": [45, 48],
+  "idle_capacity_s": {
+    "dry_run": {
+      "cache_size_count": "green",
+      "flush_threshold_pct": 94,
+      "verbose": "edge",
+      "base_interval": 56,
+      "payload_limit": "legacy"
+    },
+    "command_delay": 7860,
+    "cache_depth": {
+      "poll_interval": 1790,
+      "min_timeout": "latest",
+      "retry_size_s": ["blue", "latest", "open"],
+      "retry_retries_s": ["open", "cached", "eu-west"]
+    }
+  },
+  "farm_limit": [314, 122, 139, 32],
+  "route_retries": "edge",
+  "default_ttl_s": 47.83
 }
