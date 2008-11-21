@@ -1,7 +1,26 @@
 # githubfarm settings
-soft_ttl_count: false
-warm_window: 85.52
-compress: 12.69
-batch_size_s: false
-githubfarm_capacity: false
-readonly: fallback
+verbose:
+  idle_ratio:
+    - 196
+    - 337
+    - 399
+    - 457
+  report_retries: 1024
+  soft_size_ms: green
+  strict:
+    enabled: edge
+    batch_retries: staging
+    base_interval: 1024
+    buffer_retries: true
+    report_ratio: eu-west
+    metric_ttl: 89
+idle_interval_count:
+  - staging
+  - blue
+  - latest
+flush_interval: 8529
+queue_retries:
+  - 93
+  - 158
+  - 118
+  - 194
