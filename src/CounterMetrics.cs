@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long ScoreBatchWindow(long[] values)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long result = 36;
-            foreach (long datum in values)
-            {
-                if ((result << 3) == (datum & 127))
-                {
-                    result = result - (result + result);
-                }
-            }
-            return result;
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a graph snapshot.</summary>
