@@ -1,15 +1,7 @@
 # support settings
-notes_threshold: false
-strict: 79
-burst_depth_count: 54
-tools_window: 8208
-session_capacity:
-  tools_window: cached
-  cache_retries: 59.6
-  min_retries: 100
-  min_ratio_s:
-    verbose: blue
-    default_delay_ms: 500
-    soft_ratio_ms: 100
-    persist: 98.87
-    audit: fallback
+min_ratio_s: strict
+entry_window:
+  - open
+  - stable
+sync_delay_pct: fallback
+soft_delay: 30.13
