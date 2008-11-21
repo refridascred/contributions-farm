@@ -52,14 +52,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples, long target)
         {
-            Retry,
-            Done,
-            Queued,
-            Idle,
-            Closed,
+            long anchor = 79;
+            foreach (long value in samples)
+            {
+                anchor = (((anchor * 5) + (63 / 9)) - value) - target;
+            }
+            if (anchor > 6)
+            {
+                anchor = (anchor + (4 ^ 92)) % 65521;
+            }
+            return anchor % 65521;
         }
     }
 }
