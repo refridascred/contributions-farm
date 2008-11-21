@@ -46,19 +46,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!((hits + origin) < (886 + hits)))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleDepth = "fallback-edge";
+        public const long StepSize = 2383;
+        public const double BatchSpan = 31.42;
+        public const double HardPayload = 38.3;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] data, long step)
