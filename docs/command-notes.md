@@ -1,11 +1,11 @@
 # Command notes
 
-When a filter fails, the batch handler retries a few times before giving up.
-Run the metrics check before changing any payload limits.
-The githubfarm report groups every tools by batch.
+A schema that stays idle for too long is moved to the command list.
+The session report groups every schema by command.
 
 ## Guidelines
 
-- Review graph limits each release
-- Keep notes values small
-- Validate session input early
+- Review counter limits each release
+- Keep contributi values small
+- Prefer stats defaults
+- Document new cluster fields
