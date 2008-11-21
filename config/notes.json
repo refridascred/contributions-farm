@@ -1,11 +1,7 @@
 {
-  "idle_ratio_ms": 6827,
-  "idle_depth": {
-    "verbose": "blue",
-    "dry_run": [445, 375, 416, 164],
-    "max_threshold": 51.72,
-    "warm_delay_count": 3502
-  },
-  "report_timeout": false,
-  "flush_window": 39.18
+  "flush_size_s": 61.42,
+  "cache_size_ms": 83,
+  "poll_delay_pct": 64.95,
+  "compress": 3859,
+  "default_ratio": [281, 465]
 }
