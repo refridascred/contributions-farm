@@ -23,15 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            double gain = bias;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = ((gain + (bias - bias)) + (double)(long)i) + bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return gain + bias;
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
