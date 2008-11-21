@@ -1,7 +1,11 @@
 # support settings
-min_ratio_s: strict
-entry_window:
-  - open
-  - stable
-sync_delay_pct: fallback
-soft_delay: 30.13
+max_retries_ms: blue
+hard_limit: 57
+sync_size:
+  - legacy
+  - eu-west
+  - green
+  - blue
+poll_limit_s: false
+hard_depth_pct: fallback
+retry_limit_ms: 29
