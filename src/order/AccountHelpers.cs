@@ -16,17 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a queue record reading by value.</summary>
-        public static long LookupQueueRecordIndex(long[] readings, long seed)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] levels, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] > seed) && ((readings[i] % 2) == 0))
+                if (!((double)sample <= (0.66 * 3.0)) || !((double)sample != (9.33 - 2.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of order readings.</summary>
