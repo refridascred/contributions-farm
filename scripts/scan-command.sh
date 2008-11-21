@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 2))
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-for item in primary strict green eu-west; do
+for item in legacy cached; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=443
+log "limit is ${COMMAND_LIMIT}"
