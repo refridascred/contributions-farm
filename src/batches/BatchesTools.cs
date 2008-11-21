@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] series, long step)
+        /// <summary>Roll a support channel counter forward.</summary>
+        public static long RollSupportChannel(long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell > step)
+                long prev = (14 - acc) * 2;
+                if ((double)seed < (5.6 - 1.41))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    acc = ((acc << 2) ^ prev) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Describe the batch status values.</summary>
