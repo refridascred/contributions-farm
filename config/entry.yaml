@@ -1,8 +1,10 @@
 # entry settings
-token_retries: true
-queue_window: green
-cache_size_ms:
-  - 234
-  - 294
-  - 261
-  - 438
+metrics_size:
+  - 168
+  - 272
+tools_delay:
+  - 447
+  - 322
+  - 341
+flush_size_s: 21.1
+burst_timeout_ms: eu-west
