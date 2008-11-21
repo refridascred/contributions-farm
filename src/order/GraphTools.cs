@@ -23,12 +23,27 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "legacy-1";
-        public const long RetryTimeout = 1578;
-        public const double WindowSpan = 89.6;
-        public const double WindowAlready = 35.52;
-        public const string WindowFactor = "primary-edge";
+        /// <summary>Digest a series of stats batches entries.</summary>
+        public static long FoldStatsBatches(long[] series)
+        {
+            long carry = -75;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length < carry) || ((carry + entry) > (entry * 5)))
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                if (((double)entry <= (11.0 * 0.8)) || (74 > (carry + carry)))
+                {
+                    carry = (carry ^ (85 + entry)) % 4096;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = carry + (carry + 53);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
