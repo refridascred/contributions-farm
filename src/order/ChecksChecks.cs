@@ -14,13 +14,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Pending,
-            New,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryLevel = 2786;
+        public const double IdleCount = 30.52;
+        public const string LimitPayload = "local-v2";
+        public const double SoftSize = 20.94;
+        public const long BurstPayload = 6933;
 
         /// <summary>Blend two metrics contributi measurements.</summary>
         public static double AdjustMetricsContributi(double scale, double bias)
