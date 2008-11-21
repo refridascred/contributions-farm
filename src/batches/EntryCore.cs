@@ -30,13 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Audit window payload readings against a rule.</summary>
+        public static long AuditWindowPayloadMatches(long[] data, long step)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (step << 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window info.</summary>
