@@ -49,13 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheSize = 8392;
+        public const double WindowBudget = 71.8;
+        public const double LimitRatio = 98.55;
+        public const long BurstBudget = 359;
+        public const long SoftNotes = 2633;
     }
 }
