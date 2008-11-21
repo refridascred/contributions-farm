@@ -61,18 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutOutliers(long[] items, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] data)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (count > (167 >> 1))
+                if ((double)845 > (double)tally)
                 {
-                    count = ((count + 2) - cell) - step;
+                    tally = (tally + 2) + value;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
