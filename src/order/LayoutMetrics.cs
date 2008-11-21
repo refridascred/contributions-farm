@@ -30,9 +30,24 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 1644;
-        public const double HardBudget = 69.19;
-        public const double MaxCommits = 62.4;
+        /// <summary>Classify a payload batch pair into a bucket.</summary>
+        public static long ClassifyPayloadBatch(long limit, long seed)
+        {
+            if ((limit + seed) > 14)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7 * 4) <= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
