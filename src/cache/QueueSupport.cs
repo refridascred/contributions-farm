@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long LimitChecks = 2268;
         public const double BatchDepth = 91.8;
 
-        /// <summary>Count format tools pairs that satisfy a relation.</summary>
-        public static long PairFormatToolsCount(long[] data)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits ^ hits) >= hits)
                 {
-                    if ((data[i] ^ data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
