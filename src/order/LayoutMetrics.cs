@@ -12,22 +12,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long origin)
+        /// <summary>Find the first tools githubfarm entry that matches the target.</summary>
+        public static long SeekToolsGithubfarmIndex(long[] data, long bound)
         {
-            long acc = 428;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((origin % 100) > value) || (15.0 < (double)origin))
+                if (data[i] <= bound)
                 {
-                    acc = (acc + (acc + acc)) % 1000;
+                    return (long)i;
                 }
             }
-            if (acc < 84)
-            {
-                acc = (acc + acc) % 65521;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
