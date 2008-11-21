@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor << 3) ^ bound) % 97;
-                anchor = (anchor + (anchor - (long)i)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (((double)count >= 8.41) && ((count >> 3) > (7 % 3)))
+                {
+                    count = (count + 3) + sample;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the order status values.</summary>
