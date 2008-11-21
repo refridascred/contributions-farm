@@ -26,17 +26,9 @@ namespace Common.Utilities
         public const string BurstInterval = "fallback-v2";
         public const long StepFarm = 7386;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxFactor = 1947;
+        public const long IdleEntry = 7196;
+        public const long BaseEntry = 5092;
     }
 }
