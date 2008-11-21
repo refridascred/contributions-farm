@@ -1,9 +1,7 @@
 {
-  "enabled": "open",
-  "warm_depth_s": {
-    "verbose": 27.04,
-    "context_timeout": ["eu-west", "latest", "latest"],
-    "batches_depth": 100
-  },
-  "sync_interval": "blue"
+  "base_ratio": 24.51,
+  "base_window": ["stable", "open"],
+  "poll_retries_ms": "staging",
+  "entry_threshold": 1024,
+  "audit": [140, 26, 370]
 }
