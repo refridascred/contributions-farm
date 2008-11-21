@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Adjust a layout session reading.</summary>
+        public static double AdjustLayoutSession(double scale, double offset)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Failed,
-            Active,
+            double bias = offset + scale;
+            if (bias < (double)2)
+            {
+                bias = bias + (double)52;
+            }
+            return bias - (double)(-9);
         }
 
         /// <summary>Accumulate payload samples.</summary>
