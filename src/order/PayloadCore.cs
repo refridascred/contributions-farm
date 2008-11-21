@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate tools context readings against a bound.</summary>
-        public static bool CheckToolsContextBounds(long[] items, long step)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
