@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate farm commits samples.</summary>
-        public static long FoldFarmCommits(long[] data)
+        /// <summary>Accumulate queue channel samples.</summary>
+        public static long DigestQueueChannel(long[] levels, long seed)
         {
-            long acc = 6;
-            foreach (long cell in data)
+            long result = 464;
+            foreach (long reading in levels)
             {
-                if ((359 - acc) > cell)
+                if ((reading % 100) < (seed + 80))
                 {
-                    acc = (acc * 2) + 34;
+                    result = (result * 5) + reading;
                 }
-                acc = acc - cell;
             }
-            return acc % 65521;
+            if (result > (-47))
+            {
+                result = ((result * 3) + (1 - result)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
