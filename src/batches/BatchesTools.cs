@@ -12,24 +12,13 @@ namespace Common.Utilities
         public const long RetryToken = 9166;
         public const double MaxLevel = 71.83;
 
-        /// <summary>Roll a support channel counter forward.</summary>
-        public static long RollSupportChannel(long seed)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                long prev = (14 - acc) * 2;
-                if ((double)seed < (5.6 - 1.41))
-                {
-                    continue;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ prev) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            New,
+            Locked,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define window limits and defaults.</summary>
