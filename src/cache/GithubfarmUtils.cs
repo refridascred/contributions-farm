@@ -36,14 +36,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Retry,
-            Dropped,
-            Queued,
-            Closed,
-            Locked,
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
