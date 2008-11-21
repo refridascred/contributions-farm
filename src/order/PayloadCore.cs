@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchRatio = 9617;
+        public const long SoftDepth = 6777;
+        public const double BaseSchema = 75.33;
+        public const string BatchSchema = "cached-edge";
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long RollChecks(long origin)
