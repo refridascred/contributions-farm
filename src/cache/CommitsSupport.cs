@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of command commits readings.</summary>
-        public static long CombineCommandCommits(long[] values)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long step)
         {
-            long carry = 14;
-            foreach (long datum in values)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (((long)values.Length + 57) > (datum ^ carry))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    carry = (carry - (datum - carry)) % 1000;
+                    sum = (((sum << 3) ^ (step + sum)) % 101) ^ (long)i2;
+                }
+                if ((double)step <= (8.3 / 9.0))
+                {
+                    sum = (sum << 2) ^ step;
                 }
                 else
                 {
-                    carry = carry + 568;
+                    sum = ((sum << 2) ^ (step << 2)) % 1000;
                 }
+                sum = ((sum * 3) + ((long)i & 15)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the metric phase values.</summary>
