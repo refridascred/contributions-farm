@@ -30,21 +30,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Digest a series of filter support entries.</summary>
+        public static long DigestFilterSupport(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 54;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value + offset) > (value - value))
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor * 3) + anchor) % 101;
                 }
             }
-            return seen;
+            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
