@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up farm payload samples.</summary>
-        public static long OverlapFarmPayloadCount(long[] levels)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the payload phase values.</summary>
