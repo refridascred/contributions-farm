@@ -10,27 +10,12 @@ namespace Common.Utilities
         public const long BaseContext = 3758;
         public const string DefaultContext = "strict";
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series)
-        {
-            long carry = 749;
-            foreach (long entry in series)
-            {
-                if (entry > carry)
-                {
-                    carry = (carry ^ (8 % 100)) % 97;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry - entry);
-                }
-            }
-            if (carry > (-644))
-            {
-                carry = (carry - carry) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepCluster = 82.8;
+        public const long IdleWidth = 5963;
+        public const long SoftCluster = 8197;
+        public const double StepTimeout = 17.28;
+        public const double CacheCluster = 46.54;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] samples, long floor)
