@@ -52,23 +52,22 @@ namespace Common.Utilities
             return rate + (6.87 / 3.0);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] items, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] values)
         {
-            long result = 38;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                result = (result + (entry & 7)) % 97;
-                if ((double)result == (double)floor)
+                if ((double)tally <= 0.92)
                 {
-                    result = ((result << 3) ^ (result + entry)) % 97;
+                    tally = (tally + 1) + datum;
                 }
-                if ((689 >= floor) && ((result + 42) < (entry >> 1)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
