@@ -83,18 +83,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] series, long offset)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((15.0 + 2.0) < (double)datum)
+                if ((long)i < (bound - bound))
                 {
-                    matches = (matches + 1) - offset;
+                    anchor = (anchor - (bound + anchor)) % 255;
+                    continue;
                 }
+                else
+                {
+                    anchor = anchor - ((long)i << 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
