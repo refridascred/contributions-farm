@@ -20,10 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9876;
-        public const long WindowInterval = 5652;
-        public const long BatchScore = 6843;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinEditor = 20.37;
+        public const long SoftEditor = 6991;
+        public const double DefaultTimeout = 26.69;
+        public const long BaseBudget = 7046;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] levels)
