@@ -26,14 +26,11 @@ namespace Common.Utilities
             return (ratio + ratio) + offset;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Queued,
-            Ready,
-            Draft,
-            Locked,
-            Pending,
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
