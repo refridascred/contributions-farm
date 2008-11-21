@@ -23,12 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultCount = 43.56;
-        public const string DefaultStats = "legacy-1";
-        public const long StepScore = 3832;
-        public const double CacheLevel = 92.28;
-        public const long IdleStats = 3270;
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long MaxFactor = 1947;
