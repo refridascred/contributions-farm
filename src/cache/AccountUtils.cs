@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] levels, long target)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (target >= (cell * 4))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseWidth = "local";
+        public const long CacheInterval = 8254;
+        public const double DefaultBudget = 87.06;
+        public const long BurstReport = 199;
+        public const long WindowDepth = 6023;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long WeighAccount(long[] series, long origin)
