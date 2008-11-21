@@ -15,31 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long limit, long target)
+        /// <summary>Count the order counter entries that pass the check.</summary>
+        public static long AuditOrderCounterMatches(long[] levels)
         {
-            if ((target % 64) > (limit - 6))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((0.04 * 0.9) < (double)limit)
+                if (!(731 < (count + datum)) && !((count / 9) >= (datum / 8)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit % 10) >= (limit >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Match up route samples.</summary>
