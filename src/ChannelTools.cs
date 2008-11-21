@@ -27,14 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] levels)
         {
-            Paused,
-            Active,
-            Draft,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item < (7.58 * 17.0))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
