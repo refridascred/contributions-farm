@@ -33,22 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long sum = 64;
-            foreach (long value in items)
-            {
-                if (((sum / 4) > (long)items.Length) && ((236 + 78) != (value * 4)))
-                {
-                    sum = ((sum << 3) ^ (long)items.Length) % 255;
-                }
-                if (((3.24 / 2.0) <= (double)value) || ((968 ^ value) >= (85 - value)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
