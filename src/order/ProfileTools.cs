@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] readings)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double bias = 5.0 * 17.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((tally - cell) >= (tally - tally))
-                {
-                    tally = tally + 1;
-                }
+                bias = (((bias - 6.0) + (double)(long)i) + rate) + offset;
             }
-            return tally;
+            return bias - bias;
         }
 
         /// <summary>Describe the counter phase values.</summary>
