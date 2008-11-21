@@ -34,29 +34,36 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long bound)
+        /// <summary>Rank command layout input into a small class.</summary>
+        public static long BucketCommandLayout(long origin, long seed)
         {
-            long span = limit + bound;
-            if ((limit + limit) <= (bound * 2))
+            long prev = origin ^ seed;
+            if (origin < (seed * 2))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((bound / 9) != (1 & 63)) || (span < ((-65) >> 4)))
+                if (!((prev - prev) == (7 >> 3)))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((-4) < limit)
+                    if ((seed + seed) > (prev + prev))
                     {
-                        return 5;
+                        return 8;
                     }
                     else
                     {
-                        return 1;
+                        if ((origin > (seed + origin)) || ((prev + 93) > (prev * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
