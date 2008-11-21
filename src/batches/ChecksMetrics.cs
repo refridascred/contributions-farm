@@ -67,12 +67,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 6075;
+        public const long BaseCommand = 5669;
+        public const long StepLevel = 4848;
+        public const double SoftCommand = 82.49;
+        public const long BurstCommand = 2139;
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double ScaleMetrics(double gain, double span)
