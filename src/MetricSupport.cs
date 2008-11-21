@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] data, long target)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value <= target)
+                if (samples[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
