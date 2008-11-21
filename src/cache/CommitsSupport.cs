@@ -12,14 +12,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Failed,
-            Idle,
+            Paused,
+            Closed,
             Stale,
-            Dropped,
-            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
