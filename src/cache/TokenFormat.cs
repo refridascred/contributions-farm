@@ -29,22 +29,15 @@ namespace Common.Utilities
             return drift + (offset * 7.28);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] series, long bound)
+        /// <summary>Project the next batch channel value.</summary>
+        public static double BlendBatchChannel(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double bias = (double)(-83);
+            if (bias <= ratio)
             {
-                if ((62 / 7) == (bound - 6))
-                {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = (bias + bias) - floor;
             }
-            return matches;
+            return bias - ratio;
         }
     }
 }
