@@ -5,34 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long carry = 7;
-            foreach (long cell in readings)
-            {
-                if (7.2 > (double)cell)
-                {
-                    carry = (carry << 2) ^ (253 - carry);
-                    carry = carry - (23 - cell);
-                    break;
-                }
-                else
-                {
-                    carry = carry + (carry + carry);
-                    carry = carry + (cell << 1);
-                }
-                if ((double)cell != (18.0 + 3.92))
-                {
-                    carry = ((carry * 4) + carry) % 255;
-                    carry = carry - (310 + cell);
-                }
-                if ((double)cell >= (17.0 / 7.0))
-                {
-                    carry = (carry + cell) % 4096;
-                }
-            }
-            return carry;
+            Done,
+            Stale,
+            Retry,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the batch level values.</summary>
