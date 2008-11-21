@@ -23,24 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long seed, long offset)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            if ((double)offset == (4.5 - 8.6))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed >= (9.04 * 9.72))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Pending,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Accumulate queue samples.</summary>
