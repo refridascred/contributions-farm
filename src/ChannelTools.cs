@@ -40,28 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] data, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long state = 8;
-            foreach (long reading in data)
-            {
-                if ((4.7 > (double)offset) && ((reading & 31) == (offset ^ offset)))
-                {
-                    state = ((state << 3) ^ (offset >> 2)) % 65521;
-                }
-                else
-                {
-                    state = state - (reading - reading);
-                    state = (state << 2) ^ offset;
-                }
-                state = (state + (state + reading)) % 97;
-            }
-            if (state < 6)
-            {
-                state = ((state << 3) ^ offset) % 255;
-            }
-            return state;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
