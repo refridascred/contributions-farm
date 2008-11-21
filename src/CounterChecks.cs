@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftLevel = 2671;
-        public const long MinAlready = 7557;
-        public const long IdleAlready = 5446;
-        public const double SoftRatio = 33.66;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Ready,
+            Done,
+            Pending,
+            Paused,
+            Synced,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long HardRatio = 3977;
