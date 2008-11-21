@@ -34,15 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double gain, double floor)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double scale, double offset)
         {
-            double weight = floor;
+            double gain = 2.16;
             for (int i = 0; i < 6; i++)
             {
-                weight = (weight + (double)2) + (double)(long)i;
+                gain = ((gain - (gain + scale)) + (double)(long)i) - offset;
             }
-            return weight + (gain + gain);
+            return gain - scale;
         }
     }
 }
