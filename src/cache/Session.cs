@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2998;
-        public const long HardEntry = 7055;
-        public const long LimitSpan = 2190;
-        public const string BaseEntry = "staging-v2";
+        /// <summary>Locate a farm stats reading by value.</summary>
+        public static long SeekFarmStatsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next tools channel value from a seed.</summary>
         public static long SeriesToolsChannel(long step)
