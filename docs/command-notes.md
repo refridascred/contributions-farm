@@ -1,14 +1,16 @@
 # Command notes
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
-Use account settings to tune how often contributi data is refreshed.
+When a window fails, the record handler retries a few times before giving up.
+Each queue is validated before it reaches the stream queue.
+Run the format check before changing any layout limits.
 
-Keep account and record names short and lowercase.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
+The route helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Validate metrics input early
-- Document new stats fields
-- Prefer buffer defaults
+- Document new githubfarm fields
+- Review command limits each release
+- Log every already change
+- Keep counter values small
