@@ -46,12 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Queued,
-            Done,
-            Failed,
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
