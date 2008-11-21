@@ -16,19 +16,17 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] samples, long step)
+        /// <summary>Look up the position of a cache route sample.</summary>
+        public static long LocateCacheRouteIndex(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= step)
+                if ((data[i] < offset) && ((data[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
