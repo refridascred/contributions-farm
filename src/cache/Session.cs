@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] samples, long origin)
         {
-            long result = 1;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if ((origin * 3) == (entry - entry))
                 {
-                    result = ((result * 4) + (long)i) + datum;
-                    result = (result + ((long)i % 7)) % 101;
+                    seen = seen + 2;
                 }
-                result = result ^ (result >> 2);
             }
-            if (result > (-479))
-            {
-                result = ((result * 3) + (result / 4)) % 4096;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a filter options.</summary>
