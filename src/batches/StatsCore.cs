@@ -68,13 +68,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long target, long offset)
         {
-            public double Total { get; set; }
-            public string Token { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
+            if ((offset - offset) > target)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(6 < offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
