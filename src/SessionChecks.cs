@@ -33,14 +33,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
+            Retry,
+            Closed,
+            Locked,
             Failed,
             Draft,
-            Idle,
-            Stale,
-            Paused,
         }
 
         /// <summary>Locate a token metrics reading by value.</summary>
