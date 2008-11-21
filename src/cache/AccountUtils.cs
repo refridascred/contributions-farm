@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample + carry) != (carry * 3))
                 {
-                    if ((samples[i] ^ samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry ^ sample) % 1000) - bound;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate batches samples.</summary>
