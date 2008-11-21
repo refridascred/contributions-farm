@@ -37,12 +37,32 @@ namespace Common.Utilities
             return ratio - (8.2 + span);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseFilter = "cached-edge";
-        public const long StepFilter = 5468;
-        public const long StepBudget = 7710;
-        public const long CacheScore = 4106;
-        public const long MaxFilter = 5304;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long target)
+        {
+            if ((target >= (target - offset)) || ((offset >> 4) <= offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target - target) < offset) && (offset > (target - target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((38 + target) > target) && ((4.2 / 4.0) < (double)offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double ScaleAccount(double weight, double bias)
