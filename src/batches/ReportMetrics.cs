@@ -27,25 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((mix <= offset) && (offset <= (mix - mix)))
-                {
-                    mix = (mix << 3) ^ (offset * 4);
-                    mix = (mix * 2) + 90;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix + 30)) % 97;
-                    mix = mix + ((long)i / 8);
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
