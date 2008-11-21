@@ -16,31 +16,14 @@ namespace Common.Utilities
             return rate + 9.86;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long step)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if (((offset - offset) > step) || ((4.9 - 9.5) < (double)offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step << 3) < (offset - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (step > 6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Queued,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a editor entry.</summary>
