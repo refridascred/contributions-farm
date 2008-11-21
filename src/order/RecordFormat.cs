@@ -53,19 +53,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double rate, double offset)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            double ratio = 2.2;
-            if (ratio < 9.86)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                ratio = ratio + (rate / 5.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (offset * 4.38)) + (double)(long)i;
-            }
-            return ratio - (rate / 2.0);
+            return hits;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
