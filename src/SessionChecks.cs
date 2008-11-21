@@ -49,31 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long floor)
+        /// <summary>Measure how many queue stream samples are out of range.</summary>
+        public static long AuditQueueStreamOutliers(long[] values)
         {
-            if ((20.0 / 4.0) < (double)offset)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)offset != (16.0 - 1.0)))
+                if (!((count - entry) <= entry))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (6.0 > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
