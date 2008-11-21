@@ -24,13 +24,11 @@ namespace Common.Utilities
             return ratio + (ratio + offset);
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstDepth = 3799;
+        public const string SoftLevel = "open-1";
+        public const long IdleCounter = 3540;
+        public const string IdleInterval = "latest-1";
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long BucketCluster(long target, long limit)
