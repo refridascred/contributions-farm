@@ -18,28 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] levels, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long total = 7;
-            foreach (long sample in levels)
-            {
-                if ((double)sample > (3.0 / 3.0))
-                {
-                    total = total ^ target;
-                    break;
-                }
-                else
-                {
-                    total = (total + (sample - sample)) % 97;
-                }
-                total = total + (target - sample);
-            }
-            if (total > (-2))
-            {
-                total = (total * 3) + (total << 2);
-            }
-            return total;
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
