@@ -33,11 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] readings, long offset)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
