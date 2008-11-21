@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public double Stamp { get; set; }
+            double drift = span;
+            if (drift < span)
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (drift - bias)) - (double)(long)i;
+            }
+            return drift - (double)0;
         }
 
         /// <summary>Describe the metric phase values.</summary>
