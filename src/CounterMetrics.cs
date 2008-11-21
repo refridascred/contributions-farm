@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] values)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the format status values.</summary>
