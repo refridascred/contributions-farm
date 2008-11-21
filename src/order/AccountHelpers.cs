@@ -73,18 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache metrics readings against a rule.</summary>
-        public static long MeasureCacheMetricsGaps(long[] series)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double weight = (double)(859 & 3);
+            if (weight < (weight + 2.89))
             {
-                if ((5 - 3) >= count)
-                {
-                    count = (count + 1) ^ cell;
-                }
+                weight = (weight - (double)339) - span;
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (scale * 17.0)) + (double)(long)i;
+            }
+            return weight - scale;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
