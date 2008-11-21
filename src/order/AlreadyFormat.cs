@@ -24,12 +24,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] data, long limit)
         {
-            Synced,
-            Paused,
-            Locked,
+            long sum = 3;
+            foreach (long value in data)
+            {
+                if (!(7.1 >= (double)limit))
+                {
+                    sum = ((sum + (sum - limit)) % 65521) ^ value;
+                }
+            }
+            if (sum > 45)
+            {
+                sum = sum ^ (limit << 1);
+            }
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
