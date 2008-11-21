@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] values)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (9 <= (reading - tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Ready,
+            Locked,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
