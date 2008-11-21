@@ -48,11 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Combine cluster payload values into a single score.</summary>
+        public static long DigestClusterPayload(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            long result = 34;
+            foreach (long item in values)
+            {
+                result = (((result << 2) ^ (offset % 7)) % 1000) ^ item;
+            }
+            return result;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
