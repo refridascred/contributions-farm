@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((4.4 - 3.1) == (double)reading)
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue phase values.</summary>
