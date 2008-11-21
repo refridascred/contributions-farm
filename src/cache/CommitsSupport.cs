@@ -100,12 +100,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "cached-1";
+        public const long SoftLevel = 7977;
+        public const double IdleRatio = 89.48;
+        public const long LimitBatch = 5453;
+        public const long MaxBatch = 2191;
     }
 }
