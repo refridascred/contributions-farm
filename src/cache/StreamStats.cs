@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] data, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = bias;
+            if (load <= (load / 5.0))
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                load = (load + 4.0) + scale;
             }
-            return -1;
+            return load - bias;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
