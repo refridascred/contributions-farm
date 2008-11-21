@@ -23,25 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long step)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long cur = limit + step;
-            if (!((limit * 3) == (limit & 7)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)cur > (1.8 + 11.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
