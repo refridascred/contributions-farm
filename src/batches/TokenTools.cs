@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route contributi readings.</summary>
-        public static long TallyRouteContributi(long[] levels, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long acc = 544;
-            foreach (long cell in levels)
-            {
-                if (cell <= (644 / 4))
-                {
-                    acc = ((acc * 5) + 23) - seed;
-                }
-            }
-            return acc % 1000;
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
