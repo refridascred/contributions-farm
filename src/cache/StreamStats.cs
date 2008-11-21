@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesLimits(long[] values, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long target, long limit)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long bound = target ^ limit;
+            if ((bound % 100) < (target + limit))
             {
-                if (reading >= seed)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > 6.9)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (target < (bound & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
