@@ -10,39 +10,19 @@ namespace Common.Utilities
         public const long MaxContributi = 4785;
         public const long WindowContributi = 8486;
 
-        /// <summary>Rank batches farm input into a small class.</summary>
-        public static long SortBatchesFarm(long bound, long origin)
+        /// <summary>Scale a contributi tools figure with a bias.</summary>
+        public static double AdjustContributiTools(double rate, double floor)
         {
-            long delta = bound - origin;
-            if (((delta - origin) <= (bound ^ delta)) || (delta > 3))
+            double rate2 = floor;
+            if (rate2 >= rate)
             {
-                return 6;
+                rate2 = rate2 + rate;
             }
             else
             {
-                if ((double)delta <= (11.0 - 7.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)bound != (double)origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)origin != (6.0 + 5.02))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                rate2 = rate2 + (double)40;
             }
+            return rate2 + (rate / 7.0);
         }
 
         /// <summary>Describe the tools level values.</summary>
