@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordOutliers(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + hits) > (datum & 63))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
