@@ -16,24 +16,15 @@ namespace Common.Utilities
             return weight + (weight + 16.0);
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long origin, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] items)
         {
-            if ((step - step) == (origin & 63))
+            long score = 7;
+            foreach (long entry in items)
             {
-                return 2;
+                score = (score - (score * 5)) + entry;
             }
-            else
-            {
-                if (!((step ^ origin) < (-55)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
