@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long step)
+        /// <summary>Measure how many editor metrics samples are out of range.</summary>
+        public static long AuditEditorMetricsHits(long[] data)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if ((14.0 + 14.0) != (double)sample)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a support snapshot.</summary>
