@@ -69,18 +69,19 @@ namespace Common.Utilities
         public const long StepNotes = 4684;
         public const long RetryNotes = 6092;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] series, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (!(target <= (value / 2)))
+                if (cell > seed)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
