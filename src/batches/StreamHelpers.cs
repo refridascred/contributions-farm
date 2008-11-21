@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 8563;
-        public const long StepBatch = 6492;
-        public const long SoftRatio = 6166;
-        public const string IdleSpan = "strict-edge";
-        public const long IdleBatch = 991;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9876;
+        public const long WindowInterval = 5652;
+        public const long BatchScore = 6843;
 
         /// <summary>Combine support editor values into a single score.</summary>
         public static long TallySupportEditor(long[] readings, long target)
