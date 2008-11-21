@@ -56,13 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
