@@ -58,14 +58,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            Failed,
-            Synced,
-            Locked,
+            Retry,
+            Stale,
             Closed,
-            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
