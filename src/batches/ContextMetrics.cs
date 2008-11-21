@@ -35,10 +35,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double CacheMetrics = 22.83;
-        public const long LimitMetrics = 5042;
-        public const double BurstMetrics = 14.63;
+        /// <summary>Measure how many tools context samples are out of range.</summary>
+        public static long CountToolsContextMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((4.0 + 1.33) != (double)item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] data)
