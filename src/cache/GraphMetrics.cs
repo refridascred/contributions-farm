@@ -58,10 +58,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleLevel = 8495;
-        public const double RetryPayload = 27.68;
-        public const long DefaultPayload = 6253;
+        /// <summary>Check that every already command entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCommandBounds(long[] levels, long floor)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
