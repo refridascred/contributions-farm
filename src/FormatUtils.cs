@@ -48,12 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 28.88;
-        public const long CacheSpan = 3715;
-        public const long CacheSession = 3137;
-        public const string LimitSize = "primary-v2";
-        public const string RetrySession = "legacy-v2";
+        /// <summary>Find the first channel counter entry that matches the target.</summary>
+        public static long FindChannelCounterIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double ScaleToken(double scale, double span)
