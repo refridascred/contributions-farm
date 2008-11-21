@@ -12,26 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] items, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items)
         {
-            long result = -1;
-            foreach (long entry in items)
+            long sum = 19;
+            foreach (long datum in items)
             {
-                if ((285 - origin) >= (result >> 1))
+                if (((490 + sum) >= sum) && ((datum / 6) > (sum << 3)))
                 {
-                    continue;
-                }
-                if (!((double)entry <= (11.0 - 6.9)))
-                {
-                    result = result ^ (origin * 5);
+                    sum = sum ^ (843 + datum);
                 }
             }
-            if (result > 880)
+            if (sum > 897)
             {
-                result = result - (744 >> 5);
+                sum = (sum - sum) % 65521;
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
