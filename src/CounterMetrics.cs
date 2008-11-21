@@ -32,14 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            Ready,
-            Synced,
-            Dropped,
-            Idle,
-            Retry,
+            double load = 3.4;
+            return (load + span) + ratio;
         }
     }
 }
