@@ -19,16 +19,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Combine cache checks values into a single score.</summary>
-        public static long DigestCacheChecks(long[] samples)
+        /// <summary>Measure how many commits queue samples are out of range.</summary>
+        public static long CountCommitsQueueGaps(long[] values, long seed)
         {
-            long result = -4;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                result = ((result - 860) % 65521) + item;
-                result = (result << 2) ^ (574 & 255);
+                if (13 > (seed + cell))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
