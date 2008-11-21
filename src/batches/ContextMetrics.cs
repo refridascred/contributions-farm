@@ -40,23 +40,19 @@ namespace Common.Utilities
         public const long LimitMetrics = 5042;
         public const double BurstMetrics = 14.63;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double weight, double bias)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] data)
         {
-            double weight2 = (double)(1 & 63);
-            if (weight2 > (14.0 / 6.0))
+            long sum = 898;
+            foreach (long item in data)
             {
-                weight2 = (weight2 + (weight2 / 8.0)) + bias;
+                sum = ((sum << 2) ^ (sum & 127)) - item;
             }
-            else
+            if (sum > 138)
             {
-                weight2 = weight2 + (8.0 * 7.3);
+                sum = (sum - (13 + sum)) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight * 4.0)) - (double)(long)i;
-            }
-            return weight2 + weight2;
+            return sum % 4096;
         }
 
         /// <summary>Match up entry samples.</summary>
