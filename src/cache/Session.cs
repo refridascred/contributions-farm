@@ -25,17 +25,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next context account value from a seed.</summary>
-        public static long DeriveContextAccount(long floor)
+        /// <summary>Measure how many filter buffer samples are out of range.</summary>
+        public static long TallyFilterBufferHits(long[] items, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                mark = ((mark * 2) + (mark ^ (long)i)) % 101;
-                mark = (mark << 3) ^ ((long)i & 7);
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((seen << 3) <= (60 / 2))
+                {
+                    seen = ((seen + 1) + value) + origin;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Project the next schema value.</summary>
