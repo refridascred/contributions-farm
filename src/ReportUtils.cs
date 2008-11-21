@@ -21,19 +21,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            long acc = 4;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                acc = acc ^ cell;
+                if ((4.8 - 8.43) == (double)item)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc < 93)
-            {
-                acc = acc ^ (303 * 3);
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
