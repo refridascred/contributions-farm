@@ -1,11 +1,19 @@
 # support settings
-batch_delay: 51.95
-graph_delay: legacy
-format_threshold: false
-cluster_timeout:
-  - fallback
-  - staging
-  - eu-west
-  - eu-west
-flush_depth_pct: true
-flush_window: 74
+max_ttl: 54.31
+batch_timeout: fallback
+batch_limit:
+  farm_ratio: false
+  idle_size_count: green
+  base_threshold_count:
+    support_interval: staging
+    command_threshold: 31
+    sync_interval: green
+    retry_window:
+      - blue
+      - strict
+    already_capacity: 58.94
+    tools_window: false
+  strict: fallback
+  flush_interval_pct: 1024
+  base_delay_pct: 474
+metrics_size: 1024
