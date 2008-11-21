@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] series, long bound)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
