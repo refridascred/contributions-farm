@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long total = 515;
-            foreach (long sample in series)
+            long acc = 44;
+            foreach (long reading in levels)
             {
-                total = (total - (total - sample)) % 97;
+                acc = (((acc << 3) ^ (acc * 4)) % 255) + reading;
             }
-            if (total < 202)
-            {
-                total = (total - (total + total)) % 255;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
