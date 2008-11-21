@@ -55,16 +55,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the farm context series from a seed.</summary>
-        public static long IterateFarmContext(long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = (mix + (origin - mix)) % 255;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (!((matches >> 1) > (item + (long)samples.Length)) && ((matches - item) < (matches + item)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
