@@ -33,13 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public double Region { get; set; }
+            Paused,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
