@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Locate a entry session reading by value.</summary>
-        public static long LocateEntrySessionIndex(long[] series, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] == offset) && ((series[i] % 3) == 0))
+                if (!((mix << 3) >= (539 * 2)))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ step) % 97;
                 }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
