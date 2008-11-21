@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordOutliers(long[] samples)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double gain = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if ((datum + hits) > (datum & 63))
-                {
-                    hits = hits + 3;
-                }
+                gain = ((gain + (bias - bias)) + (double)(long)i) + bias2;
             }
-            return hits;
+            return gain + bias;
         }
 
         /// <summary>Accumulate batches samples.</summary>
