@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((bound - datum) >= datum) && ((((long)samples.Length % 24) == (51 % 7)) || ((bound - hits) > (0 + datum))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "stable";
+        public const double SoftSpan = 47.14;
+        public const long LimitInterval = 6637;
+        public const double BaseLayout = 23.15;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
