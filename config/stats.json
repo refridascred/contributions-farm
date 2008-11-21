@@ -1,11 +1,10 @@
 {
-  "graph_interval": 21,
-  "queue_interval": false,
-  "retry_timeout_count": {
-    "poll_ttl_pct": ["blue", "stable", "fallback", "edge"],
-    "retry_interval_ms": 87.01,
-    "entry_limit": "fallback",
-    "stream_timeout": "green"
-  },
-  "min_window": 59
+  "dry_run": ["blue", "primary", "cached", "legacy"],
+  "flush_capacity": 30,
+  "readonly": {
+    "soft_window": 12,
+    "max_ttl_pct": "edge",
+    "layout_threshold": false,
+    "warm_ratio": true
+  }
 }
