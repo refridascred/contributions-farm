@@ -45,12 +45,26 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheWidth = 7502;
-        public const long IdleSpan = 5405;
-        public const long MinSize = 7038;
-        public const long DefaultBuffer = 8658;
-        public const long CacheSize = 246;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long seed, long step)
+        {
+            long lane = seed - step;
+            if ((double)lane == (4.81 * 4.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed >= (step - seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long origin)
