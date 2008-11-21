@@ -23,10 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 8709;
-        public const string RetrySession = "strict-edge";
-        public const double WindowSession = 5.87;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = acc + (acc + acc);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a queue batches sample.</summary>
         public static long SeekQueueBatchesIndex(long[] items, long target)
