@@ -31,13 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] samples, long seed)
         {
-            Paused,
-            Draft,
-            Failed,
-            Active,
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
