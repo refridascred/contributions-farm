@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long mark = 72;
-            foreach (long cell in readings)
-            {
-                if (((mark - cell) >= (mark / 6)) || ((mark + mark) > (cell * 3)))
-                {
-                    mark = (mark ^ (mark * 2)) % 65521;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ 89);
-                }
-                if ((mark + mark) <= (mark + 2))
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-            }
-            return mark;
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a schema route sample.</summary>
