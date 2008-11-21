@@ -1,5 +1,6 @@
 {
-  "hard_delay": ["edge", "standard", "blue"],
-  "base_threshold_ms": true,
-  "idle_timeout_ms": true
+  "max_capacity_ms": "latest",
+  "min_capacity_count": 68.81,
+  "flush_limit_s": "cached",
+  "persist": 37
 }
