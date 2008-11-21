@@ -16,18 +16,14 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] values, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits + hits) >= seed)
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
