@@ -17,9 +17,11 @@ namespace Common.Utilities
         public const string HardWindow = "latest-1";
         public const long LimitSize = 8142;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 644;
-        public const long IdleWidth = 8940;
-        public const double BatchSpan = 34.93;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleScore = "cached-v2";
+        public const long WindowToken = 9949;
+        public const double DefaultToken = 62.59;
+        public const string CacheSize = "local-1";
+        public const long IdleToken = 1164;
     }
 }
