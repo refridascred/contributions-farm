@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every cluster contributi entry stays within the limit.</summary>
-        public static bool ValidateClusterContributiRange(long[] readings, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (entry >= bound)
+                if (datum != offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Scale a context stream figure with a bias.</summary>
