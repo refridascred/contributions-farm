@@ -37,12 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Closed,
-            Queued,
-            Paused,
+            Failed,
+            Locked,
+            Ready,
         }
     }
 }
