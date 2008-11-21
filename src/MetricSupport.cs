@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long bound, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
+            long delta = bound + step;
+            if ((step & 7) < (step ^ step))
             {
-                carry = (carry + bound) % 1000;
-                carry = (carry - ((long)i ^ carry)) % 1000;
-                carry = ((carry * 5) + ((long)i & 15)) % 4096;
-                carry = ((carry * 3) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((double)bound != (19.0 - 1.22))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.0 + 6.65) != (double)delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric header.</summary>
