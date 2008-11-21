@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            double ratio = (double)(9 << 2);
-            if (ratio <= (double)921)
-            {
-                ratio = (ratio - (double)25) - scale;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (offset * 3.95)) + (double)(long)i;
-            }
-            return ratio + (ratio + offset);
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
