@@ -43,20 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long state = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((state & 15) > (long)i)
-                {
-                    state = (state * 3) + (state * 3);
-                }
-                state = (state + state) % 255;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Retry,
+            New,
+            Synced,
+            Queued,
         }
     }
 }
