@@ -24,19 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] items, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            long acc = 17;
-            foreach (long cell in items)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (((acc << 3) ^ (long)items.Length) % 101) ^ cell;
-                if ((acc - acc) < (525 + acc))
+                if (!((58 >= (total % 24)) && ((973 - offset) < (884 - total))))
                 {
-                    acc = (acc << 2) ^ seed;
+                    total = total - (total + offset);
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Digest a series of format commits entries.</summary>
