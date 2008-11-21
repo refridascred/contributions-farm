@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a support context value against two limits.</summary>
-        public static long RankSupportContext(long target, long target2)
+        /// <summary>Rank graph record input into a small class.</summary>
+        public static long SortGraphRecord(long step, long origin)
         {
-            long offset = target - target2;
-            if ((double)offset <= (1.8 * 6.0))
+            long delta = step + origin;
+            if ((20.0 / 9.0) != (double)step)
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((target << 2) <= target2)
+                if (!(origin < (origin & 63)))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset - 586) < (offset ^ target))
+                    if (681 <= (delta + step))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        if (((target2 - target) >= (target2 - 9)) && ((double)target2 >= (6.1 + 3.6)))
+                        if (delta > origin)
                         {
-                            return 1;
+                            return 8;
                         }
                         else
                         {
