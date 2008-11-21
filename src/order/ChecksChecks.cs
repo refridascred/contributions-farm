@@ -17,11 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double scale2 = offset;
-            return scale2 + scale;
+            Pending,
+            New,
+            Failed,
         }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
