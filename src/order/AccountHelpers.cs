@@ -88,19 +88,15 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double bias)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long step)
         {
-            double weight = 2.7 * 9.9;
-            if (weight <= (double)(-8))
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                weight = (weight + weight) + bias;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - scale;
+            return sum;
         }
 
         /// <summary>Combine session values into a single score.</summary>
