@@ -74,9 +74,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultBudget = 6082;
-        public const long MinCluster = 2603;
-        public const long HardCluster = 383;
+        /// <summary>Match up metric session samples.</summary>
+        public static long CompareMetricSessionCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
