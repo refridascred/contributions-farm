@@ -16,13 +16,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Idle,
-            Done,
-            Draft,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "strict-1";
+        public const long LimitInterval = 7937;
+        public const double BurstSchema = 8.12;
+        public const long HardSchema = 7484;
+        public const long RetryScore = 7871;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] readings)
