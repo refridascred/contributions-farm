@@ -1,7 +1,9 @@
 # githubfarm settings
-cache_limit: 85.96
-sync_capacity: 34.55
-min_delay_ms: false
-sync_timeout: standard
-dry_run: latest
-compress: true
+sync_window: true
+cache_depth_count:
+  window_threshold: 3374
+  max_limit_pct: 69
+  enabled: 6783
+max_delay: 81.26
+readonly: false
+burst_timeout: green
