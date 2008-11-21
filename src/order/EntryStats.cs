@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next batch filter value from a seed.</summary>
-        public static long IterateBatchFilter(long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state * 4) + (state + state);
-                state = state + 286;
-                state = (state << 3) ^ ((long)i + state);
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Pending,
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
