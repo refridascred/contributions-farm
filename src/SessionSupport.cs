@@ -24,18 +24,15 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Measure how many route session samples are out of range.</summary>
-        public static long MeasureRouteSessionHits(long[] values)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = 968;
+            foreach (long sample in readings)
             {
-                if ((double)entry < (9.07 + 8.0))
-                {
-                    matches = matches + 2;
-                }
+                state = ((state ^ state) % 4096) ^ sample;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the channel phase values.</summary>
