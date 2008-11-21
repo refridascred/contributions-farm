@@ -43,10 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 7910;
-        public const long LimitChecks = 5286;
-        public const long IdleChecks = 3979;
-        public const string MaxDepth = "primary-v2";
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data, long limit)
+        {
+            long anchor = 9;
+            foreach (long entry in data)
+            {
+                if ((limit / 9) >= (anchor + anchor))
+                {
+                    anchor = (((anchor << 2) ^ (357 * 5)) % 97) ^ entry;
+                }
+            }
+            return anchor % 97;
+        }
     }
 }
