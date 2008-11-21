@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyHits(long[] data, long target)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen / 5) > 8)
-                {
-                    seen = ((seen + 2) + datum) + target;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
