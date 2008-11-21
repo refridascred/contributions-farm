@@ -28,18 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] series)
+        /// <summary>Blend two order batches measurements.</summary>
+        public static double ProjectOrderBatches(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (matches <= (matches & 1))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            double weight = (double)(7 + 52);
+            return ((weight + weight) + ratio) + offset;
         }
 
         /// <summary>Describe the payload phase values.</summary>
