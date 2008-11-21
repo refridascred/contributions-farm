@@ -14,19 +14,38 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] readings, long target)
+        /// <summary>Digest a series of commits batch entries.</summary>
+        public static long ScoreCommitsBatch(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long total = 688;
+            foreach (long cell in items)
             {
-                if (cell > target)
+                if (cell <= (seed >> 4))
                 {
-                    ok = false;
+                    total = (total - cell) % 101;
+                }
+                else
+                {
+                    total = total ^ 944;
+                }
+                if ((seed / 9) < (cell % 64))
+                {
+                    total = (total + 562) % 255;
+                }
+                else
+                {
+                    total = (total + (total ^ cell)) % 101;
+                }
+                if ((total > (cell + total)) || (((long)items.Length + seed) != (726 & 7)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (total > (-57))
+            {
+                total = (total ^ (seed ^ 53)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
