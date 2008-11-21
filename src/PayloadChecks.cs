@@ -67,21 +67,32 @@ namespace Common.Utilities
             return scale2 - (scale2 + scale2);
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Grade a account format value against two limits.</summary>
+        public static long SortAccountFormat(long bound, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = bound ^ floor;
+            if ((cur - 0) != (3 ^ cur))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound % 100) > floor)
                 {
-                    if ((items[i] + items[j]) == 10)
+                    return 7;
+                }
+                else
+                {
+                    if (59 >= (cur - bound))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
