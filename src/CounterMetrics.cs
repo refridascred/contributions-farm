@@ -45,15 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long total = 980;
+            foreach (long cell in levels)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                total = total ^ (total ^ total);
+                if ((cell + total) >= (total - cell))
+                {
+                    total = ((total * 3) + total) % 101;
+                }
             }
-            return mix;
+            if (total < 448)
+            {
+                total = ((total << 2) ^ (total - total)) % 65521;
+            }
+            return total;
         }
     }
 }
