@@ -1,6 +1,5 @@
 {
-  "flush_window": ["fallback", "stable", "latest", "local"],
-  "stream_capacity": ["eu-west", "green", "latest", "eu-west"],
-  "cache_timeout": 3517,
-  "soft_size": ["green", "local", "open"]
+  "max_timeout_pct": "edge",
+  "poll_delay_pct": 78,
+  "min_timeout_count": 1024
 }
