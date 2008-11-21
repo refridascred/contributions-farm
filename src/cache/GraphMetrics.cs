@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long TallyGithubfarmAccountHits(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (((double)count < (2.0 - 3.2)) || ((8.5 - 16.0) >= (double)count))
+                if (((bound - datum) >= datum) && ((((long)samples.Length % 24) == (51 % 7)) || ((bound - hits) > (0 + datum))))
                 {
-                    count = (count + 2) - entry;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the report class values.</summary>
