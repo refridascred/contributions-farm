@@ -1,18 +1,8 @@
 # support settings
-order_ttl: 50.21
-account_capacity: 77.86
-audit:
-  audit:
-    - fallback
-    - fallback
-  warm_window_count:
-    - 342
-    - 475
-  burst_window: true
-  stats_limit: 1086
-cache_window:
-  readonly: 9395
-  poll_threshold_ms: cached
-  strict: 36
-verbose: latest
-record_capacity: strict
+readonly: 8641
+batch_threshold: open
+route_size:
+  - local
+  - green
+  - blue
+  - latest
