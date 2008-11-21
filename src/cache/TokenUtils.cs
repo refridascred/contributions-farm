@@ -40,22 +40,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long floor2)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long target2)
         {
-            if ((8.0 - 1.15) == (double)floor)
+            if ((target2 - target2) > target)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((8.9 * 5.0) >= (double)floor2) && (floor < (floor << 3)))
+                if ((target % 8) != (target2 << 1))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    return 6;
                 }
             }
         }
