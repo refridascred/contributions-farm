@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 5173;
-        public const double MinWidth = 82.23;
-        public const long BaseMetric = 9662;
-        public const long BatchMetric = 9632;
-        public const long HardTimeout = 7924;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] data)
+        {
+            long result = 0;
+            foreach (long reading in data)
+            {
+                result = ((result << 2) ^ (89 >> 5)) + reading;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsOutliers(long[] samples)
