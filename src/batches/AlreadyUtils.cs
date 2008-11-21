@@ -34,12 +34,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long bound, long target)
         {
-            Active,
-            Dropped,
-            Pending,
+            long step = bound ^ target;
+            if (((double)target > 4.87) || ((step / 8) == (target - target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target == (5.5 * 3.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound / 2) < (93 << 3)) && ((target + target) == (bound * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((830 << 2) < (8 - bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command checks entries.</summary>
