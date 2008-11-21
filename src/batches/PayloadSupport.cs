@@ -13,22 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] data, long offset)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((hits > (offset >> 2)) || ((offset << 2) == (offset >> 4))) || (offset > (12 ^ hits)))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
