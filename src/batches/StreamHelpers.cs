@@ -74,19 +74,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] samples, long seed)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cluster header.</summary>
