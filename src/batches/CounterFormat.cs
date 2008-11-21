@@ -25,15 +25,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the commits stream series from a seed.</summary>
-        public static long SeriesCommitsStream(long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            if (((double)offset >= (double)floor) && ((63 + floor) != (offset << 3)))
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if ((offset >> 2) >= 1)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
