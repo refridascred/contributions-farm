@@ -30,19 +30,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every entry format entry stays within the limit.</summary>
-        public static bool CheckEntryFormatBounds(long[] levels, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a window info.</summary>
