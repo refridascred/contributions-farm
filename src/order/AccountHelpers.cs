@@ -74,15 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            long carry = 898;
-            foreach (long value in items)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry << 3) ^ (value << 2);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
