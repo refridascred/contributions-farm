@@ -48,13 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] data)
         {
-            Closed,
-            Active,
-            Locked,
-            Stale,
+            long score = 727;
+            foreach (long entry in data)
+            {
+                if ((entry >> 3) <= (score << 1))
+                {
+                    score = (score - (2 << 2)) % 65521;
+                }
+            }
+            return score % 1000;
         }
     }
 }
