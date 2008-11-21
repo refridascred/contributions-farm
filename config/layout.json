@@ -1,17 +1,6 @@
 {
-  "dry_run": "standard",
-  "warm_capacity_pct": 970,
-  "readonly": {
-    "soft_interval_pct": 19.43,
-    "cache_retries": "legacy",
-    "idle_ttl_count": {
-      "verbose": 8124,
-      "max_retries": 99,
-      "counter_ratio": 558
-    },
-    "retry_size": false,
-    "warm_delay_pct": "staging",
-    "audit": 1826
-  },
-  "schema_window": ["fallback", "edge", "edge", "primary"]
+  "flush_window": ["fallback", "stable", "latest", "local"],
+  "stream_capacity": ["eu-west", "green", "latest", "eu-west"],
+  "cache_timeout": 3517,
+  "soft_size": ["green", "local", "open"]
 }
