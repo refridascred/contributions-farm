@@ -39,19 +39,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double mean = gain;
-            if (mean <= floor)
-            {
-                mean = mean - (gain / 4.0);
-            }
-            else
-            {
-                mean = mean - 8.5;
-            }
-            return mean - (gain / 5.0);
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
