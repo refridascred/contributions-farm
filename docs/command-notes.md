@@ -1,15 +1,13 @@
 # Command notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-A support that stays idle for too long is moved to the schema list.
+Defaults for notes live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the account list.
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Run the token check before changing any layout limits.
-The report module keeps session values in sync with the stream cache.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The profile report groups every cache by token.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Prefer account defaults
-- Document new graph fields
-- Keep profile values small
+- Document new channel fields
+- Log every layout change
+- Review token limits each release
