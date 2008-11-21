@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const long LimitSpan = 2190;
         public const string BaseEntry = "staging-v2";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            Stale,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
