@@ -72,17 +72,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] readings, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] == offset) && ((values[i] % 2) == 0))
+                if (((limit + limit) == (cell ^ limit)) && !((cell >> 4) > (matches / 2)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a graph entry.</summary>
