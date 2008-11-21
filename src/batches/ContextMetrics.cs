@@ -60,23 +60,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((9 + 716) < (target + mark))
-                {
-                    mark = mark + (mark / 2);
-                }
-                else
-                {
-                    mark = (mark + (mark * 3)) % 4096;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
