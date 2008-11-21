@@ -57,13 +57,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Count the filter contributi entries that pass the check.</summary>
+        public static long TallyFilterContributiOutliers(long[] samples)
         {
-            Dropped,
-            Retry,
-            New,
-            Closed,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (count >= (cell + 608))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of notes channel entries.</summary>
