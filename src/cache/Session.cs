@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] samples, long origin)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if (((3.3 / 8.0) == (double)offset) && ((origin % 100) > (offset + origin)))
             {
-                if ((origin * 3) == (entry - entry))
+                return 2;
+            }
+            else
+            {
+                if (!((offset % 12) <= (offset / 3)))
                 {
-                    seen = seen + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a farm stats reading by value.</summary>
