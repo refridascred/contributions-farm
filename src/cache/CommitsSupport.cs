@@ -66,12 +66,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardWidth = 7907;
+        public const string MinSchema = "latest-v2";
+        public const string RetryLevel = "legacy-v2";
+        public const long RetrySchema = 4022;
+        public const double SoftLevel = 52.59;
     }
 }
