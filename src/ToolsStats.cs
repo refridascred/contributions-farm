@@ -50,12 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            Draft,
-            Done,
-            Paused,
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
