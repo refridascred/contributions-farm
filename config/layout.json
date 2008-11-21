@@ -1,23 +1,6 @@
 {
-  "batches_timeout": {
-    "min_window_count": {
-      "verbose": 5727,
-      "enabled": 30,
-      "soft_interval": 1024,
-      "hard_ratio_s": "primary"
-    },
-    "soft_timeout_ms": false,
-    "base_capacity": {
-      "window_depth": 2223,
-      "poll_timeout_count": 500,
-      "batch_interval_pct": 24.21,
-      "contributi_size": "blue",
-      "strict": true,
-      "idle_size_s": 46.25
-    },
-    "default_limit": 5909,
-    "warm_ttl_ms": 60
-  },
-  "default_window_ms": [321, 477, 311, 305],
-  "hard_limit_ms": "stable"
+  "max_threshold_pct": 16.9,
+  "max_ratio": 9.38,
+  "audit": 28.71,
+  "persist": "green"
 }
