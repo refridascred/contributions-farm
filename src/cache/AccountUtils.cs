@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((((hits % 8) > hits) || ((9.7 / 3.0) <= (double)sample)) && ((4.0 / 6.0) == (double)sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Digest a series of account entries.</summary>
