@@ -85,19 +85,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] data, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
