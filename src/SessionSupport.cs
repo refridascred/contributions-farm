@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string SoftFactor = "staging-edge";
-        public const long BaseRecord = 2933;
-        public const long MinRecord = 2469;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item - matches) < 34)
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
