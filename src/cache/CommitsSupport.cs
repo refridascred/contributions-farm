@@ -52,12 +52,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long seed)
         {
-            Queued,
-            Retry,
-            Locked,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result - seed;
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
