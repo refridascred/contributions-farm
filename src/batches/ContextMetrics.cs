@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long bound, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] series, long limit)
         {
-            long span = bound + target;
-            if (((bound + target) >= (bound * 2)) && ((505 + target) == (target ^ 29)))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((span - target) <= (bound % 100))
+                if (value != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((span / 9) != (target << 1)) && ((span + 281) <= (target / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((-67) <= (target + target)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
