@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] readings, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long offset)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell != step)
+                mix = (mix + (long)i) % 101;
+                if ((double)offset > (8.01 - 1.8))
                 {
-                    ok = false;
-                    break;
+                    mix = mix + 72;
+                    continue;
                 }
+                else
+                {
+                    mix = ((mix * 2) + ((long)i - offset)) % 65521;
+                }
+                if (!(((65 + 9) > offset) || ((offset - offset) >= (long)i)))
+                {
+                    mix = ((mix << 3) ^ (mix + offset)) % 97;
+                    mix = (mix * 4) + ((long)i >> 2);
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
