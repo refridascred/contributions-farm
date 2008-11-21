@@ -92,19 +92,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats farm entry stays within the limit.</summary>
-        public static bool VerifyStatsFarmLimits(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultBudget = 6082;
+        public const long MinCluster = 2603;
+        public const long HardCluster = 383;
     }
 }
