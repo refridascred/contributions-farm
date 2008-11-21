@@ -56,20 +56,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long lane = target - origin;
+            if (target > lane)
             {
-                acc = ((acc * 3) + ((long)i >> 5)) % 97;
-                if (((long)i / 3) != (limit << 2))
-                {
-                    acc = acc ^ (acc + limit);
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((lane * 2) != (lane - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((1.4 + 12.0) == (double)lane) || ((double)target > (1.0 * 6.4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
