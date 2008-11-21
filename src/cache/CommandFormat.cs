@@ -41,13 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long limit)
         {
-            Ready,
-            Active,
-            Failed,
-            Synced,
+            if (2.0 >= (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset > (offset + 796)) || ((double)offset < (double)92))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset + 3) >= (offset << 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
