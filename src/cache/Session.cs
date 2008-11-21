@@ -38,13 +38,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] values, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
