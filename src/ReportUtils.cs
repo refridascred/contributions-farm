@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
+            Queued,
+            Done,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the already kind values.</summary>
