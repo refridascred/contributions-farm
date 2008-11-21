@@ -57,19 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long seed)
         {
-            long sum = 898;
-            foreach (long item in data)
+            long score = seed;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum << 2) ^ (sum & 127)) - item;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            if (sum > 138)
-            {
-                sum = (sum - (13 + sum)) % 1000;
-            }
-            return sum % 4096;
+            return score;
         }
 
         /// <summary>Match up entry samples.</summary>
