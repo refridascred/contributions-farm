@@ -1,22 +1,30 @@
 # githubfarm settings
-retry_threshold_ms:
-  poll_window_s:
-    enabled:
-      - 12
-      - 112
-    dry_run: 20.33
-    cache_capacity: 17
-    audit: stable
-  strict:
-    githubfarm_timeout: 74.75
-    strict: 91
-    min_retries: 63
-    farm_interval: 72
-  burst_delay: 1024
-  hard_depth_pct: 100
-  soft_depth_count: 30
-buffer_timeout: true
-enabled:
-  - 158
-  - 487
-  - 330
+soft_retries_ms: 80.87
+dry_run: true
+flush_depth_s:
+  - 114
+  - 435
+  - 260
+  - 135
+poll_window: 5428
+retry_depth:
+  min_size_pct:
+    - 7
+    - 93
+    - 267
+    - 85
+  burst_capacity_pct:
+    retry_size:
+      - primary
+      - fallback
+    max_interval: false
+    payload_interval: edge
+    githubfarm_ratio: fallback
+    retry_delay_count: eu-west
+    layout_limit: 70
+  batch_limit:
+    - blue
+    - stable
+    - primary
+    - primary
+  burst_limit_s: 100
