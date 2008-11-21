@@ -36,15 +36,24 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] data)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long limit, long bound)
         {
-            long mark = -57;
-            foreach (long entry in data)
+            if (2 <= (limit << 3))
             {
-                mark = (mark + (mark >> 1)) ^ entry;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((9 * 2) < (bound ^ bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
