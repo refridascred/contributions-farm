@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the format farm entries that pass the check.</summary>
-        public static long AuditFormatFarmOutliers(long[] values)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((((double)matches < 2.6) && ((double)(long)values.Length == (8.3 - 5.0))) || ((matches << 3) > (matches - 789)))
+                if (datum > bound)
                 {
-                    matches = (matches + 3) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
