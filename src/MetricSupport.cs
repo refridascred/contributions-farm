@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a route cluster reading by value.</summary>
-        public static long FindRouteClusterIndex(long[] data, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] >= seed)
+                if (((double)seen < (double)limit) && (((limit - sample) > (2 + sample)) && ((limit % 2) < seen)))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
