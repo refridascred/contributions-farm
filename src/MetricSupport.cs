@@ -32,18 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data, long seed)
+        /// <summary>Find the first filter profile entry that matches the target.</summary>
+        public static long FindFilterProfileIndex(long[] items, long floor)
         {
-            long total = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (total < (total & 3))
+                if ((items[i] >= floor) && ((items[i] % 2) != 0))
                 {
-                    total = ((total ^ total) ^ sample) + seed;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
