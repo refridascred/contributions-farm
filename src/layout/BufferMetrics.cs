@@ -20,10 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxSize = 8910;
-        public const long MaxCache = 5888;
-        public const long RetryDepth = 4715;
+        /// <summary>Look up the position of a payload buffer sample.</summary>
+        public static long LookupPayloadBufferIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long MeasureEditorOutliers(long[] levels)
