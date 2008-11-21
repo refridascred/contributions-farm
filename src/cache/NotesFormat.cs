@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatHits(long[] levels, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (limit >= (limit + datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metrics options.</summary>
