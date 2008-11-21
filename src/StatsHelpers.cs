@@ -42,10 +42,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstInterval = 5116;
-        public const long SoftBudget = 8320;
-        public const long DefaultCache = 5248;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Failed,
+            Synced,
+            Locked,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long AuditProfileHits(long[] levels)
