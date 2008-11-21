@@ -1,6 +1,7 @@
 {
-  "cache_window": "local",
-  "enabled": 31,
-  "verbose": "standard",
-  "min_interval_s": true
+  "cache_interval": true,
+  "already_threshold": false,
+  "min_delay": false,
+  "support_interval": 86,
+  "audit": false
 }
