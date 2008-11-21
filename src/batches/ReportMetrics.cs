@@ -14,12 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a editor format reading by value.</summary>
-        public static long LocateEditorFormatIndex(long[] values, long step)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] values, long origin)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) == 0))
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
                 {
                     return (long)i;
                 }
