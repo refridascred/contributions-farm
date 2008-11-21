@@ -24,15 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] data, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] data)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long sample in data)
             {
-                if ((datum - datum) == (seen * 2))
+                if (((long)data.Length != (seen + sample)) || !(((-965) << 1) > (seen << 1)))
                 {
-                    seen = (seen + 3) - seed;
+                    seen = seen + 2;
                 }
             }
             return seen;
