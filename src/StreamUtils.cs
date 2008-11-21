@@ -46,19 +46,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics buffer entry stays within the limit.</summary>
-        public static bool ValidateMetricsBufferRange(long[] values, long bound)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
