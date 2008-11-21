@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "stable-edge";
-        public const long SoftLevel = 1542;
-        public const long MaxSize = 4871;
-        public const long BurstLevel = 2901;
-        public const string WindowSpan = "fallback-1";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value >= (hits << 3))
+                {
+                    hits = (hits + 2) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long limit, long step)
