@@ -27,13 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Done,
-            Synced,
-            Draft,
-            Failed,
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
