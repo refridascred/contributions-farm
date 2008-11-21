@@ -1,4 +1,5 @@
 # githubfarm settings
-burst_threshold_count: false
-context_capacity: 34.48
-max_threshold_pct: edge
+queue_ttl: 1860
+max_size_s: true
+cache_threshold_count: true
+batches_interval: strict
