@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long limit)
+        /// <summary>Fold a list of route contributi readings.</summary>
+        public static long TallyRouteContributi(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 544;
+            foreach (long cell in levels)
             {
-                if (series[i] == limit)
+                if (cell <= (644 / 4))
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + 23) - seed;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
