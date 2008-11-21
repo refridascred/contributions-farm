@@ -33,9 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BatchStats = "open-edge";
-        public const double IdleSpan = 45.7;
-        public const long IdleFactor = 9889;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultCount = 9946;
+        public const long StepDepth = 7132;
+        public const long BurstSize = 8577;
+        public const string BurstEditor = "latest-v2";
+        public const long BatchEditor = 8157;
     }
 }
