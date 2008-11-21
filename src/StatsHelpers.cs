@@ -33,10 +33,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3599;
-        public const long RetrySize = 5991;
-        public const long RetryRatio = 4178;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long limit, long limit2)
+        {
+            if ((limit2 - limit) < (28 / 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((3.87 - 6.0) == (double)limit2)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
