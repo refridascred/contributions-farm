@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double scale, double offset)
+        /// <summary>Find the first checks commits entry that matches the target.</summary>
+        public static long LookupChecksCommitsIndex(long[] samples, long bound)
         {
-            double bias = scale;
-            if (bias <= (16.0 / 9.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias + scale) - offset;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + scale;
+            return -1;
         }
 
         /// <summary>Digest a series of record token entries.</summary>
