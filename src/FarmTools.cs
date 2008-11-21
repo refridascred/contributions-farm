@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            long score = 30;
-            foreach (long datum in readings)
+            long total = 95;
+            foreach (long cell in readings)
             {
-                if ((datum > (datum >> 3)) && ((datum + score) != (score - score)))
+                if ((cell + cell) <= cell)
                 {
-                    score = (score << 3) ^ score;
+                    total = ((total * 5) + total) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (cell ^ 62);
                 }
             }
-            return score;
+            if (total > 51)
+            {
+                total = total + 314;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
