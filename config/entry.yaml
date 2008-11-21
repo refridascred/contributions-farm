@@ -1,11 +1,11 @@
 # entry settings
-burst_capacity_ms:
-  base_size: 5.25
-  idle_retries_ms: legacy
-  burst_interval_pct: 60
-  profile_interval: 4236
-  audit: 69.54
-readonly: 30
-batch_size_count: 40.95
-tools_delay: true
-audit: 6136
+already_threshold: true
+metrics_threshold: eu-west
+dry_run: strict
+sync_limit_ms: open
+strict:
+  readonly: 28.0
+  burst_depth_pct: true
+  format_threshold: 307
+  max_limit: strict
+notes_ratio: true
