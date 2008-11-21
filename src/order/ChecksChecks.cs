@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] levels, long floor)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long acc = 80;
-            foreach (long datum in levels)
-            {
-                if ((floor > (180 ^ floor)) || (floor > 4))
-                {
-                    acc = acc + 223;
-                }
-                else
-                {
-                    acc = (acc ^ (6 * 2)) % 97;
-                }
-                if (!((double)datum >= (6.4 - 9.0)))
-                {
-                    break;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = ((acc << 3) ^ (floor & 127)) % 65521;
-            }
-            return acc % 4096;
+            Retry,
+            Queued,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Fold a list of context readings.</summary>
