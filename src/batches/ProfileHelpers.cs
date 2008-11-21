@@ -51,24 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue record value against two limits.</summary>
-        public static long RankQueueRecord(long limit, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] levels, long origin)
         {
-            if ((double)94 <= (double)limit)
+            long acc = 6;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin < (origin >> 1))
+                acc = ((acc + 43) % 101) + entry;
+                if ((7.0 * 7.5) > (double)origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a tools options.</summary>
