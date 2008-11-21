@@ -1,8 +1,5 @@
 {
-  "batch_ttl_pct": 6578,
-  "persist": 42.77,
-  "burst_delay_count": "edge",
-  "cache_size": false,
-  "route_window": true,
-  "sync_threshold_pct": false
+  "batches_interval": "staging",
+  "default_retries": ["green", "standard", "strict"],
+  "base_ttl_count": 47.01
 }
