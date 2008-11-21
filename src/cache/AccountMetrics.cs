@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Locate a metrics queue reading by value.</summary>
+        public static long LookupMetricsQueueIndex(long[] series, long seed)
         {
-            double rate = bias;
-            if (rate <= (span * 7.69))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + (span + rate);
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (rate / 6.0);
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
