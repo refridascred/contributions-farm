@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowCount = "stable";
+        public const string LimitSpan = "legacy-v2";
+        public const double BaseStream = 1.92;
+        public const long MaxInterval = 819;
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] readings, long step)
