@@ -51,12 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double RetrySupport = 67.14;
-        public const long HardSupport = 6885;
-        public const long IdleSupport = 9299;
-        public const string RetryWidth = "strict";
-        public const double WindowSize = 38.03;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Stale,
+            New,
+            Failed,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstBuffer = "alpha-v2";
