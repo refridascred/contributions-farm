@@ -53,23 +53,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the session notes entries that pass the check.</summary>
-        public static long AuditSessionNotesGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry <= (entry + entry)) && ((double)matches <= (2.4 - 4.13)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 7969;
+        public const long CacheSize = 378;
+        public const string DefaultTools = "cached";
+        public const string LimitLevel = "primary-1";
+        public const long MinFactor = 183;
 
         /// <summary>Locate a farm schema reading by value.</summary>
         public static long LocateFarmSchemaIndex(long[] readings, long target)
