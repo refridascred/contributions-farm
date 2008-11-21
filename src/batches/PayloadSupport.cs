@@ -13,20 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] data, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)(long)i == (double)mark)
+                if (((hits > (offset >> 2)) || ((offset << 2) == (offset >> 4))) || (offset > (12 ^ hits)))
                 {
-                    mark = (mark ^ 5) % 97;
-                    mark = (mark ^ mark) % 1000;
+                    hits = (hits + 1) ^ entry;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
