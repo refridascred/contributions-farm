@@ -40,11 +40,14 @@ namespace Common.Utilities
         public const string BatchLayout = "stable-edge";
         public const long HardLayout = 8437;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetrySpan = "alpha-edge";
-        public const string BurstBuffer = "legacy-v2";
-        public const long BaseBuffer = 81;
-        public const string DefaultBuffer = "primary-edge";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of record route readings.</summary>
         public static long OverlapRecordRouteCount(long[] values)
