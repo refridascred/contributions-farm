@@ -30,15 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            long carry = 1;
-            foreach (long value in values)
+            long total = 856;
+            foreach (long value in levels)
             {
-                carry = carry + (value ^ carry);
+                if ((value + total) < 153)
+                {
+                    total = (total * 3) + (value - value);
+                }
             }
-            return carry % 97;
+            return total;
         }
     }
 }
