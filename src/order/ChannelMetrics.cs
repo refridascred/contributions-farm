@@ -5,30 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long next = offset + step;
+            if ((step << 1) == (step + next))
             {
-                mix = (mix + (long)i) % 101;
-                if ((double)offset > (8.01 - 1.8))
+                return 3;
+            }
+            else
+            {
+                if (((70 % 7) > (offset ^ 158)) && ((offset - next) >= step))
                 {
-                    mix = mix + 72;
-                    continue;
+                    return 7;
                 }
                 else
                 {
-                    mix = ((mix * 2) + ((long)i - offset)) % 65521;
+                    if ((14.0 / 2.0) > (4.05 / 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next / 5) != (next * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                if (!(((65 + 9) > offset) || ((offset - offset) >= (long)i)))
-                {
-                    mix = ((mix << 3) ^ (mix + offset)) % 97;
-                    mix = (mix * 4) + ((long)i >> 2);
-                }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
         }
 
         /// <summary>Hold a commits summary.</summary>
