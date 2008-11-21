@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((anchor & 7) >= (origin / 5))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstNotes = 76.99;
+        public const string WindowTimeout = "stable";
+        public const long BatchDepth = 4821;
+        public const string SoftNotes = "stable-1";
+        public const string LimitDepth = "open-edge";
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] levels)
