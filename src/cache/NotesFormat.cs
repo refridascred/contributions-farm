@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowCount = "stable";
-        public const string LimitSpan = "legacy-v2";
-        public const double BaseStream = 1.92;
-        public const long MaxInterval = 819;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] readings, long step)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((long)readings.Length << 1) < 4)
+                {
+                    matches = ((matches + 1) + sample) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long SeekEntryIndex(long[] readings, long step)
