@@ -28,10 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheChannel = 84.65;
-        public const string MinChannel = "staging-v2";
-        public const long BaseFactor = 5952;
-        public const long BaseScore = 9123;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
