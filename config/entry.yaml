@@ -1,22 +1,14 @@
 # entry settings
-support_interval: 1024
-default_interval_ms:
-  burst_depth: strict
-  queue_interval:
-    verbose: 89.11
-    hard_size:
-      - 253
-      - 164
-      - 418
-      - 484
-    format_retries: staging
-    poll_interval_pct:
-      - legacy
-      - edge
-  warm_size_count:
-    - strict
-    - edge
-    - blue
-    - strict
-min_timeout_pct: edge
-batch_delay_s: strict
+verbose: 95
+min_size_count: 14.26
+compress: primary
+retry_depth_s:
+  poll_timeout: 2842
+  flush_delay_s: 100
+  base_threshold_pct: 87.09
+  base_interval:
+    persist: legacy
+    command_ttl: false
+    min_timeout_count: 78.51
+enabled: true
+base_size_s: 75.07
