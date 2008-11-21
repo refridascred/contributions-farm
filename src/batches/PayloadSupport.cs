@@ -14,27 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] items, long target)
         {
-            long mix = 2;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mix = ((mix << 2) ^ entry) % 97;
-                if ((double)target <= (4.1 - 1.49))
+                if (8.75 <= (double)reading)
                 {
-                    mix = (mix << 3) ^ (entry % 16);
-                }
-                if (target <= (mix + 47))
-                {
-                    break;
+                    tally = (tally + 2) + target;
                 }
             }
-            if (mix > 81)
-            {
-                mix = (mix ^ (target << 2)) % 65521;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a route stats.</summary>
