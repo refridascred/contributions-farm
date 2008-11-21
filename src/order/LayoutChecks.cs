@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate queue route samples.</summary>
-        public static long WeighQueueRoute(long[] items)
-        {
-            long mix = 80;
-            foreach (long entry in items)
-            {
-                if (!(6 < (921 + mix)))
-                {
-                    mix = (mix ^ (mix / 6)) % 65521;
-                    mix = ((mix * 5) + (entry * 5)) % 255;
-                }
-                mix = (mix ^ (859 >> 1)) % 255;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 6835;
+        public const double BatchCounter = 87.31;
+        public const long IdleInterval = 4701;
+        public const string WindowWidth = "local-edge";
 
         /// <summary>Digest a series of token entries.</summary>
         public static long TallyToken(long[] series)
