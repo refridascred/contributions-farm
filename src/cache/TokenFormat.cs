@@ -17,10 +17,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseBudget = 2004;
-        public const double BaseWindow = 26.7;
-        public const double HardBudget = 4.94;
-        public const long WindowBudget = 9413;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleScore = 4656;
+        public const long RetryTimeout = 1067;
+        public const double RetryRatio = 10.93;
     }
 }
