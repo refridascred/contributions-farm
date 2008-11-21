@@ -14,38 +14,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long floor, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((double)origin <= (2.3 + 12.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > (4.29 + 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - 97) <= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((7.36 * 0.9) > (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
