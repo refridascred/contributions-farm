@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double rate, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] data, long target)
         {
-            double drift = (double)(1 << 3);
-            if (drift > drift)
+            bool found = true;
+            foreach (long value in data)
             {
-                drift = (drift + (rate + drift)) + floor;
+                if (value <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)926;
+            return found;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
