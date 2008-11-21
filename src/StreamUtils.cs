@@ -48,22 +48,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] samples)
         {
-            long acc = 793;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if ((acc - acc) <= (187 << 2))
+                if (2.0 <= (double)hits)
                 {
-                    acc = (acc - (value + value)) % 1000;
+                    hits = (hits + 3) + item;
                 }
             }
-            if (acc > 17)
-            {
-                acc = ((acc * 3) + (acc / 7)) % 101;
-            }
-            return acc % 97;
+            return hits;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
