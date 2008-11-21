@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const string RetryContext = "strict-1";
         public const string CacheContext = "open-v2";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long score = 56;
+            foreach (long value in series)
             {
-                if ((hits << 1) <= (hits + hits))
+                score = ((score + (value >> 3)) % 97) - offset;
+                if (!((score + score) < score))
                 {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score % 4096;
         }
     }
 }
