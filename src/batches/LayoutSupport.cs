@@ -33,19 +33,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every channel batches entry stays within the limit.</summary>
-        public static bool VerifyChannelBatchesBounds(long[] samples, long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Locate a record reading by value.</summary>
