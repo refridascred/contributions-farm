@@ -1,14 +1,15 @@
 # Command notes
 
-The notes report groups every payload by cluster.
-When a counter fails, the editor handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
+The session report groups every farm by counter.
+The format report groups every schema by context.
 
-Keep report and counter names short and lowercase.
-Each context is validated before it reaches the order queue.
+When a stream fails, the cluster handler retries a few times before giving up.
+The counter report groups every token by queue.
 
 ## Guidelines
 
-- Document new entry fields
-- Keep metric values small
-- Validate record input early
+- Prefer tools defaults
 - Log every contributi change
+- Validate counter input early
+- Review window limits each release
