@@ -35,39 +35,30 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long bound, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            long step = bound ^ target;
-            if (((double)target > 4.87) || ((step / 8) == (target - target)))
+            long anchor = -354;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target == (5.5 * 3.0))
+                if (((double)reading > 5.0) && ((anchor + anchor) > ((-602) & 255)))
                 {
-                    return 6;
+                    anchor = ((anchor * 2) + anchor) % 101;
                 }
                 else
                 {
-                    if (((bound / 2) < (93 << 3)) && ((target + target) == (bound * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((830 << 2) < (8 - bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    anchor = (anchor - anchor) % 4096;
+                }
+                if (((reading >> 2) == (5 ^ anchor)) || ((5.4 * 1.0) == (double)anchor))
+                {
+                    break;
                 }
             }
+            if (anchor > 92)
+            {
+                anchor = anchor ^ (anchor % 2);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Iterate the report order series from a seed.</summary>
