@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data, long step)
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool GuardChecksAccountLimits(long[] samples, long offset)
         {
-            long carry = 627;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (((value + carry) < carry) && (1 < (step + value)))
+                if (value != offset)
                 {
-                    carry = carry ^ (carry + 79);
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 65)
-            {
-                carry = ((carry * 2) + (0 << 1)) % 1000;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Find the first account session entry that matches the target.</summary>
