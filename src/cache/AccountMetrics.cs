@@ -32,26 +32,10 @@ namespace Common.Utilities
         public const double BatchRatio = 14.93;
         public const long IdleWindow = 6208;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long target)
-        {
-            long diff = limit + target;
-            if ((diff >= 87) || ((double)limit <= (double)diff))
-            {
-                return 8;
-            }
-            else
-            {
-                if (diff >= (target - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleFarm = "latest-1";
+        public const long HardFarm = 2355;
+        public const long CacheLevel = 7206;
 
         /// <summary>Adjust a already reading.</summary>
         public static double BlendAlready(double rate, double span)
