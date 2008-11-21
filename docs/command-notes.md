@@ -1,13 +1,14 @@
 # Command notes
 
-The tools report groups every window by metrics.
-Each contributi is validated before it reaches the support queue.
+The command helpers are pure functions, so they are safe to call from any thread.
+Defaults for editor live in the config folder and can be overridden per environment.
+Use account settings to tune how often contributi data is refreshed.
 
-The route module keeps schema values in sync with the queue cache.
-The metric helpers are pure functions, so they are safe to call from any thread.
+Keep account and record names short and lowercase.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Validate already input early
-- Prefer format defaults
+- Validate metrics input early
+- Document new stats fields
+- Prefer buffer defaults
