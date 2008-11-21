@@ -46,19 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] items, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample < floor)
+                if (seen <= (seen - seen))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
