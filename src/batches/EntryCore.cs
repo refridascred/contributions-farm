@@ -47,18 +47,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the metric context entries that pass the check.</summary>
-        public static long TallyMetricContextMatches(long[] data)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((entry << 1) > entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit window readings against a rule.</summary>
