@@ -61,11 +61,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Audit token schema readings against a rule.</summary>
+        public static long AuditTokenSchemaOutliers(long[] readings)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((-48) >= (value >> 2)) || ((value * 2) < (91 + value)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token info.</summary>
