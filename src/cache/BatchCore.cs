@@ -23,21 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((long)data.Length <= 77)
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 3) - sample) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count order window pairs that satisfy a relation.</summary>
