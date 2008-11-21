@@ -1,8 +1,13 @@
 {
-  "warm_window_s": [284, 171],
-  "cache_size": [210, 419],
-  "warm_ttl_count": 22.22,
-  "batch_interval": "edge",
-  "cache_threshold_ms": 57.08,
-  "readonly": ["primary", "latest"]
+  "strict": {
+    "dry_run": "staging",
+    "soft_limit": 89,
+    "persist": "local",
+    "soft_limit_count": "blue",
+    "soft_retries": 1901
+  },
+  "max_retries_s": "local",
+  "max_size_ms": "strict",
+  "batch_interval_count": "legacy",
+  "support_ratio": [146, 180]
 }
