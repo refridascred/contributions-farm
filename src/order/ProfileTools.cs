@@ -26,11 +26,19 @@ namespace Common.Utilities
         public const long HardSchema = 7484;
         public const long RetryScore = 7871;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 3303;
-        public const long LimitScore = 9134;
-        public const double IdleLevel = 90.6;
-        public const string IdleTimeout = "local-1";
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (299 <= (datum * 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
