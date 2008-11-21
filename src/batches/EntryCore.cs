@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 9747;
-        public const long MaxBudget = 6655;
-        public const long IdleWidth = 3979;
-        public const long HardReport = 3540;
-        public const long MinInterval = 7447;
+        /// <summary>Digest a series of record token entries.</summary>
+        public static long TotalRecordToken(long[] series)
+        {
+            long anchor = 95;
+            foreach (long datum in series)
+            {
+                if ((datum >> 4) != (408 + anchor))
+                {
+                    anchor = (anchor * 2) + (datum * 2);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of stats window readings.</summary>
         public static long TotalStatsWindow(long[] series)
