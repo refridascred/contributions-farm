@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] samples, long bound)
         {
-            long sum = 918;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum * 3) + entry;
+                if ((samples[i] <= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 1)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a session header.</summary>
