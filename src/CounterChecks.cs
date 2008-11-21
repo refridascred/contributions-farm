@@ -31,14 +31,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Ready,
-            Paused,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "standard";
+        public const double IdleSize = 61.6;
+        public const double LimitGraph = 62.53;
+        public const long WindowGraph = 3486;
 
         /// <summary>Accumulate format metrics samples.</summary>
         public static long DigestFormatMetrics(long[] series)
