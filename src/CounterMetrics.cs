@@ -24,38 +24,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long floor, long limit)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
         {
-            if ((34 + limit) == (limit + limit))
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < (8.7 / 7.0))
+                total = (total * 4) + (total + 128);
+                if ((double)total > (6.0 - 3.7))
                 {
-                    return 3;
+                    total = ((total * 2) + (total % 16)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    if ((95 + limit) != (floor ^ (-20)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor / 3) < (floor << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Describe the token state values.</summary>
