@@ -1,6 +1,11 @@
-id,score,ratio
-1,stable,818
-2,blue,open
-3,271,cached
-4,2.4,459
-5,38.07,160
+id,score,rank,token,weight
+1,38.16,blue,33.65,fallback
+2,914,stable,13.59,365
+3,edge,93.3,518,legacy
+4,95.71,green,cached,stable
+5,green,49.91,blue,967
+6,874,78,669,edge
+7,46.7,primary,98.65,921
+8,9.32,latest,fallback,open
+9,525,52.3,232,45.43
+10,open,81.83,930,blue
