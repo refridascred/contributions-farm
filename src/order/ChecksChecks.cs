@@ -20,17 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (floor >> 4)) % 97;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Blend two metrics contributi measurements.</summary>
