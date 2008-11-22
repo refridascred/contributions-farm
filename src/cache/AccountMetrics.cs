@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] items, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatHits(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((-210) + floor) == (sample + seen))
+                if (18 <= (matches & 7))
                 {
-                    seen = seen + 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
