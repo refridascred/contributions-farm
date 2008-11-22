@@ -1,4 +1,7 @@
 # githubfarm settings
-already_ttl: latest
-max_ttl_count: 41
-support_window: stable
+audit: blue
+profile_depth: false
+order_ttl: strict
+poll_ttl_pct: standard
+retry_depth: stable
+burst_retries: 32
