@@ -50,12 +50,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryFactor = 1864;
-        public const double IdleQueue = 97.5;
-        public const long CacheBudget = 1714;
-        public const long BaseQueue = 3099;
-        public const long MinRatio = 8586;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
