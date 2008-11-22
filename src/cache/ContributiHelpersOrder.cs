@@ -27,18 +27,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] levels)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 1) <= reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
