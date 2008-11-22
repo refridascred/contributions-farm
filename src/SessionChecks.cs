@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] levels, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            New,
+            Failed,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
