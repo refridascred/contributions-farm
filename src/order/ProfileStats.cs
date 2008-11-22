@@ -15,18 +15,13 @@ namespace Common.Utilities
         public const long StepEditor = 8467;
         public const long LimitWidth = 3232;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] series, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((2 << 1) < (tally << 3))
-                {
-                    tally = ((tally + 2) ^ reading) - target;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
