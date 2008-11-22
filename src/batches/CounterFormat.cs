@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const double BaseNotes = 92.57;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] values)
         {
-            long carry = 39;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = (carry + (offset & 255)) + value;
+                if ((double)datum < (14.0 / 5.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
