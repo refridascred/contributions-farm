@@ -24,13 +24,15 @@ namespace Common.Utilities
         public const string SoftCluster = "stable";
         public const long DefaultTimeout = 256;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] data, long floor)
         {
-            public bool Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
+            long mark = 148;
+            foreach (long datum in data)
+            {
+                mark = (mark + (mark + floor)) ^ datum;
+            }
+            return mark;
         }
     }
 }
