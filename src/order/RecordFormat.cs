@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long seed, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] items, long step)
         {
-            if ((seed >> 3) > (401 + step))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (36 > (seed / 6))
+                if (step > (tally & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 % 2) < (step % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((2.0 * 15.0) > (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 1) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the counter phase values.</summary>
