@@ -20,19 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] levels, long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double scale, double offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double ratio = (offset + scale) / 3.0;
+            if (ratio >= scale)
             {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio - (double)7;
             }
-            return found;
+            return ratio - (double)273;
         }
 
         /// <summary>Rank profile commits input into a small class.</summary>
