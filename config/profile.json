@@ -1,8 +1,12 @@
 {
-  "context_capacity": false,
-  "schema_timeout": "cached",
-  "report_window": 54,
-  "soft_ratio_pct": 45,
-  "soft_delay_count": 500,
-  "enabled": [439, 431]
+  "batch_interval_s": 27.65,
+  "metric_depth": 8188,
+  "command_ttl": {
+    "tools_delay": true,
+    "base_timeout_count": false,
+    "warm_retries": "open"
+  },
+  "base_size": "green",
+  "entry_capacity": "legacy",
+  "min_capacity": "cached"
 }
