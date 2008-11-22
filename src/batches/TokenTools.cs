@@ -42,38 +42,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long offset)
-        {
-            if ((4.1 + 20.0) < (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step / 4) >= (step + 86))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step > (472 >> 2)) || (step <= (step - 0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset - step) < offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 6880;
+        public const long SoftGithubfarm = 5517;
+        public const long MaxCount = 1817;
     }
 }
