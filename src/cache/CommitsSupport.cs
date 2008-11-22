@@ -49,16 +49,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double gain, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            double bias2 = gain;
+            if (bias2 < (bias2 - bias))
             {
-                result = result - seed;
-                result = ((result * 3) + (long)i) % 1000;
+                bias2 = bias2 - (bias2 / 6.0);
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 + (gain * 8.0)) + (double)(long)i;
+            }
+            return bias2 - (double)2;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
