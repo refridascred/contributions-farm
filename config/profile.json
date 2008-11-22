@@ -1,12 +1,15 @@
 {
-  "batch_interval_s": 27.65,
-  "metric_depth": 8188,
-  "command_ttl": {
-    "tools_delay": true,
-    "base_timeout_count": false,
-    "warm_retries": "open"
-  },
-  "base_size": "green",
-  "entry_capacity": "legacy",
-  "min_capacity": "cached"
+  "sync_interval": 31,
+  "route_ratio": 27.39,
+  "route_timeout": {
+    "retry_depth_pct": 30,
+    "idle_window_s": "eu-west",
+    "min_interval_s": 36,
+    "default_ttl_count": {
+      "soft_limit": "blue",
+      "flush_capacity": "fallback",
+      "default_size_s": "primary",
+      "payload_threshold": 100
+    }
+  }
 }
