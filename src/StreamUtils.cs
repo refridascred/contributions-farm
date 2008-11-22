@@ -65,31 +65,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long limit, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] data, long limit)
         {
-            if ((double)origin > (double)limit)
+            long acc = 726;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ limit) >= limit)
+                if (((6.07 * 18.0) == (double)acc) || ((acc + acc) >= (limit / 6)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((76 % 97) != (limit ^ limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = acc - (limit + cell);
                 }
             }
+            return acc;
         }
     }
 }
