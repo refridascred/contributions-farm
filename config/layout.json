@@ -1,8 +1,7 @@
 {
-  "metric_retries": 2943,
-  "strict": 3.6,
-  "flush_window_ms": 100,
-  "max_size": "staging",
-  "flush_delay": 92.24,
-  "hard_window_ms": 3556
+  "cache_delay_count": 38,
+  "buffer_size": true,
+  "persist": 78,
+  "max_interval_ms": true,
+  "route_ratio": 77
 }
