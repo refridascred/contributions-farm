@@ -33,14 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Queued,
-            Idle,
+            Retry,
             Locked,
-            Active,
-            Paused,
+            Dropped,
         }
     }
 }
