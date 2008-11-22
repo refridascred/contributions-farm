@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] data, long bound)
         {
-            double rate = (double)(172 - 26);
-            if (rate >= offset)
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate - (offset * 1.0)) - gain;
+                if ((data[i] == bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - offset;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
