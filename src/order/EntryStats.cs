@@ -54,15 +54,12 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
-        public static double ScaleGithubfarmQueue(double scale, double offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double mean = (offset / 2.0) * 2.6;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = ((mean + offset) + (double)(long)i) - scale;
-            }
-            return mean + 8.47;
+            Pending,
+            Paused,
+            Dropped,
         }
     }
 }
