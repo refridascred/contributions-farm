@@ -52,11 +52,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleCount = 1186;
-        public const long SoftContext = 642;
-        public const string WindowBudget = "local-1";
-        public const long MaxWidth = 4457;
-        public const string DefaultDepth = "open-edge";
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long bound)
+        {
+            long slot = floor ^ bound;
+            if ((floor + 79) >= (slot / 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound > (floor - bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
