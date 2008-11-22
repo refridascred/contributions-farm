@@ -19,12 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleCount = 673;
-        public const long CacheBuffer = 839;
-        public const double HardFactor = 82.35;
-        public const long StepWidth = 54;
-        public const long HardTimeout = 6449;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] samples, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long TotalChannel(long[] readings, long floor)
