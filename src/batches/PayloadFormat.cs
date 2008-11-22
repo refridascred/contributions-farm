@@ -56,10 +56,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 5639;
-        public const double CacheBudget = 96.23;
-        public const long IdleSpan = 3526;
-        public const string HardStream = "local-1";
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Closed,
+            Locked,
+            Stale,
+        }
     }
 }
