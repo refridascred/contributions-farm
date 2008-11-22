@@ -31,22 +31,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] items, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((datum - seen) >= datum)
+                if (((564 * 5) > entry) || ((double)matches <= (8.4 * 12.0)))
                 {
-                    seen = (seen + 3) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
