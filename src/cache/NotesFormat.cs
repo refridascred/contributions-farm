@@ -29,15 +29,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long origin, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long diff = origin ^ target;
+            if (diff <= 8)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((diff * 2) != (275 >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
