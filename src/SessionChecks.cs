@@ -40,18 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] data, long step)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((step * 2) <= (step - item)) || !((matches ^ 68) >= 121))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Closed,
+            Locked,
         }
     }
 }
