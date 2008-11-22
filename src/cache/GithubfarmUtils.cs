@@ -33,18 +33,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cache batches readings against a rule.</summary>
-        public static long CountCacheBatchesGaps(long[] readings)
+        /// <summary>Accumulate payload contributi samples.</summary>
+        public static long WeighPayloadContributi(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 885;
+            foreach (long item in series)
             {
-                if (2.0 >= (double)entry)
+                if (!((5.4 * 1.77) < (double)item))
                 {
-                    hits = hits + 2;
+                    result = (result ^ (item & 127)) % 97;
                 }
             }
-            return hits;
+            if (result < 338)
+            {
+                result = (result * 3) + 5;
+            }
+            return result;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
