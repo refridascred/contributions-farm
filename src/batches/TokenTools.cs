@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long floor)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long target)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample < floor)
+                carry = (carry - (59 + (long)i)) % 4096;
+                if (carry > (target / 2))
                 {
-                    found = false;
-                    break;
+                    carry = carry + (target - (long)i);
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Adjust a profile reading.</summary>
