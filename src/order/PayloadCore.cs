@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of order stats entries.</summary>
-        public static long WeighOrderStats(long[] readings, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long origin, long limit)
         {
-            long sum = 58;
-            foreach (long reading in readings)
+            long cur = origin - limit;
+            if (((5.5 * 4.0) != (double)cur) && ((double)limit >= 2.39))
             {
-                sum = ((sum - reading) % 1000) - bound;
+                return 7;
             }
-            if (sum > (-83))
+            else
             {
-                sum = ((sum << 2) ^ (sum + sum)) % 101;
+                if ((limit + cur) != (limit << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin > (limit + origin)) && ((double)origin <= (0.24 * 2.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Describe the stats status values.</summary>
