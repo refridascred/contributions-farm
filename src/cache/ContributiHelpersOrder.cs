@@ -41,19 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] samples, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long mark = 3;
-            foreach (long value in samples)
+            long anchor = -6;
+            foreach (long sample in data)
             {
-                mark = ((mark << 2) ^ (value + mark)) % 1000;
+                if (!((double)anchor <= (double)(-77)))
+                {
+                    anchor = (((anchor * 3) + (anchor & 255)) % 4096) - sample;
+                }
+                anchor = anchor + anchor;
             }
-            if (mark < 245)
+            if (anchor < 57)
             {
-                mark = mark + (mark - limit);
+                anchor = (anchor * 5) + (anchor + 7);
             }
-            return mark % 65521;
+            return anchor % 97;
         }
     }
 }
