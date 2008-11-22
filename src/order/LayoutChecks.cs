@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] samples, long seed)
         {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 7) >= (49 + count))
+                {
+                    count = (count + 1) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a record reading by value.</summary>
