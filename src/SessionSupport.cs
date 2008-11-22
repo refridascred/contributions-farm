@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Paused,
-            Pending,
-            Failed,
-            Active,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultBudget = 2255;
+        public const double WindowFactor = 59.55;
+        public const string StepQueue = "stable-v2";
+        public const long RetryInterval = 3709;
 
         /// <summary>Project the next buffer contributi value.</summary>
         public static double BlendBufferContributi(double weight, double bias)
