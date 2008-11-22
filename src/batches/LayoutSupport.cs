@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Active,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSize = 2667;
+        public const double WindowScore = 98.87;
+        public const string WindowSpan = "staging-edge";
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] series, long limit)
