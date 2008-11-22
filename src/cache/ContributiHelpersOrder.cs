@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseLevel = "local-edge";
-        public const long CacheRatio = 3152;
-        public const long RetryBudget = 7353;
-        public const long BurstFarm = 3885;
-        public const long WindowBudget = 7397;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Stale,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
