@@ -26,13 +26,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            Failed,
+            Ready,
+            Pending,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
