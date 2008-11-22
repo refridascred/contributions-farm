@@ -63,24 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long offset, long offset2)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            if ((6.0 * 8.4) < (double)offset2)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset2 ^ offset) < (offset2 + offset2))
+                if (matches >= value)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
