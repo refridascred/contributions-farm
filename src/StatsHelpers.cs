@@ -31,25 +31,18 @@ namespace Common.Utilities
         public const double DefaultCount = 73.97;
         public const double BatchStats = 61.4;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long step, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] levels)
         {
-            long bound = step ^ offset;
-            if (!((offset + step) <= (offset - bound)))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound < (double)offset) && ((offset + step) > (step + bound)))
+                if ((datum * 2) > count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
