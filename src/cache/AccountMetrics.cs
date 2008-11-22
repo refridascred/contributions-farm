@@ -79,13 +79,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Pending,
-            Synced,
-            Active,
-            Dropped,
+            Retry,
+            Locked,
+            Done,
+            Draft,
         }
     }
 }
