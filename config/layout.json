@@ -1,12 +1,7 @@
 {
-  "session_depth": 60,
-  "base_delay_pct": 500,
-  "enabled": true,
-  "tools_threshold": 30.79,
-  "sync_interval_s": 1024,
-  "max_delay": {
-    "enabled": "strict",
-    "channel_ttl": 69.56,
-    "audit": 78
-  }
+  "warm_delay": 13.21,
+  "retry_interval_pct": false,
+  "enabled": "eu-west",
+  "flush_limit": 100,
+  "order_size": 58.68
 }
