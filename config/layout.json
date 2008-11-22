@@ -1,7 +1,10 @@
 {
-  "warm_interval_ms": "staging",
-  "batch_ratio_s": "edge",
-  "min_capacity_s": 45,
-  "warm_ttl_pct": true,
-  "graph_limit": "strict"
+  "idle_timeout_count": "standard",
+  "graph_threshold": {
+    "persist": "green",
+    "min_capacity_pct": 89,
+    "warm_capacity": 500
+  },
+  "batch_interval": true,
+  "default_timeout_s": "latest"
 }
