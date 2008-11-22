@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long bound)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double weight, double bias)
         {
-            long cur = target - bound;
-            if ((cur << 2) < (bound & 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.69 - 3.4) >= (11.0 / 2.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (target > (-772))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double bias2 = (double)(7 & 1);
+            return (bias2 + (bias2 + weight)) + bias;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
