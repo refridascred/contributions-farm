@@ -1,9 +1,11 @@
 # githubfarm settings
-strict: edge
-dry_run: 52
-retry_ratio_count: standard
-hard_depth: false
-stats_threshold:
-  - 28
-  - 383
-sync_delay_count: 3403
+min_depth_s: 0.72
+warm_ttl: 41
+checks_window:
+  - standard
+  - green
+  - stable
+  - green
+idle_size_pct: 500
+idle_depth: true
+default_window: 250
