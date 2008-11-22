@@ -1,5 +1,5 @@
 {
-  "payload_size": false,
-  "record_interval": 250,
-  "poll_ttl_s": 100
+  "audit": [241, 278, 165, 378],
+  "flush_interval": true,
+  "token_depth": "local"
 }
