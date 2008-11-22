@@ -30,15 +30,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double AdjustGithubfarm(double ratio, double offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] data, long step)
         {
-            double load = offset;
-            for (int i = 0; i < 2; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                load = ((load + (load / 4.0)) + (double)(long)i) - ratio;
+                if (entry > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - (offset - offset);
+            return flag;
         }
     }
 }
