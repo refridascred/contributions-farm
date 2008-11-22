@@ -19,21 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Fold a list of support contributi readings.</summary>
+        public static long CombineSupportContributi(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 1;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mix = (mix + sample) % 101;
+                if ((double)mix > (double)origin)
                 {
-                    if ((series[i] - series[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix * 4) + (origin & 7);
                 }
+                mix = (mix - origin) % 4096;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of cache session entries.</summary>
