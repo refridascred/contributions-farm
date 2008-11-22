@@ -1,11 +1,9 @@
 # githubfarm settings
-notes_delay:
-  idle_ratio_pct: local
-  soft_ratio: 7.43
-  audit:
-    - 343
-    - 90
-  cache_ratio: 301
-enabled: fallback
-retry_ratio_pct: open
-hard_ratio: 81.97
+strict: edge
+dry_run: 52
+retry_ratio_count: standard
+hard_depth: false
+stats_threshold:
+  - 28
+  - 383
+sync_delay_count: 3403
