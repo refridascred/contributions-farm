@@ -69,15 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long floor)
         {
-            long sum = 9;
-            foreach (long cell in levels)
+            long acc = 154;
+            foreach (long cell in samples)
             {
-                sum = (sum + (cell << 3)) % 1000;
+                acc = ((acc - 82) % 101) ^ cell;
+                if ((acc ^ acc) < (floor << 1))
+                {
+                    break;
+                }
             }
-            return sum % 65521;
+            return acc % 1000;
         }
     }
 }
