@@ -33,14 +33,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmMatches(long[] data, long step)
         {
-            Retry,
-            New,
-            Closed,
-            Dropped,
-            Failed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((step * 2) <= (step - item)) || !((matches ^ 68) >= 121))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
