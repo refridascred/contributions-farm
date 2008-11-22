@@ -57,19 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (7.82 > (double)(long)i)
-                {
-                    anchor = (anchor * 3) + bound;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            Retry,
+            Locked,
+            Active,
+            Failed,
         }
     }
 }
