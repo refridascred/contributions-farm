@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the batch order series from a seed.</summary>
-        public static long DeriveBatchOrder(long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                carry = (carry * 3) + (107 + carry);
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((57 + seen) == (seen & 63))
                 {
-                    carry = (((carry * 4) + 2) % 65521) - (long)i2;
+                    seen = (seen + 3) + value;
                 }
-                carry = ((carry * 4) + (bound % 16)) % 101;
-                carry = ((carry * 5) + (long)i) % 4093;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
