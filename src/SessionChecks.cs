@@ -13,11 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public double Limit { get; set; }
-            public bool Ratio { get; set; }
+            Locked,
+            Idle,
+            Ready,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
