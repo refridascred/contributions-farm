@@ -43,26 +43,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] values, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] data, long offset)
         {
-            long carry = 60;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((carry ^ carry) < (datum & 7))
+                if (reading >= offset)
                 {
-                    carry = (carry * 4) + (floor & 31);
-                }
-                if ((double)floor == (4.88 + 0.69))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (carry < 129)
-            {
-                carry = (carry ^ 56) % 4096;
-            }
-            return carry;
+            return ok;
         }
     }
 }
