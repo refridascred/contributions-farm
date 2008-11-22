@@ -36,15 +36,24 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long floor, long seed)
         {
-            long sum = 523;
-            foreach (long sample in samples)
+            if (!(seed >= (seed % 7)))
             {
-                sum = (sum - (8 * 4)) ^ sample;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (((double)271 == (double)seed) && ((floor + seed) < (floor + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
