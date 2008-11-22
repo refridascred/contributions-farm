@@ -13,12 +13,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryFactor = 2712;
+        public const long StepCount = 1677;
+        public const long MaxCount = 2095;
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
