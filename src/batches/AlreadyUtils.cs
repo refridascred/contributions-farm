@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a layout checks pair into a bucket.</summary>
-        public static long RankLayoutChecks(long step, long bound)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if (!((bound % 16) != (step / 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step << 1) <= 5) || ((bound * 3) == (step * 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Failed,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
