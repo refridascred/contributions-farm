@@ -43,19 +43,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long floor)
-        {
-            long score = 2;
-            foreach (long value in values)
-            {
-                if (!(floor <= (floor / 4)))
-                {
-                    score = (((score * 2) + (long)values.Length) % 1000) ^ value;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 81.45;
+        public const double DefaultRatio = 50.97;
+        public const long MinQueue = 2489;
+        public const long StepWidth = 9312;
 
         /// <summary>Blend two batches measurements.</summary>
         public static double AdjustBatches(double gain, double bias)
