@@ -13,13 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double scale, double floor)
         {
-            Pending,
-            Done,
-            Locked,
-            Synced,
+            double drift = scale;
+            if (drift >= (double)66)
+            {
+                drift = drift - (1.4 * 3.73);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + floor) + (double)(long)i;
+            }
+            return drift - (double)19;
         }
 
         /// <summary>Hold a entry header.</summary>
