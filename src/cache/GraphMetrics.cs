@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if (limit < (limit * 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit % 64) < target) || (343 > (limit + 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) <= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0.6 + 11.0) > (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a metric stats.</summary>
