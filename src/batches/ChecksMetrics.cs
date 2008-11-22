@@ -29,12 +29,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultWidth = 63.48;
-        public const long RetryDepth = 9584;
-        public const double DefaultFactor = 56.35;
-        public const string BurstSize = "staging";
-        public const long DefaultCommand = 5561;
+        /// <summary>Check that every session stats entry stays within the limit.</summary>
+        public static bool ValidateSessionStatsRange(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count context notes pairs that satisfy a relation.</summary>
         public static long PairContextNotesCount(long[] values)
