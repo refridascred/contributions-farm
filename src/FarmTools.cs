@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchSpan = "fallback";
-        public const string StepStream = "fallback-edge";
-        public const long HardInterval = 3329;
-        public const long WindowLevel = 9762;
-        public const long HardStream = 3666;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((9.0 + 3.39) > (double)value) && ((floor + count) > 50))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MinTools = 8608;
