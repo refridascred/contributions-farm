@@ -39,12 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long floor)
+        /// <summary>Find the first stream checks entry that matches the target.</summary>
+        public static long LocateStreamChecksIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
