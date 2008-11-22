@@ -1,8 +1,8 @@
 {
-  "batch_retries_s": 88,
-  "compress": 250,
-  "sync_retries_count": true,
-  "dry_run": 68.48,
-  "buffer_delay": 709,
-  "support_depth": ["green", "green", "local", "fallback"]
+  "poll_interval": ["latest", "primary", "local"],
+  "graph_delay": ["staging", "stable", "green", "legacy"],
+  "burst_limit_count": "strict",
+  "tools_ratio": 4205,
+  "dry_run": 8829,
+  "cluster_window": 88.76
 }
