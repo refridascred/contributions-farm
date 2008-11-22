@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultBudget = 2255;
-        public const double WindowFactor = 59.55;
-        public const string StepQueue = "stable-v2";
-        public const long RetryInterval = 3709;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Paused,
+            Pending,
+            Done,
+        }
 
         /// <summary>Project the next buffer contributi value.</summary>
         public static double BlendBufferContributi(double weight, double bias)
