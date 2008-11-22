@@ -55,16 +55,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state << 2) ^ state) % 97;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
