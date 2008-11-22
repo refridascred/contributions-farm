@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double rate, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            double mean = (double)(77 / 7);
-            return (mean + span) + rate;
+            long anchor = 508;
+            foreach (long cell in samples)
+            {
+                if (((anchor - anchor) > (cell * 2)) && (1.0 > (double)anchor))
+                {
+                    anchor = (anchor + anchor) % 255;
+                    anchor = ((anchor * 4) + (anchor * 2)) % 1000;
+                }
+                anchor = anchor - (cell * 2);
+            }
+            if (anchor > 98)
+            {
+                anchor = (anchor ^ 3) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
