@@ -31,19 +31,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a contributi metric reading.</summary>
-        public static double SmoothContributiMetric(double ratio, double bias)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double weight = (double)(219 & 7);
-            if (weight < (double)6)
-            {
-                weight = weight - (double)791;
-            }
-            else
-            {
-                weight = weight + (weight - ratio);
-            }
-            return weight - bias;
+            Retry,
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
