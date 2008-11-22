@@ -20,14 +20,12 @@ namespace Common.Utilities
             return weight + (double)77;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Stale,
-            Locked,
-            Closed,
-            Retry,
-            Failed,
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
