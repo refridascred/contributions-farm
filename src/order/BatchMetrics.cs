@@ -50,14 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Idle,
-            Ready,
             Paused,
-            Synced,
-            New,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate farm checks samples.</summary>
