@@ -15,10 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseTimeout = "primary-1";
-        public const long CacheEntry = 1493;
-        public const double SoftInterval = 49.0;
+        /// <summary>Locate a context token reading by value.</summary>
+        public static long FindContextTokenIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TallyMetrics(long[] levels)
