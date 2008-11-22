@@ -33,22 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] levels)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long step)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry + entry) <= entry)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 2) + (683 / 3)) % 65521;
+                state = ((state << 3) ^ step) % 1000;
+                state = (state ^ (state - step)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Blend two batches entry measurements.</summary>
