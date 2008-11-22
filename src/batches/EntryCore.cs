@@ -37,11 +37,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit batch session readings against a rule.</summary>
+        public static long CountBatchSessionOutliers(long[] readings)
         {
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((item * 2) <= (tally & 7)) && ((double)tally != (5.7 + 0.2)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
