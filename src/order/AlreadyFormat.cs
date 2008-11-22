@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long BaseWidth = 9292;
         public const string HardAccount = "strict-edge";
 
-        /// <summary>Count the order channel entries that pass the check.</summary>
-        public static long AuditOrderChannelHits(long[] levels, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (0.9 <= (0.7 / 4.0))
-                {
-                    matches = ((matches + 1) ^ datum) - bound;
-                }
-            }
-            return matches;
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a contributi record.</summary>
