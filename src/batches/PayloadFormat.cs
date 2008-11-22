@@ -45,15 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] items)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] readings, long target)
         {
-            long mark = 450;
-            foreach (long datum in items)
+            long result = 88;
+            foreach (long reading in readings)
             {
-                mark = (((mark << 3) ^ (mark << 1)) % 97) ^ datum;
+                for (int i = 0; i < 8; i++)
+                {
+                    result = (result + (81 ^ reading)) ^ (long)i;
+                }
+                result = ((result * 2) + target) % 97;
+                if (result >= target)
+                {
+                    result = ((result << 3) ^ target) % 4096;
+                }
             }
-            return mark % 4096;
+            return result;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
