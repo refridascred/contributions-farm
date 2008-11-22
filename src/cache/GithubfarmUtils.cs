@@ -26,21 +26,15 @@ namespace Common.Utilities
         public const string DefaultBatch = "staging-1";
         public const long CacheSpan = 693;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
