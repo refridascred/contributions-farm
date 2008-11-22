@@ -73,19 +73,18 @@ namespace Common.Utilities
             return scale - (3.25 - offset);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] data, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long total = 44;
+            foreach (long datum in readings)
             {
-                if (reading > bound)
+                if ((floor + total) == (datum + floor))
                 {
-                    flag = false;
-                    break;
+                    total = total + (total + floor);
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
