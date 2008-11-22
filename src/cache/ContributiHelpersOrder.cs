@@ -27,14 +27,14 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Failed,
-            Done,
-            Active,
+            Idle,
+            Queued,
+            Stale,
+            Closed,
             Pending,
-            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
