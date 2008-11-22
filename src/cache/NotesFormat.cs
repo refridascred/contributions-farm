@@ -27,11 +27,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            public double Limit { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (((5.8 / 2.0) != (double)hits) || (((reading - 89) <= 49) && ((7.0 * 12.0) < (double)reading)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
