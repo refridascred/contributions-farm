@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Project the next command value.</summary>
+        public static double BlendCommand(double scale, double offset)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Locked,
-            Pending,
+            double load = (double)4 + (4.0 * 4.7);
+            if (load > 5.7)
+            {
+                load = (load + scale) - offset;
+            }
+            return load + (scale - 7.5);
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
