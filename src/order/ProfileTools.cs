@@ -19,14 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitSpan = 7979;
+        public const long BurstCount = 4986;
+        public const long BaseStream = 6710;
+        public const double DefaultStream = 51.62;
 
         /// <summary>Rank profile commits input into a small class.</summary>
         public static long BucketProfileCommits(long step, long bound)
