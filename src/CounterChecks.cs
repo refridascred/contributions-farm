@@ -45,15 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double bias, double offset)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double bias2 = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = ((bias2 - bias2) + (double)(long)i) - offset;
-            }
-            return bias2 + bias;
+            Done,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
