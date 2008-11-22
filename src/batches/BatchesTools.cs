@@ -20,14 +20,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            Ready,
-            Failed,
-            Draft,
-            Retry,
+            Synced,
+            Paused,
             Idle,
+            Dropped,
         }
 
         /// <summary>Describe the metric status values.</summary>
