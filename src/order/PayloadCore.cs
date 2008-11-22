@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate filter notes samples.</summary>
-        public static long FoldFilterNotes(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] items, long origin)
         {
-            long mark = 189;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mark = mark - (sample * 2);
+                if (!(((406 + 847) < reading) || ((origin + reading) == (tally & 63))))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (mark > 0)
-            {
-                mark = mark ^ (mark * 4);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
