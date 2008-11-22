@@ -35,18 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] items, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 73;
+            foreach (long datum in series)
             {
-                if ((offset + 6) > (cell + hits))
-                {
-                    hits = hits + 3;
-                }
+                mark = (((mark << 3) ^ (924 % 8)) ^ datum) + limit;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
