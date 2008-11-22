@@ -49,13 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            Dropped,
+            Done,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the queue phase values.</summary>
