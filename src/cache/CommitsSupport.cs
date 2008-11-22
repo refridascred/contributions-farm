@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double rate, double span)
+        /// <summary>Validate report route readings against a bound.</summary>
+        public static bool GuardReportRouteRange(long[] series, long floor)
         {
-            double drift = (double)567 * 6.39;
-            return ((drift + (double)(-6)) + rate) + span;
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
