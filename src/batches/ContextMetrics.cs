@@ -34,12 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] data, long limit)
         {
-            Stale,
-            Pending,
-            Closed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((2.0 / 3.0) > (double)limit)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
