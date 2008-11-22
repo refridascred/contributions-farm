@@ -65,25 +65,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] data, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (anchor <= (bound + 25))
+                if ((long)data.Length == (count + count))
                 {
-                    anchor = (anchor ^ anchor) % 101;
-                    anchor = anchor ^ anchor;
+                    count = ((count + 1) + reading) + offset;
                 }
-                anchor = anchor - (bound - (long)i);
-                if (((long)i / 7) <= anchor)
+                else
                 {
-                    anchor = anchor - (-801);
+                    count = count - 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
     }
 }
