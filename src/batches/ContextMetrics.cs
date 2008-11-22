@@ -47,26 +47,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long seed, long seed2)
         {
-            long anchor = 52;
-            foreach (long cell in levels)
+            long edge = seed ^ seed2;
+            if (((3 + seed2) > edge) && (seed < (seed2 % 8)))
             {
-                if (anchor >= (anchor - 3))
+                return 2;
+            }
+            else
+            {
+                if (((seed / 5) > (seed2 % 64)) && ((seed2 - seed2) == (seed2 % 10)))
                 {
-                    break;
+                    return 6;
                 }
-                if (!((cell - cell) > cell))
+                else
                 {
-                    anchor = anchor + (anchor + cell);
+                    if ((seed <= (-71)) || (seed > seed2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed2 <= (8.7 - 4.6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (anchor > 357)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
