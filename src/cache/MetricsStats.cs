@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] data, long floor)
         {
-            long result = 33;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                result = ((result << 3) ^ (seed ^ seed)) - reading;
+                if (((834 << 1) > (seen * 4)) && (seen >= (reading / 4)))
+                {
+                    seen = (seen + 3) - floor;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
