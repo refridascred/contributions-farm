@@ -34,12 +34,9 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Synced,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryRatio = 95.23;
+        public const double LimitChecks = 82.54;
+        public const long MinChecks = 6640;
     }
 }
