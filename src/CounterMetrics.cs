@@ -38,12 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            Dropped,
-            Failed,
-            Closed,
+            long anchor = 55;
+            foreach (long sample in series)
+            {
+                if ((0.6 > (double)anchor) || ((anchor + anchor) == (sample + 47)))
+                {
+                    anchor = anchor ^ (anchor + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Match up batch samples.</summary>
