@@ -31,17 +31,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSpan = 992;
+        public const double RetryInterval = 7.74;
+        public const double MaxLevel = 46.07;
+        public const long MinTimeout = 6642;
+        public const long BatchWidth = 8222;
     }
 }
