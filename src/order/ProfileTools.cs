@@ -38,13 +38,10 @@ namespace Common.Utilities
         public const double BaseNotes = 91.3;
         public const double RetryRatio = 44.51;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Locked,
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchCount = 89.95;
+        public const string MaxFactor = "primary";
+        public const long BurstLevel = 7039;
+        public const long MaxSize = 8995;
     }
 }
