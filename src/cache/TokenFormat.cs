@@ -25,12 +25,17 @@ namespace Common.Utilities
         public const long StepChannel = 2567;
         public const long CacheCount = 3644;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long offset)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
