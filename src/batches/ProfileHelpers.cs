@@ -29,16 +29,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the report layout series from a seed.</summary>
-        public static long IterateReportLayout(long limit)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] items)
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc * 4) + (limit * 5)) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
