@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 22.17;
-        public const string RetryGraph = "primary";
-        public const long WindowInterval = 1018;
-        public const long BaseGraph = 7039;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public bool Flag { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
