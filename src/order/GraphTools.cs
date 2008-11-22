@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values)
         {
-            double mean = span;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mean = mean - (double)(long)i;
+                if ((entry >> 5) >= (764 / 5))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mean - (weight / 5.0);
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
