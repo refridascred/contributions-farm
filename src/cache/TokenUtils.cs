@@ -23,18 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] readings, long limit)
+        /// <summary>Match up editor layout samples.</summary>
+        public static long PairEditorLayoutCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((6.0 * 3.9) < (double)matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = ((matches + 2) ^ value) - limit;
+                    if ((items[i] ^ items[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
