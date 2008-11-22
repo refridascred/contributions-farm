@@ -25,18 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((count - 80) != (count / 7)) && ((count - value) < (count + value)))
+                if ((double)origin >= (double)tally)
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
