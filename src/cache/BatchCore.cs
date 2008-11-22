@@ -44,23 +44,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next account githubfarm value.</summary>
-        public static double BlendAccountGithubfarm(double scale, double span)
-        {
-            double drift = (double)(780 + 60);
-            if (drift < span)
-            {
-                drift = drift + (drift + drift);
-            }
-            else
-            {
-                drift = drift - (span * 3.69);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (double)(-42)) + (double)(long)i;
-            }
-            return drift + (scale / 4.0);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleNotes = "standard";
+        public const double SoftSize = 89.78;
+        public const long StepWidth = 2151;
+        public const long HardNotes = 8478;
     }
 }
