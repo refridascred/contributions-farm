@@ -23,10 +23,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 88.35;
-        public const string RetryBudget = "fallback";
-        public const string LimitBatches = "fallback-v2";
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long bound, long step)
+        {
+            if (bound < (step ^ (-161)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.0 / 2.0) == (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a window options.</summary>
         public sealed class WindowOptions
