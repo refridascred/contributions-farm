@@ -20,13 +20,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Locked,
-            Failed,
             Ready,
-            Closed,
+            Failed,
+            Draft,
+            Retry,
+            Idle,
         }
 
         /// <summary>Describe the metric status values.</summary>
