@@ -1,15 +1,5 @@
 {
-  "queue_retries": 61.39,
-  "cache_interval": {
-    "metric_size": ["standard", "strict"],
-    "hard_interval": "latest",
-    "base_ratio": {
-      "dry_run": 12.31,
-      "cache_delay": 87,
-      "stream_size": 47,
-      "batch_interval_ms": 30
-    },
-    "dry_run": "strict"
-  },
-  "strict": "latest"
+  "min_size_pct": 96.81,
+  "queue_depth": false,
+  "counter_ratio": 65.93
 }
