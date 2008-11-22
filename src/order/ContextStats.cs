@@ -29,32 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session window pair into a bucket.</summary>
-        public static long GradeSessionWindow(long origin, long step)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] values, long origin)
         {
-            long offset = origin - step;
-            if ((origin ^ origin) > (offset & 15))
+            bool ready = true;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step > (20.0 * 2.42)) || ((3.0 / 4.0) == (double)offset))
+                if (item >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 5) <= (offset - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
