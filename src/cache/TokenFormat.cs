@@ -13,11 +13,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a order batches figure with a bias.</summary>
-        public static double ProjectOrderBatches(double gain, double bias)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long floor)
         {
-            double load = bias;
-            return load + gain;
+            if ((step + step) < step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + 1) > (floor ^ 12))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step + step) < (900 % 10)) && ((7 + 631) > (step + floor)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer info.</summary>
