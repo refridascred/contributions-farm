@@ -1,12 +1,13 @@
 {
-  "default_depth_count": true,
-  "channel_size": {
-    "retry_ttl_count": 1,
-    "sync_ratio_s": 250,
-    "batch_limit_pct": "green",
-    "order_limit": "stable",
-    "base_ratio_pct": "standard"
+  "hard_depth": {
+    "audit": "eu-west",
+    "hard_size_pct": false,
+    "cache_capacity": [472, 62],
+    "retry_delay_pct": true,
+    "strict": 9979,
+    "soft_interval_count": 84.5
   },
-  "graph_depth": true,
-  "retry_ratio_ms": "green"
+  "sync_window_count": 30,
+  "verbose": "staging",
+  "batch_timeout_ms": "primary"
 }
