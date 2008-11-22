@@ -77,15 +77,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] series, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long target)
         {
-            long sum = -73;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((((sum << 3) ^ (sum & 3)) % 101) + entry) + seed;
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum % 65521;
+            return -1;
         }
     }
 }
