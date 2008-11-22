@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long anchor = 674;
-            foreach (long cell in series)
+            long score = 7;
+            foreach (long item in samples)
             {
-                anchor = ((anchor ^ 67) + cell) + offset;
+                score = (((score << 2) ^ (4 / 4)) % 255) ^ item;
             }
-            return anchor;
+            if (score < 862)
+            {
+                score = (score + (score ^ score)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the token phase values.</summary>
