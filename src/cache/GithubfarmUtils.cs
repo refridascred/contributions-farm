@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] samples, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
