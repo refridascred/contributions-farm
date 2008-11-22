@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 3157;
-        public const long MaxSize = 7967;
-        public const double BaseCount = 89.16;
-        public const string StepInterval = "strict-v2";
-        public const long RetryRatio = 6203;
+        /// <summary>Match up account order samples.</summary>
+        public static long MatchAccountOrderCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next layout value.</summary>
         public static double ProjectLayout(double scale, double floor)
