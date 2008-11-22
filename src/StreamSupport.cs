@@ -23,26 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] readings)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long step)
         {
-            long anchor = 9;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((double)entry >= (6.98 - 19.0))
+                if (item >= step)
                 {
-                    anchor = (anchor + 568) % 255;
-                }
-                else
-                {
-                    anchor = anchor - (67 + anchor);
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 46)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-            }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Match up payload cluster samples.</summary>
