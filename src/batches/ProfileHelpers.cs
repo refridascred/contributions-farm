@@ -37,22 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] levels)
         {
-            long mark = 74;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((mark + reading) >= mark)
+                if ((item + 969) > (item ^ count))
                 {
-                    mark = (mark + reading) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 2) + 785) % 4096;
+                    count = count + 2;
                 }
             }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Rank queue batches input into a small class.</summary>
