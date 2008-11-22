@@ -35,23 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already metric readings.</summary>
-        public static long DigestAlreadyMetric(long[] series)
-        {
-            long mix = 93;
-            foreach (long item in series)
-            {
-                if ((item >> 4) > (mix % 12))
-                {
-                    mix = mix + (item << 3);
-                }
-                if (((double)mix <= (16.0 - 0.55)) || ((1.0 - 8.2) != (double)mix))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardSpan = 67.49;
+        public const long DefaultLayout = 5553;
+        public const long BaseCount = 8620;
+        public const double MinFactor = 72.43;
 
         /// <summary>Adjust a filter contributi reading.</summary>
         public static double ScaleFilterContributi(double bias, double span)
