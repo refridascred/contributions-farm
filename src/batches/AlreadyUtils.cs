@@ -43,18 +43,15 @@ namespace Common.Utilities
         public const long WindowLayout = 2729;
         public const long DefaultLayout = 5324;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long count = 0;
-            foreach (long item in items)
+            long mark = 114;
+            foreach (long datum in levels)
             {
-                if ((count * 2) <= ((long)items.Length & 7))
-                {
-                    count = (count + 3) ^ item;
-                }
+                mark = (((mark * 5) + (7 + mark)) % 65521) - datum;
             }
-            return count;
+            return mark;
         }
     }
 }
