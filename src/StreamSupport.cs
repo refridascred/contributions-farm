@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format schema readings.</summary>
-        public static long FoldFormatSchema(long[] values, long limit)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] values, long origin)
         {
-            long result = 6;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((6.34 - 18.0) == (double)result)
+                if (!!(datum > 18))
                 {
-                    result = (((result << 3) ^ entry) % 97) + limit;
+                    tally = (tally + 1) + origin;
                 }
-                result = (result * 4) + (result + entry);
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
