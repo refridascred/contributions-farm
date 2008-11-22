@@ -1,7 +1,11 @@
 {
-  "batch_limit_s": "stable",
-  "window_retries": 68,
-  "channel_capacity": 90,
-  "persist": "staging",
-  "min_delay_s": 76
+  "record_window": 21.81,
+  "report_ttl": {
+    "cache_ttl_pct": 20.24,
+    "record_threshold": [343, 209],
+    "dry_run": [362, 396]
+  },
+  "warm_limit": ["edge", "green", "stable"],
+  "flush_ratio_pct": ["blue", "primary"],
+  "idle_threshold": "latest"
 }
