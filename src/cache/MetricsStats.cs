@@ -50,22 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Project the next profile contributi value.</summary>
+        public static double SmoothProfileContributi(double rate, double offset)
         {
-            long state = 3;
-            foreach (long datum in levels)
+            double drift = rate;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum >= (state * 3))
-                {
-                    state = (state * 3) + (state / 5);
-                }
-                else
-                {
-                    state = (state - (datum & 15)) % 65521;
-                }
+                drift = (drift - offset) + (double)(long)i;
             }
-            return state;
+            return drift - (double)558;
         }
     }
 }
