@@ -41,39 +41,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a buffer command value against two limits.</summary>
-        public static long SortBufferCommand(long seed, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long target)
         {
-            long delta = seed + target;
-            if ((68 << 1) < (delta % 100))
+            long state = 89;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta >= 9.1)
+                if (!((3 & 15) == (sample * 4)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed & 255) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + target) >= (seed * 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = ((state ^ (346 + state)) % 65521) - target;
                 }
             }
+            if (state < (-9))
+            {
+                state = (state - state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
