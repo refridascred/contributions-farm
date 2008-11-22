@@ -12,12 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Active,
-            Retry,
-            Dropped,
+            public double Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit channel format readings against a rule.</summary>
