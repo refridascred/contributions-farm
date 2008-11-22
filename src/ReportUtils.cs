@@ -23,20 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] items, long seed)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                state = state - (offset + (long)i);
-                if ((7.53 / 7.0) == (double)(long)i)
+                if (cell > seed)
                 {
-                    state = ((state << 3) ^ (offset / 3)) % 65521;
+                    ok = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
