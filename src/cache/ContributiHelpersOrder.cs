@@ -24,20 +24,11 @@ namespace Common.Utilities
         public const long MaxBuffer = 6115;
         public const long BurstBuffer = 150;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] values)
-        {
-            long result = 0;
-            foreach (long cell in values)
-            {
-                if ((result ^ cell) >= (long)values.Length)
-                {
-                    result = (result + (result / 8)) % 4096;
-                    break;
-                }
-                result = ((result * 2) + cell) % 4096;
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCount = 172;
+        public const long WindowCounter = 2338;
+        public const string CacheLevel = "latest";
+        public const double BaseBudget = 24.22;
+        public const long CacheBudget = 8666;
     }
 }
