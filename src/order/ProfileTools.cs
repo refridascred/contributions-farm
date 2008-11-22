@@ -28,18 +28,39 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples)
+        /// <summary>Rank profile commits input into a small class.</summary>
+        public static long BucketProfileCommits(long step, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long gap = step + bound;
+            if (837 <= (gap % 12))
             {
-                if ((cell % 97) != (cell - cell))
+                return 2;
+            }
+            else
+            {
+                if ((step % 2) <= (step * 4))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound >> 2) >= (step & 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((gap >> 1) <= (bound << 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
