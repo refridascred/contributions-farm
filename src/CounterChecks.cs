@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the channel support series from a seed.</summary>
-        public static long StepChannelSupport(long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatMatches(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((hits % 5) <= (step + hits))
                 {
-                    anchor = (anchor - (anchor >> 1)) ^ (long)i2;
+                    hits = (hits + 2) - cell;
                 }
-                anchor = (anchor - (832 << 2)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
