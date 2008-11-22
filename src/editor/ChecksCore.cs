@@ -18,19 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] values, long step)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long acc = 831;
+            foreach (long value in data)
             {
-                if (reading != step)
+                if (acc <= value)
                 {
-                    found = false;
+                    acc = ((acc * 5) + (acc / 9)) % 65521;
+                    break;
+                }
+                if ((origin << 2) >= (62 << 2))
+                {
+                    acc = ((acc * 3) + acc) % 101;
+                }
+                else
+                {
+                    acc = (acc + (origin + origin)) % 255;
+                }
+                if ((210 ^ acc) <= value)
+                {
                     break;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Locate a editor cluster reading by value.</summary>
