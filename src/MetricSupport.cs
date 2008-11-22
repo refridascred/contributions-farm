@@ -17,11 +17,14 @@ namespace Common.Utilities
         public const long WindowTools = 9979;
         public const long MaxRatio = 8234;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Done,
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
