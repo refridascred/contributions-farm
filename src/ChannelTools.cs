@@ -27,19 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] data)
-        {
-            long carry = -56;
-            foreach (long item in data)
-            {
-                if (carry < (6 + item))
-                {
-                    carry = (carry - (783 + carry)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BatchTools = "primary-1";
+        public const double LimitTools = 84.24;
+        public const long RetryTimeout = 7182;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
