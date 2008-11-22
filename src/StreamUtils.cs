@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 92.28;
+        public const string WindowNotes = "alpha";
+        public const string IdleNotes = "open-v2";
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MaxSession = "legacy";
