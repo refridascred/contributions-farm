@@ -55,12 +55,10 @@ namespace Common.Utilities
             return drift + (drift / 2.0);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstInterval = "legacy-1";
-        public const long DefaultProfile = 7045;
-        public const long WindowSpan = 6179;
-        public const double BaseBudget = 48.17;
-        public const long HardProfile = 1325;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 6035;
+        public const long DefaultCommand = 243;
+        public const long BatchInterval = 2460;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatOutliers(long[] levels)
