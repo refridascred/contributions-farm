@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging primary legacy; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=405
+CHANNEL_LIMIT=401
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-open}"
+mode="${1:-edge}"
 case "${mode}" in
-    staging)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
