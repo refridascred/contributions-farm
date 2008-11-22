@@ -1,9 +1,6 @@
-id,region,ratio
-1,76.12,edge
-2,3,19.43
-3,cached,67.61
-4,215,471
-5,cached,89.57
-6,85,306
-7,98.84,884
-8,standard,10.92
+id,rank,token
+1,primary,363
+2,77.63,47.56
+3,688,standard
+4,442,941
+5,138,0.44
