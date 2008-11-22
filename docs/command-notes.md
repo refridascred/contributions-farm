@@ -1,11 +1,11 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-Keep counter and route names short and lowercase.
-Keep stats and farm names short and lowercase.
+Keep notes and format names short and lowercase.
+Keep stream and record names short and lowercase.
 
 ## Guidelines
 
-- Keep record values small
-- Prefer editor defaults
-- Log every report change
+- Prefer stream defaults
+- Log every githubfarm change
+- Document new command fields
+- Validate farm input early
