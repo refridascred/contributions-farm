@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            double load = scale;
+            return (load + scale) + floor;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
