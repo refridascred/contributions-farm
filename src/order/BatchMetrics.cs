@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next batches cluster value.</summary>
-        public static double SmoothBatchesCluster(double gain, double floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double bias, double offset)
         {
-            double gain2 = (double)((-264) << 3);
-            for (int i = 0; i < 5; i++)
+            double load = bias - (offset / 9.0);
+            if (load <= (bias * 5.32))
             {
-                gain2 = ((gain2 + (double)(long)i) - gain) + floor;
+                load = load - (double)729;
             }
-            return gain2 - (double)7;
+            else
+            {
+                load = load + (bias / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load + (double)430;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
