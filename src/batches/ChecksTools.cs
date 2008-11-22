@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels, long offset)
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long CountGithubfarmQueueGaps(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((item ^ item) != (matches / 3))
+                if (!((datum % 8) > (target ^ 800)))
                 {
-                    matches = (matches + 1) + offset;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the context contributi entries that pass the check.</summary>
