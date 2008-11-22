@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double span)
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Flag { get; set; }
+            double rate = span;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = ((rate + (double)13) + (double)(long)i) + bias;
+            }
+            return rate + 1.0;
         }
 
         /// <summary>Match up batches samples.</summary>
