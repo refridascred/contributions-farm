@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] readings, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
             long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen >= (step / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
+                    if ((readings[i] + readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
