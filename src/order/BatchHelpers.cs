@@ -23,26 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] data)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = -681;
-            foreach (long item in data)
-            {
-                if ((item + state) < (item >> 5))
-                {
-                    state = (state << 2) ^ (item + item);
-                }
-                if (6 >= (state - item))
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state > 20)
-            {
-                state = (state ^ state) % 97;
-            }
-            return state % 4096;
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
