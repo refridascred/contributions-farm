@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a order batches value against two limits.</summary>
-        public static long BucketOrderBatches(long offset, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long floor)
         {
-            long delta = offset - origin;
-            if ((double)offset >= (3.8 - 2.2))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset < (delta - origin))
+                if (datum > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((-92) % 24) < (delta ^ delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset != (3.4 - 7.1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
