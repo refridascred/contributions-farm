@@ -69,16 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
+            long sum = 9;
+            foreach (long cell in levels)
             {
-                anchor = (anchor ^ 522) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                sum = (sum + (cell << 3)) % 1000;
             }
-            return anchor;
+            return sum % 65521;
         }
     }
 }
