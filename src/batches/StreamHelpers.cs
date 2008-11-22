@@ -78,18 +78,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] data)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (!((tally - tally) >= value))
+                if (item <= floor)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
