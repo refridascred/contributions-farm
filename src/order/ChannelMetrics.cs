@@ -13,22 +13,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] levels, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] values)
         {
-            long mark = 6;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                for (int i = 0; i < 3; i++)
+                if ((datum % 97) > (tally + tally))
                 {
-                    mark = ((mark * 4) + (long)i) % 101;
-                }
-                if (!((double)mark >= (double)item))
-                {
-                    mark = (mark - bound) % 97;
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
