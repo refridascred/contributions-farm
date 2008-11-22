@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double span)
+        /// <summary>Classify a token format pair into a bucket.</summary>
+        public static long SortTokenFormat(long seed, long offset)
         {
-            double rate = span;
-            for (int i = 0; i < 2; i++)
+            long offset2 = seed - offset;
+            if (seed < (seed - offset2))
             {
-                rate = ((rate + (double)13) + (double)(long)i) + bias;
+                return 5;
             }
-            return rate + 1.0;
+            else
+            {
+                if ((offset % 64) == (seed + offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((-403) & 127) < (offset2 / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((612 >> 5) <= offset2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
