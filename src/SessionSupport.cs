@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "local-edge";
-        public const long LimitScore = 2262;
-        public const long IdleDepth = 1028;
-        public const long DefaultEntry = 2359;
-        public const double StepFactor = 48.85;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 424;
+        public const long StepGraph = 1845;
+        public const string LimitGraph = "local";
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double gain, double bias)
