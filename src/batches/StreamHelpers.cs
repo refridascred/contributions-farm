@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((anchor + (long)i) >= (anchor >> 1))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 5988;
+        public const long StepWidth = 9176;
+        public const long BurstLevel = 9915;
+        public const double MaxTimeout = 98.71;
 
         /// <summary>Measure how many schema queue samples are out of range.</summary>
         public static long CountSchemaQueueMatches(long[] data, long floor)
