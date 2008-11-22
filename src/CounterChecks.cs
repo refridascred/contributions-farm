@@ -13,19 +13,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] levels, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != bound)
+                anchor = (anchor - (floor + (long)i)) % 65521;
+                if ((8.3 * 6.0) > (double)(long)i)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor * 2) + (floor * 5)) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Grade a cluster report value against two limits.</summary>
