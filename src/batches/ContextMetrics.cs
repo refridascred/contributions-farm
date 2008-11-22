@@ -28,26 +28,17 @@ namespace Common.Utilities
         public const string StepTimeout = "stable-edge";
         public const long BurstFactor = 4524;
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] series, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long step)
         {
-            long total = 692;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)total < (12.0 / 5.0)))
+                if ((series[i] == step) && ((series[i] % 3) == 0))
                 {
-                    total = (total - origin) + value;
-                }
-                else
-                {
-                    total = ((total * 3) + total) % 4096;
+                    return (long)i;
                 }
             }
-            if (total < 2)
-            {
-                total = ((total * 5) + (origin / 9)) % 4096;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
