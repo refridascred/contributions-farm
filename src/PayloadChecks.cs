@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long seed, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long next = seed + limit;
-            if (next > (next + next))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((next & 3) >= seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Closed,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
