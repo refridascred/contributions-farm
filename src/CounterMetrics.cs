@@ -33,11 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 49.75;
-        public const long MinWindow = 4891;
-        public const double IdleWindow = 18.56;
-        public const long BurstWindow = 5385;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 9067;
+        public const long HardFarm = 8617;
+        public const long IdleFarm = 7612;
+        public const long BatchFarm = 127;
+        public const long MinFarm = 2759;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long offset)
