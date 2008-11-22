@@ -1,7 +1,13 @@
 {
-  "payload_size": "primary",
-  "readonly": 1385,
-  "enabled": 49.62,
-  "min_ttl_pct": 2889,
-  "buffer_retries": ["latest", "fallback", "staging", "standard"]
+  "batch_window_pct": 30,
+  "compress": {
+    "support_limit": 30,
+    "min_depth": "latest",
+    "cache_ratio_ms": ["staging", "legacy"],
+    "warm_interval_ms": 6064
+  },
+  "retry_retries_pct": 58,
+  "persist": 67.2,
+  "command_timeout": "eu-west",
+  "audit": "strict"
 }
