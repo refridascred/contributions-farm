@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the checks session series from a seed.</summary>
-        public static long SeriesChecksSession(long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Paused,
+            Draft,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a order entry.</summary>
