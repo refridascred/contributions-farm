@@ -33,15 +33,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((63 - tally) == (reading + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
