@@ -24,19 +24,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate editor checks readings against a bound.</summary>
-        public static bool CheckEditorChecksLimits(long[] series, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (item < floor)
+                if (((origin >> 1) > (origin - tally)) || (datum >= tally))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
