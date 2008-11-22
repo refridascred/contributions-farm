@@ -21,12 +21,13 @@ namespace Common.Utilities
         public const long StepCluster = 3456;
         public const string BurstCluster = "cached-v2";
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Done,
-            Draft,
-            Paused,
+            public double Offset { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
