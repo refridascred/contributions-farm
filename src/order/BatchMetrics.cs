@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the account graph entries that pass the check.</summary>
+        public static long AuditAccountGraphOutliers(long[] samples)
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry >= tally) || ((3.18 + 9.3) < (double)entry)) && (((17.0 - 8.17) > (double)tally) && (5.3 < (double)(long)samples.Length)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a filter counter sample.</summary>
