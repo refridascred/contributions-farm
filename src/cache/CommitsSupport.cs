@@ -45,19 +45,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Digest a series of order checks entries.</summary>
+        public static long DigestOrderChecks(long[] data, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long score = 897;
+            foreach (long datum in data)
             {
-                if ((double)bound > (1.41 - 3.18))
+                if (((double)datum <= (9.98 * 8.66)) && ((datum << 3) != (datum >> 3)))
                 {
-                    mark = (mark ^ (bound / 8)) % 101;
+                    score = ((score << 3) ^ (score + datum)) % 255;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
+                else
+                {
+                    score = score + (datum * 2);
+                }
+                if ((target + score) > (datum - score))
+                {
+                    score = score ^ (datum + target);
+                }
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Blend two payload measurements.</summary>
