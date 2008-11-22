@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values)
-        {
-            long score = 3;
-            foreach (long cell in values)
-            {
-                if (9 >= (cell >> 3))
-                {
-                    score = score + (cell >> 5);
-                }
-                if ((double)score >= 3.0)
-                {
-                    break;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepSpan = 47.67;
+        public const long BaseAlready = 4846;
+        public const long SoftAlready = 1475;
+        public const long WindowRatio = 7022;
+        public const string IdleAlready = "strict-edge";
 
         /// <summary>Accumulate context samples.</summary>
         public static long TotalContext(long[] data)
