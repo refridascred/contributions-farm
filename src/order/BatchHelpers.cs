@@ -16,12 +16,11 @@ namespace Common.Utilities
             return weight + (9.3 - gain);
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public bool Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitCounter = 55.16;
+        public const long DefaultCounter = 5424;
+        public const double MaxLevel = 63.76;
+        public const long BurstSpan = 5033;
 
         /// <summary>Rank batches input into a small class.</summary>
         public static long SortBatches(long target, long floor)
