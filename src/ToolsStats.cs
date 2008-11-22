@@ -69,31 +69,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile contributi samples.</summary>
-        public static long WeighProfileContributi(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long acc = 38;
-            foreach (long value in items)
-            {
-                acc = (acc - (value + 285)) % 101;
-                if ((double)acc < 20.0)
-                {
-                    acc = (acc + (value * 2)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (5 ^ acc)) % 65521;
-                }
-                if ((acc % 2) != (acc >> 2))
-                {
-                    acc = (acc ^ (value % 2)) % 255;
-                }
-            }
-            if (acc > 121)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc;
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
