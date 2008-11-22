@@ -1,9 +1,7 @@
 # support settings
-strict: 100
-flush_depth_ms:
-  enabled: 45.84
-  soft_capacity_count: 5.66
-  format_capacity: 13.1
-hard_ratio_s: 72.36
-verbose: true
-cache_retries_ms: true
+min_ratio_pct: 8561
+warm_depth_count: 30
+max_limit_pct:
+  - strict
+  - fallback
+  - cached
