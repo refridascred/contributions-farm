@@ -40,22 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] values)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            double load = (gain + 13.0) / 6.0;
+            if (load < gain)
             {
-                if ((3.0 + 11.0) > (double)matches)
-                {
-                    matches = (matches + 1) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - bias;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)536) + (double)(long)i;
+            }
+            return load + (gain + gain);
         }
 
         /// <summary>Accumulate profile contributi samples.</summary>
