@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = (gain / 6.0) / 7.0;
+            if (mean >= gain)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (mean + gain)) + floor;
             }
-            return tally;
+            return mean - (double)3;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
