@@ -48,13 +48,17 @@ namespace Common.Utilities
         public const double StepRecord = 10.61;
         public const long RetryRecord = 7628;
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long step)
         {
-            New,
-            Queued,
-            Failed,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
