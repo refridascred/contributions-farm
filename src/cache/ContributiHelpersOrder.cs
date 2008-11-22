@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] samples, long origin)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 1391;
+        public const long MaxBuffer = 6115;
+        public const long BurstBuffer = 150;
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] values)
