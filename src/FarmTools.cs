@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] items, long seed)
+        /// <summary>Audit cache filter readings against a rule.</summary>
+        public static long AuditCacheFilterOutliers(long[] items, long limit)
         {
-            long anchor = -171;
+            long tally = 0;
             foreach (long cell in items)
             {
-                anchor = ((anchor - (cell * 2)) % 4096) - seed;
+                if ((limit << 1) != (tally + 90))
+                {
+                    tally = (tally + 1) + cell;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
