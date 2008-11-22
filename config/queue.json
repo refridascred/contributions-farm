@@ -1,12 +1,8 @@
 {
-  "sync_ttl_ms": {
-    "verbose": 248,
-    "enabled": "strict",
-    "idle_size_pct": ["edge", "latest", "standard", "local"],
-    "dry_run": [52, 64, 408, 166]
-  },
-  "dry_run": false,
-  "window_depth": 3783,
-  "idle_size_ms": "open",
-  "readonly": "staging"
+  "stream_size": 37,
+  "readonly": "legacy",
+  "soft_interval_pct": ["standard", "open", "open", "stable"],
+  "verbose": "blue",
+  "idle_limit_s": "fallback",
+  "idle_timeout_count": 30
 }
