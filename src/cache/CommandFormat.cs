@@ -12,23 +12,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] data, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long carry = 7;
-            foreach (long value in data)
-            {
-                carry = (carry ^ (7 + step)) % 65521;
-                if ((value / 7) >= 20)
-                {
-                    break;
-                }
-            }
-            if (carry < (-97))
-            {
-                carry = ((carry << 2) ^ (step % 10)) % 65521;
-            }
-            return carry;
+            Stale,
+            Ready,
+            Queued,
+            Done,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
