@@ -46,18 +46,10 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCount = 630;
+        public const long BatchBudget = 8182;
+        public const string BurstCluster = "fallback-1";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long origin)
