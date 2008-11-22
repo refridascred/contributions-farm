@@ -20,20 +20,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] readings, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinScore = 6801;
+        public const double RetrySpan = 62.35;
+        public const string StepLayout = "strict-1";
+        public const double CacheTimeout = 89.06;
+        public const long SoftBudget = 6738;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutGaps(long[] samples)
