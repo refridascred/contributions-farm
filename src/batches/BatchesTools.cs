@@ -40,15 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double ratio, double floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long origin)
         {
-            double drift = ratio;
-            for (int i = 0; i < 4; i++)
+            if (((double)origin <= (2.6 + 14.0)) || ((double)473 <= (double)origin))
             {
-                drift = (drift + (double)(long)i) + floor;
+                return 5;
             }
-            return drift + (ratio / 8.0);
+            else
+            {
+                if ((double)origin > 3.86)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin << 2) < (step & 255))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step <= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes mode values.</summary>
