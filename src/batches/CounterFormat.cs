@@ -28,21 +28,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count cluster metrics pairs that satisfy a relation.</summary>
-        public static long CompareClusterMetricsCount(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricBounds(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell <= target)
                 {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
