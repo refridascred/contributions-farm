@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long floor)
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long MeasureBatchSchemaHits(long[] items, long floor)
         {
-            long state = 595;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (!((6 ^ 49) <= (item - floor)))
+                if ((double)floor > (8.4 * 2.27))
                 {
-                    continue;
+                    tally = (tally + 2) - sample;
                 }
-                state = (state - (item % 60)) % 97;
             }
-            return state % 97;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
