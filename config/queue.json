@@ -1,22 +1,5 @@
 {
-  "flush_interval": 5911,
-  "editor_ttl": 26,
-  "max_ttl": {
-    "buffer_delay": "legacy",
-    "warm_delay_ms": "green",
-    "retry_capacity": 41.01,
-    "flush_ratio_ms": {
-      "cache_delay": [126, 148, 184, 337],
-      "sync_delay_s": 9.11,
-      "retry_delay": 17,
-      "entry_size": "open",
-      "idle_interval_s": [346, 205, 141, 458],
-      "layout_limit": true
-    },
-    "metric_size": [404, 206],
-    "readonly": "eu-west"
-  },
-  "persist": "blue",
-  "hard_capacity_count": 67.1,
-  "batch_ttl": "stable"
+  "session_capacity": true,
+  "burst_timeout_count": [94, 174, 61],
+  "default_ratio_s": 30
 }
