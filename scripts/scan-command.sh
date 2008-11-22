@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+COMMAND_LIMIT=120
+log "limit is ${COMMAND_LIMIT}"
+
+for item in primary edge strict blue; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in cached eu-west open edge; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=211
-log "limit is ${COMMAND_LIMIT}"
