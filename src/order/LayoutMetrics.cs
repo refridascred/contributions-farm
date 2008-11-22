@@ -27,22 +27,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] values)
+        /// <summary>Validate token queue readings against a bound.</summary>
+        public static bool ValidateTokenQueueRange(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((cell + cell) != (matches ^ cell))
+                if (entry > limit)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
