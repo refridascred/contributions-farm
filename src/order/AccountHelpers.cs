@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Failed,
-            Paused,
-            Active,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowBatches = "primary-v2";
+        public const double BatchBatches = 49.42;
+        public const long BatchTimeout = 395;
+        public const string DefaultBatches = "latest-1";
+        public const long RetryFactor = 8008;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] readings)
