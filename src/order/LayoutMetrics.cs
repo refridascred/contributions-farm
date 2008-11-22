@@ -15,13 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] levels)
         {
-            public bool Mode { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches & 255) >= (31 ^ matches))
+                {
+                    matches = (matches + 2) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
