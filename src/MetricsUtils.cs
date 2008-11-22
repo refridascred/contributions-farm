@@ -13,11 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
+            Dropped,
+            Ready,
+            Idle,
+            Stale,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
