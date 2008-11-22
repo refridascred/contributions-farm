@@ -27,10 +27,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheInterval = 76.56;
-        public const string SoftTimeout = "cached-1";
-        public const long SoftSession = 6952;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long IterateEditor(long offset)
