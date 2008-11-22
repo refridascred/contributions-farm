@@ -34,15 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a route summary.</summary>
