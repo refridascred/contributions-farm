@@ -58,12 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftSize = 4243;
-        public const double IdleAlready = 57.57;
-        public const long BaseAlready = 7265;
-        public const long BurstTimeout = 3017;
-        public const string MinWidth = "open-1";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long DeriveMetric(long seed)
