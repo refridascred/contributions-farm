@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] samples)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((double)count != (double)14)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Project the next githubfarm value.</summary>
