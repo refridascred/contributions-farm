@@ -23,22 +23,18 @@ namespace Common.Utilities
         public const long WindowSession = 7288;
         public const double DefaultSize = 54.32;
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] samples, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] samples, long step)
         {
-            long mark = 915;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((1.0 / 9.0) != (double)step)
+                if ((double)hits < 5.72)
                 {
-                    mark = mark ^ (mark % 100);
-                }
-                else
-                {
-                    mark = (mark ^ (cell / 9)) % 255;
+                    hits = ((hits + 2) ^ datum) + step;
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
