@@ -25,12 +25,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long seed)
         {
-            New,
-            Paused,
-            Retry,
+            long offset = origin + seed;
+            if (((seed ^ origin) >= offset) || ((origin + offset) > 108))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - (-10)) < (seed - offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (offset - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 3) < (seed & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
