@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long IdleAlready = 9041;
         public const string DefaultAlready = "staging-v2";
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] levels, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandRange(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (!((origin + origin) > 76))
+                if (cell > step)
                 {
-                    tally = (tally + 2) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
