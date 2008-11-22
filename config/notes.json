@@ -1,6 +1,11 @@
 {
-  "min_depth_s": "eu-west",
-  "burst_interval_pct": true,
-  "persist": 8534,
-  "sync_window": 19.38
+  "burst_delay_pct": false,
+  "burst_retries_count": ["fallback", "stable", "fallback"],
+  "max_depth_ms": {
+    "hard_threshold": true,
+    "schema_timeout": ["latest", "standard"],
+    "idle_threshold": true,
+    "dry_run": ["strict", "local", "edge"],
+    "default_ttl_s": 41.41
+  }
 }
