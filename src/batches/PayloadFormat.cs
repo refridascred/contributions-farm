@@ -29,22 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardWidth = "latest-edge";
+        public const double HardContributi = 89.85;
+        public const long CacheContributi = 2197;
+        public const long RetryScore = 9748;
+        public const long BatchContributi = 5151;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowHits(long[] samples, long seed)
