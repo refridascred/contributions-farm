@@ -53,10 +53,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 28.37;
-        public const long IdleMetrics = 7883;
-        public const double WindowMetrics = 90.84;
-        public const string StepMetrics = "staging-v2";
+        /// <summary>Digest a series of record window entries.</summary>
+        public static long ScoreRecordWindow(long[] values, long target)
+        {
+            long state = 70;
+            foreach (long value in values)
+            {
+                state = (state - (target << 2)) % 101;
+                if ((value - target) <= (state * 5))
+                {
+                    long cur = (value & 31) - (value % 10);
+                    state = state ^ cur;
+                }
+                state = ((state << 3) ^ (target * 4)) % 1000;
+                if (((-57) + target) >= ((-83) + 547))
+                {
+                    break;
+                }
+            }
+            if (state > 1)
+            {
+                state = ((state * 2) + (target << 1)) % 97;
+            }
+            return state;
+        }
     }
 }
