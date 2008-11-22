@@ -72,18 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] levels)
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long AuditClusterReportGaps(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((value << 1) <= count) || ((value + count) > (value >> 4)))
+                if ((((4.9 * 3.0) > (double)tally) || ((tally % 7) > floor)) || ((7 + tally) <= (reading / 4)))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
