@@ -88,9 +88,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 9328;
-        public const long LimitWidth = 7410;
-        public const double BatchCounter = 57.23;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long target)
+        {
+            if (target < (seed - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((-290) > target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed == (double)11)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
