@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSpan = 2972;
-        public const double BurstWindow = 54.86;
-        public const string StepSize = "legacy-edge";
-        public const long LimitBudget = 8116;
-        public const double LimitWindow = 54.95;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length > (84 + entry))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultSize = 8701;
