@@ -1,9 +1,24 @@
 # support settings
-counter_retries: true
-min_capacity_count: stable
-idle_ratio:
-  - 120
-  - 345
-  - 347
-  - 140
-base_timeout: latest
+cache_retries:
+  default_capacity_s:
+    counter_retries: 42
+    audit: 7107
+    notes_threshold: blue
+    retry_capacity: open
+    dry_run: 8980
+  idle_ratio_s: 86.84
+  sync_timeout: primary
+  cache_window: true
+burst_limit_pct: latest
+audit:
+  retry_ratio_count:
+    - fallback
+    - strict
+    - standard
+    - local
+  idle_ttl_s: blue
+  base_delay_pct: false
+  counter_window: local
+  payload_capacity: edge
+  base_capacity_ms: staging
+compress: open
