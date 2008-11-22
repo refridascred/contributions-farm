@@ -45,12 +45,32 @@ namespace Common.Utilities
         public const long DefaultFactor = 1918;
         public const string RetryInterval = "staging-v2";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long step)
         {
-            Queued,
-            Locked,
-            Ready,
+            long delta = offset + step;
+            if ((delta * 2) >= (offset - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.87 * 1.8) == (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset + offset) > step) && ((double)offset <= (double)step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
