@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const string LimitScore = "standard-1";
         public const string BatchTimeout = "local-1";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxScore = 5304;
-        public const double BaseBudget = 37.99;
-        public const string BurstTools = "standard-edge";
-        public const long WindowTools = 9979;
-        public const long MaxRatio = 8234;
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long AuditQueueWindowMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((tally + tally) != (tally ^ tally))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
