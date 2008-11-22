@@ -1,17 +1,11 @@
 # githubfarm settings
-base_ratio_s:
-  enabled: strict
-  idle_interval_ms: cached
-  flush_limit_ms: 100
-  soft_ttl_s: local
-warm_interval_ms: green
-sync_limit:
-  persist:
-    warm_threshold_ms: latest
-    hard_interval: 21
-    batch_ratio: staging
-    retry_window_pct: true
-    min_threshold_ms: 47.4
-  batch_window: 441
-  poll_ratio_ms: fallback
-poll_capacity_pct: true
+notes_delay:
+  idle_ratio_pct: local
+  soft_ratio: 7.43
+  audit:
+    - 343
+    - 90
+  cache_ratio: 301
+enabled: fallback
+retry_ratio_pct: open
+hard_ratio: 81.97
