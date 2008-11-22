@@ -16,13 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            Ready,
-            Pending,
-            New,
-            Closed,
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
