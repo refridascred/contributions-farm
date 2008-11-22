@@ -14,13 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] items, long bound)
         {
-            Failed,
-            Idle,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((datum ^ 935) < (count + bound)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
