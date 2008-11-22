@@ -28,18 +28,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] values)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 18;
+            foreach (long cell in values)
             {
-                if ((1.95 - 7.0) <= (double)matches)
+                if (((mix + limit) == (cell >> 2)) || (((long)values.Length >> 1) <= cell))
                 {
-                    matches = (matches + 1) ^ datum;
+                    mix = ((mix * 5) + (mix + limit)) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
