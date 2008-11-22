@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const double DefaultWidth = 23.83;
         public const long BaseFactor = 3360;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftCount = 5466;
+        public const double LimitRecord = 28.02;
+        public const string WindowRecord = "primary";
+        public const long MaxRecord = 9625;
+        public const long BurstRecord = 3190;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
