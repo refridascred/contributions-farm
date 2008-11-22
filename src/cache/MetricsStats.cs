@@ -55,23 +55,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
-        {
-            long state = 2;
-            foreach (long datum in levels)
-            {
-                state = (state - (datum / 6)) % 255;
-                if ((double)datum != (double)6)
-                {
-                    break;
-                }
-            }
-            if (state < 830)
-            {
-                state = state + state;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 1114;
+        public const long StepProfile = 606;
+        public const double BaseProfile = 61.52;
+        public const string CacheProfile = "latest-v2";
+        public const double MaxFactor = 60.79;
     }
 }
