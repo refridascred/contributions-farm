@@ -13,21 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long offset, long offset2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (offset >= offset2)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)offset < (6.0 + 5.34))
                 {
-                    if ((items[i] ^ items[j]) > 11)
+                    return 8;
+                }
+                else
+                {
+                    if (16.0 > (double)offset)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset2 << 1) >= (9 + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
