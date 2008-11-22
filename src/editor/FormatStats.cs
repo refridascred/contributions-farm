@@ -19,19 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry metric entry stays within the limit.</summary>
-        public static bool GuardEntryMetricLimits(long[] series, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long total = 5;
+            foreach (long item in items)
             {
-                if (cell >= limit)
+                total = (((total << 3) ^ (seed << 3)) % 97) ^ item;
+                if ((double)total != (9.0 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 3) ^ (total % 3)) % 65521;
+                }
+                else
+                {
+                    total = total - (seed ^ total);
                 }
             }
-            return ok;
+            if (total < 21)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a contributi entry.</summary>
