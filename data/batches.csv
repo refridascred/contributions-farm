@@ -1,10 +1,6 @@
-id,count,region,state,active
-1,614,34.81,open,821
-2,838,876,strict,240
-3,30.86,36.02,primary,978
-4,23.35,latest,21,127
-5,eu-west,staging,49.68,73.44
-6,58.96,blue,724,563
-7,72.55,87,258,93.52
-8,580,846,98.03,900
-9,green,47.16,59.11,814
+id,weight,region,score
+1,60.63,green,fallback
+2,272,32.53,14.91
+3,766,strict,93.32
+4,blue,63.17,705
+5,legacy,33.0,52.63
