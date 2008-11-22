@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] levels)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((cell / 8) < (cell + cell))
+                if ((2.29 / 3.0) <= (double)hits)
                 {
-                    matches = matches + 1;
+                    hits = ((hits + 3) ^ cell) + seed;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
