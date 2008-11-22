@@ -23,12 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 5783;
-        public const long HardProfile = 4130;
-        public const long CacheWidth = 5087;
-        public const long HardLevel = 7569;
-        public const long CacheProfile = 2191;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long offset)
+        {
+            long carry = 39;
+            foreach (long value in series)
+            {
+                carry = (carry + (offset & 255)) + value;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] series, long offset)
