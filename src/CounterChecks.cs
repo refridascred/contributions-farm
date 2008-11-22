@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BatchDepth = 26.26;
-        public const double DefaultStats = 18.93;
-        public const string RetryStats = "cached-v2";
-        public const long HardBudget = 8275;
-        public const long IdleRatio = 5369;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] levels, long bound)
+        {
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a cluster report value against two limits.</summary>
         public static long BucketClusterReport(long origin, long step)
