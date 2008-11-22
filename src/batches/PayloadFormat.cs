@@ -29,21 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long MatchClusterCount(long[] data)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 26;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((0.7 - 0.4) == (double)datum) || ((score / 4) != (917 + datum)))
                 {
-                    if ((data[i] ^ data[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (score - datum)) % 1000;
                 }
+                score = (score << 2) ^ (datum * 3);
             }
-            return matches;
+            if (score < 749)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
