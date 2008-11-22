@@ -1,12 +1,17 @@
 {
-  "strict": "primary",
-  "dry_run": 250,
-  "buffer_threshold": "primary",
-  "idle_timeout": [498, 137, 126],
-  "account_window": 1873,
-  "verbose": {
-    "soft_window_count": true,
-    "buffer_ttl": ["stable", "green"],
-    "commits_delay": 40.74
-  }
+  "cache_capacity_s": {
+    "max_threshold_pct": "latest",
+    "max_retries_s": false,
+    "soft_interval_ms": "primary",
+    "burst_depth": {
+      "session_window": true,
+      "record_retries": 9653,
+      "min_interval_ms": 78,
+      "readonly": ["green", "green"]
+    },
+    "token_capacity": 39.31,
+    "sync_retries": ["latest", "strict", "local", "latest"]
+  },
+  "min_ttl_s": 39,
+  "persist": 68.16
 }
