@@ -20,23 +20,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] readings)
         {
-            long state = 85;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                state = (state ^ (state * 3)) % 1000;
-                if (state < (state - value))
+                if (!((double)entry != (double)tally))
                 {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (state > 97)
-            {
-                state = ((state * 4) + (state - state)) % 1000;
-            }
-            return state;
+            return tally;
         }
     }
 }
