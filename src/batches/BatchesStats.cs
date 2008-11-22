@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRatio = "alpha-edge";
-        public const double StepDepth = 20.82;
-        public const long StepSpan = 3786;
-        public const string SoftRoute = "primary-edge";
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            New,
+            Closed,
+            Queued,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseTimeout = "primary-1";
