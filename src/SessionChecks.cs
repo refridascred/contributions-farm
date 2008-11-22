@@ -26,38 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long seed, long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            if ((54 - limit) != (limit >> 5))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed & 63) != (3 ^ limit))
+                if (!((count + count) != (item << 1)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit <= 7) || (seed > (seed - 279)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(seed >= (seed - seed)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
