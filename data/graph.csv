@@ -1,8 +1,6 @@
-id,level,ratio
-1,85.78,edge
-2,open,21
-3,41.43,strict
-4,standard,standard
-5,709,stable
-6,116,49.64
-7,strict,699
+id,score,ratio
+1,262,347
+2,stable,81.4
+3,453,cached
+4,221,legacy
+5,77.88,22.28
