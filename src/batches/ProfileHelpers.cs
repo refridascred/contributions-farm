@@ -28,15 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] readings)
         {
-            long carry = 97;
-            foreach (long reading in items)
+            long mark = 74;
+            foreach (long reading in readings)
             {
-                carry = carry - (reading / 2);
+                if ((mark + reading) >= mark)
+                {
+                    mark = (mark + reading) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 2) + 785) % 4096;
+                }
             }
-            return carry;
+            return mark % 65521;
         }
 
         /// <summary>Rank queue batches input into a small class.</summary>
