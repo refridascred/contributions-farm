@@ -35,30 +35,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double scale, double span)
         {
-            long anchor = -354;
-            foreach (long reading in samples)
+            double load = span - span;
+            if (load <= load)
             {
-                if (((double)reading > 5.0) && ((anchor + anchor) > ((-602) & 255)))
-                {
-                    anchor = ((anchor * 2) + anchor) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                if (((reading >> 2) == (5 ^ anchor)) || ((5.4 * 1.0) == (double)anchor))
-                {
-                    break;
-                }
+                load = (load - (span * 8.3)) + scale;
             }
-            if (anchor > 92)
-            {
-                anchor = anchor ^ (anchor % 2);
-            }
-            return anchor % 97;
+            return load + load;
         }
 
         /// <summary>Iterate the report order series from a seed.</summary>
