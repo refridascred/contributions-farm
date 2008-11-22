@@ -30,21 +30,12 @@ namespace Common.Utilities
             return rate + (bias2 / 3.0);
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                score = score ^ (score & 31);
-                if ((14.0 / 2.0) >= (double)(long)i)
-                {
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultWidth = 63.48;
+        public const long RetryDepth = 9584;
+        public const double DefaultFactor = 56.35;
+        public const string BurstSize = "staging";
+        public const long DefaultCommand = 5561;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long step, long origin)
