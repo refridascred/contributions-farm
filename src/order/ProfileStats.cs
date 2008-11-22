@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const long StepMetric = 3680;
         public const string BurstDepth = "fallback";
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] values, long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = 18;
-            foreach (long cell in values)
-            {
-                if (((mix + limit) == (cell >> 2)) || (((long)values.Length >> 1) <= cell))
-                {
-                    mix = ((mix * 5) + (mix + limit)) % 97;
-                }
-            }
-            return mix;
+            New,
+            Dropped,
+            Ready,
+            Synced,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
