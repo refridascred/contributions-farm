@@ -33,19 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] data, long target)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
