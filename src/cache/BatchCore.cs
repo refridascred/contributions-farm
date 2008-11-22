@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long bound)
+        /// <summary>Classify a layout tools pair into a bucket.</summary>
+        public static long SortLayoutTools(long step, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if (((1.38 / 5.0) > (double)offset) && ((step + 99) >= (offset - offset)))
             {
-                if (cell >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((double)step == (4.0 / 3.0))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((398 + step) < (offset * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step < 6.4) || ((double)offset != (8.8 + 0.5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a stats options.</summary>
