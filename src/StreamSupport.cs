@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long seed)
         {
-            long score = -1;
-            foreach (long entry in samples)
+            long total = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry >= (entry + score))
-                {
-                    score = (score * 5) + 17;
-                }
-                else
-                {
-                    score = score - ((-34) >> 5);
-                }
-                if ((score >> 1) >= score)
-                {
-                    score = ((score << 3) ^ score) % 65521;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
