@@ -63,23 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double ratio, double offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            double rate = ratio;
-            if (rate <= (ratio * 10.0))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                rate = rate - ratio;
+                if (reading >= (reading >> 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate - (9.15 / 3.0);
+            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
