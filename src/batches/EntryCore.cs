@@ -49,11 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "strict";
-        public const long BurstCounter = 2215;
-        public const long BaseCounter = 3979;
-        public const long WindowCount = 435;
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double floor)
+        {
+            double load = floor * 4.82;
+            return (load - (double)27) + scale;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
