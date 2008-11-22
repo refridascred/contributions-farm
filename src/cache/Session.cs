@@ -32,11 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseWidth = "standard-v2";
-        public const double WindowFilter = 16.68;
-        public const long RetryFilter = 9497;
-        public const long MaxFactor = 9795;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] readings, long floor)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
