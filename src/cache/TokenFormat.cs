@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardContributi = "stable-v2";
-        public const double RetryContributi = 41.35;
-        public const long IdleCount = 7315;
-        public const string RetryTimeout = "open-edge";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + 34) >= (reading + reading))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] data, long offset)
