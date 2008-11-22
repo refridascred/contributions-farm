@@ -32,21 +32,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (step > (offset + step))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step + offset) > (step + step))
                 {
-                    if ((samples[i] - samples[j]) == 2)
+                    return 1;
+                }
+                else
+                {
+                    if ((step << 1) < step)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
