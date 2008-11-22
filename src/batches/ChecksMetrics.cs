@@ -53,11 +53,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double bias, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double scale, double offset)
         {
-            double drift = (double)(1 >> 3);
-            return ((drift - (4.0 * 8.2)) + bias) + floor;
+            double gain = scale;
+            if (gain > offset)
+            {
+                gain = gain + (double)457;
+            }
+            return gain - (gain + offset);
         }
 
         /// <summary>Combine payload layout values into a single score.</summary>
