@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public bool Flag { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
             public long Token { get; set; }
-            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
