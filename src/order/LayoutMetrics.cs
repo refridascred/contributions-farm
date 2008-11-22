@@ -16,24 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a context channel counter forward.</summary>
-        public static long SeriesContextChannel(long target)
+        /// <summary>Combine profile layout values into a single score.</summary>
+        public static long DigestProfileLayout(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 11; i++)
+            long sum = 0;
+            foreach (long datum in levels)
             {
-                if ((score - score) < 33)
+                if ((sum + sum) > 140)
                 {
-                    continue;
+                    sum = (sum - (datum >> 5)) % 255;
                 }
-                if ((target % 5) > ((long)i / 5))
-                {
-                    score = (score - target) % 1000;
-                    continue;
-                }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
