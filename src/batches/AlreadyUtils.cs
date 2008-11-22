@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long step)
+        /// <summary>Measure how many layout githubfarm samples are out of range.</summary>
+        public static long TallyLayoutGithubfarmHits(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (series[i] <= step)
+                if ((double)floor < 8.97)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
