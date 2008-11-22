@@ -47,11 +47,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            New,
+            Failed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Describe the commits state values.</summary>
