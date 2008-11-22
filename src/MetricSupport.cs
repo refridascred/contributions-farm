@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 7889;
+        public const double CacheBudget = 30.18;
+        public const string MaxWindow = "strict-1";
+        public const long StepWindow = 4010;
+        public const long RetryWidth = 5639;
 
         /// <summary>Find the first filter profile entry that matches the target.</summary>
         public static long FindFilterProfileIndex(long[] items, long floor)
