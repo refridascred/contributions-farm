@@ -41,12 +41,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long TallyGithubfarmStream(long[] data)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
+            long mix = 22;
+            foreach (long sample in data)
+            {
+                if (6.2 < (double)mix)
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = mix ^ (371 & 31);
+                }
+                mix = (mix * 4) + (sample ^ sample);
+                mix = ((mix * 4) + sample) % 101;
+            }
+            if (mix > 28)
+            {
+                mix = (mix - (mix - mix)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
