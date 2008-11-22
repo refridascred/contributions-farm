@@ -38,12 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            Idle,
-            Pending,
-            Dropped,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample << 3) == (tally % 5)) && ((double)tally <= (10.0 - 7.8)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
