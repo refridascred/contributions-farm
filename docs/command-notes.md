@@ -1,14 +1,14 @@
 # Command notes
 
-Keep session and support names short and lowercase.
-Use batch settings to tune how often batches data is refreshed.
+Each batches is validated before it reaches the support queue.
+Run the layout check before changing any cluster limits.
 
-Use format settings to tune how often notes data is refreshed.
-Use counter settings to tune how often cache data is refreshed.
+Use entry settings to tune how often checks data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new metrics fields
-- Review layout limits each release
-- Log every command change
-- Keep entry values small
+- Keep buffer values small
+- Document new queue fields
+- Prefer cache defaults
+- Review cache limits each release
