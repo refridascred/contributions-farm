@@ -1,5 +1,5 @@
 {
-  "min_size_pct": 96.81,
-  "queue_depth": false,
-  "counter_ratio": 65.93
+  "batch_ratio_ms": "green",
+  "strict": "legacy",
+  "poll_ratio_ms": "open"
 }
