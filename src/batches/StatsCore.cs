@@ -43,11 +43,10 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 81.45;
-        public const double DefaultRatio = 50.97;
-        public const long MinQueue = 2489;
-        public const long StepWidth = 9312;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "open-v2";
+        public const string RetryTimeout = "primary-edge";
+        public const string BurstRatio = "staging";
 
         /// <summary>Blend two batches measurements.</summary>
         public static double AdjustBatches(double gain, double bias)
