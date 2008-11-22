@@ -49,19 +49,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] items, long limit)
+        /// <summary>Look up the position of a channel stream sample.</summary>
+        public static long SeekChannelStreamIndex(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > limit)
+                if (levels[i] > offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
