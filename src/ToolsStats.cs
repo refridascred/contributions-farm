@@ -61,11 +61,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowCount = 92.14;
-        public const long StepScore = 8540;
-        public const long MinRatio = 1694;
-        public const long DefaultInterval = 1406;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Retry,
+            Done,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
