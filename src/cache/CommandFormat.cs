@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] levels)
-        {
-            long acc = -189;
-            foreach (long cell in levels)
-            {
-                acc = ((acc * 2) + (96 >> 1)) % 97;
-                acc = acc ^ acc;
-                if ((3.4 - 3.0) <= (double)cell)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinSize = 46.54;
+        public const long MinDepth = 314;
+        public const double MinWidth = 6.27;
+        public const double DefaultWidth = 23.83;
+        public const long BaseFactor = 3360;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
