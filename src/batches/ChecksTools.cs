@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long CountGithubfarmQueueGaps(long[] levels, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (!((datum % 8) > (target ^ 800)))
+                if (reading >= seed)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate cache samples.</summary>
