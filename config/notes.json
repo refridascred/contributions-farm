@@ -1,5 +1,8 @@
 {
-  "default_depth_count": "blue",
-  "sync_threshold": ["open", "green", "fallback", "stable"],
-  "burst_size_s": [266, 180]
+  "payload_ttl": 3,
+  "hard_ratio_ms": ["open", "fallback", "strict"],
+  "audit": "edge",
+  "githubfarm_ttl": "blue",
+  "warm_delay_s": "stable",
+  "order_threshold": "latest"
 }
