@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] items)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((sample + 0) > sample) || !((double)sample > (0.7 / 4.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
