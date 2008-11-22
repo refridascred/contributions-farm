@@ -40,12 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long seed)
         {
-            public long Flag { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)value <= (19.0 - 5.5))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
