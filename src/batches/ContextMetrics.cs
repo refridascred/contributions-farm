@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
