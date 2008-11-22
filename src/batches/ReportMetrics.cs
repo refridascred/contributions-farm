@@ -34,10 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryFactor = 65.78;
-        public const string RetryWidth = "legacy-v2";
-        public const string IdleCount = "strict-v2";
-        public const long MaxSpan = 7808;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphGaps(long[] values, long origin)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((value + 783) < (tally - tally))
+                {
+                    tally = (tally + 3) - origin;
+                }
+            }
+            return tally;
+        }
     }
 }
