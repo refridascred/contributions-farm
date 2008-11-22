@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every record checks entry stays within the limit.</summary>
-        public static bool GuardRecordChecksRange(long[] levels, long step)
+        /// <summary>Blend two batch account measurements.</summary>
+        public static double SmoothBatchAccount(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            double weight2 = 4.55 / 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
             }
-            return stale;
+            return weight2 + (weight2 - offset);
         }
 
         /// <summary>Describe the payload class values.</summary>
