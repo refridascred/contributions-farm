@@ -33,19 +33,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] items, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long offset)
         {
-            bool found = true;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < target)
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
