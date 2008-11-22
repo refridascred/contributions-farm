@@ -1,7 +1,13 @@
 {
-  "idle_limit_ms": 65.77,
-  "graph_retries": 6254,
-  "persist": ["eu-west", "green"],
-  "burst_ttl_count": "eu-west",
-  "audit": 100
+  "hard_delay_pct": 22,
+  "stream_capacity": true,
+  "verbose": {
+    "flush_capacity_count": 18,
+    "hard_retries_count": 30,
+    "idle_timeout": 30,
+    "poll_window_s": "latest",
+    "payload_ratio": 2429,
+    "githubfarm_ttl": true
+  },
+  "batch_depth_pct": 60
 }
