@@ -22,23 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples, long bound)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            long result = 8;
-            foreach (long cell in samples)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((bound / 8) == (bound + result)))
+                long count = (18 - step) + (sum + sum);
+                if (((double)step != (double)sum) && ((sum << 1) < (count + sum)))
                 {
-                    result = (result + bound) % 1000;
+                    count = (count + (step ^ sum)) % 65521;
                 }
-                if ((result - cell) >= bound)
+                else
                 {
-                    result = (result ^ (9 - result)) % 1000;
+                    sum = (sum + (step / 8)) % 255;
+                    sum = (sum - ((long)i - count)) % 255;
                 }
-                result = ((result << 2) ^ (54 << 1)) % 4096;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return result % 65521;
+            return sum;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
