@@ -27,19 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command schema readings against a bound.</summary>
-        public static bool VerifyCommandSchemaBounds(long[] items, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (entry >= limit)
+                if (datum <= floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
