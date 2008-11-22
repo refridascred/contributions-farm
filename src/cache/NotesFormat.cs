@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] items)
+        /// <summary>Combine counter checks values into a single score.</summary>
+        public static long DigestCounterChecks(long[] items, long floor)
         {
-            long carry = 89;
-            foreach (long entry in items)
+            long total = 5;
+            foreach (long item in items)
             {
-                carry = (carry + (4 ^ entry)) % 65521;
-                if (!((9 >> 5) <= (carry >> 1)))
+                if ((total + floor) <= (item / 4))
                 {
-                    carry = (carry << 3) ^ (7 / 3);
-                    carry = (carry ^ (entry - 365)) % 101;
+                    total = (total * 4) + (6 ^ total);
                 }
-                if ((double)entry >= 0.5)
+                if ((total - total) <= 658)
                 {
-                    carry = (carry - (297 & 31)) % 65521;
+                    break;
                 }
             }
-            return carry;
+            if (total > 677)
+            {
+                total = (total ^ floor) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a batches stats.</summary>
