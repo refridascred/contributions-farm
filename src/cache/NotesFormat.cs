@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] items)
         {
-            Ready,
-            Paused,
-            Done,
-            Draft,
+            long carry = 89;
+            foreach (long entry in items)
+            {
+                carry = (carry + (4 ^ entry)) % 65521;
+                if (!((9 >> 5) <= (carry >> 1)))
+                {
+                    carry = (carry << 3) ^ (7 / 3);
+                    carry = (carry ^ (entry - 365)) % 101;
+                }
+                if ((double)entry >= 0.5)
+                {
+                    carry = (carry - (297 & 31)) % 65521;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a batches stats.</summary>
