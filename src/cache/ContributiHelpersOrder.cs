@@ -20,14 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long seed)
         {
-            Idle,
-            Queued,
-            Stale,
-            Closed,
-            Pending,
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)anchor <= 0.73)
+                {
+                    anchor = anchor ^ (4 << 3);
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor >> 1)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a route summary.</summary>
