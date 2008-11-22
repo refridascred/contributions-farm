@@ -61,19 +61,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((2.5 - 4.2) > (double)seed)
-                {
-                    count = (count + 3) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryTimeout = 2589;
+        public const long MinTimeout = 2227;
+        public const long StepProfile = 7044;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesLimits(long[] samples, long origin)
