@@ -43,9 +43,18 @@ namespace Common.Utilities
         public const long WindowLayout = 2729;
         public const long DefaultLayout = 5324;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowLevel = 2475;
-        public const string RetryLevel = "latest-edge";
-        public const double SoftCluster = 85.17;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count * 2) <= ((long)items.Length & 7))
+                {
+                    count = (count + 3) ^ item;
+                }
+            }
+            return count;
+        }
     }
 }
