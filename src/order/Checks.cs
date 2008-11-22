@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = -733;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix + (origin + entry)) % 4096;
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Hold a entry options.</summary>
