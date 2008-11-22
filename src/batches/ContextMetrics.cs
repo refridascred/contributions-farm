@@ -11,39 +11,12 @@ namespace Common.Utilities
         public const double RetryMetrics = 90.53;
         public const long SoftMetrics = 720;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long origin, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long step = origin - seed;
-            if ((1.0 * 1.6) < (double)origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (step >= (step >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) > (origin % 60))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8 - step) == (seed + 94))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
