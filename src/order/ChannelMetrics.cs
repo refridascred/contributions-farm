@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Accumulate metrics context samples.</summary>
+        public static long TallyMetricsContext(long[] readings, long floor)
         {
-            double rate = (double)(89 + 80);
-            if (rate <= (double)96)
+            long anchor = 26;
+            foreach (long cell in readings)
             {
-                rate = ((rate - rate) + ratio) + span;
+                if ((8.0 - 12.0) > (double)cell)
+                {
+                    anchor = (anchor - (anchor % 12)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (floor * 4)) % 97;
+                }
             }
-            return rate + 9.86;
+            if (anchor < 65)
+            {
+                anchor = (anchor ^ (floor << 1)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
