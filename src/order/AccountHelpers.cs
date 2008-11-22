@@ -61,12 +61,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
