@@ -1,13 +1,5 @@
 {
-  "strict": 43.93,
-  "sync_ttl_pct": 250,
-  "report_limit": {
-    "default_size": 10.44,
-    "default_capacity_ms": 91.65,
-    "compress": "staging",
-    "payload_interval": 1293
-  },
-  "hard_capacity_pct": ["strict", "fallback"],
-  "order_ttl": ["green", "open", "strict", "legacy"],
-  "soft_window_s": "primary"
+  "hard_delay": 97.94,
+  "readonly": "open",
+  "sync_ttl": true
 }
