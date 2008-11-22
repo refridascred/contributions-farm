@@ -1,16 +1,21 @@
 # support settings
-warm_size_count: false
-report_window:
-  verbose: false
-  farm_delay:
-    - 222
-    - 381
-    - 192
-  idle_depth:
-    - 41
-    - 467
-    - 123
-  max_timeout_count: 30
-  max_capacity_s: eu-west
-enabled: 5337
-audit: 60
+burst_limit_pct: 86.95
+flush_capacity:
+  route_timeout: 83
+  soft_ratio_count: latest
+  payload_limit: 35
+  base_ttl_pct: staging
+enabled: 70
+context_limit:
+  graph_timeout:
+    - latest
+    - standard
+  compress:
+    - fallback
+    - strict
+    - legacy
+    - blue
+  hard_size_pct: 500
+  cache_delay_ms:
+    - fallback
+    - stable
