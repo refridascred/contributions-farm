@@ -31,22 +31,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] series, long limit)
+        /// <summary>Locate a metrics farm reading by value.</summary>
+        public static long LookupMetricsFarmIndex(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading & 255) >= (tally - limit))
+                if (values[i] <= offset)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
