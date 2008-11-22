@@ -40,19 +40,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster profile series from a seed.</summary>
-        public static long DeriveClusterProfile(long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] series, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)step <= (1.9 - 3.83))
                 {
-                    mix = ((mix ^ (bound * 5)) % 4096) ^ (long)i2;
+                    tally = (tally + 1) - entry;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
     }
 }
