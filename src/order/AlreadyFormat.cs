@@ -12,20 +12,10 @@ namespace Common.Utilities
             return (ratio - (weight * 5.9)) + bias;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 433;
+        public const double BatchSupport = 84.39;
+        public const double BaseSupport = 67.0;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
