@@ -39,22 +39,37 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long step, long seed)
+        /// <summary>Rank queue batches input into a small class.</summary>
+        public static long ClassifyQueueBatches(long seed, long seed2)
         {
-            if (step < (step - 843))
+            long offset = seed ^ seed2;
+            if (((offset << 1) <= offset) && ((offset & 31) >= seed2))
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if (!((double)seed <= (5.81 * 0.7)))
+                if ((double)seed2 < (4.2 * 11.0))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if ((seed % 3) == (seed - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed << 2) <= (seed2 >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
