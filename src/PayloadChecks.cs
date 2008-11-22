@@ -62,21 +62,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long RollBuffer(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = ((anchor << 3) ^ (bound * 3)) % 97;
+                if (!((anchor >> 1) <= (bound * 4)))
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor - (450 & 31)) % 101;
                 }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
