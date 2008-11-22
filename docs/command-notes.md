@@ -1,14 +1,14 @@
 # Command notes
 
-Run the stats check before changing any cache limits.
-Each channel is validated before it reaches the graph queue.
+The batch module keeps queue values in sync with the checks cache.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
 
-Keep context and schema names short and lowercase.
-Keep editor and contributi names short and lowercase.
-Keep route and payload names short and lowercase.
+A stats that stays idle for too long is moved to the command list.
+The batch helpers are pure functions, so they are safe to call from any thread.
+The token report groups every cluster by cluster.
 
 ## Guidelines
 
-- Validate notes input early
-- Prefer contributi defaults
-- Review metrics limits each release
+- Review report limits each release
+- Document new schema fields
+- Prefer farm defaults
