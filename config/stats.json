@@ -1,11 +1,7 @@
 {
-  "strict": {
-    "verbose": "blue",
-    "base_ttl_s": [14, 25],
-    "token_capacity": ["latest", "cached", "staging"]
-  },
-  "dry_run": ["green", "fallback", "staging", "strict"],
-  "already_delay": "cached",
-  "verbose": 250,
-  "flush_threshold_count": "strict"
+  "burst_size": ["primary", "legacy"],
+  "verbose": 64,
+  "hard_limit_ms": "blue",
+  "farm_ratio": 100,
+  "batch_threshold": "strict"
 }
