@@ -77,20 +77,14 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long origin)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long carry = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = (((carry * 5) + (carry - origin)) % 255) - (long)i2;
-                }
-                carry = carry - (carry / 3);
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Synced,
+            Stale,
+            Queued,
+            Closed,
         }
     }
 }
