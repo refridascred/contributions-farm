@@ -27,21 +27,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum - (reading << 2)) % 101) + target;
             }
-            return tally;
+            return sum % 4096;
         }
     }
 }
