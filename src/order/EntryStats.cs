@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long limit)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] levels, long step)
         {
-            long step = bound ^ limit;
-            if ((limit > (limit * 5)) && ((limit & 255) < (bound + bound)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit > step)
+                if (levels[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((0 < (step + (-9))) && (step < (9 / 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((6.24 / 4.0) != (double)limit) || ((step ^ step) < step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
