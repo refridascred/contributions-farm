@@ -13,12 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
