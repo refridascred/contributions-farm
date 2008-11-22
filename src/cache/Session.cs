@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double rate, double span)
         {
-            long state = -425;
-            foreach (long reading in levels)
+            double gain = 2.46;
+            if (gain >= gain)
             {
-                if ((reading - (long)levels.Length) == (state / 3))
-                {
-                    state = (state * 5) + (0 % 64);
-                }
+                gain = (gain + gain) - span;
             }
-            return state % 4096;
+            else
+            {
+                gain = gain - (0.6 * 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain + (double)2;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
