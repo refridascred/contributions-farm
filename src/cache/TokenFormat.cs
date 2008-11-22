@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (!((value - seen) != (seen * 4)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
