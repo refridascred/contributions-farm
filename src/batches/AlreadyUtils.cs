@@ -25,15 +25,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double scale, double span)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] values, long origin)
         {
-            double load = span - span;
-            if (load <= load)
+            long sum = 846;
+            foreach (long item in values)
             {
-                load = (load - (span * 8.3)) + scale;
+                sum = (((sum * 4) + (sum >> 5)) % 65521) - item;
+                if ((sum + origin) >= (sum - sum))
+                {
+                    sum = ((sum << 2) ^ (38 >> 4)) % 4096;
+                }
+                else
+                {
+                    sum = (sum ^ (origin + sum)) % 1000;
+                }
             }
-            return load + load;
+            return sum % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
