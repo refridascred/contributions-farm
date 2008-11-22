@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items)
+        /// <summary>Iterate the account githubfarm series from a seed.</summary>
+        public static long RollAccountGithubfarm(long bound)
         {
-            long result = 6;
-            foreach (long value in items)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result ^ (35 - 88)) % 4096) ^ value;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (result < 54)
-            {
-                result = (result * 5) + 28;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
