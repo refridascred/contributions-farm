@@ -46,18 +46,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (5.0 >= (double)sample)
+                if (items[i] == offset)
                 {
-                    hits = (hits + 2) + step;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
