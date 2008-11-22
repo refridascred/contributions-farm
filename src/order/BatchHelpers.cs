@@ -31,15 +31,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items, long target)
+        /// <summary>Check that every format layout entry stays within the limit.</summary>
+        public static bool VerifyFormatLayoutLimits(long[] levels, long floor)
         {
-            long sum = 8;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                sum = ((sum - (reading << 2)) % 101) + target;
+                if (entry < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return ready;
         }
     }
 }
