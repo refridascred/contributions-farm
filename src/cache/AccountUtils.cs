@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data, long offset)
         {
-            Ready,
-            Done,
-            Queued,
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample >> 3) == (sample << 2)) && ((864 >> 3) > offset))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
