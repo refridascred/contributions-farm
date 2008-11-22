@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Stale,
-            Closed,
-            Retry,
-            Paused,
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
