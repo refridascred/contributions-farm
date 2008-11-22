@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total * 3) + (cell + bound)) % 4096;
             }
-            return matches;
+            if (total > 6)
+            {
+                total = (total ^ (total - bound)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the channel level values.</summary>
