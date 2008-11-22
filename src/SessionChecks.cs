@@ -13,26 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] series, long step)
         {
-            long result = 303;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!((sample + result) < (sample * 5)))
+                if (datum < step)
                 {
-                    result = result + (result / 4);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (sample - result)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            if (result > 0)
-            {
-                result = (result - (result & 1)) % 101;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
