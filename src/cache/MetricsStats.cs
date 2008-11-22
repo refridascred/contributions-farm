@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryFactor = 2712;
-        public const long StepCount = 1677;
-        public const long MaxCount = 2095;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account entry.</summary>
         public sealed class AccountEntry
