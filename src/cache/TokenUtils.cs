@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BurstSize = 6381;
         public const long MaxRatio = 3334;
 
-        /// <summary>Digest a series of record command entries.</summary>
-        public static long CombineRecordCommand(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] samples)
         {
-            long result = 738;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((value + result) < (result << 2))
+                if ((6.0 / 9.0) < (double)hits)
                 {
-                    result = (result * 3) + (result + result);
+                    hits = (hits + 3) + sample;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Look up the position of a command token sample.</summary>
