@@ -1,17 +1,5 @@
 {
-  "batch_timeout_ms": 100,
-  "poll_delay_ms": {
-    "idle_capacity_count": false,
-    "compress": "edge",
-    "readonly": false,
-    "audit": {
-      "context_ttl": "green",
-      "profile_delay": 1024,
-      "readonly": 83,
-      "warm_capacity_pct": ["stable", "green", "local"],
-      "hard_ratio_s": "local"
-    },
-    "support_ttl": true
-  },
-  "burst_timeout": "staging"
+  "batch_size": "staging",
+  "compress": true,
+  "default_window_count": "primary"
 }
