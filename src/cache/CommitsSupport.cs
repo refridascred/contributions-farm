@@ -24,23 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] values)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (value <= (value << 2))
                 {
-                    mix = ((mix + (mix / 2)) % 65521) ^ (long)i2;
+                    matches = matches + 2;
                 }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mix = (((mix << 2) ^ (origin % 16)) % 97) + (long)i3;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
