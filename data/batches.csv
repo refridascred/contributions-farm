@@ -1,6 +1,6 @@
-id,label,state,level
-1,606,636,26.55
-2,fallback,standard,12.73
-3,6.58,382,fallback
-4,93.28,eu-west,edge
-5,strict,standard,178
+id,owner,rank
+1,fallback,208
+2,123,98.05
+3,stable,primary
+4,673,cached
+5,39.18,949
