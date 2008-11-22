@@ -14,12 +14,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
