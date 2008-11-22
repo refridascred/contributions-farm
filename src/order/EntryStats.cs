@@ -54,19 +54,15 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long floor)
+        /// <summary>Scale a githubfarm queue figure with a bias.</summary>
+        public static double ScaleGithubfarmQueue(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double mean = (offset / 2.0) * 2.6;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = ((mean + offset) + (double)(long)i) - scale;
             }
-            return flag;
+            return mean + 8.47;
         }
     }
 }
