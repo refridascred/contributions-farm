@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 2434;
-        public const long HardScore = 2324;
-        public const long DefaultTools = 4641;
-        public const double SoftFactor = 12.5;
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftCount = 5466;
