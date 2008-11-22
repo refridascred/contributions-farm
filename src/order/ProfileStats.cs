@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const long CacheTimeout = 7606;
         public const long LimitLevel = 5753;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 3;
+            foreach (long reading in values)
+            {
+                if (((4 ^ result) < origin) && ((reading - result) > (19 - origin)))
+                {
+                    result = (result + reading) % 4096;
+                }
+                result = result - (reading ^ origin);
+            }
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
