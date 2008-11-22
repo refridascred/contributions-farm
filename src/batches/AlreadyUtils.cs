@@ -25,23 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] values, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] items)
         {
-            long sum = 846;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in items)
             {
-                sum = (((sum * 4) + (sum >> 5)) % 65521) - item;
-                if ((sum + origin) >= (sum - sum))
+                if (((count - 80) != (count / 7)) && ((count - value) < (count + value)))
                 {
-                    sum = ((sum << 2) ^ (38 >> 4)) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ (origin + sum)) % 1000;
+                    count = count + 2;
                 }
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
