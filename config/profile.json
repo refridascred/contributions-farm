@@ -1,11 +1,34 @@
 {
-  "batch_ratio": "blue",
-  "farm_retries": true,
-  "retry_ttl_ms": {
-    "command_size": "green",
-    "readonly": false,
-    "account_retries": 7337
+  "format_size": {
+    "max_ttl_ms": 7842,
+    "session_timeout": {
+      "schema_limit": true,
+      "audit": "blue",
+      "dry_run": 3349,
+      "enabled": "green"
+    },
+    "order_delay": false
   },
-  "batches_delay": 53.8,
-  "idle_window_ms": [385, 179, 371]
+  "tools_delay": 83.84,
+  "base_threshold_count": {
+    "token_ratio": {
+      "hard_interval": 50.34,
+      "sync_ratio_count": "fallback",
+      "retry_depth_s": 30.78
+    },
+    "cache_capacity_ms": [112, 298],
+    "base_limit_count": 73.59,
+    "strict": [476, 187],
+    "counter_ttl": {
+      "burst_ratio_ms": 58.98,
+      "default_ttl_ms": 60,
+      "max_capacity": 4,
+      "burst_limit_count": "primary",
+      "batch_retries_s": ["local", "stable", "eu-west", "green"],
+      "route_delay": false
+    },
+    "cache_size_count": 6.6
+  },
+  "batch_ttl": "staging",
+  "report_window": 500
 }
