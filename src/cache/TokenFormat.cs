@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long bound, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] levels, long floor)
         {
-            if ((bound & 31) < bound)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((8.92 * 4.4) != (double)bound)
+                if (levels[i] > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 1) != ((-249) * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
