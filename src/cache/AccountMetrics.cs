@@ -41,18 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already metrics entries that pass the check.</summary>
-        public static long MeasureAlreadyMetricsGaps(long[] values, long target)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)matches <= (9.7 + 4.1))
-                {
-                    matches = ((matches + 3) + datum) - target;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
