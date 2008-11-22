@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] values, long origin)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((value + 783) < (tally - tally))
+                if (!((seen << 2) < seen))
                 {
-                    tally = (tally + 3) - origin;
+                    seen = (seen + 2) + datum;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
