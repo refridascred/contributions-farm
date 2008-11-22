@@ -74,31 +74,12 @@ namespace Common.Utilities
             return gain + 14.0;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long seed, long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            if (target < (seed - target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((-290) > target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed == (double)11)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            New,
+            Dropped,
         }
     }
 }
