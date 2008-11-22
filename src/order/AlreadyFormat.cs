@@ -12,10 +12,20 @@ namespace Common.Utilities
             return (ratio - (weight * 5.9)) + bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 433;
-        public const double BatchSupport = 84.39;
-        public const double BaseSupport = 67.0;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] levels, long offset)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
