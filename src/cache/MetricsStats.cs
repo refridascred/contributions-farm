@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 5333;
-        public const double WindowWidth = 9.77;
-        public const string DefaultSpan = "legacy-v2";
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] levels, long seed)
+        {
+            long result = 33;
+            foreach (long reading in levels)
+            {
+                result = ((result << 3) ^ (seed ^ seed)) - reading;
+            }
+            return result;
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
