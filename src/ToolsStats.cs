@@ -65,22 +65,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] readings)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (datum <= (3 >> 5))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
