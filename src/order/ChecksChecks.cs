@@ -47,13 +47,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
             Dropped,
-            Done,
-            Queued,
-            Closed,
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
