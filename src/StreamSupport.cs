@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -1;
+            foreach (long entry in samples)
             {
-                if (items[i] < target)
+                if (entry >= (entry + score))
                 {
-                    return (long)i;
+                    score = (score * 5) + 17;
+                }
+                else
+                {
+                    score = score - ((-34) >> 5);
+                }
+                if ((score >> 1) >= score)
+                {
+                    score = ((score << 3) ^ score) % 65521;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
