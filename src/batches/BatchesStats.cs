@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile counter entries that pass the check.</summary>
-        public static long CountProfileCounterOutliers(long[] series, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)18 != (double)entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) + limit;
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
