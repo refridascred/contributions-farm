@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            Closed,
+            Queued,
+            New,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
