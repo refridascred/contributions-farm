@@ -39,19 +39,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] series)
-        {
-            long acc = 58;
-            foreach (long datum in series)
-            {
-                if ((7.9 <= (double)acc) && ((acc / 9) == (acc * 4)))
-                {
-                    acc = (acc ^ (0 + acc)) + datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheCount = 6409;
+        public const long WindowEditor = 6585;
+        public const string SoftInterval = "cached-edge";
+        public const double DefaultTimeout = 96.25;
+        public const string BurstEditor = "alpha-v2";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MinFactor = 86.29;
