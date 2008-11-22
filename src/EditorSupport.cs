@@ -46,22 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] readings)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (seen <= (seen - seen))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Pending,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a farm cluster reading by value.</summary>
