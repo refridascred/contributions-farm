@@ -76,19 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long seed)
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((seed % 10) > (seed ^ seed))
                 {
-                    mark = ((mark + mark) % 1000) ^ (long)i2;
+                    mix = (mix ^ (seed >> 4)) % 255;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mark;
+            return mix;
         }
     }
 }
