@@ -1,11 +1,6 @@
-id,label
-1,fallback
-2,edge
-3,91.84
-4,602
-5,strict
-6,59.79
-7,69.98
-8,828
-9,edge
-10,stable
+id,count,level,label,rank
+1,cached,33.62,strict,164
+2,98.2,461,primary,primary
+3,635,39,704,25.91
+4,67.97,75.82,62.99,blue
+5,green,local,60.06,legacy
