@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next record queue value from a seed.</summary>
-        public static long IterateRecordQueue(long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (((4 % 100) != (sum & 63)) || ((double)floor <= (4.37 + 20.0)))
-                {
-                    sum = sum + (floor - floor);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
             }
             return sum;
         }
