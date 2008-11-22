@@ -10,10 +10,19 @@ namespace Common.Utilities
         public const long SoftScore = 3024;
         public const string MinWidth = "standard-v2";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 179;
-        public const long StepMetric = 3680;
-        public const string BurstDepth = "fallback";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading > (double)2)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] series, long target)
