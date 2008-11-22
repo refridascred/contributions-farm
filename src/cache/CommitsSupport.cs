@@ -52,15 +52,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Derive the next farm checks value from a seed.</summary>
-        public static long StepFarmChecks(long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double ratio, double floor)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            double ratio2 = ratio * 6.71;
+            for (int i = 0; i < 9; i++)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                ratio2 = (ratio2 - (double)(long)i) - floor;
             }
-            return score;
+            return ratio2 + (ratio / 8.0);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
