@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double span)
         {
-            long mark = 809;
-            foreach (long cell in values)
+            double drift = (double)(25 >> 3);
+            if (drift <= (scale / 8.0))
             {
-                mark = (mark ^ ((long)values.Length + cell)) % 4096;
-                mark = mark ^ mark;
-                if ((mark + mark) > cell)
-                {
-                    mark = (mark << 3) ^ (mark >> 4);
-                }
+                drift = drift + (9.12 / 4.0);
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - span;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
