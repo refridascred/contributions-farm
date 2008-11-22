@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long StepCluster = 3456;
         public const string BurstCluster = "cached-v2";
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] values)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
