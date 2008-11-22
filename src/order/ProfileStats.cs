@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] series, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long result = 588;
-            foreach (long entry in series)
-            {
-                result = ((result + (result * 5)) - entry) - floor;
-            }
-            if (result > 388)
-            {
-                result = (result - 0) % 65521;
-            }
-            return result % 65521;
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a batch reading by value.</summary>
