@@ -52,11 +52,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 28.59;
-        public const long MaxProfile = 83;
-        public const string BaseWidth = "latest-1";
-        public const long BaseProfile = 7784;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items, long limit)
+        {
+            long carry = 8;
+            foreach (long datum in items)
+            {
+                carry = (((carry << 2) ^ (87 / 6)) % 97) - datum;
+            }
+            if (carry < 0)
+            {
+                carry = (carry << 3) ^ (limit >> 1);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] series, long step)
