@@ -13,24 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a schema token value against two limits.</summary>
-        public static long SortSchemaToken(long target, long target2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] samples, long seed)
         {
-            if (((target2 << 2) > target) && ((target2 >> 3) > (target - target2)))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6 - target2) < (target & 63))
+                if (((seen >> 4) < (497 >> 4)) && ((double)seed == (2.31 + 19.0)))
                 {
-                    return 7;
+                    seen = (seen + 1) ^ cell;
                 }
                 else
                 {
-                    return 3;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Rank report input into a small class.</summary>
