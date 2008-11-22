@@ -53,20 +53,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed % 10) > (seed ^ seed))
-                {
-                    mix = (mix ^ (seed >> 4)) % 255;
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
