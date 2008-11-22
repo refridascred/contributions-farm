@@ -1,9 +1,6 @@
-id,level,ratio,region
-1,21.93,361,915
-2,370,975,71
-3,987,917,28.15
-4,fallback,662,810
-5,standard,38.25,52.55
-6,111,185,31.45
-7,cached,23.7,224
-8,511,91.43,66
+id,label,state,level
+1,606,636,26.55
+2,fallback,standard,12.73
+3,6.58,382,fallback
+4,93.28,eu-west,edge
+5,strict,standard,178
