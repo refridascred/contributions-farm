@@ -46,18 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] series)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((2.0 <= (double)cell) || ((920 ^ seen) < (seen - seen))) && ((double)53 != (double)seen))
+                if (matches < (sample - 158))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
