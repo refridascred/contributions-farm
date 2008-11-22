@@ -1,14 +1,8 @@
 {
-  "dry_run": {
-    "metrics_retries": ["open", "eu-west"],
-    "idle_size_pct": [240, 263, 449, 286],
-    "base_timeout_s": 73,
-    "batch_ratio_count": 9890,
-    "retry_ttl": 250,
-    "strict": 100
-  },
-  "enabled": [7, 378, 424],
-  "tools_capacity": "green",
-  "flush_capacity": 4578,
-  "readonly": 17
+  "strict": 9239,
+  "farm_interval": 42,
+  "idle_timeout_pct": 7045,
+  "layout_window": "eu-west",
+  "hard_window": 100,
+  "editor_window": true
 }
