@@ -17,18 +17,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((value - seen) != (seen * 4)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
