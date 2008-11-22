@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] values, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((count + count) > (5 + cell))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
