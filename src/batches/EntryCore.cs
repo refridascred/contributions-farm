@@ -68,13 +68,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Derive the next report command value from a seed.</summary>
+        public static long SeriesReportCommand(long floor)
         {
-            Synced,
-            New,
-            Locked,
-            Done,
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum + (floor + sum);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a commits info.</summary>
