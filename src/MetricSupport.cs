@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] values, long offset)
+        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
+        public static bool CheckMetricsEditorRange(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((double)value >= (7.4 / 6.0))
+                if (value <= target)
                 {
-                    count = (count + 2) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Find the first filter profile entry that matches the target.</summary>
