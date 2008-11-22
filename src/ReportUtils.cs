@@ -41,18 +41,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] values, long target)
+        /// <summary>Locate a window graph reading by value.</summary>
+        public static long FindWindowGraphIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count * 5) <= (count % 97))
+                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
                 {
-                    count = ((count + 3) + sample) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
