@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long floor)
-        {
-            long mark = 6;
-            foreach (long value in data)
-            {
-                if ((floor + value) == (value + 4))
-                {
-                    mark = (mark + (581 + mark)) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (mark * 2);
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "fallback-1";
+        public const long StepSupport = 6916;
+        public const string RetrySupport = "alpha-1";
+        public const long IdleSupport = 1323;
+        public const long StepSize = 4061;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long DefaultRatio = 4328;
