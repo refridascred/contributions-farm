@@ -72,17 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cluster buffer sample.</summary>
-        public static long LocateClusterBufferIndex(long[] levels, long step)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            New,
+            Done,
+            Closed,
         }
     }
 }
