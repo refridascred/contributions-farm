@@ -87,19 +87,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels)
         {
-            bool found = true;
+            long count = 0;
             foreach (long value in levels)
             {
-                if (value < seed)
+                if (((69 / 9) <= (value - count)) || !((double)value > (2.9 * 4.7)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
