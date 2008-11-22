@@ -30,11 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "fallback";
-        public const string StepChannel = "legacy-1";
-        public const long BurstSize = 2311;
-        public const long BurstWidth = 3568;
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total ^ total) % 97;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double BlendCommits(double weight, double offset)
