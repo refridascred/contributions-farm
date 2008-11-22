@@ -30,16 +30,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long offset2)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long delta = offset + offset2;
+            if ((offset & 63) < (offset2 / 6))
             {
-                total = (total ^ total) % 97;
-                total = ((total * 5) + (long)i) % 1000;
+                return 0;
             }
-            return total;
+            else
+            {
+                if ((offset + offset) >= (delta ^ 557))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((delta * 5) < (offset2 - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((delta + offset) < (offset / 8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next commits value.</summary>
