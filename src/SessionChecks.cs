@@ -53,12 +53,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
+            New,
+            Failed,
             Pending,
-            Closed,
-            Locked,
+            Done,
+            Stale,
         }
     }
 }
