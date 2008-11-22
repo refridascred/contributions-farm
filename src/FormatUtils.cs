@@ -70,13 +70,9 @@ namespace Common.Utilities
         public const long RetryTimeout = 7476;
         public const long DefaultCounter = 3667;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Token { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxSpan = 1061;
+        public const string RetryScore = "fallback-edge";
+        public const long BatchReport = 2301;
     }
 }
