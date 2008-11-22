@@ -45,14 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinLevel = 8041;
+        public const long DefaultPayload = 6901;
+        public const double LimitPayload = 29.24;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MinStream = 5639;
