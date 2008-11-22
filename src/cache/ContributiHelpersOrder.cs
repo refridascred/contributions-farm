@@ -24,15 +24,14 @@ namespace Common.Utilities
         public const string SoftCluster = "stable";
         public const long DefaultTimeout = 256;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long floor)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mark = 148;
-            foreach (long datum in data)
-            {
-                mark = (mark + (mark + floor)) ^ datum;
-            }
-            return mark;
+            Paused,
+            Dropped,
+            Active,
+            New,
+            Locked,
         }
     }
 }
