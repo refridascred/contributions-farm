@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] samples, long floor)
-        {
-            long mix = 73;
-            foreach (long entry in samples)
-            {
-                mix = mix - ((-904) + floor);
-                if ((entry ^ 507) != (floor & 15))
-                {
-                    mix = mix ^ (mix + 1);
-                }
-            }
-            if (mix < 719)
-            {
-                mix = (mix + floor) % 101;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 6560;
+        public const long BatchBudget = 2471;
+        public const long StepCount = 3807;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] values, long step)
