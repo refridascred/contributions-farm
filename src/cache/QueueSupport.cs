@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] data, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (reading > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
