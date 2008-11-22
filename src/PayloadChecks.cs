@@ -56,19 +56,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] readings, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (item > floor)
+                if ((value + matches) > 14)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
