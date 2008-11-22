@@ -84,18 +84,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Scale a queue metric figure with a bias.</summary>
+        public static double ScaleQueueMetric(double ratio, double span)
         {
-            long result = 347;
-            foreach (long datum in items)
+            double load = span + span;
+            for (int i = 0; i < 2; i++)
             {
-                if ((datum + datum) > (datum & 7))
-                {
-                    result = (result ^ (7 + datum)) % 101;
-                }
+                load = ((load - (load * 4.17)) + (double)(long)i) + ratio;
             }
-            return result;
+            return load + (double)152;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
