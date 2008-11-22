@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double bias)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            double weight = (double)(23 & 3);
-            return (weight - rate) + bias;
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public double Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
