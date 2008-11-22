@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] samples, long step)
+        /// <summary>Scale a buffer payload figure with a bias.</summary>
+        public static double SmoothBufferPayload(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (3.61 <= (double)step)
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
+            double ratio = weight;
+            return (ratio - (weight * 5.9)) + bias;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
