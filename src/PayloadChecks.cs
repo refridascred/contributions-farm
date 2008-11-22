@@ -30,19 +30,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] samples, long floor)
+        /// <summary>Accumulate farm tools samples.</summary>
+        public static long FoldFarmTools(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long sum = 301;
+            foreach (long datum in samples)
             {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum - (sum + datum)) % 1000;
             }
-            return ok;
+            if (sum < 83)
+            {
+                sum = (sum + (sum & 1)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Blend two batch measurements.</summary>
