@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] items)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((long)items.Length > (84 + entry))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
