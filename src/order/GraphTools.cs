@@ -78,21 +78,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Classify a stats payload pair into a bucket.</summary>
+        public static long ClassifyStatsPayload(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((step ^ step) <= (step + seed))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed >= (15.0 * 7.9))
                 {
-                    if ((samples[i] + samples[j]) == 6)
+                    return 7;
+                }
+                else
+                {
+                    if (!((seed % 2) == (72 - seed)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)step != (double)seed) && (step <= (seed - step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
