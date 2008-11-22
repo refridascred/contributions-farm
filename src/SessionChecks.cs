@@ -42,13 +42,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] values)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long acc = 377;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) >= acc)
+                {
+                    acc = (acc << 2) ^ (reading ^ reading);
+                }
+            }
+            if (acc < 9)
+            {
+                acc = ((acc * 3) + acc) % 1000;
+            }
+            return acc;
         }
     }
 }
