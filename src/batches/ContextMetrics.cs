@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 28.61;
-        public const double BurstSpan = 16.71;
-        public const double RetryMetrics = 90.53;
-        public const long SoftMetrics = 720;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Queued,
+            Active,
+            Draft,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
