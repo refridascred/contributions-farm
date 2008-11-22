@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const long BurstAlready = 9502;
         public const string BurstFactor = "alpha-1";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series, long floor)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (0.4 >= (double)tally)
-                {
-                    tally = ((tally + 1) + reading) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine context values into a single score.</summary>
