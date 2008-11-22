@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 17.04;
+        public const long WindowCounter = 8775;
+        public const string SoftCounter = "fallback-1";
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
