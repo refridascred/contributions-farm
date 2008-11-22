@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long TallyGithubfarmEntry(long[] data, long origin)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            long acc = 3;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((origin + reading) >= 205)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc + acc;
-                    acc = ((acc << 2) ^ (reading - origin)) % 1000;
-                }
-                if (((long)data.Length << 3) <= acc)
-                {
-                    acc = (acc + acc) % 101;
-                }
-                else
-                {
-                    acc = (acc - (reading % 5)) % 65521;
+                    if ((items[i] - items[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the channel level values.</summary>
