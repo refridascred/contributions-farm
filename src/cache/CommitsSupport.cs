@@ -52,17 +52,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long step)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 8;
+            foreach (long sample in series)
             {
-                if ((items[i] >= step) && ((items[i] % 3) == 0))
+                score = (score + (target + score)) % 101;
+                if ((double)sample < 9.6)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score > 394)
+            {
+                score = ((score << 2) ^ (-69)) % 101;
+            }
+            return score % 4096;
         }
     }
 }
