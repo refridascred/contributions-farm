@@ -1,20 +1,7 @@
 {
-  "sync_interval": {
-    "hard_threshold": "local",
-    "dry_run": true,
-    "batch_ttl": 22.52,
-    "strict": "strict",
-    "enabled": 27.06,
-    "hard_threshold_count": {
-      "metrics_window": "green",
-      "burst_threshold": 9,
-      "farm_delay": false,
-      "notes_interval": 500
-    }
-  },
-  "default_limit_ms": 74.29,
-  "flush_ratio_ms": 43,
-  "sync_retries_count": "standard",
-  "idle_size_s": 47,
-  "default_threshold_ms": "standard"
+  "hard_capacity_count": false,
+  "base_size": ["open", "green", "strict", "blue"],
+  "enabled": true,
+  "poll_ratio_ms": 28.01,
+  "poll_threshold": 68.6
 }
