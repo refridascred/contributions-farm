@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSize = 2667;
-        public const double WindowScore = 98.87;
-        public const string WindowSpan = "staging-edge";
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Retry,
+            New,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long WeighMetric(long[] series, long limit)
