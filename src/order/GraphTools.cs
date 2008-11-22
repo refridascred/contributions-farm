@@ -22,13 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count order editor pairs that satisfy a relation.</summary>
+        public static long MatchOrderEditorCount(long[] items)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stats batches entries.</summary>
