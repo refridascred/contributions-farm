@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate account contributi readings against a bound.</summary>
-        public static bool ValidateAccountContributiLimits(long[] items, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (datum > limit)
+                if (((-210) + floor) == (sample + seen))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
