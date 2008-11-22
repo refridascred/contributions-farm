@@ -12,13 +12,25 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long step)
         {
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long gap = offset ^ step;
+            if ((step % 100) > (2 >> 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.64 - 2.0) > (double)gap)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
