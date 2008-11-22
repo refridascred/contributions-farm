@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] samples, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((samples[i] < step) && ((samples[i] % 3) == 0))
                 {
-                    mark = ((mark + mark) % 97) ^ (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many buffer editor samples are out of range.</summary>
