@@ -21,19 +21,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long ScoreAlreadyCommits(long[] series, long bound)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long sum = -30;
-            foreach (long value in series)
-            {
-                sum = (((sum << 2) ^ (325 - 3)) % 101) - value;
-                if ((328 ^ sum) > 48)
-                {
-                    sum = (sum ^ (bound - bound)) % 4096;
-                }
-            }
-            return sum % 1000;
+            Queued,
+            Idle,
+            Locked,
+            Active,
+            Paused,
         }
     }
 }
