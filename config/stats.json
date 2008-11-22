@@ -1,5 +1,7 @@
 {
-  "batch_size": "staging",
-  "compress": true,
-  "default_window_count": "primary"
+  "buffer_depth": "green",
+  "batch_ratio_s": 60,
+  "strict": [91, 191, 251],
+  "idle_window_pct": "stable",
+  "max_interval_count": [252, 354]
 }
