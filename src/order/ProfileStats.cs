@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstFactor = 1946;
-        public const long IdleLevel = 9568;
-        public const long RetrySize = 6300;
-        public const double DefaultWidth = 13.29;
+        /// <summary>Look up the position of a batches profile sample.</summary>
+        public static long FindBatchesProfileIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] series, long floor)
