@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] levels, long origin)
-        {
-            long mix = -733;
-            foreach (long entry in levels)
-            {
-                mix = (mix + (origin + entry)) % 4096;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 6922;
+        public const double BurstTimeout = 21.67;
+        public const long BaseRatio = 8043;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
