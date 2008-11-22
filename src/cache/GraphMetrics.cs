@@ -39,12 +39,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultSpan = 5.45;
-        public const long WindowLevel = 1185;
-        public const string LimitTimeout = "local-v2";
-        public const long WindowWidth = 7860;
-        public const long LimitFilter = 688;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items, long floor)
+        {
+            long total = 55;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length - total) < (cell + floor))
+                {
+                    total = total ^ floor;
+                }
+                if (!((2.17 / 9.0) <= (double)floor))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
         public static long PairClusterCount(long[] levels)
