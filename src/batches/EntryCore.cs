@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] levels, long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (0.46 > (double)target)
-                {
-                    hits = (hits + 3) - cell;
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Locked,
+            Done,
+            Synced,
         }
 
         /// <summary>Digest a series of stats format entries.</summary>
