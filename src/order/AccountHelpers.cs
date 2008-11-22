@@ -26,11 +26,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Iterate the channel filter series from a seed.</summary>
+        public static long DeriveChannelFilter(long floor)
         {
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
