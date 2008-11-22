@@ -1,8 +1,14 @@
 {
-  "burst_size_s": 69.26,
-  "max_threshold_s": "open",
-  "cache_size": true,
-  "sync_window_count": 5129,
-  "persist": "legacy",
-  "min_timeout_pct": 5944
+  "dry_run": {
+    "metrics_retries": ["open", "eu-west"],
+    "idle_size_pct": [240, 263, 449, 286],
+    "base_timeout_s": 73,
+    "batch_ratio_count": 9890,
+    "retry_ttl": 250,
+    "strict": 100
+  },
+  "enabled": [7, 378, 424],
+  "tools_capacity": "green",
+  "flush_capacity": 4578,
+  "readonly": 17
 }
