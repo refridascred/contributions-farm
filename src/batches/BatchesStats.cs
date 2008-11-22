@@ -31,11 +31,18 @@ namespace Common.Utilities
         public const long CacheEntry = 1493;
         public const double SoftInterval = 49.0;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long anchor = 1;
+            foreach (long sample in levels)
+            {
+                if ((anchor * 4) <= (anchor / 8))
+                {
+                    anchor = (anchor << 2) ^ (sample + anchor);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of command readings.</summary>
