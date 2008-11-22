@@ -1,4 +1,9 @@
 # support settings
-base_timeout: 27
-hard_capacity_s: primary
-burst_window_count: latest
+counter_retries: true
+min_capacity_count: stable
+idle_ratio:
+  - 120
+  - 345
+  - 347
+  - 140
+base_timeout: latest
