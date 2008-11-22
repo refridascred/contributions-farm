@@ -28,17 +28,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] data, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] samples, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                if (item <= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Blend two order measurements.</summary>
