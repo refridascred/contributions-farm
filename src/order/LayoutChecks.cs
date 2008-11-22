@@ -35,22 +35,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long FoldCacheSession(long[] items)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] readings, long limit)
         {
-            long carry = 77;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)carry != (5.15 / 6.0))
+                if ((matches + matches) == (596 >> 2))
                 {
-                    carry = ((carry ^ carry) % 97) - datum;
-                }
-                if (((-42) >= (carry + carry)) || ((1.8 - 6.42) <= (9.19 / 3.0)))
-                {
-                    break;
+                    matches = ((matches + 2) + datum) + limit;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
