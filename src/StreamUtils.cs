@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
