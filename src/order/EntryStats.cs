@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Count the commits cache entries that pass the check.</summary>
+        public static long CountCommitsCacheHits(long[] readings, long limit)
         {
-            long anchor = 8;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((1.12 + 20.0) != (double)anchor) || ((double)cell >= (15.0 * 6.1)))
+                if (!!((double)limit > (6.44 + 16.0)))
                 {
-                    anchor = (anchor + (anchor * 5)) % 255;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
