@@ -34,15 +34,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Project the next buffer contributi value.</summary>
+        public static double BlendBufferContributi(double weight, double bias)
         {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
+            double rate = weight;
+            if (rate >= bias)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                rate = rate + (weight * 0.5);
             }
-            return carry;
+            return rate + (double)856;
         }
     }
 }
