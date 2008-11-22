@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MaxOrder = 5161;
         public const long SoftOrder = 2963;
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Locked,
-            Draft,
-            Closed,
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
