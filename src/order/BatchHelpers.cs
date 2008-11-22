@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long DefaultLayout = 9040;
         public const long SoftLayout = 3756;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long step)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Idle,
+            Retry,
+            Ready,
+            New,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
