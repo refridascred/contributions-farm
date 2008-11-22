@@ -66,19 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits record series from a seed.</summary>
-        public static long IterateCommitsRecord(long bound)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((bound >> 4) < (12 + anchor))
-                {
-                    anchor = (anchor << 3) ^ ((long)i * 3);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            Pending,
+            Ready,
+            Locked,
+            Failed,
+            Idle,
         }
     }
 }
