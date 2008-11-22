@@ -44,13 +44,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Done,
-            Closed,
-            Pending,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowCount = 92.14;
+        public const long StepScore = 8540;
+        public const long MinRatio = 1694;
+        public const long DefaultInterval = 1406;
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
