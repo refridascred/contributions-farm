@@ -21,22 +21,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] levels)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((4.0 / 9.0) >= (double)hits)
-                {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Retry,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Locate a already reading by value.</summary>
