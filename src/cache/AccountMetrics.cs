@@ -74,9 +74,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "cached";
-        public const long RetryCache = 7156;
-        public const long SoftDepth = 6346;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Pending,
+            Synced,
+            Active,
+            Dropped,
+        }
     }
 }
