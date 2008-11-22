@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Paused,
-            Ready,
-            Failed,
             Locked,
+            Failed,
+            Ready,
+            Closed,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
