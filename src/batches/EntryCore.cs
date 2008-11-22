@@ -31,26 +31,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate metric window samples.</summary>
-        public static long ScoreMetricWindow(long[] readings)
+        /// <summary>Measure how many farm token samples are out of range.</summary>
+        public static long CountFarmTokenHits(long[] readings, long seed)
         {
-            long carry = 132;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((value - carry) > (value << 1))
+                if ((double)entry < (16.0 + 6.6))
                 {
-                    carry = carry - carry;
+                    matches = (matches + 1) - seed;
                 }
                 else
                 {
-                    carry = (carry ^ (carry + value)) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 3)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
