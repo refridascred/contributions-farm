@@ -53,11 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 8036;
-        public const long BatchFormat = 1906;
-        public const long HardFactor = 8279;
-        public const double BaseFormat = 24.42;
-        public const string LimitFormat = "local";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 28.37;
+        public const long IdleMetrics = 7883;
+        public const double WindowMetrics = 90.84;
+        public const string StepMetrics = "staging-v2";
     }
 }
