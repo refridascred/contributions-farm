@@ -64,21 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
+        /// <summary>Count the stream channel entries that pass the check.</summary>
+        public static long CountStreamChannelGaps(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((hits - hits) > hits) && (((cell + 5) > (long)series.Length) && ((cell >> 1) <= (cell ^ cell))))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
