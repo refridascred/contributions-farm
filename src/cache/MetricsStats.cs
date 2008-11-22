@@ -43,19 +43,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] data, long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Ready,
+            New,
         }
     }
 }
