@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Rank queue entry input into a small class.</summary>
+        public static long RankQueueEntry(long origin, long origin2)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long diff = origin ^ origin2;
+            if ((double)origin <= (3.6 / 7.0))
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (51 > origin2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((origin - diff) <= (origin2 + diff)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff % 60) >= (origin >> 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm header.</summary>
