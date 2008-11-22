@@ -86,15 +86,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session schema series from a seed.</summary>
-        public static long RollSessionSchema(long target)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long offset)
         {
-            long sum = target;
+            long anchor = offset;
             for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                anchor = (anchor ^ 522) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
     }
 }
