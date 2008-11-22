@@ -15,16 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] levels, long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long score = -5;
-            foreach (long item in levels)
-            {
-                score = ((score + item) % 1000) + origin;
-                score = score ^ item;
-            }
-            return score;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
