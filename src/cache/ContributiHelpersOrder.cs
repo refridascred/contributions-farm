@@ -36,24 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long bound)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] readings)
         {
-            if ((limit + bound) <= (limit ^ limit))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((882 & 31) == (limit - limit)) && ((double)limit < (double)bound))
+                if (!(reading < ((long)readings.Length + tally)) || ((8.42 - 0.8) == (double)reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
