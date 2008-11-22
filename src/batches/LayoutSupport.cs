@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if (item > seed)
+                if (cell >= seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Hold a cache summary.</summary>
