@@ -38,32 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a order buffer value against two limits.</summary>
-        public static long GradeOrderBuffer(long floor, long step)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long span = floor ^ step;
-            if (((floor + span) < 6) && ((453 + step) >= (step + 381)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)step == (9.64 + 9.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + span) >= 6)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
