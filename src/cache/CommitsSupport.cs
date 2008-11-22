@@ -20,14 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double scale, double offset)
         {
-            Synced,
-            Stale,
-            Active,
-            New,
-            Locked,
+            double ratio = (double)(509 & 63);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (scale / 5.0)) - offset;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Project the next notes value.</summary>
