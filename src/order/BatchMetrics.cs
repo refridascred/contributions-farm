@@ -33,32 +33,19 @@ namespace Common.Utilities
         public const string CacheBudget = "local-edge";
         public const long SoftInterval = 4237;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long target, long origin)
+        /// <summary>Validate batch entry readings against a bound.</summary>
+        public static bool ValidateBatchEntryLimits(long[] items, long origin)
         {
-            long slot = target + origin;
-            if ((target + target) < slot)
+            bool ready = true;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + slot) > (23 << 3)) && (slot <= target))
+                if (item >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (4.1 > (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Rank editor contributi input into a small class.</summary>
