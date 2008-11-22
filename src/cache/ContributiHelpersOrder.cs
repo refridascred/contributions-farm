@@ -20,24 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)anchor <= 0.73)
-                {
-                    anchor = anchor ^ (4 << 3);
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor >> 1)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepPayload = 24.79;
+        public const long LimitPayload = 9034;
+        public const long IdleLevel = 8039;
+        public const string BatchSize = "stable";
+        public const long SoftPayload = 9457;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
