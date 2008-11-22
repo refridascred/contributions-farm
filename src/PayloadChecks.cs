@@ -71,23 +71,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] levels, long seed)
         {
-            double ratio2 = (ratio + span) - span;
-            if (ratio2 > (double)2)
+            bool found = true;
+            foreach (long value in levels)
             {
-                ratio2 = ratio2 - (double)794;
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)87;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - 5.0) + (double)(long)i;
-            }
-            return ratio2 - (ratio * 5.9);
+            return found;
         }
     }
 }
