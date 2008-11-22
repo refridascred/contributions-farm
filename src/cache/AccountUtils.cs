@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((2.29 / 3.0) <= (double)hits)
-                {
-                    hits = ((hits + 3) ^ cell) + seed;
-                }
-            }
-            return hits;
+            Failed,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
