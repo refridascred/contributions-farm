@@ -38,18 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] levels, long limit)
         {
-            long anchor = 55;
-            foreach (long sample in series)
+            long result = 3;
+            foreach (long item in levels)
             {
-                if ((0.6 > (double)anchor) || ((anchor + anchor) == (sample + 47)))
+                if ((result <= (item + limit)) || (limit >= (item + result)))
                 {
-                    anchor = anchor ^ (anchor + anchor);
+                    result = (result - (result % 60)) % 255;
                 }
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Match up batch samples.</summary>
