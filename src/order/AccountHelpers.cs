@@ -55,11 +55,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepRatio = 6468;
-        public const string BatchSchema = "stable-v2";
-        public const long MaxSchema = 8010;
-        public const long SoftSchema = 2258;
+        /// <summary>Blend two schema entry measurements.</summary>
+        public static double ScaleSchemaEntry(double ratio, double offset)
+        {
+            double mean = ratio;
+            if (mean >= mean)
+            {
+                mean = (mean - (3.66 - ratio)) - offset;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
