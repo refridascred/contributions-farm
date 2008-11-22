@@ -18,11 +18,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next notes metric value.</summary>
-        public static double ScaleNotesMetric(double gain, double bias)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long offset)
         {
-            double rate = (double)((-3) & 63);
-            return ((rate - (double)21) + gain) + bias;
+            long state = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state ^ ((long)i & 255)) % 255;
+                if ((double)offset < 0.6)
+                {
+                    continue;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a context entry.</summary>
