@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] levels)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (entry >= offset)
+                if ((4.0 / 9.0) >= (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
