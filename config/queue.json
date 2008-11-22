@@ -1,7 +1,16 @@
 {
-  "token_threshold": 72,
-  "min_depth_ms": 62.52,
-  "warm_window_count": "blue",
-  "stream_retries": 81,
-  "default_capacity": true
+  "tools_retries": "eu-west",
+  "support_ttl": "green",
+  "strict": {
+    "min_timeout_s": {
+      "stats_window": "latest",
+      "counter_capacity": "staging",
+      "soft_threshold_ms": true,
+      "channel_retries": "local",
+      "audit": 26,
+      "hard_window": 24
+    },
+    "filter_ratio": 45.39,
+    "record_window": 100
+  }
 }
