@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "fallback-v2";
-        public const long LimitInterval = 7425;
-        public const string BurstGithubfarm = "staging-v2";
-        public const long BatchInterval = 369;
-        public const long MinLevel = 8318;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long origin, long bound)
+        {
+            if ((12.0 < (double)origin) && ((33 + bound) > 151))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((391 - origin) < 2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long ScoreCommits(long[] data)
