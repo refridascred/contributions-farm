@@ -50,28 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics batches readings.</summary>
-        public static long TallyMetricsBatches(long[] samples, long origin)
+        /// <summary>Check that every route editor entry stays within the limit.</summary>
+        public static bool GuardRouteEditorBounds(long[] data, long limit)
         {
-            long mark = -434;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((origin + mark) > entry)
+                if (datum <= limit)
                 {
-                    mark = mark + 8;
-                    mark = (mark << 3) ^ entry;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    mark = (mark << 2) ^ (79 ^ origin);
-                }
-                mark = (mark << 2) ^ (entry - mark);
             }
-            if (mark < 965)
-            {
-                mark = (mark ^ (mark + mark)) % 65521;
-            }
-            return mark % 4096;
+            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
