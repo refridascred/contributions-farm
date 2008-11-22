@@ -19,12 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 7461;
-        public const long LimitSize = 4196;
-        public const string DefaultSpan = "latest";
-        public const string WindowSession = "alpha-1";
-        public const string HardBudget = "stable-v2";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
