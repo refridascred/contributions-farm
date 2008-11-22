@@ -1,12 +1,13 @@
 {
-  "githubfarm_interval": 26.65,
-  "farm_threshold": "eu-west",
-  "flush_size_count": 41.38,
-  "max_threshold": {
-    "support_size": true,
-    "channel_ttl": "open",
-    "soft_interval": "strict",
-    "layout_ttl": 250
-  },
-  "dry_run": "blue"
+  "strict": "open",
+  "command_limit": 8824,
+  "window_timeout": "green",
+  "session_window": 8941,
+  "flush_depth_count": "staging",
+  "poll_threshold_ms": {
+    "graph_size": false,
+    "verbose": "strict",
+    "idle_timeout": false,
+    "hard_window": 30
+  }
 }
