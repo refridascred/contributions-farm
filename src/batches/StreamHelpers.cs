@@ -36,11 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long step)
         {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a report channel value against two limits.</summary>
