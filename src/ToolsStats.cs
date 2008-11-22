@@ -60,19 +60,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double gain, double bias)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            double load = (gain + 13.0) / 6.0;
-            if (load < gain)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)536) + (double)(long)i;
-            }
-            return load + (gain + gain);
+            return matches;
         }
 
         /// <summary>Accumulate profile contributi samples.</summary>
