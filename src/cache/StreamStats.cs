@@ -56,11 +56,12 @@ namespace Common.Utilities
         public const long MinInterval = 8103;
         public const string HardSize = "open-1";
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Retry,
+            Stale,
         }
     }
 }
