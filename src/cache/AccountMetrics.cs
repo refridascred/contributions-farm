@@ -32,19 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandRange(long[] values, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (cell > step)
+                if ((offset - matches) <= (entry << 3))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the already metrics entries that pass the check.</summary>
