@@ -43,18 +43,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = 84;
+            foreach (long reading in readings)
             {
-                if (seen <= (8 >> 5))
+                if (!(bound > (22 >> 1)))
                 {
-                    seen = (seen + 3) ^ entry;
+                    mix = mix ^ (reading << 2);
+                }
+                else
+                {
+                    mix = ((mix * 2) + (bound - mix)) % 255;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
