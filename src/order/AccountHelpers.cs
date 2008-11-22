@@ -36,15 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel filter series from a seed.</summary>
-        public static long DeriveChannelFilter(long floor)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long step, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
+            if ((106 * 5) <= (step ^ 93))
             {
-                result = ((result * 3) + (long)i) % 4093;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (origin < (step / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
