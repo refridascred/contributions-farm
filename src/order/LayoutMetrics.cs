@@ -31,10 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftMetrics = 79.28;
-        public const long CacheMetrics = 7456;
-        public const string RetryCount = "primary-edge";
-        public const long DefaultLevel = 1848;
+        /// <summary>Look up the position of a support metric sample.</summary>
+        public static long FindSupportMetricIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
