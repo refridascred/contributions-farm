@@ -1,8 +1,7 @@
-id,score,level
-1,2.16,124
-2,open,938
-3,17,661
-4,64,344
-5,strict,68
-6,101,838
-7,staging,325
+id,count
+1,713
+2,blue
+3,93.95
+4,fallback
+5,fallback
+6,999
