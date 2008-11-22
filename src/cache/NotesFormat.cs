@@ -34,18 +34,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] series, long limit)
+        /// <summary>Look up the position of a counter already sample.</summary>
+        public static long LocateCounterAlreadyIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((value ^ value) >= (limit << 3)) || (((double)limit != (6.6 - 15.0)) && ((double)limit <= (2.74 - 4.3))))
+                if (series[i] <= floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
