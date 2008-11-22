@@ -56,17 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long FoldStatsFarm(long[] levels, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long result = 0;
+            foreach (long cell in levels)
             {
-                long hits = (seed << 1) + (163 + 826);
-                acc = acc - (8 - hits);
-                acc = ((acc * 5) + (long)i) % 65521;
+                result = ((result << 2) ^ cell) % 4096;
             }
-            return acc;
+            if (result > 155)
+            {
+                result = (result ^ (step + 9)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
