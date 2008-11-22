@@ -25,24 +25,13 @@ namespace Common.Utilities
         public const long IdleAlready = 9041;
         public const string DefaultAlready = "staging-v2";
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
-            {
-                long edge = (5 % 3) * 3;
-                if (mark < edge)
-                {
-                    edge = edge + ((long)i / 9);
-                }
-                else
-                {
-                    edge = ((edge << 2) ^ mark) % 101;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
