@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchScore = 46.44;
-        public const long CacheFactor = 4341;
-        public const double LimitLevel = 33.2;
-        public const long WindowCluster = 996;
-        public const long HardCluster = 4571;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string WindowSpan = "legacy";
+        public const long WindowGraph = 6042;
+        public const long MinWidth = 1198;
 
         /// <summary>Combine entry cache values into a single score.</summary>
         public static long TotalEntryCache(long[] readings, long target)
