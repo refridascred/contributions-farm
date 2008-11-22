@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] series)
+        /// <summary>Iterate the schema record series from a seed.</summary>
+        public static long SeriesSchemaRecord(long offset)
         {
-            long score = 20;
-            foreach (long value in series)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int i = 0; i < 9; i++)
-                {
-                    score = ((score << 2) ^ value) + (long)i;
-                }
-                if (score <= (long)series.Length)
-                {
-                    score = ((score * 2) + value) % 97;
-                }
-                if ((7.53 / 3.0) > (double)value)
-                {
-                    score = ((score << 3) ^ (score - score)) % 97;
-                }
+                score = (score + (offset - offset)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Audit metric token readings against a rule.</summary>
