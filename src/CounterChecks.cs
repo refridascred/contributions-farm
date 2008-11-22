@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Level { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
