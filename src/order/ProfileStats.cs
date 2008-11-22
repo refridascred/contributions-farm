@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long CacheTimeout = 7606;
         public const long LimitLevel = 5753;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values, long origin)
+        /// <summary>Combine schema farm values into a single score.</summary>
+        public static long ScoreSchemaFarm(long[] samples, long bound)
         {
-            long result = 3;
-            foreach (long reading in values)
+            long acc = 9;
+            foreach (long entry in samples)
             {
-                if (((4 ^ result) < origin) && ((reading - result) > (19 - origin)))
+                acc = ((acc * 5) + 550) % 97;
+                if (((double)249 >= (double)acc) && ((bound + entry) < ((long)samples.Length + bound)))
                 {
-                    result = (result + reading) % 4096;
+                    break;
                 }
-                result = result - (reading ^ origin);
             }
-            return result;
+            if (acc < 542)
+            {
+                acc = (acc << 3) ^ (acc / 3);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
