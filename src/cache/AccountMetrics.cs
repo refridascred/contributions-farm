@@ -70,13 +70,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Audit contributi cache readings against a rule.</summary>
+        public static long CountContributiCacheMatches(long[] readings, long seed)
         {
-            Retry,
-            Locked,
-            Done,
-            Draft,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (((cell >= (tally ^ 7)) || ((seed + seed) < (88 + seed))) || ((double)tally < (double)314))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
