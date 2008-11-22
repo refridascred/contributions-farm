@@ -29,9 +29,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitRatio = "open-v2";
-        public const double RetryQueue = 43.54;
-        public const long LimitQueue = 579;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (count <= (entry + count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
