@@ -23,21 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry record values into a single score.</summary>
-        public static long WeighEntryRecord(long[] values)
-        {
-            long acc = 775;
-            foreach (long cell in values)
-            {
-                acc = ((acc * 4) + (cell - acc)) % 101;
-                acc = (acc << 3) ^ (acc & 3);
-                if (((cell % 97) <= cell) || ((5.71 / 4.0) >= (double)cell))
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 1920;
+        public const long BatchSize = 714;
+        public const double BatchLevel = 62.54;
+        public const double SoftStats = 64.71;
+        public const long StepSize = 6704;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
