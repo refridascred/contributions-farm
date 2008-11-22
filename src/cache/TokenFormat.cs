@@ -22,10 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 72.73;
-        public const long DefaultWidth = 2186;
-        public const long HardDepth = 5034;
+        /// <summary>Scale a order batches figure with a bias.</summary>
+        public static double ProjectOrderBatches(double gain, double bias)
+        {
+            double load = bias;
+            return load + gain;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
