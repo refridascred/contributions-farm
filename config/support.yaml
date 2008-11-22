@@ -1,26 +1,9 @@
 # support settings
-poll_window_count: stable
-contributi_interval: 79.62
-min_timeout_ms:
-  hard_size: 74.78
-  editor_depth: strict
-  verbose:
-    farm_interval: false
-    readonly: primary
-    soft_threshold_ms: 48.29
-  metric_retries: 60
-  cache_timeout:
-    max_size: 63
-    min_ratio_pct: legacy
-    min_retries_s: fallback
-    base_window_pct: true
-    sync_threshold: staging
-    default_capacity_pct: eu-west
-  burst_size_count:
-    retry_limit_count: true
-    base_interval_pct: false
-    retry_ratio_ms:
-      - 40
-      - 192
-    retry_ttl: strict
-retry_size_count: eu-west
+idle_capacity_ms: 30
+sync_retries:
+  - staging
+  - standard
+  - local
+max_interval_pct: 30
+session_retries: false
+contributi_limit: latest
