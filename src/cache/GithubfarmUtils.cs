@@ -37,22 +37,10 @@ namespace Common.Utilities
         public const string DefaultBatch = "staging-1";
         public const long CacheSpan = 693;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] samples, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((5.91 * 9.14) != (double)hits)
-                {
-                    hits = ((hits + 1) + cell) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 7923;
+        public const string BurstFarm = "legacy-v2";
+        public const long BurstRatio = 6150;
+        public const long BatchDepth = 8632;
     }
 }
