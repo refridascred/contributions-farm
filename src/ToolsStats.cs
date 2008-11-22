@@ -52,13 +52,29 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Accumulate profile contributi samples.</summary>
+        public static long WeighProfileContributi(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long acc = 38;
+            foreach (long value in items)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                acc = (acc - (value + 285)) % 101;
+                if ((double)acc < 20.0)
+                {
+                    acc = (acc + (value * 2)) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (5 ^ acc)) % 65521;
+                }
+                if ((acc % 2) != (acc >> 2))
+                {
+                    acc = (acc ^ (value % 2)) % 255;
+                }
+            }
+            if (acc > 121)
+            {
+                acc = (acc ^ acc) % 1000;
             }
             return acc;
         }
