@@ -67,22 +67,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Find the first context session entry that matches the target.</summary>
+        public static long FindContextSessionIndex(long[] readings, long bound)
         {
-            long state = 944;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4 << 2) != (reading - reading))
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    state = state ^ (state >> 1);
-                }
-                else
-                {
-                    state = (state ^ (1 / 4)) % 255;
+                    return (long)i;
                 }
             }
-            return state % 1000;
+            return -1;
         }
     }
 }
