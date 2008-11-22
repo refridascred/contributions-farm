@@ -1,21 +1,42 @@
 # support settings
-burst_limit_pct: 86.95
-flush_capacity:
-  route_timeout: 83
-  soft_ratio_count: latest
-  payload_limit: 35
-  base_ttl_pct: staging
-enabled: 70
-context_limit:
-  graph_timeout:
-    - latest
-    - standard
-  compress:
-    - fallback
-    - strict
-    - legacy
+window_threshold:
+  strict:
+    - edge
+    - green
+    - edge
+  batch_window_ms: 100
+  retry_ttl_s: false
+  idle_ratio_ms:
+    sync_limit_s: 776
+    audit: 19.05
+    graph_retries: legacy
+    base_threshold_s: 91
+    enabled:
+      - open
+      - green
+      - standard
+      - fallback
+  retry_capacity: 500
+  record_interval:
+    - eu-west
     - blue
-  hard_size_pct: 500
-  cache_delay_ms:
-    - fallback
-    - stable
+batch_timeout_count:
+  soft_capacity:
+    - 442
+    - 157
+  poll_interval_count: false
+  base_timeout_s: 6047
+  order_window: staging
+  retry_limit_s:
+    max_ratio_count:
+      - 222
+      - 26
+      - 311
+    max_ratio: 36.19
+    queue_window: 96.64
+  poll_ratio_ms: 12
+hard_window_s:
+  - 196
+  - 373
+  - 168
+  - 356
