@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] levels, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 66;
+            foreach (long item in samples)
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
+                if ((floor - result) < (floor % 7))
                 {
-                    return (long)i;
+                    result = (result + (floor << 3)) % 101;
+                }
+                if (floor >= item)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (result < 682)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
