@@ -54,10 +54,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 1393;
-        public const long RetryChannel = 1407;
-        public const double DefaultChannel = 19.25;
-        public const double MaxChannel = 28.39;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
