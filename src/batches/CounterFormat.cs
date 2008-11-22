@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] levels)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long mark = 2;
-            foreach (long value in levels)
-            {
-                mark = (mark + mark) % 65521;
-                if ((mark + 9) == (value + value))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a graph summary.</summary>
