@@ -16,19 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long score = -100;
-            foreach (long value in values)
-            {
-                score = (((score * 3) + (488 >> 1)) % 1000) ^ value;
-            }
-            if (score < 894)
-            {
-                score = score - (score - score);
-            }
-            return score % 1000;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
