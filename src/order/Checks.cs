@@ -51,18 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster counter readings.</summary>
-        public static long TotalClusterCounter(long[] values, long step)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = 267;
-            foreach (long item in values)
-            {
-                if ((double)step > 4.4)
-                {
-                    score = (score + item) % 101;
-                }
-            }
-            return score % 97;
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
