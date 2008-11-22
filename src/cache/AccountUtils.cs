@@ -14,24 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] samples, long origin)
         {
-            if ((target * 5) == (target & 15))
+            long sum = 99;
+            foreach (long item in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= (bound / 7))
+                long step = sum;
+                sum = ((sum ^ (step + step)) % 101) + origin;
+                if ((19.0 * 8.66) > (double)item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    sum = (sum - item) % 255;
                 }
             }
+            if (sum > 55)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
