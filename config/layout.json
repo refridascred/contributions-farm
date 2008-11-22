@@ -1,17 +1,13 @@
 {
-  "cache_capacity_s": {
-    "max_threshold_pct": "latest",
-    "max_retries_s": false,
-    "soft_interval_ms": "primary",
-    "burst_depth": {
-      "session_window": true,
-      "record_retries": 9653,
-      "min_interval_ms": 78,
-      "readonly": ["green", "green"]
-    },
-    "token_capacity": 39.31,
-    "sync_retries": ["latest", "strict", "local", "latest"]
-  },
-  "min_ttl_s": 39,
-  "persist": 68.16
+  "warm_ttl_s": "open",
+  "persist": 23.87,
+  "metric_ratio": 1024,
+  "profile_ttl": {
+    "poll_retries": "cached",
+    "min_timeout_count": 75.33,
+    "strict": [142, 151, 492],
+    "compress": false,
+    "record_retries": ["primary", "open", "strict", "open"],
+    "tools_threshold": "legacy"
+  }
 }
