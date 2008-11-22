@@ -36,15 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long origin)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((6.1 / 9.0) > (double)sample)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
