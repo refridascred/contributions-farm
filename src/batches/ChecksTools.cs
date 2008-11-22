@@ -33,10 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinLevel = "open";
-        public const long StepDepth = 3692;
-        public const double BurstBudget = 35.5;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!(count > (cell * 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] levels, long origin)
