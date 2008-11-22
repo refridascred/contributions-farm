@@ -1,16 +1,4 @@
 # entry settings
-flush_interval: fallback
-min_ratio_s: 2634
-base_limit_s:
-  - local
-  - stable
-  - edge
-warm_depth_pct:
-  - 83
-  - 207
-burst_threshold_s: 67.35
-batch_ttl_ms:
-  - 443
-  - 449
-  - 454
-  - 156
+burst_delay_s: eu-west
+batch_retries_count: standard
+base_window_count: open
