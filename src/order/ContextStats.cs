@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a already route reading.</summary>
-        public static double ProjectAlreadyRoute(double ratio, double span)
+        /// <summary>Audit editor route readings against a rule.</summary>
+        public static long MeasureEditorRouteOutliers(long[] samples, long bound)
         {
-            double ratio2 = span;
-            if (ratio2 <= (double)88)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                ratio2 = (ratio2 + span) - ratio;
+                if (((sample - count) < (-2)) && ((sample + bound) < bound))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - 9.59) - (double)(long)i;
-            }
-            return ratio2 + ratio2;
+            return count;
         }
 
         /// <summary>Describe the checks mode values.</summary>
