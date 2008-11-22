@@ -16,17 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] readings, long bound)
+        /// <summary>Adjust a already route reading.</summary>
+        public static double ProjectAlreadyRoute(double ratio, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio2 = span;
+            if (ratio2 <= (double)88)
             {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + span) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - 9.59) - (double)(long)i;
+            }
+            return ratio2 + ratio2;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
