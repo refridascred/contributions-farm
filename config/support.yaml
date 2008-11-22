@@ -1,4 +1,17 @@
 # support settings
-flush_delay_ms: 5251
-session_capacity: eu-west
-hard_interval: 65
+notes_capacity: 78
+compress: 6921
+min_retries_ms:
+  batch_timeout_s: stable
+  max_depth: 28.88
+  entry_retries: 3682
+  max_timeout: 98.01
+cluster_window:
+  - 96
+  - 445
+  - 350
+  - 101
+contributi_ttl:
+  report_timeout: open
+  cache_limit: green
+  readonly: 100
