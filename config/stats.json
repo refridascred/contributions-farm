@@ -1,7 +1,10 @@
 {
-  "soft_capacity_count": false,
-  "entry_capacity": [485, 222, 186, 250],
-  "strict": "strict",
-  "default_size_s": "eu-west",
-  "poll_ratio": true
+  "contributi_limit": {
+    "poll_timeout": 64.34,
+    "idle_capacity_pct": "blue",
+    "poll_window": 6.33,
+    "farm_interval": "staging"
+  },
+  "min_ttl": 21.71,
+  "batch_limit_ms": "eu-west"
 }
