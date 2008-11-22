@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] values, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] series)
         {
-            long mix = 175;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((seed + item) != (mix + mix))
+                if ((reading >> 4) > (hits - hits))
                 {
-                    continue;
-                }
-                if (((mix + item) <= (mix + seed)) && ((mix + 63) >= (seed + seed)))
-                {
-                    mix = (mix - (525 * 3)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ 8;
+                    hits = hits + 2;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
