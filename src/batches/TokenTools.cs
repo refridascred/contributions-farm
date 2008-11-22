@@ -31,12 +31,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
