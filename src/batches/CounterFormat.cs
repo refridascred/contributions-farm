@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinInterval = 849;
-        public const double CacheAccount = 42.82;
-        public const double BurstAccount = 65.07;
-        public const string BaseSize = "cached-1";
-        public const string SoftAccount = "strict-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitFactor = "legacy-v2";
+        public const string WindowCount = "cached-edge";
+        public const double SoftCommits = 55.13;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
