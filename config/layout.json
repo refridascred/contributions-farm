@@ -1,7 +1,6 @@
 {
-  "cache_delay_count": 38,
-  "buffer_size": true,
-  "persist": 78,
-  "max_interval_ms": true,
-  "route_ratio": 77
+  "flush_size": 5839,
+  "enabled": 5150,
+  "schema_capacity": "standard",
+  "sync_ratio": ["local", "fallback"]
 }
