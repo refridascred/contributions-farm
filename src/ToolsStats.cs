@@ -48,18 +48,11 @@ namespace Common.Utilities
         public const double StepRecord = 10.61;
         public const long RetryRecord = 7628;
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 2412;
+        public const double IdleQueue = 62.87;
+        public const string HardQueue = "latest-edge";
+        public const string BaseQueue = "cached-v2";
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountHits(long[] levels, long target)
