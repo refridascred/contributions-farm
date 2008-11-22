@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((0 >> 1) == (matches - matches))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
