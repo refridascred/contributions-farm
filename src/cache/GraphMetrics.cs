@@ -37,13 +37,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Dropped,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultSpan = 5.45;
+        public const long WindowLevel = 1185;
+        public const string LimitTimeout = "local-v2";
+        public const long WindowWidth = 7860;
+        public const long LimitFilter = 688;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] samples, long target)
