@@ -61,38 +61,13 @@ namespace Common.Utilities
         public const string MinMetrics = "strict-v2";
         public const long DefaultRatio = 6216;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long target, long target2)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            if (!((target2 + target) <= target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target2 <= (double)target) && ((9 + target2) < (target << 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target << 2) <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target2 <= (6.2 / 7.0)) || ((5.5 - 5.0) == (double)target2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Pending,
+            Done,
         }
     }
 }
