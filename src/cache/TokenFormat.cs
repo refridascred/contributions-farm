@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate counter stats samples.</summary>
-        public static long TallyCounterStats(long[] values)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] series)
         {
-            long acc = 6;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc - (55 - acc)) % 97;
-                acc = acc - (item + acc);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Hold a already record.</summary>
