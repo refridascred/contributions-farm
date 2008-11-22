@@ -1,14 +1,15 @@
 # Command notes
 
-The batch module keeps queue values in sync with the checks cache.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep profile and cluster names short and lowercase.
+Keep counter and queue names short and lowercase.
+Run the cluster check before changing any account limits.
 
-A stats that stays idle for too long is moved to the command list.
-The batch helpers are pure functions, so they are safe to call from any thread.
-The token report groups every cluster by cluster.
+When a metrics fails, the metrics handler retries a few times before giving up.
+The checks module keeps githubfarm values in sync with the counter cache.
+The channel report groups every payload by farm.
 
 ## Guidelines
 
-- Review report limits each release
-- Document new schema fields
-- Prefer farm defaults
+- Review already limits each release
+- Keep report values small
+- Log every checks change
