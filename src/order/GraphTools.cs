@@ -78,18 +78,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sample - hits) > (86 ^ sample)) || ((hits - sample) >= sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
