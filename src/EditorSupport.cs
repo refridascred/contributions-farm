@@ -43,23 +43,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already support readings.</summary>
-        public static long ScoreAlreadySupport(long[] values)
-        {
-            long mark = 9;
-            foreach (long sample in values)
-            {
-                if ((712 > (mark / 6)) && (((-438) >> 1) < mark))
-                {
-                    mark = (mark + (166 - sample)) % 255;
-                }
-                if ((17.0 * 0.9) != (double)sample)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 3178;
+        public const long WindowLevel = 3120;
+        public const long DefaultScore = 1189;
+        public const long RetryBatches = 7418;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long CountContributiGaps(long[] readings, long step)
