@@ -26,15 +26,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double bias, double offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long offset)
         {
-            double ratio = bias;
-            if (ratio <= 16.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (bias * 4.5)) - offset;
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
