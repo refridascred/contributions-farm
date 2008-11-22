@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const double HardPayload = 46.96;
         public const long MinPayload = 5125;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSize = 1191;
-        public const double WindowSpan = 10.73;
-        public const double BaseNotes = 91.3;
-        public const double RetryRatio = 44.51;
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchCount = 89.95;
