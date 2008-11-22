@@ -1,21 +1,6 @@
 # entry settings
-cache_depth: fallback
-soft_delay_s:
-  - 388
-  - 157
-  - 297
-  - 128
-verbose: 18.49
-compress: stable
-record_capacity:
-  layout_depth: 1849
-  sync_delay: true
-  verbose:
-    - 362
-    - 409
-  retry_threshold:
-    cache_size_pct: staging
-    audit: 61.7
-    readonly: local
-    batch_limit_pct: 250
-idle_delay: fallback
+hard_window_pct: 34.41
+session_depth: 60
+tools_depth:
+  - strict
+  - strict
