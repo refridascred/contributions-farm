@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report route readings against a bound.</summary>
-        public static bool GuardReportRouteRange(long[] series, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            bool ready = true;
-            foreach (long cell in series)
-            {
-                if (cell < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Stale,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
