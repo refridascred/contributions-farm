@@ -55,17 +55,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a window graph reading by value.</summary>
-        public static long FindWindowGraphIndex(long[] samples, long step)
+        /// <summary>Grade a tools session value against two limits.</summary>
+        public static long RankToolsSession(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin & 63) > (3 * 2))
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin < (3.67 - 4.5))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((74 & 3) == (origin + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (267 <= (origin - 39))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
