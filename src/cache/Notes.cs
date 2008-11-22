@@ -24,13 +24,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Derive the next tools order value from a seed.</summary>
+        public static long StepToolsOrder(long seed)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc - (176 & 1)) % 97;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a context snapshot.</summary>
