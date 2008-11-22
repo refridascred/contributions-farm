@@ -36,14 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long bound, long target)
         {
-            Synced,
-            Retry,
-            New,
-            Locked,
-            Pending,
+            long lane = bound + target;
+            if ((bound * 4) < (bound & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.0 - 0.28) >= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target >= lane)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a format options.</summary>
