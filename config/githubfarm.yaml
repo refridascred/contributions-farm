@@ -1,6 +1,12 @@
 # githubfarm settings
-base_ratio_ms: true
-burst_capacity_ms: 100
-min_timeout_count: 1
-sync_capacity_s: 3131
-window_threshold: 89.54
+idle_window_count: 15.94
+cache_interval_pct: 72.87
+schema_window: fallback
+flush_retries:
+  poll_limit: 104
+  flush_interval_s: 30
+  soft_ratio:
+    - 320
+    - 494
+    - 295
+  record_ratio: 4413
