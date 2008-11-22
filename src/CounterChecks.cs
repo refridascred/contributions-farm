@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] series, long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long mix = 3;
-            foreach (long reading in series)
-            {
-                if ((reading << 2) == (reading & 255))
-                {
-                    mix = ((mix ^ (reading & 15)) % 4096) - origin;
-                }
-                if (!(85 <= (mix - (long)series.Length)))
-                {
-                    break;
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix;
+            public bool Level { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of context session readings.</summary>
