@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long bound)
-        {
-            long cur = origin ^ bound;
-            if ((bound + (-3)) <= (cur / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)cur < (9.7 * 0.99)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRatio = "alpha-edge";
+        public const double StepDepth = 20.82;
+        public const long StepSpan = 3786;
+        public const string SoftRoute = "primary-edge";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string BaseTimeout = "primary-1";
