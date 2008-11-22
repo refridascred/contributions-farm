@@ -16,23 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((((double)count > 7.3) || ((count & 127) > (count + count))) && ((double)sample <= 9.2))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinAccount = "alpha";
+        public const long DefaultAccount = 4887;
+        public const long IdleAccount = 490;
+        public const long BatchDepth = 1051;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
