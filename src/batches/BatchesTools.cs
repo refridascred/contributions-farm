@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long limit)
+        /// <summary>Check that every record checks entry stays within the limit.</summary>
+        public static bool GuardRecordChecksRange(long[] levels, long step)
         {
-            long next = bound ^ limit;
-            if (bound < 81)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (21 / 2))
+                if (datum != step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)bound < (1.42 + 5.0)) && ((double)limit == (double)69))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((27 - next) >= (1 * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the payload class values.</summary>
