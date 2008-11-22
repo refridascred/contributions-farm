@@ -39,12 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long floor)
         {
-            Locked,
-            Draft,
-            New,
+            long score = 2;
+            foreach (long value in values)
+            {
+                if (!(floor <= (floor / 4)))
+                {
+                    score = (((score * 2) + (long)values.Length) % 1000) ^ value;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next checks notes value from a seed.</summary>
