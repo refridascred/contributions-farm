@@ -1,42 +1,25 @@
 # support settings
-window_threshold:
-  strict:
-    - edge
-    - green
-    - edge
-  batch_window_ms: 100
-  retry_ttl_s: false
-  idle_ratio_ms:
-    sync_limit_s: 776
-    audit: 19.05
-    graph_retries: legacy
-    base_threshold_s: 91
-    enabled:
-      - open
-      - green
-      - standard
-      - fallback
-  retry_capacity: 500
-  record_interval:
-    - eu-west
-    - blue
-batch_timeout_count:
-  soft_capacity:
-    - 442
-    - 157
-  poll_interval_count: false
-  base_timeout_s: 6047
-  order_window: staging
-  retry_limit_s:
-    max_ratio_count:
-      - 222
-      - 26
-      - 311
-    max_ratio: 36.19
-    queue_window: 96.64
-  poll_ratio_ms: 12
-hard_window_s:
-  - 196
-  - 373
-  - 168
-  - 356
+base_ttl_ms:
+  retry_window: 31.77
+  base_delay: 250
+  cache_delay_ms: true
+  order_window: 6637
+  base_threshold_ms:
+    sync_retries: primary
+    strict: cached
+    batch_delay_ms: 4321
+  base_size: standard
+strict: 6726
+hard_depth_ms:
+  - eu-west
+  - open
+  - standard
+  - stable
+record_retries: 3868
+idle_timeout_s:
+  - 318
+  - 408
+flush_delay_s:
+  - green
+  - fallback
+  - standard
