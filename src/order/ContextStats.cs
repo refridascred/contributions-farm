@@ -36,38 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long origin)
-        {
-            if ((target + target) == (target - target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target + target) <= (origin / 6)) || (9.72 < (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin < (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target + origin) >= (origin * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSize = 7954;
+        public const long MinRecord = 5538;
+        public const string BaseRecord = "local-edge";
+        public const double BurstSize = 73.39;
     }
 }
