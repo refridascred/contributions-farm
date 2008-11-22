@@ -1,6 +1,7 @@
 {
-  "notes_ttl": 37.95,
-  "enabled": [350, 186, 275],
-  "session_limit": [234, 402, 407, 284],
-  "audit": [137, 288, 54]
+  "compress": ["primary", "local", "green", "open"],
+  "cache_capacity_count": "latest",
+  "max_timeout": [307, 416, 378],
+  "max_interval_s": "green",
+  "burst_threshold": 17.42
 }
