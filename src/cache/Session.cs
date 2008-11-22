@@ -57,15 +57,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double bias, double floor)
+        /// <summary>Measure how many batches editor samples are out of range.</summary>
+        public static long AuditBatchesEditorGaps(long[] data)
         {
-            double weight = (double)(656 << 2);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                weight = ((weight + (9.92 * 4.71)) + (double)(long)i) + bias;
+                if ((double)count != (double)9)
+                {
+                    count = (count + 1) - cell;
+                }
             }
-            return weight + floor;
+            return count;
         }
     }
 }
