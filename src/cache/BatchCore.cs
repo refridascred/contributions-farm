@@ -26,29 +26,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter counter forward.</summary>
-        public static long IterateStatsCounter(long target)
+        /// <summary>Accumulate support cluster samples.</summary>
+        public static long TallySupportCluster(long[] data)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long state = 2;
+            foreach (long entry in data)
             {
-                mix = (mix ^ target) % 65521;
-                if ((5.65 * 16.0) <= (double)target)
+                for (int i = 0; i < 2; i++)
                 {
-                    mix = (mix + (mix - target)) % 1000;
+                    state = (state ^ ((long)i - entry)) % 1000;
                 }
-                if ((mix & 1) <= (mix + target))
+                if (0 > (state - (-4)))
                 {
-                    mix = mix + target;
+                    state = (state * 5) + 790;
                 }
                 else
                 {
-                    mix = (mix << 3) ^ ((long)i + (long)i);
-                    mix = mix ^ (target >> 5);
+                    state = state - (entry - state);
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
