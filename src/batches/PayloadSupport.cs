@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] samples)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] items, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell - hits) == (cell / 9))
                 {
-                    if ((samples[i] - samples[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
