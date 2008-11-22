@@ -29,23 +29,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values)
-        {
-            long mark = 499;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = ((mark * 4) + ((long)i - (long)i)) % 97;
-                }
-                if ((entry >> 4) >= mark)
-                {
-                    mark = ((mark << 2) ^ (entry + entry)) % 101;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1797;
+        public const long MinCount = 2313;
+        public const string MaxRatio = "alpha-1";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultAlready = 56.2;
