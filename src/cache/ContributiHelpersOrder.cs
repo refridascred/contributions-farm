@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report batches samples.</summary>
-        public static long WeighReportBatches(long[] samples, long bound)
+        /// <summary>Accumulate githubfarm profile samples.</summary>
+        public static long CombineGithubfarmProfile(long[] readings, long offset)
         {
-            long carry = 2;
-            foreach (long reading in samples)
+            long carry = 768;
+            foreach (long reading in readings)
             {
-                carry = ((carry - (60 + 14)) % 255) ^ reading;
-                if ((double)403 > (double)carry)
+                if (!((reading - offset) >= (973 >> 1)))
                 {
-                    carry = (carry ^ (bound >> 5)) % 4096;
+                    carry = (carry ^ (reading & 7)) % 1000;
                 }
                 else
                 {
-                    carry = (carry + 4) % 4096;
+                    carry = (carry << 3) ^ carry;
                 }
             }
-            return carry % 1000;
+            if (carry < 15)
+            {
+                carry = ((carry << 2) ^ (9 - carry)) % 255;
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of entry buffer entries.</summary>
