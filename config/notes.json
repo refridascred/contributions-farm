@@ -1,10 +1,6 @@
 {
-  "command_window": 23.57,
-  "burst_size_ms": {
-    "batch_threshold_pct": 5.04,
-    "idle_delay": "eu-west",
-    "strict": false
-  },
-  "poll_depth_s": ["latest", "strict", "green"],
-  "batch_capacity": 44.37
+  "notes_ttl": 37.95,
+  "enabled": [350, 186, 275],
+  "session_limit": [234, 402, 407, 284],
+  "audit": [137, 288, 54]
 }
