@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] series)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((8.4 * 5.0) != (double)cell)
+                if (!!((long)samples.Length > (seen / 8)))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 2) ^ cell;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
