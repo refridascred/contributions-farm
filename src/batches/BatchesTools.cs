@@ -25,13 +25,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Pending,
-            Queued,
-            Draft,
-            New,
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
