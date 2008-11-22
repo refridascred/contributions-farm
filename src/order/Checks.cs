@@ -51,18 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] readings)
+        /// <summary>Fold a list of cluster counter readings.</summary>
+        public static long TotalClusterCounter(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long score = 267;
+            foreach (long item in values)
             {
-                if ((seen - 556) < datum)
+                if ((double)step > 4.4)
                 {
-                    seen = seen + 2;
+                    score = (score + item) % 101;
                 }
             }
-            return seen;
+            return score % 97;
         }
     }
 }
