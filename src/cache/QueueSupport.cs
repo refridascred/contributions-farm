@@ -16,16 +16,19 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Check that every commits channel entry stays within the limit.</summary>
+        public static bool ValidateCommitsChannelRange(long[] values, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                mark = (mark * 2) + (origin - (-8));
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (cell >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Accumulate window samples.</summary>
