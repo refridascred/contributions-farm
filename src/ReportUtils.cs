@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] series, long bound)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (5.0 <= (double)entry)
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a window graph reading by value.</summary>
