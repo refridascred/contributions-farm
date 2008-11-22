@@ -1,8 +1,6 @@
-id,owner,level,count
-1,987,265,legacy
-2,679,412,625
-3,818,stable,3.15
-4,57.34,34.83,442
-5,13.38,cached,8.58
-6,primary,92.19,staging
-7,258,998,241
+id,weight,count,score
+1,839,cached,827
+2,67,86,625
+3,fallback,cached,956
+4,39.73,green,312
+5,628,531,11.53
