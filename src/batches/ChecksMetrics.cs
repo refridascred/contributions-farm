@@ -34,39 +34,21 @@ namespace Common.Utilities
         public const string BurstSize = "staging";
         public const long DefaultCommand = 5561;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long origin)
+        /// <summary>Count context notes pairs that satisfy a relation.</summary>
+        public static long PairContextNotesCount(long[] values)
         {
-            long next = step ^ origin;
-            if ((next + next) >= (next + origin))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin <= (2.0 + 13.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((2.0 * 10.0) > (double)next)
+                    if ((values[i] - values[j]) != 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next << 2) >= origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
