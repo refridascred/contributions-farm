@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long step)
+        /// <summary>Classify a record order pair into a bucket.</summary>
+        public static long GradeRecordOrder(long origin, long target)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((double)target > (1.18 + 8.23))
             {
-                if (reading > step)
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (10.0 * 5.0))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a checks report figure with a bias.</summary>
