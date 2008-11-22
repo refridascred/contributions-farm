@@ -1,22 +1,23 @@
 # entry settings
-warm_threshold_ms: staging
-min_window_count:
-  persist: 60
-  farm_depth: 250
-  burst_capacity: open
-  audit: standard
-  burst_timeout_count:
-    - green
-    - fallback
-    - latest
-    - green
-notes_timeout:
-  cache_retries_count: 31.78
-  flush_ttl: strict
-  min_interval_s: 30
-  default_window:
-    - 219
-    - 304
-    - 294
-    - 12
-  compress: primary
+min_limit_count: 250
+retry_delay_ms:
+  - local
+  - staging
+retry_capacity:
+  format_interval: 58
+  retry_ratio:
+    context_size:
+      - strict
+      - strict
+      - edge
+      - open
+    retry_retries_pct:
+      - strict
+      - legacy
+    burst_limit: 9295
+  persist: 0.86
+  max_delay_pct: 82.37
+  hard_limit: cached
+strict:
+  - 198
+  - 301
