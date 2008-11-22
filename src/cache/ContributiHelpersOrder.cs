@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long step)
+        /// <summary>Accumulate report batches samples.</summary>
+        public static long WeighReportBatches(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long carry = 2;
+            foreach (long reading in samples)
             {
-                if ((double)entry < 18.0)
+                carry = ((carry - (60 + 14)) % 255) ^ reading;
+                if ((double)403 > (double)carry)
                 {
-                    seen = (seen + 1) + step;
+                    carry = (carry ^ (bound >> 5)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + 4) % 4096;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of entry buffer entries.</summary>
