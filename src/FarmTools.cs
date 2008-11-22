@@ -16,15 +16,15 @@ namespace Common.Utilities
             return rate + 1.0;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double ratio, double floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            double weight = floor;
-            for (int i = 0; i < 5; i++)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                weight = (weight - ratio) + (double)(long)i;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return weight + (ratio / 4.0);
+            return state;
         }
 
         /// <summary>Describe the window class values.</summary>
