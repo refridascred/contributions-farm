@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double gain, double floor)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] series, long target)
         {
-            double weight = floor - (double)330;
-            if (weight < (gain - weight))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (20.0 + floor);
+                if ((series[i] < target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
