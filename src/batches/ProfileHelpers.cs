@@ -28,17 +28,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Iterate the report layout series from a seed.</summary>
