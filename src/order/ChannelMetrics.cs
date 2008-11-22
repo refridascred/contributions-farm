@@ -28,19 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] series, long floor)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
