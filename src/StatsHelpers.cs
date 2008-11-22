@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowQueue = "open-v2";
-        public const double BaseSize = 91.64;
-        public const double RetryInterval = 66.99;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Done,
+            New,
+            Idle,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 5192;
