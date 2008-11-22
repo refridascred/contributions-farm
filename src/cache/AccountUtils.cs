@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] data)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally >> 3) <= (tally * 5))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the support status values.</summary>
