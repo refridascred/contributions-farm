@@ -33,18 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile payload samples are out of range.</summary>
-        public static long TallyProfilePayloadHits(long[] values)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double scale = (double)62 + offset;
+            if (scale < (double)55)
             {
-                if ((tally + tally) >= datum)
-                {
-                    tally = tally + 1;
-                }
+                scale = (scale - (double)697) - weight;
             }
-            return tally;
+            else
+            {
+                scale = scale + 1.0;
+            }
+            return scale - (3.25 - offset);
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
