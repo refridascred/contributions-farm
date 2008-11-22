@@ -1,15 +1,16 @@
 # entry settings
-max_interval_s: latest
-profile_delay:
-  compress: false
-  batch_window_pct:
-    queue_interval: 60
-    poll_retries: 97
-    dry_run: standard
-    idle_timeout_count: 2887
-  max_ttl_ms: 0.01
-  order_ttl: 4142
-  burst_timeout_ms: primary
-persist: strict
-readonly: 2968
-entry_window: latest
+flush_interval: fallback
+min_ratio_s: 2634
+base_limit_s:
+  - local
+  - stable
+  - edge
+warm_depth_pct:
+  - 83
+  - 207
+burst_threshold_s: 67.35
+batch_ttl_ms:
+  - 443
+  - 449
+  - 454
+  - 156
