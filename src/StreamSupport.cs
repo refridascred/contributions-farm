@@ -16,18 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] series, long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (origin <= (tally & 63))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 2) ^ datum;
+                    score = (score ^ (score - offset)) - (long)i2;
                 }
+                score = ((score * 3) + (9 % 2)) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
