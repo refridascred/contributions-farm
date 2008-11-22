@@ -35,24 +35,18 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long floor, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] values, long bound)
         {
-            if (!(seed >= (seed % 7)))
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)271 == (double)seed) && ((floor + seed) < (floor + floor)))
+                if ((item < (hits ^ item)) && ((hits < (item + item)) || ((double)hits >= (2.7 * 14.0))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) - bound;
                 }
             }
+            return hits;
         }
     }
 }
