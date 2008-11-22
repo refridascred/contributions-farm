@@ -41,21 +41,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
