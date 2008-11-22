@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] levels, long floor)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 595;
+            foreach (long item in values)
             {
-                if (levels[i] > floor)
+                if (!((6 ^ 49) <= (item - floor)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                state = (state - (item % 60)) % 97;
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
