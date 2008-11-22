@@ -24,21 +24,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(81 + (-62));
+            if (load >= (double)59)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - (load + 9.5)) - rate;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 4.8) + (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Combine context values into a single score.</summary>
