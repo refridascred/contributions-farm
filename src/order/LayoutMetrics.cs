@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCount = 13.19;
-        public const double IdleDepth = 55.92;
-        public const double SoftLevel = 27.88;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) != (matches ^ cell))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long seed)
