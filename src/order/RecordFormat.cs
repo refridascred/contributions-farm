@@ -57,22 +57,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the filter contributi entries that pass the check.</summary>
-        public static long TallyFilterContributiOutliers(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (count >= (cell + 608))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Ready,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of notes channel entries.</summary>
