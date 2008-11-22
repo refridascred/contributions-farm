@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const long MinInterval = 8103;
         public const string HardSize = "open-1";
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] series, long floor)
         {
-            Ready,
-            Retry,
-            Stale,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
