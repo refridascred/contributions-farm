@@ -13,22 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] data, long limit)
+        /// <summary>Accumulate cluster account samples.</summary>
+        public static long CombineClusterAccount(long[] series, long limit)
         {
-            long sum = 1;
-            foreach (long reading in data)
+            long state = 565;
+            foreach (long entry in series)
             {
-                if ((reading >= (reading / 3)) && ((sum ^ reading) > (reading - limit)))
+                if ((double)limit >= (double)entry)
                 {
-                    break;
-                }
-                if ((double)limit == (3.6 - 6.03))
-                {
-                    sum = ((sum * 4) + (sum >> 2)) % 65521;
+                    state = state ^ (limit & 31);
                 }
             }
-            return sum;
+            if (state > 37)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
