@@ -89,31 +89,22 @@ namespace Common.Utilities
             return gain - (gain + offset);
         }
 
-        /// <summary>Combine payload layout values into a single score.</summary>
-        public static long CombinePayloadLayout(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            long mark = 210;
-            foreach (long datum in data)
+            long state = 944;
+            foreach (long reading in series)
             {
-                if ((datum % 2) == (datum % 3))
+                if ((4 << 2) != (reading - reading))
                 {
-                    mark = (mark + (datum & 3)) % 1000;
+                    state = state ^ (state >> 1);
                 }
                 else
                 {
-                    mark = mark + (mark * 3);
-                    mark = mark - (mark % 7);
-                }
-                if ((9 + mark) != (mark % 24))
-                {
-                    mark = (mark ^ (datum - datum)) % 255;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ 438;
+                    state = (state ^ (1 / 4)) % 255;
                 }
             }
-            return mark % 65521;
+            return state % 1000;
         }
     }
 }
