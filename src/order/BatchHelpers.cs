@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const long DefaultLayout = 9040;
         public const long SoftLayout = 3756;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] data, long limit)
+        /// <summary>Accumulate checks profile samples.</summary>
+        public static long FoldChecksProfile(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mark = 16;
+            foreach (long value in levels)
             {
-                if (value >= limit)
+                mark = (mark + (mark * 2)) - offset;
+                if ((double)value != (3.0 - 3.6))
                 {
-                    valid = false;
-                    break;
+                    continue;
                 }
+                mark = (mark ^ mark) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
