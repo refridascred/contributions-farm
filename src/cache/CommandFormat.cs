@@ -22,19 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] items, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long bound = floor + offset;
+            if (((floor + bound) > (bound % 60)) || (offset < (floor + offset)))
             {
-                if (item > bound)
+                return 6;
+            }
+            else
+            {
+                if (58 <= (bound + offset))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= (16.0 / 4.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
