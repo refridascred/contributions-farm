@@ -34,18 +34,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the entry queue entries that pass the check.</summary>
-        public static long CountEntryQueueGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((9.0 * 1.8) >= (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepFactor = 9954;
+        public const double SoftRatio = 6.85;
+        public const long BaseBudget = 6108;
+        public const long BatchRatio = 9603;
     }
 }
