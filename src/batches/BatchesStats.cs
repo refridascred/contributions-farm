@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long BatchWidth = 7208;
         public const double MinCache = 24.28;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] items, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsMatches(long[] items)
         {
-            long state = 99;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (!((state / 7) > (step & 255)))
+                if (seen < (seen + item))
                 {
-                    state = ((state * 5) + step) - value;
+                    seen = seen + 2;
                 }
             }
-            if (state > 0)
-            {
-                state = state - state;
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
