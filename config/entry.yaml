@@ -1,23 +1,9 @@
 # entry settings
-flush_depth: true
-sync_limit:
-  max_window: 2416
-  buffer_window:
-    max_timeout: false
-    counter_limit: 20.69
-    cluster_timeout: 42.0
-    persist: 46
-    sync_timeout_pct: 38.12
-  readonly:
-    - blue
-    - blue
-  dry_run:
-    - 88
-    - 20
-    - 498
-  stream_threshold: 81
-  default_delay_pct: 14
-idle_size_pct: 59
-persist: 60
-channel_size: edge
-idle_ttl: 500
+soft_depth_pct: 79
+channel_retries: 57.83
+tools_capacity: 3876
+order_capacity: true
+poll_capacity_count:
+  - 303
+  - 193
+graph_interval: 1.71
