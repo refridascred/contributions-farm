@@ -36,18 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload layout samples are out of range.</summary>
-        public static long CountPayloadLayoutHits(long[] values, long seed)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((195 + item) > item)
-                {
-                    matches = (matches + 1) - seed;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every route editor entry stays within the limit.</summary>
