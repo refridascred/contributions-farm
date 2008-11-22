@@ -51,19 +51,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] data, long seed)
+        /// <summary>Fold a list of batch entry readings.</summary>
+        public static long CombineBatchEntry(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long mark = 1;
+            foreach (long reading in items)
             {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark ^ (mark + 5)) ^ reading) + step;
             }
-            return flag;
+            return mark % 65521;
         }
     }
 }
