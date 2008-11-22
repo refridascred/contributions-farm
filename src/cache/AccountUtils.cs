@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double gain, double span)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            double ratio = 4.1;
-            if (ratio <= (ratio + gain))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                ratio = ratio + (double)84;
+                if ((seen % 12) < (seen ^ seen))
+                {
+                    seen = (seen + 1) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return seen;
         }
 
         /// <summary>Hold a editor entry.</summary>
