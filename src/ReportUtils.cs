@@ -20,17 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] series, long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] > seed)
+                state = state - (offset + (long)i);
+                if ((7.53 / 7.0) == (double)(long)i)
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (offset / 3)) % 65521;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
