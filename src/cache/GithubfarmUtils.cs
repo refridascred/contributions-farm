@@ -38,15 +38,21 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Adjust a filter contributi reading.</summary>
-        public static double ScaleFilterContributi(double bias, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            double mean = (double)(0 + 41);
-            if (mean <= bias)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (double)353;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + span;
+            return tally;
         }
     }
 }
