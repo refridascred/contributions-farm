@@ -37,28 +37,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long ScoreAlreadyCounter(long[] levels)
-        {
-            long acc = 772;
-            foreach (long reading in levels)
-            {
-                if ((acc ^ acc) <= (reading - acc))
-                {
-                    acc = acc ^ (reading - reading);
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc / 8)) % 4096;
-                }
-                acc = (acc + (reading + acc)) % 101;
-                if (((5.5 * 11.0) > (double)acc) || ((reading << 2) <= reading))
-                {
-                    acc = (acc - (acc - reading)) % 1000;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 6669;
+        public const double HardFarm = 56.58;
+        public const double MaxFarm = 36.06;
+        public const long BurstFarm = 5873;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] data, long limit)
