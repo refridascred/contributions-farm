@@ -1,21 +1,8 @@
 {
-  "sync_depth_s": "eu-west",
-  "record_timeout": false,
-  "metric_delay": 30,
-  "farm_ratio": 30,
-  "batch_size_s": "eu-west",
-  "base_ratio_pct": {
-    "tools_timeout": {
-      "queue_interval": "eu-west",
-      "commits_retries": "local",
-      "poll_timeout_s": "eu-west",
-      "entry_size": 19.6,
-      "default_capacity_pct": "legacy"
-    },
-    "sync_interval_ms": 31,
-    "dry_run": false,
-    "burst_depth_ms": 8074,
-    "already_size": 12.78,
-    "counter_delay": "strict"
-  }
+  "enabled": "blue",
+  "verbose": "fallback",
+  "base_threshold_count": 63.01,
+  "soft_ttl": 30,
+  "hard_interval_pct": 100,
+  "idle_capacity": 250
 }
