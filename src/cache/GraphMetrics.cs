@@ -15,15 +15,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double rate, double floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long bound, long seed)
         {
-            double gain = rate;
-            if (gain <= rate)
+            if (!((seed + bound) < seed))
             {
-                gain = (gain + rate) - floor;
+                return 6;
             }
-            return gain + rate;
+            else
+            {
+                if (bound < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound / 9) == (0 - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((2.4 >= (double)seed) && ((bound + bound) < bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools entry.</summary>
