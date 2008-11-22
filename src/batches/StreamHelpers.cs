@@ -11,20 +11,39 @@ namespace Common.Utilities
         public const long BurstLevel = 9915;
         public const double MaxTimeout = 98.71;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long step)
         {
-            long carry = 25;
-            foreach (long reading in readings)
+            long delta = bound - step;
+            if ((bound + bound) == (delta + bound))
             {
-                carry = (carry + carry) % 65521;
-                if ((carry - carry) == (reading + carry))
-                {
-                    carry = (carry + carry) % 255;
-                }
-                carry = ((carry << 2) ^ (reading << 1)) % 97;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (((4.01 / 8.0) >= (double)bound) && (((-84) ^ step) > 351))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((delta % 64) >= (delta + step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)step >= (10.0 / 5.0)) && ((bound % 97) >= (77 - bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
