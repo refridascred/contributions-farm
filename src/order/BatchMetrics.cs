@@ -27,11 +27,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftDepth = "strict-1";
-        public const long BurstChecks = 6519;
-        public const string CacheBudget = "local-edge";
-        public const long SoftInterval = 4237;
+        /// <summary>Digest a series of graph checks entries.</summary>
+        public static long CombineGraphChecks(long[] series, long offset)
+        {
+            long total = 74;
+            foreach (long cell in series)
+            {
+                if (((cell + total) > (5 * 3)) || ((total >> 3) <= total))
+                {
+                    total = total ^ (total - cell);
+                }
+            }
+            if (total > 20)
+            {
+                total = (total ^ (offset - total)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Validate batch entry readings against a bound.</summary>
         public static bool ValidateBatchEntryLimits(long[] items, long origin)
