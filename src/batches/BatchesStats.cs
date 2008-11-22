@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] items, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((74 / 7) >= (cell & 3))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
