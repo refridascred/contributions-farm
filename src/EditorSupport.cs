@@ -38,19 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] data, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (value >= offset)
+                if ((reading + reading) < (reading - 624))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
