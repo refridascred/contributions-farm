@@ -59,12 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double gain, double span)
         {
-            Synced,
-            Draft,
-            Locked,
+            double bias = (double)(45 + 56);
+            if (bias > gain)
+            {
+                bias = (bias + (double)4) - span;
+            }
+            return bias - gain;
         }
     }
 }
