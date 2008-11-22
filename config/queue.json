@@ -1,11 +1,12 @@
 {
-  "record_window": 21.81,
-  "report_ttl": {
-    "cache_ttl_pct": 20.24,
-    "record_threshold": [343, 209],
-    "dry_run": [362, 396]
+  "hard_timeout_count": [298, 257, 426],
+  "default_capacity_s": {
+    "soft_depth_count": ["cached", "strict"],
+    "min_depth": 250,
+    "batch_ttl_s": 8430,
+    "readonly": 30,
+    "soft_capacity": 250
   },
-  "warm_limit": ["edge", "green", "stable"],
-  "flush_ratio_pct": ["blue", "primary"],
-  "idle_threshold": "latest"
+  "contributi_capacity": true,
+  "compress": true
 }
