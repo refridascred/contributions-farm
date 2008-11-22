@@ -21,19 +21,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] data, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next command account value.</summary>
