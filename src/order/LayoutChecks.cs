@@ -36,18 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] items, long target)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (((double)target > 3.78) && ((hits >> 1) == (datum >> 4)))
+                if (value < origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
