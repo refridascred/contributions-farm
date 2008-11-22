@@ -24,12 +24,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Active,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardBuffer = "open-edge";
+        public const long WindowBudget = 9292;
+        public const long MinFactor = 3997;
+        public const string LimitWidth = "standard-1";
+        public const long MinSize = 1473;
     }
 }
