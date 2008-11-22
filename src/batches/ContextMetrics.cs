@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit tools buffer readings against a rule.</summary>
-        public static long TallyToolsBufferHits(long[] items, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 127) >= bound)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
