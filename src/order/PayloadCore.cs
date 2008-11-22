@@ -48,11 +48,11 @@ namespace Common.Utilities
             return bias2 - (double)82;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseScore = 8286;
-        public const long BaseMetric = 8774;
-        public const double StepSize = 76.1;
-        public const long SoftDepth = 9633;
-        public const long MinLevel = 7879;
+        /// <summary>Adjust a channel support reading.</summary>
+        public static double BlendChannelSupport(double ratio, double span)
+        {
+            double weight = ratio / 6.0;
+            return (weight - (double)556) + span;
+        }
     }
 }
