@@ -41,12 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate batch command readings against a bound.</summary>
+        public static bool GuardBatchCommandBounds(long[] levels, long seed)
         {
-            Pending,
-            Locked,
-            Queued,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
