@@ -16,17 +16,18 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Look up the position of a cache route sample.</summary>
-        public static long LocateCacheRouteIndex(long[] data, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                if ((((54 * 2) < (seen >> 2)) || ((entry * 5) <= (seen * 2))) || ((seen ^ entry) >= entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
