@@ -14,13 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long step, long target)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            if ((8.2 / 8.0) > (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(step >= (step + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + target) >= target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session stats.</summary>
