@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a record order pair into a bucket.</summary>
-        public static long GradeRecordOrder(long origin, long target)
+        /// <summary>Adjust a cluster cache reading.</summary>
+        public static double SmoothClusterCache(double gain, double span)
         {
-            if ((double)target > (1.18 + 8.23))
+            double load = (double)(5 + 537);
+            if (load >= (double)231)
             {
-                return 3;
+                load = load - gain;
             }
-            else
-            {
-                if ((double)target > (10.0 * 5.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return load - span;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
