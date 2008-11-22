@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a cluster cache reading.</summary>
-        public static double SmoothClusterCache(double gain, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            double load = (double)(5 + 537);
-            if (load >= (double)231)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                load = load - gain;
+                if (cell >= (tally * 5))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - span;
+            return tally;
         }
 
         /// <summary>Check that every commits channel entry stays within the limit.</summary>
