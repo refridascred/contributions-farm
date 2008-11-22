@@ -31,13 +31,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] series, long limit)
         {
-            public double Rank { get; set; }
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 255) >= (tally - limit))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
