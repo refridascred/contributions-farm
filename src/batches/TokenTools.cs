@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long limit)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
