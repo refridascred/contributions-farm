@@ -14,18 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] items, long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if ((target * 5) == (target & 15))
             {
-                if (!((datum ^ 935) < (count + bound)))
+                return 2;
+            }
+            else
+            {
+                if (target <= (bound / 7))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
