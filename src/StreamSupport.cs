@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string MinDepth = "alpha-1";
         public const double HardAccount = 12.98;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Pending,
-            Synced,
-            Draft,
+            New,
+            Paused,
+            Retry,
         }
     }
 }
