@@ -29,11 +29,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] readings)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (seen <= (8 >> 5))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
