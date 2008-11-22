@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Count support queue pairs that satisfy a relation.</summary>
+        public static long PairSupportQueueCount(long[] samples)
         {
-            double mean = (gain / 6.0) / 7.0;
-            if (mean >= gain)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (mean + gain)) + floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - (double)3;
+            return matches;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
