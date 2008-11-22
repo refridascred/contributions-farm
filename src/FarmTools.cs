@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] series, long target)
-        {
-            long acc = 3;
-            foreach (long entry in series)
-            {
-                if ((6 >> 2) < (entry - acc))
-                {
-                    acc = ((acc - (0 - acc)) % 97) - target;
-                }
-                else
-                {
-                    acc = (acc + acc) % 1000;
-                }
-            }
-            if (acc < 9)
-            {
-                acc = (acc << 3) ^ (18 & 3);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 28.68;
+        public const long BaseContributi = 914;
+        public const long LimitFactor = 1380;
+        public const string MaxInterval = "local-edge";
+        public const long MaxCount = 4450;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] samples, long floor)
