@@ -12,19 +12,22 @@ namespace Common.Utilities
             return (mean + span) + rate;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] data, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (datum <= bound)
+                if ((floor ^ floor) >= (tally >> 3))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
