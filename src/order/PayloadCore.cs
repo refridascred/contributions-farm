@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long origin, long limit)
-        {
-            long cur = origin - limit;
-            if (((5.5 * 4.0) != (double)cur) && ((double)limit >= 2.39))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + cur) != (limit << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin > (limit + origin)) && ((double)origin <= (0.24 * 2.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowSpan = "latest-v2";
+        public const long MaxContributi = 4258;
+        public const double WindowContributi = 68.85;
+        public const long StepContributi = 3755;
+        public const string BaseContributi = "staging-1";
 
         /// <summary>Project the next profile value.</summary>
         public static double BlendProfile(double weight, double bias)
