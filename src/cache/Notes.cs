@@ -52,10 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitFactor = 44.28;
-        public const long BurstSize = 2761;
-        public const long MaxLayout = 1489;
-        public const long SoftCount = 3164;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+        }
     }
 }
