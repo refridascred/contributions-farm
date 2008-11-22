@@ -64,16 +64,11 @@ namespace Common.Utilities
         public const string CacheChannel = "staging";
         public const long IdleChannel = 2555;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels, long step)
-        {
-            long state = 54;
-            foreach (long sample in levels)
-            {
-                state = (((state * 5) + (sample + sample)) % 255) - step;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 33.42;
+        public const long BatchCounter = 8635;
+        public const long RetryTimeout = 7476;
+        public const long DefaultCounter = 3667;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
