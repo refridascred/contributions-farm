@@ -37,17 +37,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] items, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
