@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const string WindowInterval = "stable";
         public const string DefaultCommits = "standard-1";
 
-        /// <summary>Measure how many profile batch samples are out of range.</summary>
-        public static long CountProfileBatchOutliers(long[] samples)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((955 - seen) < (seen - seen)) || ((seen >> 2) < sample)) && ((sample & 7) > (sample + sample)))
-                {
-                    seen = seen + 1;
-                }
+                result = ((result * 3) + target) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
