@@ -25,11 +25,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheSize = 41.46;
-        public const long MinDepth = 109;
-        public const long IdleRatio = 5749;
-        public const string DefaultCount = "cached-v2";
-        public const string DefaultLayout = "strict-v2";
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
