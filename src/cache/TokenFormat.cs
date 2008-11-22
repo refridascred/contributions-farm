@@ -13,31 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            if ((step + step) < step)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step + 1) > (floor ^ 12))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step + step) < (900 % 10)) && ((7 + 631) > (step + floor)))
+                    if ((levels[i] - levels[j]) == 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a buffer info.</summary>
