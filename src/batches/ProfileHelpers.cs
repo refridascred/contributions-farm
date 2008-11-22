@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] samples, long step)
         {
-            public string Total { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((step ^ step) < (step >> 4)))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
