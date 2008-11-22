@@ -27,10 +27,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BatchTools = "primary-1";
-        public const double LimitTools = 84.24;
-        public const long RetryTimeout = 7182;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((26 * 3) == (seen + value))
+                {
+                    seen = (seen + 2) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LocateProfileIndex(long[] series, long seed)
