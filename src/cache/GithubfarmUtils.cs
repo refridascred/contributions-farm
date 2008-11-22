@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowRatio = 7022;
         public const string IdleAlready = "strict-edge";
 
-        /// <summary>Audit batches commits readings against a rule.</summary>
-        public static long MeasureBatchesCommitsMatches(long[] samples, long limit)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if ((cell % 100) >= (cell * 3))
+                if (entry >= step)
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
