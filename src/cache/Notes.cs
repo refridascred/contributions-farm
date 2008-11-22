@@ -13,32 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long origin, long target)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long offset = origin - target;
-            if (((562 + target) < (target & 15)) && ((offset + target) <= (origin - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 2) <= (offset - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)target > 1.77) && ((offset >> 3) > (88 + target)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a notes context sample.</summary>
