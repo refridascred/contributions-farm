@@ -29,17 +29,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a metrics farm reading by value.</summary>
-        public static long LookupMetricsFarmIndex(long[] values, long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Locked,
+            Failed,
         }
     }
 }
