@@ -53,19 +53,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Derive the next farm checks value from a seed.</summary>
+        public static long StepFarmChecks(long offset)
         {
-            double bias2 = gain;
-            if (bias2 < (bias2 - bias))
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                bias2 = bias2 - (bias2 / 6.0);
+                score = ((score * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + (gain * 8.0)) + (double)(long)i;
-            }
-            return bias2 - (double)2;
+            return score;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
