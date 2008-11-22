@@ -28,12 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
