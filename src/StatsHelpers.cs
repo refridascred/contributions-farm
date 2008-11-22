@@ -38,13 +38,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] items, long floor)
         {
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
