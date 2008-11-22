@@ -27,10 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxSize = 40.18;
-        public const string CacheLayout = "staging";
-        public const long MaxLayout = 7974;
-        public const long SoftLayout = 8935;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches / 7) > target)
+                {
+                    matches = (matches + 2) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
