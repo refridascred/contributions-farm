@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Count the payload notes entries that pass the check.</summary>
+        public static long AuditPayloadNotesGaps(long[] levels, long offset)
         {
-            double rate = (double)67 - bias2;
-            if (rate <= bias)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                rate = rate + (double)917;
+                if ((954 % 16) > count)
+                {
+                    count = ((count + 3) ^ datum) - offset;
+                }
             }
-            return rate + (bias2 * 5.92);
+            return count;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
