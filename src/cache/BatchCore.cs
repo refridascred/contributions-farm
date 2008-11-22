@@ -28,15 +28,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double gain, double bias)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            double mean = (gain + bias) - gain;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + bias) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mean + (double)9;
+            return tally;
         }
 
         /// <summary>Compare every pair of entry schema readings.</summary>
