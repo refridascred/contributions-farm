@@ -47,14 +47,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
             Retry,
-            New,
             Failed,
-            Queued,
-            Synced,
+            Paused,
+            Draft,
         }
 
         /// <summary>Measure how many batches editor samples are out of range.</summary>
