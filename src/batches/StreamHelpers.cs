@@ -25,20 +25,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsRange(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseWidth = 9884;
+        public const string BaseAlready = "open";
+        public const long IdleAlready = 94;
 
         /// <summary>Fold a list of metrics batches readings.</summary>
         public static long TallyMetricsBatches(long[] samples, long origin)
