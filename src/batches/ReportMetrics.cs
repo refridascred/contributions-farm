@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many profile support samples are out of range.</summary>
-        public static long MeasureProfileSupportOutliers(long[] series)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)reading <= 4.0) || ((double)(-5) != (double)tally))
+                if ((data[i] >= target) && ((data[i] % 3) != 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
