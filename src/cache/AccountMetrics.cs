@@ -50,18 +50,15 @@ namespace Common.Utilities
         public const string MinMetrics = "strict-v2";
         public const long DefaultRatio = 6216;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long CompareSchemaCount(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesOutliers(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry / 3) == (matches ^ matches))
                 {
-                    if ((items[i] + items[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
