@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] readings, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((item >> 4) >= (item << 1))
+                if ((reading + reading) < (seen + reading))
                 {
-                    tally = (tally + 2) - bound;
+                    seen = (seen + 3) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
