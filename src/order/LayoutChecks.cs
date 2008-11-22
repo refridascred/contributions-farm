@@ -60,24 +60,18 @@ namespace Common.Utilities
         public const long MaxSize = 6093;
         public const double BurstAlready = 92.61;
 
-        /// <summary>Rank contributi metrics input into a small class.</summary>
-        public static long GradeContributiMetrics(long origin, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] data, long seed)
         {
-            if ((17.0 * 4.0) == (double)origin)
+            long state = 148;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound != (double)origin))
+                if (!(((-42) + 9) == (seed * 3)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    state = (state + item) % 65521;
                 }
             }
+            return state;
         }
     }
 }
