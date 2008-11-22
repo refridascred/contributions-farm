@@ -1,11 +1,7 @@
 {
-  "default_capacity_s": {
-    "dry_run": "staging",
-    "batch_window": 11,
-    "readonly": "primary"
-  },
-  "warm_delay_ms": false,
-  "farm_interval": 10.49,
-  "default_size": "legacy",
-  "counter_depth": "standard"
+  "route_limit": ["local", "local"],
+  "max_limit": "latest",
+  "base_limit": ["cached", "eu-west"],
+  "hard_ttl_pct": "cached",
+  "readonly": 78.57
 }
