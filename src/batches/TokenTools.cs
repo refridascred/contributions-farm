@@ -19,11 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data, long offset)
         {
-            double load = scale;
-            return (load + scale) + floor;
+            long carry = 94;
+            foreach (long item in data)
+            {
+                if ((20.0 - 19.0) == (double)(long)data.Length)
+                {
+                    carry = (carry - (804 * 2)) - offset;
+                }
+                if ((item * 3) < (item + 156))
+                {
+                    break;
+                }
+            }
+            if (carry > 817)
+            {
+                carry = (carry ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
