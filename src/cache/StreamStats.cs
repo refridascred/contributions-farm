@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate metrics graph readings against a bound.</summary>
-        public static bool CheckMetricsGraphRange(long[] data, long bound)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long acc = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
