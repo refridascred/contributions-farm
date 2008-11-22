@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Count the already account entries that pass the check.</summary>
+        public static long AuditAlreadyAccountHits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (reading < (1 - 1))
+                if (((84 * 5) == (bound % 24)) && ((cell << 3) == (tally - tally)))
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the token phase values.</summary>
