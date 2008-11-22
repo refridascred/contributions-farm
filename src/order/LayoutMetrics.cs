@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryCount = 13.19;
+        public const double IdleDepth = 55.92;
+        public const double SoftLevel = 27.88;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long seed)
