@@ -50,18 +50,14 @@ namespace Common.Utilities
         public const string MinMetrics = "strict-v2";
         public const long DefaultRatio = 6216;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesOutliers(long[] levels)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 3) == (matches ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Active,
+            Synced,
+            New,
+            Retry,
         }
     }
 }
