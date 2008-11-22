@@ -15,19 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenBounds(long[] samples, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (reading != limit)
+                if (((9.47 < (double)datum) || ((bound / 3) < bound)) && ((15.0 / 2.0) == (double)matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
