@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double weight, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] samples, long step)
         {
-            double load = (double)(98 << 1);
-            if (load > load)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                load = (load + load) + weight;
+                if (value < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load + (double)4;
+            return valid;
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
