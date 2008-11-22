@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            long count = 0;
-            foreach (long value in data)
+            double load = rate + (span - rate);
+            if (load <= 1.2)
             {
-                if ((value - value) <= (value - (-36)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = load - (double)(-9);
             }
-            return count;
+            else
+            {
+                load = load - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load + 8.0;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
