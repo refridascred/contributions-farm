@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] levels)
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long AuditReportMetricsGaps(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((497 > (item & 63)) && ((tally / 3) == (tally * 4)))
+                if ((step + 571) >= step)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 2) - datum;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
