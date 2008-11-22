@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in local edge cached; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=294
+log "limit is ${COMMAND_LIMIT}"
