@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Paused,
-            Retry,
-            Dropped,
-            Done,
-            Active,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 9508;
+        public const long LimitSchema = 5323;
+        public const double RetrySchema = 41.98;
+        public const long BatchSpan = 2654;
+        public const double SoftSchema = 53.68;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string MinScore = "strict-1";
