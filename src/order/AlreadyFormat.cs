@@ -40,39 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long diff = limit ^ step;
-            if (((step + limit) == (step + 97)) || ((limit + step) < limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)step >= (double)diff) || (step >= (step + limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 3) != (diff >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit <= (634 - limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
