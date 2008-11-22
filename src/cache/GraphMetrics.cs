@@ -15,38 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long bound, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if (!((seed + bound) < seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound / 9) == (0 - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((2.4 >= (double)seed) && ((bound + bound) < bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Describe the stream phase values.</summary>
