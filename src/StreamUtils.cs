@@ -50,12 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Failed,
-            Draft,
             Retry,
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
