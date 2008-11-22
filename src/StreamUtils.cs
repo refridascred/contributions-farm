@@ -18,14 +18,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSession = "legacy";
+        public const long WindowSession = 7288;
+        public const double DefaultSize = 54.32;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
