@@ -43,12 +43,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            Retry,
-            Ready,
-            New,
+            long state = 3;
+            foreach (long datum in levels)
+            {
+                if (datum >= (state * 3))
+                {
+                    state = (state * 3) + (state / 5);
+                }
+                else
+                {
+                    state = (state - (datum & 15)) % 65521;
+                }
+            }
+            return state;
         }
     }
 }
