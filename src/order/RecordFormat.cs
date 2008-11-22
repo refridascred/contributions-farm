@@ -37,18 +37,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            long sum = 320;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (sum >= (-54))
+                if (!(((7.93 / 8.0) != (double)sample) && (1.4 < (double)(long)samples.Length)))
                 {
-                    sum = (((sum * 3) + value) % 255) - limit;
+                    tally = tally + 1;
                 }
             }
-            return sum % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate filter samples.</summary>
