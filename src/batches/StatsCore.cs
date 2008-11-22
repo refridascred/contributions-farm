@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 1739;
-        public const long WindowCluster = 3825;
-        public const string StepLevel = "standard-edge";
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Closed,
+            Idle,
+            Queued,
+            Active,
+            Synced,
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long ScoreEditor(long[] levels, long origin)
