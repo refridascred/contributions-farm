@@ -1,8 +1,11 @@
 {
-  "strict": 9239,
-  "farm_interval": 42,
-  "idle_timeout_pct": 7045,
-  "layout_window": "eu-west",
-  "hard_window": 100,
-  "editor_window": true
+  "hard_ttl_count": {
+    "min_window": false,
+    "hard_timeout_pct": "edge",
+    "route_size": [142, 422, 425]
+  },
+  "soft_threshold": ["standard", "local", "edge", "green"],
+  "warm_window_count": [138, 127, 371],
+  "warm_depth": 78.54,
+  "base_depth": "legacy"
 }
