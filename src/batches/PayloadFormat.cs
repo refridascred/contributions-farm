@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double span)
+        /// <summary>Classify a metric payload pair into a bucket.</summary>
+        public static long GradeMetricPayload(long limit, long floor)
         {
-            double weight = ratio;
-            if (weight >= ratio)
+            long next = limit ^ floor;
+            if ((2.59 - 4.9) != (double)limit)
             {
-                weight = (weight + (0.13 / 6.0)) + span;
+                return 5;
             }
             else
             {
-                weight = weight - weight;
+                if ((7.0 / 4.0) == (double)next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor >> 5) == (floor & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((2.61 - 12.0) >= (double)limit)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + 9.4) + (double)(long)i;
-            }
-            return weight - ratio;
         }
 
         /// <summary>Match up stream cache samples.</summary>
