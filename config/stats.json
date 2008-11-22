@@ -1,19 +1,8 @@
 {
-  "verbose": {
-    "audit": 95.59,
-    "hard_limit_pct": "cached",
-    "default_interval_s": false,
-    "commits_ratio": "stable",
-    "metrics_ratio": "primary",
-    "sync_ttl": 62.63
-  },
-  "commits_limit": false,
-  "command_ratio": [189, 117, 1],
-  "stream_ratio": {
-    "context_limit": 250,
-    "strict": 5064,
-    "soft_retries_ms": 54.61
-  },
-  "warm_capacity_count": 96.35,
-  "dry_run": true
+  "layout_ttl": 70.52,
+  "queue_limit": "staging",
+  "profile_timeout": true,
+  "layout_size": false,
+  "queue_ratio": "edge",
+  "compress": [440, 269]
 }
