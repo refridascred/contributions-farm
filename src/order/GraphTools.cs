@@ -38,32 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long limit, long step)
-        {
-            if (step > (7 + limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((842 < step) && ((1.5 / 5.0) != (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit < (3.45 / 4.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardCount = 5423;
+        public const string MinWindow = "open-edge";
+        public const string MinFactor = "legacy-edge";
+        public const long RetryWindow = 9270;
+        public const double LimitWidth = 18.22;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double MinGithubfarm = 79.84;
