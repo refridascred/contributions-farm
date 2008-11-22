@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Queued,
-            Dropped,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseWidth = "standard-v2";
+        public const double WindowFilter = 16.68;
+        public const long RetryFilter = 9497;
+        public const long MaxFactor = 9795;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
