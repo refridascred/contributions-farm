@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long PairWindowCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 4561;
+        public const long MaxTimeout = 9515;
+        public const long BaseFactor = 9351;
+        public const double WindowReport = 20.22;
 
         /// <summary>Audit editor route readings against a rule.</summary>
         public static long MeasureEditorRouteOutliers(long[] samples, long bound)
