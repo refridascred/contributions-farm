@@ -21,21 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] series)
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long ScoreAlreadyCommits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -30;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (((sum << 2) ^ (325 - 3)) % 101) - value;
+                if ((328 ^ sum) > 48)
                 {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum ^ (bound - bound)) % 4096;
                 }
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
