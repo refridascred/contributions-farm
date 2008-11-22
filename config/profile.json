@@ -1,14 +1,7 @@
 {
-  "strict": 24,
-  "batch_delay_ms": "eu-west",
-  "idle_ratio_pct": "cached",
-  "batch_limit": "blue",
-  "cache_timeout": "latest",
-  "context_delay": {
-    "dry_run": "latest",
-    "verbose": 500,
-    "poll_ttl": "open",
-    "commits_retries": 500,
-    "poll_retries_pct": 46
-  }
+  "compress": "blue",
+  "batch_ratio_s": ["eu-west", "standard", "eu-west"],
+  "cache_timeout_ms": "green",
+  "flush_ttl_s": 9966,
+  "retry_ttl": "fallback"
 }
