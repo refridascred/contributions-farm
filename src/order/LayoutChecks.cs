@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Audit window account readings against a rule.</summary>
+        public static long CountWindowAccountOutliers(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen + seen) < item)
                 {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
