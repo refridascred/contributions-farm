@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long floor)
         {
-            Paused,
-            Draft,
-            Active,
-            Dropped,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
