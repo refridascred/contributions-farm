@@ -1,12 +1,8 @@
 {
-  "flush_threshold": "stable",
-  "min_delay": {
-    "poll_limit_count": 80.69,
-    "filter_ttl": "strict",
-    "schema_depth": 100,
-    "token_capacity": "staging",
-    "enabled": ["open", "staging"]
-  },
-  "stream_ttl": [273, 160, 55],
-  "idle_limit_count": "blue"
+  "metric_capacity": false,
+  "base_interval": true,
+  "warm_size_pct": 14.47,
+  "verbose": "latest",
+  "already_size": 9261,
+  "token_interval": 0.34
 }
