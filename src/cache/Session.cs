@@ -42,15 +42,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double bias)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double rate2 = bias;
-            if (rate2 < (bias + rate2))
-            {
-                rate2 = rate2 + rate;
-            }
-            return rate2 - (rate2 - rate2);
+            Dropped,
+            Failed,
+            Ready,
+            Pending,
         }
     }
 }
