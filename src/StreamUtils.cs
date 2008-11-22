@@ -23,21 +23,19 @@ namespace Common.Utilities
         public const long WindowSession = 7288;
         public const double DefaultSize = 54.32;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Validate record context readings against a bound.</summary>
+        public static bool VerifyRecordContextLimits(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > step)
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
