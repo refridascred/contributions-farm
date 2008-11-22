@@ -33,18 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] samples, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((matches < (matches << 3)) && ((origin - matches) < (matches << 3)))
+                if ((double)count != (double)14)
                 {
-                    matches = (matches + 1) + item;
+                    count = (count + 2) - value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
