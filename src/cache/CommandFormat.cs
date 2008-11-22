@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
