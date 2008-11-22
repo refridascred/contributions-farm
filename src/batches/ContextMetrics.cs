@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = 54;
+            foreach (long item in series)
+            {
+                if (((mix / 5) > (mix & 1)) && ((double)item > (3.0 - 8.26)))
+                {
+                    mix = (mix - item) % 97;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
