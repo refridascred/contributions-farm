@@ -34,17 +34,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Look up the position of a counter already sample.</summary>
-        public static long LocateCounterAlreadyIndex(long[] series, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Paused,
+            Stale,
+            Draft,
+            Done,
         }
     }
 }
