@@ -27,15 +27,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next buffer contributi value.</summary>
-        public static double BlendBufferContributi(double weight, double bias)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double rate = weight;
-            if (rate >= bias)
-            {
-                rate = rate + (weight * 0.5);
-            }
-            return rate + (double)856;
+            Synced,
+            Draft,
+            New,
         }
     }
 }
