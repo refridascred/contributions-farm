@@ -34,17 +34,32 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] items, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long target, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long slot = target + origin;
+            if ((target + target) < slot)
             {
-                if (items[i] < step)
+                return 7;
+            }
+            else
+            {
+                if (((target + slot) > (23 << 3)) && (slot <= target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (4.1 > (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
