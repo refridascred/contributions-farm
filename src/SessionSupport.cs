@@ -13,10 +13,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "local";
-        public const double MinSpan = 97.9;
-        public const long LimitCache = 4132;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double bias)
+        {
+            double weight = 0.6;
+            if (weight > bias)
+            {
+                weight = (weight + (double)6) + gain;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight - bias;
+        }
 
         /// <summary>Fold a list of commits window readings.</summary>
         public static long TotalCommitsWindow(long[] readings)
