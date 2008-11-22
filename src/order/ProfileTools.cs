@@ -88,20 +88,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            double load = rate - floor;
+            if (load < load)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc ^ step) % 4096) + (long)i2;
-                    acc = acc + (step * 2);
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                load = load + 6.0;
             }
-            return acc;
+            else
+            {
+                load = load + (5.0 + 11.0);
+            }
+            return load - (floor - floor);
         }
     }
 }
