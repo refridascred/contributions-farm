@@ -18,24 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long offset, long origin)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] readings)
         {
-            if (9.03 <= (double)origin)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset <= (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
