@@ -16,13 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            public string Size { get; set; } = "";
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            double bias = (double)(457 - 27);
+            if (bias >= 8.0)
+            {
+                bias = (bias + scale) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (scale / 9.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
