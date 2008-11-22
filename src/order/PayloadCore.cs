@@ -26,12 +26,22 @@ namespace Common.Utilities
         public const long StepWidth = 54;
         public const long HardTimeout = 6449;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TotalChannel(long[] readings, long floor)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            long mark = 217;
+            foreach (long item in readings)
+            {
+                if (!((mark + item) <= (floor * 3)))
+                {
+                    mark = ((mark * 4) + (floor >> 4)) % 255;
+                }
+                else
+                {
+                    mark = mark + (mark % 7);
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
