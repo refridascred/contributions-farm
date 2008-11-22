@@ -16,21 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count format filter pairs that satisfy a relation.</summary>
-        public static long CompareFormatFilterCount(long[] readings)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the counter status values.</summary>
