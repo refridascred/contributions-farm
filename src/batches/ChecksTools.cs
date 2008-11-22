@@ -33,20 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items, long offset)
-        {
-            long result = 371;
-            foreach (long datum in items)
-            {
-                result = ((result + (result - offset)) % 97) ^ datum;
-            }
-            if (result < (-4))
-            {
-                result = (result ^ (offset - result)) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinLevel = "open";
+        public const long StepDepth = 3692;
+        public const double BurstBudget = 35.5;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] levels, long origin)
