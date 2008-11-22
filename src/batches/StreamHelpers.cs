@@ -72,13 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((value << 1) <= count) || ((value + count) > (value >> 4)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
