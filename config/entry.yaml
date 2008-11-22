@@ -1,7 +1,22 @@
 # entry settings
-strict: edge
-channel_timeout:
-  - stable
-  - green
-default_capacity_ms: green
-order_window: 250
+warm_threshold_ms: staging
+min_window_count:
+  persist: 60
+  farm_depth: 250
+  burst_capacity: open
+  audit: standard
+  burst_timeout_count:
+    - green
+    - fallback
+    - latest
+    - green
+notes_timeout:
+  cache_retries_count: 31.78
+  flush_ttl: strict
+  min_interval_s: 30
+  default_window:
+    - 219
+    - 304
+    - 294
+    - 12
+  compress: primary
