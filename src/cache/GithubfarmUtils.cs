@@ -47,18 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] values, long offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (!((datum - hits) <= (786 + offset)))
+                if (value <= seed)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
