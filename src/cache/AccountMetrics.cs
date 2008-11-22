@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((((54 * 2) < (seen >> 2)) || ((entry * 5) <= (seen * 2))) || ((seen ^ entry) >= entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheScore = 9746;
+        public const long IdleAlready = 9041;
+        public const string DefaultAlready = "staging-v2";
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long SeriesCache(long step)
