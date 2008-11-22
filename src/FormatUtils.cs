@@ -57,18 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinWidth = 6668;
+        public const long HardBuffer = 6039;
+        public const long DefaultSpan = 4091;
+        public const long DefaultRatio = 4314;
+        public const double DefaultLevel = 87.58;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double StepCounter = 33.42;
