@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] data, long floor)
+        /// <summary>Validate commits buffer readings against a bound.</summary>
+        public static bool ValidateCommitsBufferBounds(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (((834 << 1) > (seen * 4)) && (seen >= (reading / 4)))
+                if (cell <= origin)
                 {
-                    seen = (seen + 3) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
