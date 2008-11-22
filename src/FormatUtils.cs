@@ -51,10 +51,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftTimeout = 7671;
-        public const long BaseSize = 400;
-        public const double LimitSize = 46.11;
-        public const long RetryFactor = 3117;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Synced,
+            Paused,
+            Stale,
+            Queued,
+        }
     }
 }
