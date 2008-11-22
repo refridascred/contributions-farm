@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long limit)
-        {
-            long offset = target ^ limit;
-            if (625 >= (target / 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset % 5) == (6 - limit)) && ((44 / 7) < offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target != (19.0 / 9.0)) || (target > (limit - target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCount = 935;
+        public const long HardCommits = 6364;
+        public const string WindowInterval = "stable";
+        public const string DefaultCommits = "standard-1";
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
