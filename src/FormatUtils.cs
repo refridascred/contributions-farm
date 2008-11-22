@@ -51,9 +51,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxSpan = 1061;
-        public const string RetryScore = "fallback-edge";
-        public const long BatchReport = 2301;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
