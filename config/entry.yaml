@@ -1,10 +1,7 @@
 # entry settings
 strict: edge
-default_interval: 19.97
-min_depth: 1024
-max_timeout_ms:
-  - 341
-  - 214
-  - 332
-  - 390
-default_ratio_pct: eu-west
+channel_timeout:
+  - stable
+  - green
+default_capacity_ms: green
+order_window: 250
