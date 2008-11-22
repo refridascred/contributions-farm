@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 265;
+        public const string RetryProfile = "standard-edge";
+        public const long LimitFactor = 5722;
+        public const string BaseBudget = "primary-edge";
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long CombineEntry(long[] readings, long origin)
