@@ -53,26 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long bound)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] readings)
         {
-            long mix = 756;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (((item * 3) < (79 + mix)) || (bound <= (bound + item)))
+                if (tally >= (cell << 3))
                 {
-                    mix = (mix ^ (item - item)) % 255;
-                }
-                else
-                {
-                    mix = mix - (84 + mix);
+                    tally = tally + 3;
                 }
             }
-            if (mix > 64)
-            {
-                mix = ((mix << 2) ^ (703 * 3)) % 1000;
-            }
-            return mix;
+            return tally;
         }
     }
 }
