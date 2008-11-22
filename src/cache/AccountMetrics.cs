@@ -45,32 +45,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 1918;
         public const string RetryInterval = "staging-v2";
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long delta = offset + step;
-            if ((delta * 2) >= (offset - step))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.87 * 1.8) == (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset + offset) > step) && ((double)offset <= (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Dropped,
+            New,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
