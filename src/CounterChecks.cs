@@ -13,21 +13,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor - (floor + (long)i)) % 65521;
-                if ((8.3 * 6.0) > (double)(long)i)
-                {
-                    anchor = ((anchor * 2) + (floor * 5)) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 4590;
+        public const double BurstCluster = 59.3;
+        public const long HardWidth = 7542;
+        public const long BaseCluster = 2595;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
