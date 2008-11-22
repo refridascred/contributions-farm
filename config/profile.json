@@ -1,11 +1,5 @@
 {
-  "hard_ttl_count": {
-    "min_window": false,
-    "hard_timeout_pct": "edge",
-    "route_size": [142, 422, 425]
-  },
-  "soft_threshold": ["standard", "local", "edge", "green"],
-  "warm_window_count": [138, 127, 371],
-  "warm_depth": 78.54,
-  "base_depth": "legacy"
+  "sync_capacity": false,
+  "already_size": 58,
+  "enabled": "cached"
 }
