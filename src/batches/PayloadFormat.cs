@@ -14,15 +14,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long origin)
+        /// <summary>Rank report schema input into a small class.</summary>
+        public static long RankReportSchema(long floor, long step)
         {
-            long sum = 9;
-            foreach (long reading in values)
+            if (!((floor & 15) > (step / 4)))
             {
-                sum = ((sum * 3) + (reading * 5)) - origin;
+                return 5;
             }
-            return sum % 4096;
+            else
+            {
+                if ((step + 997) > (step + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor + floor) <= (-926)) || ((floor + step) >= floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
