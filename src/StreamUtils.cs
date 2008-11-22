@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const long WindowSession = 7288;
         public const double DefaultSize = 54.32;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            Closed,
-            Synced,
-            Active,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batch queue readings against a rule.</summary>
