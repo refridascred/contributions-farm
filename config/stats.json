@@ -1,5 +1,5 @@
 {
-  "batch_ratio_ms": "green",
-  "strict": "legacy",
-  "poll_ratio_ms": "open"
+  "strict": 500,
+  "soft_timeout_s": 74,
+  "stats_interval": "staging"
 }
