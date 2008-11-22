@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepLevel = "legacy";
-        public const long HardWidth = 1502;
-        public const long IdleNotes = 2013;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long ScoreEditor(long[] levels, long target)
