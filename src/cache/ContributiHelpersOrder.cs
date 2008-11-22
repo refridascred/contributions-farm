@@ -33,18 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((11.0 + 1.0) > (double)reading)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 454;
+        public const double MaxBudget = 67.57;
+        public const double MaxSpan = 19.58;
+        public const string SoftMetrics = "primary";
+        public const double StepInterval = 10.36;
     }
 }
