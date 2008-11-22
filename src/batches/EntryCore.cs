@@ -44,10 +44,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 2813;
-        public const long DefaultMetrics = 283;
-        public const double LimitScore = 43.79;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits - item) <= hits)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextOutliers(long[] samples, long bound)
