@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long origin, long offset)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long limit, long offset)
         {
-            if (((3.3 / 8.0) == (double)offset) && ((origin % 100) > (offset + origin)))
+            if (((439 + limit) < offset) || ((5.1 - 5.63) > (double)offset))
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if (!((offset % 12) <= (offset / 3)))
+                if ((limit + offset) < (limit & 3))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if (limit < (limit + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
