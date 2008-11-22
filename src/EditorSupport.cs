@@ -38,10 +38,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8928;
-        public const long HardTimeout = 2984;
-        public const long WindowChannel = 3964;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBatches = 3178;
