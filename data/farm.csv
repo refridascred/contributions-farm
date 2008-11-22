@@ -1,8 +1,6 @@
-id,region,token,level
-1,256,88.28,251
-2,standard,71.99,85.66
-3,49.64,36.72,17.91
-4,543,924,17.36
-5,98.53,latest,386
-6,51.94,stable,698
-7,598,561,51.85
+id,active,weight
+1,501,18.53
+2,cached,standard
+3,legacy,746
+4,22.05,eu-west
+5,staging,674
