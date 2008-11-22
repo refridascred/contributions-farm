@@ -1,7 +1,5 @@
 {
-  "soft_ttl": ["standard", "eu-west"],
-  "default_retries_count": "stable",
-  "warm_capacity_s": "latest",
-  "cluster_depth": 7013,
-  "default_depth_ms": ["open", "eu-west"]
+  "default_depth_count": "blue",
+  "sync_threshold": ["open", "green", "fallback", "stable"],
+  "burst_size_s": [266, 180]
 }
