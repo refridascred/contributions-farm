@@ -1,5 +1,17 @@
 {
-  "cluster_interval": true,
-  "idle_size_s": 35,
-  "schema_threshold": true
+  "strict": [120, 386, 239, 42],
+  "batch_timeout_count": {
+    "order_delay": ["strict", "staging", "legacy"],
+    "poll_retries": 39.14,
+    "batch_threshold": 60
+  },
+  "dry_run": 9155,
+  "flush_timeout_pct": {
+    "support_ratio": false,
+    "min_size_count": "blue",
+    "payload_ttl": 1024,
+    "notes_ratio": ["blue", "staging"],
+    "command_ratio": 1212
+  },
+  "batches_limit": 67
 }
