@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const double IdleBuffer = 97.49;
         public const long MaxBuffer = 9993;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultSize = 5.4;
-        public const long StepSpan = 2012;
-        public const long WindowMetrics = 7557;
-        public const double CacheSize = 50.33;
-        public const long MinRatio = 2640;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = mix + seed;
+                long gap = 162 / 4;
+                if ((long)i == ((long)i ^ gap))
+                {
+                    gap = gap - (seed << 1);
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
