@@ -58,18 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (tally <= value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
