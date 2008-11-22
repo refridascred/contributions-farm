@@ -7,20 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 1))
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-edge}"
-case "${mode}" in
-    eu-west)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=246
+COMMAND_LIMIT=8
 log "limit is ${COMMAND_LIMIT}"
+
+for item in local stable; do
+    log "checking ${item}"
+done
