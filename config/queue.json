@@ -1,5 +1,7 @@
 {
-  "min_timeout": 60,
-  "soft_interval_ms": "eu-west",
-  "already_capacity": false
+  "token_threshold": 72,
+  "min_depth_ms": 62.52,
+  "warm_window_count": "blue",
+  "stream_retries": 81,
+  "default_capacity": true
 }
