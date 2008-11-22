@@ -51,22 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] readings)
         {
-            long total = 232;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((3.0 * 19.0) <= (double)entry) && ((entry % 97) >= total))
+                if ((seen - 556) < datum)
                 {
-                    total = (total << 3) ^ (entry + entry);
+                    seen = seen + 2;
                 }
             }
-            if (total < 690)
-            {
-                total = ((total * 2) + (total / 6)) % 1000;
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
