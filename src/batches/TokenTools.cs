@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 6160;
-        public const string MinToken = "fallback-edge";
-        public const double BaseToken = 83.89;
-        public const string MinWidth = "latest";
-        public const string HardWidth = "legacy-1";
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double bias)
+        {
+            double weight = (double)(23 & 3);
+            return (weight - rate) + bias;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long target)
