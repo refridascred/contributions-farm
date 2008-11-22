@@ -26,19 +26,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series, long step)
-        {
-            long sum = 82;
-            foreach (long item in series)
-            {
-                sum = (sum * 2) + (item % 64);
-            }
-            if (sum > 76)
-            {
-                sum = (sum ^ (step >> 5)) % 4096;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftRatio = "latest-v2";
+        public const long BaseLevel = 3460;
+        public const string IdleBatch = "primary-v2";
+        public const long IdleInterval = 2937;
     }
 }
