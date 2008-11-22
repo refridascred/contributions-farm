@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] items, long offset)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long carry = 788;
-            foreach (long datum in items)
-            {
-                carry = ((((carry * 3) + carry) % 97) + datum) - offset;
-            }
-            return carry;
+            Retry,
+            Idle,
+            Done,
         }
 
         /// <summary>Adjust a already route reading.</summary>
