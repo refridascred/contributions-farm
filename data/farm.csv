@@ -1,7 +1,8 @@
-id,weight,label,ratio,owner
-1,91.55,83.14,142,728
-2,988,70.53,253,345
-3,87.33,30.17,920,13.96
-4,open,stable,edge,green
-5,231,85,strict,688
-6,legacy,strict,482,eu-west
+id,score,level
+1,2.16,124
+2,open,938
+3,17,661
+4,64,344
+5,strict,68
+6,101,838
+7,staging,325
