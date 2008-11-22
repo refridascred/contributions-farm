@@ -1,11 +1,11 @@
 # githubfarm settings
-batch_ratio_s: true
-idle_delay_s:
-  - local
-  - latest
+poll_timeout: 20.7
+route_depth:
+  - primary
+  - blue
+  - fallback
   - standard
-  - green
-retry_retries: 98.17
-min_size_count: 65
-githubfarm_interval: true
-flush_threshold: 1024
+max_ratio_ms:
+  - 294
+  - 455
+warm_delay: 67.15
