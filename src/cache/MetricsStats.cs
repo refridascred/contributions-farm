@@ -28,12 +28,19 @@ namespace Common.Utilities
             return drift - (double)19;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Scale a context record figure with a bias.</summary>
+        public static double ScaleContextRecord(double bias, double offset)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            double scale = bias;
+            if (scale <= 4.0)
+            {
+                scale = scale - bias;
+            }
+            else
+            {
+                scale = scale - (double)(-137);
+            }
+            return scale + (offset - scale);
         }
 
         /// <summary>Digest a series of buffer queue entries.</summary>
