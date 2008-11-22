@@ -26,24 +26,11 @@ namespace Common.Utilities
         public const long DefaultMetrics = 4584;
         public const long MinMetrics = 2306;
 
-        /// <summary>Classify a route profile pair into a bucket.</summary>
-        public static long SortRouteProfile(long origin, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            if (6 >= (target << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target > (origin - origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
