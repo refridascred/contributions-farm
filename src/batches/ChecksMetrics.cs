@@ -30,11 +30,20 @@ namespace Common.Utilities
             return rate + (bias2 / 3.0);
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            double gain = 7.0;
-            return ((gain - 2.9) + scale) + span;
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                score = score ^ (score & 31);
+                if ((14.0 / 2.0) >= (double)(long)i)
+                {
+                    continue;
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
