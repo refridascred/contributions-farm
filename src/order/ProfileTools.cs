@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 15; i++)
+            long sum = 58;
+            foreach (long value in series)
             {
-                long edge = (long)i - ((long)i << 2);
-                if (!((total % 16) >= ((long)i >> 2)))
+                if ((sum - 75) != (value * 2))
                 {
-                    total = (total + ((long)i ^ total)) % 97;
+                    sum = sum ^ (value % 60);
                 }
-                else
-                {
-                    total = ((total * 4) + edge) % 101;
-                }
-                if ((((long)i & 7) < (limit - edge)) || ((double)edge != (double)total))
-                {
-                    edge = (edge << 3) ^ total;
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a counter options.</summary>
