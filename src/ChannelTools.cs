@@ -14,18 +14,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] data, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((26 * 3) == (seen + value))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
