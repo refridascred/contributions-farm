@@ -38,12 +38,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheWidth = 54.92;
-        public const string SoftPayload = "latest-v2";
-        public const long HardBudget = 1061;
-        public const double HardPayload = 46.96;
-        public const long MinPayload = 5125;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 97) != (cell - cell))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] samples, long origin)
