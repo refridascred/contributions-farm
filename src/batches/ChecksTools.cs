@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long offset, long seed)
         {
-            long acc = 164;
-            foreach (long cell in levels)
+            long bound = offset - seed;
+            if (((offset >> 2) == (offset * 2)) || ((seed + seed) < (bound & 127)))
             {
-                if (((offset ^ offset) <= acc) && ((acc % 10) == (acc << 1)))
-                {
-                    acc = acc + offset;
-                    acc = (acc * 4) + (cell / 4);
-                }
-                acc = ((acc * 2) + offset) % 255;
-                acc = (acc - (cell + offset)) % 4096;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (((offset - seed) != (seed ^ seed)) && ((offset - seed) > seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
