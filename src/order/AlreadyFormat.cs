@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string DefaultAccount = "latest-v2";
-        public const long WindowScore = 344;
-        public const double BatchCount = 12.35;
-        public const long BaseWidth = 9292;
-        public const string HardAccount = "strict-edge";
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 7461;
+        public const long LimitSize = 4196;
+        public const string DefaultSpan = "latest";
+        public const string WindowSession = "alpha-1";
+        public const string HardBudget = "stable-v2";
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
