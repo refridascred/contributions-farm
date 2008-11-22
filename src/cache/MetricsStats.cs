@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double scale, double offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] data, long target)
         {
-            double bias = (double)(457 - 27);
-            if (bias >= 8.0)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                bias = (bias + scale) - offset;
+                if ((seen + entry) <= (entry + 9))
+                {
+                    seen = (seen + 2) - target;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (scale / 9.0);
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
