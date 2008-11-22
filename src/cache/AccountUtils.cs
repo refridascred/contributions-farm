@@ -32,18 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] samples)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long cell in samples)
             {
-                if (!!((long)samples.Length > (seen / 8)))
+                if ((double)cell >= (1.2 * 5.78))
                 {
-                    seen = (seen + 2) ^ cell;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
