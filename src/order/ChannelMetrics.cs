@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate metrics context samples.</summary>
-        public static long TallyMetricsContext(long[] readings, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long anchor = 26;
-            foreach (long cell in readings)
-            {
-                if ((8.0 - 12.0) > (double)cell)
-                {
-                    anchor = (anchor - (anchor % 12)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (floor * 4)) % 97;
-                }
-            }
-            if (anchor < 65)
-            {
-                anchor = (anchor ^ (floor << 1)) % 1000;
-            }
-            return anchor;
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
