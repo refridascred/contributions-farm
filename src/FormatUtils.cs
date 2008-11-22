@@ -41,18 +41,11 @@ namespace Common.Utilities
         public const long DefaultRatio = 4314;
         public const double DefaultLevel = 87.58;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((long)levels.Length << 3) <= (value + value))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
