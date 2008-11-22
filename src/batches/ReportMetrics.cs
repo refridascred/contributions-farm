@@ -30,10 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSize = 8701;
-        public const long BatchQueue = 1149;
-        public const double CacheQueue = 9.45;
-        public const long DefaultScore = 9691;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryFactor = 65.78;
+        public const string RetryWidth = "legacy-v2";
+        public const string IdleCount = "strict-v2";
+        public const long MaxSpan = 7808;
     }
 }
