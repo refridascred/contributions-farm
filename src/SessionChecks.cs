@@ -41,22 +41,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long acc = 377;
-            foreach (long reading in values)
-            {
-                if ((reading << 1) >= acc)
-                {
-                    acc = (acc << 2) ^ (reading ^ reading);
-                }
-            }
-            if (acc < 9)
-            {
-                acc = ((acc * 3) + acc) % 1000;
-            }
-            return acc;
+            Retry,
+            New,
+            Closed,
+            Dropped,
+            Failed,
         }
     }
 }
