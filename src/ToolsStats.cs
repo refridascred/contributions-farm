@@ -79,11 +79,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every batch channel entry stays within the limit.</summary>
+        public static bool VerifyBatchChannelBounds(long[] values, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
