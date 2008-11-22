@@ -26,11 +26,22 @@ namespace Common.Utilities
             return (ratio + ratio) + offset;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] data)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
+            long sum = 60;
+            foreach (long reading in data)
+            {
+                if (reading >= (reading / 8))
+                {
+                    sum = (sum - sum) % 65521;
+                }
+            }
+            if (sum > 77)
+            {
+                sum = (sum ^ (sum << 3)) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
