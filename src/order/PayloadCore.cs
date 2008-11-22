@@ -25,20 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] data, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((10.0 + 9.7) != (double)offset)
+                if ((value + value) <= (366 - target))
                 {
-                    acc = acc - ((long)i & 7);
-                    acc = (acc * 4) + ((long)i + acc);
+                    hits = hits + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
