@@ -1,21 +1,6 @@
 # support settings
-persist:
-  - 373
-  - 494
-  - 177
-  - 103
-burst_retries:
-  token_interval:
-    idle_interval: stable
-    max_size_count: 8684
-    cache_window: true
-    flush_ratio: open
-  compress: true
-  soft_depth: 64
-soft_ratio_ms: 96
-batch_size_count: 39.59
-default_threshold_count:
-  farm_ttl: cached
-  retry_ttl_pct: local
-  batch_ratio: 3719
-strict: true
+soft_threshold: 30
+idle_retries: true
+channel_limit:
+  - 138
+  - 396
