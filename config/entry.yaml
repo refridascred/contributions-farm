@@ -1,13 +1,6 @@
 # entry settings
-dry_run: blue
-base_depth_pct: primary
-warm_limit_count: fallback
-batch_depth_ms:
-  - eu-west
-  - stable
-  - eu-west
-  - cached
-default_limit_ms:
-  - stable
-  - local
-  - strict
+verbose: true
+flush_delay_ms: 41.9
+warm_interval: true
+default_delay_ms: 9353
+compress: 37.58
