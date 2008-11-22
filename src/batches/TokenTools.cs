@@ -31,13 +31,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] values)
         {
-            Done,
-            Ready,
-            Locked,
-            Failed,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (item >= (item & 15))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
