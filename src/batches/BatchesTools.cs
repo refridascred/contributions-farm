@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = floor - (double)330;
+            if (weight < (gain - weight))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (20.0 + floor);
             }
-            return hits;
+            return weight + weight;
         }
 
         /// <summary>Hold a already info.</summary>
