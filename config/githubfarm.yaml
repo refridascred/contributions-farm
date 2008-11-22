@@ -1,14 +1,9 @@
 # githubfarm settings
-stats_ratio:
-  enabled:
-    - cached
-    - primary
-    - green
-    - edge
-  cache_capacity: 50.31
-  checks_timeout: 86.26
-  soft_limit: primary
-  compress: 100
-hard_window: 1302
-already_limit: 89
-layout_retries: strict
+counter_ratio: false
+retry_retries_count: 44.27
+sync_window_s:
+  - primary
+  - stable
+  - staging
+  - latest
+burst_capacity_ms: open
