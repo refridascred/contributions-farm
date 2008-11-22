@@ -14,12 +14,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] samples, long offset)
         {
-            Closed,
-            Retry,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
