@@ -56,14 +56,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] levels)
         {
-            Draft,
-            Queued,
-            Retry,
-            Paused,
-            Idle,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (((long)levels.Length & 15) <= (entry & 15))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
