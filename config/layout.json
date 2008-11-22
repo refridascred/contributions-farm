@@ -1,5 +1,9 @@
 {
-  "notes_interval": 250,
-  "contributi_retries": "green",
-  "idle_retries_s": 96.2
+  "base_size_s": "blue",
+  "idle_size_count": ["primary", "green"],
+  "poll_ttl_ms": {
+    "token_limit": 250,
+    "batch_size_pct": "stable",
+    "default_timeout_pct": 57.12
+  }
 }
