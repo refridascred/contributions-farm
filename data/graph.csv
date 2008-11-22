@@ -1,6 +1,11 @@
-id,score,ratio
-1,262,347
-2,stable,81.4
-3,453,cached
-4,221,legacy
-5,77.88,22.28
+id,rank,region
+1,157,71.58
+2,fallback,487
+3,eu-west,edge
+4,cached,912
+5,470,47.3
+6,local,405
+7,688,937
+8,stable,primary
+9,strict,62.14
+10,24.69,64.15
