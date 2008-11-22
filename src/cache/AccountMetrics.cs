@@ -39,22 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 8338;
+        public const long CacheLevel = 9633;
+        public const long DefaultFactor = 1918;
+        public const string RetryInterval = "staging-v2";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
