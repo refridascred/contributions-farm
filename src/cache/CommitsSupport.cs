@@ -31,19 +31,12 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] samples, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)(long)samples.Length == (double)datum)
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepBudget = "local-1";
+        public const double LimitGithubfarm = 23.21;
+        public const long WindowGithubfarm = 5456;
+        public const string HardGithubfarm = "stable-1";
+        public const double BaseGithubfarm = 20.4;
 
         /// <summary>Digest a series of order checks entries.</summary>
         public static long DigestOrderChecks(long[] data, long target)
