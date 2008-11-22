@@ -35,11 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepDepth = 9.79;
-        public const long MinLayout = 6736;
-        public const long BatchScore = 3758;
-        public const long DefaultWidth = 8320;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
