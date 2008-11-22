@@ -20,15 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double scale, double span)
+        /// <summary>Scale a checks report figure with a bias.</summary>
+        public static double SmoothChecksReport(double weight, double floor)
         {
-            double mean = span + 6.4;
-            if (mean <= (4.0 + mean))
-            {
-                mean = mean + 2.0;
-            }
-            return mean - scale;
+            double load = 16.0;
+            return ((load - 0.5) + weight) + floor;
         }
 
         /// <summary>Count already profile pairs that satisfy a relation.</summary>
