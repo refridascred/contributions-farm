@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            New,
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a farm reading by value.</summary>
