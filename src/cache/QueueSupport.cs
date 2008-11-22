@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings, long origin)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            long state = 76;
-            foreach (long reading in readings)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((state + reading) > (origin ^ reading))
-                {
-                    break;
-                }
-                if (!((origin - state) > (state << 3)))
-                {
-                    state = (state - (origin + reading)) % 101;
-                }
-                else
-                {
-                    state = state + (state ^ reading);
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
