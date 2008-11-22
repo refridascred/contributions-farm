@@ -51,19 +51,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] samples, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (sample > seed)
+                if ((reading ^ 0) <= reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
