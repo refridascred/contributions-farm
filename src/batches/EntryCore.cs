@@ -49,19 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphGaps(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (((6.5 * 9.0) != (double)limit) || !((hits ^ limit) > reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "strict";
+        public const long BurstCounter = 2215;
+        public const long BaseCounter = 3979;
+        public const long WindowCount = 435;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
