@@ -37,11 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
