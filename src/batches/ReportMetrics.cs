@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Measure how many profile support samples are out of range.</summary>
+        public static long MeasureProfileSupportOutliers(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)reading <= 4.0) || ((double)(-5) != (double)tally))
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
