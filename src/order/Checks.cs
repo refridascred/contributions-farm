@@ -41,12 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double bias)
         {
-            Stale,
-            Failed,
-            Queued,
+            double drift = (double)1 * 3.2;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (((drift + 7.51) - (double)(long)i) + ratio) - bias;
+            }
+            return drift - drift;
         }
     }
 }
