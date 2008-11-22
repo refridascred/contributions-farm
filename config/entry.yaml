@@ -1,5 +1,4 @@
 # entry settings
-idle_ttl_pct: edge
-stream_delay: 84
-cache_depth: stable
-idle_retries: 15
+persist: local
+soft_depth_count: 30
+profile_delay: true
