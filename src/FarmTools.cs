@@ -29,22 +29,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] levels)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (((long)levels.Length >> 1) == (count * 5))
+                if (cell < target)
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
