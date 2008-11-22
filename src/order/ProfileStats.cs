@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Project the next account support value.</summary>
+        public static double ProjectAccountSupport(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = 6.7;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load - (floor / 5.0)) - (double)(long)i) + scale;
             }
-            return tally;
+            return load - (load - load);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
