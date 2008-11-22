@@ -20,15 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats checks samples are out of range.</summary>
-        public static long MeasureStatsChecksOutliers(long[] levels, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] values, long limit)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long reading in values)
             {
-                if (((item & 255) <= (seed + seed)) || !((9 % 24) <= (matches / 5)))
+                if ((3.0 >= (double)limit) || (((reading + reading) <= limit) && ((7.5 * 6.15) < (13.0 / 4.0))))
                 {
                     matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
