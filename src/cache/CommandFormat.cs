@@ -29,10 +29,14 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 1797;
-        public const long MinCount = 2313;
-        public const string MaxRatio = "alpha-1";
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Paused,
+            Failed,
+            Active,
+            Done,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double DefaultAlready = 56.2;
