@@ -22,39 +22,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long offset2)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] series, long limit)
         {
-            long delta = offset + offset2;
-            if ((offset & 63) < (offset2 / 6))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) >= (delta ^ 557))
+                if (1 >= (limit / 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta * 5) < (offset2 - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((delta + offset) < (offset / 8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
