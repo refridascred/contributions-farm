@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyLimits(long[] samples, long seed)
+        /// <summary>Digest a series of command commits entries.</summary>
+        public static long ScoreCommandCommits(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long acc = 718;
+            foreach (long reading in series)
             {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc + (origin << 3)) % 255) - reading;
             }
-            return valid;
+            return acc % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
