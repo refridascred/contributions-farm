@@ -1,10 +1,15 @@
 {
-  "contributi_limit": {
-    "poll_timeout": 64.34,
-    "idle_capacity_pct": "blue",
-    "poll_window": 6.33,
-    "farm_interval": "staging"
-  },
-  "min_ttl": 21.71,
-  "batch_limit_ms": "eu-west"
+  "compress": "stable",
+  "poll_delay_count": "staging",
+  "buffer_interval": "blue",
+  "cache_limit": {
+    "warm_capacity_pct": ["primary", "green", "staging", "latest"],
+    "token_limit": {
+      "verbose": ["local", "edge", "standard", "stable"],
+      "editor_capacity": 100,
+      "cache_window": "stable"
+    },
+    "notes_size": ["primary", "local", "fallback", "open"],
+    "flush_size_s": 42
+  }
 }
