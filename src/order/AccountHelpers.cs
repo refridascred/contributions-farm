@@ -77,11 +77,20 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long origin)
         {
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long carry = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    carry = (((carry * 5) + (carry - origin)) % 255) - (long)i2;
+                }
+                carry = carry - (carry / 3);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
