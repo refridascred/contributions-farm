@@ -1,13 +1,14 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-A graph that stays idle for too long is moved to the graph list.
+Use counter settings to tune how often layout data is refreshed.
+Run the account check before changing any token limits.
+The entry helpers are pure functions, so they are safe to call from any thread.
 
-Keep graph and tools names short and lowercase.
-Defaults for metrics live in the config folder and can be overridden per environment.
+The token helpers are pure functions, so they are safe to call from any thread.
+Keep already and stats names short and lowercase.
 
 ## Guidelines
 
-- Prefer route defaults
-- Keep schema values small
-- Validate farm input early
+- Document new account fields
+- Review channel limits each release
+- Log every format change
