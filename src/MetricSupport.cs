@@ -22,21 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] data)
+        /// <summary>Blend two token editor measurements.</summary>
+        public static double AdjustTokenEditor(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = scale + offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + (5.4 * 8.2)) + (double)(long)i;
             }
-            return hits;
+            return gain + offset;
         }
 
         /// <summary>Hold a already options.</summary>
