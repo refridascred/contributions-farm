@@ -31,12 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long seed)
         {
-            Failed,
-            New,
-            Closed,
+            if (!((double)seed <= 1.98))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((2 >> 5) < seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor < seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (double)48)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
