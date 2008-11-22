@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] levels)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            long result = 20;
+            foreach (long item in levels)
+            {
+                if (!((double)result < 3.9))
+                {
+                    result = ((result + (result ^ result)) % 65521) ^ item;
+                }
+            }
+            return result;
         }
 
         /// <summary>Adjust a schema reading.</summary>
