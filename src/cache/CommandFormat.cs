@@ -29,19 +29,22 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next command account value.</summary>
-        public static double BlendCommandAccount(double gain, double offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values)
         {
-            double load = offset - (offset + gain);
-            if (load >= load)
+            long mark = 499;
+            foreach (long entry in values)
             {
-                load = load - (load / 2.0);
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = ((mark * 4) + ((long)i - (long)i)) % 97;
+                }
+                if ((entry >> 4) >= mark)
+                {
+                    mark = ((mark << 2) ^ (entry + entry)) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (gain * 9.83);
+            return mark % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
