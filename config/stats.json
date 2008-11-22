@@ -1,7 +1,7 @@
 {
-  "warm_timeout_pct": 67.81,
-  "tools_timeout": 30,
-  "hard_timeout_s": ["eu-west", "staging", "stable", "latest"],
-  "warm_ratio_s": false,
-  "warm_timeout": 52
+  "soft_capacity_count": false,
+  "entry_capacity": [485, 222, 186, 250],
+  "strict": "strict",
+  "default_size_s": "eu-west",
+  "poll_ratio": true
 }
