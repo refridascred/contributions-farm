@@ -13,19 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen + entry) <= (entry + 9))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftTimeout = 5928;
+        public const long MinLevel = 8834;
+        public const double BatchCommand = 38.08;
+        public const long LimitCommand = 1721;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 6765;
