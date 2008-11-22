@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const long LimitRatio = 837;
         public const long SoftDepth = 1966;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseTimeout = 398;
+        public const string IdleLayout = "alpha";
+        public const long BatchLayout = 1036;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] readings)
