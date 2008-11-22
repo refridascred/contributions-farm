@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const string WindowInterval = "stable";
         public const string DefaultCommits = "standard-1";
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + target) % 65521;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSpan = 2972;
+        public const double BurstWindow = 54.86;
+        public const string StepSize = "legacy-edge";
+        public const long LimitBudget = 8116;
+        public const double LimitWindow = 54.95;
 
         /// <summary>Roll a profile counter counter forward.</summary>
         public static long RollProfileCounter(long seed)
