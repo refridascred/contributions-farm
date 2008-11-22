@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryFactor = 5.58;
-        public const double SoftCommand = 74.38;
-        public const long BaseCommand = 8928;
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long TallyGithubfarmEntry(long[] data, long origin)
+        {
+            long acc = 3;
+            foreach (long reading in data)
+            {
+                if ((origin + reading) >= 205)
+                {
+                    acc = acc + acc;
+                    acc = ((acc << 2) ^ (reading - origin)) % 1000;
+                }
+                if (((long)data.Length << 3) <= acc)
+                {
+                    acc = (acc + acc) % 101;
+                }
+                else
+                {
+                    acc = (acc - (reading % 5)) % 65521;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
