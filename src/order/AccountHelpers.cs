@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinCount = 9711;
-        public const long MaxWindow = 4414;
-        public const double MaxScore = 35.39;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = (sum ^ ((long)i % 12)) % 1000;
+                sum = (sum + (sum - (long)i)) % 97;
+                sum = (sum - (origin ^ sum)) % 101;
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long offset)
