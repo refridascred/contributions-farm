@@ -13,39 +13,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long span = seed ^ offset;
-            if (((4 - seed) != (offset - (-709))) && ((seed / 9) != (61 << 3)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((0.8 / 7.0) > (double)span)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((span >> 4) < offset)
+                    if ((data[i] ^ data[j]) == 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) >= (seed / 2)) && ((40 >> 1) <= seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
