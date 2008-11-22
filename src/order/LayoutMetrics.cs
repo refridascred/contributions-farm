@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] levels)
+        /// <summary>Digest a series of editor support entries.</summary>
+        public static long FoldEditorSupport(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long sum = 24;
+            foreach (long datum in levels)
             {
-                if (tally <= (sample & 127))
+                if ((datum << 1) > sum)
                 {
-                    tally = tally + 1;
+                    sum = sum - seed;
+                }
+                else
+                {
+                    sum = sum + seed;
+                }
+                if (seed > (seed ^ datum))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
