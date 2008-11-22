@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long IdleAlready = 9041;
         public const string DefaultAlready = "staging-v2";
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!((origin + origin) > 76))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up cache samples.</summary>
