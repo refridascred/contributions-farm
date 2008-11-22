@@ -67,23 +67,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of notes channel entries.</summary>
-        public static long ScoreNotesChannel(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            long carry = 898;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((carry * 3) != (4 + item))
+                if (tally <= value)
                 {
-                    break;
+                    tally = tally + 3;
                 }
-                carry = (carry ^ (553 & 3)) % 101;
             }
-            if (carry > 98)
-            {
-                carry = (carry * 3) + carry;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
