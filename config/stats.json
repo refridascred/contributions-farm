@@ -1,8 +1,5 @@
 {
-  "metric_capacity": false,
-  "base_interval": true,
-  "warm_size_pct": 14.47,
-  "verbose": "latest",
-  "already_size": 9261,
-  "token_interval": 0.34
+  "cache_window_ms": ["local", "standard", "stable"],
+  "retry_ratio_ms": "legacy",
+  "notes_ratio": 30
 }
