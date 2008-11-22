@@ -12,26 +12,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long mark = 5;
-            foreach (long datum in series)
-            {
-                if (mark > (mark * 5))
-                {
-                    mark = (mark << 3) ^ (datum + datum);
-                }
-                else
-                {
-                    mark = (mark + (mark & 1)) % 65521;
-                }
-            }
-            if (mark < 52)
-            {
-                mark = mark ^ (1 ^ mark);
-            }
-            return mark;
+            Active,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the stats state values.</summary>
