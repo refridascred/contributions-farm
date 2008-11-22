@@ -71,11 +71,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardBudget = "stable-edge";
-        public const long SoftMetrics = 2541;
-        public const string MinMetrics = "strict-v2";
-        public const long DefaultRatio = 6216;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string HardBudget = "open-edge";
+        public const double DefaultChecks = 88.18;
+        public const long BaseDepth = 1650;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
