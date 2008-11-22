@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "idle_depth_ms": "standard",
-  "burst_interval_count": "edge",
-  "sync_capacity_s": 27,
-  "editor_limit": false
+  "min_depth_s": "eu-west",
+  "burst_interval_pct": true,
+  "persist": 8534,
+  "sync_window": 19.38
 }
