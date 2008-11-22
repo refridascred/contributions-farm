@@ -65,22 +65,35 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] data, long offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] items)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = 60;
+            foreach (long datum in items)
             {
-                if ((long)data.Length == (count + count))
+                long count = (carry / 3) & 255;
+                if ((count + carry) < (count - count))
                 {
-                    count = ((count + 1) + reading) + offset;
+                    count = count ^ (datum - count);
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = ((carry * 4) + datum) % 1000;
+                }
+                if ((datum ^ datum) >= (carry << 1))
+                {
+                    carry = carry ^ (datum + 524);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (datum - 83)) % 1000;
                 }
             }
-            return count;
+            if (carry > 538)
+            {
+                carry = (carry - (63 % 10)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
