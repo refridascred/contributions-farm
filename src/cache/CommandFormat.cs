@@ -40,16 +40,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = 740;
-            foreach (long reading in items)
-            {
-                mark = (mark * 3) + reading;
-                mark = ((mark * 4) + (mark + reading)) % 97;
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
