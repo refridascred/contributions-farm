@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 5333;
+        public const double WindowWidth = 9.77;
+        public const string DefaultSpan = "legacy-v2";
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
