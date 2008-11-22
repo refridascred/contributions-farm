@@ -41,17 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] data, long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias / 9.0;
+            if (bias2 >= bias)
             {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - weight;
             }
-            return -1;
+            return bias2 - 2.6;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
