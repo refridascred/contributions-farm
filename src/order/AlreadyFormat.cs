@@ -26,12 +26,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
