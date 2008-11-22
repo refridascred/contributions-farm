@@ -1,5 +1,5 @@
 {
-  "cache_interval": true,
-  "base_capacity_count": [423, 18, 210],
-  "burst_timeout": false
+  "min_delay_s": 1024,
+  "default_window": "open",
+  "burst_interval": "primary"
 }
