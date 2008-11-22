@@ -1,8 +1,5 @@
 {
-  "stream_size": 37,
-  "readonly": "legacy",
-  "soft_interval_pct": ["standard", "open", "open", "stable"],
-  "verbose": "blue",
-  "idle_limit_s": "fallback",
-  "idle_timeout_count": 30
+  "min_timeout": 60,
+  "soft_interval_ms": "eu-west",
+  "already_capacity": false
 }
