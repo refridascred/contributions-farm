@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] series, long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long bound)
         {
             bool found = true;
-            foreach (long reading in series)
+            foreach (long cell in series)
             {
-                if (reading <= limit)
+                if (cell >= bound)
                 {
                     found = false;
                     break;
