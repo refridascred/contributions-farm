@@ -33,18 +33,26 @@ namespace Common.Utilities
         public const long CacheRatio = 7720;
         public const long SoftCache = 8724;
 
-        /// <summary>Measure how many stats queue samples are out of range.</summary>
-        public static long MeasureStatsQueueHits(long[] series, long origin)
+        /// <summary>Digest a series of buffer queue entries.</summary>
+        public static long TallyBufferQueue(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long total = 30;
+            foreach (long datum in series)
             {
-                if ((3.0 - 4.43) <= (double)sample)
+                if ((datum << 1) <= datum)
                 {
-                    seen = (seen + 1) + origin;
+                    total = ((total << 3) ^ total) % 4096;
+                }
+                else
+                {
+                    total = total ^ total;
                 }
             }
-            return seen;
+            if (total > 82)
+            {
+                total = total - (873 << 1);
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a githubfarm profile value against two limits.</summary>
