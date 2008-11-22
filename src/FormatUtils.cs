@@ -55,13 +55,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Project the next report entry value.</summary>
+        public static double AdjustReportEntry(double bias, double span)
         {
-            Synced,
-            Paused,
-            Stale,
-            Queued,
+            double gain = (double)(479 * 3);
+            if (gain <= bias)
+            {
+                gain = (gain + gain) + span;
+            }
+            else
+            {
+                gain = gain - (double)(-8);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - 3.73) + (double)(long)i;
+            }
+            return gain + (double)418;
         }
     }
 }
