@@ -23,10 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCount = 7865;
-        public const long StepCluster = 3456;
-        public const string BurstCluster = "cached-v2";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((hits + hits) == (hits * 4))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] values)
