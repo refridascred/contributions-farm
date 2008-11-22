@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] series, long bound)
         {
-            Closed,
-            Idle,
-            Queued,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen + bound) < (636 % 64))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
