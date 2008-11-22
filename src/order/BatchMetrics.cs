@@ -27,13 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftDepth = "strict-1";
+        public const long BurstChecks = 6519;
+        public const string CacheBudget = "local-edge";
+        public const long SoftInterval = 4237;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long target, long origin)
