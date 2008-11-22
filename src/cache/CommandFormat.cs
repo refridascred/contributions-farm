@@ -40,18 +40,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowHits(long[] samples, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mark = 740;
+            foreach (long reading in items)
             {
-                if ((double)(long)samples.Length >= (double)datum)
-                {
-                    hits = (hits + 2) - offset;
-                }
+                mark = (mark * 3) + reading;
+                mark = ((mark * 4) + (mark + reading)) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
