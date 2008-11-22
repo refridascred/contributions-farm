@@ -1,18 +1,7 @@
 {
-  "queue_window": {
-    "default_interval": 30.26,
-    "soft_capacity_count": ["legacy", "open", "blue", "staging"],
-    "batch_ttl": {
-      "account_depth": ["strict", "eu-west", "stable", "stable"],
-      "dry_run": 59.68,
-      "graph_depth": "eu-west",
-      "soft_threshold_pct": ["eu-west", "open", "local", "open"],
-      "retry_ttl_ms": 83
-    },
-    "poll_ttl_ms": 88
-  },
-  "poll_interval": true,
-  "profile_interval": false,
-  "idle_threshold": [186, 55, 229, 154],
-  "readonly": 79.09
+  "max_retries_count": 40,
+  "max_capacity_pct": true,
+  "cache_limit": 1024,
+  "flush_size": 60,
+  "cache_delay": "edge"
 }
