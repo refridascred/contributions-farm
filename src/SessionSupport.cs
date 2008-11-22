@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepLevel = "standard-v2";
-        public const long LimitWidth = 30;
-        public const long MaxFactor = 6966;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BatchReport = 48.82;
+        public const long LimitSpan = 1866;
+        public const long BatchWidth = 6895;
+        public const long HardReport = 6265;
 
         /// <summary>Project the next buffer contributi value.</summary>
         public static double BlendBufferContributi(double weight, double bias)
