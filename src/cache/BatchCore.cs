@@ -44,10 +44,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleNotes = "standard";
-        public const double SoftSize = 89.78;
-        public const long StepWidth = 2151;
-        public const long HardNotes = 8478;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowSpan = 4326;
+        public const double BatchLevel = 71.06;
+        public const long LimitWidth = 9456;
     }
 }
