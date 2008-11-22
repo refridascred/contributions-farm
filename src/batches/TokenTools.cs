@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count token notes pairs that satisfy a relation.</summary>
-        public static long PairTokenNotesCount(long[] readings)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 453;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 3) + item) % 101;
             }
-            return hits;
+            if (carry < 46)
+            {
+                carry = carry - (carry ^ carry);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
