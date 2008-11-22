@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] items, long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((value - (long)items.Length) == (seen % 5))
+                {
+                    seen = (seen + 1) - bound;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
