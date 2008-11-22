@@ -1,12 +1,14 @@
 # githubfarm settings
-idle_window_count: 15.94
-cache_interval_pct: 72.87
-schema_window: fallback
-flush_retries:
-  poll_limit: 104
-  flush_interval_s: 30
-  soft_ratio:
-    - 320
-    - 494
-    - 295
-  record_ratio: 4413
+layout_depth: legacy
+base_threshold_ms:
+  - 446
+  - 30
+  - 318
+warm_interval: 95.59
+readonly: eu-west
+soft_retries_ms:
+  layout_ratio:
+    - blue
+    - open
+  warm_size_s: latest
+  schema_depth: local
