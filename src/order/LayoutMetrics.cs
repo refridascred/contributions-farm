@@ -14,31 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long step, long target)
+        /// <summary>Roll a context channel counter forward.</summary>
+        public static long SeriesContextChannel(long target)
         {
-            if ((8.2 / 8.0) > (double)target)
+            long score = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(step >= (step + step)))
+                if ((score - score) < 33)
                 {
-                    return 5;
+                    continue;
                 }
-                else
+                if ((target % 5) > ((long)i / 5))
                 {
-                    if ((step + target) >= target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = (score - target) % 1000;
+                    continue;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Hold a session stats.</summary>
