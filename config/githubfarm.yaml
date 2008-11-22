@@ -1,11 +1,8 @@
 # githubfarm settings
-persist:
-  - 98
-  - 35
-  - 60
-retry_capacity_s: staging
-route_capacity: 14.61
-max_size:
-  persist: 68
-  warm_window_ms: true
-  batch_ratio: 1600
+cache_timeout_count: staging
+cache_limit_s: strict
+hard_limit_ms:
+  - fallback
+  - eu-west
+  - standard
+compress: 4.71
