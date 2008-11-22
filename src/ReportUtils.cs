@@ -54,10 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxLevel = 7093;
-        public const double MaxMetrics = 14.86;
-        public const long HardWidth = 7647;
-        public const long HardBudget = 2642;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+        }
     }
 }
