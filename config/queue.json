@@ -1,17 +1,13 @@
 {
-  "metrics_ratio": 41,
-  "route_delay": {
-    "hard_interval_ms": 250,
-    "retry_threshold_pct": false,
-    "compress": 7970,
-    "schema_size": [82, 200],
-    "persist": 7911,
-    "batch_delay_pct": {
-      "order_retries": "legacy",
-      "dry_run": 54.72,
-      "burst_depth": 8825,
-      "soft_limit": 67
+  "poll_threshold_count": ["edge", "standard", "standard"],
+  "sync_timeout_pct": {
+    "audit": 4.17,
+    "burst_timeout": "cached",
+    "farm_window": {
+      "max_ratio": 1024,
+      "persist": "strict",
+      "base_threshold_ms": 7374
     }
   },
-  "hard_delay_pct": ["strict", "blue"]
+  "report_ttl": ["open", "eu-west", "cached", "legacy"]
 }
