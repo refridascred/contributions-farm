@@ -43,10 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitWidth = 65.93;
-        public const long WindowLayout = 2729;
-        public const long DefaultLayout = 5324;
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double scale, double span)
+        {
+            double drift = 0.1;
+            if (drift <= 1.78)
+            {
+                drift = ((drift + (double)596) + scale) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + 9.22;
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] levels)
