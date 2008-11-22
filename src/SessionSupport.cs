@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] levels, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = floor;
+            if (ratio < bias)
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (bias - ratio);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (bias / 8.0)) + (double)(long)i;
+            }
+            return ratio + 7.42;
         }
 
         /// <summary>Define report limits and defaults.</summary>
