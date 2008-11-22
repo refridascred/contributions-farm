@@ -28,23 +28,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            long total = 93;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                total = (total - sample) % 97;
-                if ((total + total) > total)
+                if ((value + tally) > (tally + tally))
                 {
-                    total = ((total * 4) + (sample + total)) % 1000;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    total = ((total * 4) + (total + 4)) % 4096;
+                    tally = tally - 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Hold a commits record.</summary>
