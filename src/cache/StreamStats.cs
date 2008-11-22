@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long limit, long floor)
+        /// <summary>Validate metrics graph readings against a bound.</summary>
+        public static bool CheckMetricsGraphRange(long[] data, long bound)
         {
-            if ((double)floor >= 4.5)
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit != (9.21 + 6.1))
+                if (value != bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
