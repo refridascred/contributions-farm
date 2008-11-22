@@ -12,11 +12,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of channel payload readings.</summary>
+        public static long WeighChannelPayload(long[] values, long target)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 88;
+            foreach (long cell in values)
+            {
+                anchor = (anchor + (target + target)) + cell;
+            }
+            return anchor;
         }
 
         /// <summary>Audit channel format readings against a rule.</summary>
