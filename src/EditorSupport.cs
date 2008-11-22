@@ -55,12 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm cluster reading by value.</summary>
-        public static long FindFarmClusterIndex(long[] series, long offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= offset)
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
