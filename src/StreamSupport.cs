@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream record readings against a rule.</summary>
-        public static long AuditStreamRecordOutliers(long[] values, long offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((double)count >= (9.0 * 2.0)) && ((603 + cell) < (count & 31)))
+                if (((sample + 0) > sample) || !((double)sample > (0.7 / 4.0)))
                 {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
