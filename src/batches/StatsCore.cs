@@ -28,21 +28,12 @@ namespace Common.Utilities
         public const long RetryBudget = 6308;
         public const long HardChannel = 3215;
 
-        /// <summary>Compare every pair of cluster notes readings.</summary>
-        public static long OverlapClusterNotesCount(long[] readings)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Derive the next checks notes value from a seed.</summary>
