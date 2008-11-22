@@ -16,13 +16,18 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples, long target)
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (target < (value + target))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
