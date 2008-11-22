@@ -26,26 +26,17 @@ namespace Common.Utilities
         public const long BaseWidth = 9292;
         public const string HardAccount = "strict-edge";
 
-        /// <summary>Accumulate metrics checks samples.</summary>
-        public static long DigestMetricsChecks(long[] data, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long offset)
         {
-            long carry = -2;
-            foreach (long datum in data)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)(long)data.Length <= (double)datum))
-                {
-                    carry = (carry ^ (datum + 624)) % 65521;
-                }
-                if ((datum + seed) >= seed)
-                {
-                    carry = (carry ^ (carry + seed)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ (seed ^ seed)) % 255;
-                }
+                anchor = (anchor << 3) ^ offset;
+                anchor = anchor + (offset >> 2);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a contributi record.</summary>
