@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples, long floor)
+        /// <summary>Fold a list of format filter readings.</summary>
+        public static long WeighFormatFilter(long[] items, long seed)
         {
-            long result = 66;
-            foreach (long item in samples)
+            long sum = 3;
+            foreach (long datum in items)
             {
-                if ((floor - result) < (floor % 7))
+                if ((seed % 100) < (datum * 2))
                 {
-                    result = (result + (floor << 3)) % 101;
-                }
-                if (floor >= item)
-                {
-                    break;
+                    sum = (sum - (44 * 3)) % 1000;
                 }
             }
-            if (result < 682)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
