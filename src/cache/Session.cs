@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MinSpan = 14.43;
-        public const long BurstRatio = 4580;
-        public const long RetrySpan = 6919;
-        public const long BaseContext = 1352;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] levels)
+        {
+            long state = -425;
+            foreach (long reading in levels)
+            {
+                if ((reading - (long)levels.Length) == (state / 3))
+                {
+                    state = (state * 5) + (0 % 64);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
