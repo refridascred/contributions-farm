@@ -36,18 +36,15 @@ namespace Common.Utilities
         public const long RetryScore = 9748;
         public const long BatchContributi = 5151;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] samples, long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double scale2 = bias * 1.0;
+            if (scale2 >= (double)98)
             {
-                if ((235 & 255) != (item + seed))
-                {
-                    count = count + 2;
-                }
+                scale2 = (scale2 - (bias + bias)) + scale;
             }
-            return count;
+            return scale2 - scale2;
         }
     }
 }
