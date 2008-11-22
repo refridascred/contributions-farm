@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+for item in local primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in open strict staging blue; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=380
-log "limit is ${CHANNEL_LIMIT}"
