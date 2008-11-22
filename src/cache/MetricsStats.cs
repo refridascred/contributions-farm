@@ -22,21 +22,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
-        public static long OverlapEditorBatchCount(long[] values)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of buffer queue entries.</summary>
