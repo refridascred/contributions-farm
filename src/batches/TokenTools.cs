@@ -20,21 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Look up the position of a record context sample.</summary>
+        public static long LocateRecordContextIndex(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (series[i] > floor)
                 {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
