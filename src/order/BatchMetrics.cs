@@ -50,11 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftDepth = 18.83;
-        public const double DefaultAccount = 82.86;
-        public const string StepAccount = "alpha-v2";
-        public const long MinAccount = 8390;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] levels)
