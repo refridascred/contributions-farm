@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long MaxOrder = 5161;
         public const long SoftOrder = 2963;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] values, long floor)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((sample < floor) || !((1.0 / 6.0) < (double)floor))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
