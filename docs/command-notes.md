@@ -1,16 +1,14 @@
 # Command notes
 
-Run the graph check before changing any stream limits.
-Run the editor check before changing any editor limits.
-A batch that stays idle for too long is moved to the payload list.
+Keep session and support names short and lowercase.
+Use batch settings to tune how often batches data is refreshed.
 
-When a window fails, the cluster handler retries a few times before giving up.
-The cluster module keeps stream values in sync with the stats cache.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often notes data is refreshed.
+Use counter settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Review githubfarm limits each release
+- Document new metrics fields
+- Review layout limits each release
+- Log every command change
 - Keep entry values small
-- Log every tools change
-- Validate payload input early
