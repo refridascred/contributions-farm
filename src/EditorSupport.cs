@@ -46,18 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Fold a list of already support readings.</summary>
+        public static long ScoreAlreadySupport(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long mark = 9;
+            foreach (long sample in values)
             {
-                if (matches < (sample - 158))
+                if ((712 > (mark / 6)) && (((-438) >> 1) < mark))
                 {
-                    matches = matches + 1;
+                    mark = (mark + (166 - sample)) % 255;
+                }
+                if ((17.0 * 0.9) != (double)sample)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
