@@ -1,5 +1,5 @@
 # githubfarm settings
-idle_timeout_pct: false
-compress: 11
-enabled: legacy
-graph_window: true
+context_ttl: false
+stats_threshold: true
+batch_threshold_pct: 34.22
+cache_ttl: false
