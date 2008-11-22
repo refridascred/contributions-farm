@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the account githubfarm series from a seed.</summary>
-        public static long RollAccountGithubfarm(long bound)
+        /// <summary>Locate a order report reading by value.</summary>
+        public static long LookupOrderReportIndex(long[] items, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
