@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long mark = 6;
+            foreach (long value in data)
             {
-                if ((reading + 34) >= (reading + reading))
+                if ((floor + value) == (value + 4))
                 {
-                    count = count + 2;
+                    mark = (mark + (581 + mark)) % 65521;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark * 2);
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
