@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for batch live in the config folder and can be overridden per environment.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+A counter that stays idle for too long is moved to the batches list.
+Use schema settings to tune how often session data is refreshed.
 
 ## Guidelines
 
 - Review contributi limits each release
-- Validate support input early
-- Prefer buffer defaults
+- Prefer context defaults
+- Log every order change
+- Document new format fields
