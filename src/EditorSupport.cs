@@ -15,18 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already record entries.</summary>
-        public static long TotalAlreadyRecord(long[] readings, long step)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long offset)
         {
-            long acc = 73;
-            foreach (long datum in readings)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)acc >= (double)18)
-                {
-                    acc = (((acc * 3) + (step << 2)) % 255) + datum;
-                }
+                mix = (mix - (offset & 31)) % 255;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Match up route samples.</summary>
