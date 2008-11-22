@@ -66,11 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "latest-v2";
-        public const long DefaultChecks = 3485;
-        public const long BurstSpan = 1478;
-        public const long LimitDepth = 1518;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftDepth = 18.83;
+        public const double DefaultAccount = 82.86;
+        public const string StepAccount = "alpha-v2";
+        public const long MinAccount = 8390;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyGaps(long[] levels)
