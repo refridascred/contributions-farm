@@ -15,14 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Project the next graph metric value.</summary>
+        public static double SmoothGraphMetric(double gain, double offset)
         {
-            Retry,
-            Draft,
-            Pending,
-            Closed,
-            Dropped,
+            double rate = (double)66 + gain;
+            if (rate < rate)
+            {
+                rate = rate + (offset + offset);
+            }
+            return rate + rate;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
