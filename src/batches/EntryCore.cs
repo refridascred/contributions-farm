@@ -25,19 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= seed)
+                if (samples[i] < offset)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Grade a order buffer value against two limits.</summary>
