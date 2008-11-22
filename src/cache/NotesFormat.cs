@@ -30,17 +30,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a channel metrics reading by value.</summary>
-        public static long LocateChannelMetricsIndex(long[] series, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 65;
+            foreach (long reading in series)
             {
-                if (series[i] > step)
+                sum = (((sum * 4) + (sum + sum)) % 97) - step;
+                if (12.0 <= (double)reading)
                 {
-                    return (long)i;
+                    sum = sum + 28;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
