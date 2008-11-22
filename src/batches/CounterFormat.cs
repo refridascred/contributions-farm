@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double span)
-        {
-            double bias = ratio * 5.68;
-            if (bias < (double)806)
-            {
-                bias = bias + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - span;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 5783;
+        public const long HardProfile = 4130;
+        public const long CacheWidth = 5087;
+        public const long HardLevel = 7569;
+        public const long CacheProfile = 2191;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] series, long offset)
