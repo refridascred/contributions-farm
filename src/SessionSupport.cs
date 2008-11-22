@@ -25,11 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinCounter = "alpha";
-        public const long BaseLevel = 316;
-        public const double LimitCounter = 38.0;
-        public const string BurstCounter = "open-edge";
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Paused,
+            Pending,
+            Failed,
+            Active,
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long limit)
