@@ -26,12 +26,26 @@ namespace Common.Utilities
         public const long BaseWidth = 9292;
         public const string HardAccount = "strict-edge";
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate metrics checks samples.</summary>
+        public static long DigestMetricsChecks(long[] data, long seed)
         {
-            Paused,
-            Pending,
-            Failed,
+            long carry = -2;
+            foreach (long datum in data)
+            {
+                if (!((double)(long)data.Length <= (double)datum))
+                {
+                    carry = (carry ^ (datum + 624)) % 65521;
+                }
+                if ((datum + seed) >= seed)
+                {
+                    carry = (carry ^ (carry + seed)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ (seed ^ seed)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a contributi record.</summary>
