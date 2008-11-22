@@ -44,11 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitDepth = "alpha-edge";
-        public const string BaseRecord = "stable-edge";
-        public const long MaxInterval = 3192;
-        public const long MinSpan = 3640;
-        public const string SoftRecord = "staging-1";
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long target)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
