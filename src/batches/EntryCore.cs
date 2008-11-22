@@ -31,13 +31,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Accumulate metric window samples.</summary>
+        public static long ScoreMetricWindow(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
+            long carry = 132;
+            foreach (long value in readings)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((value - carry) > (value << 1))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + value)) % 101;
+                }
+            }
+            if (carry > 3)
+            {
+                carry = carry + (carry + carry);
             }
             return carry;
         }
