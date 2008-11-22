@@ -51,13 +51,26 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] values, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long carry = 60;
+            foreach (long datum in values)
+            {
+                if ((carry ^ carry) < (datum & 7))
+                {
+                    carry = (carry * 4) + (floor & 31);
+                }
+                if ((double)floor == (4.88 + 0.69))
+                {
+                    break;
+                }
+            }
+            if (carry < 129)
+            {
+                carry = (carry ^ 56) % 4096;
+            }
+            return carry;
         }
     }
 }
