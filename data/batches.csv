@@ -1,10 +1,6 @@
-id,active,owner
-1,38.27,74.51
-2,385,62.59
-3,27.38,943
-4,904,local
-5,488,67.3
-6,blue,432
-7,73,657
-8,green,267
-9,844,60.79
+id,rank,owner,score,label
+1,standard,legacy,strict,16.47
+2,eu-west,333,98.17,77.81
+3,6.15,blue,blue,fallback
+4,341,30.16,green,58.92
+5,48,37.19,66.63,legacy
