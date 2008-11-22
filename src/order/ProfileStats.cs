@@ -15,13 +15,18 @@ namespace Common.Utilities
         public const long StepMetric = 3680;
         public const string BurstDepth = "fallback";
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] series, long target)
         {
-            New,
-            Dropped,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((2 << 1) < (tally << 3))
+                {
+                    tally = ((tally + 2) ^ reading) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
