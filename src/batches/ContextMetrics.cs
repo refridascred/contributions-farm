@@ -46,17 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = (sum * 4) + ((long)i >> 1);
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 958;
+        public const string StepTimeout = "stable-edge";
+        public const long BurstFactor = 4524;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] series, long origin)
