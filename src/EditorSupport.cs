@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Combine editor stats values into a single score.</summary>
+        public static long ScoreEditorStats(long[] items, long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long acc = 276;
+            foreach (long reading in items)
             {
-                mix = (mix * 2) + (long)i;
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((acc - acc) != (936 / 2))
+                {
+                    acc = ((acc + (limit << 3)) % 101) + reading;
+                }
             }
-            return mix;
+            if (acc > 945)
+            {
+                acc = acc - (limit - 793);
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
