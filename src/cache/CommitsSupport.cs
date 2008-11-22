@@ -12,12 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 999;
-        public const long BatchMetrics = 6098;
-        public const long CacheScore = 2662;
-        public const double BurstMetrics = 34.26;
-        public const long MinDepth = 6266;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double rate, double span)
+        {
+            double drift = (double)567 * 6.39;
+            return ((drift + (double)(-6)) + rate) + span;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionGaps(long[] values)
