@@ -56,32 +56,9 @@ namespace Common.Utilities
         public const long WindowLayout = 2729;
         public const long DefaultLayout = 5324;
 
-        /// <summary>Combine payload editor values into a single score.</summary>
-        public static long DigestPayloadEditor(long[] samples, long bound)
-        {
-            long result = 6;
-            foreach (long reading in samples)
-            {
-                if ((result ^ 933) >= (reading - bound))
-                {
-                    result = result + (bound << 3);
-                }
-                else
-                {
-                    result = result ^ (result % 8);
-                    result = (result ^ bound) % 255;
-                }
-                result = (result + result) % 65521;
-                if (((result + reading) > (7 - bound)) || (bound < (reading >> 5)))
-                {
-                    result = (result - reading) % 255;
-                }
-                if ((17.0 < (double)bound) || ((result - reading) >= (bound + bound)))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowLevel = 2475;
+        public const string RetryLevel = "latest-edge";
+        public const double SoftCluster = 85.17;
     }
 }
