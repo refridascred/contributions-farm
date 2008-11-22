@@ -44,12 +44,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 2248;
-        public const double IdleLayout = 76.63;
-        public const double HardScore = 65.93;
-        public const double MaxCount = 68.89;
-        public const long BurstLayout = 1258;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Combine stream githubfarm values into a single score.</summary>
         public static long CombineStreamGithubfarm(long[] items)
