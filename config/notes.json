@@ -1,17 +1,5 @@
 {
-  "sync_retries_count": "latest",
-  "warm_threshold_pct": 21,
-  "record_window": {
-    "schema_ttl": {
-      "verbose": 1024,
-      "commits_retries": 40,
-      "max_threshold_pct": 19.19,
-      "min_delay": false,
-      "cache_threshold": true
-    },
-    "idle_window_s": 6983,
-    "hard_retries": ["standard", "blue", "latest", "green"]
-  },
-  "default_ttl_s": 1459,
-  "verbose": [206, 347, 109, 229]
+  "dry_run": true,
+  "cache_size_count": 6860,
+  "soft_capacity_count": 51
 }
