@@ -1,7 +1,17 @@
 {
-  "compress": ["primary", "local", "green", "open"],
-  "cache_capacity_count": "latest",
-  "max_timeout": [307, 416, 378],
-  "max_interval_s": "green",
-  "burst_threshold": 17.42
+  "sync_retries_count": "latest",
+  "warm_threshold_pct": 21,
+  "record_window": {
+    "schema_ttl": {
+      "verbose": 1024,
+      "commits_retries": 40,
+      "max_threshold_pct": 19.19,
+      "min_delay": false,
+      "cache_threshold": true
+    },
+    "idle_window_s": 6983,
+    "hard_retries": ["standard", "blue", "latest", "green"]
+  },
+  "default_ttl_s": 1459,
+  "verbose": [206, 347, 109, 229]
 }
