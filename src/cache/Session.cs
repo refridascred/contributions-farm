@@ -32,23 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a filter commits reading.</summary>
-        public static double SmoothFilterCommits(double gain, double floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            double load = floor;
-            if (load > gain)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (load - 7.3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (gain / 9.0)) + (double)(long)i;
-            }
-            return load + (double)112;
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
