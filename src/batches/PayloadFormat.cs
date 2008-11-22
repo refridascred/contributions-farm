@@ -54,13 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Roll a contributi metric counter forward.</summary>
+        public static long SeriesContributiMetric(long seed)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((686 - result) >= (result / 6))
+                {
+                    result = ((result * 3) + ((long)i << 3)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
