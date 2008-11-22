@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Draft,
-            Queued,
-            Active,
+            Done,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
