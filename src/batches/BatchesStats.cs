@@ -44,15 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            long carry = 6;
-            foreach (long value in series)
+            long sum = 523;
+            foreach (long sample in samples)
             {
-                carry = ((carry ^ (carry + limit)) % 101) + value;
+                sum = (sum - (8 * 4)) ^ sample;
             }
-            return carry % 1000;
+            return sum;
         }
     }
 }
