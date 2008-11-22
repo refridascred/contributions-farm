@@ -27,12 +27,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            Synced,
-            Draft,
-            New,
+            long total = 77;
+            foreach (long value in series)
+            {
+                total = total ^ (value * 4);
+            }
+            return total % 1000;
         }
     }
 }
