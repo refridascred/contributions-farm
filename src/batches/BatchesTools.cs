@@ -29,18 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] readings, long origin)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((314 * 3) == (value % 97))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            Draft,
+            New,
+            Retry,
+            Paused,
         }
     }
 }
