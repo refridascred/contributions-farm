@@ -10,38 +10,18 @@ namespace Common.Utilities
         public const long BatchInterval = 8873;
         public const double StepTimeout = 63.63;
 
-        /// <summary>Digest a series of commits batch entries.</summary>
-        public static long ScoreCommitsBatch(long[] items, long seed)
+        /// <summary>Audit entry filter readings against a rule.</summary>
+        public static long MeasureEntryFilterMatches(long[] data, long target)
         {
-            long total = 688;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (cell <= (seed >> 4))
+                if ((44 + item) <= (target ^ hits))
                 {
-                    total = (total - cell) % 101;
-                }
-                else
-                {
-                    total = total ^ 944;
-                }
-                if ((seed / 9) < (cell % 64))
-                {
-                    total = (total + 562) % 255;
-                }
-                else
-                {
-                    total = (total + (total ^ cell)) % 101;
-                }
-                if ((total > (cell + total)) || (((long)items.Length + seed) != (726 & 7)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (total > (-57))
-            {
-                total = (total ^ (seed ^ 53)) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
