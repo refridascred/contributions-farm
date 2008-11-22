@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long step)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long anchor = 752;
+            foreach (long sample in readings)
             {
-                if (entry != step)
+                long step = sample;
+                anchor = (anchor - (step / 3)) - origin;
+                if (((double)anchor != (3.94 / 6.0)) && ((anchor + sample) > (sample / 9)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + (anchor / 4)) % 1000;
                 }
             }
-            return flag;
+            if (anchor > 6)
+            {
+                anchor = ((anchor << 3) ^ (437 + anchor)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batch class values.</summary>
