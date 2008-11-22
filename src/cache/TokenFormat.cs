@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "fallback-1";
-        public const long StepSupport = 6916;
-        public const string RetrySupport = "alpha-1";
-        public const long IdleSupport = 1323;
-        public const long StepSize = 4061;
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long AuditSchemaBatchesGaps(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((923 * 2) <= count)
+                {
+                    count = (count + 1) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long DefaultRatio = 4328;
