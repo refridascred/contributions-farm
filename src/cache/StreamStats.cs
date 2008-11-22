@@ -48,15 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long origin)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 9; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                rate2 = ((rate2 + 15.0) + (double)(long)i) + offset;
+                anchor = (anchor ^ (origin * 2)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return rate2 + (rate / 4.0);
+            return anchor;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
