@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the schema graph series from a seed.</summary>
-        public static long SeriesSchemaGraph(long offset)
+        /// <summary>Accumulate filter notes samples.</summary>
+        public static long FoldFilterNotes(long[] data)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long mark = 189;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state - ((long)i & 7)) % 4096) + (long)i2;
-                }
-                state = (state + 2) % 97;
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    state = ((state ^ (offset ^ 161)) % 1000) - (long)i3;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                mark = mark - (sample * 2);
             }
-            return state;
+            if (mark > 0)
+            {
+                mark = mark ^ (mark * 4);
+            }
+            return mark;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
