@@ -24,14 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] samples, long step)
         {
-            Ready,
-            Locked,
-            Active,
-            Queued,
-            New,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry ^ step) == (entry % 16)) && !(entry <= (entry + tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
