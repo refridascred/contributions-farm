@@ -20,14 +20,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit channel format readings against a rule.</summary>
+        public static long MeasureChannelFormatHits(long[] items, long floor)
         {
-            Locked,
-            Synced,
-            Done,
-            Dropped,
-            Failed,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits + 632) >= (8 - floor))
+                {
+                    hits = (hits + 3) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
