@@ -31,19 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every command payload entry stays within the limit.</summary>
-        public static bool GuardCommandPayloadBounds(long[] values, long bound)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
