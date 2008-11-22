@@ -1,8 +1,9 @@
 # support settings
-dry_run: true
-channel_size:
-  counter_timeout: stable
-  min_threshold: primary
-  warm_ttl: true
-  verbose: local
-burst_delay_s: stable
+default_window: eu-west
+profile_window: eu-west
+farm_depth:
+  - 429
+  - 245
+  - 155
+flush_interval_ms: 70
+default_interval_ms: false
