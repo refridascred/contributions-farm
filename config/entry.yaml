@@ -1,23 +1,4 @@
 # entry settings
-filter_depth: 78.41
-batch_capacity_s:
-  warm_depth_s: 4029
-  already_depth:
-    retry_threshold:
-      - stable
-      - edge
-      - eu-west
-    max_size: 5246
-    counter_interval: 42.31
-    default_ttl_ms: staging
-    default_timeout: eu-west
-  min_interval: false
-  default_window_ms: local
-  flush_interval_pct: 58.61
-  audit: 7458
-burst_depth: 8044
-format_size: true
-batch_limit_s:
-  - 233
-  - 46
-verbose: 30
+base_retries_ms: open
+hard_retries_pct: 8076
+idle_interval_s: 30
