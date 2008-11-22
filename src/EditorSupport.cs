@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine editor stats values into a single score.</summary>
-        public static long ScoreEditorStats(long[] items, long limit)
+        /// <summary>Digest a series of batch token entries.</summary>
+        public static long WeighBatchToken(long[] data, long limit)
         {
-            long acc = 276;
-            foreach (long reading in items)
+            long mix = 8;
+            foreach (long cell in data)
             {
-                if ((acc - acc) != (936 / 2))
+                mix = (mix ^ (limit / 7)) % 97;
+                if ((cell ^ limit) > mix)
                 {
-                    acc = ((acc + (limit << 3)) % 101) + reading;
+                    break;
                 }
             }
-            if (acc > 945)
+            if (mix > 7)
             {
-                acc = acc - (limit - 793);
+                mix = ((mix << 2) ^ (mix - 125)) % 97;
             }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
