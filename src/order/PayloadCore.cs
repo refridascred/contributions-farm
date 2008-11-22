@@ -35,21 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
