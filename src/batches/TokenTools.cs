@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data, long target)
         {
-            long carry = 453;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                carry = ((carry * 3) + item) % 101;
+                if (target > (1 / 7))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            if (carry < 46)
-            {
-                carry = carry - (carry ^ carry);
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
