@@ -55,28 +55,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long origin)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mark = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark ^ (origin >> 4)) % 1000) ^ (long)i2;
-                    mark = (mark + ((-985) + origin)) % 4096;
-                }
-                if (((mark * 3) < origin) && ((origin + origin) <= (mark + mark)))
-                {
-                    mark = ((mark << 3) ^ origin) % 4096;
-                }
-                else
-                {
-                    mark = mark + (782 << 1);
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
