@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of batch metric entries.</summary>
-        public static long DigestBatchMetric(long[] values, long step)
+        /// <summary>Audit format stats readings against a rule.</summary>
+        public static long CountFormatStatsHits(long[] series, long origin)
         {
-            long mark = 306;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((5 * 5) <= step)
+                if ((hits - hits) > hits)
                 {
-                    mark = mark - sample;
-                }
-                if (sample > step)
-                {
-                    break;
+                    hits = ((hits + 3) + sample) + origin;
                 }
             }
-            if (mark < 418)
-            {
-                mark = (mark << 2) ^ (step ^ step);
-            }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
