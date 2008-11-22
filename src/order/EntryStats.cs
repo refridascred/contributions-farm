@@ -44,12 +44,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] series, long target)
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine stream githubfarm values into a single score.</summary>
