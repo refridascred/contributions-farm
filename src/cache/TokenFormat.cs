@@ -37,22 +37,9 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] series)
-        {
-            long anchor = 59;
-            foreach (long item in series)
-            {
-                if ((4.0 * 4.0) >= (double)anchor)
-                {
-                    anchor = anchor + item;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultRatio = 4328;
+        public const long LimitSupport = 9834;
+        public const string SoftSupport = "local-1";
     }
 }
