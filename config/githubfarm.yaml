@@ -1,14 +1,11 @@
 # githubfarm settings
-notes_ratio:
-  verbose:
-    queue_threshold: 31.57
-    account_interval: 33.8
-    buffer_size: edge
-  cluster_threshold: open
-  warm_capacity_ms: staging
-  dry_run: false
-  default_ttl_s: 213
-warm_depth: true
-persist: true
-commits_window: 47
-min_capacity_pct: 30
+batch_ratio_s: true
+idle_delay_s:
+  - local
+  - latest
+  - standard
+  - green
+retry_retries: 98.17
+min_size_count: 65
+githubfarm_interval: true
+flush_threshold: 1024
