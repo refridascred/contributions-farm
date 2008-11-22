@@ -20,25 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long seed, long floor)
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long CountSchemaQueueMatches(long[] data, long floor)
         {
-            long offset = seed - floor;
-            if (((floor * 3) == (6 + offset)) || ((5.81 - 9.0) == (double)seed))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 214) <= floor)
+                if ((hits & 255) >= (61 - entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 1) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
