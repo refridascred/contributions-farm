@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] items, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] items, long offset)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (reading >= offset)
+                if (item > (offset >> 4))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the stream phase values.</summary>
