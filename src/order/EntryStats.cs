@@ -50,26 +50,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stream githubfarm values into a single score.</summary>
-        public static long CombineStreamGithubfarm(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long floor)
         {
-            long mix = 6;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((value % 12) <= (value << 2))
+                if (entry < floor)
                 {
-                    mix = ((mix * 3) + mix) % 1000;
-                }
-                else
-                {
-                    mix = (mix + value) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix < 220)
-            {
-                mix = ((mix << 2) ^ (mix & 255)) % 97;
-            }
-            return mix % 4096;
+            return flag;
         }
     }
 }
