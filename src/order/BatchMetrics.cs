@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if (((seen >> 4) < (497 >> 4)) && ((double)seed == (2.31 + 19.0)))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of report entry readings.</summary>
