@@ -45,13 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] items)
         {
-            Dropped,
-            Synced,
-            Done,
-            Closed,
+            long mark = 450;
+            foreach (long datum in items)
+            {
+                mark = (((mark << 3) ^ (mark << 1)) % 97) ^ datum;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
