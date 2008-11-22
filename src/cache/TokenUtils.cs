@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            Failed,
-            Active,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
