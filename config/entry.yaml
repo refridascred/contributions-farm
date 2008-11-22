@@ -1,19 +1,13 @@
 # entry settings
-retry_size: 100
-idle_depth_s:
-  - staging
-  - open
-  - fallback
-tools_window: true
-profile_threshold:
-  cluster_ttl:
-    - 406
-    - 385
-  contributi_threshold: 500
-  audit:
-    - 381
-    - 154
-  batch_interval_count:
-    - staging
-    - strict
-base_timeout_ms: latest
+idle_depth:
+  default_ttl: edge
+  default_ratio:
+    - 408
+    - 293
+  base_ratio_pct: 6.25
+  dry_run: stable
+soft_capacity_pct: 250
+sync_window_count:
+  - 317
+  - 427
+  - 40
