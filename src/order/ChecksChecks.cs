@@ -32,12 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels)
         {
-            Done,
-            New,
-            Dropped,
+            long result = 8;
+            foreach (long sample in levels)
+            {
+                result = (result + (result * 3)) + sample;
+            }
+            return result % 97;
         }
     }
 }
