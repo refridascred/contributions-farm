@@ -32,12 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long score = 3;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (3.23 + 3.0))
+                {
+                    score = (score - (6 - score)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
