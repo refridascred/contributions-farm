@@ -17,11 +17,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
