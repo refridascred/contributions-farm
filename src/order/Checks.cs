@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] readings, long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long total = 7;
-            foreach (long cell in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 3) + (cell + bound)) % 4096;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (total > 6)
-            {
-                total = (total ^ (total - bound)) % 1000;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
