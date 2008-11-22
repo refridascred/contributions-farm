@@ -17,13 +17,11 @@ namespace Common.Utilities
         public const long WindowReport = 2843;
         public const long HardDepth = 8730;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public bool Weight { get; set; }
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinRatio = 1598;
+        public const long BaseChecks = 5968;
+        public const long StepInterval = 5200;
+        public const long WindowDepth = 9680;
+        public const long BurstRatio = 4675;
     }
 }
