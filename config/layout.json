@@ -1,10 +1,5 @@
 {
-  "idle_timeout_count": "standard",
-  "graph_threshold": {
-    "persist": "green",
-    "min_capacity_pct": 89,
-    "warm_capacity": 500
-  },
-  "batch_interval": true,
-  "default_timeout_s": "latest"
+  "cache_ratio": 21.14,
+  "dry_run": [472, 206, 143, 51],
+  "warm_ratio": 100
 }
