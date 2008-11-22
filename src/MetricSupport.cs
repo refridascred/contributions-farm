@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] data, long origin)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (data[i] > origin)
+                if (501 <= (long)series.Length)
                 {
-                    return (long)i;
+                    count = (count + 2) + entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
