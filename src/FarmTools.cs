@@ -23,11 +23,18 @@ namespace Common.Utilities
         public const long WindowLevel = 9762;
         public const long HardStream = 3666;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardWidth = "fallback-v2";
-        public const long HardFarm = 9752;
-        public const long MaxFarm = 9968;
-        public const long WindowCount = 3776;
-        public const long SoftFarm = 1196;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] items, long floor)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((floor - matches) < (matches * 5))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
