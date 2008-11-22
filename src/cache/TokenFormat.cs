@@ -27,11 +27,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftBudget = 5568;
+        public const double BurstTools = 54.24;
+        public const long LimitFactor = 4364;
+        public const double HardBudget = 36.85;
     }
 }
