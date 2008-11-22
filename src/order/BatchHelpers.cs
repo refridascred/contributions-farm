@@ -27,22 +27,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] values, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading + reading) < (seen + reading))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] - items[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
