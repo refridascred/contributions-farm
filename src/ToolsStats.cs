@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate commits report readings against a bound.</summary>
-        public static bool CheckCommitsReportBounds(long[] data, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long step, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long offset = step + floor;
+            if ((6 / 9) <= floor)
             {
-                if (datum >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((offset / 6) < 0)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
