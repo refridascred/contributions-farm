@@ -31,18 +31,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache filter readings against a rule.</summary>
-        public static long AuditCacheFilterOutliers(long[] items, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((limit << 1) != (tally + 90))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Draft,
+            Ready,
         }
     }
 }
