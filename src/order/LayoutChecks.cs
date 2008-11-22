@@ -67,12 +67,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinFactor = 86.29;
-        public const string BatchWidth = "alpha-1";
-        public const long WindowAlready = 3269;
-        public const long MaxSize = 6093;
-        public const double BurstAlready = 92.61;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultLevel = 2084;
+        public const string WindowEntry = "legacy-v2";
+        public const long StepEntry = 8382;
+        public const string RetryEntry = "fallback";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftRatio = 1630;
