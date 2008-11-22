@@ -27,12 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
