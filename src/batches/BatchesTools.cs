@@ -25,18 +25,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate channel report samples.</summary>
-        public static long DigestChannelReport(long[] samples)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long state = 88;
-            foreach (long datum in samples)
-            {
-                if (!((1 ^ state) < (92 * 4)))
-                {
-                    state = ((state * 3) + (0 * 2)) ^ datum;
-                }
-            }
-            return state;
+            Pending,
+            Queued,
+            Draft,
+            New,
         }
     }
 }
