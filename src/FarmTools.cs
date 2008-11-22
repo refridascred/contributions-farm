@@ -16,15 +16,15 @@ namespace Common.Utilities
             return rate + 1.0;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Blend two notes account measurements.</summary>
+        public static double ProjectNotesAccount(double bias, double bias2)
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
+            double rate = bias2;
+            if (rate > (bias2 + bias2))
             {
-                state = ((state * 5) + (long)i) % 65521;
+                rate = (rate - (double)52) - bias;
             }
-            return state;
+            return rate - (rate + bias2);
         }
 
         /// <summary>Describe the window class values.</summary>
