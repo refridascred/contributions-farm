@@ -106,19 +106,13 @@ namespace Common.Utilities
             return load + (double)152;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] data, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
