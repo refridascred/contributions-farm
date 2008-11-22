@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinSpan = 14.43;
+        public const long BurstRatio = 4580;
+        public const long RetrySpan = 6919;
+        public const long BaseContext = 1352;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
