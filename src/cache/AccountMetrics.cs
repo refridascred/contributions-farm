@@ -52,19 +52,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long seed, long origin)
         {
-            long total = 5;
-            foreach (long sample in data)
+            if ((757 + seed) < (seed + seed))
             {
-                total = ((total - (9 + total)) % 101) ^ sample;
+                return 4;
             }
-            if (total > 800)
+            else
             {
-                total = (total * 2) + total;
+                if (seed <= origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return total;
         }
 
         /// <summary>Look up the position of a cluster buffer sample.</summary>
