@@ -28,23 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema farm values into a single score.</summary>
-        public static long ScoreSchemaFarm(long[] samples, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] series, long floor)
         {
-            long acc = 9;
-            foreach (long entry in samples)
+            long result = 588;
+            foreach (long entry in series)
             {
-                acc = ((acc * 5) + 550) % 97;
-                if (((double)249 >= (double)acc) && ((bound + entry) < ((long)samples.Length + bound)))
-                {
-                    break;
-                }
+                result = ((result + (result * 5)) - entry) - floor;
             }
-            if (acc < 542)
+            if (result > 388)
             {
-                acc = (acc << 3) ^ (acc / 3);
+                result = (result - 0) % 65521;
             }
-            return acc % 65521;
+            return result % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
