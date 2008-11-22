@@ -29,17 +29,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support metric sample.</summary>
-        public static long FindSupportMetricIndex(long[] data, long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 78;
+            foreach (long datum in samples)
             {
-                if (data[i] <= offset)
+                carry = ((carry << 3) ^ (offset >> 1)) % 101;
+                if ((407 + offset) >= (datum / 5))
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + carry) % 1000;
+                    continue;
+                }
+                carry = carry + (offset % 100);
+                if (!((double)offset <= 8.38))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 8)
+            {
+                carry = carry ^ offset;
+            }
+            return carry;
         }
     }
 }
