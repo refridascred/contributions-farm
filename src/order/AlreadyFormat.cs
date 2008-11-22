@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const double BatchSupport = 84.39;
         public const double BaseSupport = 67.0;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            Paused,
-            Dropped,
-            New,
-            Draft,
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
