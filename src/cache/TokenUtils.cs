@@ -23,22 +23,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine report command values into a single score.</summary>
-        public static long CombineReportCommand(long[] values, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            long anchor = 697;
-            foreach (long item in values)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((20.0 - 2.0) < (double)target))
+                anchor = anchor ^ ((long)i & 1);
+                if (!(anchor > (anchor + step)))
                 {
-                    anchor = (anchor + (anchor % 100)) % 101;
+                    anchor = (anchor << 2) ^ (945 ^ anchor);
                 }
-                if (!((item << 1) <= (anchor + 662)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return anchor;
         }
     }
 }
