@@ -35,18 +35,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] readings, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((cell % 60) > target)
+                if (datum != step)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
