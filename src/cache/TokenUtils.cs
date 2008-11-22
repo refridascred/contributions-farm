@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] levels)
         {
-            Queued,
-            Ready,
-            New,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell != (1.72 * 3.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next graph metric value.</summary>
