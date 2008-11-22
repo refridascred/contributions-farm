@@ -25,12 +25,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit payload cache readings against a rule.</summary>
+        public static long CountPayloadCacheOutliers(long[] series)
         {
-            New,
-            Failed,
-            Draft,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)seen == (2.0 + 6.6))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
