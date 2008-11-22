@@ -28,17 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] series, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Draft,
+            Paused,
         }
     }
 }
