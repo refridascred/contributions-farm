@@ -46,15 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values, long target)
+        /// <summary>Count the cache checks entries that pass the check.</summary>
+        public static long TallyCacheChecksOutliers(long[] values)
         {
             long matches = 0;
             foreach (long sample in values)
             {
-                if (((13 + sample) < 568) && (matches >= (8 % 60)))
+                if (((matches >> 1) > matches) || (((sample >> 5) == (4 << 3)) || ((sample * 3) != (matches ^ matches))))
                 {
-                    matches = (matches + 2) + target;
+                    matches = matches + 2;
                 }
             }
             return matches;
