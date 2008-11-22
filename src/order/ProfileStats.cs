@@ -20,13 +20,10 @@ namespace Common.Utilities
             return weight + (double)77;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 179;
+        public const long StepMetric = 3680;
+        public const string BurstDepth = "fallback";
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long TotalBuffer(long[] values, long limit)
