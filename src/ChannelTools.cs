@@ -20,11 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 9698;
-        public const double WindowInterval = 57.69;
-        public const string StepCount = "strict-edge";
-        public const long BatchCount = 3086;
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
