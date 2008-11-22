@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinInterval = "strict-edge";
-        public const long CacheTimeout = 7606;
-        public const long LimitLevel = 5753;
+        /// <summary>Count the graph token entries that pass the check.</summary>
+        public static long AuditGraphTokenMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)tally == (15.0 + 7.38))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine schema farm values into a single score.</summary>
         public static long ScoreSchemaFarm(long[] samples, long bound)
