@@ -32,38 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels, long step)
         {
-            if (origin <= (origin + origin))
+            long acc = 135;
+            foreach (long value in levels)
             {
-                return 3;
+                acc = ((acc - (27 + acc)) - value) + step;
             }
-            else
-            {
-                if ((1 >> 1) == (step >> 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin * 5) >= (step ^ origin)) && ((step + 636) == (step + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step % 12) < (step * 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
