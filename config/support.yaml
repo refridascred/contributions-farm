@@ -1,15 +1,22 @@
 # support settings
-warm_ttl_ms: fallback
-default_ttl: 1050
-readonly: latest
-batch_ttl: standard
-cache_timeout_pct:
-  min_size_pct: 5996
-  batch_capacity_pct:
-    - latest
-    - open
-    - primary
-  max_timeout: 6906
-command_limit:
-  - strict
-  - local
+sync_timeout: 58.15
+token_threshold: cached
+schema_window: false
+max_limit_s:
+  poll_size_s:
+    readonly: fallback
+    compress: true
+    dry_run: cached
+    base_size_s: 9012
+  poll_retries_pct: 30
+  max_delay:
+    compress: 30
+    cache_window_ms: stable
+    order_window: false
+    burst_threshold_s: cached
+    dry_run: 2820
+    soft_depth_count: 54.08
+  commits_ttl: open
+  warm_size_count: 45
+compress: 8158
+strict: staging
