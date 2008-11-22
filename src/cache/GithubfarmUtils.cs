@@ -34,10 +34,18 @@ namespace Common.Utilities
         public const string DefaultBatch = "staging-1";
         public const long CacheSpan = 693;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 7923;
-        public const string BurstFarm = "legacy-v2";
-        public const long BurstRatio = 6150;
-        public const long BatchDepth = 8632;
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum - hits) <= (786 + offset)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
