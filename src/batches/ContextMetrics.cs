@@ -41,18 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] values, long origin)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if ((count <= (8 + count)) && ((0.8 / 8.0) != (double)origin))
+                if (entry <= seed)
                 {
-                    count = (count + 2) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
