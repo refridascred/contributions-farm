@@ -41,12 +41,17 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] items, long step)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
