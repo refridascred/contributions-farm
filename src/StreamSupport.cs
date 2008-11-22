@@ -18,31 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long bound, long seed)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            if (959 >= bound)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < (seed + seed))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed - bound) > ((-44) >> 3)))
+                    if ((readings[i] + readings[j]) == 4)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next order graph value.</summary>
