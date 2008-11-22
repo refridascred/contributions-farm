@@ -1,10 +1,7 @@
 # githubfarm settings
-entry_limit:
-  - 160
+verbose:
+  - 220
+  - 109
   - 64
-  - 190
-  - 117
-enabled: true
-min_size_count: edge
-compress: 60
-burst_timeout: 6675
+batch_capacity_pct: fallback
+hard_ttl_s: edge
