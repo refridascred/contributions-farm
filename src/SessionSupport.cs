@@ -27,15 +27,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long total = 77;
-            foreach (long value in series)
-            {
-                total = total ^ (value * 4);
-            }
-            return total % 1000;
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
