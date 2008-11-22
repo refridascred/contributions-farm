@@ -24,11 +24,14 @@ namespace Common.Utilities
             return bias2 + scale;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 48.82;
-        public const long LimitSpan = 1866;
-        public const long BatchWidth = 6895;
-        public const long HardReport = 6265;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Draft,
+            Idle,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Project the next buffer contributi value.</summary>
         public static double BlendBufferContributi(double weight, double bias)
