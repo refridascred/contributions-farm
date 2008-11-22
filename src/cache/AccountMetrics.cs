@@ -73,13 +73,12 @@ namespace Common.Utilities
         public const string MinMetrics = "strict-v2";
         public const long DefaultRatio = 6216;
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Dropped,
-            Active,
-            Pending,
+            Closed,
             Done,
+            Failed,
         }
     }
 }
