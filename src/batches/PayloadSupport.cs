@@ -28,17 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias / 7.0;
+            if (ratio >= ratio)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (bias - scale);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio - scale;
         }
     }
 }
