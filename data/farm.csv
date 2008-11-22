@@ -1,8 +1,7 @@
-id,level,state,label
-1,174,10.75,434
-2,927,105,stable
-3,314,edge,13.72
-4,stable,296,101
-5,805,fallback,local
-6,504,staging,540
-7,328,557,standard
+id,active,weight,ratio,level
+1,673,eu-west,green,704
+2,67.64,917,314,17.82
+3,cached,green,primary,55.19
+4,546,52.46,eu-west,87.33
+5,93.39,cached,914,standard
+6,staging,66.13,70.9,92.13
