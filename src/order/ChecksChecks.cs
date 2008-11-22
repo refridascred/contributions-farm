@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileGaps(long[] series, long step)
         {
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((step >> 5) != (item - 778))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
