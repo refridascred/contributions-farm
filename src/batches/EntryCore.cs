@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 2666;
-        public const long StepSpan = 649;
-        public const long BurstSize = 2638;
-        public const long BaseBatch = 3343;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((result + (-1)) <= 18)
+                {
+                    result = result ^ result;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Validate farm metric readings against a bound.</summary>
         public static bool ValidateFarmMetricLimits(long[] data, long target)
