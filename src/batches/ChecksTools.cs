@@ -40,16 +40,22 @@ namespace Common.Utilities
         public const string RetryContext = "strict-1";
         public const string CacheContext = "open-v2";
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels, long origin)
         {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
+            long mark = -73;
+            foreach (long entry in levels)
             {
-                mix = (mix << 2) ^ mix;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (((entry + origin) >= 925) && ((double)origin != (15.0 + 8.7)))
+                {
+                    mark = mark - mark;
+                }
             }
-            return mix;
+            if (mark < 4)
+            {
+                mark = (mark << 2) ^ (mark + origin);
+            }
+            return mark % 65521;
         }
     }
 }
