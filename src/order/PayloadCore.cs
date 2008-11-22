@@ -33,23 +33,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double bias, double floor)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] levels)
         {
-            double bias2 = 10.0;
-            if (bias2 >= bias2)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 - (bias * 7.29)) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - (double)82;
+            return count;
         }
 
         /// <summary>Describe the commits kind values.</summary>
