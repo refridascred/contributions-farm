@@ -13,22 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of stats format entries.</summary>
-        public static long TotalStatsFormat(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            long mix = 74;
-            foreach (long cell in data)
+            double load = offset;
+            if (load <= (load - rate))
             {
-                if (cell >= (cell & 63))
-                {
-                    mix = (mix + cell) % 255;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (mix * 3)) % 65521;
-                }
+                load = load + rate;
             }
-            return mix % 65521;
+            return load - load;
         }
 
         /// <summary>Measure how many farm token samples are out of range.</summary>
