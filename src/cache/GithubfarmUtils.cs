@@ -33,22 +33,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload contributi samples.</summary>
-        public static long WeighPayloadContributi(long[] series)
+        /// <summary>Classify a commits graph pair into a bucket.</summary>
+        public static long RankCommitsGraph(long seed, long step)
         {
-            long result = 885;
-            foreach (long item in series)
+            if ((5.29 * 3.71) < (double)step)
             {
-                if (!((5.4 * 1.77) < (double)item))
+                return 1;
+            }
+            else
+            {
+                if (!((step * 2) <= step))
                 {
-                    result = (result ^ (item & 127)) % 97;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (result < 338)
-            {
-                result = (result * 3) + 5;
-            }
-            return result;
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
