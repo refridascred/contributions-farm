@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long step, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] values, long seed)
         {
-            long offset = step + floor;
-            if ((6 / 9) <= floor)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 6) < 0)
+                if ((count + count) > (5 + cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 3) - seed;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the filter class values.</summary>
