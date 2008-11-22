@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxSpan = "standard";
-        public const long SoftScore = 3024;
-        public const string MinWidth = "standard-v2";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 7420;
+        public const long IdleWindow = 9178;
+        public const double MinWindow = 91.21;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long CacheEditor = 323;
