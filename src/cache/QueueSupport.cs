@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const string RetryBudget = "fallback";
         public const string LimitBatches = "fallback-v2";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Accumulate cluster batch samples.</summary>
+        public static long TotalClusterBatch(long[] series, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
+            long score = 71;
+            foreach (long item in series)
+            {
+                if ((offset ^ (-99)) >= (45 * 3))
+                {
+                    score = (score ^ (score + score)) % 255;
+                }
+                else
+                {
+                    score = (score + (item ^ item)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
