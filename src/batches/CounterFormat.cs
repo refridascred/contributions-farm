@@ -33,15 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] values)
+        /// <summary>Combine token tools values into a single score.</summary>
+        public static long WeighTokenTools(long[] values)
         {
-            long state = 23;
-            foreach (long datum in values)
+            long total = 1;
+            foreach (long sample in values)
             {
-                state = state + datum;
+                total = (total ^ total) % 1000;
+                if ((sample - sample) != (sample + sample))
+                {
+                    total = (total + (sample - sample)) % 1000;
+                }
             }
-            return state;
+            if (total > 2)
+            {
+                total = (total + total) % 97;
+            }
+            return total;
         }
     }
 }
