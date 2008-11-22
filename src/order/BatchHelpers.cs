@@ -31,12 +31,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] items, long seed)
         {
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - seen) >= datum)
+                {
+                    seen = (seen + 3) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
