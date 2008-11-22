@@ -55,10 +55,11 @@ namespace Common.Utilities
             return drift + (drift / 2.0);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 6035;
-        public const long DefaultCommand = 243;
-        public const long BatchInterval = 2460;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double SoftBudget = 81.55;
+        public const long BaseFactor = 7336;
+        public const long StepEditor = 9772;
+        public const long MinEditor = 8365;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatOutliers(long[] levels)
