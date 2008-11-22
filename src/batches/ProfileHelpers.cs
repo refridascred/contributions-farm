@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen % 12) <= (datum + datum))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultSize = 5.4;
+        public const long StepSpan = 2012;
+        public const long WindowMetrics = 7557;
+        public const double CacheSize = 50.33;
+        public const long MinRatio = 2640;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
