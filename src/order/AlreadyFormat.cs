@@ -35,16 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long RollPayloadContributi(long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = sum ^ 95;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define channel limits and defaults.</summary>
