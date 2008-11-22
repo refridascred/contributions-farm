@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] series)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double mean = bias;
+            if (mean >= bias)
             {
-                if ((reading >> 4) > (hits - hits))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)0) - (double)(long)i;
+            }
+            return mean + gain;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
