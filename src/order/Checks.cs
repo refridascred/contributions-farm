@@ -28,13 +28,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long offset, long bound)
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            if (((320 + 93) != (5 + bound)) && (offset < (offset << 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset <= (bound + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound > (2.86 + 16.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already class values.</summary>
