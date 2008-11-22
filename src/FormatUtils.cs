@@ -75,19 +75,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double bias)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double mean = (double)(2 & 63);
-            if (mean >= weight)
-            {
-                mean = (mean + weight) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean * 6.8)) + (double)(long)i;
-            }
-            return mean - (double)53;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
