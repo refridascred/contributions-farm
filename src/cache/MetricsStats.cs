@@ -55,38 +55,23 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Grade a githubfarm profile value against two limits.</summary>
-        public static long SortGithubfarmProfile(long limit, long origin)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            if ((9.5 * 17.0) == (double)origin)
+            long state = 2;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - limit) <= 801)
+                state = (state - (datum / 6)) % 255;
+                if ((double)datum != (double)6)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 127) >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (3.76 * 17.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state < 830)
+            {
+                state = state + state;
+            }
+            return state % 65521;
         }
     }
 }
