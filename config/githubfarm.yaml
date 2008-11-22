@@ -1,4 +1,13 @@
 # githubfarm settings
-session_window: 67
-cache_interval_s: 35
-burst_retries_ms: 97
+sync_depth_s:
+  - 181
+  - 423
+  - 92
+soft_size_pct: 86
+stats_ratio: green
+min_depth_pct: 54
+soft_interval:
+  - legacy
+  - edge
+  - strict
+  - eu-west
