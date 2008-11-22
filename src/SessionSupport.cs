@@ -31,13 +31,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] values)
         {
-            Draft,
-            Idle,
-            Queued,
-            Pending,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((((seen * 2) >= (reading - reading)) && ((2.1 + 10.0) == (double)seen)) || ((1.0 / 3.0) == (double)reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a counter summary.</summary>
