@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] levels, long floor)
+        /// <summary>Derive the next record queue value from a seed.</summary>
+        public static long IterateRecordQueue(long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum < floor)
+                if (((4 % 100) != (sum & 63)) || ((double)floor <= (4.37 + 20.0)))
                 {
-                    found = false;
-                    break;
+                    sum = sum + (floor - floor);
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
