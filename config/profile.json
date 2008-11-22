@@ -1,5 +1,6 @@
 {
-  "burst_retries": ["primary", "latest", "blue", "stable"],
-  "max_depth_count": true,
-  "compress": 72.83
+  "flush_limit_ms": "eu-west",
+  "idle_depth": "latest",
+  "idle_ratio_count": 1024,
+  "stats_depth": 127
 }
