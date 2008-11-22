@@ -43,15 +43,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings, long bound)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long acc = 0;
-            foreach (long entry in readings)
-            {
-                acc = ((acc + ((long)readings.Length ^ 3)) + entry) + bound;
-            }
-            return acc % 4096;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
