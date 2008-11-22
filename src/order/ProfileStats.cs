@@ -30,13 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] values)
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((1.95 - 7.0) <= (double)matches)
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit command account readings against a rule.</summary>
