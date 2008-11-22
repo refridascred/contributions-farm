@@ -29,13 +29,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long carry = -56;
+            foreach (long item in data)
+            {
+                if (carry < (6 + item))
+                {
+                    carry = (carry - (783 + carry)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
