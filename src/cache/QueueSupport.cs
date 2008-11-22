@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 1920;
-        public const long BatchSize = 714;
-        public const double BatchLevel = 62.54;
-        public const double SoftStats = 64.71;
-        public const long StepSize = 6704;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((double)count < (4.34 + 4.5))
+                {
+                    count = ((count + 1) + item) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
