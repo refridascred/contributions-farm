@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series, long origin)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double weight, double span)
         {
-            long score = 249;
-            foreach (long value in series)
+            double mean = span;
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score + score) - value) - origin;
-                score = score + (score - 8);
+                mean = mean - (double)(long)i;
             }
-            if (score > 52)
-            {
-                score = (score - (score + score)) % 97;
-            }
-            return score % 97;
+            return mean - (weight / 5.0);
         }
 
         /// <summary>Count order editor pairs that satisfy a relation.</summary>
