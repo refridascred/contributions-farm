@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Validate commits report readings against a bound.</summary>
+        public static bool CheckCommitsReportBounds(long[] data, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (((double)count >= 8.41) && ((count >> 3) > (7 % 3)))
+                if (datum >= offset)
                 {
-                    count = (count + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a commits options.</summary>
