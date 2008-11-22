@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            long result = target;
-            for (int i = 0; i < 17; i++)
+            double weight = 8.69 - gain;
+            if (weight >= (offset - 3.18))
             {
-                if ((double)result > (8.1 / 2.0))
-                {
-                    result = result ^ 4;
-                    break;
-                }
-                else
-                {
-                    result = result + 91;
-                }
-                result = ((result * 4) + (long)i) % 1000;
+                weight = weight - (double)585;
             }
-            return result;
+            return weight + (9.3 - gain);
         }
 
         /// <summary>Hold a layout stats.</summary>
