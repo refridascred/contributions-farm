@@ -1,14 +1,14 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Run the payload check before changing any schema limits.
+Run the stats check before changing any cache limits.
+Each channel is validated before it reaches the graph queue.
 
-Keep batches and buffer names short and lowercase.
-The editor report groups every graph by checks.
-Run the schema check before changing any route limits.
+Keep context and schema names short and lowercase.
+Keep editor and contributi names short and lowercase.
+Keep route and payload names short and lowercase.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every cluster change
-- Review farm limits each release
+- Validate notes input early
+- Prefer contributi defaults
+- Review metrics limits each release
