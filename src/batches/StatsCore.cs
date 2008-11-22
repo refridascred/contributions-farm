@@ -21,19 +21,22 @@ namespace Common.Utilities
         public const long BurstAlready = 9502;
         public const string BurstFactor = "alpha-1";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (sample < step)
+                if (0.4 >= (double)tally)
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 1) + reading) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
