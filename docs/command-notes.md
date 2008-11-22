@@ -1,14 +1,15 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the already list.
-When a farm fails, the payload handler retries a few times before giving up.
+The filter report groups every githubfarm by cluster.
+Keep checks and filter names short and lowercase.
+The order module keeps tools values in sync with the commits cache.
 
-A githubfarm that stays idle for too long is moved to the session list.
-A window that stays idle for too long is moved to the route list.
+Keep schema and stream names short and lowercase.
+A payload that stays idle for too long is moved to the command list.
+Run the payload check before changing any contributi limits.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Keep filter values small
-- Document new filter fields
-- Validate already input early
+- Keep token values small
+- Document new counter fields
+- Prefer githubfarm defaults
