@@ -36,19 +36,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] levels, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long origin)
         {
-            long mix = 74;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix * 5) + (step - mix);
-                if ((item + mix) > (item + item))
+                if (data[i] == origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
     }
 }
