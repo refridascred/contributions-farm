@@ -1,8 +1,7 @@
 {
-  "persist": 27.14,
-  "min_depth_ms": 95.05,
-  "soft_retries_ms": 75.36,
-  "hard_retries_pct": "strict",
-  "readonly": 10,
-  "min_retries_count": 100
+  "cache_retries_count": 60,
+  "sync_capacity": "strict",
+  "sync_size": true,
+  "batches_depth": "standard",
+  "enabled": ["strict", "local", "standard", "local"]
 }
