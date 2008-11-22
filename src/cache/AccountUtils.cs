@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long origin, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] levels)
         {
-            long span = origin - limit;
-            if (span >= (span >> 2))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit < origin) && ((double)limit == (6.0 - 8.0)))
+                if ((cell / 8) < (cell + cell))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin * 2) <= (275 - 73)) && (limit < (limit + span)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next entry value.</summary>
