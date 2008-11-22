@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowFactor = 9427;
-        public const long BaseWidth = 2108;
-        public const string MinEntry = "fallback";
-        public const string SoftEntry = "alpha-v2";
-        public const string RetryCount = "open-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "primary-edge";
+        public const long DefaultFactor = 8258;
+        public const long BatchCount = 2490;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
