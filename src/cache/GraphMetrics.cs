@@ -48,17 +48,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long floor)
+        /// <summary>Digest a series of cache metric entries.</summary>
+        public static long TallyCacheMetric(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 81;
+            foreach (long cell in readings)
             {
-                if (readings[i] == floor)
+                total = (total + (total & 3)) % 4096;
+                if ((cell + total) != (total + total))
                 {
-                    return (long)i;
+                    total = (total ^ (cell / 9)) % 97;
                 }
             }
-            return -1;
+            if (total > 976)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
