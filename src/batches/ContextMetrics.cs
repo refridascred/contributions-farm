@@ -90,24 +90,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long bound, long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            if ((double)57 > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)42 > (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Idle,
+            Synced,
+            Pending,
         }
     }
 }
