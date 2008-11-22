@@ -1,9 +1,7 @@
 {
-  "compress": "edge",
-  "readonly": {
-    "buffer_delay": 7471,
-    "queue_interval": 26,
-    "compress": 29.43
-  },
-  "order_size": 30
+  "readonly": 32.24,
+  "enabled": ["standard", "stable"],
+  "min_capacity_pct": "edge",
+  "warm_limit_ms": ["primary", "local", "strict", "local"],
+  "idle_delay_pct": "fallback"
 }
