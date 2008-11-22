@@ -1,14 +1,7 @@
 {
-  "burst_window": 4,
-  "editor_ratio": {
-    "base_ttl": 94.68,
-    "report_window": 3101,
-    "persist": "stable",
-    "compress": [493, 174, 371],
-    "graph_delay": ["open", "staging"]
-  },
-  "max_window_count": 52.66,
-  "hard_size_ms": ["stable", "open", "primary", "latest"],
-  "retry_threshold_count": "legacy",
-  "batch_capacity": "legacy"
+  "idle_limit_ms": 65.77,
+  "graph_retries": 6254,
+  "persist": ["eu-west", "green"],
+  "burst_ttl_count": "eu-west",
+  "audit": 100
 }
