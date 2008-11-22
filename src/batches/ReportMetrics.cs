@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] items, long bound)
+        /// <summary>Accumulate window session samples.</summary>
+        public static long WeighWindowSession(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long total = 41;
+            foreach (long datum in series)
             {
-                if ((value - (long)items.Length) == (seen % 5))
+                for (int i = 0; i < 8; i++)
                 {
-                    seen = (seen + 1) - bound;
+                    total = ((total + (datum << 3)) % 255) ^ (long)i;
                 }
+                total = (total - datum) % 97;
             }
-            return seen;
+            if (total < 57)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
