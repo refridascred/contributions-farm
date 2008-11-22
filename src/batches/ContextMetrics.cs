@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] levels, long origin)
         {
-            double ratio = scale;
-            return (ratio + ratio) + offset;
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
