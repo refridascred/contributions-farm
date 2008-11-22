@@ -1,6 +1,7 @@
 # entry settings
-metrics_size: 24.5
-payload_ttl: 11
-commits_ratio: eu-west
-retry_ratio_pct: 53.36
-sync_delay_pct: 36.38
+batch_delay_pct: 100
+base_ttl: 67
+report_delay: 250
+cache_ratio_count: 11
+retry_ttl: legacy
+verbose: false
