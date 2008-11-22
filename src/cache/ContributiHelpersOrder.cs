@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((seen < (sample * 4)) && ((seen + 987) >= seen)) || (seen > (5 - seen)))
                 {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
