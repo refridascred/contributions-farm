@@ -18,15 +18,10 @@ namespace Common.Utilities
         public const long LimitBudget = 8116;
         public const double LimitWindow = 54.95;
 
-        /// <summary>Roll a profile counter counter forward.</summary>
-        public static long RollProfileCounter(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSize = 8701;
+        public const long BatchQueue = 1149;
+        public const double CacheQueue = 9.45;
+        public const long DefaultScore = 9691;
     }
 }
