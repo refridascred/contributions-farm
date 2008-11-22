@@ -86,18 +86,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] values, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((matches % 7) < ((long)values.Length / 2)))
-                {
-                    matches = ((matches + 1) + datum) - seed;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
