@@ -27,12 +27,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Rank checks profile input into a small class.</summary>
+        public static long BucketChecksProfile(long offset, long floor)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public string Label { get; set; } = "";
+            long next = offset + floor;
+            if (((-957) & 127) >= (next - floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)27 > (double)offset) || ((floor % 10) >= next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the record class values.</summary>
