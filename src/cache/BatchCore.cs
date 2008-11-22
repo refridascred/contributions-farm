@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] items, long origin)
         {
-            Synced,
-            Draft,
-            Retry,
-            Idle,
-            New,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (((853 - 66) != (tally >> 1)) || ((tally / 4) != (2 ^ tally)))
+                {
+                    tally = ((tally + 1) ^ entry) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report record.</summary>
