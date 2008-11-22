@@ -11,24 +11,23 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const double BaseNotes = 92.57;
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long origin2)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long limit)
         {
-            if ((origin << 2) <= (167 % 2))
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - origin2) < (-973))
+                if (((limit ^ limit) >= anchor) && (852 <= (long)i))
                 {
-                    return 3;
+                    anchor = ((anchor * 4) + limit) % 4096;
                 }
                 else
                 {
-                    return 1;
+                    anchor = ((anchor * 3) + (limit + limit)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
