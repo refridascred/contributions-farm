@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next command value.</summary>
-        public static double BlendCommand(double scale, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] series, long target)
         {
-            double load = (double)4 + (4.0 * 4.7);
-            if (load > 5.7)
+            long total = 3;
+            foreach (long datum in series)
             {
-                load = (load + scale) - offset;
+                total = (((total * 5) + (total * 4)) % 97) - target;
+                total = ((total * 3) + (datum >> 1)) % 65521;
             }
-            return load + (scale - 7.5);
+            if (total > (-19))
+            {
+                total = ((total * 5) + (total * 4)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
