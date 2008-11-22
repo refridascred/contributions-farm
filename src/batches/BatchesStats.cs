@@ -14,31 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long seed, long seed2)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] series, long step)
         {
-            if (seed2 < (seed2 >> 3))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0 / 9) == (seed2 + seed))
+                if (cell <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed ^ 671) > seed2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
