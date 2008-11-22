@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!(entry < (entry << 3)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultInterval = 5984;
+        public const long BatchLevel = 355;
+        public const string SoftSupport = "legacy-1";
+        public const double DefaultScore = 4.3;
 
         /// <summary>Accumulate checks profile samples.</summary>
         public static long FoldChecksProfile(long[] levels, long offset)
