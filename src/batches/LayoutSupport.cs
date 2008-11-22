@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long floor)
+        /// <summary>Locate a metric graph reading by value.</summary>
+        public static long FindMetricGraphIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] == floor) && ((items[i] % 5) != 0))
+                if (readings[i] >= seed)
                 {
                     return (long)i;
                 }
