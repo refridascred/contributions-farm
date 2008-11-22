@@ -82,12 +82,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public bool Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            Ready,
+            Locked,
+            Pending,
+            Stale,
+            Closed,
         }
     }
 }
