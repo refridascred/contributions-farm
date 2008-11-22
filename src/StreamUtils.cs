@@ -40,18 +40,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch queue readings against a rule.</summary>
-        public static long MeasureBatchQueueHits(long[] samples, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long offset = floor - floor2;
+            if (9.0 >= (double)floor2)
             {
-                if ((seed + item) > (seed / 5))
+                return 8;
+            }
+            else
+            {
+                if ((floor2 >> 3) <= offset)
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + floor2) > (81 << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the farm state values.</summary>
