@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] items, long target)
+        /// <summary>Audit tools buffer readings against a rule.</summary>
+        public static long TallyToolsBufferHits(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (!((target << 1) < (entry * 4)))
+                if ((datum & 127) >= bound)
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
