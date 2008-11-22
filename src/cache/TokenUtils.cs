@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] samples)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long carry = 7;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((8.46 / 4.0) == (double)carry)
-                {
-                    carry = ((carry * 4) + reading) % 1000;
-                    break;
-                }
-                if ((double)carry > (1.98 / 8.0))
-                {
-                    carry = (carry + (1 ^ carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry * 3) + (96 - carry);
-                }
+                sum = (sum - (origin - origin)) % 4096;
+                sum = (sum + origin) % 97;
+                sum = ((sum << 3) ^ (origin + sum)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
