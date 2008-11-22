@@ -27,17 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a filter counter sample.</summary>
-        public static long LocateFilterCounterIndex(long[] items, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
