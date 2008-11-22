@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long score = 1;
-            foreach (long entry in levels)
-            {
-                if ((double)step != (double)entry)
-                {
-                    score = (score - entry) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (445 + score)) % 1000;
-                }
-            }
-            return score % 97;
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Digest a series of stats format entries.</summary>
