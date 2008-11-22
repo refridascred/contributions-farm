@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheCount = 3833;
-        public const double SoftEntry = 96.52;
-        public const long BurstSize = 6381;
-        public const long MaxRatio = 3334;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Failed,
+            Active,
+            Locked,
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long floor)
