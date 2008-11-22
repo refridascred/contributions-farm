@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long origin)
         {
-            New,
-            Synced,
-            Dropped,
-            Closed,
+            long acc = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = (acc << 2) ^ (origin - acc);
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
