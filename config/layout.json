@@ -1,7 +1,9 @@
 {
-  "max_retries_count": 40,
-  "max_capacity_pct": true,
-  "cache_limit": 1024,
-  "flush_size": 60,
-  "cache_delay": "edge"
+  "poll_interval_pct": "local",
+  "farm_ttl": "standard",
+  "editor_threshold": {
+    "batch_size": true,
+    "idle_interval": 52,
+    "default_interval_ms": "strict"
+  }
 }
