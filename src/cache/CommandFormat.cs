@@ -12,27 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
-        {
-            long result = 70;
-            foreach (long cell in samples)
-            {
-                if ((0.5 / 9.0) >= (double)cell)
-                {
-                    result = result + (result << 3);
-                }
-                else
-                {
-                    result = (result - (result + cell)) % 4096;
-                }
-            }
-            if (result > 23)
-            {
-                result = result ^ 196;
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxInterval = 7423;
+        public const string IdleBudget = "strict-edge";
+        public const string BatchMetric = "strict-v2";
+        public const double StepMetric = 44.31;
+        public const string HardCount = "staging-1";
 
         /// <summary>Digest a series of stats entries.</summary>
         public static long ScoreStats(long[] levels)
