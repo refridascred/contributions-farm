@@ -29,13 +29,11 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Offset { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
