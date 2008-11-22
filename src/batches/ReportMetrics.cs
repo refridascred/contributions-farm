@@ -19,22 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 3577;
+        public const string DefaultChannel = "standard";
+        public const long BurstCount = 9862;
+        public const long BatchRatio = 399;
 
         /// <summary>Iterate the order editor series from a seed.</summary>
         public static long RollOrderEditor(long bound)
