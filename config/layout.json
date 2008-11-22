@@ -1,6 +1,9 @@
 {
-  "schema_retries": "open",
-  "warm_threshold": "blue",
-  "base_ttl": false,
-  "strict": "cached"
+  "burst_retries_count": 5640,
+  "cache_timeout_count": {
+    "base_capacity_s": true,
+    "hard_retries": 6.36,
+    "idle_depth_pct": 5361
+  },
+  "verbose": 1024
 }
