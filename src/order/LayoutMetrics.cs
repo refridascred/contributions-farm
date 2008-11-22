@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double floor)
-        {
-            double gain = weight;
-            if (gain < (double)19)
-            {
-                gain = (gain + (6.1 - gain)) - floor;
-            }
-            return gain - 10.0;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 7556;
+        public const double BaseDepth = 95.26;
+        public const double StepCluster = 48.74;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] levels, long target)
