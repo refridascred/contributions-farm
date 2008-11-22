@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftCount = 5466;
-        public const double LimitRecord = 28.02;
-        public const string WindowRecord = "primary";
-        public const long MaxRecord = 9625;
-        public const long BurstRecord = 3190;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long RetryFactor = 1864;
