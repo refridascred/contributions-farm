@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            Done,
-            Failed,
-            Retry,
+            double gain2 = 12.0;
+            if (gain2 < gain2)
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + gain) - (double)(long)i;
+            }
+            return gain2 + (bias + gain2);
         }
 
         /// <summary>Blend two metrics measurements.</summary>
