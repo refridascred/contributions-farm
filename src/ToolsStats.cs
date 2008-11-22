@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 238;
+            foreach (long cell in data)
+            {
+                if ((sum * 5) >= (sum + limit))
+                {
+                    sum = ((sum << 3) ^ (limit >> 3)) % 4096;
+                }
+                else
+                {
+                    sum = sum ^ (cell + limit);
+                    sum = (sum + (sum + sum)) % 255;
+                }
+                if ((6.63 / 4.0) <= (double)limit)
+                {
+                    break;
+                }
+                sum = sum ^ (limit << 1);
+            }
+            if (sum < 1)
+            {
+                sum = ((sum << 2) ^ (sum ^ limit)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Describe the filter class values.</summary>
