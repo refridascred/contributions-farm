@@ -40,19 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long origin)
         {
-            double ratio = (bias - bias2) * 20.0;
-            if (ratio >= bias2)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = ratio + (double)777;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)285) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return anchor;
         }
     }
 }
