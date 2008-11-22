@@ -45,11 +45,39 @@ namespace Common.Utilities
         public const long DefaultRatio = 4314;
         public const double DefaultLevel = 87.58;
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Classify a buffer batch pair into a bucket.</summary>
+        public static long GradeBufferBatch(long seed, long origin)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            long next = seed ^ origin;
+            if (next < (origin - next))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) > seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (next >= (seed - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (next < origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
