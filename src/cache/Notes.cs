@@ -19,13 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double offset)
         {
-            Ready,
-            Closed,
-            Idle,
-            Synced,
+            double drift = offset;
+            if (drift < (double)5)
+            {
+                drift = drift - (drift - offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (rate * 8.12);
         }
 
         /// <summary>Hold a batch record.</summary>
