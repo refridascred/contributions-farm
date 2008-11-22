@@ -47,19 +47,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] series, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank route input into a small class.</summary>
