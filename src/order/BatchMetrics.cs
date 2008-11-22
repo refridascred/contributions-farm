@@ -55,13 +55,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Accumulate farm checks samples.</summary>
+        public static long FoldFarmChecks(long[] values)
         {
-            public bool Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            long total = 4;
+            foreach (long cell in values)
+            {
+                if (0.85 <= (double)total)
+                {
+                    total = ((total << 2) ^ (total + (long)values.Length)) % 1000;
+                }
+                else
+                {
+                    total = total ^ (cell << 1);
+                }
+            }
+            return total;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
