@@ -5,32 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series, long origin)
         {
-            long prev = limit + target;
-            if (((limit ^ target) <= prev) && (target > limit))
+            long score = 249;
+            foreach (long value in series)
             {
-                return 3;
+                score = ((score + score) - value) - origin;
+                score = score + (score - 8);
             }
-            else
+            if (score > 52)
             {
-                if ((limit / 9) > (prev >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev * 2) > (limit - prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                score = (score - (score + score)) % 97;
             }
+            return score % 97;
         }
 
         /// <summary>Count order editor pairs that satisfy a relation.</summary>
