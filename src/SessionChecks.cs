@@ -52,14 +52,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            New,
-            Failed,
-            Pending,
-            Done,
-            Stale,
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
