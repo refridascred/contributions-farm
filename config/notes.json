@@ -1,7 +1,7 @@
 {
-  "strict": 2.69,
-  "context_ttl": ["staging", "eu-west", "open"],
-  "burst_limit": 49,
-  "counter_retries": "staging",
-  "min_retries_ms": 23.19
+  "burst_delay_count": 29.89,
+  "warm_interval_pct": [407, 267, 273],
+  "base_threshold": 642,
+  "batch_ttl": "primary",
+  "base_limit_s": "green"
 }
