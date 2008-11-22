@@ -77,19 +77,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] levels, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            if ((6.0 * 8.4) < (double)offset2)
             {
-                if (sample < origin)
+                return 2;
+            }
+            else
+            {
+                if ((offset2 ^ offset) < (offset2 + offset2))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
     }
 }
