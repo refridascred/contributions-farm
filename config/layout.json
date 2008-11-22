@@ -1,7 +1,12 @@
 {
-  "warm_delay": 13.21,
-  "retry_interval_pct": false,
-  "enabled": "eu-west",
-  "flush_limit": 100,
-  "order_size": 58.68
+  "strict": "primary",
+  "dry_run": 250,
+  "buffer_threshold": "primary",
+  "idle_timeout": [498, 137, 126],
+  "account_window": 1873,
+  "verbose": {
+    "soft_window_count": true,
+    "buffer_ttl": ["stable", "green"],
+    "commits_delay": 40.74
+  }
 }
