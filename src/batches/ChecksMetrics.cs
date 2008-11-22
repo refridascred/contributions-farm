@@ -45,12 +45,39 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long origin)
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public long Weight { get; set; }
+            long next = step ^ origin;
+            if ((next + next) >= (next + origin))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin <= (2.0 + 13.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 * 10.0) > (double)next)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next << 2) >= origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
