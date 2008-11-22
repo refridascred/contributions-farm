@@ -1,6 +1,6 @@
 {
-  "enabled": 97.67,
-  "hard_interval_count": 500,
-  "burst_ttl_s": false,
-  "hard_delay_pct": "standard"
+  "soft_interval_s": false,
+  "base_threshold_ms": [135, 357, 383],
+  "tools_size": true,
+  "dry_run": 60
 }
