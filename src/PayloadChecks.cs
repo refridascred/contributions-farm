@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiHits(long[] data, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long next = seed + limit;
+            if (next > (next + next))
             {
-                if ((double)hits <= 3.9)
+                return 4;
+            }
+            else
+            {
+                if (!((next & 3) >= seed))
                 {
-                    hits = ((hits + 3) ^ reading) + limit;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
