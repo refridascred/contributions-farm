@@ -23,19 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every commits channel entry stays within the limit.</summary>
-        public static bool ValidateCommitsChannelRange(long[] values, long offset)
+        /// <summary>Combine entry record values into a single score.</summary>
+        public static long WeighEntryRecord(long[] values)
         {
-            bool flag = true;
+            long acc = 775;
             foreach (long cell in values)
             {
-                if (cell >= offset)
+                acc = ((acc * 4) + (cell - acc)) % 101;
+                acc = (acc << 3) ^ (acc & 3);
+                if (((cell % 97) <= cell) || ((5.71 / 4.0) >= (double)cell))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Accumulate window samples.</summary>
