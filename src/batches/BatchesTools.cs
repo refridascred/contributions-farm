@@ -28,17 +28,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] data, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
