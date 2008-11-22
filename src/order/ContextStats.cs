@@ -29,18 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] series, long limit)
+        /// <summary>Classify a session window pair into a bucket.</summary>
+        public static long GradeSessionWindow(long origin, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long offset = origin - step;
+            if ((origin ^ origin) > (offset & 15))
             {
-                if (1 >= (limit / 5))
+                return 5;
+            }
+            else
+            {
+                if (((double)step > (20.0 * 2.42)) || ((3.0 / 4.0) == (double)offset))
                 {
-                    hits = (hits + 2) + datum;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset >> 5) <= (offset - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
