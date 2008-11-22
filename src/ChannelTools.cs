@@ -23,18 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((hits + hits) == (hits * 4))
+                if (datum > bound)
                 {
-                    hits = (hits + 3) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
