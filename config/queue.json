@@ -1,18 +1,22 @@
 {
-  "burst_timeout_s": 95,
-  "farm_threshold": "latest",
-  "persist": false,
-  "cache_timeout_s": {
-    "verbose": 7.81,
-    "githubfarm_timeout": {
-      "poll_retries_ms": "local",
-      "default_threshold_s": 8.49,
-      "max_delay_ms": "strict"
+  "flush_interval": 5911,
+  "editor_ttl": 26,
+  "max_ttl": {
+    "buffer_delay": "legacy",
+    "warm_delay_ms": "green",
+    "retry_capacity": 41.01,
+    "flush_ratio_ms": {
+      "cache_delay": [126, 148, 184, 337],
+      "sync_delay_s": 9.11,
+      "retry_delay": 17,
+      "entry_size": "open",
+      "idle_interval_s": [346, 205, 141, 458],
+      "layout_limit": true
     },
-    "soft_delay": 250,
-    "session_limit": 5693,
-    "editor_limit": 82.95
+    "metric_size": [404, 206],
+    "readonly": "eu-west"
   },
-  "burst_ratio_count": 51,
-  "command_threshold": false
+  "persist": "blue",
+  "hard_capacity_count": 67.1,
+  "batch_ttl": "stable"
 }
