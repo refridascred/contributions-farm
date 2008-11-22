@@ -22,39 +22,13 @@ namespace Common.Utilities
         public const long WindowReport = 2843;
         public const long HardDepth = 8730;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long target, long floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long cur = target ^ floor;
-            if (!((double)floor <= (3.59 + 1.01)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((cur >> 5) < (target * 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (target < (floor * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((455 ^ cur) > (690 / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
