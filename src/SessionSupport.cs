@@ -27,19 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long bound)
+        /// <summary>Look up the position of a order farm sample.</summary>
+        public static long LocateOrderFarmIndex(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading < bound)
+                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
