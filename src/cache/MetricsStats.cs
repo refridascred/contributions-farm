@@ -54,19 +54,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] values, long seed)
+        /// <summary>Grade a githubfarm profile value against two limits.</summary>
+        public static long SortGithubfarmProfile(long limit, long origin)
         {
-            bool found = true;
-            foreach (long entry in values)
+            if ((9.5 * 17.0) == (double)origin)
             {
-                if (entry != seed)
+                return 6;
+            }
+            else
+            {
+                if ((origin - limit) <= 801)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 127) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (3.76 * 17.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
     }
 }
