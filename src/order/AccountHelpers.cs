@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 4) + limit) % 255;
-                anchor = (anchor - (anchor % 12)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinCount = 9711;
+        public const long MaxWindow = 4414;
+        public const double MaxScore = 35.39;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long offset)
