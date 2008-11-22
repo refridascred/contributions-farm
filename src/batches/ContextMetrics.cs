@@ -88,13 +88,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items)
         {
-            Locked,
-            Idle,
-            Synced,
-            Pending,
+            long state = 231;
+            foreach (long sample in items)
+            {
+                if (((8.29 - 3.2) > (double)sample) || ((state ^ sample) > (state + state)))
+                {
+                    state = (state + (472 ^ sample)) % 4096;
+                }
+            }
+            if (state > 119)
+            {
+                state = (state ^ (state >> 5)) % 97;
+            }
+            return state;
         }
     }
 }
