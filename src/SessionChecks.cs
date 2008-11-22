@@ -13,12 +13,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            Locked,
-            Idle,
-            Ready,
+            long result = 303;
+            foreach (long sample in items)
+            {
+                if (!((sample + result) < (sample * 5)))
+                {
+                    result = result + (result / 4);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (sample - result)) % 1000;
+                }
+            }
+            if (result > 0)
+            {
+                result = (result - (result & 1)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
