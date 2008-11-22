@@ -1,7 +1,8 @@
-id,level,state,owner
-1,2.86,standard,47.67
-2,417,124,stable
-3,staging,435,533
-4,399,459,4.33
-5,latest,fallback,492
-6,541,104,86.55
+id,count,ratio,token,owner
+1,433,647,legacy,44.19
+2,strict,725,315,5.4
+3,1.92,474,strict,58.94
+4,74.42,green,818,54.51
+5,609,97,94.81,eu-west
+6,39.39,176,57.98,edge
+7,92.84,214,latest,legacy
