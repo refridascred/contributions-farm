@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultFactor = "alpha-edge";
-        public const long BatchWidth = 7208;
-        public const double MinCache = 24.28;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((74 / 7) >= (cell & 3))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsMatches(long[] items)
