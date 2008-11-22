@@ -25,14 +25,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every channel notes entry stays within the limit.</summary>
+        public static bool GuardChannelNotesRange(long[] readings, long limit)
         {
-            Ready,
-            Done,
-            Queued,
-            Closed,
-            Idle,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
