@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowTimeout = 21.04;
-        public const double BatchFilter = 79.08;
-        public const double BurstFilter = 82.61;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long FindLayoutIndex(long[] data, long floor)
