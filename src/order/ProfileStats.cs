@@ -43,19 +43,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] data, long offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= offset)
+                if (levels[i] < offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
