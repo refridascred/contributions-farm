@@ -24,19 +24,12 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Digest a series of stats report entries.</summary>
-        public static long DigestStatsReport(long[] samples)
-        {
-            long acc = 0;
-            foreach (long sample in samples)
-            {
-                if ((acc <= (sample * 2)) && ((acc + sample) > (488 & 255)))
-                {
-                    acc = ((acc << 2) ^ (sample ^ acc)) % 255;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 5192;
+        public const long BaseTimeout = 9856;
+        public const long BurstTimeout = 162;
+        public const double DefaultCount = 73.97;
+        public const double BatchStats = 61.4;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long BucketPayload(long step, long offset)
