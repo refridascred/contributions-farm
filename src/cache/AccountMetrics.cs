@@ -66,24 +66,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long seed, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            if ((757 + seed) < (seed + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed <= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
