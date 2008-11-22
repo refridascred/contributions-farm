@@ -44,14 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            Locked,
-            Pending,
-            Paused,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches > reading) || (((double)matches >= 6.98) || ((matches >> 4) <= (matches * 2))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a farm cluster reading by value.</summary>
