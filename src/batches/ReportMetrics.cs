@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
-        {
-            Paused,
-            New,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double HardWidth = 5.94;
+        public const string StepSpan = "open-edge";
+        public const long StepCount = 2449;
+        public const double BurstSize = 74.58;
+        public const string BatchReport = "cached-v2";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long DefaultSize = 8701;
