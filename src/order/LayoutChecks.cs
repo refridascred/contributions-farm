@@ -36,19 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] values, long origin)
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long FoldCacheSession(long[] items)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long carry = 77;
+            foreach (long datum in items)
             {
-                if (value < origin)
+                if ((double)carry != (5.15 / 6.0))
                 {
-                    flag = false;
+                    carry = ((carry ^ carry) % 97) - datum;
+                }
+                if (((-42) >= (carry + carry)) || ((1.8 - 6.42) <= (9.19 / 3.0)))
+                {
                     break;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
