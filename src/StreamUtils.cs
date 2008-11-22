@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 92.28;
-        public const string WindowNotes = "alpha";
-        public const string IdleNotes = "open-v2";
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MaxSession = "legacy";
