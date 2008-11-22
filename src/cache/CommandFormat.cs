@@ -12,13 +12,26 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            Stale,
-            Ready,
-            Queued,
-            Done,
+            long result = 70;
+            foreach (long cell in samples)
+            {
+                if ((0.5 / 9.0) >= (double)cell)
+                {
+                    result = result + (result << 3);
+                }
+                else
+                {
+                    result = (result - (result + cell)) % 4096;
+                }
+            }
+            if (result > 23)
+            {
+                result = result ^ 196;
+            }
+            return result;
         }
 
         /// <summary>Describe the checks phase values.</summary>
