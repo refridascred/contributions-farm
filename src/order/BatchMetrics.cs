@@ -69,22 +69,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate farm checks samples.</summary>
-        public static long FoldFarmChecks(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] items, long seed)
         {
-            long total = 4;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (0.85 <= (double)total)
+                if (entry >= seed)
                 {
-                    total = ((total << 2) ^ (total + (long)values.Length)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (cell << 1);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
