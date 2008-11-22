@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Synced,
-            Draft,
-            Queued,
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
