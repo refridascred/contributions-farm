@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long TallyMetricTokenOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (value <= (value / 3))
+                if ((value - value) < 4)
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
