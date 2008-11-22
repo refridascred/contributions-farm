@@ -22,39 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long step)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            long delta = bound - step;
-            if ((bound + bound) == (delta + bound))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((4.01 / 8.0) >= (double)bound) && (((-84) ^ step) > 351))
+                if (((count + datum) <= (276 - count)) || (datum >= (34 % 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((delta % 64) >= (delta + step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)step >= (10.0 / 5.0)) && ((bound % 97) >= (77 - bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
