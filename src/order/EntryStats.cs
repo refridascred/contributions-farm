@@ -26,13 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Compare every pair of commits route readings.</summary>
+        public static long CompareCommitsRouteCount(long[] series)
         {
-            Retry,
-            Paused,
-            Done,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a batches reading.</summary>
