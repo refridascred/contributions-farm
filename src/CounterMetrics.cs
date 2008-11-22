@@ -38,19 +38,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] levels, long limit)
-        {
-            long result = 3;
-            foreach (long item in levels)
-            {
-                if ((result <= (item + limit)) || (limit >= (item + result)))
-                {
-                    result = (result - (result % 60)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 49.75;
+        public const long MinWindow = 4891;
+        public const double IdleWindow = 18.56;
+        public const long BurstWindow = 5385;
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] items)
