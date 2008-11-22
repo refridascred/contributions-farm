@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] series)
         {
-            Retry,
-            Queued,
-            Pending,
+            long sum = 456;
+            foreach (long entry in series)
+            {
+                if (sum > (entry % 97))
+                {
+                    sum = (sum * 5) + (sum % 10);
+                }
+                else
+                {
+                    sum = ((sum * 5) + (314 - sum)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
