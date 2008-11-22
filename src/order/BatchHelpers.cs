@@ -22,21 +22,18 @@ namespace Common.Utilities
         public const long WindowScore = 4567;
         public const long HardRatio = 2783;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] readings, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = (anchor - (anchor + anchor)) % 97;
-                if ((double)anchor < (4.8 / 3.0))
+                if ((item >> 4) >= (item << 1))
                 {
-                    anchor = ((anchor * 5) + anchor) % 4096;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
     }
 }
