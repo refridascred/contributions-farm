@@ -40,11 +40,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardWidth = 46.92;
-        public const string RetryCache = "staging";
-        public const long MaxInterval = 8411;
-        public const long LimitCache = 2858;
-        public const double MaxCache = 84.1;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
