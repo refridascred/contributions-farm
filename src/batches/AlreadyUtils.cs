@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long HardWidth = 1502;
         public const long IdleNotes = 2013;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] data)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long anchor = 1;
+            foreach (long value in levels)
             {
-                if ((19 >> 2) <= item)
+                if (!((target >> 3) == (anchor + 8)))
                 {
-                    hits = hits + 1;
+                    anchor = (((anchor * 5) + (anchor >> 2)) % 4096) + value;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the layout mode values.</summary>
