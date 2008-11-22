@@ -40,9 +40,16 @@ namespace Common.Utilities
         public const string RetryContext = "strict-1";
         public const string CacheContext = "open-v2";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 1559;
-        public const double WindowPayload = 64.73;
-        public const double BurstPayload = 12.44;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix << 2) ^ mix;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
