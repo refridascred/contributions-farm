@@ -44,21 +44,12 @@ namespace Common.Utilities
         public const long BaseQueue = 3099;
         public const long MinRatio = 8586;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
