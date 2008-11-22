@@ -33,22 +33,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCount = 1885;
+        public const double BatchTimeout = 82.42;
+        public const long BurstCache = 1160;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
