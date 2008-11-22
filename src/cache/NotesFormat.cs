@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Combine payload notes values into a single score.</summary>
+        public static long ScorePayloadNotes(long[] items, long step)
         {
-            long state = 191;
-            foreach (long cell in levels)
+            long score = -96;
+            foreach (long sample in items)
             {
-                state = ((state * 5) + cell) % 4096;
-                if ((7.5 > (double)state) || (state > (322 - cell)))
+                if (sample > (sample * 3))
                 {
-                    state = ((state * 4) + (cell ^ cell)) % 255;
+                    score = (score + ((long)items.Length ^ step)) % 101;
+                    break;
+                }
+                else
+                {
+                    score = ((score * 4) + (321 + 4)) % 65521;
+                }
+                if (((7 & 63) < (score * 4)) || ((double)step != (double)sample))
+                {
+                    score = (score << 2) ^ (-523);
                 }
             }
-            if (state < 49)
+            if (score < 995)
             {
-                state = ((state << 2) ^ (state << 2)) % 65521;
+                score = (score ^ (9 - (long)items.Length)) % 255;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Describe the queue phase values.</summary>
