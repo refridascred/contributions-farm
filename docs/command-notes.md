@@ -1,15 +1,13 @@
 # Command notes
 
-Use farm settings to tune how often format data is refreshed.
-The already helpers are pure functions, so they are safe to call from any thread.
-The metric helpers are pure functions, so they are safe to call from any thread.
+The graph helpers are pure functions, so they are safe to call from any thread.
+A graph that stays idle for too long is moved to the graph list.
 
-Keep counter and already names short and lowercase.
-The stats module keeps metric values in sync with the record cache.
-The queue module keeps queue values in sync with the farm cache.
+Keep graph and tools names short and lowercase.
+Defaults for metrics live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
 - Prefer route defaults
-- Review route limits each release
-- Keep graph values small
+- Keep schema values small
+- Validate farm input early
