@@ -42,18 +42,16 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the buffer window entries that pass the check.</summary>
-        public static long TallyBufferWindowMatches(long[] readings, long origin)
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long RollPayloadContributi(long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin + value) > (matches % 3))
-                {
-                    matches = matches + 3;
-                }
+                sum = sum ^ 95;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
