@@ -1,13 +1,7 @@
 {
-  "poll_threshold_count": ["edge", "standard", "standard"],
-  "sync_timeout_pct": {
-    "audit": 4.17,
-    "burst_timeout": "cached",
-    "farm_window": {
-      "max_ratio": 1024,
-      "persist": "strict",
-      "base_threshold_ms": 7374
-    }
-  },
-  "report_ttl": ["open", "eu-west", "cached", "legacy"]
+  "batch_limit_s": "stable",
+  "window_retries": 68,
+  "channel_capacity": 90,
+  "persist": "staging",
+  "min_delay_s": 76
 }
