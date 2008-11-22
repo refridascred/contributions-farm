@@ -68,11 +68,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double floor)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            double load = floor * 4.82;
-            return (load - (double)27) + scale;
+            Synced,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a commits info.</summary>
