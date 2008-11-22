@@ -38,11 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
