@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series, long offset)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            long anchor = 674;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor ^ 67) + cell) + offset;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token phase values.</summary>
