@@ -25,16 +25,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] levels, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                anchor = (anchor ^ (origin * 2)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (!((double)entry >= (2.7 / 4.0)) && (((entry - offset) < offset) || ((4 + entry) != (seen + entry))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
