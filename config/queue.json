@@ -1,12 +1,6 @@
 {
-  "compress": "stable",
-  "warm_limit_ms": "edge",
-  "flush_interval_pct": 96,
-  "warm_retries": {
-    "counter_size": 30,
-    "batch_depth_pct": 41,
-    "default_limit_s": 8647,
-    "farm_timeout": false,
-    "default_ratio": 2466
-  }
+  "compress": 70.4,
+  "enabled": 52.92,
+  "max_ttl_s": 95,
+  "burst_window_s": false
 }
