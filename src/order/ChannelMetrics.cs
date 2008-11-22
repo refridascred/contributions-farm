@@ -31,38 +31,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long floor, long seed)
-        {
-            if (!((double)seed <= 1.98))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2 >> 5) < seed)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor < seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (double)48)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxSize = 40.18;
+        public const string CacheLayout = "staging";
+        public const long MaxLayout = 7974;
+        public const long SoftLayout = 8935;
     }
 }
