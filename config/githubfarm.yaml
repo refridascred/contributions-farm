@@ -1,19 +1,6 @@
 # githubfarm settings
-commits_threshold:
-  window_timeout:
-    - 492
-    - 153
-    - 151
-    - 200
-  hard_timeout:
-    min_capacity: 90
-    compress: green
-    account_retries: 37.59
-    contributi_interval:
-      - stable
-      - cached
-      - stable
-    idle_size: fallback
-  commits_depth: latest
-readonly: 500
-retry_depth_count: 21
+base_ratio_ms: true
+burst_capacity_ms: 100
+min_timeout_count: 1
+sync_capacity_s: 3131
+window_threshold: 89.54
