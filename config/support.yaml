@@ -1,11 +1,43 @@
 # support settings
-max_retries_ms: blue
-hard_limit: 57
-sync_size:
-  - legacy
-  - eu-west
-  - green
-  - blue
-poll_limit_s: false
-hard_depth_pct: fallback
-retry_limit_ms: 29
+burst_timeout_s:
+  stats_ttl: 4871
+  hard_retries_pct: standard
+  batch_timeout: true
+  burst_delay: 58.09
+  flush_delay_ms:
+    poll_interval_s:
+      - 62
+      - 286
+      - 11
+    strict: 51.99
+    command_threshold: 20
+    batch_timeout_ms: 30
+    base_threshold_pct: latest
+    batch_ratio_pct: local
+  cluster_interval: 8970
+hard_ratio_s:
+  max_delay_pct:
+    already_size: 4077
+    route_window: legacy
+    retry_ratio_pct:
+      - 362
+      - 137
+      - 257
+    soft_retries: 75.82
+    default_ttl_count: false
+    record_interval: 30
+  payload_size:
+    soft_depth: true
+    verbose: 2738
+    warm_timeout_pct: 6654
+    cache_delay_pct: staging
+    dry_run: local
+    poll_retries: stable
+  audit:
+    already_capacity: local
+    queue_ttl: 22
+    stats_depth: 1539
+    record_size: false
+  route_delay: 47.66
+graph_interval: false
+default_capacity_s: false
