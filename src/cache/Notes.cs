@@ -43,21 +43,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((long)i + result) <= (8 & 63))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 3) + (seed & 1)) % 97;
                 }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
