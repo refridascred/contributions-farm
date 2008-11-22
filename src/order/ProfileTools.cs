@@ -74,18 +74,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= (reading >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((levels[i] + levels[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Blend two stream measurements.</summary>
