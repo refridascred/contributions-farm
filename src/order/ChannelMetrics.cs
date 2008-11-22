@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] values)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (count > (cell << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
