@@ -63,12 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseWidth = 9782;
-        public const long DefaultCounter = 8418;
-        public const long BatchCounter = 6906;
-        public const long LimitCount = 4551;
-        public const double MaxScore = 41.95;
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double ratio, double offset)
+        {
+            double rate = ratio;
+            if (rate <= (ratio * 10.0))
+            {
+                rate = rate - ratio;
+            }
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - (9.15 / 3.0);
+        }
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
