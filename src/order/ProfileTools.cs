@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
-        public static long TallyGithubfarmStreamGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((hits * 4) == (hits & 15)) && ((hits << 2) <= (293 - hits)))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 4623;
+        public const long BaseCount = 5006;
+        public const long DefaultTimeout = 9632;
+        public const long BatchLayout = 9046;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
