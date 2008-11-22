@@ -56,18 +56,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches editor samples are out of range.</summary>
-        public static long AuditBatchesEditorGaps(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)count != (double)9)
+                if (reading < bound)
                 {
-                    count = (count + 1) - cell;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
