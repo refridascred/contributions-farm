@@ -33,19 +33,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double scale, double offset)
+        /// <summary>Look up the position of a command token sample.</summary>
+        public static long LookupCommandTokenIndex(long[] readings, long origin)
         {
-            double scale2 = scale;
-            if (scale2 > (double)8)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 + 4.4;
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale2 = scale2 - offset;
-            }
-            return scale2 - scale2;
+            return -1;
         }
     }
 }
