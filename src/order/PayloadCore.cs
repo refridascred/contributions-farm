@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long target, long limit)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            if (!(target >= (target * 4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target % 24) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - limit) < 173)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit * 5) >= (limit ^ target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
