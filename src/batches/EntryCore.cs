@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long BurstSize = 2638;
         public const long BaseBatch = 3343;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long offset)
+        /// <summary>Validate farm metric readings against a bound.</summary>
+        public static bool ValidateFarmMetricLimits(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (samples[i] < offset)
+                if (sample > target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a order record.</summary>
