@@ -1,22 +1,5 @@
 # support settings
-min_ratio:
-  - staging
-  - latest
-  - stable
-  - staging
-soft_ratio_ms: stable
-poll_delay_pct: 60
-default_retries_pct:
-  stats_retries: standard
-  burst_capacity: fallback
-  graph_limit: 36
-  githubfarm_limit:
-    - green
-    - legacy
-  batch_threshold_s: latest
-batch_window_count:
-  channel_depth: 78.0
-  default_threshold_pct: false
-  batch_delay: 59.42
-  stream_timeout: 8217
-persist: 49.02
+cluster_limit: true
+enabled: 78
+poll_depth: 30
+graph_depth: edge
