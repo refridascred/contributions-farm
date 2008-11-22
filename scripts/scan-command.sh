@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict legacy; do
+for item in strict stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=34
+COMMAND_LIMIT=369
 log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
