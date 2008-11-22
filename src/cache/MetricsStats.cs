@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] items, long offset)
         {
-            public double Flag { get; set; }
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            long sum = 9;
+            foreach (long item in items)
+            {
+                if ((sum - item) != (offset ^ offset))
+                {
+                    sum = (sum - offset) % 1000;
+                }
+                else
+                {
+                    sum = (sum + sum) % 4096;
+                }
+            }
+            if (sum < 36)
+            {
+                sum = (sum - (sum + sum)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Blend two stream measurements.</summary>
