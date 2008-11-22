@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double bias, double bias2)
         {
-            long carry = 94;
-            foreach (long item in data)
+            double weight = bias2;
+            if (weight < 4.9)
             {
-                if ((20.0 - 19.0) == (double)(long)data.Length)
-                {
-                    carry = (carry - (804 * 2)) - offset;
-                }
-                if ((item * 3) < (item + 156))
-                {
-                    break;
-                }
+                weight = (weight + bias2) - bias;
             }
-            if (carry > 817)
+            else
             {
-                carry = (carry ^ (carry + carry)) % 1000;
+                weight = weight + (6.0 - bias2);
             }
-            return carry;
+            return weight + (weight + weight);
         }
 
         /// <summary>Accumulate context stream samples.</summary>
