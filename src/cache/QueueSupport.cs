@@ -20,12 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            double mean = span + 6.4;
+            if (mean <= (4.0 + mean))
+            {
+                mean = mean + 2.0;
+            }
+            return mean - scale;
         }
 
         /// <summary>Count already profile pairs that satisfy a relation.</summary>
