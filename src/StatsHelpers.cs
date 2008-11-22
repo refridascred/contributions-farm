@@ -73,18 +73,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream channel entries that pass the check.</summary>
-        public static long CountStreamChannelGaps(long[] series)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((hits - hits) > hits) && (((cell + 5) > (long)series.Length) && ((cell >> 1) <= (cell ^ cell))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double ratio = (double)(4 << 1);
+            return (ratio + floor) + weight;
         }
     }
 }
