@@ -19,19 +19,38 @@ namespace Common.Utilities
         public const double StepMetric = 44.31;
         public const string HardCount = "staging-1";
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] items, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long limit, long step)
         {
-            long anchor = -59;
-            foreach (long reading in items)
+            if ((double)step != (1.5 - 18.0))
             {
-                anchor = (((anchor ^ ((long)items.Length - anchor)) % 97) - reading) - limit;
+                return 5;
             }
-            if (anchor < 42)
+            else
             {
-                anchor = (anchor + (anchor << 3)) % 65521;
+                if (((step - step) <= (538 + step)) || ((limit << 3) >= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit ^ step) >= (limit - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)step < (19.0 - 4.84)) || ((limit - step) == (step ^ step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
