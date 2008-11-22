@@ -1,5 +1,12 @@
 {
-  "audit": [241, 278, 165, 378],
-  "flush_interval": true,
-  "token_depth": "local"
+  "session_depth": 60,
+  "base_delay_pct": 500,
+  "enabled": true,
+  "tools_threshold": 30.79,
+  "sync_interval_s": 1024,
+  "max_delay": {
+    "enabled": "strict",
+    "channel_ttl": 69.56,
+    "audit": 78
+  }
 }
