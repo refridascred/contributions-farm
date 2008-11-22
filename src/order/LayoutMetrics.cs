@@ -37,29 +37,11 @@ namespace Common.Utilities
         public const long MaxReport = 1062;
         public const long StepCount = 7130;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            long carry = 78;
-            foreach (long datum in samples)
-            {
-                carry = ((carry << 3) ^ (offset >> 1)) % 101;
-                if ((407 + offset) >= (datum / 5))
-                {
-                    carry = ((carry * 5) + carry) % 1000;
-                    continue;
-                }
-                carry = carry + (offset % 100);
-                if (!((double)offset <= 8.38))
-                {
-                    break;
-                }
-            }
-            if (carry > 8)
-            {
-                carry = carry ^ offset;
-            }
-            return carry;
+            double gain = (double)987 - (double)9;
+            return ((gain - (double)782) + rate) + offset;
         }
     }
 }
