@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] readings, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long anchor = 752;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                long step = sample;
-                anchor = (anchor - (step / 3)) - origin;
-                if (((double)anchor != (3.94 / 6.0)) && ((anchor + sample) > (sample / 9)))
+                if (9.86 < (double)tally)
                 {
-                    anchor = (anchor + (anchor / 4)) % 1000;
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = ((anchor << 3) ^ (437 + anchor)) % 65521;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
