@@ -24,11 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardBuffer = "open-edge";
-        public const long WindowBudget = 9292;
-        public const long MinFactor = 3997;
-        public const string LimitWidth = "standard-1";
-        public const long MinSize = 1473;
+        /// <summary>Validate editor checks readings against a bound.</summary>
+        public static bool CheckEditorChecksLimits(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
