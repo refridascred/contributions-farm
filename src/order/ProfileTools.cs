@@ -19,24 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long bound, long limit)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] levels, long step)
         {
-            if (((bound + 851) < (bound ^ bound)) && ((double)bound >= (3.3 + 0.3)))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (6.0 / 3.0))
+                if (entry != step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank profile commits input into a small class.</summary>
