@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseWidth = 8625;
-        public const long LimitCount = 8835;
-        public const long CacheTimeout = 8480;
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long RankReportProfile(long seed, long limit)
+        {
+            if ((limit - limit) >= (seed - 436))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((5.26 * 4.4) > (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
         public static double BlendGithubfarm(double scale, double floor)
