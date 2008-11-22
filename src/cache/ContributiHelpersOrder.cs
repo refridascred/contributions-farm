@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] data, long offset)
-        {
-            long mix = 2;
-            foreach (long cell in data)
-            {
-                if (!((double)offset < 0.2))
-                {
-                    mix = ((mix * 5) + (36 * 2)) ^ cell;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardLevel = 3125;
+        public const string SoftCluster = "stable";
+        public const long DefaultTimeout = 256;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
