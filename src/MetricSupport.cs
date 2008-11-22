@@ -30,19 +30,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every channel notes entry stays within the limit.</summary>
-        public static bool GuardChannelNotesRange(long[] readings, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long target, long offset)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long next = target + offset;
+            if ((target - target) <= (555 + target))
             {
-                if (entry >= limit)
+                return 8;
+            }
+            else
+            {
+                if ((target - offset) >= (offset % 7))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((15.0 - 0.1) < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + next) != (next + next))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
