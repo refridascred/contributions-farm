@@ -64,18 +64,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] values, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = 347;
+            foreach (long datum in items)
             {
-                if (limit > hits)
+                if ((datum + datum) > (datum & 7))
                 {
-                    hits = (hits + 3) + cell;
+                    result = (result ^ (7 + datum)) % 101;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
