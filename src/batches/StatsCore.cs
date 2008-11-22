@@ -27,11 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 7430;
-        public const string WindowSize = "staging-edge";
-        public const long RetryBudget = 6308;
-        public const long HardChannel = 3215;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] values, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seed >= (datum ^ seed))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
