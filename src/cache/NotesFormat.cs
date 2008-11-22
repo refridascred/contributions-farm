@@ -24,22 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] readings)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mark = 93;
-            foreach (long datum in readings)
-            {
-                if ((16.0 * 2.4) <= (double)mark)
-                {
-                    mark = ((mark + (164 << 2)) % 4096) ^ datum;
-                }
-                else
-                {
-                    mark = (mark + (mark + 465)) % 4096;
-                }
-            }
-            return mark;
+            Active,
+            Failed,
+            Stale,
+            Retry,
+            Draft,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
