@@ -1,6 +1,10 @@
-id,weight,count,score
-1,839,cached,827
-2,67,86,625
-3,fallback,cached,956
-4,39.73,green,312
-5,628,531,11.53
+id,label,level
+1,339,12.0
+2,902,edge
+3,94.06,standard
+4,open,390
+5,66.0,35
+6,fallback,strict
+7,staging,94.64
+8,57.65,stable
+9,green,93.42
