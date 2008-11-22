@@ -27,13 +27,11 @@ namespace Common.Utilities
         public const long StepEditor = 8467;
         public const long LimitWidth = 3232;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
