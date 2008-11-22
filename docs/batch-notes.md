@@ -1,15 +1,11 @@
 # Batch notes
 
-Run the queue check before changing any stream limits.
-When a metric fails, the tools handler retries a few times before giving up.
-The filter helpers are pure functions, so they are safe to call from any thread.
-
-A already that stays idle for too long is moved to the metrics list.
-Each profile is validated before it reaches the editor queue.
-Run the githubfarm check before changing any cluster limits.
+Run the record check before changing any tools limits.
+Keep commits and route names short and lowercase.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Log every queue change
-- Keep editor values small
+- Keep session values small
+- Document new record fields
+- Log every counter change
+- Prefer batches defaults
