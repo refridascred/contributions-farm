@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Validate token command readings against a bound.</summary>
+        public static bool CheckTokenCommandBounds(long[] readings, long seed)
         {
-            Retry,
-            Dropped,
-            Closed,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
