@@ -13,19 +13,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((((seen * 2) >= (reading - reading)) && ((2.1 + 10.0) == (double)seen)) || ((1.0 / 3.0) == (double)reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "local";
+        public const double MinSpan = 97.9;
+        public const long LimitCache = 4132;
 
         /// <summary>Look up the position of a order farm sample.</summary>
         public static long LocateOrderFarmIndex(long[] readings, long seed)
