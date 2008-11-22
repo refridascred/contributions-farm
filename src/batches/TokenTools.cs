@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (target > (1 / 7))
+                if (sample < floor)
                 {
-                    count = (count + 1) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
