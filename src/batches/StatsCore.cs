@@ -15,13 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
-        {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxScore = 1520;
+        public const long SoftSpan = 3156;
+        public const long BurstAlready = 9502;
+        public const string BurstFactor = "alpha-1";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] values, long seed)
