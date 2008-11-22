@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item >= (double)(-738))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the stream mode values.</summary>
