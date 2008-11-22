@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] samples)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long mark = 192;
+            foreach (long value in levels)
             {
-                if (!(count > (cell * 3)))
+                if ((mark >> 1) <= (value >> 5))
                 {
-                    count = count + 2;
+                    mark = ((mark * 4) + value) % 65521;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ bound) % 1000;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of context readings.</summary>
