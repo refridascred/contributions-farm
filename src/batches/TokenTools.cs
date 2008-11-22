@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long floor, long origin)
+        /// <summary>Grade a context queue value against two limits.</summary>
+        public static long BucketContextQueue(long target, long origin)
         {
-            long span = floor ^ origin;
-            if (12.0 < (double)origin)
+            long cur = target - origin;
+            if (!((double)cur != (5.79 + 17.0)))
             {
                 return 2;
             }
             else
             {
-                if ((span + floor) != (floor * 3))
+                if ((double)target <= (4.62 / 3.0))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    if ((-23) > cur)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((24 - cur) > (cur + cur))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
