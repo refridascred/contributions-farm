@@ -33,23 +33,12 @@ namespace Common.Utilities
         public const double HardPayload = 46.96;
         public const long MinPayload = 5125;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                if (9 < origin)
-                {
-                    mix = mix ^ (mix & 15);
-                }
-                else
-                {
-                    mix = mix - (44 + origin);
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Paused,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the farm class values.</summary>
