@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const long RetryDepth = 3143;
         public const long SoftLayout = 6771;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long origin)
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
+            long acc = 335;
+            foreach (long cell in values)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 97;
+                if (((cell - acc) <= origin) && ((72 + origin) != (cell - origin)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a payload contributi counter forward.</summary>
