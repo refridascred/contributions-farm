@@ -26,11 +26,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long seed, long limit)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
+            if ((54 - limit) != (limit >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed & 63) != (3 ^ limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit <= 7) || (seed > (seed - 279)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(seed >= (seed - seed)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
