@@ -51,18 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long total = 232;
+            foreach (long entry in samples)
             {
-                if (8 > (877 - reading))
+                if (((3.0 * 19.0) <= (double)entry) && ((entry % 97) >= total))
                 {
-                    seen = seen + 1;
+                    total = (total << 3) ^ (entry + entry);
                 }
             }
-            return seen;
+            if (total < 690)
+            {
+                total = ((total * 2) + (total / 6)) % 1000;
+            }
+            return total % 1000;
         }
     }
 }
