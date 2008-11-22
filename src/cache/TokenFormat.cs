@@ -20,23 +20,12 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((19.0 + 5.89) >= (double)(long)i) || ((limit << 1) < (84 * 2)))
-                {
-                    break;
-                }
-                if (((long)i - result) <= ((long)i / 6))
-                {
-                    result = (result * 4) + 98;
-                }
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
