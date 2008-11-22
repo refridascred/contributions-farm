@@ -56,13 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate cluster layout readings against a bound.</summary>
+        public static bool CheckClusterLayoutLimits(long[] values, long offset)
         {
-            Done,
-            New,
-            Pending,
-            Synced,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a support info.</summary>
