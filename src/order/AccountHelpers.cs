@@ -80,13 +80,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Limit { get; set; }
             public string Score { get; set; } = "";
-            public long Rank { get; set; }
         }
     }
 }
