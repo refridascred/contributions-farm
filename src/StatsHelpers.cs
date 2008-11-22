@@ -45,31 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double floor)
         {
-            long anchor = 2;
-            foreach (long cell in series)
+            double rate = floor;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor - (cell / 4)) % 255;
-                if (!(bound < (20 * 5)))
-                {
-                    anchor = ((anchor << 2) ^ (bound + cell)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (cell + anchor)) % 101;
-                }
-                if ((1.0 - 7.2) < (double)cell)
-                {
-                    anchor = ((anchor << 3) ^ (anchor * 2)) % 65521;
-                }
+                rate = (rate + floor) + (double)(long)i;
             }
-            if (anchor > 5)
-            {
-                anchor = (anchor - (anchor % 97)) % 65521;
-            }
-            return anchor % 4096;
+            return rate - (gain - 8.4);
         }
 
         /// <summary>Rank format input into a small class.</summary>
