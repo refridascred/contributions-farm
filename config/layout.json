@@ -1,7 +1,14 @@
 {
-  "cluster_ttl": [476, 335, 442],
-  "soft_limit_pct": false,
-  "poll_threshold": "latest",
-  "report_window": 5871,
-  "hard_delay_s": "local"
+  "counter_window": "cached",
+  "flush_ratio_count": 37.91,
+  "queue_retries": {
+    "poll_depth": "staging",
+    "record_timeout": "legacy",
+    "readonly": 60,
+    "flush_depth": 73,
+    "default_depth_s": 85.22
+  },
+  "burst_size_count": 1218,
+  "strict": 361,
+  "window_ratio": 26.43
 }
