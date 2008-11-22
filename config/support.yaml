@@ -1,11 +1,4 @@
 # support settings
-audit:
-  - 117
-  - 227
-  - 364
-  - 164
-compress: staging
-soft_ratio: 2341
-idle_depth_s: blue
-session_ratio: open
-retry_retries_ms: false
+flush_delay_ms: 5251
+session_capacity: eu-west
+hard_interval: 65
