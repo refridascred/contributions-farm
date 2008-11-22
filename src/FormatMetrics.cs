@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Iterate the booking series from a seed.</summary>
-        public static long StepBooking(long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            if ((double)step != (6.41 + 0.24))
             {
-                acc = (acc << 3) ^ ((long)i + (long)i);
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((58 ^ 98) > (step - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset >= 42)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset - step) > (-5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batches filter values into a single score.</summary>
