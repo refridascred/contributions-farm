@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of filter notes readings.</summary>
-        public static long CompareFilterNotesCount(long[] samples)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = limit + target;
+            if (((limit ^ target) <= prev) && (target > limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit / 9) > (prev >> 1))
                 {
-                    if ((samples[i] ^ samples[j]) > 17)
+                    return 2;
+                }
+                else
+                {
+                    if ((prev * 2) > (limit - prev))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count order editor pairs that satisfy a relation.</summary>
