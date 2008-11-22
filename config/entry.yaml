@@ -1,6 +1,5 @@
 # entry settings
-verbose: true
-flush_delay_ms: 41.9
-warm_interval: true
-default_delay_ms: 9353
-compress: 37.58
+idle_ttl_pct: edge
+stream_delay: 84
+cache_depth: stable
+idle_retries: 15
