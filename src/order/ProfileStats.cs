@@ -22,10 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 323;
-        public const long StepEditor = 8467;
-        public const long LimitWidth = 3232;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinInterval = "strict-edge";
+        public const long CacheTimeout = 7606;
+        public const long LimitLevel = 5753;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
