@@ -42,15 +42,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long offset)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] series, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate stream samples.</summary>
