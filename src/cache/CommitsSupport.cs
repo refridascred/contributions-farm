@@ -12,25 +12,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long gap = offset ^ step;
-            if ((step % 100) > (2 >> 4))
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
+                acc = acc + ((long)i >> 5);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((2.64 - 2.0) > (double)gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
