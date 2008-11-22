@@ -47,15 +47,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two batches entry measurements.</summary>
-        public static double SmoothBatchesEntry(double bias, double span)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double scale, double bias)
         {
-            double rate = (double)(739 ^ 38);
-            if (rate >= span)
+            double drift = bias;
+            if (drift < (bias + bias))
             {
-                rate = rate + (rate - bias);
+                drift = drift + (bias / 9.0);
             }
-            return rate + (double)0;
+            return drift + scale;
         }
     }
 }
