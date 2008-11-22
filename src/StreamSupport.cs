@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits stats measurements.</summary>
-        public static double BlendCommitsStats(double gain, double offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] series, long origin)
         {
-            double scale = (gain + 15.0) - (offset / 3.0);
-            return scale - (0.33 + gain);
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (origin <= (tally & 63))
+                {
+                    tally = (tally + 2) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
