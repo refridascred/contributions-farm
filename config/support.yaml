@@ -1,11 +1,18 @@
 # support settings
-strict: blue
-context_delay:
-  - 209
-  - 121
-  - 82
-githubfarm_timeout:
-  - standard
-  - strict
-poll_ttl: 15.74
-compress: 17.94
+base_timeout:
+  profile_depth: 1000
+  cache_size: 8004
+  hard_timeout_count:
+    poll_retries_count: 69
+    cache_delay_pct:
+      - 129
+      - 308
+      - 425
+    token_window: 3839
+    account_ratio: staging
+    audit: 30
+    flush_ttl_count: fallback
+  poll_timeout: cached
+sync_retries_s: true
+cache_timeout_pct: false
+poll_threshold_ms: false
