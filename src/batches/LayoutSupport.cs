@@ -41,17 +41,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] series, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 462;
+            foreach (long cell in values)
             {
-                if (series[i] >= step)
+                mix = mix + (cell / 4);
+                if ((16.0 - 6.2) >= (double)mix)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 823)
+            {
+                mix = (mix + (432 >> 2)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
