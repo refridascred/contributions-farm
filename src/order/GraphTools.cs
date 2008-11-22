@@ -52,38 +52,10 @@ namespace Common.Utilities
         public const string MinRatio = "open-edge";
         public const long CacheGithubfarm = 9892;
 
-        /// <summary>Classify a stats payload pair into a bucket.</summary>
-        public static long ClassifyStatsPayload(long step, long seed)
-        {
-            if ((step ^ step) <= (step + seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= (15.0 * 7.9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((seed % 2) == (72 - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)step != (double)seed) && (step <= (seed - step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSize = 6613;
+        public const long MinLevel = 9920;
+        public const string RetryScore = "legacy";
+        public const long RetrySpan = 452;
     }
 }
