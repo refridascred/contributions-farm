@@ -1,9 +1,5 @@
 # support settings
-idle_capacity_ms: 30
-sync_retries:
-  - staging
-  - standard
-  - local
-max_interval_pct: 30
-session_retries: false
-contributi_limit: latest
+soft_interval_ms: 57.54
+sync_depth_ms: true
+base_retries_count: true
+burst_threshold: 30
