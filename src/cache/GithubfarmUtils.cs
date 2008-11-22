@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepSpan = 47.67;
-        public const long BaseAlready = 4846;
-        public const long SoftAlready = 1475;
-        public const long WindowRatio = 7022;
-        public const string IdleAlready = "strict-edge";
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool CheckContributiBounds(long[] samples, long step)
