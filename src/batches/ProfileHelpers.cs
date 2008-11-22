@@ -46,16 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long carry = 22;
+            foreach (long cell in items)
             {
-                result = (result + (result + bound)) % 65521;
-                result = ((result * 3) + (long)i) % 1000;
+                carry = ((carry + (carry % 97)) % 255) + cell;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Hold a support info.</summary>
