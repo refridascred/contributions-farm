@@ -45,18 +45,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long anchor = 2;
+            foreach (long cell in series)
             {
-                if ((297 >> 5) != (seen << 1))
+                anchor = (anchor - (cell / 4)) % 255;
+                if (!(bound < (20 * 5)))
                 {
-                    seen = (seen + 2) + datum;
+                    anchor = ((anchor << 2) ^ (bound + cell)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (cell + anchor)) % 101;
+                }
+                if ((1.0 - 7.2) < (double)cell)
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 2)) % 65521;
                 }
             }
-            return seen;
+            if (anchor > 5)
+            {
+                anchor = (anchor - (anchor % 97)) % 65521;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank format input into a small class.</summary>
