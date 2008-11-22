@@ -49,17 +49,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a channel stream sample.</summary>
-        public static long SeekChannelStreamIndex(long[] levels, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
