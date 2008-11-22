@@ -40,10 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 7683;
-        public const long SoftCluster = 1409;
-        public const double SoftTimeout = 3.33;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
+        {
+            double drift = ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)(long)i) + floor;
+            }
+            return drift + (ratio / 8.0);
+        }
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
