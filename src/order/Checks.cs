@@ -47,13 +47,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] readings)
         {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + hits) != (hits + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
