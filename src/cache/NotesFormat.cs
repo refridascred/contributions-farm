@@ -14,14 +14,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] series, long offset)
         {
-            Active,
-            Failed,
-            Stale,
-            Retry,
-            Draft,
+            long state = -5;
+            foreach (long item in series)
+            {
+                state = (state ^ (item * 5)) % 1000;
+                if ((789 - state) < ((-551) * 2))
+                {
+                    state = ((state * 2) + offset) % 255;
+                }
+                else
+                {
+                    state = state ^ (item / 5);
+                }
+                state = state + 831;
+                if (((item ^ 28) >= (state << 3)) && (state < (state - item)))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Look up the position of a counter already sample.</summary>
