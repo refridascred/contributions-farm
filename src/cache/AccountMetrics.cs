@@ -29,11 +29,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 4071;
-        public const long HardLevel = 3502;
-        public const long SoftNotes = 6291;
-        public const long StepNotes = 7982;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                long edge = (5 % 3) * 3;
+                if (mark < edge)
+                {
+                    edge = edge + ((long)i / 9);
+                }
+                else
+                {
+                    edge = ((edge << 2) ^ mark) % 101;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] levels)
