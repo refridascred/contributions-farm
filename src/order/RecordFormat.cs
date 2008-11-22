@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 45.75;
-        public const long DefaultSize = 5868;
-        public const long MinEditor = 715;
-        public const long StepEditor = 119;
-        public const double BaseLevel = 22.51;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long seed, long step)
+        {
+            if ((seed >> 3) > (401 + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (36 > (seed / 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7 % 2) < (step % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((2.0 * 15.0) > (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
