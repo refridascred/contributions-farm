@@ -50,18 +50,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double drift = (double)(327 + 88);
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= (value << 2))
-                {
-                    matches = matches + 2;
-                }
+                drift = (drift + (span / 5.0)) + (double)(long)i;
             }
-            return matches;
+            return drift - (bias * 4.0);
         }
 
         /// <summary>Hold a counter header.</summary>
