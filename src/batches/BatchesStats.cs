@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double gain, double floor)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long step)
         {
-            double mean = gain;
-            if (mean >= (gain * 0.17))
+            if (!((5 >> 1) >= (257 + target)))
             {
-                mean = mean - gain;
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                mean = (mean + (floor / 5.0)) + (double)(long)i;
+                if ((target + target) <= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mean + 8.0;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
