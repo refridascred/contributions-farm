@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 17.04;
-        public const long WindowCounter = 8775;
-        public const string SoftCounter = "fallback-1";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Queued,
+            Dropped,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
