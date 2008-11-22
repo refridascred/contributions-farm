@@ -1,23 +1,9 @@
 # entry settings
-min_limit_count: 250
-retry_delay_ms:
-  - local
-  - staging
-retry_capacity:
-  format_interval: 58
-  retry_ratio:
-    context_size:
-      - strict
-      - strict
-      - edge
-      - open
-    retry_retries_pct:
-      - strict
-      - legacy
-    burst_limit: 9295
-  persist: 0.86
-  max_delay_pct: 82.37
-  hard_limit: cached
-strict:
-  - 198
-  - 301
+min_ratio_count:
+  - green
+  - strict
+  - fallback
+soft_limit: true
+dry_run: 30
+cache_window_s: 93.48
+compress: 52.77
