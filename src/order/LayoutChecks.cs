@@ -12,15 +12,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of channel payload readings.</summary>
-        public static long WeighChannelPayload(long[] values, long target)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] levels, long floor)
         {
-            long anchor = 88;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (target + target)) + cell;
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit channel format readings against a rule.</summary>
