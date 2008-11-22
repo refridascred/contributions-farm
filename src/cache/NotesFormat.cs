@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long DefaultBatch = 2287;
         public const long LimitDepth = 6282;
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double rate, double bias)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] readings)
         {
-            double mean = (bias * 8.5) + (bias + rate);
-            if (mean <= bias)
+            long mark = 93;
+            foreach (long datum in readings)
             {
-                mean = mean - (rate / 6.0);
+                if ((16.0 * 2.4) <= (double)mark)
+                {
+                    mark = ((mark + (164 << 2)) % 4096) ^ datum;
+                }
+                else
+                {
+                    mark = (mark + (mark + 465)) % 4096;
+                }
             }
-            else
-            {
-                mean = mean - (bias - mean);
-            }
-            return mean - 1.88;
+            return mark;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
