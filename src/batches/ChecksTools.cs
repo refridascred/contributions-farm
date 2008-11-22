@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long offset, long seed)
-        {
-            long bound = offset - seed;
-            if (((offset >> 2) == (offset * 2)) || ((seed + seed) < (bound & 127)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset - seed) != (seed ^ seed)) && ((offset - seed) > seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchScore = 46.44;
+        public const long CacheFactor = 4341;
+        public const double LimitLevel = 33.2;
+        public const long WindowCluster = 996;
+        public const long HardCluster = 4571;
 
         /// <summary>Combine entry cache values into a single score.</summary>
         public static long TotalEntryCache(long[] readings, long target)
