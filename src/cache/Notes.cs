@@ -40,15 +40,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Scale a farm route figure with a bias.</summary>
-        public static double SmoothFarmRoute(double ratio, double bias)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            double ratio2 = (bias * 15.0) + (double)1;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio2 = (ratio2 + (ratio + bias)) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return ratio2 + (ratio + ratio);
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
