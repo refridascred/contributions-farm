@@ -46,10 +46,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepFactor = 9954;
-        public const double SoftRatio = 6.85;
-        public const long BaseBudget = 6108;
-        public const long BatchRatio = 9603;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
