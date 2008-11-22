@@ -23,12 +23,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheRatio = "open";
-        public const double BatchSpan = 33.53;
-        public const long MaxAccount = 2591;
-        public const string BaseWidth = "fallback-v2";
-        public const string StepFactor = "standard-edge";
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double rate, double offset)
+        {
+            double rate2 = offset;
+            if (rate2 > rate)
+            {
+                rate2 = rate2 - (rate2 - offset);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool VerifyEditorRange(long[] series, long target)
