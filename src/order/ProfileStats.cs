@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 8599;
-        public const long SoftCommits = 3951;
-        public const double LimitCommits = 53.81;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double ratio, double offset)
+        {
+            double weight = offset + (0.6 + ratio);
+            if (weight <= weight)
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight + (double)77;
+        }
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
