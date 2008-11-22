@@ -37,18 +37,14 @@ namespace Common.Utilities
         public const double CacheTimeout = 89.06;
         public const long SoftBudget = 6738;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((matches + matches) >= (2 + item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Hold a metrics header.</summary>
