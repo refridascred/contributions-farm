@@ -43,18 +43,15 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] values, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double AdjustGithubfarm(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double load = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if ((item < (hits ^ item)) && ((hits < (item + item)) || ((double)hits >= (2.7 * 14.0))))
-                {
-                    hits = (hits + 2) - bound;
-                }
+                load = ((load + (load / 4.0)) + (double)(long)i) - ratio;
             }
-            return hits;
+            return load - (offset - offset);
         }
     }
 }
