@@ -19,17 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
