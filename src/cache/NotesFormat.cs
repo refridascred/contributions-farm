@@ -27,22 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] levels)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (((5.8 / 2.0) != (double)hits) || (((reading - 89) <= 49) && ((7.0 * 12.0) < (double)reading)))
+                if (((matches >> 3) < floor) || ((matches ^ floor) != (81 * 3)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
