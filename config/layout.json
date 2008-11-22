@@ -1,17 +1,6 @@
 {
-  "verbose": true,
-  "hard_size_ms": 30,
-  "max_depth_ms": {
-    "sync_retries_count": true,
-    "poll_timeout_s": {
-      "contributi_delay": true,
-      "verbose": "open",
-      "buffer_interval": "primary",
-      "default_delay_pct": 30,
-      "min_interval": 18.23
-    },
-    "warm_capacity": 6854,
-    "default_interval_s": true
-  },
-  "batch_ratio": ["cached", "latest"]
+  "enabled": 97.67,
+  "hard_interval_count": 500,
+  "burst_ttl_s": false,
+  "hard_delay_pct": "standard"
 }
