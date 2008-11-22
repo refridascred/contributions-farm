@@ -32,15 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long result = 8;
-            foreach (long sample in levels)
-            {
-                result = (result + (result * 3)) + sample;
-            }
-            return result % 97;
+            Stale,
+            Draft,
+            Idle,
+            Active,
         }
     }
 }
