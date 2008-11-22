@@ -19,12 +19,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinScore = 6801;
-        public const double RetrySpan = 62.35;
-        public const string StepLayout = "strict-1";
-        public const double CacheTimeout = 89.06;
-        public const long SoftBudget = 6738;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
