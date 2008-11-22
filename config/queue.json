@@ -1,7 +1,12 @@
 {
-  "cache_retries_count": 60,
-  "sync_capacity": "strict",
-  "sync_size": true,
-  "batches_depth": "standard",
-  "enabled": ["strict", "local", "standard", "local"]
+  "sync_ttl_ms": {
+    "verbose": 248,
+    "enabled": "strict",
+    "idle_size_pct": ["edge", "latest", "standard", "local"],
+    "dry_run": [52, 64, 408, 166]
+  },
+  "dry_run": false,
+  "window_depth": 3783,
+  "idle_size_ms": "open",
+  "readonly": "staging"
 }
