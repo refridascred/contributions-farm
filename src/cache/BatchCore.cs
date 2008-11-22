@@ -39,12 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            public double Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
