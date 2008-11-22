@@ -51,25 +51,11 @@ namespace Common.Utilities
             return load - (gain * 9.83);
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long bound)
-        {
-            long slot = floor ^ bound;
-            if ((floor + 79) >= (slot / 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound > (floor - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 56.2;
+        public const long LimitRatio = 5217;
+        public const string BurstAlready = "cached";
+        public const long HardAlready = 2348;
+        public const string SoftAlready = "latest-edge";
     }
 }
