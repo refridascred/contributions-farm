@@ -33,13 +33,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] levels, long limit)
+        /// <summary>Validate booking cache readings against a bound.</summary>
+        public static bool GuardBookingCacheLimits(long[] series, long origin)
         {
             bool ok = true;
-            foreach (long sample in levels)
+            foreach (long cell in series)
             {
-                if (sample <= limit)
+                if (cell != origin)
                 {
                     ok = false;
                     break;
