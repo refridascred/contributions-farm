@@ -45,15 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Pending,
-            Closed,
-            Retry,
-            Stale,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinFactor = 86.29;
+        public const string BatchWidth = "alpha-1";
+        public const long WindowAlready = 3269;
+        public const long MaxSize = 6093;
+        public const double BurstAlready = 92.61;
 
         /// <summary>Rank contributi metrics input into a small class.</summary>
         public static long GradeContributiMetrics(long origin, long bound)
