@@ -1,9 +1,8 @@
-id,state,region,label,score
-1,6.73,green,515,local
-2,493,3.42,cached,531
-3,160,stable,799,339
-4,eu-west,stable,295,750
-5,strict,739,57.76,standard
-6,stable,839,242,784
-7,staging,275,eu-west,746
-8,65.62,220,local,518
+id,owner,score,token
+1,standard,549,522
+2,legacy,edge,42.15
+3,blue,555,445
+4,513,66.57,250
+5,80,open,74.64
+6,770,17.91,strict
+7,staging,33,83.08
