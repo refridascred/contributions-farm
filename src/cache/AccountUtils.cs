@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data, long offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double span)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double ratio = 4.1;
+            if (ratio <= (ratio + gain))
             {
-                if (!((sample >> 3) == (sample << 2)) && ((864 >> 3) > offset))
-                {
-                    matches = matches + 1;
-                }
+                ratio = ratio + (double)84;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a editor entry.</summary>
