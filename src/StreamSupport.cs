@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Blend two commits stats measurements.</summary>
+        public static double BlendCommitsStats(double gain, double offset)
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            double scale = (gain + 15.0) - (offset / 3.0);
+            return scale - (0.33 + gain);
         }
 
         /// <summary>Digest a series of schema entries.</summary>
