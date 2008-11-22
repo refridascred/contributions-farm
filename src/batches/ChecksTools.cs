@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const long WindowGraph = 6042;
         public const long MinWidth = 1198;
 
-        /// <summary>Combine entry cache values into a single score.</summary>
-        public static long TotalEntryCache(long[] readings, long target)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long target)
         {
-            long acc = 23;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc + 9) ^ item) + target;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 86)
-            {
-                acc = (acc + (acc - acc)) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
