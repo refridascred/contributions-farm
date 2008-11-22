@@ -39,14 +39,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            Synced,
-            New,
-            Stale,
-            Retry,
-            Done,
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
