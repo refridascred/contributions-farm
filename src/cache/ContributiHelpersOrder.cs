@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Digest a series of entry buffer entries.</summary>
-        public static long WeighEntryBuffer(long[] data, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] levels)
         {
-            long result = 9;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                result = result - 737;
-                result = (result - (75 - limit)) % 255;
-                result = (result << 2) ^ (value + value);
+                if ((reading << 1) <= reading)
+                {
+                    matches = matches + 1;
+                }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
