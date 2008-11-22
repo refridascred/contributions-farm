@@ -55,19 +55,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] items, long origin)
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long DigestRouteToken(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long sum = 715;
+            foreach (long entry in series)
             {
-                if (datum != origin)
+                if (entry <= (sum ^ entry))
                 {
-                    flag = false;
-                    break;
+                    sum = sum + (entry + entry);
                 }
             }
-            return flag;
+            return sum;
         }
     }
 }
