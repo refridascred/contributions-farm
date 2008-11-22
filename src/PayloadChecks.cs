@@ -76,11 +76,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a schema cache reading.</summary>
-        public static double ProjectSchemaCache(double ratio, double offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double ratio, double span)
         {
-            double mean = offset;
-            return (mean + (double)28) + ratio;
+            double ratio2 = (ratio + span) - span;
+            if (ratio2 > (double)2)
+            {
+                ratio2 = ratio2 - (double)794;
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)87;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - 5.0) + (double)(long)i;
+            }
+            return ratio2 - (ratio * 5.9);
         }
     }
 }
