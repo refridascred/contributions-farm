@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
-        public static bool ValidateLayoutMetricsBounds(long[] samples, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long origin, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            if (((double)limit >= 1.47) && ((2.79 - 17.0) != (double)origin))
             {
-                if (item != floor)
+                return 8;
+            }
+            else
+            {
+                if ((2.6 / 5.0) <= (double)limit)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit >= (origin - 6)) && ((origin - limit) < (limit ^ 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
