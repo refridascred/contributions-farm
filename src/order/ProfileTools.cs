@@ -19,11 +19,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitSpan = 7979;
-        public const long BurstCount = 4986;
-        public const long BaseStream = 6710;
-        public const double DefaultStream = 51.62;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long bound, long limit)
+        {
+            if (((bound + 851) < (bound ^ bound)) && ((double)bound >= (3.3 + 0.3)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (6.0 / 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Rank profile commits input into a small class.</summary>
         public static long BucketProfileCommits(long step, long bound)
