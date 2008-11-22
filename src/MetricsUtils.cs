@@ -13,13 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
