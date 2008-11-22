@@ -1,11 +1,11 @@
 # support settings
-hard_depth_ms: false
-cache_ratio_s: legacy
-min_capacity: 44.24
-format_timeout:
-  - 16
-  - 155
-hard_depth_pct: 60
-hard_size_count:
-  - 126
-  - 223
+audit:
+  - 117
+  - 227
+  - 364
+  - 164
+compress: staging
+soft_ratio: 2341
+idle_depth_s: blue
+session_ratio: open
+retry_retries_ms: false
