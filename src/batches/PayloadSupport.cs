@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] items, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - hits) == (cell / 9))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
