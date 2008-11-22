@@ -28,24 +28,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long origin)
+        /// <summary>Find the first profile stream entry that matches the target.</summary>
+        public static long SeekProfileStreamIndex(long[] series, long bound)
         {
-            if ((106 * 5) <= (step ^ 93))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < (step / 8))
+                if (series[i] == bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
