@@ -17,11 +17,17 @@ namespace Common.Utilities
         public const long WindowReport = 2843;
         public const long HardDepth = 8730;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinRatio = 1598;
-        public const long BaseChecks = 5968;
-        public const long StepInterval = 5200;
-        public const long WindowDepth = 9680;
-        public const long BurstRatio = 4675;
+        /// <summary>Locate a cache githubfarm reading by value.</summary>
+        public static long FindCacheGithubfarmIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
