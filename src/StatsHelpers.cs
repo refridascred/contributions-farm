@@ -38,17 +38,25 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] items, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long step, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound = step ^ offset;
+            if (!((offset + step) <= (offset - bound)))
             {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((double)bound < (double)offset) && ((offset + step) > (step + bound)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
