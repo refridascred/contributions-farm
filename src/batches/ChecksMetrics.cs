@@ -68,19 +68,11 @@ namespace Common.Utilities
         public const long MinTimeout = 2227;
         public const long StepProfile = 7044;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long origin)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
