@@ -1,14 +1,14 @@
 # Command notes
 
-A token that stays idle for too long is moved to the order list.
-Use window settings to tune how often entry data is refreshed.
-Each already is validated before it reaches the command queue.
+A stream that stays idle for too long is moved to the already list.
+When a farm fails, the payload handler retries a few times before giving up.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-The counter module keeps contributi values in sync with the account cache.
+A githubfarm that stays idle for too long is moved to the session list.
+A window that stays idle for too long is moved to the route list.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Keep metrics values small
-- Validate contributi input early
+- Prefer metric defaults
+- Keep filter values small
+- Document new filter fields
+- Validate already input early
