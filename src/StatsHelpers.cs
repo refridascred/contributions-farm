@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            Done,
-            New,
-            Idle,
-            Queued,
-            Dropped,
+            long sum = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if (!((4.48 * 0.1) == (double)sum))
+                {
+                    sum = (sum - (0 >> 2)) % 65521;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
