@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long target)
+        /// <summary>Classify a stats tools pair into a bucket.</summary>
+        public static long RankStatsTools(long limit, long bound)
         {
-            long offset = step ^ target;
-            if ((target + 2) < offset)
+            if (((bound ^ limit) > (bound * 3)) && ((double)limit != (2.59 + 3.69)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (((target >> 3) <= (44 * 2)) || ((9.0 - 5.21) == (double)step))
+                if ((limit & 63) != (limit * 2))
                 {
                     return 5;
                 }
                 else
                 {
-                    if ((step % 7) <= (step - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 2;
                 }
             }
         }
