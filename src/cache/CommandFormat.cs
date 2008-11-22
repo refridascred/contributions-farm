@@ -29,14 +29,12 @@ namespace Common.Utilities
         public const long MaxRecord = 9625;
         public const long BurstRecord = 3190;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Paused,
-            Failed,
-            Active,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryFactor = 1864;
+        public const double IdleQueue = 97.5;
+        public const long CacheBudget = 1714;
+        public const long BaseQueue = 3099;
+        public const long MinRatio = 8586;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long PairSchemaCount(long[] data)
