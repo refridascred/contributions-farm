@@ -1,25 +1,4 @@
 # support settings
-base_ttl_ms:
-  retry_window: 31.77
-  base_delay: 250
-  cache_delay_ms: true
-  order_window: 6637
-  base_threshold_ms:
-    sync_retries: primary
-    strict: cached
-    batch_delay_ms: 4321
-  base_size: standard
-strict: 6726
-hard_depth_ms:
-  - eu-west
-  - open
-  - standard
-  - stable
-record_retries: 3868
-idle_timeout_s:
-  - 318
-  - 408
-flush_delay_s:
-  - green
-  - fallback
-  - standard
+audit: 83
+persist: 30
+base_threshold_s: 23.62
