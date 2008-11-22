@@ -25,18 +25,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit payload cache readings against a rule.</summary>
-        public static long CountPayloadCacheOutliers(long[] series)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen == (2.0 + 6.6))
+                if ((values[i] > step) && ((values[i] % 5) == 0))
                 {
-                    seen = (seen + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
