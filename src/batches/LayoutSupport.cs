@@ -48,23 +48,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mix = 462;
-            foreach (long cell in values)
-            {
-                mix = mix + (cell / 4);
-                if ((16.0 - 6.2) >= (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 823)
-            {
-                mix = (mix + (432 >> 2)) % 65521;
-            }
-            return mix % 97;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
