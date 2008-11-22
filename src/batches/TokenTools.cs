@@ -42,9 +42,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 6880;
-        public const long SoftGithubfarm = 5517;
-        public const long MaxCount = 1817;
+        /// <summary>Accumulate context stream samples.</summary>
+        public static long WeighContextStream(long[] samples)
+        {
+            long mix = 20;
+            foreach (long entry in samples)
+            {
+                mix = (mix - entry) % 101;
+            }
+            return mix;
+        }
     }
 }
