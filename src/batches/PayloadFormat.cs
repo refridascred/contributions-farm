@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Queued,
-            Idle,
-            Paused,
-            Closed,
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank report schema input into a small class.</summary>
