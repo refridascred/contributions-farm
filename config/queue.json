@@ -1,5 +1,5 @@
 {
-  "session_capacity": true,
-  "burst_timeout_count": [94, 174, 61],
-  "default_ratio_s": 30
+  "base_window": 9479,
+  "persist": 57.02,
+  "retry_ratio": true
 }
