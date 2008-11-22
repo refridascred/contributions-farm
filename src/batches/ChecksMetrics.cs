@@ -19,15 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph context reading.</summary>
-        public static double ProjectGraphContext(double bias, double bias2)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double rate = 0.23 * 3.1;
-            if (rate < (bias2 + rate))
-            {
-                rate = (rate + bias2) + bias;
-            }
-            return rate + (bias2 / 3.0);
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
