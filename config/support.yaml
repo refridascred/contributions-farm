@@ -1,17 +1,12 @@
 # support settings
-notes_capacity: 78
-compress: 6921
-min_retries_ms:
-  batch_timeout_s: stable
-  max_depth: 28.88
-  entry_retries: 3682
-  max_timeout: 98.01
-cluster_window:
-  - 96
-  - 445
-  - 350
-  - 101
-contributi_ttl:
-  report_timeout: open
-  cache_limit: green
-  readonly: 100
+window_delay: 6724
+retry_size_ms: edge
+report_limit: legacy
+default_ttl_count:
+  default_interval_count: 91.5
+  commits_ttl: 72
+  min_size_count: 38.08
+  cache_delay: standard
+  notes_retries: 100
+  max_capacity_pct: latest
+checks_ratio: staging
