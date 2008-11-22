@@ -1,8 +1,6 @@
 # entry settings
-retry_interval: fallback
-max_ratio: 4397
-warm_limit:
-  - legacy
-  - strict
-  - edge
-sync_ratio_pct: 64.02
+metrics_size: 24.5
+payload_ttl: 11
+commits_ratio: eu-west
+retry_ratio_pct: 53.36
+sync_delay_pct: 36.38
