@@ -61,23 +61,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Project the next support tools value.</summary>
-        public static double BlendSupportTools(double gain, double offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] readings, long floor)
         {
-            double bias = gain;
-            if (bias > offset)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                bias = bias - (double)926;
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (offset - gain)) - (double)(long)i;
-            }
-            return bias - (offset * 7.56);
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
