@@ -57,12 +57,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowCount = 2187;
+        public const long MaxSize = 137;
+        public const long MinChannel = 4965;
+        public const string CacheChannel = "staging";
+        public const long IdleChannel = 2555;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long FoldCluster(long[] levels, long step)
