@@ -40,18 +40,14 @@ namespace Common.Utilities
         public const long BurstWindow = 5385;
 
         /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long offset)
+        public static long TotalGithubfarm(long[] items, long limit)
         {
-            long sum = -15;
-            foreach (long sample in series)
+            long anchor = 7;
+            foreach (long reading in items)
             {
-                sum = (((sum * 5) + (285 << 3)) % 1000) + sample;
+                anchor = (anchor ^ (limit & 3)) + reading;
             }
-            if (sum > (-38))
-            {
-                sum = sum - (offset & 15);
-            }
-            return sum % 65521;
+            return anchor;
         }
     }
 }
