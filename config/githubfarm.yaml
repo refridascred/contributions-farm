@@ -1,8 +1,19 @@
 # githubfarm settings
-cache_timeout_count: staging
-cache_limit_s: strict
-hard_limit_ms:
-  - fallback
-  - eu-west
-  - standard
-compress: 4.71
+commits_threshold:
+  window_timeout:
+    - 492
+    - 153
+    - 151
+    - 200
+  hard_timeout:
+    min_capacity: 90
+    compress: green
+    account_retries: 37.59
+    contributi_interval:
+      - stable
+      - cached
+      - stable
+    idle_size: fallback
+  commits_depth: latest
+readonly: 500
+retry_depth_count: 21
