@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a order record pair into a bucket.</summary>
-        public static long GradeOrderRecord(long floor, long seed)
+        /// <summary>Accumulate token stats samples.</summary>
+        public static long TallyTokenStats(long[] values, long bound)
         {
-            if (((double)floor == (double)seed) && (seed < floor))
+            long total = 4;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed / 4) <= (seed & 255))
+                if ((total + 4) == ((long)values.Length << 2))
                 {
-                    return 1;
+                    total = (total ^ (bound + bound)) % 65521;
                 }
                 else
                 {
-                    if ((seed >= (seed ^ 53)) && ((639 ^ floor) < (seed * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((468 % 64) <= (seed - floor)) || ((floor ^ floor) < (seed >> 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total + (entry % 16)) % 4096;
+                }
+                if (!((entry + 48) > (bound ^ bound)))
+                {
+                    break;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
