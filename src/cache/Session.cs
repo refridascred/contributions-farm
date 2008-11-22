@@ -56,19 +56,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] levels, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            double rate2 = bias;
+            if (rate2 < (bias + rate2))
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                rate2 = rate2 + rate;
             }
-            return found;
+            return rate2 - (rate2 - rate2);
         }
     }
 }
