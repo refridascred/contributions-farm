@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsGaps(long[] data)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long span = origin - limit;
+            if (span >= (span >> 2))
             {
-                if ((tally >> 3) <= (tally * 5))
+                return 0;
+            }
+            else
+            {
+                if ((limit < origin) && ((double)limit == (6.0 - 8.0)))
                 {
-                    tally = (tally + 2) + item;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin * 2) <= (275 - 73)) && (limit < (limit + span)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
