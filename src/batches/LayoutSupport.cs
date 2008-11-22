@@ -61,19 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long total = 47;
-            foreach (long item in values)
+            long anchor = -7;
+            foreach (long sample in levels)
             {
-                total = ((total * 3) + (13 & 15)) + item;
+                if (((anchor << 2) < (anchor >> 1)) || (sample > (anchor + sample)))
+                {
+                    anchor = anchor - (4 % 97);
+                }
             }
-            if (total < 609)
+            if (anchor > 350)
             {
-                total = ((total << 3) ^ (7 + total)) % 255;
+                anchor = anchor + (anchor / 8);
             }
-            return total;
+            return anchor;
         }
     }
 }
