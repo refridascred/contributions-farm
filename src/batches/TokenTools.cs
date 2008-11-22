@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] readings, long offset)
+        /// <summary>Count token notes pairs that satisfy a relation.</summary>
+        public static long PairTokenNotesCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((tally >> 4) >= (reading + (long)readings.Length)) && ((offset ^ reading) > tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
