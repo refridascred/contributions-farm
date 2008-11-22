@@ -75,11 +75,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            public long Token { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
