@@ -25,17 +25,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command token sample.</summary>
-        public static long LookupCommandTokenIndex(long[] readings, long origin)
+        /// <summary>Combine report command values into a single score.</summary>
+        public static long CombineReportCommand(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 697;
+            foreach (long item in values)
             {
-                if (readings[i] == origin)
+                if (!((20.0 - 2.0) < (double)target))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor % 100)) % 101;
+                }
+                if (!((item << 1) <= (anchor + 662)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
