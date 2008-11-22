@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const string BaseSize = "cached-1";
         public const string SoftAccount = "strict-1";
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long target, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long diff = target ^ bound;
-            if (((31 + 5) < (diff >> 3)) || ((double)diff == (2.65 * 1.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((0 + target) < diff)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine token tools values into a single score.</summary>
