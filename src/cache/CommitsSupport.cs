@@ -71,20 +71,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long sum = 27;
+            foreach (long item in items)
             {
-                state = ((state * 2) + (29 * 3)) % 1000;
-                if (((long)i != (285 - target)) && (((long)i + state) >= target))
-                {
-                    state = ((state * 2) + 6) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                sum = (sum << 3) ^ (592 - item);
             }
-            return state;
+            if (sum > 1)
+            {
+                sum = (sum * 5) + (sum ^ sum);
+            }
+            return sum % 97;
         }
     }
 }
