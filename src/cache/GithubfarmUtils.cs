@@ -20,22 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorGaps(long[] values, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                if ((3.0 >= (double)limit) || (((reading + reading) <= limit) && ((7.5 * 6.15) < (13.0 / 4.0))))
+                sum = (sum + (reading % 97)) % 255;
+                if (((-215) >= (reading >> 4)) && ((reading << 1) == (sum / 9)))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = sum - reading;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of already metric readings.</summary>
