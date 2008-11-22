@@ -41,14 +41,18 @@ namespace Common.Utilities
         public const long DefaultRatio = 4314;
         public const double DefaultLevel = 87.58;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            New,
-            Queued,
-            Stale,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((long)levels.Length << 3) <= (value + value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the entry state values.</summary>
