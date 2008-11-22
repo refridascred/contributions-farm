@@ -18,10 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double IdleTimeout = 5.2;
-        public const string IdleSession = "staging-1";
-        public const long LimitSession = 3540;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long origin, long target)
+        {
+            long offset = origin - target;
+            if (((562 + target) < (target & 15)) && ((offset + target) <= (origin - offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target >> 2) <= (offset - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)target > 1.77) && ((offset >> 3) > (88 + target)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a notes context sample.</summary>
         public static long LookupNotesContextIndex(long[] series, long target)
