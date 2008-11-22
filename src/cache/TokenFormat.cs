@@ -13,22 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultScore = 5385;
+        public const double MaxSpan = 53.16;
+        public const long SoftTimeout = 4721;
+        public const long StepChannel = 2567;
+        public const long CacheCount = 3644;
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
