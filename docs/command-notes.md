@@ -1,15 +1,15 @@
 # Command notes
 
-The filter report groups every githubfarm by cluster.
-Keep checks and filter names short and lowercase.
-The order module keeps tools values in sync with the commits cache.
+The counter report groups every queue by checks.
+When a notes fails, the entry handler retries a few times before giving up.
 
-Keep schema and stream names short and lowercase.
-A payload that stays idle for too long is moved to the command list.
-Run the payload check before changing any contributi limits.
+Use filter settings to tune how often command data is refreshed.
+Keep command and support names short and lowercase.
+Use command settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Keep token values small
-- Document new counter fields
-- Prefer githubfarm defaults
+- Review stats limits each release
+- Document new context fields
+- Log every session change
+- Prefer cache defaults
