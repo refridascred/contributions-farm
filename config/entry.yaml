@@ -1,6 +1,8 @@
 # entry settings
-burst_ratio_count: cached
-buffer_ttl:
-  - 294
-  - 18
-idle_delay: false
+strict: true
+min_depth_s: eu-west
+poll_window_count: 49.12
+enabled:
+  - fallback
+  - edge
+warm_capacity_pct: local
