@@ -62,17 +62,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] series, long origin)
         {
-            long mix = 1;
-            foreach (long sample in samples)
+            long total = 692;
+            foreach (long value in series)
             {
-                mix = (mix - (long)samples.Length) % 4096;
-                mix = (mix ^ (sample & 7)) % 4096;
-                mix = mix - 425;
+                if (!((double)total < (12.0 / 5.0)))
+                {
+                    total = (total - origin) + value;
+                }
+                else
+                {
+                    total = ((total * 3) + total) % 4096;
+                }
             }
-            return mix;
+            if (total < 2)
+            {
+                total = ((total * 5) + (origin / 9)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Rank account input into a small class.</summary>
