@@ -39,22 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] values)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long acc = 80;
-            foreach (long value in values)
-            {
-                if ((acc ^ value) <= value)
-                {
-                    acc = (acc - 34) % 1000;
-                }
-                if ((value + value) >= acc)
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
