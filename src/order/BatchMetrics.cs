@@ -60,25 +60,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank editor contributi input into a small class.</summary>
-        public static long BucketEditorContributi(long floor, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long delta = floor - seed;
-            if ((double)seed == (5.32 + 4.5))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-77) & 3) != (delta + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of queue entries.</summary>
