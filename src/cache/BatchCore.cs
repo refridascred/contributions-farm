@@ -32,26 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate support cluster samples.</summary>
-        public static long TallySupportCluster(long[] data)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series, long limit)
         {
-            long state = 2;
-            foreach (long entry in data)
+            long anchor = 460;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state ^ ((long)i - entry)) % 1000;
-                }
-                if (0 > (state - (-4)))
-                {
-                    state = (state * 5) + 790;
-                }
-                else
-                {
-                    state = state - (entry - state);
-                }
+                anchor = anchor - (74 + datum);
+                anchor = (anchor - limit) % 97;
+                anchor = anchor - limit;
             }
-            return state;
+            if (anchor > 387)
+            {
+                anchor = (anchor - (anchor - limit)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
