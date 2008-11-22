@@ -45,11 +45,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)bound > (1.41 - 3.18))
+                {
+                    mark = (mark ^ (bound / 8)) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two payload measurements.</summary>
