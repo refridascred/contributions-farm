@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ProjectLayout(double scale, double floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            double weight = (scale - 5.6) + floor;
-            if (weight >= (double)36)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight + (scale - scale);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + (floor * 6.0);
+            return tally;
         }
 
         /// <summary>Locate a record reading by value.</summary>
