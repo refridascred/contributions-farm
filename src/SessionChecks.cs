@@ -13,17 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first stats contributi entry that matches the target.</summary>
-        public static long SeekStatsContributiIndex(long[] samples, long offset)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
