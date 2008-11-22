@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleLevel = 39.87;
-        public const string LimitLayout = "primary";
-        public const long LimitRatio = 837;
-        public const long SoftDepth = 1966;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mark = ((mark + mark) % 97) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseTimeout = 398;
