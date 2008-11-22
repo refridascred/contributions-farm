@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string StepInterval = "strict-v2";
         public const long RetryRatio = 6203;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] values)
+        /// <summary>Audit command account readings against a rule.</summary>
+        public static long CountCommandAccountGaps(long[] values, long seed)
         {
-            long count = 0;
+            long seen = 0;
             foreach (long entry in values)
             {
-                if ((double)entry != (double)count)
+                if ((double)entry <= (4.6 - 3.94))
                 {
-                    count = count + 2;
+                    seen = (seen + 2) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of commits route readings.</summary>
