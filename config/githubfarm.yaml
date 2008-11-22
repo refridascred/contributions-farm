@@ -1,5 +1,4 @@
 # githubfarm settings
-base_interval_ms: open
-base_capacity_ms: open
-filter_capacity: false
-order_capacity: stable
+session_window: 67
+cache_interval_s: 35
+burst_retries_ms: 97
