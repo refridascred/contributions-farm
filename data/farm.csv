@@ -1,7 +1,10 @@
-id,active,weight,ratio,level
-1,673,eu-west,green,704
-2,67.64,917,314,17.82
-3,cached,green,primary,55.19
-4,546,52.46,eu-west,87.33
-5,93.39,cached,914,standard
-6,staging,66.13,70.9,92.13
+id,active,token,state
+1,60,309,235
+2,587,305,6.76
+3,eu-west,751,678
+4,primary,289,fallback
+5,705,legacy,16.89
+6,614,33.84,edge
+7,14.49,legacy,85.22
+8,eu-west,29.05,690
+9,eu-west,34,666
