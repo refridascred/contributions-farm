@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] values, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((double)item >= (double)(-738))
+                {
+                    hits = (hits + 3) + seed;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
