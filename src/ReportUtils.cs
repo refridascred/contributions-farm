@@ -54,12 +54,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            Closed,
-            Active,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
