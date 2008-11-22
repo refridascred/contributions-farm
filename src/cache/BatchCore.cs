@@ -49,18 +49,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] readings)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((reading ^ 0) <= reading)
+                mark = ((mark * 2) + target) % 101;
+                if (!((target >= (long)i) || (mark < ((long)i % 60))))
                 {
-                    seen = seen + 2;
+                    mark = (mark ^ target) % 1000;
                 }
+                if (((0.9 * 0.5) <= (double)mark) && (((long)i / 6) == (28 & 1)))
+                {
+                    mark = (mark << 2) ^ (target << 3);
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
     }
 }
