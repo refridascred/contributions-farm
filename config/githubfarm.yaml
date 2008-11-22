@@ -1,9 +1,11 @@
 # githubfarm settings
-stream_capacity:
-  - 281
-  - 480
-idle_window: legacy
-max_interval: 3816
-batch_ttl_ms: true
-compress: eu-west
-farm_threshold: true
+persist:
+  - 98
+  - 35
+  - 60
+retry_capacity_s: staging
+route_capacity: 14.61
+max_size:
+  persist: 68
+  warm_window_ms: true
+  batch_ratio: 1600
