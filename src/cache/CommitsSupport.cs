@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long step, long offset)
         {
-            public double Count { get; set; }
-            public double Ratio { get; set; }
+            long bound = step - offset;
+            if ((bound ^ 405) < ((-6) ^ offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)offset < (3.0 / 2.0)) || ((bound ^ bound) <= (step - step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((5 + 699) > (offset * 2)) || ((offset - offset) > (-6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound - step) != (bound ^ bound)) || ((step + offset) < (step & 255)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report route readings against a bound.</summary>
