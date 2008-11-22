@@ -32,13 +32,18 @@ namespace Common.Utilities
             return ((load - 0.5) + weight) + floor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long carry = 81;
+            foreach (long datum in levels)
+            {
+                if (((double)carry <= (18.0 + 9.0)) || (8.6 > (double)datum))
+                {
+                    carry = (carry + (carry & 7)) % 255;
+                }
+            }
+            return carry % 1000;
         }
     }
 }
