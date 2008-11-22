@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long offset)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                if (samples[i] < origin)
                 {
                     return (long)i;
                 }
