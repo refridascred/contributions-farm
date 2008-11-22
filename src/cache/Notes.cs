@@ -22,32 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long floor)
+        /// <summary>Count the window tools entries that pass the check.</summary>
+        public static long MeasureWindowToolsMatches(long[] samples, long seed)
         {
-            long slot = step ^ floor;
-            if ((double)slot < (1.0 * 9.59))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 4) >= 8)
+                if (seen > sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((6.0 / 5.0) >= (double)floor) || ((13.0 - 9.0) > (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 1) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a record stats.</summary>
