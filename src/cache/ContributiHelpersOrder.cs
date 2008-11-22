@@ -34,13 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] values)
         {
-            Paused,
-            Queued,
-            New,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
