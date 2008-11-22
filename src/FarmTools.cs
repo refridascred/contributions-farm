@@ -40,22 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] items, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long target, long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((9.6 + 9.51) >= (double)limit)
             {
-                if (((9.0 + 3.39) > (double)value) && ((floor + count) > 50))
+                return 5;
+            }
+            else
+            {
+                if (target <= (target - limit))
                 {
-                    count = count + 3;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (((target ^ target) > limit) && ((limit * 5) > target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (target <= (limit - 765))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
