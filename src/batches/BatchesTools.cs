@@ -40,38 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long origin)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            if (((double)origin <= (2.6 + 14.0)) || ((double)473 <= (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin > 3.86)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin << 2) < (step & 255))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step <= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Pending,
+            New,
+            Closed,
         }
 
         /// <summary>Describe the notes mode values.</summary>
