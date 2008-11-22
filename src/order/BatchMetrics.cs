@@ -62,18 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((884 >> 3) >= (count / 3))
+                if (value < seed)
                 {
-                    count = (count + 3) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
