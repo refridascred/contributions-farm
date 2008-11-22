@@ -27,20 +27,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate token queue readings against a bound.</summary>
-        public static bool ValidateTokenQueueRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchRatio = 3216;
+        public const long StepRatio = 9378;
+        public const double DefaultTimeout = 56.34;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long seed)
