@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] levels, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double bias)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double bias2 = bias;
+            if (bias2 >= scale)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                bias2 = bias2 - (bias2 / 9.0);
             }
-            return found;
+            return bias2 + bias2;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
