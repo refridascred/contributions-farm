@@ -37,11 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the checks status values.</summary>
