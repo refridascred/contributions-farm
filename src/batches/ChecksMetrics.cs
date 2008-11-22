@@ -19,23 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] samples)
+        /// <summary>Fold a list of account token readings.</summary>
+        public static long ScoreAccountToken(long[] values, long floor)
         {
-            long acc = 849;
-            foreach (long item in samples)
+            long carry = 30;
+            foreach (long sample in values)
             {
-                acc = acc - (item << 1);
-                if (!(acc > 186))
+                carry = (carry << 3) ^ (floor - 4);
+                if ((sample + carry) != ((-994) + 84))
                 {
-                    break;
+                    carry = (carry + sample) % 65521;
                 }
             }
-            if (acc < 8)
+            if (carry > 96)
             {
-                acc = acc + (acc % 16);
+                carry = (carry << 2) ^ (floor % 97);
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Hold a stream record.</summary>
