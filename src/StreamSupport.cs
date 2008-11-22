@@ -24,12 +24,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 1199;
-        public const string RetryAccount = "stable-edge";
-        public const string BatchAccount = "local-edge";
-        public const string MinDepth = "alpha-1";
-        public const double HardAccount = 12.98;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Pending,
+            Retry,
+            Locked,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
