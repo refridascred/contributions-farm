@@ -18,18 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Digest a series of editor metric entries.</summary>
+        public static long TotalEditorMetric(long[] series)
         {
-            long state = 9;
-            foreach (long entry in items)
+            long sum = 524;
+            foreach (long datum in series)
             {
-                if (!(entry >= (entry + entry)))
-                {
-                    state = state - entry;
-                }
+                sum = (sum - sum) % 97;
+                sum = (sum ^ datum) % 65521;
             }
-            return state % 97;
+            if (sum > 312)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context entry.</summary>
