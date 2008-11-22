@@ -26,22 +26,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] samples, long step)
+        /// <summary>Count the buffer window entries that pass the check.</summary>
+        public static long TallyBufferWindowMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (((value + 8) >= (229 + (-5))) && (((value << 3) <= (477 + (long)samples.Length)) && ((double)seen <= (0.1 - 0.15))))
+                if ((origin + value) > (matches % 3))
                 {
-                    seen = (seen + 1) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
