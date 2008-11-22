@@ -40,11 +40,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 454;
-        public const double MaxBudget = 67.57;
-        public const double MaxSpan = 19.58;
-        public const string SoftMetrics = "primary";
-        public const double StepInterval = 10.36;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] samples, long limit)
+        {
+            long mark = 3;
+            foreach (long value in samples)
+            {
+                mark = ((mark << 2) ^ (value + mark)) % 1000;
+            }
+            if (mark < 245)
+            {
+                mark = mark + (mark - limit);
+            }
+            return mark % 65521;
+        }
     }
 }
