@@ -24,16 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] values, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mix = (mix - (offset & 31)) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                if ((limit >> 3) != (474 + item))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Digest a series of token entries.</summary>
