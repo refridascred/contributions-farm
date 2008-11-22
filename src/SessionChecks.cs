@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a order report reading by value.</summary>
-        public static long LookupOrderReportIndex(long[] items, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (items[i] < floor)
+                if (((cell ^ seen) < (367 >> 5)) || ((cell ^ seen) > seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
