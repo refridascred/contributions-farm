@@ -38,16 +38,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] series, long limit)
-        {
-            long mark = 73;
-            foreach (long datum in series)
-            {
-                mark = (((mark << 3) ^ (924 % 8)) ^ datum) + limit;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8928;
+        public const long HardTimeout = 2984;
+        public const long WindowChannel = 3964;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long WindowBatches = 3178;
