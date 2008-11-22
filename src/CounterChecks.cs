@@ -62,18 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double weight, double bias)
         {
-            long total = 44;
-            foreach (long datum in readings)
+            double gain = (double)(3 % 8);
+            if (gain > bias)
             {
-                if ((floor + total) == (datum + floor))
-                {
-                    total = total + (total + floor);
-                }
+                gain = gain + weight;
             }
-            return total;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain + 14.0;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
