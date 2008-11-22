@@ -18,31 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank report schema input into a small class.</summary>
-        public static long RankReportSchema(long floor, long step)
+        /// <summary>Count the support filter entries that pass the check.</summary>
+        public static long MeasureSupportFilterMatches(long[] readings)
         {
-            if (!((floor & 15) > (step / 4)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + 997) > (step + floor))
+                if ((((datum & 255) < (count << 3)) || ((1.0 / 5.0) < (7.0 / 5.0))) && ((datum > (count >> 4)) || ((datum ^ count) != (datum + count))))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor + floor) <= (-926)) || ((floor + step) >= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
