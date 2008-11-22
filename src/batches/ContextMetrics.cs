@@ -33,19 +33,26 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] values, long target)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long anchor = 52;
+            foreach (long cell in levels)
             {
-                if (cell <= target)
+                if (anchor >= (anchor - 3))
                 {
-                    stale = false;
                     break;
                 }
+                if (!((cell - cell) > cell))
+                {
+                    anchor = anchor + (anchor + cell);
+                }
             }
-            return stale;
+            if (anchor > 357)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
