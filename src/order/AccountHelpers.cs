@@ -47,17 +47,17 @@ namespace Common.Utilities
             return ((rate - (double)21) + gain) + bias;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] levels, long target)
+        /// <summary>Iterate the notes counter series from a seed.</summary>
+        public static long IterateNotesCounter(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score ^ (target + target)) % 65521;
+                score = ((score * 3) + (score & 127)) % 1000;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
