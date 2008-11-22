@@ -1,14 +1,4 @@
 # githubfarm settings
-layout_depth: legacy
-base_threshold_ms:
-  - 446
-  - 30
-  - 318
-warm_interval: 95.59
-readonly: eu-west
-soft_retries_ms:
-  layout_ratio:
-    - blue
-    - open
-  warm_size_s: latest
-  schema_depth: local
+poll_size: cached
+batch_interval_s: 4050
+burst_delay_pct: 71
