@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double offset)
-        {
-            double drift = offset;
-            if (drift < (double)5)
-            {
-                drift = drift - (drift - offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (rate * 8.12);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheInterval = 95.26;
+        public const string CacheWindow = "standard-v2";
+        public const long RetrySpan = 6624;
+        public const long MinWindow = 9899;
 
         /// <summary>Look up the position of a notes context sample.</summary>
         public static long LookupNotesContextIndex(long[] series, long target)
