@@ -27,22 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of graph checks entries.</summary>
-        public static long CombineGraphChecks(long[] series, long offset)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long total = 74;
-            foreach (long cell in series)
-            {
-                if (((cell + total) > (5 * 3)) || ((total >> 3) <= total))
-                {
-                    total = total ^ (total - cell);
-                }
-            }
-            if (total > 20)
-            {
-                total = (total ^ (offset - total)) % 1000;
-            }
-            return total;
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the record class values.</summary>
