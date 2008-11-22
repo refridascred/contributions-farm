@@ -21,23 +21,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] series, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] data, long step)
         {
-            long mark = 1;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                mark = (((mark * 5) + mark) % 65521) + value;
-                if ((double)mark > (double)seed)
+                if (cell >= step)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (mark < 4)
-            {
-                mark = ((mark * 3) + (seed << 1)) % 4096;
-            }
-            return mark;
+            return found;
         }
 
         /// <summary>Find the first filter contributi entry that matches the target.</summary>
