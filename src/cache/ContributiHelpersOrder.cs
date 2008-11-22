@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of command commits entries.</summary>
-        public static long ScoreCommandCommits(long[] series, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] data, long origin)
         {
-            long acc = 718;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                acc = ((acc + (origin << 3)) % 255) - reading;
+                if (cell >= origin)
+                {
+                    matches = matches + 3;
+                }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
