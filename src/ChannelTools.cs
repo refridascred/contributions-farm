@@ -16,14 +16,11 @@ namespace Common.Utilities
             return bias + (rate - bias);
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 3449;
+        public const string HardDepth = "local-1";
+        public const long WindowDepth = 1706;
+        public const long BaseSpan = 1811;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
