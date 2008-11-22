@@ -19,23 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account token readings.</summary>
-        public static long ScoreAccountToken(long[] values, long floor)
+        /// <summary>Adjust a graph context reading.</summary>
+        public static double ProjectGraphContext(double bias, double bias2)
         {
-            long carry = 30;
-            foreach (long sample in values)
+            double rate = 0.23 * 3.1;
+            if (rate < (bias2 + rate))
             {
-                carry = (carry << 3) ^ (floor - 4);
-                if ((sample + carry) != ((-994) + 84))
-                {
-                    carry = (carry + sample) % 65521;
-                }
+                rate = (rate + bias2) + bias;
             }
-            if (carry > 96)
-            {
-                carry = (carry << 2) ^ (floor % 97);
-            }
-            return carry;
+            return rate + (bias2 / 3.0);
         }
 
         /// <summary>Blend two context measurements.</summary>
