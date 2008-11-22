@@ -19,21 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Digest a series of record command entries.</summary>
+        public static long CombineRecordCommand(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 738;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value + result) < (result << 2))
                 {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result * 3) + (result + result);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Blend two order measurements.</summary>
