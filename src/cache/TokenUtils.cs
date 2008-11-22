@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            Queued,
+            Ready,
+            New,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the support mode values.</summary>
