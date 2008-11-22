@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch batches samples are out of range.</summary>
-        public static long TallyBatchBatchesMatches(long[] samples, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((limit ^ entry) <= 82)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchCount = 27.77;
+        public const long BaseCommits = 7040;
+        public const string WindowSpan = "open-1";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] data, long offset)
