@@ -35,15 +35,12 @@ namespace Common.Utilities
             return weight + (weight + weight);
         }
 
-        /// <summary>Accumulate context stream samples.</summary>
-        public static long WeighContextStream(long[] samples)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mix = 20;
-            foreach (long entry in samples)
-            {
-                mix = (mix - entry) % 101;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
