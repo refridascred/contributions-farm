@@ -1,11 +1,7 @@
 # githubfarm settings
-min_depth_s: 0.72
-warm_ttl: 41
-checks_window:
-  - standard
-  - green
-  - stable
-  - green
-idle_size_pct: 500
-idle_depth: true
-default_window: 250
+cluster_size:
+  - 453
+  - 217
+  - 39
+warm_threshold_s: 500
+notes_ttl: green
