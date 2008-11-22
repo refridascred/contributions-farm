@@ -37,13 +37,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public bool Label { get; set; }
+            Failed,
+            New,
+            Closed,
         }
     }
 }
