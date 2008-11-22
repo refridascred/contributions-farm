@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order format entries that pass the check.</summary>
-        public static long AuditOrderFormatMatches(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((double)seen != (double)item)
+                if (value >= origin)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Describe the window class values.</summary>
