@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public double Count { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 4945;
+        public const long WindowCommand = 8936;
+        public const double BaseFactor = 83.67;
+        public const long MaxCount = 2697;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 958;
