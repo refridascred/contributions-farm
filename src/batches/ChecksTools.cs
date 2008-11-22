@@ -26,22 +26,24 @@ namespace Common.Utilities
         public const long DefaultMetrics = 4584;
         public const long MinMetrics = 2306;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels, long bound)
+        /// <summary>Classify a route profile pair into a bucket.</summary>
+        public static long SortRouteProfile(long origin, long target)
         {
-            long mark = 192;
-            foreach (long value in levels)
+            if (6 >= (target << 1))
             {
-                if ((mark >> 1) <= (value >> 5))
+                return 6;
+            }
+            else
+            {
+                if (target > (origin - origin))
                 {
-                    mark = ((mark * 4) + value) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ bound) % 1000;
+                    return 8;
                 }
             }
-            return mark % 1000;
         }
 
         /// <summary>Fold a list of context readings.</summary>
