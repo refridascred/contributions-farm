@@ -29,12 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardWidth = "latest-edge";
-        public const double HardContributi = 89.85;
-        public const long CacheContributi = 2197;
-        public const long RetryScore = 9748;
-        public const long BatchContributi = 5151;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double BlendBuffer(double scale, double bias)
