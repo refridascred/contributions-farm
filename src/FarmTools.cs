@@ -16,15 +16,17 @@ namespace Common.Utilities
             return rate + 1.0;
         }
 
-        /// <summary>Blend two notes account measurements.</summary>
-        public static double ProjectNotesAccount(double bias, double bias2)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] readings, long origin)
         {
-            double rate = bias2;
-            if (rate > (bias2 + bias2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate - (double)52) - bias;
+                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (rate + bias2);
+            return -1;
         }
 
         /// <summary>Describe the window class values.</summary>
