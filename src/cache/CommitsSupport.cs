@@ -61,23 +61,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long score = 8;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                score = (score + (target + score)) % 101;
-                if ((double)sample < 9.6)
+                state = ((state * 2) + (29 * 3)) % 1000;
+                if (((long)i != (285 - target)) && (((long)i + state) >= target))
                 {
-                    break;
+                    state = ((state * 2) + 6) % 1000;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (score > 394)
-            {
-                score = ((score << 2) ^ (-69)) % 101;
-            }
-            return score % 4096;
+            return state;
         }
     }
 }
