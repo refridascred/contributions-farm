@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardSize = 847;
-        public const double MaxBatch = 32.55;
-        public const long DefaultBatch = 2287;
-        public const long LimitDepth = 6282;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Paused,
+            Synced,
+            Active,
+            Pending,
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] readings)
