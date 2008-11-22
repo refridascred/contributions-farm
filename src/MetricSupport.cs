@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank format contributi input into a small class.</summary>
-        public static long GradeFormatContributi(long limit, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long lane = limit ^ origin;
-            if ((limit >= 919) || ((origin - origin) > (origin % 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((lane ^ lane) != (lane - lane)) || ((840 + limit) > (origin + 55)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (54 >= (limit + lane))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((7 & 63) > (lane / 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Check that every metrics editor entry stays within the limit.</summary>
