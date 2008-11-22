@@ -53,15 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] levels)
         {
-            double drift = (double)1 * 3.2;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                drift = (((drift + 7.51) - (double)(long)i) + ratio) - bias;
+                if (8 > (877 - reading))
+                {
+                    seen = seen + 1;
+                }
             }
-            return drift - drift;
+            return seen;
         }
     }
 }
