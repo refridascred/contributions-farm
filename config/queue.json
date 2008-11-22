@@ -1,13 +1,8 @@
 {
-  "sync_delay_s": 20,
-  "burst_size_s": 1024,
-  "cluster_capacity": "primary",
-  "graph_threshold": 29.37,
-  "verbose": {
-    "soft_size_count": "staging",
-    "retry_retries_ms": "open",
-    "hard_capacity_s": [16, 245, 359],
-    "persist": 500,
-    "compress": "primary"
-  }
+  "burst_depth_s": "primary",
+  "audit": 1758,
+  "sync_timeout_count": ["latest", "latest", "open", "fallback"],
+  "persist": ["edge", "staging"],
+  "base_limit_pct": "legacy",
+  "base_timeout_ms": 25.87
 }
