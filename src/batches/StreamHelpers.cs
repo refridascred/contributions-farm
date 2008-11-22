@@ -25,10 +25,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseWidth = 9884;
-        public const string BaseAlready = "open";
-        public const long IdleAlready = 94;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double rate, double offset)
+        {
+            double bias = 6.45;
+            if (bias > (bias - bias))
+            {
+                bias = (bias - offset) - rate;
+            }
+            else
+            {
+                bias = bias - (0.87 - bias);
+            }
+            return bias - offset;
+        }
 
         /// <summary>Fold a list of metrics batches readings.</summary>
         public static long TallyMetricsBatches(long[] samples, long origin)
