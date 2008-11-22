@@ -48,15 +48,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next checks notes value from a seed.</summary>
-        public static long RollChecksNotes(long step)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double gain, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            double ratio = bias;
+            if (ratio > ratio)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                ratio = ratio - (bias + gain);
             }
-            return anchor;
+            return ratio + ratio;
         }
 
         /// <summary>Rank account input into a small class.</summary>
