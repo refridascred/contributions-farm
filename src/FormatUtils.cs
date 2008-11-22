@@ -44,13 +44,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            Ready,
+            Locked,
+            Active,
+            Queued,
+            New,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
