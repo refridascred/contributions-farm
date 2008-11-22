@@ -20,18 +20,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long acc = 49;
+            foreach (long entry in readings)
             {
-                if (!((count + count) != (item << 1)))
+                if ((acc + 25) > acc)
                 {
-                    count = count + 3;
+                    acc = acc ^ entry;
+                }
+                if ((2.42 - 18.0) < (double)acc)
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the command state values.</summary>
