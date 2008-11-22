@@ -39,11 +39,19 @@ namespace Common.Utilities
         public const double IdleWindow = 18.56;
         public const long BurstWindow = 5385;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitWidth = 354;
-        public const long CacheBatches = 6529;
-        public const long WindowCount = 7111;
-        public const long RetryBatches = 5134;
-        public const string WindowSpan = "standard-v2";
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long offset)
+        {
+            long sum = -15;
+            foreach (long sample in series)
+            {
+                sum = (((sum * 5) + (285 << 3)) % 1000) + sample;
+            }
+            if (sum > (-38))
+            {
+                sum = sum - (offset & 15);
+            }
+            return sum % 65521;
+        }
     }
 }
