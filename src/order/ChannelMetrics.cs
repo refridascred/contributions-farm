@@ -27,15 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Ready,
-            Queued,
-            Failed,
-            Done,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepFactor = 9456;
+        public const long CacheTools = 478;
+        public const long MinInterval = 8389;
+        public const double MinBudget = 37.75;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
