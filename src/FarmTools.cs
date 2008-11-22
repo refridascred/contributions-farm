@@ -29,13 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            New,
-            Queued,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardWidth = "fallback-v2";
+        public const long HardFarm = 9752;
+        public const long MaxFarm = 9968;
+        public const long WindowCount = 3776;
+        public const long SoftFarm = 1196;
     }
 }
