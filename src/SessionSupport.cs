@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double bias, double floor)
+        /// <summary>Blend two schema queue measurements.</summary>
+        public static double BlendSchemaQueue(double scale, double bias)
         {
-            double ratio = floor;
-            if (ratio < bias)
+            double bias2 = 1.16;
+            if (bias2 <= scale)
             {
-                ratio = ratio + (bias - ratio);
+                bias2 = bias2 + bias2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                ratio = (ratio - (bias / 8.0)) + (double)(long)i;
+                bias2 = bias2 - (bias2 + bias);
             }
-            return ratio + 7.42;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - (bias * 8.2)) + (double)(long)i;
+            }
+            return bias2 + scale;
         }
 
         /// <summary>Define report limits and defaults.</summary>
