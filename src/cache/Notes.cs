@@ -24,16 +24,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next tools order value from a seed.</summary>
-        public static long StepToolsOrder(long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] samples, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (176 & 1)) % 97;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a context snapshot.</summary>
