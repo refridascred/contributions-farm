@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] values)
+        /// <summary>Check that every payload filter entry stays within the limit.</summary>
+        public static bool GuardPayloadFilterRange(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (count <= (entry + count))
+                if (item >= limit)
                 {
-                    count = count + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
