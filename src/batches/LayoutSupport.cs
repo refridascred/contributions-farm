@@ -40,18 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((double)value <= (19.0 - 5.5))
+                if (!((matches - datum) >= datum))
                 {
-                    tally = (tally + 3) + seed;
+                    matches = (matches + 2) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a context record.</summary>
