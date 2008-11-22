@@ -86,15 +86,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command stats values into a single score.</summary>
-        public static long ScoreCommandStats(long[] items)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            long score = 440;
-            foreach (long reading in items)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                score = score + (reading >> 2);
+                result = (result + (result + bound)) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
