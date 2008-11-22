@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green fallback stable latest; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=343
+COMMAND_LIMIT=349
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-standard}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
