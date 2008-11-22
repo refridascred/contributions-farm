@@ -34,25 +34,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long origin, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] series, long limit)
         {
-            long diff = origin ^ target;
-            if (diff <= 8)
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff * 2) != (275 >> 4))
+                if (!((value ^ value) >= (limit << 3)) || (((double)limit != (6.6 - 15.0)) && ((double)limit <= (2.74 - 4.3))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
