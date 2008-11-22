@@ -86,13 +86,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
-        {
-            Dropped,
-            New,
-            Done,
-            Closed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "cached";
+        public const long RetryCache = 7156;
+        public const long SoftDepth = 6346;
     }
 }
