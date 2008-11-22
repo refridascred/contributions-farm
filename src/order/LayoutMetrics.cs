@@ -26,18 +26,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((4 + entry) >= tally)
-                {
-                    tally = tally + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
     }
 }
