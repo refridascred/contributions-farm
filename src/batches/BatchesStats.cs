@@ -13,11 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] items, long step)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long state = 99;
+            foreach (long value in items)
+            {
+                if (!((state / 7) > (step & 255)))
+                {
+                    state = ((state * 5) + step) - value;
+                }
+            }
+            if (state > 0)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
