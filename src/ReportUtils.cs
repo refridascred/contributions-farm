@@ -39,14 +39,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            Locked,
-            Draft,
-            Retry,
-            Ready,
-            Dropped,
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((4.8 / 6.0) != (double)step)
+                {
+                    total = (total << 3) ^ ((long)i & 63);
+                    total = (total ^ ((long)i ^ 355)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Locate a window graph reading by value.</summary>
