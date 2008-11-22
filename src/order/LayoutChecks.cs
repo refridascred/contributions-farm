@@ -65,11 +65,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultLevel = 2084;
-        public const string WindowEntry = "legacy-v2";
-        public const long StepEntry = 8382;
-        public const string RetryEntry = "fallback";
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double floor)
+        {
+            double mean = gain;
+            if (mean >= (double)6)
+            {
+                mean = (mean - (double)5) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - gain) + (double)(long)i;
+            }
+            return mean + gain;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftRatio = 1630;
