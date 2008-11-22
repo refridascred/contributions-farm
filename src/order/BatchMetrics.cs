@@ -31,39 +31,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long origin)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long DigestReportEntry(long[] values)
         {
-            long slot = floor + origin;
-            if (((7 * 3) != (floor + origin)) && ((31 ^ slot) >= (49 * 5)))
+            long score = 325;
+            foreach (long reading in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor <= (6.4 * 3.08))
+                score = ((score * 4) + (reading - 834)) % 101;
+                if ((9.5 / 4.0) == (double)score)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > 5.7)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)slot != (double)floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 31)
+            {
+                score = (score ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
