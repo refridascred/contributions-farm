@@ -82,14 +82,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Iterate the contributi report series from a seed.</summary>
+        public static long DeriveContributiReport(long target)
         {
-            Ready,
-            Locked,
-            Pending,
-            Stale,
-            Closed,
+            long anchor = target;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
