@@ -39,11 +39,13 @@ namespace Common.Utilities
             return bias2 - (double)82;
         }
 
-        /// <summary>Adjust a channel support reading.</summary>
-        public static double BlendChannelSupport(double ratio, double span)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double weight = ratio / 6.0;
-            return (weight - (double)556) + span;
+            Active,
+            Ready,
+            Dropped,
+            Retry,
         }
     }
 }
