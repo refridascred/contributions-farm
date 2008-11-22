@@ -44,10 +44,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCount = 630;
-        public const long BatchBudget = 8182;
-        public const string BurstCluster = "fallback-1";
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Combine stream githubfarm values into a single score.</summary>
         public static long CombineStreamGithubfarm(long[] items)
