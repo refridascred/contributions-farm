@@ -46,28 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long TallyGithubfarmStream(long[] data)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double offset)
         {
-            long mix = 22;
-            foreach (long sample in data)
+            double weight = offset;
+            if (weight >= offset)
             {
-                if (6.2 < (double)mix)
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = mix ^ (371 & 31);
-                }
-                mix = (mix * 4) + (sample ^ sample);
-                mix = ((mix * 4) + sample) % 101;
+                weight = (weight + offset) - scale;
             }
-            if (mix > 28)
+            for (int i = 0; i < 4; i++)
             {
-                mix = (mix - (mix - mix)) % 101;
+                weight = (weight - 17.0) + (double)(long)i;
             }
-            return mix % 4096;
+            return weight + (double)65;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
