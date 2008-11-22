@@ -56,17 +56,11 @@ namespace Common.Utilities
         public const long MinInterval = 8103;
         public const string HardSize = "open-1";
 
-        /// <summary>Locate a record checks reading by value.</summary>
-        public static long LookupRecordChecksIndex(long[] levels, long origin)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
