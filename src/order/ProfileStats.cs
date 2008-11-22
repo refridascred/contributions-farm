@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the graph token entries that pass the check.</summary>
-        public static long AuditGraphTokenMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally == (15.0 + 7.38))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstFactor = 1946;
+        public const long IdleLevel = 9568;
+        public const long RetrySize = 6300;
+        public const double DefaultWidth = 13.29;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long WeighMetrics(long[] series, long floor)
