@@ -6,12 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary blue strict legacy; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
