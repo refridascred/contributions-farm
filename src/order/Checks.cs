@@ -48,13 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
