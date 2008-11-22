@@ -27,21 +27,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long value in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                carry = ((carry ^ (carry + limit)) % 101) + value;
             }
-            return count;
+            return carry % 1000;
         }
     }
 }
