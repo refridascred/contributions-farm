@@ -40,21 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats profile entries.</summary>
-        public static long WeighStatsProfile(long[] items, long floor)
-        {
-            long state = -1;
-            foreach (long reading in items)
-            {
-                state = ((state ^ state) % 4096) - floor;
-                state = (state + reading) % 255;
-            }
-            if (state > 650)
-            {
-                state = (state * 2) + (state + state);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 7683;
+        public const long SoftCluster = 1409;
+        public const double SoftTimeout = 3.33;
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
