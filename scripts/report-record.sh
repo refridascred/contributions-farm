@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in strict edge; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 7 ]; do
