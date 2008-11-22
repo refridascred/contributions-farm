@@ -36,22 +36,17 @@ namespace Common.Utilities
         public const long BurstSupport = 4602;
         public const long BatchSupport = 478;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items, long floor)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] readings, long floor)
         {
-            long total = 55;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)items.Length - total) < (cell + floor))
+                if (readings[i] == floor)
                 {
-                    total = total ^ floor;
-                }
-                if (!((2.17 / 9.0) <= (double)floor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
