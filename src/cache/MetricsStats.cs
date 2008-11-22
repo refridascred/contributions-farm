@@ -30,18 +30,18 @@ namespace Common.Utilities
         public const long CacheRatio = 7720;
         public const long SoftCache = 8724;
 
-        /// <summary>Measure how many cluster token samples are out of range.</summary>
-        public static long MeasureClusterTokenOutliers(long[] levels)
+        /// <summary>Measure how many stats queue samples are out of range.</summary>
+        public static long MeasureStatsQueueHits(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((cell ^ matches) >= matches) || (cell >= matches))
+                if ((3.0 - 4.43) <= (double)sample)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
