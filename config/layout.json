@@ -1,6 +1,13 @@
 {
-  "cache_limit_s": ["local", "legacy", "green"],
-  "tools_delay": 4491,
-  "min_window_ms": 71.86,
-  "verbose": ["primary", "latest", "blue", "blue"]
+  "default_threshold_ms": 59.39,
+  "min_threshold_pct": 87.41,
+  "base_interval_pct": {
+    "retry_delay": 6942,
+    "dry_run": "edge",
+    "audit": false,
+    "strict": 1024,
+    "poll_ttl_s": true
+  },
+  "retry_size": 7736,
+  "poll_threshold": 250
 }
