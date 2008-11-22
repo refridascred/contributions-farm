@@ -64,10 +64,16 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseSize = 56.37;
-        public const long SoftBatches = 8317;
-        public const double MaxWidth = 16.17;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels, long step)
+        {
+            long state = 54;
+            foreach (long sample in levels)
+            {
+                state = (((state * 5) + (sample + sample)) % 255) - step;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double ScaleAccount(double weight, double bias)
