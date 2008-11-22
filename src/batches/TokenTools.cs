@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long acc = 135;
-            foreach (long value in levels)
-            {
-                acc = ((acc - (27 + acc)) - value) + step;
-            }
-            return acc;
+            Idle,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
