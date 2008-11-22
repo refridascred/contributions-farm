@@ -24,14 +24,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] values, long step)
         {
-            Pending,
-            Retry,
-            Locked,
-            Ready,
-            Dropped,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the already phase values.</summary>
