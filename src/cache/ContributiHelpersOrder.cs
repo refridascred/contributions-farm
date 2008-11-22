@@ -36,15 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] readings)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long reading in levels)
             {
-                if (!(reading < ((long)readings.Length + tally)) || ((8.42 - 0.8) == (double)reading))
+                if ((11.0 + 1.0) > (double)reading)
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
