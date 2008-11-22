@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            Idle,
-            Active,
-            Locked,
-            Failed,
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((double)(long)i <= 0.2) || ((sum + sum) <= 45))
+                {
+                    long lane = origin;
+                    sum = (sum - (sum - lane)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the graph status values.</summary>
