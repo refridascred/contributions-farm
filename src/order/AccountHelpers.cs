@@ -14,14 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            Failed,
-            Closed,
-            Retry,
-            Active,
-            Draft,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((0.9 / 3.0) <= (double)reading)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
