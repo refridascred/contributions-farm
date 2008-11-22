@@ -31,16 +31,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a route window counter forward.</summary>
-        public static long IterateRouteWindow(long seed)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
             {
-                score = (score + seed) % 97;
-                score = ((score * 3) + (long)i) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
