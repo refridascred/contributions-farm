@@ -79,15 +79,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double gain, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] items, long limit)
         {
-            double scale = floor;
-            if (scale < (double)58)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                scale = scale + gain;
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + (floor + scale);
+            return flag;
         }
     }
 }
