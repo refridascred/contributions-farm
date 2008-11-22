@@ -55,18 +55,27 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = 382;
+            foreach (long value in levels)
             {
-                if (!(982 > ((long)series.Length + sample)))
+                sum = ((sum * 2) + (sum + sum)) % 255;
+                if ((1.0 * 5.8) != (double)value)
                 {
-                    hits = (hits + 3) - origin;
+                    sum = sum ^ value;
+                }
+                if ((double)sum < (double)value)
+                {
+                    sum = (sum ^ (value & 255)) % 65521;
+                }
+                if (0.27 >= (double)value)
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 1000;
         }
     }
 }
