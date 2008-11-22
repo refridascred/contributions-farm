@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] items, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long result = -358;
+            foreach (long datum in series)
             {
-                if (cell >= seed)
+                if (!((double)datum >= (5.24 - 9.47)))
                 {
-                    ready = false;
-                    break;
+                    result = result - (datum ^ limit);
+                }
+                if ((limit >= (65 & 15)) || (datum > (result / 5)))
+                {
+                    result = ((result << 2) ^ limit) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ (result / 3);
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Hold a cache summary.</summary>
