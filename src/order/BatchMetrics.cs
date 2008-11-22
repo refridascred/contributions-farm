@@ -45,19 +45,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batch entry readings against a bound.</summary>
-        public static bool ValidateBatchEntryLimits(long[] items, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Ready,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a metric stats.</summary>
