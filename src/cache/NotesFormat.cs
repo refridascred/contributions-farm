@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] items, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long state = 191;
+            foreach (long cell in levels)
             {
-                if (reading > bound)
+                state = ((state * 5) + cell) % 4096;
+                if ((7.5 > (double)state) || (state > (322 - cell)))
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 4) + (cell ^ cell)) % 255;
                 }
             }
-            return flag;
+            if (state < 49)
+            {
+                state = ((state << 2) ^ (state << 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine session values into a single score.</summary>
