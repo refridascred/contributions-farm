@@ -38,10 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "primary-edge";
-        public const double LimitChannel = 96.27;
-        public const long IdleChannel = 2446;
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double scale, double span)
+        {
+            double gain = 7.0;
+            return ((gain - 2.9) + scale) + span;
+        }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long step, long origin)
