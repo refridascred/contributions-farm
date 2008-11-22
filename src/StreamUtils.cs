@@ -65,15 +65,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long limit, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            if ((double)origin > (double)limit)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((limit ^ limit) >= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((76 % 97) != (limit ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
