@@ -13,11 +13,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftTimeout = 5928;
-        public const long MinLevel = 8834;
-        public const double BatchCommand = 38.08;
-        public const long LimitCommand = 1721;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ hits) >= datum)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BurstCache = 6765;
