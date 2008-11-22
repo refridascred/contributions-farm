@@ -1,5 +1,5 @@
 {
-  "min_size_ms": 30.24,
-  "base_limit": ["primary", "eu-west", "blue"],
-  "dry_run": "blue"
+  "cluster_interval": true,
+  "idle_size_s": 35,
+  "schema_threshold": true
 }
