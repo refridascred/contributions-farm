@@ -20,10 +20,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 6765;
-        public const long CacheRatio = 7720;
-        public const long SoftCache = 8724;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Digest a series of buffer queue entries.</summary>
         public static long TallyBufferQueue(long[] series)
