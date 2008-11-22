@@ -45,9 +45,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSize = 7954;
-        public const long MinRecord = 5538;
-        public const string BaseRecord = "local-edge";
-        public const double BurstSize = 73.39;
+        public const string LimitDepth = "alpha-edge";
+        public const string BaseRecord = "stable-edge";
+        public const long MaxInterval = 3192;
+        public const long MinSpan = 3640;
+        public const string SoftRecord = "staging-1";
     }
 }
