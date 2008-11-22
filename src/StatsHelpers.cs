@@ -41,15 +41,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double floor)
+        /// <summary>Grade a buffer command value against two limits.</summary>
+        public static long SortBufferCommand(long seed, long target)
         {
-            double rate = floor;
-            for (int i = 0; i < 4; i++)
+            long delta = seed + target;
+            if ((68 << 1) < (delta % 100))
             {
-                rate = (rate + floor) + (double)(long)i;
+                return 2;
             }
-            return rate - (gain - 8.4);
+            else
+            {
+                if ((double)delta >= 9.1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed & 255) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + target) >= (seed * 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a already counter forward.</summary>
