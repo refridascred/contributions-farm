@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((double)reading != (9.2 + 2.42))
+                if (reading >= offset)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count the window tools entries that pass the check.</summary>
