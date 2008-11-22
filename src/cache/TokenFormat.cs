@@ -31,10 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftBudget = 5568;
-        public const double BurstTools = 54.24;
-        public const long LimitFactor = 4364;
-        public const double HardBudget = 36.85;
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long bound)
+        {
+            if (bound <= (seed << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed - seed) <= (seed - bound)) && (541 < (bound - seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (4.0 / 7.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
