@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const long BaseWidth = 9292;
         public const string HardAccount = "strict-edge";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor << 3) ^ offset;
-                anchor = anchor + (offset >> 2);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Paused,
+            Dropped,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a contributi record.</summary>
