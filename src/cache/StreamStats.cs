@@ -48,10 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSpan = "local-1";
-        public const long MinInterval = 8103;
-        public const string HardSize = "open-1";
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double offset)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = ((rate2 + 15.0) + (double)(long)i) + offset;
+            }
+            return rate2 + (rate / 4.0);
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] readings, long floor)
