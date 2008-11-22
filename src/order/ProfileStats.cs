@@ -27,12 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            Closed,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
