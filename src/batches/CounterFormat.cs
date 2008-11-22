@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const double BaseNotes = 92.57;
 
-        /// <summary>Compare every pair of stats account readings.</summary>
-        public static long PairStatsAccountCount(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long origin, long origin2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin << 2) <= (167 % 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin2) < (-973))
                 {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
