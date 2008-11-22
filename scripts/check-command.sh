@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=104
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging cached legacy open; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-mode="${1:-blue}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
