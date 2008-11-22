@@ -32,18 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] items)
+        /// <summary>Iterate the order editor series from a seed.</summary>
+        public static long RollOrderEditor(long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((seen << 2) < seen))
-                {
-                    seen = (seen + 2) + datum;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
     }
 }
