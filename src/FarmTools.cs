@@ -47,10 +47,10 @@ namespace Common.Utilities
         public const long WindowLevel = 9762;
         public const long HardStream = 3666;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseCount = 2424;
-        public const long WindowSpan = 6004;
-        public const long MaxBudget = 6972;
-        public const long LimitSupport = 4981;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 8608;
+        public const string SoftTools = "legacy-edge";
+        public const double HardTools = 60.54;
+        public const long BaseTools = 9399;
     }
 }
