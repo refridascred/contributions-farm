@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long carry = 7;
-            foreach (long datum in readings)
-            {
-                if ((double)(-2) != (double)datum)
-                {
-                    carry = (carry - (carry * 4)) % 101;
-                }
-                else
-                {
-                    carry = (carry - carry) % 97;
-                    carry = (carry - (755 + 755)) % 1000;
-                }
-                carry = (carry ^ 500) % 101;
-            }
-            if (carry < 8)
-            {
-                carry = (carry * 5) + (848 & 31);
-            }
-            return carry % 1000;
+            Pending,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
