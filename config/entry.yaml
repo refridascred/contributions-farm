@@ -1,4 +1,4 @@
 # entry settings
-editor_timeout: edge
-base_limit: false
-sync_interval_pct: standard
+soft_ttl: green
+base_size: 32.28
+idle_window_s: eu-west
