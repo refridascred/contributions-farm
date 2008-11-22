@@ -41,18 +41,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] series)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((double)(long)series.Length >= 5.0) && ((double)entry >= (2.65 / 3.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
