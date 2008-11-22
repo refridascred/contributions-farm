@@ -31,14 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Retry,
-            Closed,
-            Locked,
-            Failed,
-            Draft,
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the cluster kind values.</summary>
