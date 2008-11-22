@@ -37,11 +37,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
