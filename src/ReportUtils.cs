@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate layout notes readings against a bound.</summary>
-        public static bool CheckLayoutNotesBounds(long[] series, long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum != target)
+                if ((497 > (item & 63)) && ((tally / 3) == (tally * 4)))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
