@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 3157;
+        public const long MaxSize = 7967;
+        public const double BaseCount = 89.16;
+        public const string StepInterval = "strict-v2";
+        public const long RetryRatio = 6203;
 
         /// <summary>Count the commits cache entries that pass the check.</summary>
         public static long CountCommitsCacheHits(long[] readings, long limit)
