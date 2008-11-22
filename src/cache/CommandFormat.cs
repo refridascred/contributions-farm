@@ -19,23 +19,19 @@ namespace Common.Utilities
         public const double StepMetric = 44.31;
         public const string HardCount = "staging-1";
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] items, long limit)
         {
-            long sum = 383;
-            foreach (long entry in levels)
+            long anchor = -59;
+            foreach (long reading in items)
             {
-                if (!(((long)levels.Length + entry) > (sum ^ sum)))
-                {
-                    sum = sum ^ (sum + entry);
-                }
-                sum = sum ^ (entry - entry);
+                anchor = (((anchor ^ ((long)items.Length - anchor)) % 97) - reading) - limit;
             }
-            if (sum < 70)
+            if (anchor < 42)
             {
-                sum = (sum - sum) % 101;
+                anchor = (anchor + (anchor << 3)) % 65521;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
