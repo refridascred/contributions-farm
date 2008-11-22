@@ -1,7 +1,11 @@
 {
-  "buffer_depth": "green",
-  "batch_ratio_s": 60,
-  "strict": [91, 191, 251],
-  "idle_window_pct": "stable",
-  "max_interval_count": [252, 354]
+  "strict": {
+    "verbose": "blue",
+    "base_ttl_s": [14, 25],
+    "token_capacity": ["latest", "cached", "staging"]
+  },
+  "dry_run": ["green", "fallback", "staging", "strict"],
+  "already_delay": "cached",
+  "verbose": 250,
+  "flush_threshold_count": "strict"
 }
