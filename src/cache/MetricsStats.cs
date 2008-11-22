@@ -30,12 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
+        public static long OverlapEditorBatchCount(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public double Flag { get; set; }
-            public long Size { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of buffer queue entries.</summary>
