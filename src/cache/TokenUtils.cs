@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((725 > value) && ((2 & 255) < seen)) && ((50 <= (value << 2)) || (value > (value << 2))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheCount = 3833;
+        public const double SoftEntry = 96.52;
+        public const long BurstSize = 6381;
+        public const long MaxRatio = 3334;
 
         /// <summary>Digest a series of record command entries.</summary>
         public static long CombineRecordCommand(long[] readings)
