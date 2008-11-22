@@ -1,9 +1,6 @@
 {
-  "readonly": "standard",
-  "min_retries": 58,
-  "max_ttl_pct": {
-    "max_ttl_s": false,
-    "burst_ttl_s": ["fallback", "standard"],
-    "default_limit": 30
-  }
+  "schema_retries": "open",
+  "warm_threshold": "blue",
+  "base_ttl": false,
+  "strict": "cached"
 }
