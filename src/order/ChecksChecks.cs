@@ -57,13 +57,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Retry,
-            Locked,
-            Active,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 3922;
+        public const string LimitScore = "staging-v2";
+        public const long BaseFactor = 4278;
+        public const long DefaultCluster = 6369;
     }
 }
