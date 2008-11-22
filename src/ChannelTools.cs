@@ -37,11 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long anchor = 5;
+            foreach (long datum in samples)
+            {
+                if (!((anchor & 1) > datum))
+                {
+                    anchor = (anchor ^ datum) % 1000;
+                }
+                if ((double)anchor >= (double)994)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
