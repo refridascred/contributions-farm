@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchWidth = 6560;
-        public const long BatchBudget = 2471;
-        public const long StepCount = 3807;
+        /// <summary>Grade a order batches value against two limits.</summary>
+        public static long BucketOrderBatches(long offset, long origin)
+        {
+            long delta = offset - origin;
+            if ((double)offset >= (3.8 - 2.2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (offset < (delta - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-92) % 24) < (delta ^ delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)offset != (3.4 - 7.1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool GuardCommitsBounds(long[] values, long step)
