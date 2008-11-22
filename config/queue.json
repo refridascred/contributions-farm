@@ -1,12 +1,17 @@
 {
-  "hard_timeout_count": [298, 257, 426],
-  "default_capacity_s": {
-    "soft_depth_count": ["cached", "strict"],
-    "min_depth": 250,
-    "batch_ttl_s": 8430,
-    "readonly": 30,
-    "soft_capacity": 250
+  "default_timeout_s": {
+    "idle_ratio_ms": ["open", "strict", "staging", "legacy"],
+    "max_size_pct": {
+      "metrics_timeout": 20,
+      "burst_ratio_pct": "local",
+      "audit": 12
+    },
+    "poll_timeout_ms": ["legacy", "green", "legacy", "green"],
+    "warm_ttl_pct": true,
+    "soft_capacity_s": false,
+    "warm_timeout": 87
   },
-  "contributi_capacity": true,
-  "compress": true
+  "persist": 500,
+  "batches_delay": 9,
+  "buffer_timeout": 94.83
 }
