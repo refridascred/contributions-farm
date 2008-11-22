@@ -40,12 +40,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Find the first filter contributi entry that matches the target.</summary>
+        public static long FindFilterContributiIndex(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
