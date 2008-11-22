@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatMatches(long[] series, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((hits % 5) <= (step + hits))
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
