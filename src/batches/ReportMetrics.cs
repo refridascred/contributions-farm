@@ -10,26 +10,13 @@ namespace Common.Utilities
         public const long HardCommand = 4290;
         public const double SoftScore = 55.84;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings, long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long anchor = -8;
-            foreach (long datum in readings)
-            {
-                if (((anchor + anchor) > anchor) && ((datum << 1) < (anchor >> 4)))
-                {
-                    anchor = ((anchor + ((long)readings.Length * 2)) % 255) + limit;
-                }
-                else
-                {
-                    anchor = (anchor - (datum + anchor)) % 1000;
-                }
-                if (anchor >= (66 % 2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
