@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxFactor = 7196;
+        public const double CacheLayout = 37.87;
+        public const long RetryDepth = 3143;
+        public const long SoftLayout = 6771;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
