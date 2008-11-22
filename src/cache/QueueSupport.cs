@@ -27,21 +27,13 @@ namespace Common.Utilities
             return ((load - 0.5) + weight) + floor;
         }
 
-        /// <summary>Count already profile pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyProfileCount(long[] items)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
