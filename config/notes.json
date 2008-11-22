@@ -1,12 +1,8 @@
 {
-  "buffer_capacity": 25.6,
-  "filter_window": {
-    "cache_ttl_pct": 6052,
-    "retry_retries_ms": 60,
-    "burst_ttl": "open",
-    "batch_delay_ms": 5787,
-    "base_window": ["blue", "local"],
-    "flush_size_ms": 1024
-  },
-  "profile_delay": 65.7
+  "batch_retries_s": 88,
+  "compress": 250,
+  "sync_retries_count": true,
+  "dry_run": 68.48,
+  "buffer_delay": 709,
+  "support_depth": ["green", "green", "local", "fallback"]
 }
