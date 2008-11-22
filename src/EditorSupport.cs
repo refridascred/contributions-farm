@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of batch token entries.</summary>
-        public static long WeighBatchToken(long[] data, long limit)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long bound)
         {
-            long mix = 8;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (limit / 7)) % 97;
-                if ((cell ^ limit) > mix)
+                if (readings[i] > bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 7)
-            {
-                mix = ((mix << 2) ^ (mix - 125)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
