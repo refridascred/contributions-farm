@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Check that every layout metrics entry stays within the limit.</summary>
+        public static bool ValidateLayoutMetricsBounds(long[] samples, long floor)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public double Count { get; set; }
-            public bool Score { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the stats class values.</summary>
