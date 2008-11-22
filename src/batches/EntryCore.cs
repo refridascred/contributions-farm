@@ -37,18 +37,27 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit batch session readings against a rule.</summary>
-        public static long CountBatchSessionOutliers(long[] readings)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long ScoreAlreadyCounter(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long acc = 772;
+            foreach (long reading in levels)
             {
-                if (((item * 2) <= (tally & 7)) && ((double)tally != (5.7 + 0.2)))
+                if ((acc ^ acc) <= (reading - acc))
                 {
-                    tally = tally + 1;
+                    acc = acc ^ (reading - reading);
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc / 8)) % 4096;
+                }
+                acc = (acc + (reading + acc)) % 101;
+                if (((5.5 * 11.0) > (double)acc) || ((reading << 2) <= reading))
+                {
+                    acc = (acc - (acc - reading)) % 1000;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
