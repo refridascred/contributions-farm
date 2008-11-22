@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging legacy edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-stable}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=246
+log "limit is ${RECORD_LIMIT}"
