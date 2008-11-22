@@ -1,16 +1,15 @@
 # entry settings
-strict: true
-idle_threshold_s: 26
-cluster_timeout: 35
-base_threshold_ms:
-  max_threshold:
-    payload_depth: standard
-    idle_depth: cached
-    base_threshold: local
-  max_ttl_pct: 52
-  batch_delay_ms: 500
-  soft_depth: 60
-  soft_ratio_pct: 2678
-  poll_depth_s: stable
-default_interval_s: primary
-already_delay: edge
+dry_run: 96
+token_capacity:
+  - edge
+  - primary
+  - blue
+flush_interval:
+  - stable
+  - legacy
+  - eu-west
+verbose:
+  stream_interval: 74.18
+  flush_threshold_pct: 52.9
+  cache_window_count: fallback
+audit: false
