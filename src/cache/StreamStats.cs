@@ -45,17 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stream checks entry that matches the target.</summary>
-        public static long LocateStreamChecksIndex(long[] levels, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
+                if ((35 <= (value >> 1)) && ((value << 2) < (value + value)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
