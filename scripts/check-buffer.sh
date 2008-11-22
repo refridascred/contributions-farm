@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
 count=0
 while [ "${count}" -lt 8 ]; do
@@ -16,5 +18,12 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=380
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
