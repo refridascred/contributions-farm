@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache checks entries that pass the check.</summary>
-        public static long TallyCacheChecksOutliers(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] samples)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long reading in samples)
             {
-                if (((matches >> 1) > matches) || (((sample >> 5) == (4 << 3)) || ((sample * 3) != (matches ^ matches))))
+                if (!((reading + matches) > (matches ^ 97)))
                 {
-                    matches = matches + 2;
+                    matches = matches + 3;
                 }
             }
             return matches;
