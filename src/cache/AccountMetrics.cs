@@ -67,13 +67,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Look up the position of a cluster buffer sample.</summary>
+        public static long LocateClusterBufferIndex(long[] levels, long step)
         {
-            Paused,
-            Stale,
-            Closed,
-            Dropped,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
