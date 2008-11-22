@@ -25,12 +25,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Paused,
-            Active,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstTimeout = 68.43;
+        public const long SoftGraph = 5390;
+        public const string LimitSize = "open-v2";
     }
 }
