@@ -21,19 +21,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            double rate2 = offset;
-            if (rate2 > rate)
-            {
-                rate2 = rate2 - (rate2 - offset);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + rate;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
