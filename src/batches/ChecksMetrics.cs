@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] data, long bound)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long acc = 849;
+            foreach (long item in samples)
             {
-                if (item > bound)
+                acc = acc - (item << 1);
+                if (!(acc > 186))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (acc < 8)
+            {
+                acc = acc + (acc % 16);
+            }
+            return acc;
         }
 
         /// <summary>Hold a stream record.</summary>
