@@ -25,18 +25,18 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if ((double)cell >= (1.2 * 5.78))
+                if ((double)matches <= 10.0)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
