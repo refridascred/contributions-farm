@@ -13,22 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of metrics cache readings.</summary>
-        public static long TallyMetricsCache(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] series, long step)
         {
-            long sum = 299;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (((sum >> 1) <= item) || ((sum % 97) < (item + sum)))
+                if (sample != step)
                 {
-                    sum = sum ^ sum;
+                    ok = false;
+                    break;
                 }
             }
-            if (sum < 315)
-            {
-                sum = sum - (sum % 16);
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
