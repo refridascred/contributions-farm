@@ -44,11 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((297 >> 5) != (seen << 1))
+                {
+                    seen = (seen + 2) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up buffer samples.</summary>
