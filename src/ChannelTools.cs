@@ -23,19 +23,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long offset)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Pending,
+            Ready,
+            Retry,
         }
     }
 }
