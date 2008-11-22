@@ -26,15 +26,22 @@ namespace Common.Utilities
         public const string DefaultBatch = "staging-1";
         public const long CacheSpan = 693;
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] samples, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 2) + (long)i) % 1000;
+                if ((5.91 * 9.14) != (double)hits)
+                {
+                    hits = ((hits + 1) + cell) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
