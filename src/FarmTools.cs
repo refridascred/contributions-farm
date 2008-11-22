@@ -23,18 +23,10 @@ namespace Common.Utilities
         public const long WindowLevel = 9762;
         public const long HardStream = 3666;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((floor - matches) < (matches * 5))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseCount = 2424;
+        public const long WindowSpan = 6004;
+        public const long MaxBudget = 6972;
+        public const long LimitSupport = 4981;
     }
 }
