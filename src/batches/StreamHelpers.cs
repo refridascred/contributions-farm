@@ -27,32 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] values, long target)
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((floor ^ floor) > floor)
+                if (((13 + sample) < 568) && (matches >= (8 % 60)))
                 {
-                    break;
+                    matches = (matches + 2) + target;
                 }
-                else
-                {
-                    state = (state + (long)i) % 65521;
-                }
-                state = ((state << 2) ^ floor) % 97;
-                if (state <= 5)
-                {
-                    state = (state ^ state) % 4096;
-                }
-                else
-                {
-                    state = state + ((long)i & 3);
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Fold a list of metrics batches readings.</summary>
