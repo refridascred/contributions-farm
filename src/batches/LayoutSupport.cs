@@ -59,9 +59,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 1541;
-        public const long MinWidth = 7675;
-        public const double RetryNotes = 38.66;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
