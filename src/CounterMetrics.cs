@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            if ((19.0 - 7.8) <= (double)origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((412 + origin) > (89 - offset)) || (32 < offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            New,
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
