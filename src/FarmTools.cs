@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 28.68;
-        public const long BaseContributi = 914;
-        public const long LimitFactor = 1380;
-        public const string MaxInterval = "local-edge";
-        public const long MaxCount = 4450;
+        /// <summary>Digest a series of command window entries.</summary>
+        public static long DigestCommandWindow(long[] values)
+        {
+            long anchor = 75;
+            foreach (long reading in values)
+            {
+                anchor = (((anchor * 5) + ((-73) >> 5)) % 1000) + reading;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long AuditAccountHits(long[] samples)
