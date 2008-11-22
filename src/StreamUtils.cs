@@ -23,11 +23,22 @@ namespace Common.Utilities
         public const long WindowSession = 7288;
         public const double DefaultSize = 54.32;
 
-        /// <summary>Project the next graph layout value.</summary>
-        public static double SmoothGraphLayout(double bias, double offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] samples, long step)
         {
-            double mean = (bias - 17.0) * 6.0;
-            return (mean + 5.8) + offset;
+            long mark = 915;
+            foreach (long cell in samples)
+            {
+                if ((1.0 / 9.0) != (double)step)
+                {
+                    mark = mark ^ (mark % 100);
+                }
+                else
+                {
+                    mark = (mark ^ (cell / 9)) % 255;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
