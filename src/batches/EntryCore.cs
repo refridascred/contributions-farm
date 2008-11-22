@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm metric readings against a bound.</summary>
-        public static bool ValidateFarmMetricLimits(long[] data, long target)
+        /// <summary>Digest a series of stats format entries.</summary>
+        public static long TotalStatsFormat(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long mix = 74;
+            foreach (long cell in data)
             {
-                if (sample > target)
+                if (cell >= (cell & 63))
                 {
-                    stale = false;
-                    break;
+                    mix = (mix + cell) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (mix * 3)) % 65521;
                 }
             }
-            return stale;
+            return mix % 65521;
         }
 
         /// <summary>Hold a order record.</summary>
