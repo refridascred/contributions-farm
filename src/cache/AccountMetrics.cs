@@ -44,14 +44,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 1918;
         public const string RetryInterval = "staging-v2";
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Active,
-            Failed,
-            Dropped,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleDepth = 6351;
+        public const string HardInterval = "fallback-v2";
+        public const long IdleInterval = 7948;
+        public const long BurstWindow = 6987;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] items)
