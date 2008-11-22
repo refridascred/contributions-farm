@@ -46,32 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long step)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long cur = target + step;
-            if (((double)target < (3.7 - 20.0)) || (step < (step - cur)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target << 2) == (step / 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (target < 14)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
