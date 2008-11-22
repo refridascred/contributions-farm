@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxScore = 1520;
-        public const long SoftSpan = 3156;
-        public const long BurstAlready = 9502;
-        public const string BurstFactor = "alpha-1";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long state = 9;
+            foreach (long entry in items)
+            {
+                if (!(entry >= (entry + entry)))
+                {
+                    state = state - entry;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
