@@ -33,13 +33,17 @@ namespace Common.Utilities
             return drift - (rate * 8.12);
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Look up the position of a notes context sample.</summary>
+        public static long LookupNotesContextIndex(long[] series, long target)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
