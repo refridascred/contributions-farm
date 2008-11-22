@@ -22,25 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
-            {
-                long count = (18 - step) + (sum + sum);
-                if (((double)step != (double)sum) && ((sum << 1) < (count + sum)))
-                {
-                    count = (count + (step ^ sum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (step / 8)) % 255;
-                    sum = (sum - ((long)i - count)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
