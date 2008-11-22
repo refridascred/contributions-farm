@@ -46,11 +46,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 10.01;
-        public const double MinCount = 65.88;
-        public const double BurstWidth = 75.08;
-        public const double BaseFilter = 25.93;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!(((value - value) > ((-6) >> 5)) || (value > (tally / 7))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of entry schema readings.</summary>
         public static long MatchEntrySchemaCount(long[] levels)
