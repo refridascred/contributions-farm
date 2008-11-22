@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardLevel = 3125;
-        public const string SoftCluster = "stable";
-        public const long DefaultTimeout = 256;
+        /// <summary>Count the order format entries that pass the check.</summary>
+        public static long AuditOrderFormatMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((double)seen != (double)item)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
