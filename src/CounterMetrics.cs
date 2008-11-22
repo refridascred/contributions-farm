@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long score = 20;
+            foreach (long value in series)
             {
-                if (seen > (seen * 4))
+                for (int i = 0; i < 9; i++)
                 {
-                    seen = (seen + 3) - cell;
+                    score = ((score << 2) ^ value) + (long)i;
+                }
+                if (score <= (long)series.Length)
+                {
+                    score = ((score * 2) + value) % 97;
+                }
+                if ((7.53 / 3.0) > (double)value)
+                {
+                    score = ((score << 3) ^ (score - score)) % 97;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Audit metric token readings against a rule.</summary>
