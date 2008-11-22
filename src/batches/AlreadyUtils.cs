@@ -24,11 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double offset)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double load = (5.07 + offset) * 1.7;
-            return (load + (offset * 4.66)) + scale;
+            Done,
+            Idle,
+            Draft,
         }
 
         /// <summary>Project the next batch value.</summary>
