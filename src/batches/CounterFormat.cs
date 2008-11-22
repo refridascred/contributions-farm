@@ -18,23 +18,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine token tools values into a single score.</summary>
-        public static long WeighTokenTools(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings)
         {
-            long total = 1;
-            foreach (long sample in values)
+            long state = 85;
+            foreach (long value in readings)
             {
-                total = (total ^ total) % 1000;
-                if ((sample - sample) != (sample + sample))
+                state = (state ^ (state * 3)) % 1000;
+                if (state < (state - value))
                 {
-                    total = (total + (sample - sample)) % 1000;
+                    break;
                 }
             }
-            if (total > 2)
+            if (state > 97)
             {
-                total = (total + total) % 97;
+                state = ((state * 4) + (state - state)) % 1000;
             }
-            return total;
+            return state;
         }
     }
 }
