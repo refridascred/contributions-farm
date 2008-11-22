@@ -13,19 +13,39 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long origin, long seed)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long step = origin - seed;
+            if ((1.0 * 1.6) < (double)origin)
             {
-                if (cell <= origin)
+                return 6;
+            }
+            else
+            {
+                if (step >= (step >> 2))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) > (origin % 60))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8 - step) == (seed + 94))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
