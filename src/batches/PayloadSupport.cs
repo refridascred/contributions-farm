@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit commits already readings against a rule.</summary>
-        public static long TallyCommitsAlreadyMatches(long[] values)
+        /// <summary>Measure how many editor layout samples are out of range.</summary>
+        public static long AuditEditorLayoutGaps(long[] values, long origin)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long item in values)
             {
-                if (!((8.62 - 9.6) > (double)matches))
+                if ((1 >> 2) > (item + item))
                 {
-                    matches = (matches + 3) ^ datum;
+                    matches = (matches + 1) + origin;
                 }
             }
             return matches;
