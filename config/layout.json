@@ -1,13 +1,5 @@
 {
-  "record_ttl": {
-    "batch_retries_count": "primary",
-    "poll_retries": "legacy",
-    "flush_limit_pct": 43.47,
-    "warm_ratio": "cached",
-    "strict": 78.18,
-    "sync_depth_ms": "cached"
-  },
-  "audit": 89.39,
-  "batch_capacity_pct": false,
-  "poll_depth": 250
+  "notes_interval": 250,
+  "contributi_retries": "green",
+  "idle_retries_s": 96.2
 }
