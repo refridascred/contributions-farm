@@ -1,5 +1,4 @@
 # support settings
-checks_size: stable
-max_timeout_count: 67.74
-cache_interval: 72.74
-token_limit: 77.42
+base_timeout: 27
+hard_capacity_s: primary
+burst_window_count: latest
