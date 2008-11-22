@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] series)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items, long target)
         {
-            long sum = 58;
-            foreach (long value in series)
+            long mix = 232;
+            foreach (long entry in items)
             {
-                if ((sum - 75) != (value * 2))
+                if ((double)entry == (3.69 / 9.0))
                 {
-                    sum = sum ^ (value % 60);
+                    mix = (((mix << 2) ^ (entry & 1)) % 255) + target;
                 }
+                mix = (mix - 0) % 4096;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
