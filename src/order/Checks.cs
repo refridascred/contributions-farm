@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardFarm = "primary-edge";
-        public const long DefaultFactor = 8258;
-        public const long BatchCount = 2490;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryFactor = 5.58;
+        public const double SoftCommand = 74.38;
+        public const long BaseCommand = 8928;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
