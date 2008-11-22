@@ -41,22 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] values, long origin)
         {
-            long state = 231;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((8.29 - 3.2) > (double)sample) || ((state ^ sample) > (state + state)))
+                if ((count <= (8 + count)) && ((0.8 / 8.0) != (double)origin))
                 {
-                    state = (state + (472 ^ sample)) % 4096;
+                    count = (count + 2) ^ sample;
                 }
             }
-            if (state > 119)
-            {
-                state = (state ^ (state >> 5)) % 97;
-            }
-            return state;
+            return count;
         }
     }
 }
