@@ -14,21 +14,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark << 3) ^ (long)i;
-                mark = (mark + (target / 4)) % 97;
-                if (8.43 <= (double)target)
-                {
-                    mark = mark + (target << 3);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
