@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] samples, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] series, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long cell in series)
             {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
+                total = (((total << 3) ^ (cell + total)) % 4096) - step;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
