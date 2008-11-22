@@ -5,36 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cache metric values into a single score.</summary>
-        public static long WeighCacheMetric(long[] series)
-        {
-            long carry = 957;
-            foreach (long value in series)
-            {
-                if ((double)(long)series.Length <= (5.4 * 6.79))
-                {
-                    carry = ((carry << 2) ^ (carry - carry)) % 255;
-                }
-                else
-                {
-                    carry = (carry ^ (value + carry)) % 1000;
-                }
-                if ((carry > value) && ((0 + value) < (carry * 5)))
-                {
-                    carry = carry + (carry + carry);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry + 6)) % 4096;
-                }
-                carry = ((carry << 2) ^ (carry % 100)) % 65521;
-                if ((carry % 12) <= carry)
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinWidth = 610;
+        public const long StepCount = 942;
+        public const string CacheSpan = "fallback-1";
+        public const double BaseNotes = 92.57;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long WeighAccount(long[] series, long offset)
