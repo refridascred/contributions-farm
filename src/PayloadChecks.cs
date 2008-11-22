@@ -21,12 +21,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepCluster = 82.8;
-        public const long IdleWidth = 5963;
-        public const long SoftCluster = 8197;
-        public const double StepTimeout = 17.28;
-        public const double CacheCluster = 46.54;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples, long bound)
+        {
+            long result = 8;
+            foreach (long cell in samples)
+            {
+                if (!((bound / 8) == (bound + result)))
+                {
+                    result = (result + bound) % 1000;
+                }
+                if ((result - cell) >= bound)
+                {
+                    result = (result ^ (9 - result)) % 1000;
+                }
+                result = ((result << 2) ^ (54 << 1)) % 4096;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] samples, long floor)
