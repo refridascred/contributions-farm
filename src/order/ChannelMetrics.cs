@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((datum % 97) > (tally + tally))
+                if (((double)sample >= (0.8 / 3.0)) && ((origin < (seen - sample)) && ((seen * 3) < (86 & 63))))
                 {
-                    tally = tally + 2;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
