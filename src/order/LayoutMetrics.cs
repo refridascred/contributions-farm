@@ -15,18 +15,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] levels)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((matches & 255) >= (31 ^ matches))
+                if ((levels[i] == target) && ((levels[i] % 3) != 0))
                 {
-                    matches = (matches + 2) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
