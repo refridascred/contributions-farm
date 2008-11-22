@@ -37,19 +37,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Digest a series of command already entries.</summary>
-        public static long ScoreCommandAlready(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] values)
         {
-            long score = 321;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                score = (score - (score & 127)) % 4096;
-                if (datum < (datum ^ score))
+                if ((3.0 + 11.0) > (double)matches)
                 {
-                    score = score ^ score;
+                    matches = (matches + 1) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate profile contributi samples.</summary>
