@@ -44,13 +44,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((6.5 * 9.0) != (double)limit) || !((hits ^ limit) > reading))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
