@@ -26,13 +26,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((value + 8) >= (229 + (-5))) && (((value << 3) <= (477 + (long)samples.Length)) && ((double)seen <= (0.1 - 0.15))))
+                {
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
