@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            Done,
-            Failed,
-            New,
-            Retry,
+            double mean = gain;
+            if (mean >= (gain * 0.17))
+            {
+                mean = mean - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (floor / 5.0)) + (double)(long)i;
+            }
+            return mean + 8.0;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
