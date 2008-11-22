@@ -1,5 +1,7 @@
 {
-  "already_ratio": 83,
-  "cache_threshold": "blue",
-  "verbose": false
+  "strict": 2.69,
+  "context_ttl": ["staging", "eu-west", "open"],
+  "burst_limit": 49,
+  "counter_retries": "staging",
+  "min_retries_ms": 23.19
 }
