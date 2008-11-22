@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
