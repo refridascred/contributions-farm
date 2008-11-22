@@ -24,22 +24,18 @@ namespace Common.Utilities
             return load + 8.0;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaGaps(long[] levels, long floor)
+        /// <summary>Digest a series of stats report entries.</summary>
+        public static long DigestStatsReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                if ((floor ^ floor) >= (tally >> 3))
+                if ((acc <= (sample * 2)) && ((acc + sample) > (488 & 255)))
                 {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    acc = ((acc << 2) ^ (sample ^ acc)) % 255;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Hold a layout entry.</summary>
