@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long step)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 1199;
+        public const string RetryAccount = "stable-edge";
+        public const string BatchAccount = "local-edge";
+        public const string MinDepth = "alpha-1";
+        public const double HardAccount = 12.98;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
