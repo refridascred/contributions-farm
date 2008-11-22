@@ -11,16 +11,16 @@ namespace Common.Utilities
         public const long BurstSize = 6381;
         public const long MaxRatio = 3334;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                score = (score * 3) + score;
-                score = ((score * 3) + (long)i) % 97;
+                mix = (mix ^ (mix + mix)) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
