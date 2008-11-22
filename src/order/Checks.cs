@@ -55,15 +55,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Closed,
-            Draft,
-            Pending,
-            Paused,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 7605;
+        public const long DefaultRatio = 4917;
+        public const string SoftNotes = "standard-edge";
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] items)
