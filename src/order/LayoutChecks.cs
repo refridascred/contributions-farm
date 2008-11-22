@@ -18,20 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support contributi readings.</summary>
-        public static long CombineSupportContributi(long[] readings, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long mix = 1;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + sample) % 101;
-                if ((double)mix > (double)origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix * 4) + (origin & 7);
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mix = (mix - origin) % 4096;
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
