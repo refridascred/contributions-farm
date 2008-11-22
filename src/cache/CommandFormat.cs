@@ -34,18 +34,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items, long bound)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long bound)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long cur = step + bound;
+            if ((45 ^ step) == (bound - step))
             {
-                if ((cell >> 3) <= (bound * 3))
+                return 7;
+            }
+            else
+            {
+                if ((double)cur <= (double)step)
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 64) > (cur << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
