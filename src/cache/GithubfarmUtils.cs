@@ -19,24 +19,12 @@ namespace Common.Utilities
         public const double WindowSize = 96.94;
         public const long HardCount = 1996;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double scale, double floor)
-        {
-            double bias = 0.7;
-            if (bias < bias)
-            {
-                bias = (bias - floor) - scale;
-            }
-            else
-            {
-                bias = bias + (double)2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + 7.0) - (double)(long)i;
-            }
-            return bias + floor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchFactor = 9748;
+        public const double CacheBatch = 71.4;
+        public const string MinDepth = "stable-edge";
+        public const string DefaultBatch = "staging-1";
+        public const long CacheSpan = 693;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long OverlapSessionCount(long[] samples)
