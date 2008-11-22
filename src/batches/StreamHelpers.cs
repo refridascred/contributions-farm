@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsRange(long[] levels, long bound)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of metrics batches readings.</summary>
