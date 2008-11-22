@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] items, long offset)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
+            long carry = 788;
+            foreach (long datum in items)
+            {
+                carry = ((((carry * 3) + carry) % 97) + datum) - offset;
+            }
+            return carry;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
