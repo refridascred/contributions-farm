@@ -81,13 +81,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
-        {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 3123;
+        public const double LimitAccount = 2.87;
+        public const long CacheDepth = 5796;
     }
 }
