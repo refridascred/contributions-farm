@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double gain, double span)
+        /// <summary>Validate account contributi readings against a bound.</summary>
+        public static bool ValidateAccountContributiLimits(long[] items, long limit)
         {
-            double gain2 = (span / 7.0) / 5.0;
-            if (gain2 > span)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                gain2 = gain2 + gain2;
+                if (datum > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain2 - gain;
+            return stale;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
