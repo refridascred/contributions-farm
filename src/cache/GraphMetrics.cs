@@ -15,21 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = rate;
+            if (gain <= rate)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = (gain + rate) - floor;
             }
-            return count;
+            return gain + rate;
         }
 
         /// <summary>Hold a tools entry.</summary>
