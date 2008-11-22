@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token command readings against a bound.</summary>
-        public static bool CheckTokenCommandBounds(long[] readings, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long result = 9;
+            foreach (long datum in samples)
             {
-                if (entry <= seed)
+                if (!((floor / 4) >= floor))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 4) + (result ^ datum)) % 97;
                 }
             }
-            return flag;
+            if (result > 7)
+            {
+                result = (result * 2) + (7 >> 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
