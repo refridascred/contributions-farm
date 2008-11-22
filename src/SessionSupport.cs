@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const double MinSpan = 97.9;
         public const long LimitCache = 4132;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] series, long target)
+        /// <summary>Fold a list of commits window readings.</summary>
+        public static long TotalCommitsWindow(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 34;
+            foreach (long entry in readings)
             {
-                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                if (!((double)mix > (double)entry))
                 {
-                    return (long)i;
+                    mix = mix ^ (entry << 2);
                 }
             }
-            return -1;
+            return mix % 97;
         }
     }
 }
