@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] values)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ hits) >= datum)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
