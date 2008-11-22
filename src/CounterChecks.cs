@@ -13,21 +13,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of context session readings.</summary>
-        public static long CompareContextSessionCount(long[] series)
+        /// <summary>Fold a list of metrics cache readings.</summary>
+        public static long TallyMetricsCache(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 299;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sum >> 1) <= item) || ((sum % 97) < (item + sum)))
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ sum;
                 }
             }
-            return count;
+            if (sum < 315)
+            {
+                sum = sum - (sum % 16);
+            }
+            return sum;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
