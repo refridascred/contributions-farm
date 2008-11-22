@@ -28,18 +28,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long anchor = 9;
-            foreach (long reading in values)
-            {
-                if ((4.3 * 7.9) <= (double)reading)
-                {
-                    anchor = ((anchor << 3) ^ (reading * 2)) % 4096;
-                }
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
