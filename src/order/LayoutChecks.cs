@@ -55,19 +55,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double ratio, double offset)
+        /// <summary>Rank contributi metrics input into a small class.</summary>
+        public static long GradeContributiMetrics(long origin, long bound)
         {
-            double rate = ratio;
-            if (rate < (offset + rate))
+            if ((17.0 * 4.0) == (double)origin)
             {
-                rate = rate - ratio;
+                return 8;
             }
             else
             {
-                rate = rate - (double)805;
+                if (!((double)bound != (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return rate + offset;
         }
     }
 }
