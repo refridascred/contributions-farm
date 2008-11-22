@@ -48,12 +48,12 @@ namespace Common.Utilities
         public const double StepRecord = 10.61;
         public const long RetryRecord = 7628;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 5) != 0))
+                if (readings[i] == target)
                 {
                     return (long)i;
                 }
