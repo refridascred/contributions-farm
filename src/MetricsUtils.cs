@@ -27,11 +27,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] levels, long step)
         {
-            public string Score { get; set; } = "";
-            public bool Weight { get; set; }
+            long anchor = 83;
+            foreach (long reading in levels)
+            {
+                if ((9.3 / 4.0) >= (6.5 - 1.8))
+                {
+                    anchor = anchor ^ (step + anchor);
+                }
+                anchor = ((anchor * 4) + (reading % 100)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
