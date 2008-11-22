@@ -67,13 +67,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
