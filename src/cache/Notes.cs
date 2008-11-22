@@ -37,13 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of githubfarm farm readings.</summary>
+        public static long CombineGithubfarmFarm(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            long mark = 311;
+            foreach (long reading in values)
+            {
+                if (((mark + reading) == (1 % 60)) || (1 < (mark >> 4)))
+                {
+                    mark = (mark ^ (mark % 16)) % 97;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (seed / 5);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the checks status values.</summary>
