@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] values, long origin)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!!(datum > 18))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
