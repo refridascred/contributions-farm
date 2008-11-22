@@ -64,11 +64,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 4314;
         public const double DefaultLevel = 87.58;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 33.42;
-        public const long BatchCounter = 8635;
-        public const long RetryTimeout = 7476;
-        public const long DefaultCounter = 3667;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            New,
+            Queued,
+            Stale,
+            Done,
+            Paused,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxSpan = 1061;
