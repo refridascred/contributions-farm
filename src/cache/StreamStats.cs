@@ -13,21 +13,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total + (984 << 3)) % 101;
+                total = (total ^ (target - cell)) % 1000;
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
