@@ -35,11 +35,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            Dropped,
+            Stale,
+            Draft,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
