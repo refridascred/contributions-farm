@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long limit)
         {
-            Locked,
-            Draft,
-            Done,
+            if ((4.0 + 5.5) <= (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)225 >= (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit ^ floor) == (6 / 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5 + limit) >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a commits reading.</summary>
