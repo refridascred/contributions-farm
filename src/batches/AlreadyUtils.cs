@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long delta = bound + offset;
-            if ((offset + delta) > bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ delta) < (bound & 255))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of cache entries.</summary>
