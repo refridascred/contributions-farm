@@ -37,11 +37,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 6669;
-        public const double HardFarm = 56.58;
-        public const double MaxFarm = 36.06;
-        public const long BurstFarm = 5873;
+        /// <summary>Roll a route window counter forward.</summary>
+        public static long IterateRouteWindow(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score + seed) % 97;
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphGaps(long[] data, long limit)
