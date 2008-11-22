@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 7556;
-        public const double BaseDepth = 95.26;
-        public const double StepCluster = 48.74;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long origin, long origin2)
+        {
+            if (((double)origin2 >= (double)origin) && ((double)origin <= 9.8))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.78 * 12.0) <= (double)origin2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)origin2 <= (17.0 / 3.0)) || ((9.0 / 5.0) == (double)origin2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] levels, long target)
