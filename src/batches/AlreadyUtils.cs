@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] data)
         {
-            long result = 20;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((double)result < 3.9))
+                if ((19 >> 2) <= item)
                 {
-                    result = ((result + (result ^ result)) % 65521) ^ item;
+                    hits = hits + 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a schema reading.</summary>
