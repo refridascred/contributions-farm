@@ -40,18 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stream cache samples.</summary>
-        public static long MatchStreamCacheCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits >> 1) >= (entry << 2))
                 {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
