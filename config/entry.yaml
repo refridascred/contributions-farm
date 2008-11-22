@@ -1,16 +1,19 @@
 # entry settings
-sync_retries_pct:
-  - 254
-  - 256
-  - 478
-format_capacity:
-  - latest
-  - standard
-  - standard
-commits_limit: cached
-max_limit_s:
-  - 254
-  - 133
-  - 319
-batch_interval_pct: stable
-soft_interval: 2920
+compress: 8585
+editor_depth:
+  flush_delay: 6.26
+  filter_ttl: latest
+  min_timeout_ms:
+    - 361
+    - 60
+    - 135
+  default_interval_s:
+    idle_timeout: true
+    graph_depth: local
+    format_window:
+      - strict
+      - local
+    min_retries: true
+    readonly: 250
+    base_depth: green
+retry_retries_ms: 29.26
