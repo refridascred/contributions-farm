@@ -16,18 +16,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine profile layout values into a single score.</summary>
-        public static long DigestProfileLayout(long[] levels)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long sum = 0;
-            foreach (long datum in levels)
-            {
-                if ((sum + sum) > 140)
-                {
-                    sum = (sum - (datum >> 5)) % 255;
-                }
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
