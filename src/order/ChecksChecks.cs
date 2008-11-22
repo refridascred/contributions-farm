@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] items, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long result = 8;
+            foreach (long cell in samples)
             {
-                if ((9.0 + 6.0) >= (double)offset)
+                if ((cell + cell) > 24)
                 {
-                    matches = (matches + 2) ^ datum;
+                    result = ((result << 2) ^ ((long)samples.Length & 1)) - seed;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
