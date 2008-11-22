@@ -67,15 +67,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double ratio, double floor)
+        /// <summary>Derive the next support notes value from a seed.</summary>
+        public static long StepSupportNotes(long seed)
         {
-            double ratio2 = ratio * 6.71;
-            for (int i = 0; i < 9; i++)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                ratio2 = (ratio2 - (double)(long)i) - floor;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return ratio2 + (ratio / 8.0);
+            return state;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
