@@ -31,18 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] levels, long offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)entry >= (2.7 / 4.0)) && (((entry - offset) < offset) || ((4 + entry) != (seen + entry))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
