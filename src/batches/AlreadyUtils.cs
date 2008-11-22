@@ -55,15 +55,13 @@ namespace Common.Utilities
             return drift + 9.22;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long mark = 114;
-            foreach (long datum in levels)
-            {
-                mark = (((mark * 5) + (7 + mark)) % 65521) - datum;
-            }
-            return mark;
+            Active,
+            New,
+            Idle,
+            Draft,
         }
     }
 }
