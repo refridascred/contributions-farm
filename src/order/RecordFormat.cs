@@ -37,18 +37,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] items, long bound)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 320;
+            foreach (long value in levels)
             {
-                if ((double)seen >= (8.9 + 0.99))
+                if (sum >= (-54))
                 {
-                    seen = ((seen + 2) + value) - bound;
+                    sum = (((sum * 3) + value) % 255) - limit;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Project the next record value.</summary>
