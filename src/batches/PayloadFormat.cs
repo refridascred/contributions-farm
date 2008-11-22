@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support filter entries that pass the check.</summary>
-        public static long MeasureSupportFilterMatches(long[] readings)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long mix = 42;
+            foreach (long value in items)
             {
-                if ((((datum & 255) < (count << 3)) || ((1.0 / 5.0) < (7.0 / 5.0))) && ((datum > (count >> 4)) || ((datum ^ count) != (datum + count))))
+                mix = (mix * 2) + (value / 9);
+                if ((value + mix) <= (mix * 5))
                 {
-                    count = count + 1;
+                    mix = (mix ^ (value - (-64))) % 1000;
+                }
+                else
+                {
+                    mix = (mix * 2) + (mix & 255);
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Check that every command payload entry stays within the limit.</summary>
