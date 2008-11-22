@@ -25,12 +25,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((10.0 + 9.7) != (double)offset)
+                {
+                    acc = acc - ((long)i & 7);
+                    acc = (acc * 4) + ((long)i + acc);
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
