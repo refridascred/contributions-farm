@@ -21,15 +21,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
