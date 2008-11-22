@@ -43,19 +43,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardWidth = 46.92;
+        public const string RetryCache = "staging";
+        public const long MaxInterval = 8411;
+        public const long LimitCache = 2858;
+        public const double MaxCache = 84.1;
     }
 }
