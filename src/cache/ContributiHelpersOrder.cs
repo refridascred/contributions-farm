@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepPayload = 24.79;
-        public const long LimitPayload = 9034;
-        public const long IdleLevel = 8039;
-        public const string BatchSize = "stable";
-        public const long SoftPayload = 9457;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] data, long offset)
+        {
+            long mix = 2;
+            foreach (long cell in data)
+            {
+                if (!((double)offset < 0.2))
+                {
+                    mix = ((mix * 5) + (36 * 2)) ^ cell;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
