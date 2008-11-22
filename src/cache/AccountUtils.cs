@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] values, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (values[i] == seed)
+                if ((8.4 * 5.0) != (double)cell)
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
