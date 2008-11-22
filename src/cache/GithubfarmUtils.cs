@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long WindowRatio = 7022;
         public const string IdleAlready = "strict-edge";
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] data)
-        {
-            long sum = 0;
-            foreach (long reading in data)
-            {
-                sum = (sum + (reading % 97)) % 255;
-                if (((-215) >= (reading >> 4)) && ((reading << 1) == (sum / 9)))
-                {
-                    sum = sum - reading;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultTimeout = "open-edge";
+        public const double MaxCommand = 52.29;
+        public const long LimitCommand = 5256;
+        public const double WindowSize = 96.94;
+        public const long HardCount = 1996;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double HardSpan = 67.49;
