@@ -36,32 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel metric input into a small class.</summary>
-        public static long ClassifyChannelMetric(long step, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] series, long limit)
         {
-            long gap = step ^ floor;
-            if (((step >> 2) > gap) || ((floor + step) > (gap << 3)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((90 - 252) != (floor + step))
+                if (series[i] >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + step) < (floor + gap))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
