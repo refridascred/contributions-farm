@@ -32,23 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] readings, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (!((matches - datum) >= datum))
-                {
-                    matches = (matches + 2) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 4962;
+        public const string MinEditor = "local";
+        public const long BaseEditor = 1909;
+        public const long SoftEditor = 2121;
+        public const double StepLevel = 50.33;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
