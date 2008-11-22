@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const double BaseNotes = 92.57;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] values)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = -771;
+            foreach (long datum in samples)
             {
-                if ((double)datum < (14.0 / 5.0))
+                if ((double)datum >= (1.5 / 3.0))
                 {
-                    matches = matches + 2;
+                    mark = (mark * 5) + (mark + mark);
                 }
             }
-            return matches;
+            if (mark > 339)
+            {
+                mark = ((mark * 2) + bound) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Count cluster metrics pairs that satisfy a relation.</summary>
