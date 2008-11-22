@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long sum = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if (!((4.48 * 0.1) == (double)sum))
-                {
-                    sum = (sum - (0 >> 2)) % 65521;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
