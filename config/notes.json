@@ -1,8 +1,8 @@
 {
-  "payload_ttl": 3,
-  "hard_ratio_ms": ["open", "fallback", "strict"],
-  "audit": "edge",
-  "githubfarm_ttl": "blue",
-  "warm_delay_s": "stable",
-  "order_threshold": "latest"
+  "metrics_threshold": true,
+  "readonly": 60,
+  "burst_timeout_pct": 91.64,
+  "strict": [375, 327],
+  "soft_capacity_count": "open",
+  "flush_timeout_count": "edge"
 }
