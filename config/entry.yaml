@@ -1,9 +1,12 @@
 # entry settings
-soft_depth_pct: 79
-channel_retries: 57.83
-tools_capacity: 3876
-order_capacity: true
-poll_capacity_count:
-  - 303
-  - 193
-graph_interval: 1.71
+readonly: 1024
+window_threshold:
+  session_retries: stable
+  verbose: edge
+  warm_timeout_pct:
+    - standard
+    - blue
+    - staging
+    - fallback
+command_interval: edge
+sync_limit: 8507
