@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] levels)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + 969) > (item ^ count))
+                if (series[i] < bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a format snapshot.</summary>
