@@ -48,18 +48,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double weight = (double)(656 << 2);
+            for (int i = 0; i < 5; i++)
             {
-                if ((26 + matches) <= (matches >> 5))
-                {
-                    matches = (matches + 1) - datum;
-                }
+                weight = ((weight + (9.92 * 4.71)) + (double)(long)i) + bias;
             }
-            return matches;
+            return weight + floor;
         }
     }
 }
