@@ -1,19 +1,12 @@
 {
-  "schema_threshold": 60,
-  "notes_window": 60,
-  "compress": {
-    "audit": 1239,
-    "report_limit": 37,
-    "profile_limit": 54,
-    "warm_limit_pct": false,
-    "min_retries_pct": [169, 35]
+  "default_depth_count": true,
+  "channel_size": {
+    "retry_ttl_count": 1,
+    "sync_ratio_s": 250,
+    "batch_limit_pct": "green",
+    "order_limit": "stable",
+    "base_ratio_pct": "standard"
   },
-  "default_limit_ms": {
-    "persist": 3,
-    "batches_capacity": "open",
-    "soft_ratio": "latest",
-    "filter_threshold": 181,
-    "soft_window": [311, 490, 319]
-  },
-  "sync_capacity_count": 4036
+  "graph_depth": true,
+  "retry_ratio_ms": "green"
 }
