@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit format stats readings against a rule.</summary>
-        public static long CountFormatStatsHits(long[] series, long origin)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits - hits) > hits)
-                {
-                    hits = ((hits + 3) + sample) + origin;
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine profile values into a single score.</summary>
