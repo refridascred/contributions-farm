@@ -74,16 +74,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a queue metric figure with a bias.</summary>
-        public static double ScaleQueueMetric(double ratio, double span)
-        {
-            double load = span + span;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (load * 4.17)) + (double)(long)i) + ratio;
-            }
-            return load + (double)152;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 8500;
+        public const double DefaultSize = 72.63;
+        public const string RetryBuffer = "legacy-edge";
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
