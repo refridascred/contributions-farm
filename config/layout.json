@@ -1,7 +1,9 @@
 {
-  "audit": false,
-  "burst_size": [232, 108, 432],
-  "retry_window_count": "eu-west",
-  "readonly": "cached",
-  "warm_timeout_s": 91
+  "compress": "edge",
+  "readonly": {
+    "buffer_delay": 7471,
+    "queue_interval": 26,
+    "compress": 29.43
+  },
+  "order_size": 30
 }
