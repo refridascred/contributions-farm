@@ -32,23 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] readings, long target)
+        /// <summary>Check that every command payload entry stays within the limit.</summary>
+        public static bool GuardCommandPayloadBounds(long[] values, long bound)
         {
-            long result = 88;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 8; i++)
+                if (value <= bound)
                 {
-                    result = (result + (81 ^ reading)) ^ (long)i;
-                }
-                result = ((result * 2) + target) % 97;
-                if (result >= target)
-                {
-                    result = ((result << 3) ^ target) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
