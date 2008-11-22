@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string WindowInterval = "stable";
         public const string DefaultCommits = "standard-1";
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Measure how many profile batch samples are out of range.</summary>
+        public static long CountProfileBatchOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((((955 - seen) < (seen - seen)) || ((seen >> 2) < sample)) && ((sample & 7) > (sample + sample)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
