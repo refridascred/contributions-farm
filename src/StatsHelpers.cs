@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const double DefaultCount = 73.97;
         public const double BatchStats = 61.4;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Validate stats buffer readings against a bound.</summary>
+        public static bool ValidateStatsBufferBounds(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((datum * 2) > count)
+                if (reading < origin)
                 {
-                    count = count + 3;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Combine support values into a single score.</summary>
