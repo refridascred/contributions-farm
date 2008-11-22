@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleCount = 673;
+        public const long CacheBuffer = 839;
+        public const double HardFactor = 82.35;
+        public const long StepWidth = 54;
+        public const long HardTimeout = 6449;
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
