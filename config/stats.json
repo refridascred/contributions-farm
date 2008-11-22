@@ -1,9 +1,5 @@
 {
-  "max_size_s": "local",
-  "report_depth": false,
-  "checks_depth": {
-    "enabled": "latest",
-    "githubfarm_limit": "fallback",
-    "hard_threshold_ms": 4215
-  }
+  "max_retries_count": 77.36,
+  "max_depth_ms": 87.83,
+  "cluster_retries": ["strict", "blue", "green"]
 }
