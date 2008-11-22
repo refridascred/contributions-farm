@@ -34,11 +34,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheRatio = "staging-edge";
-        public const double BurstSupport = 34.68;
-        public const long HardCount = 4538;
-        public const double SoftFactor = 19.56;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] series)
