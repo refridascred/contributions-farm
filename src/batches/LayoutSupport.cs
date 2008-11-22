@@ -43,11 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "strict-edge";
-        public const long IdleRatio = 1032;
-        public const long SoftQueue = 7320;
-        public const long HardQueue = 8111;
-        public const long MaxQueue = 9390;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] readings)
+        {
+            long mix = 579;
+            foreach (long reading in readings)
+            {
+                mix = mix + (mix ^ mix);
+                if (((double)reading < (double)mix) && ((4.0 + 3.6) <= (double)mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
     }
 }
