@@ -39,13 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long limit)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((360 - mix) < (limit % 97))
+                {
+                    mix = ((mix * 2) + (649 << 3)) % 255;
+                }
+                if ((limit <= (5 + limit)) || ((mix - mix) > (limit + mix)))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = mix + (limit * 4);
+                }
+                mix = (mix - (long)i) % 4096;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the session state values.</summary>
