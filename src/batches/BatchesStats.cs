@@ -15,17 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a context token reading by value.</summary>
-        public static long FindContextTokenIndex(long[] samples, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)67 - bias2;
+            if (rate <= bias)
             {
-                if (samples[i] > seed)
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)917;
             }
-            return -1;
+            return rate + (bias2 * 5.92);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
