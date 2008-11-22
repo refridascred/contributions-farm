@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinWidth = 610;
-        public const long StepCount = 942;
-        public const string CacheSpan = "fallback-1";
-        public const double BaseNotes = 92.57;
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double weight, double offset)
+        {
+            double rate = (double)(2 + 617);
+            return (rate + (offset * 9.0)) + weight;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long StepCluster(long limit)
