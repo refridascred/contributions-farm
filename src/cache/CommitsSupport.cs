@@ -31,19 +31,18 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool GuardChannelBufferRange(long[] items, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry <= step)
+                if ((double)(long)samples.Length == (double)datum)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) - seed;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a counter header.</summary>
