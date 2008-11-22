@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items)
         {
-            Retry,
-            Ready,
-            Pending,
-            Locked,
-            Idle,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) <= (entry ^ 44))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
