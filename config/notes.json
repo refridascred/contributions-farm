@@ -1,14 +1,12 @@
 {
-  "flush_timeout_count": 7390,
-  "notes_delay": {
-    "report_threshold": "local",
-    "max_window_pct": 2033,
-    "idle_window": 8.65,
-    "poll_timeout_ms": "primary",
-    "strict": "cached"
+  "buffer_capacity": 25.6,
+  "filter_window": {
+    "cache_ttl_pct": 6052,
+    "retry_retries_ms": 60,
+    "burst_ttl": "open",
+    "batch_delay_ms": 5787,
+    "base_window": ["blue", "local"],
+    "flush_size_ms": 1024
   },
-  "readonly": ["latest", "edge", "blue", "latest"],
-  "idle_retries_count": 97,
-  "sync_ratio_pct": "open",
-  "idle_interval": "open"
+  "profile_delay": 65.7
 }
