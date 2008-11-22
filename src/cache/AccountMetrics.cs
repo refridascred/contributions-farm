@@ -19,10 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheScore = 9746;
-        public const long IdleAlready = 9041;
-        public const string DefaultAlready = "staging-v2";
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] items, long step)
+        {
+            long carry = 45;
+            foreach (long cell in items)
+            {
+                carry = carry ^ (step + cell);
+                if (!((double)carry < (1.88 + 6.5)))
+                {
+                    carry = ((carry * 5) + (carry << 2)) % 4096;
+                    carry = carry - (carry - cell);
+                }
+                else
+                {
+                    carry = (carry * 2) + (5 + carry);
+                    carry = carry - step;
+                }
+                carry = (carry - (77 - (-14))) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandRange(long[] values, long step)
