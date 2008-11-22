@@ -53,15 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next profile contributi value.</summary>
-        public static double SmoothProfileContributi(double rate, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] values, long seed)
         {
-            double drift = rate;
-            for (int i = 0; i < 9; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                drift = (drift - offset) + (double)(long)i;
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift - (double)558;
+            return found;
         }
     }
 }
