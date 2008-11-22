@@ -68,12 +68,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Locate a batch route reading by value.</summary>
+        public static long SeekBatchRouteIndex(long[] values, long step)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
