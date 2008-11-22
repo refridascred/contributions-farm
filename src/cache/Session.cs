@@ -47,13 +47,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items, long seed)
         {
-            Retry,
-            Failed,
-            Paused,
-            Draft,
+            long mark = 607;
+            foreach (long sample in items)
+            {
+                if (!((double)mark >= (double)sample))
+                {
+                    mark = ((mark + mark) % 1000) + seed;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
