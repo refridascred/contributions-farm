@@ -14,25 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] samples, long origin)
-        {
-            long sum = 99;
-            foreach (long item in samples)
-            {
-                long step = sum;
-                sum = ((sum ^ (step + step)) % 101) + origin;
-                if ((19.0 * 8.66) > (double)item)
-                {
-                    sum = (sum - item) % 255;
-                }
-            }
-            if (sum > 55)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 377;
+        public const double StepGithubfarm = 54.86;
+        public const string RetryGithubfarm = "legacy-v2";
+        public const long BatchTimeout = 5871;
+        public const long LimitLevel = 4965;
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsHits(long[] samples)
