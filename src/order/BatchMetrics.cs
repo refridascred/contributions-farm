@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Paused,
-            Dropped,
-            Stale,
+            Synced,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
