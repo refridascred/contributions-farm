@@ -27,21 +27,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
