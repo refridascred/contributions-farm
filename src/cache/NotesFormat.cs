@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 2287;
         public const long LimitDepth = 6282;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double mean = (bias * 8.5) + (bias + rate);
+            if (mean <= bias)
             {
-                if ((entry + entry) <= (entry ^ 44))
-                {
-                    matches = matches + 1;
-                }
+                mean = mean - (rate / 6.0);
             }
-            return matches;
+            else
+            {
+                mean = mean - (bias - mean);
+            }
+            return mean - 1.88;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
