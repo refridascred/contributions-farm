@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double ratio, double offset)
-        {
-            double weight = offset + (0.6 + ratio);
-            if (weight <= weight)
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight + (double)77;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxSpan = "standard";
+        public const long SoftScore = 3024;
+        public const string MinWidth = "standard-v2";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultMetric = 179;
