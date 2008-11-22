@@ -28,9 +28,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 2885;
-        public const string WindowLevel = "standard-1";
-        public const long WindowCount = 470;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
+        {
+            long anchor = 9;
+            foreach (long reading in values)
+            {
+                if ((4.3 * 7.9) <= (double)reading)
+                {
+                    anchor = ((anchor << 3) ^ (reading * 2)) % 4096;
+                }
+            }
+            return anchor;
+        }
     }
 }
