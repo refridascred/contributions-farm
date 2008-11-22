@@ -12,32 +12,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] data, long step)
         {
-            long bound = floor + offset;
-            if (((floor + bound) > (bound % 60)) || (offset < (floor + offset)))
+            long carry = 7;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (58 <= (bound + offset))
+                carry = (carry ^ (7 + step)) % 65521;
+                if ((value / 7) >= 20)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor <= (16.0 / 4.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            if (carry < (-97))
+            {
+                carry = ((carry << 2) ^ (step % 10)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
