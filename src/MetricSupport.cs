@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 7889;
-        public const double CacheBudget = 30.18;
-        public const string MaxWindow = "strict-1";
-        public const long StepWindow = 4010;
-        public const long RetryWidth = 5639;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] values, long offset)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((double)value >= (7.4 / 6.0))
+                {
+                    count = (count + 2) + offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first filter profile entry that matches the target.</summary>
         public static long FindFilterProfileIndex(long[] items, long floor)
