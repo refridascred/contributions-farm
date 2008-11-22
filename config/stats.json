@@ -1,17 +1,7 @@
 {
-  "cluster_window": "primary",
-  "cache_size": false,
-  "hard_limit_pct": {
-    "retry_threshold_pct": 24.62,
-    "soft_interval_ms": false,
-    "layout_retries": "blue",
-    "readonly": {
-      "verbose": "strict",
-      "max_size": 100,
-      "max_delay_count": "stable",
-      "strict": "legacy",
-      "persist": "green"
-    }
-  },
-  "retry_retries_count": ["primary", "stable", "blue", "primary"]
+  "warm_timeout_pct": 67.81,
+  "tools_timeout": 30,
+  "hard_timeout_s": ["eu-west", "staging", "stable", "latest"],
+  "warm_ratio_s": false,
+  "warm_timeout": 52
 }
