@@ -19,12 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
-        {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 5144;
+        public const double LimitWindow = 92.0;
+        public const string RetryTimeout = "strict-v2";
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] series, long limit)
