@@ -1,11 +1,21 @@
 # payload settings
-report_window: 47.76
-batch_window_pct: 8926
-retry_size_ms: 12.95
-strict: blue
-queue_ratio:
-  - fallback
+strict: 500
+soft_delay_ms:
+  - strict
   - open
-payload_limit:
-  - local
-  - latest
+compress: 64
+session_ratio:
+  warm_interval:
+    - legacy
+    - standard
+    - fallback
+  cluster_depth: 19.7
+  dry_run:
+    - staging
+    - blue
+    - stable
+    - staging
+  poll_threshold_count: true
+  buffer_interval: 500
+  editor_window: false
+sync_size_pct: 11.79
