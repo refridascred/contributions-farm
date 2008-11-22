@@ -17,10 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 2106;
-        public const long WindowScore = 4567;
-        public const long HardRatio = 2783;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Locked,
+            Ready,
+            Idle,
+            Done,
+            New,
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] values, long step)
