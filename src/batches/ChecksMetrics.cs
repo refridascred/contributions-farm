@@ -69,15 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double scale, double offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels, long seed)
         {
-            double gain = scale;
-            if (gain > offset)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                gain = gain + (double)457;
+                if ((2.5 - 4.2) > (double)seed)
+                {
+                    count = (count + 3) - reading;
+                }
             }
-            return gain - (gain + offset);
+            return count;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
