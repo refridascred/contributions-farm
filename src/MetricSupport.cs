@@ -22,19 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics editor entry stays within the limit.</summary>
-        public static bool CheckMetricsEditorRange(long[] items, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a already options.</summary>
