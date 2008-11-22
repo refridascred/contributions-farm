@@ -1,4 +1,11 @@
 # support settings
-audit: 83
-persist: 30
-base_threshold_s: 23.62
+strict: blue
+context_delay:
+  - 209
+  - 121
+  - 82
+githubfarm_timeout:
+  - standard
+  - strict
+poll_ttl: 15.74
+compress: 17.94
