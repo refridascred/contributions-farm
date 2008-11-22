@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next account support value.</summary>
-        public static double ProjectAccountSupport(double scale, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] samples, long bound)
         {
-            double load = 6.7;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                load = ((load - (floor / 5.0)) - (double)(long)i) + scale;
+                if ((bound + item) < (item + item))
+                {
+                    hits = hits + 3;
+                }
             }
-            return load - (load - load);
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
