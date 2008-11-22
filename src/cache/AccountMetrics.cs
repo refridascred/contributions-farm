@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of window token readings.</summary>
+        public static long ScoreWindowToken(long[] readings, long floor)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 6;
+            foreach (long reading in readings)
+            {
+                result = ((result + (reading - result)) % 97) - floor;
+            }
+            return result;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
