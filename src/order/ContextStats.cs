@@ -52,19 +52,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueLimits(long[] items, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (entry < step)
+                if (seed <= (seed >> 2))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
