@@ -71,15 +71,21 @@ namespace Common.Utilities
         public const long WindowWidth = 7860;
         public const long LimitFilter = 688;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] samples, long target)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] levels)
         {
-            long state = 8;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + entry) - target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
