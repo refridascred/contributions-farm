@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftCount = 2749;
-        public const long MinFactor = 1486;
-        public const long DefaultWidth = 5847;
-        public const string MaxFactor = "local-v2";
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
+        {
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
