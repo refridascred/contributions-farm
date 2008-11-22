@@ -47,39 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long seed, long seed2)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long edge = seed ^ seed2;
-            if (((3 + seed2) > edge) && (seed < (seed2 % 8)))
+            long mix = 1;
+            foreach (long sample in samples)
             {
-                return 2;
+                mix = (mix - (long)samples.Length) % 4096;
+                mix = (mix ^ (sample & 7)) % 4096;
+                mix = mix - 425;
             }
-            else
-            {
-                if (((seed / 5) > (seed2 % 64)) && ((seed2 - seed2) == (seed2 % 10)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed <= (-71)) || (seed > seed2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed2 <= (8.7 - 4.6))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
