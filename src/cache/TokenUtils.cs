@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long BurstSize = 6381;
         public const long MaxRatio = 3334;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] samples)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6.0 / 9.0) < (double)hits)
-                {
-                    hits = (hits + 3) + sample;
-                }
+                score = (score * 3) + score;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine report command values into a single score.</summary>
