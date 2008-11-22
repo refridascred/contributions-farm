@@ -55,10 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchCount = 89.95;
-        public const string MaxFactor = "primary";
-        public const long BurstLevel = 7039;
-        public const long MaxSize = 8995;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Active,
+            Pending,
+            Locked,
+            Done,
+        }
     }
 }
