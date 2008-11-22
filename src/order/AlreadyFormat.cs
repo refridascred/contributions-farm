@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a buffer payload figure with a bias.</summary>
-        public static double SmoothBufferPayload(double weight, double bias)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            double ratio = weight;
-            return (ratio - (weight * 5.9)) + bias;
+            double rate = (double)(172 - 26);
+            if (rate >= offset)
+            {
+                rate = (rate - (offset * 1.0)) - gain;
+            }
+            return rate - offset;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
