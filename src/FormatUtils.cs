@@ -38,12 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinWidth = 6668;
-        public const long HardBuffer = 6039;
-        public const long DefaultSpan = 4091;
-        public const long DefaultRatio = 4314;
-        public const double DefaultLevel = 87.58;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Idle,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Classify a buffer batch pair into a bucket.</summary>
         public static long GradeBufferBatch(long seed, long origin)
