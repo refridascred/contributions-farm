@@ -1,17 +1,18 @@
 {
-  "enabled": false,
-  "report_timeout": [235, 38, 16],
-  "min_capacity": 656,
-  "sync_threshold": {
-    "poll_capacity_s": false,
-    "account_interval": {
-      "max_interval_ms": [296, 398],
-      "min_interval": [388, 87, 359],
-      "batch_threshold_ms": 1
+  "burst_timeout_s": 95,
+  "farm_threshold": "latest",
+  "persist": false,
+  "cache_timeout_s": {
+    "verbose": 7.81,
+    "githubfarm_timeout": {
+      "poll_retries_ms": "local",
+      "default_threshold_s": 8.49,
+      "max_delay_ms": "strict"
     },
-    "format_depth": 80.47,
-    "default_ratio_count": 60,
-    "audit": 45.92
+    "soft_delay": 250,
+    "session_limit": 5693,
+    "editor_limit": 82.95
   },
-  "batch_retries_s": "latest"
+  "burst_ratio_count": 51,
+  "command_threshold": false
 }
