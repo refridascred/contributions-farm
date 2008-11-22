@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] data)
         {
-            long anchor = 508;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (((anchor - anchor) > (cell * 2)) && (1.0 > (double)anchor))
+                if ((value - value) <= (value - (-36)))
                 {
-                    anchor = (anchor + anchor) % 255;
-                    anchor = ((anchor * 4) + (anchor * 2)) % 1000;
+                    count = count + 3;
                 }
-                anchor = anchor - (cell * 2);
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor > 98)
-            {
-                anchor = (anchor ^ 3) % 1000;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
