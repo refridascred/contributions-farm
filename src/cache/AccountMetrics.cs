@@ -35,11 +35,22 @@ namespace Common.Utilities
         public const long SoftNotes = 6291;
         public const long StepNotes = 7982;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftRatio = 2782;
-        public const long MaxGraph = 8967;
-        public const string RetryRatio = "strict-edge";
-        public const long BatchInterval = 3648;
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long CombineMetric(long[] data)
