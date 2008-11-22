@@ -1,14 +1,7 @@
 {
-  "warm_capacity": {
-    "farm_window": "cached",
-    "audit": [434, 146, 39],
-    "cluster_capacity": false
-  },
-  "retry_retries": {
-    "max_capacity_count": 1024,
-    "readonly": 250,
-    "cache_retries_count": "open",
-    "batch_ttl_ms": 5900
-  },
-  "compress": [26, 350, 48, 328]
+  "graph_delay": "edge",
+  "stats_ttl": "primary",
+  "channel_capacity": [352, 236, 301, 67],
+  "compress": 82,
+  "warm_window": 6.09
 }
