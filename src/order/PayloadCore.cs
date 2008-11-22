@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] items, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long cur = target - bound;
+            if ((cur << 2) < (bound & 7))
             {
-                if (!(((406 + 847) < reading) || ((origin + reading) == (tally & 63))))
+                return 4;
+            }
+            else
+            {
+                if ((6.69 - 3.4) >= (11.0 / 2.0))
                 {
-                    tally = tally + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (target > (-772))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
