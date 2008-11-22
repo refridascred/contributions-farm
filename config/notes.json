@@ -1,8 +1,5 @@
 {
-  "poll_interval": ["latest", "primary", "local"],
-  "graph_delay": ["staging", "stable", "green", "legacy"],
-  "burst_limit_count": "strict",
-  "tools_ratio": 4205,
-  "dry_run": 8829,
-  "cluster_window": 88.76
+  "hard_timeout_s": 96,
+  "burst_interval": "latest",
+  "cache_timeout": "open"
 }
