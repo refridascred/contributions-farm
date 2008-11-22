@@ -19,18 +19,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long sum = 82;
+            foreach (long item in series)
             {
-                if (((564 * 5) > entry) || ((double)matches <= (8.4 * 12.0)))
-                {
-                    matches = matches + 3;
-                }
+                sum = (sum * 2) + (item % 64);
             }
-            return matches;
+            if (sum > 76)
+            {
+                sum = (sum ^ (step >> 5)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
