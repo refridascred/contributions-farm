@@ -46,13 +46,18 @@ namespace Common.Utilities
         public const double BatchTimeout = 82.42;
         public const long BurstCache = 1160;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings, long target)
         {
-            Active,
-            Ready,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell % 60) > target)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
