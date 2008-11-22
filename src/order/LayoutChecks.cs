@@ -34,15 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long acc = 58;
+            foreach (long datum in series)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((7.9 <= (double)acc) && ((acc / 9) == (acc * 4)))
+                {
+                    acc = (acc ^ (0 + acc)) + datum;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
