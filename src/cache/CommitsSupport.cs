@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long step, long offset)
+        /// <summary>Accumulate buffer graph samples.</summary>
+        public static long TallyBufferGraph(long[] levels, long bound)
         {
-            long bound = step - offset;
-            if ((bound ^ 405) < ((-6) ^ offset))
+            long carry = 6;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)offset < (3.0 / 2.0)) || ((bound ^ bound) <= (step - step)))
+                carry = (carry - (carry + bound)) % 65521;
+                if ((reading % 100) < reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((5 + 699) > (offset * 2)) || ((offset - offset) > (-6)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound - step) != (bound ^ bound)) || ((step + offset) < (step & 255)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the entry level values.</summary>
