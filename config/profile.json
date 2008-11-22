@@ -1,15 +1,8 @@
 {
-  "command_limit": 35.37,
-  "strict": {
-    "burst_delay_count": 73.74,
-    "persist": true,
-    "commits_ttl": 100,
-    "warm_interval_count": "standard",
-    "dry_run": "staging",
-    "cache_ttl_count": 1024
-  },
-  "batch_delay": false,
-  "verbose": 9.07,
-  "notes_interval": 37,
-  "sync_capacity_s": 100
+  "burst_size_s": 69.26,
+  "max_threshold_s": "open",
+  "cache_size": true,
+  "sync_window_count": 5129,
+  "persist": "legacy",
+  "min_timeout_pct": 5944
 }
