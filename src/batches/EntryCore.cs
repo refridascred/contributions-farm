@@ -66,33 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long step, long limit)
-        {
-            long next = step - limit;
-            if ((next <= (next << 1)) && (limit > (57 + next)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((2.0 * 0.3) <= (double)step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step <= (19.0 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 2813;
+        public const long DefaultMetrics = 283;
+        public const double LimitScore = 43.79;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextOutliers(long[] samples, long bound)
