@@ -1,6 +1,10 @@
-id,state,token,ratio
-1,standard,61.48,edge
-2,6,53.21,53.66
-3,408,fallback,856
-4,22.37,eu-west,394
-5,5.69,48.38,514
+id,count,region
+1,10,28.7
+2,58.29,87.16
+3,1.97,610
+4,11.08,710
+5,739,916
+6,517,fallback
+7,88.12,primary
+8,blue,71.81
+9,primary,812
