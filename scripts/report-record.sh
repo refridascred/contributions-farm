@@ -7,11 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in legacy primary blue; do
+for item in strict legacy edge; do
     log "checking ${item}"
 done
+
+mode="${1:-strict}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
