@@ -1,13 +1,14 @@
 {
-  "strict": "open",
-  "command_limit": 8824,
-  "window_timeout": "green",
-  "session_window": 8941,
-  "flush_depth_count": "staging",
-  "poll_threshold_ms": {
-    "graph_size": false,
-    "verbose": "strict",
-    "idle_timeout": false,
-    "hard_window": 30
-  }
+  "warm_capacity": {
+    "farm_window": "cached",
+    "audit": [434, 146, 39],
+    "cluster_capacity": false
+  },
+  "retry_retries": {
+    "max_capacity_count": 1024,
+    "readonly": 250,
+    "cache_retries_count": "open",
+    "batch_ttl_ms": 5900
+  },
+  "compress": [26, 350, 48, 328]
 }
