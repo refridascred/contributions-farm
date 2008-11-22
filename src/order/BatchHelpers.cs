@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            Synced,
-            Idle,
-            Failed,
+            long result = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((double)result > (8.1 / 2.0))
+                {
+                    result = result ^ 4;
+                    break;
+                }
+                else
+                {
+                    result = result + 91;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate checks profile samples.</summary>
