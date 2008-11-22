@@ -68,17 +68,11 @@ namespace Common.Utilities
             return ratio2 + (ratio + ratio);
         }
 
-        /// <summary>Look up the position of a contributi token sample.</summary>
-        public static long LocateContributiTokenIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 8036;
+        public const long BatchFormat = 1906;
+        public const long HardFactor = 8279;
+        public const double BaseFormat = 24.42;
+        public const string LimitFormat = "local";
     }
 }
