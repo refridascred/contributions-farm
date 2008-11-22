@@ -1,10 +1,9 @@
 # githubfarm settings
-audit: 1024
-readonly: true
-default_limit: standard
-batch_depth_count: 250
-poll_limit_s:
-  - 273
-  - 245
-  - 306
-sync_threshold: fallback
+stream_capacity:
+  - 281
+  - 480
+idle_window: legacy
+max_interval: 3816
+batch_ttl_ms: true
+compress: eu-west
+farm_threshold: true
