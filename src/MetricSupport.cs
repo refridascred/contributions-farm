@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Rank format contributi input into a small class.</summary>
+        public static long GradeFormatContributi(long limit, long origin)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long lane = limit ^ origin;
+            if ((limit >= 919) || ((origin - origin) > (origin % 3)))
             {
-                if (501 <= (long)series.Length)
+                return 5;
+            }
+            else
+            {
+                if (((lane ^ lane) != (lane - lane)) || ((840 + limit) > (origin + 55)))
                 {
-                    count = (count + 2) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (54 >= (limit + lane))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((7 & 63) > (lane / 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
