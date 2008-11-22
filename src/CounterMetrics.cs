@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long offset)
         {
-            New,
-            Dropped,
-            Locked,
-            Retry,
+            if ((19.0 - 7.8) <= (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((412 + origin) > (89 - offset)) || (32 < offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Locate a batches reading by value.</summary>
