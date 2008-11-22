@@ -56,12 +56,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double weight, double bias)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
+            double drift = (double)4;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (((drift + (drift * 4.45)) + (double)(long)i) + weight) + bias;
+            }
+            return drift + (drift / 2.0);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
