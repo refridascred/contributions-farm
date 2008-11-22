@@ -39,19 +39,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every payload filter entry stays within the limit.</summary>
-        public static bool GuardPayloadFilterRange(long[] series, long limit)
+        /// <summary>Audit command account readings against a rule.</summary>
+        public static long MeasureCommandAccountGaps(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (item >= limit)
+                if ((cell ^ seen) <= (seen ^ (-718)))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - origin;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
