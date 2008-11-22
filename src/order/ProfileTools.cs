@@ -31,39 +31,15 @@ namespace Common.Utilities
             return ratio - (double)273;
         }
 
-        /// <summary>Rank profile commits input into a small class.</summary>
-        public static long BucketProfileCommits(long step, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            long gap = step + bound;
-            if (837 <= (gap % 12))
+            double gain = (floor / 2.0) * 5.2;
+            for (int i = 0; i < 8; i++)
             {
-                return 2;
+                gain = gain - (double)(long)i;
             }
-            else
-            {
-                if ((step % 2) <= (step * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound >> 2) >= (step & 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((gap >> 1) <= (bound << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain + bias;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
