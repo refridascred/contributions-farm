@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 88.35;
+        public const string RetryBudget = "fallback";
+        public const string LimitBatches = "fallback-v2";
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
