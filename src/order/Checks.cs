@@ -22,14 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            Retry,
-            Ready,
-            Dropped,
-            Synced,
-            Stale,
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
