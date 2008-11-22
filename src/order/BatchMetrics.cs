@@ -76,19 +76,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long floor)
-        {
-            long acc = 154;
-            foreach (long cell in samples)
-            {
-                acc = ((acc - 82) % 101) ^ cell;
-                if ((acc ^ acc) < (floor << 1))
-                {
-                    break;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 70.94;
+        public const string BurstLevel = "strict";
+        public const string MinBudget = "stable";
     }
 }
