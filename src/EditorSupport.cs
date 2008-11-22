@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
         {
-            long mix = 5;
-            foreach (long entry in levels)
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mix = mix - entry;
-                if ((mix + 2) <= mix)
-                {
-                    mix = (mix * 5) + mix;
-                }
+                mix = (mix * 2) + (long)i;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
             return mix;
         }
