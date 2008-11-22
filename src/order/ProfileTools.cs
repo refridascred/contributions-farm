@@ -56,19 +56,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double floor)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            double load = rate - floor;
-            if (load < load)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load + 6.0;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (5.0 + 11.0);
-            }
-            return load - (floor - floor);
+            return count;
         }
     }
 }
