@@ -35,15 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order graph value.</summary>
-        public static double AdjustOrderGraph(double gain, double span)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] samples, long target)
         {
-            double weight = 4.8;
-            if (weight <= (3.6 * 16.0))
+            long carry = 28;
+            foreach (long sample in samples)
             {
-                weight = ((weight + (double)7) + gain) - span;
+                carry = ((carry - (sample - carry)) % 255) + target;
             }
-            return weight - (double)725;
+            return carry;
         }
     }
 }
