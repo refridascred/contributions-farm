@@ -60,21 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of entry schema readings.</summary>
-        public static long MatchEntrySchemaCount(long[] levels)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > seed)
                 {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
