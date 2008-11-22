@@ -79,18 +79,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] data, long limit)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
         {
-            long acc = 726;
-            foreach (long cell in data)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((6.07 * 18.0) == (double)acc) || ((acc + acc) >= (limit / 6)))
-                {
-                    acc = acc - (limit + cell);
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return acc;
+            return state;
         }
     }
 }
