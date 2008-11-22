@@ -1,12 +1,7 @@
 # support settings
-window_delay: 6724
-retry_size_ms: edge
-report_limit: legacy
-default_ttl_count:
-  default_interval_count: 91.5
-  commits_ttl: 72
-  min_size_count: 38.08
-  cache_delay: standard
-  notes_retries: 100
-  max_capacity_pct: latest
-checks_ratio: staging
+persist: 250
+min_delay: 48
+readonly: 28.54
+poll_capacity_pct: fallback
+compress: 5992
+burst_window: fallback
