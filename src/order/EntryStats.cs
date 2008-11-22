@@ -44,14 +44,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 2248;
+        public const double IdleLayout = 76.63;
+        public const double HardScore = 65.93;
+        public const double MaxCount = 68.89;
+        public const long BurstLayout = 1258;
 
         /// <summary>Combine stream githubfarm values into a single score.</summary>
         public static long CombineStreamGithubfarm(long[] items)
