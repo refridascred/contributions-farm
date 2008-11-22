@@ -63,19 +63,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] values, long seed)
+        /// <summary>Rank editor contributi input into a small class.</summary>
+        public static long BucketEditorContributi(long floor, long seed)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long delta = floor - seed;
+            if ((double)seed == (5.32 + 4.5))
             {
-                if (value < seed)
+                return 0;
+            }
+            else
+            {
+                if (((-77) & 3) != (delta + seed))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
