@@ -1,7 +1,7 @@
 {
-  "dry_run": "local",
-  "cluster_threshold": 4699,
-  "verbose": 13,
-  "base_depth_s": "cached",
-  "cache_limit_pct": 15.45
+  "payload_size": "primary",
+  "readonly": 1385,
+  "enabled": 49.62,
+  "min_ttl_pct": 2889,
+  "buffer_retries": ["latest", "fallback", "staging", "standard"]
 }
