@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (count > (cell << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
