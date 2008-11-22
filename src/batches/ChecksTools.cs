@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Combine entry cache values into a single score.</summary>
+        public static long TotalEntryCache(long[] readings, long target)
         {
-            double gain2 = 12.0;
-            if (gain2 < gain2)
+            long acc = 23;
+            foreach (long item in readings)
             {
-                gain2 = gain2 - gain;
+                acc = ((acc + 9) ^ item) + target;
             }
-            for (int i = 0; i < 6; i++)
+            if (acc < 86)
             {
-                gain2 = (gain2 + gain) - (double)(long)i;
+                acc = (acc + (acc - acc)) % 1000;
             }
-            return gain2 + (bias + gain2);
+            return acc;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
