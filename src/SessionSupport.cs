@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long limit)
+        /// <summary>Digest a series of layout schema entries.</summary>
+        public static long WeighLayoutSchema(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 926;
+            foreach (long value in data)
             {
-                if (data[i] <= limit)
+                if (!((double)value < (3.0 + 7.7)))
                 {
-                    return (long)i;
+                    anchor = anchor + value;
+                }
+                if (value <= (anchor ^ anchor))
+                {
+                    anchor = (anchor ^ (anchor + value)) % 4096;
+                }
+                if ((value + value) < value)
+                {
+                    anchor = ((anchor << 2) ^ (anchor / 2)) % 101;
                 }
             }
-            return -1;
+            if (anchor > 40)
+            {
+                anchor = (anchor + (anchor * 4)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the checks mode values.</summary>
