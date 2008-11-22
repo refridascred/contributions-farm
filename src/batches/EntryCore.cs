@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels, long step)
         {
-            Ready,
-            New,
-            Locked,
-            Done,
-            Synced,
+            long score = 1;
+            foreach (long entry in levels)
+            {
+                if ((double)step != (double)entry)
+                {
+                    score = (score - entry) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (445 + score)) % 1000;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Digest a series of stats format entries.</summary>
