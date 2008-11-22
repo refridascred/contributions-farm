@@ -12,23 +12,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] items)
+        /// <summary>Match up stream cache samples.</summary>
+        public static long MatchStreamCacheCount(long[] data)
         {
-            long mix = 42;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix * 2) + (value / 9);
-                if ((value + mix) <= (mix * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix ^ (value - (-64))) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 2) + (mix & 255);
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
