@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultFactor = "alpha-edge";
+        public const long BatchWidth = 7208;
+        public const double MinCache = 24.28;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] items, long step)
