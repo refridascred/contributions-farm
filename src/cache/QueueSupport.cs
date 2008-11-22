@@ -39,18 +39,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long carry = 81;
-            foreach (long datum in levels)
-            {
-                if (((double)carry <= (18.0 + 9.0)) || (8.6 > (double)datum))
-                {
-                    carry = (carry + (carry & 7)) % 255;
-                }
-            }
-            return carry % 1000;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
