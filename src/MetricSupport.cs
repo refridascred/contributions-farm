@@ -29,39 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long target, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] data, long floor)
         {
-            long next = target + offset;
-            if ((target - target) <= (555 + target))
+            bool found = true;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target - offset) >= (offset % 7))
+                if (entry <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((15.0 - 0.1) < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + next) != (next + next))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
