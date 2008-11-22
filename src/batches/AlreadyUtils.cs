@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many layout githubfarm samples are out of range.</summary>
-        public static long TallyLayoutGithubfarmHits(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)floor < 8.97)
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryNotes = "open-edge";
+        public const double CacheTimeout = 18.87;
+        public const long IdleLevel = 2158;
+        public const long IdleSize = 6219;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] data)
