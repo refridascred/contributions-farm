@@ -1,13 +1,20 @@
 {
-  "persist": {
-    "compress": 57,
-    "persist": false,
-    "batches_ratio": 13.65
+  "sync_interval": {
+    "hard_threshold": "local",
+    "dry_run": true,
+    "batch_ttl": 22.52,
+    "strict": "strict",
+    "enabled": 27.06,
+    "hard_threshold_count": {
+      "metrics_window": "green",
+      "burst_threshold": 9,
+      "farm_delay": false,
+      "notes_interval": 500
+    }
   },
-  "flush_window_count": {
-    "verbose": 36.2,
-    "base_delay_ms": "blue",
-    "cache_ttl_count": "primary"
-  },
-  "cluster_timeout": 19.47
+  "default_limit_ms": 74.29,
+  "flush_ratio_ms": 43,
+  "sync_retries_count": "standard",
+  "idle_size_s": 47,
+  "default_threshold_ms": "standard"
 }
