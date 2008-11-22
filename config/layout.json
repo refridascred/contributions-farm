@@ -1,13 +1,6 @@
 {
-  "warm_ttl_s": "open",
-  "persist": 23.87,
-  "metric_ratio": 1024,
-  "profile_ttl": {
-    "poll_retries": "cached",
-    "min_timeout_count": 75.33,
-    "strict": [142, 151, 492],
-    "compress": false,
-    "record_retries": ["primary", "open", "strict", "open"],
-    "tools_threshold": "legacy"
-  }
+  "cache_limit_s": ["local", "legacy", "green"],
+  "tools_delay": 4491,
+  "min_window_ms": 71.86,
+  "verbose": ["primary", "latest", "blue", "blue"]
 }
