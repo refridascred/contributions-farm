@@ -50,15 +50,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            double scale2 = bias * 1.0;
-            if (scale2 >= (double)98)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                scale2 = (scale2 - (bias + bias)) + scale;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return scale2 - scale2;
+            return acc;
         }
     }
 }
