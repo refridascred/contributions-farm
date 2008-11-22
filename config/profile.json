@@ -1,6 +1,12 @@
 {
-  "batch_capacity_ms": 2933,
-  "compress": 1024,
-  "poll_limit": 90.64,
-  "verbose": true
+  "strict": 36.82,
+  "command_limit": 6.38,
+  "graph_depth": false,
+  "cache_interval": {
+    "compress": "cached",
+    "default_limit": true,
+    "persist": 9946,
+    "profile_limit": "local",
+    "channel_ttl": 6046
+  }
 }
