@@ -47,31 +47,17 @@ namespace Common.Utilities
             return ((rate - (double)21) + gain) + bias;
         }
 
-        /// <summary>Grade a token schema value against two limits.</summary>
-        public static long BucketTokenSchema(long offset, long offset2)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] levels, long target)
         {
-            if (((offset << 1) >= (offset - 640)) || (offset2 <= (offset << 2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((273 / 3) >= (offset2 + offset))
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((-796) + 8) <= offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
