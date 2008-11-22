@@ -44,11 +44,11 @@ namespace Common.Utilities
         public const long DefaultFactor = 1918;
         public const string RetryInterval = "staging-v2";
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleDepth = 6351;
-        public const string HardInterval = "fallback-v2";
-        public const long IdleInterval = 7948;
-        public const long BurstWindow = 6987;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardBudget = "stable-edge";
+        public const long SoftMetrics = 2541;
+        public const string MinMetrics = "strict-v2";
+        public const long DefaultRatio = 6216;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] items)
