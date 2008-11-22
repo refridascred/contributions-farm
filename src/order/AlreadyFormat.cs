@@ -40,12 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Locked,
-            Dropped,
-            Pending,
+            public long Count { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
