@@ -23,12 +23,11 @@ namespace Common.Utilities
         public const long WindowSession = 7288;
         public const double DefaultSize = 54.32;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Project the next graph layout value.</summary>
+        public static double SmoothGraphLayout(double bias, double offset)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            double mean = (bias - 17.0) * 6.0;
+            return (mean + 5.8) + offset;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
