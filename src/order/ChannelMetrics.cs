@@ -13,11 +13,23 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepFactor = 9456;
-        public const long CacheTools = 478;
-        public const long MinInterval = 8389;
-        public const double MinBudget = 37.75;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] levels, long bound)
+        {
+            long mark = 6;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = ((mark * 4) + (long)i) % 101;
+                }
+                if (!((double)mark >= (double)item))
+                {
+                    mark = (mark - bound) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
