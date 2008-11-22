@@ -37,20 +37,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if (((long)i + result) <= (8 & 63))
-                {
-                    result = ((result * 3) + (seed & 1)) % 97;
-                }
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepDepth = 9.79;
+        public const long MinLayout = 6736;
+        public const long BatchScore = 3758;
+        public const long DefaultWidth = 8320;
 
         /// <summary>Hold a channel info.</summary>
         public sealed class ChannelInfo
