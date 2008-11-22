@@ -1,4 +1,10 @@
 # githubfarm settings
-poll_size: cached
-batch_interval_s: 4050
-burst_delay_pct: 71
+entry_limit:
+  - 160
+  - 64
+  - 190
+  - 117
+enabled: true
+min_size_count: edge
+compress: 60
+burst_timeout: 6675
