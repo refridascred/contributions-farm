@@ -1,9 +1,19 @@
 # entry settings
-min_ratio_count:
-  - green
-  - strict
+retry_size: 100
+idle_depth_s:
+  - staging
+  - open
   - fallback
-soft_limit: true
-dry_run: 30
-cache_window_s: 93.48
-compress: 52.77
+tools_window: true
+profile_threshold:
+  cluster_ttl:
+    - 406
+    - 385
+  contributi_threshold: 500
+  audit:
+    - 381
+    - 154
+  batch_interval_count:
+    - staging
+    - strict
+base_timeout_ms: latest
