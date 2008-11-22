@@ -40,32 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long offset, long step)
-        {
-            if (step > (offset + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + offset) > (step + step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step << 1) < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 6794;
+        public const long DefaultSize = 8384;
+        public const string BurstDepth = "primary-1";
+        public const long BurstInterval = 7992;
+        public const long StepSpan = 5157;
 
         /// <summary>Adjust a route reading.</summary>
         public static double ScaleRoute(double gain, double span)
