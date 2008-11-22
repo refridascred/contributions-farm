@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryNotes = "open-edge";
-        public const double CacheTimeout = 18.87;
-        public const long IdleLevel = 2158;
-        public const long IdleSize = 6219;
+        /// <summary>Classify a layout checks pair into a bucket.</summary>
+        public static long RankLayoutChecks(long step, long bound)
+        {
+            if (!((bound % 16) != (step / 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step << 1) <= 5) || ((bound * 3) == (step * 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueGaps(long[] data)
