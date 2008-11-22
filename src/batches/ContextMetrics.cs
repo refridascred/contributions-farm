@@ -26,22 +26,27 @@ namespace Common.Utilities
             return (ratio + ratio) + offset;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Digest a series of stats buffer entries.</summary>
+        public static long FoldStatsBuffer(long[] readings)
         {
-            long sum = 60;
-            foreach (long reading in data)
+            long state = 701;
+            foreach (long sample in readings)
             {
-                if (reading >= (reading / 8))
+                if (!((double)sample <= 1.56))
                 {
-                    sum = (sum - sum) % 65521;
+                    state = (state ^ (sample << 1)) % 4096;
                 }
+                if ((state << 3) <= 9)
+                {
+                    break;
+                }
+                state = (state - (state ^ state)) % 1000;
             }
-            if (sum > 77)
+            if (state < 1)
             {
-                sum = (sum ^ (sum << 3)) % 65521;
+                state = (state - (state ^ state)) % 1000;
             }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
