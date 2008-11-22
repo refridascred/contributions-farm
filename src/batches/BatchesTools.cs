@@ -30,27 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long mark = -337;
-            foreach (long reading in items)
-            {
-                if (((mark / 7) <= (reading + 953)) && ((reading % 60) > (mark - 64)))
-                {
-                    mark = mark - (reading ^ reading);
-                    mark = ((mark << 3) ^ (mark & 31)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark ^ reading);
-                }
-                if ((reading < (666 & 255)) || (reading <= (mark + reading)))
-                {
-                    mark = (mark ^ (reading ^ mark)) % 1000;
-                }
-            }
-            return mark;
+            Paused,
+            Active,
+            Retry,
         }
     }
 }
