@@ -13,32 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long step, long origin)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long bound = step ^ origin;
-            if (bound > (step ^ 7))
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (origin >= (bound + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 2) != (origin + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a filter stats.</summary>
