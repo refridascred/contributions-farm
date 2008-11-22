@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm profile samples.</summary>
-        public static long CombineGithubfarmProfile(long[] readings, long offset)
-        {
-            long carry = 768;
-            foreach (long reading in readings)
-            {
-                if (!((reading - offset) >= (973 >> 1)))
-                {
-                    carry = (carry ^ (reading & 7)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-            }
-            if (carry < 15)
-            {
-                carry = ((carry << 2) ^ (9 - carry)) % 255;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseLevel = "local-edge";
+        public const long CacheRatio = 3152;
+        public const long RetryBudget = 7353;
+        public const long BurstFarm = 3885;
+        public const long WindowBudget = 7397;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
