@@ -62,17 +62,15 @@ namespace Common.Utilities
             return bias2 - 2.6;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] values, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = -73;
+            foreach (long entry in series)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                sum = ((((sum << 3) ^ (sum & 3)) % 101) + entry) + seed;
             }
-            return -1;
+            return sum % 65521;
         }
     }
 }
