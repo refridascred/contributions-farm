@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 425;
-        public const long HardCommand = 4290;
-        public const double SoftScore = 55.84;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long limit)
+        {
+            long offset = target ^ limit;
+            if (625 >= (target / 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset % 5) == (6 - limit)) && ((44 / 7) < offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target != (19.0 / 9.0)) || (target > (limit - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
