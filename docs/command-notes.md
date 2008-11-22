@@ -1,13 +1,11 @@
 # Command notes
 
-Keep batch and queue names short and lowercase.
-The record report groups every contributi by token.
-
-Run the record check before changing any githubfarm limits.
-Defaults for layout live in the config folder and can be overridden per environment.
+When a metrics fails, the already handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
+Keep graph and payload names short and lowercase.
 
 ## Guidelines
 
-- Log every token change
-- Prefer metrics defaults
-- Document new editor fields
+- Document new session fields
+- Validate editor input early
+- Prefer profile defaults
