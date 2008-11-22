@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double AdjustFormat(double ratio, double span)
         {
-            long score = 3;
-            foreach (long sample in items)
+            double bias = ratio * 5.68;
+            if (bias < (double)806)
             {
-                if ((double)sample == (3.23 + 3.0))
-                {
-                    score = (score - (6 - score)) % 255;
-                }
+                bias = bias + ratio;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
