@@ -1,19 +1,7 @@
 {
-  "audit": {
-    "sync_timeout_s": [464, 467],
-    "compress": true,
-    "notes_size": false,
-    "batches_depth": "stable"
-  },
-  "flush_size": ["green", "local", "latest"],
-  "persist": [449, 4, 169],
-  "hard_retries_s": "strict",
-  "hard_delay_ms": true,
-  "flush_limit": {
-    "enabled": 4.25,
-    "hard_size_pct": 67,
-    "record_depth": [38, 283, 260],
-    "poll_capacity": 53,
-    "dry_run": ["cached", "eu-west", "staging", "green"]
-  }
+  "dry_run": "local",
+  "cluster_threshold": 4699,
+  "verbose": 13,
+  "base_depth_s": "cached",
+  "cache_limit_pct": 15.45
 }
