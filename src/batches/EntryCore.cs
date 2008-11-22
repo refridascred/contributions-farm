@@ -73,15 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double weight, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] samples, long bound)
         {
-            double gain = weight;
-            if (gain >= weight)
+            long count = 0;
+            foreach (long item in samples)
             {
-                gain = (gain - (gain / 8.0)) + offset;
+                if ((item + item) >= bound)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + gain;
+            return count;
         }
     }
 }
