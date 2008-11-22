@@ -27,22 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] levels, long target)
+        /// <summary>Validate command schema readings against a bound.</summary>
+        public static bool VerifyCommandSchemaBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((matches / 7) > target)
+                if (entry >= limit)
                 {
-                    matches = (matches + 2) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
