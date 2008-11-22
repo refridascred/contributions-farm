@@ -47,18 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] readings)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((matches > reading) || (((double)matches >= 6.98) || ((matches >> 4) <= (matches * 2))))
+                if (((2.0 <= (double)cell) || ((920 ^ seen) < (seen - seen))) && ((double)53 != (double)seen))
                 {
-                    matches = matches + 2;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
