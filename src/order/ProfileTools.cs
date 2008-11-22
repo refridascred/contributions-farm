@@ -32,13 +32,11 @@ namespace Common.Utilities
         public const double HardPayload = 46.96;
         public const long MinPayload = 5125;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Paused,
-            Active,
-            Queued,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftSize = 1191;
+        public const double WindowSpan = 10.73;
+        public const double BaseNotes = 91.3;
+        public const double RetryRatio = 44.51;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
