@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            New,
-            Queued,
-            Ready,
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
