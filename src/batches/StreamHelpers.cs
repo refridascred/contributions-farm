@@ -25,19 +25,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double rate, double offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long floor)
         {
-            double bias = 6.45;
-            if (bias > (bias - bias))
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                bias = (bias - offset) - rate;
+                if ((floor ^ floor) > floor)
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state + (long)i) % 65521;
+                }
+                state = ((state << 2) ^ floor) % 97;
+                if (state <= 5)
+                {
+                    state = (state ^ state) % 4096;
+                }
+                else
+                {
+                    state = state + ((long)i & 3);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias - (0.87 - bias);
-            }
-            return bias - offset;
+            return state;
         }
 
         /// <summary>Fold a list of metrics batches readings.</summary>
