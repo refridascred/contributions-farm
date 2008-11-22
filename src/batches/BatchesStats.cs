@@ -13,13 +13,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long seed, long seed2)
         {
-            Stale,
-            Closed,
-            Queued,
-            Pending,
+            if (seed2 < (seed2 >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 / 9) == (seed2 + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed ^ 671) > seed2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache class values.</summary>
