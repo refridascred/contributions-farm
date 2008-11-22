@@ -1,4 +1,9 @@
 # entry settings
-soft_ttl: green
-base_size: 32.28
-idle_window_s: eu-west
+burst_threshold:
+  persist: blue
+  audit: 62
+  strict: 9796
+  sync_ratio: 96.86
+  verbose: 24.76
+batch_depth_pct: 39
+strict: strict
