@@ -43,22 +43,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings, long bound)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mix = 84;
-            foreach (long reading in readings)
-            {
-                if (!(bound > (22 >> 1)))
-                {
-                    mix = mix ^ (reading << 2);
-                }
-                else
-                {
-                    mix = ((mix * 2) + (bound - mix)) % 255;
-                }
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
