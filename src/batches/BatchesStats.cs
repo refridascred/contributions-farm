@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the payload notes entries that pass the check.</summary>
-        public static long AuditPayloadNotesGaps(long[] levels, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((954 % 16) > count)
-                {
-                    count = ((count + 3) ^ datum) - offset;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
