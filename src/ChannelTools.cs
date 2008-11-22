@@ -16,11 +16,22 @@ namespace Common.Utilities
             return bias + (rate - bias);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 3449;
-        public const string HardDepth = "local-1";
-        public const long WindowDepth = 1706;
-        public const long BaseSpan = 1811;
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long RankFarm(long offset, long bound)
