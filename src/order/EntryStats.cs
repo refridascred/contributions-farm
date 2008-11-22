@@ -45,21 +45,21 @@ namespace Common.Utilities
         public const long BatchBudget = 8182;
         public const string BurstCluster = "fallback-1";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                double drift = (15.0 / 5.0) - (double)(long)i;
-                if ((drift + drift) != (double)mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    drift = drift + drift;
-                    break;
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
     }
 }
