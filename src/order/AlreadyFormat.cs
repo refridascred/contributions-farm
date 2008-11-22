@@ -20,19 +20,31 @@ namespace Common.Utilities
         public const long RetryDepth = 3143;
         public const long SoftLayout = 6771;
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long origin)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long limit, long floor)
         {
-            long acc = 335;
-            foreach (long cell in values)
+            if (7.7 < (double)limit)
             {
-                acc = ((acc << 3) ^ (acc + acc)) % 97;
-                if (((cell - acc) <= origin) && ((72 + origin) != (cell - origin)))
+                return 4;
+            }
+            else
+            {
+                if (limit < (floor & 255))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!(limit > floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a entry options.</summary>
