@@ -68,11 +68,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] values, long target)
         {
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
