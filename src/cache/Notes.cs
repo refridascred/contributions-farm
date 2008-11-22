@@ -43,11 +43,14 @@ namespace Common.Utilities
         public const long BatchScore = 3758;
         public const long DefaultWidth = 8320;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            Draft,
+            Done,
+            Retry,
+            Active,
+            Queued,
         }
     }
 }
