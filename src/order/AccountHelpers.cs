@@ -19,20 +19,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long state = offset;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = (state ^ ((long)i & 255)) % 255;
-                if ((double)offset < 0.6)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Iterate the channel filter series from a seed.</summary>
