@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long IdleFarm = 6685;
         public const long SoftWidth = 1400;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Dropped,
-            Ready,
-            Idle,
-            Stale,
-            Active,
+            public string Score { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
