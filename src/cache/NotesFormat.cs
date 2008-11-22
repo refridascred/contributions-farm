@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6992;
-        public const long BaseSize = 2604;
-        public const long CachePayload = 3332;
-        public const long LimitSpan = 2005;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardSize = 847;
+        public const double MaxBatch = 32.55;
+        public const long DefaultBatch = 2287;
+        public const long LimitDepth = 6282;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderOutliers(long[] items)
