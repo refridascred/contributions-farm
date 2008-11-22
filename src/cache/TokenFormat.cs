@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultScore = 5385;
-        public const double MaxSpan = 53.16;
-        public const long SoftTimeout = 4721;
-        public const long StepChannel = 2567;
-        public const long CacheCount = 3644;
+        /// <summary>Measure how many batch batches samples are out of range.</summary>
+        public static long TallyBatchBatchesMatches(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((limit ^ entry) <= 82)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] data, long offset)
