@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long CacheRatio = 7720;
         public const long SoftCache = 8724;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Measure how many cluster token samples are out of range.</summary>
+        public static long MeasureClusterTokenOutliers(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((mark / 6) > limit)
+                if (((cell ^ matches) >= matches) || (cell >= matches))
                 {
-                    mark = (mark * 3) + (long)i;
+                    matches = matches + 3;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
