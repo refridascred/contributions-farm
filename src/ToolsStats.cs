@@ -20,11 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long step, long offset)
         {
-            public double Label { get; set; }
-            public double Level { get; set; }
+            if (((step + offset) <= (32 * 2)) || ((double)offset == (5.0 * 2.34)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step & 7) < (offset + offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset < (2.0 * 7.03))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
