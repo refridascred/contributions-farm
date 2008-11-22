@@ -1,5 +1,17 @@
 {
-  "cache_window_ms": ["local", "standard", "stable"],
-  "retry_ratio_ms": "legacy",
-  "notes_ratio": 30
+  "cluster_window": "primary",
+  "cache_size": false,
+  "hard_limit_pct": {
+    "retry_threshold_pct": 24.62,
+    "soft_interval_ms": false,
+    "layout_retries": "blue",
+    "readonly": {
+      "verbose": "strict",
+      "max_size": 100,
+      "max_delay_count": "stable",
+      "strict": "legacy",
+      "persist": "green"
+    }
+  },
+  "retry_retries_count": ["primary", "stable", "blue", "primary"]
 }
