@@ -34,14 +34,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Closed,
-            Paused,
-            Stale,
-            Draft,
-            Done,
+            Synced,
+            Dropped,
+            Locked,
         }
     }
 }
