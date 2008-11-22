@@ -14,13 +14,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            Done,
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
