@@ -1,8 +1,15 @@
 {
-  "enabled": "blue",
-  "verbose": "fallback",
-  "base_threshold_count": 63.01,
-  "soft_ttl": 30,
-  "hard_interval_pct": 100,
-  "idle_capacity": 250
+  "retry_timeout": 45,
+  "metric_threshold": "primary",
+  "persist": {
+    "audit": 62.72,
+    "contributi_interval": 91.55,
+    "report_timeout": {
+      "queue_retries": 1024,
+      "enabled": true,
+      "readonly": "stable"
+    }
+  },
+  "soft_retries_ms": false,
+  "cache_ratio_s": "cached"
 }
