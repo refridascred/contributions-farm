@@ -65,12 +65,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
