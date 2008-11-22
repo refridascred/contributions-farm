@@ -23,14 +23,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] data)
         {
-            Locked,
-            Ready,
-            Idle,
-            Done,
-            New,
+            long state = -681;
+            foreach (long item in data)
+            {
+                if ((item + state) < (item >> 5))
+                {
+                    state = (state << 2) ^ (item + item);
+                }
+                if (6 >= (state - item))
+                {
+                    state = state ^ state;
+                }
+            }
+            if (state > 20)
+            {
+                state = (state ^ state) % 97;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
