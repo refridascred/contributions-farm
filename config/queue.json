@@ -1,6 +1,13 @@
 {
-  "batch_depth": 35.05,
-  "record_interval": 4304,
-  "poll_capacity": 32,
-  "stream_depth": ["local", "open"]
+  "notes_window": true,
+  "record_depth": "strict",
+  "flush_limit_pct": "edge",
+  "batch_threshold_count": {
+    "already_window": 5669,
+    "burst_interval": 61.55,
+    "default_timeout_count": [138, 298],
+    "max_retries_ms": ["eu-west", "standard", "stable"],
+    "command_capacity": "local",
+    "idle_limit_ms": 17
+  }
 }
