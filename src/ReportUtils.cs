@@ -20,12 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 132;
-        public const string MinTimeout = "open-1";
-        public const long MinTools = 4125;
-        public const double RetryBudget = 79.46;
-        public const long StepRatio = 2995;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
