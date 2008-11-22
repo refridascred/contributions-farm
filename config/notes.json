@@ -1,7 +1,9 @@
 {
-  "token_retries": false,
-  "entry_size": "stable",
-  "verbose": ["green", "fallback", "stable", "staging"],
-  "already_window": "edge",
-  "soft_size_ms": 99
+  "retry_threshold_pct": {
+    "hard_capacity_pct": 72.53,
+    "default_window_ms": "cached",
+    "burst_delay_ms": 500
+  },
+  "channel_capacity": 78.75,
+  "burst_retries": 500
 }
