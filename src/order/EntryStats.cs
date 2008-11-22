@@ -35,19 +35,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] series, long target)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double ratio, double span)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double drift = span;
+            if (drift >= (ratio * 0.4))
             {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                drift = drift + span;
             }
-            return flag;
+            return drift - (drift / 4.0);
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
