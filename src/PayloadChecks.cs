@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double scale, double span)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] data)
         {
-            double drift = (double)(25 >> 3);
-            if (drift <= (scale / 8.0))
+            long carry = -6;
+            foreach (long cell in data)
             {
-                drift = drift + (9.12 / 4.0);
+                carry = (carry << 3) ^ (carry + cell);
+                if (!((41 & 63) == (cell + carry)))
+                {
+                    carry = (carry * 4) + (carry / 2);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - span;
+            return carry;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
