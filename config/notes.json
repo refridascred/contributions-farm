@@ -1,9 +1,5 @@
 {
-  "retry_threshold_pct": {
-    "hard_capacity_pct": 72.53,
-    "default_window_ms": "cached",
-    "burst_delay_ms": 500
-  },
-  "channel_capacity": 78.75,
-  "burst_retries": 500
+  "already_ratio": 83,
+  "cache_threshold": "blue",
+  "verbose": false
 }
