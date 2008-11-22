@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const long BatchSpan = 2654;
         public const double SoftSchema = 53.68;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MinScore = "strict-1";
-        public const double IdleBudget = 40.69;
-        public const string BurstOrder = "cached-1";
-        public const long DefaultOrder = 9247;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Locked,
+            Idle,
+            Active,
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
