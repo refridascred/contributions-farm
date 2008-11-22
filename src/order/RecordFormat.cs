@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate token stats samples.</summary>
-        public static long TallyTokenStats(long[] values, long bound)
-        {
-            long total = 4;
-            foreach (long entry in values)
-            {
-                if ((total + 4) == ((long)values.Length << 2))
-                {
-                    total = (total ^ (bound + bound)) % 65521;
-                }
-                else
-                {
-                    total = (total + (entry % 16)) % 4096;
-                }
-                if (!((entry + 48) > (bound ^ bound)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 45.75;
+        public const long DefaultSize = 5868;
+        public const long MinEditor = 715;
+        public const long StepEditor = 119;
+        public const double BaseLevel = 22.51;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
