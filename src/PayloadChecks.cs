@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiHits(long[] data, long limit)
         {
-            long carry = -6;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                carry = (carry << 3) ^ (carry + cell);
-                if (!((41 & 63) == (cell + carry)))
+                if ((double)hits <= 3.9)
                 {
-                    carry = (carry * 4) + (carry / 2);
+                    hits = ((hits + 3) ^ reading) + limit;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
