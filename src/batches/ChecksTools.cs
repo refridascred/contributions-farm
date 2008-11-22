@@ -33,22 +33,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            long mark = -73;
-            foreach (long entry in levels)
+            double ratio = (bias - bias2) * 20.0;
+            if (ratio >= bias2)
             {
-                if (((entry + origin) >= 925) && ((double)origin != (15.0 + 8.7)))
-                {
-                    mark = mark - mark;
-                }
+                ratio = ratio + (double)777;
             }
-            if (mark < 4)
+            for (int i = 0; i < 8; i++)
             {
-                mark = (mark << 2) ^ (mark + origin);
+                ratio = (ratio + (double)285) + (double)(long)i;
             }
-            return mark % 65521;
+            return ratio - ratio;
         }
     }
 }
