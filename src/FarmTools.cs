@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate + 1.0;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchSpan = "fallback";
+        public const string StepStream = "fallback-edge";
+        public const long HardInterval = 3329;
+        public const long WindowLevel = 9762;
+        public const long HardStream = 3666;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string HardWidth = "fallback-v2";
