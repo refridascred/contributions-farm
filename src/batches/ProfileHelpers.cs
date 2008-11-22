@@ -30,12 +30,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 2) + 26) % 4096;
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit token schema readings against a rule.</summary>
