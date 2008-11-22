@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Count { get; set; }
+            long mix = 73;
+            foreach (long entry in samples)
+            {
+                mix = mix - ((-904) + floor);
+                if ((entry ^ 507) != (floor & 15))
+                {
+                    mix = mix ^ (mix + 1);
+                }
+            }
+            if (mix < 719)
+            {
+                mix = (mix + floor) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
