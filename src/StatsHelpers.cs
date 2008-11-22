@@ -59,14 +59,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long offset)
         {
-            Draft,
-            Stale,
-            Retry,
-            Failed,
-            Pending,
+            if (offset > (offset % 60))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed > 6.1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed > (offset + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset <= (offset - offset)) && ((16.0 - 12.0) <= (double)offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
