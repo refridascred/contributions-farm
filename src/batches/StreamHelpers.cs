@@ -74,10 +74,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 8500;
-        public const double DefaultSize = 72.63;
-        public const string RetryBuffer = "legacy-edge";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!!((sample + sample) >= 2))
+                {
+                    seen = (seen + 2) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
