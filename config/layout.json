@@ -1,5 +1,7 @@
 {
-  "cache_ratio": 21.14,
-  "dry_run": [472, 206, 143, 51],
-  "warm_ratio": 100
+  "audit": false,
+  "burst_size": [232, 108, 432],
+  "retry_window_count": "eu-west",
+  "readonly": "cached",
+  "warm_timeout_s": 91
 }
