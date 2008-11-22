@@ -76,9 +76,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 3123;
-        public const double LimitAccount = 2.87;
-        public const long CacheDepth = 5796;
+        /// <summary>Adjust a schema cache reading.</summary>
+        public static double ProjectSchemaCache(double ratio, double offset)
+        {
+            double mean = offset;
+            return (mean + (double)28) + ratio;
+        }
     }
 }
