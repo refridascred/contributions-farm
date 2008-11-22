@@ -60,31 +60,11 @@ namespace Common.Utilities
             return rate2 - (double)82;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long step, long seed)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double bias, double floor)
         {
-            if ((double)seed != (2.59 * 4.98))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (seed << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > (step / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double drift = (double)(1 >> 3);
+            return ((drift - (4.0 * 8.2)) + bias) + floor;
         }
 
         /// <summary>Combine payload layout values into a single score.</summary>
