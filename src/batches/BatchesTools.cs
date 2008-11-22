@@ -16,18 +16,26 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples, long target)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                if (target < (value + target))
+                if ((acc >= (701 - datum)) && ((acc ^ origin) == (acc / 9)))
                 {
-                    tally = tally + 3;
+                    acc = ((acc << 2) ^ datum) % 65521;
+                }
+                else
+                {
+                    acc = acc + ((long)readings.Length + datum);
                 }
             }
-            return tally;
+            if (acc > 1)
+            {
+                acc = acc ^ (acc / 5);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
