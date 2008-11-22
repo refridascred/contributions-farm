@@ -34,12 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheRatio = "staging-edge";
+        public const double BurstSupport = 34.68;
+        public const long HardCount = 4538;
+        public const double SoftFactor = 19.56;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] series)
