@@ -47,17 +47,11 @@ namespace Common.Utilities
             return ((rate - (double)21) + gain) + bias;
         }
 
-        /// <summary>Iterate the notes counter series from a seed.</summary>
-        public static long IterateNotesCounter(long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = (score ^ (target + target)) % 65521;
-                score = ((score * 3) + (score & 127)) % 1000;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
