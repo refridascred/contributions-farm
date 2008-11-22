@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long bound, long offset)
         {
-            Active,
-            Pending,
-            Locked,
+            if ((bound & 31) < bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((8.92 * 4.4) != (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound >> 1) != ((-249) * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
