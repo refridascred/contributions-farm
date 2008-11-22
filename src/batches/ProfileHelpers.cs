@@ -38,21 +38,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Audit token schema readings against a rule.</summary>
+        public static long CountTokenSchemaGaps(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (hits < (hits % 5))
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the schema state values.</summary>
