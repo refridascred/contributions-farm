@@ -57,13 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            Dropped,
-            Active,
-            Paused,
-            Synced,
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (7.82 > (double)(long)i)
+                {
+                    anchor = (anchor * 3) + bound;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
