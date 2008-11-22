@@ -31,23 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many queue counter samples are out of range.</summary>
-        public static long CountQueueCounterMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((((54 >> 3) == (tally + reading)) && (tally < (reading & 7))) || (tally >= (231 - tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSpan = "local-1";
+        public const long MinInterval = 8103;
+        public const string HardSize = "open-1";
 
         /// <summary>Locate a record checks reading by value.</summary>
         public static long LookupRecordChecksIndex(long[] levels, long origin)
