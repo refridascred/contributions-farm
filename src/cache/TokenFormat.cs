@@ -20,11 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
