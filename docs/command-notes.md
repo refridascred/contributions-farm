@@ -1,11 +1,11 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the batches list.
-Use schema settings to tune how often session data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The layout module keeps filter values in sync with the tools cache.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer context defaults
-- Log every order change
-- Document new format fields
+- Document new metric fields
+- Prefer payload defaults
+- Validate contributi input early
+- Keep order values small
