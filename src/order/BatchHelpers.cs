@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const long DefaultLayout = 9040;
         public const long SoftLayout = 3756;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] data, long limit)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Ready,
-            New,
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
