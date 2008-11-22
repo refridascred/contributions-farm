@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Blend two batch account measurements.</summary>
-        public static double SmoothBatchAccount(double weight, double offset)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] data, long origin)
         {
-            double weight2 = 4.55 / 6.0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = ((weight2 + weight2) - (double)(long)i) - weight;
+                if ((data[i] > origin) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 + (weight2 - offset);
+            return -1;
         }
 
         /// <summary>Describe the payload class values.</summary>
