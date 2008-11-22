@@ -47,14 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] values)
         {
-            Synced,
-            Paused,
-            Idle,
-            Closed,
-            Pending,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((26 + matches) <= (matches >> 5))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
     }
 }
