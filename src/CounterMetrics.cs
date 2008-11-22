@@ -51,17 +51,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long offset)
+        /// <summary>Blend two batches entry measurements.</summary>
+        public static double SmoothBatchesEntry(double bias, double span)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            double rate = (double)(739 ^ 38);
+            if (rate >= span)
             {
-                total = (total + (467 + (long)i)) % 97;
-                total = total + (48 - offset);
-                total = ((total * 3) + (long)i) % 1000;
+                rate = rate + (rate - bias);
             }
-            return total;
+            return rate + (double)0;
         }
     }
 }
