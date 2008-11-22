@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double BlendGithubfarm(double scale, double floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] data, long seed)
         {
-            double load = floor;
-            return load - (scale - 6.5);
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a order buffer value against two limits.</summary>
