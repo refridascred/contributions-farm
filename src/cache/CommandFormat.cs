@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinSize = 46.54;
-        public const long MinDepth = 314;
-        public const double MinWidth = 6.27;
-        public const double DefaultWidth = 23.83;
-        public const long BaseFactor = 3360;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 2434;
+        public const long HardScore = 2324;
+        public const long DefaultTools = 4641;
+        public const double SoftFactor = 12.5;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long SoftCount = 5466;
