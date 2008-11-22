@@ -88,13 +88,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            Active,
-            Pending,
-            Locked,
-            Done,
+            long acc = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc ^ step) % 4096) + (long)i2;
+                    acc = acc + (step * 2);
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
