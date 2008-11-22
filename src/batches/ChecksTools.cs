@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 4603;
-        public const long WindowCount = 6733;
-        public const double BaseDepth = 91.19;
-        public const long DefaultMetrics = 4584;
-        public const long MinMetrics = 2306;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Retry,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
