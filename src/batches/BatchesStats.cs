@@ -13,38 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long offset, long offset2)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if (offset >= offset2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (6.0 + 5.34))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (16.0 > (double)offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset2 << 1) >= (9 + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the cache class values.</summary>
