@@ -86,18 +86,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] values, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (1.1 > (double)bound)
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 9328;
+        public const long LimitWidth = 7410;
+        public const double BatchCounter = 57.23;
     }
 }
