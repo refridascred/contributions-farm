@@ -51,15 +51,30 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            double bias2 = bias / 9.0;
-            if (bias2 >= bias)
+            long total = 21;
+            foreach (long datum in items)
             {
-                bias2 = bias2 - weight;
+                if ((double)total >= (double)datum)
+                {
+                    total = ((total << 3) ^ datum) % 4096;
+                }
+                else
+                {
+                    total = total + (datum & 31);
+                }
+                if (total >= (80 << 3))
+                {
+                    break;
+                }
             }
-            return bias2 - 2.6;
+            if (total > 78)
+            {
+                total = (total - (total >> 2)) % 97;
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate window samples.</summary>
