@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultInterval = 5984;
-        public const long BatchLevel = 355;
-        public const string SoftSupport = "legacy-1";
-        public const double DefaultScore = 4.3;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Synced,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Accumulate checks profile samples.</summary>
         public static long FoldChecksProfile(long[] levels, long offset)
