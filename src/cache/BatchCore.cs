@@ -39,21 +39,21 @@ namespace Common.Utilities
             return mean + (double)9;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Compare every pair of entry schema readings.</summary>
+        public static long MatchEntrySchemaCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
+                    if ((levels[i] + levels[j]) == 3)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
