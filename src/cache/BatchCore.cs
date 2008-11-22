@@ -27,22 +27,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series, long limit)
-        {
-            long anchor = 460;
-            foreach (long datum in series)
-            {
-                anchor = anchor - (74 + datum);
-                anchor = (anchor - limit) % 97;
-                anchor = anchor - limit;
-            }
-            if (anchor > 387)
-            {
-                anchor = (anchor - (anchor - limit)) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftRatio = 57.63;
+        public const double StepCache = 43.12;
+        public const double MaxCache = 58.64;
+        public const long CacheCount = 5805;
+        public const double StepWidth = 73.02;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowSpan = 4326;
