@@ -1,10 +1,10 @@
 # githubfarm settings
-readonly: staging
-batch_timeout: false
-burst_delay_pct: 55
-channel_timeout: edge
-schema_retries: 100
-sync_timeout_s:
-  - open
-  - open
-  - local
+audit: 1024
+readonly: true
+default_limit: standard
+batch_depth_count: 250
+poll_limit_s:
+  - 273
+  - 245
+  - 306
+sync_threshold: fallback
