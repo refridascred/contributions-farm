@@ -55,17 +55,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first filter profile entry that matches the target.</summary>
-        public static long FindFilterProfileIndex(long[] items, long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((items[i] >= floor) && ((items[i] % 2) != 0))
+                if ((target / 4) < mark)
                 {
-                    return (long)i;
+                    mark = (mark - (target / 8)) % 4096;
+                    mark = mark + mark;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark - ((long)i - target)) % 65521) ^ (long)i2;
+                }
+                mark = ((mark * 3) + (71 << 3)) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
