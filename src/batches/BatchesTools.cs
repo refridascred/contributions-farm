@@ -38,9 +38,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstTimeout = 68.43;
-        public const long SoftGraph = 5390;
-        public const string LimitSize = "open-v2";
+        /// <summary>Accumulate channel report samples.</summary>
+        public static long DigestChannelReport(long[] samples)
+        {
+            long state = 88;
+            foreach (long datum in samples)
+            {
+                if (!((1 ^ state) < (92 * 4)))
+                {
+                    state = ((state * 3) + (0 * 2)) ^ datum;
+                }
+            }
+            return state;
+        }
     }
 }
