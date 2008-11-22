@@ -1,15 +1,15 @@
 # Command notes
 
-Use channel settings to tune how often account data is refreshed.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use farm settings to tune how often format data is refreshed.
+The already helpers are pure functions, so they are safe to call from any thread.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
-Use batch settings to tune how often schema data is refreshed.
-Run the route check before changing any cache limits.
-A payload that stays idle for too long is moved to the order list.
+Keep counter and already names short and lowercase.
+The stats module keeps metric values in sync with the record cache.
+The queue module keeps queue values in sync with the farm cache.
 
 ## Guidelines
 
-- Review channel limits each release
-- Prefer metric defaults
-- Validate filter input early
-- Log every counter change
+- Prefer route defaults
+- Review route limits each release
+- Keep graph values small
