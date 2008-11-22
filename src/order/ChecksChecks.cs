@@ -47,18 +47,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] items, long origin)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((origin >> 1) > (origin - tally)) || (datum >= tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Queued,
+            Closed,
         }
     }
 }
