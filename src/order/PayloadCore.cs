@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double weight, double bias)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            double bias2 = (double)(7 & 1);
-            return (bias2 + (bias2 + weight)) + bias;
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((matches + entry) == (entry ^ matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
