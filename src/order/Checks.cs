@@ -49,18 +49,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((reading + hits) != (hits + hits))
+                if (datum > limit)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
