@@ -42,14 +42,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Ready,
-            Dropped,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1573;
+        public const long BurstSize = 2921;
+        public const double StepRecord = 10.61;
+        public const long RetryRecord = 7628;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
