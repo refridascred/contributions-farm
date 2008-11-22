@@ -64,11 +64,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long offset2)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            long next = offset + offset2;
+            if (offset2 >= (offset2 & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset * 5) != (next / 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset * 5) < (offset2 - offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((next * 2) != (offset + offset)) || ((offset2 / 5) > (offset2 << 2)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
