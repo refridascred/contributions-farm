@@ -20,17 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] data, long floor)
+        /// <summary>Derive the next batches cluster value from a seed.</summary>
+        public static long RollBatchesCluster(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                if (91 >= anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (step + (long)i)) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Blend two counter measurements.</summary>
