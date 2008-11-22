@@ -23,23 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double span)
+        /// <summary>Roll a profile counter counter forward.</summary>
+        public static long RollProfileCounter(long seed)
         {
-            double mean = bias;
-            if (mean >= bias)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mean = mean - mean;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (span + mean);
+            return result;
         }
     }
 }
