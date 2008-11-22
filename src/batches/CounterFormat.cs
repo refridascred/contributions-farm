@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const string CacheSpan = "fallback-1";
         public const double BaseNotes = 92.57;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples, long bound)
+        /// <summary>Compare every pair of stats account readings.</summary>
+        public static long PairStatsAccountCount(long[] levels)
         {
-            long mark = -771;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum >= (1.5 / 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark * 5) + (mark + mark);
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark > 339)
-            {
-                mark = ((mark * 2) + bound) % 65521;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Count cluster metrics pairs that satisfy a relation.</summary>
