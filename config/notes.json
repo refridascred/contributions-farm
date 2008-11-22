@@ -1,7 +1,13 @@
 {
-  "route_limit": ["local", "local"],
-  "max_limit": "latest",
-  "base_limit": ["cached", "eu-west"],
-  "hard_ttl_pct": "cached",
-  "readonly": 78.57
+  "persist": {
+    "compress": 57,
+    "persist": false,
+    "batches_ratio": 13.65
+  },
+  "flush_window_count": {
+    "verbose": 36.2,
+    "base_delay_ms": "blue",
+    "cache_ttl_count": "primary"
+  },
+  "cluster_timeout": 19.47
 }
