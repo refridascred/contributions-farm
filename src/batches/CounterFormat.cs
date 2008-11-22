@@ -12,23 +12,14 @@ namespace Common.Utilities
             return (rate + (offset * 9.0)) + weight;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((limit ^ limit) >= anchor) && (852 <= (long)i))
-                {
-                    anchor = ((anchor * 4) + limit) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (limit + limit)) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Closed,
+            Done,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
