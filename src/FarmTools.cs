@@ -13,20 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Iterate the support report series from a seed.</summary>
+        public static long IterateSupportReport(long offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((((long)i - acc) == ((long)i - offset)) && (acc < offset))
-                {
-                    acc = ((acc << 2) ^ (acc - (long)i)) % 101;
-                    acc = ((acc << 2) ^ (offset & 255)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
