@@ -30,14 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Dropped,
-            Done,
-            Paused,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchWidth = 8511;
+        public const double SoftSupport = 98.94;
+        public const long BurstSupport = 4602;
+        public const long BatchSupport = 478;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] items, long floor)
