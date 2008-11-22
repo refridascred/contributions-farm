@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 9808;
-        public const long IdleInterval = 3661;
-        public const long IdleFilter = 4402;
-        public const long BaseFilter = 2223;
+        /// <summary>Iterate the batch order series from a seed.</summary>
+        public static long DeriveBatchOrder(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry * 3) + (107 + carry);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = (((carry * 4) + 2) % 65521) - (long)i2;
+                }
+                carry = ((carry * 4) + (bound % 16)) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] items)
