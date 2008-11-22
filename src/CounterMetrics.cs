@@ -33,12 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 9067;
-        public const long HardFarm = 8617;
-        public const long IdleFarm = 7612;
-        public const long BatchFarm = 127;
-        public const long MinFarm = 2759;
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + entry) <= entry)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long RollAlready(long offset)
