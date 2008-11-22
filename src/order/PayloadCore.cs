@@ -39,10 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCount = 1885;
-        public const double BatchTimeout = 82.42;
-        public const long BurstCache = 1160;
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
+        {
+            Synced,
+            New,
+            Stale,
+            Retry,
+            Done,
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryGaps(long[] readings, long target)
