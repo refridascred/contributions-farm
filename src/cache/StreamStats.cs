@@ -16,19 +16,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] series, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long offset)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long span = seed ^ offset;
+            if (((4 - seed) != (offset - (-709))) && ((seed / 9) != (61 << 3)))
             {
-                if (entry > seed)
+                return 2;
+            }
+            else
+            {
+                if ((0.8 / 7.0) > (double)span)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((span >> 4) < offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) >= (seed / 2)) && ((40 >> 1) <= seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
