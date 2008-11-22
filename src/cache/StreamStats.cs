@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine githubfarm stream values into a single score.</summary>
-        public static long WeighGithubfarmStream(long[] items)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] items, long offset)
         {
-            long score = 194;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!(score > (score ^ cell)))
+                if (entry < offset)
                 {
-                    score = (score ^ (score >> 2)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            if (score < 70)
-            {
-                score = score - (score >> 5);
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a session header.</summary>
