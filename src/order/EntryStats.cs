@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Match up account order samples.</summary>
-        public static long MatchAccountOrderCount(long[] readings)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= limit)
                 {
-                    if ((readings[i] ^ readings[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Project the next layout value.</summary>
