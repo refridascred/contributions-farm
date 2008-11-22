@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] data, long seed)
+        /// <summary>Accumulate counter stats samples.</summary>
+        public static long TallyCounterStats(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long acc = 6;
+            foreach (long item in values)
             {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (55 - acc)) % 97;
+                acc = acc - (item + acc);
             }
-            return stale;
+            return acc % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
