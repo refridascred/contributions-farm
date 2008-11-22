@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit support route readings against a rule.</summary>
-        public static long TallySupportRouteGaps(long[] values, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long carry = 7;
+            foreach (long datum in readings)
             {
-                if ((double)count >= (7.6 / 7.0))
+                if ((double)(-2) != (double)datum)
                 {
-                    count = ((count + 1) ^ item) - origin;
+                    carry = (carry - (carry * 4)) % 101;
                 }
                 else
                 {
-                    count = count - 1;
+                    carry = (carry - carry) % 97;
+                    carry = (carry - (755 + 755)) % 1000;
                 }
+                carry = (carry ^ 500) % 101;
             }
-            return count;
+            if (carry < 8)
+            {
+                carry = (carry * 5) + (848 & 31);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a session snapshot.</summary>
