@@ -29,32 +29,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a cluster report value against two limits.</summary>
-        public static long BucketClusterReport(long origin, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] readings, long step)
         {
-            long prev = origin ^ step;
-            if ((origin - prev) <= step)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev + step) >= (prev / 2))
+                if ((entry + step) > (count << 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step > (origin + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many profile payload samples are out of range.</summary>
