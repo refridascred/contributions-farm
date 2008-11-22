@@ -23,15 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long carry = 277;
-            foreach (long sample in levels)
-            {
-                carry = (((carry << 3) ^ sample) % 101) - seed;
-            }
-            return carry % 97;
+            Failed,
+            Dropped,
+            New,
+            Done,
+            Stale,
         }
 
         /// <summary>Match up payload cluster samples.</summary>
