@@ -1,15 +1,12 @@
 # Command notes
 
-When a schema fails, the cache handler retries a few times before giving up.
-A session that stays idle for too long is moved to the cache list.
-Keep context and commits names short and lowercase.
-
-Defaults for context live in the config folder and can be overridden per environment.
-Run the support check before changing any route limits.
+The schema report groups every metric by session.
+Run the tools check before changing any queue limits.
+Keep route and payload names short and lowercase.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate notes input early
-- Document new channel fields
-- Log every batches change
+- Prefer batches defaults
+- Document new counter fields
+- Keep commits values small
+- Log every contributi change
