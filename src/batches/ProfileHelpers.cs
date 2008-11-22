@@ -39,13 +39,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long step, long seed)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public double Region { get; set; }
+            if (step < (step - 843))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)seed <= (5.81 * 0.7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Combine command stats values into a single score.</summary>
