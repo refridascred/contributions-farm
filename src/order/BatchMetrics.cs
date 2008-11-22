@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next batches cluster value.</summary>
+        public static double SmoothBatchesCluster(double gain, double floor)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Total { get; set; }
+            double gain2 = (double)((-264) << 3);
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = ((gain2 + (double)(long)i) - gain) + floor;
+            }
+            return gain2 - (double)7;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
