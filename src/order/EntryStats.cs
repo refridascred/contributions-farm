@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstFactor = 6731;
-        public const long SoftStream = 7735;
-        public const long HardStream = 8858;
-        public const long BaseWidth = 5398;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long limit)
+        {
+            long step = bound ^ limit;
+            if ((limit > (limit * 5)) && ((limit & 255) < (bound + bound)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit > step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0 < (step + (-9))) && (step < (9 / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((6.24 / 4.0) != (double)limit) || ((step ^ step) < step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long offset, long origin)
