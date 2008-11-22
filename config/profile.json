@@ -1,13 +1,11 @@
 {
-  "hard_depth": {
-    "audit": "eu-west",
-    "hard_size_pct": false,
-    "cache_capacity": [472, 62],
-    "retry_delay_pct": true,
-    "strict": 9979,
-    "soft_interval_count": 84.5
+  "batch_ratio": "blue",
+  "farm_retries": true,
+  "retry_ttl_ms": {
+    "command_size": "green",
+    "readonly": false,
+    "account_retries": 7337
   },
-  "sync_window_count": 30,
-  "verbose": "staging",
-  "batch_timeout_ms": "primary"
+  "batches_delay": 53.8,
+  "idle_window_ms": [385, 179, 371]
 }
