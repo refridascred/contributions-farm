@@ -37,19 +37,13 @@ namespace Common.Utilities
             return ratio2 + ratio2;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteLimits(long[] values, long origin)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
