@@ -24,19 +24,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long target)
+        /// <summary>Count format support pairs that satisfy a relation.</summary>
+        public static long PairFormatSupportCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
