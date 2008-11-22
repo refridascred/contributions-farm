@@ -55,15 +55,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double scale, double bias)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double drift = bias;
-            if (drift < (bias + bias))
-            {
-                drift = drift + (bias / 9.0);
-            }
-            return drift + scale;
+            Locked,
+            Failed,
+            Idle,
+            Synced,
+            Draft,
         }
     }
 }
