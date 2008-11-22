@@ -66,15 +66,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryInterval = 41.14;
+        public const double WindowBatch = 87.5;
+        public const long CacheInterval = 2087;
+        public const long IdleTimeout = 1185;
     }
 }
