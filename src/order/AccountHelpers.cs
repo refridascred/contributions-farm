@@ -44,14 +44,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepRatio = 6468;
+        public const string BatchSchema = "stable-v2";
+        public const long MaxSchema = 8010;
+        public const long SoftSchema = 2258;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
