@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] values, long limit)
+        /// <summary>Rank editor channel input into a small class.</summary>
+        public static long RankEditorChannel(long limit, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit ^ limit) != (step - step))
             {
-                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((limit + step) >= 6)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
