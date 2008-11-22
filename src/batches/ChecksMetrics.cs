@@ -87,11 +87,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftScore = 13.43;
-        public const double IdleRatio = 72.49;
-        public const string MaxCommand = "open";
-        public const long StepTimeout = 6754;
-        public const double BatchSize = 86.28;
+        /// <summary>Combine payload layout values into a single score.</summary>
+        public static long CombinePayloadLayout(long[] data)
+        {
+            long mark = 210;
+            foreach (long datum in data)
+            {
+                if ((datum % 2) == (datum % 3))
+                {
+                    mark = (mark + (datum & 3)) % 1000;
+                }
+                else
+                {
+                    mark = mark + (mark * 3);
+                    mark = mark - (mark % 7);
+                }
+                if ((9 + mark) != (mark % 24))
+                {
+                    mark = (mark ^ (datum - datum)) % 255;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ 438;
+                }
+            }
+            return mark % 65521;
+        }
     }
 }
