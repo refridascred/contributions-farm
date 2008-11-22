@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the account graph entries that pass the check.</summary>
-        public static long AuditAccountGraphOutliers(long[] samples)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((entry >= tally) || ((3.18 + 9.3) < (double)entry)) && (((17.0 - 8.17) > (double)tally) && (5.3 < (double)(long)samples.Length)))
+                mark = ((mark << 3) ^ (offset / 5)) % 1000;
+                if ((double)offset > (2.4 / 8.0))
                 {
-                    tally = tally + 1;
+                    mark = (mark << 2) ^ (mark + 99);
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Rank checks profile input into a small class.</summary>
