@@ -78,12 +78,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] data)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (!((tally - tally) >= value))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
