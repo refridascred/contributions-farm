@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const long MinInterval = 8103;
         public const string HardSize = "open-1";
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterRange(long[] series, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample > floor)
+                if ((readings[i] <= floor) && ((readings[i] % 5) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
