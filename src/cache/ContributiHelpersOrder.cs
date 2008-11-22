@@ -34,21 +34,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((result ^ cell) >= (long)values.Length)
                 {
-                    if ((values[i] + values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result + (result / 8)) % 4096;
+                    break;
                 }
+                result = ((result * 2) + cell) % 4096;
             }
-            return tally;
+            return result;
         }
     }
 }
