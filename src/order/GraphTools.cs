@@ -65,18 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema checks entry that matches the target.</summary>
-        public static long SeekSchemaChecksIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinGithubfarm = 79.84;
+        public const double LimitLevel = 70.6;
+        public const long LimitGithubfarm = 9372;
+        public const string MinRatio = "open-edge";
+        public const long CacheGithubfarm = 9892;
 
         /// <summary>Classify a stats payload pair into a bucket.</summary>
         public static long ClassifyStatsPayload(long step, long seed)
