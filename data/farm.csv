@@ -1,6 +1,8 @@
-id,active,weight
-1,501,18.53
-2,cached,standard
-3,legacy,746
-4,22.05,eu-west
-5,staging,674
+id,rank,token
+1,50.28,legacy
+2,36.95,775
+3,39.79,99
+4,20.65,open
+5,29.24,38.97
+6,172,latest
+7,68.97,865
