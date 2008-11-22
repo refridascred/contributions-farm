@@ -45,21 +45,11 @@ namespace Common.Utilities
         public const double IdleWindow = 18.56;
         public const long BurstWindow = 5385;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitWidth = 354;
+        public const long CacheBatches = 6529;
+        public const long WindowCount = 7111;
+        public const long RetryBatches = 5134;
+        public const string WindowSpan = "standard-v2";
     }
 }
