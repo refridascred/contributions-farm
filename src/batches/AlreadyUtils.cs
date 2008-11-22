@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] series, long step)
         {
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
