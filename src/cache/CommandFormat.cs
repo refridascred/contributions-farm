@@ -44,17 +44,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] > origin)
+                if ((cell >> 3) <= (bound * 3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
