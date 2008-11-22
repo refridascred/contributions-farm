@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double bias)
         {
-            Active,
-            Draft,
-            Queued,
-            Paused,
+            double bias2 = bias - (double)5;
+            return bias2 + weight;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
