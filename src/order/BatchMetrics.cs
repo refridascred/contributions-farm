@@ -27,11 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
+            public long Size { get; set; }
+            public long Count { get; set; }
             public bool Mode { get; set; }
-            public double Offset { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
