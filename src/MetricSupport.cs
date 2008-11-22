@@ -28,26 +28,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((target / 4) < mark)
-                {
-                    mark = (mark - (target / 8)) % 4096;
-                    mark = mark + mark;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark - ((long)i - target)) % 65521) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (71 << 3)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 2885;
+        public const string WindowLevel = "standard-1";
+        public const long WindowCount = 470;
     }
 }
