@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long HardStream = 8858;
         public const long BaseWidth = 5398;
 
-        /// <summary>Validate session record readings against a bound.</summary>
-        public static bool GuardSessionRecordBounds(long[] samples, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long offset, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            if (9.03 <= (double)origin)
             {
-                if (item >= seed)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= (double)origin)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a contributi metric reading.</summary>
