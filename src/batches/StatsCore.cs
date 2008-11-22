@@ -56,24 +56,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long target, long offset)
+        /// <summary>Project the next session route value.</summary>
+        public static double SmoothSessionRoute(double scale, double bias)
         {
-            if ((offset - offset) > target)
+            double load = bias;
+            if (load <= (scale * 1.4))
             {
-                return 7;
+                load = load + (scale + load);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (!(6 < offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                load = (load - (bias * 0.49)) - (double)(long)i;
             }
+            return load + (7.9 + 6.23);
         }
     }
 }
