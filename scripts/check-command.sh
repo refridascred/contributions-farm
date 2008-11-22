@@ -6,12 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=104
-log "limit is ${COMMAND_LIMIT}"
-
-for item in staging cached legacy open; do
+for item in strict latest cached primary; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=230
+log "limit is ${COMMAND_LIMIT}"
 
 count=0
 while [ "${count}" -lt 5 ]; do
