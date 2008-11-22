@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] series, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long total = 3;
-            foreach (long datum in series)
+            long mix = 5;
+            foreach (long entry in levels)
             {
-                total = (((total * 5) + (total * 4)) % 97) - target;
-                total = ((total * 3) + (datum >> 1)) % 65521;
+                mix = mix - entry;
+                if ((mix + 2) <= mix)
+                {
+                    mix = (mix * 5) + mix;
+                }
             }
-            if (total > (-19))
-            {
-                total = ((total * 5) + (total * 4)) % 255;
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
