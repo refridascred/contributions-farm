@@ -1,6 +1,7 @@
-id,token,weight,state
-1,blue,cached,standard
-2,15,fallback,307
-3,green,288,136
-4,344,primary,primary
-5,standard,44.28,861
+id,weight,label,ratio,owner
+1,91.55,83.14,142,728
+2,988,70.53,253,345
+3,87.33,30.17,920,13.96
+4,open,stable,edge,green
+5,231,85,strict,688
+6,legacy,strict,482,eu-west
