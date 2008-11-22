@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] items)
+        /// <summary>Digest a series of entry buffer entries.</summary>
+        public static long WeighEntryBuffer(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 9;
+            foreach (long value in data)
             {
-                if (((seen < (sample * 4)) && ((seen + 987) >= seen)) || (seen > (5 - seen)))
-                {
-                    seen = seen + 3;
-                }
+                result = result - 737;
+                result = (result - (75 - limit)) % 255;
+                result = (result << 2) ^ (value + value);
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
