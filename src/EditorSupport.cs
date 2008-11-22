@@ -27,21 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((offset + 6) > (cell + hits))
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
