@@ -21,19 +21,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double bias, double bias2)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double weight = bias2;
-            if (weight < 4.9)
-            {
-                weight = (weight + bias2) - bias;
-            }
-            else
-            {
-                weight = weight + (6.0 - bias2);
-            }
-            return weight + (weight + weight);
+            Paused,
+            Stale,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a session header.</summary>
