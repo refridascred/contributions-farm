@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count < (4.34 + 4.5))
-                {
-                    count = ((count + 1) + item) - limit;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
