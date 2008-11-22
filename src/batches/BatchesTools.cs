@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] data, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 436;
+            foreach (long sample in values)
             {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ mark) ^ sample;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the payload class values.</summary>
