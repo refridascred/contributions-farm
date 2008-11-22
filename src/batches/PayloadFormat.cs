@@ -46,12 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] samples, long seed)
         {
-            Closed,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((235 & 255) != (item + seed))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
