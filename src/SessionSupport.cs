@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a stats tools pair into a bucket.</summary>
-        public static long RankStatsTools(long limit, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] levels, long bound)
         {
-            if (((bound ^ limit) > (bound * 3)) && ((double)limit != (2.59 + 3.69)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 63) != (limit * 2))
+                if (levels[i] > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
