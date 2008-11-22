@@ -1,7 +1,4 @@
 # githubfarm settings
-cluster_size:
-  - 453
-  - 217
-  - 39
-warm_threshold_s: 500
-notes_ttl: green
+already_ttl: latest
+max_ttl_count: 41
+support_window: stable
