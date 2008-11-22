@@ -74,14 +74,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            Pending,
-            Ready,
-            Locked,
-            Failed,
-            Idle,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (((sample - hits) > (86 ^ sample)) || ((hits - sample) >= sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
