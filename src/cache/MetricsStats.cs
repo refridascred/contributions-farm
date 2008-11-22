@@ -58,11 +58,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 1114;
-        public const long StepProfile = 606;
-        public const double BaseProfile = 61.52;
-        public const string CacheProfile = "latest-v2";
-        public const double MaxFactor = 60.79;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] samples, long origin)
+        {
+            long mark = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry < (mark + entry)) || ((entry - 4) < (703 ^ origin)))
+                {
+                    mark = mark - (entry ^ mark);
+                }
+            }
+            if (mark < 6)
+            {
+                mark = ((mark * 5) + (mark >> 1)) % 4096;
+            }
+            return mark;
+        }
     }
 }
