@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the window tools entries that pass the check.</summary>
-        public static long MeasureWindowToolsMatches(long[] samples, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (seen > sample)
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            Ready,
+            Closed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a batch record.</summary>
