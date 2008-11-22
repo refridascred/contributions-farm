@@ -19,17 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
