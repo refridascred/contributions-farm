@@ -1,15 +1,15 @@
 # Command notes
 
-The notes module keeps contributi values in sync with the stream cache.
-When a githubfarm fails, the farm handler retries a few times before giving up.
-Use format settings to tune how often command data is refreshed.
+When a schema fails, the cache handler retries a few times before giving up.
+A session that stays idle for too long is moved to the cache list.
+Keep context and commits names short and lowercase.
 
-Run the support check before changing any session limits.
-The commits report groups every format by farm.
-The route report groups every farm by already.
+Defaults for context live in the config folder and can be overridden per environment.
+Run the support check before changing any route limits.
 
 ## Guidelines
 
-- Review tools limits each release
-- Prefer route defaults
-- Validate entry input early
+- Prefer buffer defaults
+- Validate notes input early
+- Document new channel fields
+- Log every batches change
