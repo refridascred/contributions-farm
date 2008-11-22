@@ -66,15 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema entry measurements.</summary>
-        public static double ScaleSchemaEntry(double ratio, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] items, long bound)
         {
-            double mean = ratio;
-            if (mean >= mean)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                mean = (mean - (3.66 - ratio)) - offset;
+                if (((bound >> 5) > (reading + tally)) && ((reading * 5) >= reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
