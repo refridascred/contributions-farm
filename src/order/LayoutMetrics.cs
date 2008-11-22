@@ -36,12 +36,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels, long step)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 74;
+            foreach (long item in levels)
+            {
+                mix = (mix * 5) + (step - mix);
+                if ((item + mix) > (item + item))
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
