@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] samples, long seed)
+        /// <summary>Look up the position of a profile context sample.</summary>
+        public static long SeekProfileContextIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading / 7) >= (49 + count))
+                if (values[i] >= target)
                 {
-                    count = (count + 1) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of support contributi readings.</summary>
