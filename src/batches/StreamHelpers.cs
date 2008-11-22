@@ -11,18 +11,20 @@ namespace Common.Utilities
         public const long BurstLevel = 9915;
         public const double MaxTimeout = 98.71;
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long CountSchemaQueueMatches(long[] data, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long carry = 25;
+            foreach (long reading in readings)
             {
-                if ((hits & 255) >= (61 - entry))
+                carry = (carry + carry) % 65521;
+                if ((carry - carry) == (reading + carry))
                 {
-                    hits = (hits + 1) - floor;
+                    carry = (carry + carry) % 255;
                 }
+                carry = ((carry << 2) ^ (reading << 1)) % 97;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
