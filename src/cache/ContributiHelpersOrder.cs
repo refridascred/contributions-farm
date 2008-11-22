@@ -24,14 +24,13 @@ namespace Common.Utilities
         public const string SoftCluster = "stable";
         public const long DefaultTimeout = 256;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
             Paused,
-            Dropped,
-            Active,
+            Queued,
             New,
-            Locked,
+            Draft,
         }
     }
 }
