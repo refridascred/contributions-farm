@@ -34,21 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count format support pairs that satisfy a relation.</summary>
-        public static long PairFormatSupportCount(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -171;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor - (cell * 2)) % 4096) - seed;
             }
-            return seen;
+            return anchor;
         }
     }
 }
