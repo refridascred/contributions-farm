@@ -20,17 +20,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a record context sample.</summary>
-        public static long LocateRecordContextIndex(long[] series, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (origin <= (origin + origin))
             {
-                if (series[i] > floor)
+                return 3;
+            }
+            else
+            {
+                if ((1 >> 1) == (step >> 1))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((origin * 5) >= (step ^ origin)) && ((step + 636) == (step + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step % 12) < (step * 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
