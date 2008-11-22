@@ -45,10 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinLevel = 8041;
-        public const long DefaultPayload = 6901;
-        public const double LimitPayload = 29.24;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Dropped,
+            Synced,
+            Done,
+            Closed,
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long MinStream = 5639;
