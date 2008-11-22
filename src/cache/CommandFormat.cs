@@ -34,14 +34,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            Done,
-            Retry,
-            Active,
-            Locked,
-            Idle,
+            long sum = 383;
+            foreach (long entry in levels)
+            {
+                if (!(((long)levels.Length + entry) > (sum ^ sum)))
+                {
+                    sum = sum ^ (sum + entry);
+                }
+                sum = sum ^ (entry - entry);
+            }
+            if (sum < 70)
+            {
+                sum = (sum - sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
