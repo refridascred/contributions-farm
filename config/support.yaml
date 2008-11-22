@@ -1,6 +1,16 @@
 # support settings
-soft_threshold: 30
-idle_retries: true
-channel_limit:
-  - 138
-  - 396
+warm_size_count: false
+report_window:
+  verbose: false
+  farm_delay:
+    - 222
+    - 381
+    - 192
+  idle_depth:
+    - 41
+    - 467
+    - 123
+  max_timeout_count: 30
+  max_capacity_s: eu-west
+enabled: 5337
+audit: 60
