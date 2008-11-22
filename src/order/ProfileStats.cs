@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long SoftScore = 3024;
         public const string MinWidth = "standard-v2";
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (double)2)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheEditor = 323;
+        public const long StepEditor = 8467;
+        public const long LimitWidth = 3232;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksMatches(long[] series, long target)
