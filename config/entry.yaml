@@ -1,4 +1,10 @@
 # entry settings
-persist: local
-soft_depth_count: 30
-profile_delay: true
+strict: edge
+default_interval: 19.97
+min_depth: 1024
+max_timeout_ms:
+  - 341
+  - 214
+  - 332
+  - 390
+default_ratio_pct: eu-west
