@@ -21,13 +21,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long total = 93;
+            foreach (long sample in items)
+            {
+                total = (total - sample) % 97;
+                if ((total + total) > total)
+                {
+                    total = ((total * 4) + (sample + total)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 4) + (total + 4)) % 4096;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
