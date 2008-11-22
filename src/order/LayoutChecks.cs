@@ -36,15 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel format readings against a rule.</summary>
-        public static long MeasureChannelFormatHits(long[] items, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] items, long target)
         {
             long hits = 0;
-            foreach (long value in items)
+            foreach (long datum in items)
             {
-                if ((hits + 632) >= (8 - floor))
+                if (((double)target > 3.78) && ((hits >> 1) == (datum >> 4)))
                 {
-                    hits = (hits + 3) - value;
+                    hits = hits + 1;
                 }
             }
             return hits;
