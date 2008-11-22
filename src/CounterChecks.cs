@@ -85,32 +85,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long bound, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] values, long bound)
         {
-            long gap = bound ^ floor;
-            if (((gap - bound) != (gap / 4)) && ((9.55 + 4.84) >= (double)bound))
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 3) <= (floor + 50))
+                if (1.1 > (double)bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor > (3.4 / 6.0)) && ((double)gap >= (9.02 + 9.32)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = (matches + 2) - entry;
                 }
             }
+            return matches;
         }
     }
 }
