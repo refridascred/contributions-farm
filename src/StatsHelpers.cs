@@ -73,11 +73,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double weight, double floor)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double ratio = (double)(4 << 1);
-            return (ratio + floor) + weight;
+            Draft,
+            Stale,
+            Retry,
+            Failed,
+            Pending,
         }
     }
 }
