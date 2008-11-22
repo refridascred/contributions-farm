@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double span)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            double weight = ratio;
+            if (weight >= ratio)
+            {
+                weight = (weight + (0.13 / 6.0)) + span;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + 9.4) + (double)(long)i;
+            }
+            return weight - ratio;
         }
 
         /// <summary>Match up stream cache samples.</summary>
