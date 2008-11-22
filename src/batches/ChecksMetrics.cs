@@ -21,12 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Synced,
-            Failed,
-            Ready,
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up already support samples.</summary>
