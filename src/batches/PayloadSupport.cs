@@ -19,17 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Match up tools command samples.</summary>
+        public static long MatchToolsCommandCount(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc << 2) ^ (origin - acc);
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 4) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
