@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of command window entries.</summary>
-        public static long DigestCommandWindow(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            long anchor = 75;
-            foreach (long reading in values)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = (((anchor * 5) + ((-73) >> 5)) % 1000) + reading;
+                acc = ((acc << 3) ^ offset) % 101;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
