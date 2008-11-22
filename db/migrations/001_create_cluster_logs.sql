@@ -1,13 +1,12 @@
 -- Create the cluster_logs table.
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
-    created_at TIMESTAMP,
-    level INTEGER,
-    score REAL NOT NULL DEFAULT 0
+    ratio REAL,
+    score REAL NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_created_at ON cluster_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_active ON cluster_logs (active);
 
-INSERT INTO cluster_logs (level, score) VALUES (21, 54.75);
-INSERT INTO cluster_logs (level, score) VALUES (63, 59.16);
-INSERT INTO cluster_logs (level, score) VALUES (91, 1.45);
+INSERT INTO cluster_logs (ratio, score, active) VALUES (85.08, 2.22, 43);
+INSERT INTO cluster_logs (ratio, score, active) VALUES (34.7, 43.07, 39);
