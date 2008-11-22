@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string LimitScore = "standard-1";
         public const string BatchTimeout = "local-1";
 
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long AuditQueueWindowMatches(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenBounds(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((tally + tally) != (tally ^ tally))
+                if (reading != limit)
                 {
-                    tally = (tally + 3) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Describe the counter class values.</summary>
