@@ -1,12 +1,16 @@
 # entry settings
-readonly: 1024
-window_threshold:
-  session_retries: stable
-  verbose: edge
-  warm_timeout_pct:
-    - standard
-    - blue
-    - staging
-    - fallback
-command_interval: edge
-sync_limit: 8507
+strict: true
+idle_threshold_s: 26
+cluster_timeout: 35
+base_threshold_ms:
+  max_threshold:
+    payload_depth: standard
+    idle_depth: cached
+    base_threshold: local
+  max_ttl_pct: 52
+  batch_delay_ms: 500
+  soft_depth: 60
+  soft_ratio_pct: 2678
+  poll_depth_s: stable
+default_interval_s: primary
+already_delay: edge
