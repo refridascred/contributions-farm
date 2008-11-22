@@ -51,16 +51,10 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Iterate the report order series from a seed.</summary>
-        public static long StepReportOrder(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitWidth = 65.93;
+        public const long WindowLayout = 2729;
+        public const long DefaultLayout = 5324;
 
         /// <summary>Combine payload editor values into a single score.</summary>
         public static long DigestPayloadEditor(long[] samples, long bound)
