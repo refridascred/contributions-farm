@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=255
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+for item in primary green; do
+    log "checking ${item}"
+done
+
+mode="${1:-local}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
