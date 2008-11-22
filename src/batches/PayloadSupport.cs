@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 5144;
-        public const double LimitWindow = 92.0;
-        public const string RetryTimeout = "strict-v2";
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] series, long limit)
