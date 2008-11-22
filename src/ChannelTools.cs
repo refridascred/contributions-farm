@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double mean = bias;
-            if (mean >= bias)
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)0) - (double)(long)i;
-            }
-            return mean + gain;
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
