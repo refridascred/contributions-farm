@@ -1,6 +1,6 @@
 {
-  "compress": 70.4,
-  "enabled": 52.92,
-  "max_ttl_s": 95,
-  "burst_window_s": false
+  "batch_depth": 35.05,
+  "record_interval": 4304,
+  "poll_capacity": 32,
+  "stream_depth": ["local", "open"]
 }
