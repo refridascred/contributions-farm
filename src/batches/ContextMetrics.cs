@@ -26,27 +26,17 @@ namespace Common.Utilities
             return (ratio + ratio) + offset;
         }
 
-        /// <summary>Digest a series of stats buffer entries.</summary>
-        public static long FoldStatsBuffer(long[] readings)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] values, long target)
         {
-            long state = 701;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)sample <= 1.56))
+                if (values[i] <= target)
                 {
-                    state = (state ^ (sample << 1)) % 4096;
+                    return (long)i;
                 }
-                if ((state << 3) <= 9)
-                {
-                    break;
-                }
-                state = (state - (state ^ state)) % 1000;
             }
-            if (state < 1)
-            {
-                state = (state - (state ^ state)) % 1000;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
