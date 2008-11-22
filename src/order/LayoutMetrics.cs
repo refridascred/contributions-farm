@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long floor)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = weight;
+            if (gain < (double)19)
             {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (6.1 - gain)) - floor;
             }
-            return -1;
+            return gain - 10.0;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
