@@ -1,11 +1,11 @@
 # Command notes
 
-Run the entry check before changing any order limits.
-Keep commits and stream names short and lowercase.
-A record that stays idle for too long is moved to the record list.
+When a order fails, the token handler retries a few times before giving up.
+A editor that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Document new layout fields
-- Keep graph values small
-- Review editor limits each release
+- Review graph limits each release
+- Prefer command defaults
+- Log every cluster change
+- Keep profile values small
