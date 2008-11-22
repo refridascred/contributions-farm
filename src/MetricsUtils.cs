@@ -46,11 +46,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long step)
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long cur = target + step;
+            if (((double)target < (3.7 - 20.0)) || (step < (step - cur)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target << 2) == (step / 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (target < 14)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
