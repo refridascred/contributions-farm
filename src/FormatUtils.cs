@@ -57,12 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowCount = 2187;
-        public const long MaxSize = 137;
-        public const long MinChannel = 4965;
-        public const string CacheChannel = "staging";
-        public const long IdleChannel = 2555;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double StepCounter = 33.42;
