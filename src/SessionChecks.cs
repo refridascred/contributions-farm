@@ -16,21 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally > (tally / 3))
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
