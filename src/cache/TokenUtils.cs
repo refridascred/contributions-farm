@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count support queue pairs that satisfy a relation.</summary>
-        public static long PairSupportQueueCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheGraph = 22.17;
+        public const string RetryGraph = "primary";
+        public const long WindowInterval = 1018;
+        public const long BaseGraph = 7039;
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long floor)
