@@ -40,11 +40,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSize = 8392;
-        public const double WindowBudget = 71.8;
-        public const double LimitRatio = 98.55;
-        public const long BurstBudget = 359;
-        public const long SoftNotes = 2633;
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double span)
+        {
+            double mean = bias;
+            if (mean >= bias)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (span + mean);
+        }
     }
 }
