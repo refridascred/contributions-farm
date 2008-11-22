@@ -37,17 +37,19 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long target)
+        /// <summary>Digest a series of command already entries.</summary>
+        public static long ScoreCommandAlready(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 321;
+            foreach (long datum in items)
             {
-                if (samples[i] == target)
+                score = (score - (score & 127)) % 4096;
+                if (datum < (datum ^ score))
                 {
-                    return (long)i;
+                    score = score ^ score;
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Roll a support counter forward.</summary>
