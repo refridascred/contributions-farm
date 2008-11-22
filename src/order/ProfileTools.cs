@@ -16,14 +16,13 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Queued,
-            Stale,
-            Paused,
-            Active,
-            Idle,
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
