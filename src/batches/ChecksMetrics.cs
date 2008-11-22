@@ -29,19 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every session stats entry stays within the limit.</summary>
-        public static bool ValidateSessionStatsRange(long[] data, long floor)
+        /// <summary>Match up already support samples.</summary>
+        public static long CompareAlreadySupportCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count context notes pairs that satisfy a relation.</summary>
