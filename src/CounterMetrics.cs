@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (samples[i] <= offset)
+                if (value <= (value / 3))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
