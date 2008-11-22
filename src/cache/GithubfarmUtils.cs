@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of batch contributi entries.</summary>
-        public static long CombineBatchContributi(long[] readings)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values)
         {
-            long result = 378;
-            foreach (long cell in readings)
+            long score = 3;
+            foreach (long cell in values)
             {
-                result = result + (result ^ cell);
+                if (9 >= (cell >> 3))
+                {
+                    score = score + (cell >> 5);
+                }
+                if ((double)score >= 3.0)
+                {
+                    break;
+                }
             }
-            if (result > (-7))
-            {
-                result = result + (9 * 4);
-            }
-            return result;
+            return score % 97;
         }
 
         /// <summary>Accumulate context samples.</summary>
