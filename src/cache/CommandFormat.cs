@@ -49,12 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] samples, long origin)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] > origin)
+                if (readings[i] > origin)
                 {
                     return (long)i;
                 }
