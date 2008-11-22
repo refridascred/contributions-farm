@@ -59,22 +59,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] samples, long bound)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + item) >= bound)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
