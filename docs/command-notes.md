@@ -1,11 +1,10 @@
 # Command notes
 
-Keep notes and format names short and lowercase.
-Keep stream and record names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every githubfarm change
-- Document new command fields
-- Validate farm input early
+- Review contributi limits each release
+- Validate support input early
+- Prefer buffer defaults
