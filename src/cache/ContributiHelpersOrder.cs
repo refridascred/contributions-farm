@@ -30,23 +30,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = -6;
-            foreach (long sample in data)
-            {
-                if (!((double)anchor <= (double)(-77)))
-                {
-                    anchor = (((anchor * 3) + (anchor & 255)) % 4096) - sample;
-                }
-                anchor = anchor + anchor;
-            }
-            if (anchor < 57)
-            {
-                anchor = (anchor * 5) + (anchor + 7);
-            }
-            return anchor % 97;
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
