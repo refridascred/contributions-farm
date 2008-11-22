@@ -52,13 +52,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long floor)
         {
-            Done,
-            Ready,
-            Failed,
-            Dropped,
+            if (((-8) & 127) < (floor >> 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if (4.0 < (8.9 - 17.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor / 5) <= (floor >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor << 1) != (floor + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
