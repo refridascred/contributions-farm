@@ -55,23 +55,12 @@ namespace Common.Utilities
             return drift + (drift / 2.0);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value + matches) > 14)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstInterval = "legacy-1";
+        public const long DefaultProfile = 7045;
+        public const long WindowSpan = 6179;
+        public const double BaseBudget = 48.17;
+        public const long HardProfile = 1325;
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long TallyFormatOutliers(long[] levels)
