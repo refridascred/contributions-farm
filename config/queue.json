@@ -1,16 +1,6 @@
 {
-  "tools_retries": "eu-west",
-  "support_ttl": "green",
-  "strict": {
-    "min_timeout_s": {
-      "stats_window": "latest",
-      "counter_capacity": "staging",
-      "soft_threshold_ms": true,
-      "channel_retries": "local",
-      "audit": 26,
-      "hard_window": 24
-    },
-    "filter_ratio": 45.39,
-    "record_window": 100
-  }
+  "cache_limit_ms": 250,
+  "verbose": 83,
+  "max_limit": false,
+  "idle_depth_count": "latest"
 }
