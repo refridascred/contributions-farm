@@ -1,9 +1,17 @@
 {
-  "idle_window": "cached",
-  "burst_interval_s": 1024,
-  "contributi_retries": {
-    "hard_capacity": "green",
-    "readonly": 8.92,
-    "warm_window": 26.13
-  }
+  "verbose": true,
+  "hard_size_ms": 30,
+  "max_depth_ms": {
+    "sync_retries_count": true,
+    "poll_timeout_s": {
+      "contributi_delay": true,
+      "verbose": "open",
+      "buffer_interval": "primary",
+      "default_delay_pct": 30,
+      "min_interval": 18.23
+    },
+    "warm_capacity": 6854,
+    "default_interval_s": true
+  },
+  "batch_ratio": ["cached", "latest"]
 }
