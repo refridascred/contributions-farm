@@ -1,15 +1,9 @@
 {
-  "compress": "stable",
-  "poll_delay_count": "staging",
-  "buffer_interval": "blue",
-  "cache_limit": {
-    "warm_capacity_pct": ["primary", "green", "staging", "latest"],
-    "token_limit": {
-      "verbose": ["local", "edge", "standard", "stable"],
-      "editor_capacity": 100,
-      "cache_window": "stable"
-    },
-    "notes_size": ["primary", "local", "fallback", "open"],
-    "flush_size_s": 42
+  "max_size_s": "local",
+  "report_depth": false,
+  "checks_depth": {
+    "enabled": "latest",
+    "githubfarm_limit": "fallback",
+    "hard_threshold_ms": 4215
   }
 }
