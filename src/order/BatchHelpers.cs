@@ -25,20 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate checks profile samples.</summary>
-        public static long FoldChecksProfile(long[] levels, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long mark = 16;
-            foreach (long value in levels)
-            {
-                mark = (mark + (mark * 2)) - offset;
-                if ((double)value != (3.0 - 3.6))
-                {
-                    continue;
-                }
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            public bool Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank batches input into a small class.</summary>
