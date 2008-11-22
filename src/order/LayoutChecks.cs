@@ -50,12 +50,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheCount = 6409;
-        public const long WindowEditor = 6585;
-        public const string SoftInterval = "cached-edge";
-        public const double DefaultTimeout = 96.25;
-        public const string BurstEditor = "alpha-v2";
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MinFactor = 86.29;
