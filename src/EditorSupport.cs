@@ -67,18 +67,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (matches >= value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardDepth = 4328;
+        public const double SoftAlready = 83.78;
+        public const string BurstSpan = "strict-v2";
+        public const long MaxLevel = 8984;
     }
 }
