@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=45
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-for item in fallback cached latest; do
+for item in strict cached; do
     log "checking ${item}"
 done
-
-mode="${1:-green}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
