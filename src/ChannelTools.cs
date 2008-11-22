@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double rate, double span)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double bias = rate;
+            if (bias < rate)
+            {
+                bias = bias + span;
+            }
+            return bias + (rate - bias);
         }
 
         /// <summary>Hold a stream entry.</summary>
