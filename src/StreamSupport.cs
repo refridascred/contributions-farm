@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Fold a list of format schema readings.</summary>
+        public static long FoldFormatSchema(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 6;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.34 - 18.0) == (double)result)
                 {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (((result << 3) ^ entry) % 97) + limit;
                 }
+                result = (result * 4) + (result + entry);
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
