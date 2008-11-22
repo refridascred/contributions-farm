@@ -27,18 +27,21 @@ namespace Common.Utilities
             return rate + (bias2 * 5.92);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] series)
         {
-            long anchor = 1;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((anchor * 4) <= (anchor / 8))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ (sample + anchor);
+                    if ((series[i] + series[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
