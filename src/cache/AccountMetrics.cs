@@ -64,22 +64,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit contributi cache readings against a rule.</summary>
-        public static long CountContributiCacheMatches(long[] readings, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell >= (tally ^ 7)) || ((seed + seed) < (88 + seed))) || ((double)tally < (double)314))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
