@@ -20,10 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseTimeout = 398;
-        public const string IdleLayout = "alpha";
-        public const long BatchLayout = 1036;
+        /// <summary>Measure how many buffer editor samples are out of range.</summary>
+        public static long TallyBufferEditorGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((5.3 * 14.0) >= (double)target) && (entry > 4)) || ((double)target >= (3.29 * 2.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] readings)
