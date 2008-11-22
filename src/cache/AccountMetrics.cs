@@ -19,26 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] items, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long offset)
         {
-            long carry = 45;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry ^ (step + cell);
-                if (!((double)carry < (1.88 + 6.5)))
+                if ((data[i] < offset) && ((data[i] % 2) != 0))
                 {
-                    carry = ((carry * 5) + (carry << 2)) % 4096;
-                    carry = carry - (carry - cell);
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry * 2) + (5 + carry);
-                    carry = carry - step;
-                }
-                carry = (carry - (77 - (-14))) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
