@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitFactor = "legacy-v2";
-        public const string WindowCount = "cached-edge";
-        public const double SoftCommits = 55.13;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
