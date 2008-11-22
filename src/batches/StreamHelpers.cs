@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] samples)
+        /// <summary>Measure how many payload layout samples are out of range.</summary>
+        public static long CountPayloadLayoutHits(long[] values, long seed)
         {
             long matches = 0;
-            foreach (long reading in samples)
+            foreach (long item in values)
             {
-                if (!((reading + matches) > (matches ^ 97)))
+                if ((195 + item) > item)
                 {
-                    matches = matches + 3;
+                    matches = (matches + 1) - seed;
                 }
             }
             return matches;
