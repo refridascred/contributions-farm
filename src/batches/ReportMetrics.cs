@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
