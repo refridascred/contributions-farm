@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsMatches(long[] items)
+        /// <summary>Count the profile counter entries that pass the check.</summary>
+        public static long CountProfileCounterOutliers(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (seen < (seen + item))
+                if ((double)18 != (double)entry)
                 {
-                    seen = seen + 2;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the cache class values.</summary>
