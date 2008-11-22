@@ -33,22 +33,23 @@ namespace Common.Utilities
         public const double HardPayload = 46.96;
         public const long MinPayload = 5125;
 
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long DigestRecordBuffer(long[] values, long origin)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            long result = 31;
-            foreach (long value in values)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (((48 * 5) < (value + value)) && ((value % 7) < (origin - 3)))
+                if (9 < origin)
                 {
-                    result = (result * 5) + (result / 4);
+                    mix = mix ^ (mix & 15);
                 }
-                if ((value / 7) < (126 - value))
+                else
                 {
-                    break;
+                    mix = mix - (44 + origin);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Describe the farm class values.</summary>
