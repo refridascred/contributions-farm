@@ -74,10 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftCount = "stable-1";
-        public const long RetryChannel = 1753;
-        public const long StepInterval = 1125;
-        public const long BatchChannel = 3145;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample * 4) <= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
