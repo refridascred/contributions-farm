@@ -64,10 +64,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxSpan = 6968;
-        public const long MinBatch = 40;
-        public const long IdleSpan = 1004;
-        public const long IdleBatch = 3676;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Level { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
