@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long RankReportProfile(long seed, long limit)
-        {
-            if ((limit - limit) >= (seed - 436))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.26 * 4.4) > (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 2666;
+        public const long StepSpan = 649;
+        public const long BurstSize = 2638;
+        public const long BaseBatch = 3343;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] samples, long offset)
