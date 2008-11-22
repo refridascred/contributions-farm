@@ -43,15 +43,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] values)
         {
-            double drift = bias;
-            if (drift <= drift)
+            long total = 47;
+            foreach (long item in values)
             {
-                drift = (drift + (double)7) - bias2;
+                total = ((total * 3) + (13 & 15)) + item;
             }
-            return drift + (double)(-693);
+            if (total < 609)
+            {
+                total = ((total << 3) ^ (7 + total)) % 255;
+            }
+            return total;
         }
     }
 }
