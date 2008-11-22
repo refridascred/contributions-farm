@@ -33,22 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long anchor = 5;
-            foreach (long datum in samples)
-            {
-                if (!((anchor & 1) > datum))
-                {
-                    anchor = (anchor ^ datum) % 1000;
-                }
-                if ((double)anchor >= (double)994)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Done,
+            Draft,
+            Paused,
         }
     }
 }
