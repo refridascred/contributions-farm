@@ -1,10 +1,9 @@
 # entry settings
-support_depth: stable
-order_size: staging
-min_window_pct: 1024
-enabled:
-  warm_ttl_ms: local
-  batches_timeout: 53
-  batch_timeout: 4243
-  compress: 4
-  base_ttl_pct: false
+already_ttl: primary
+cache_limit: false
+audit: 1024
+min_window_count:
+  - 229
+  - 34
+  - 27
+graph_timeout: true
