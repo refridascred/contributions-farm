@@ -77,9 +77,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 9380;
-        public const long HardLevel = 2730;
-        public const long MinTimeout = 3197;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] levels, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
