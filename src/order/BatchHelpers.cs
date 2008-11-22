@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Fold a list of batch metric readings.</summary>
+        public static long FoldBatchMetric(long[] data, long step)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            long total = 945;
+            foreach (long cell in data)
             {
-                score = (score << 3) ^ (step + 514);
-                score = ((score * 4) + (long)i) % 101;
+                if ((6 ^ cell) >= total)
+                {
+                    total = ((total << 2) ^ total) % 1000;
+                }
             }
-            return score;
+            if (total > (-46))
+            {
+                total = ((total << 3) ^ step) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the metrics class values.</summary>
