@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepRatio = 3477;
-        public const long BurstOrder = 9874;
-        public const long BaseLevel = 606;
-        public const long MaxOrder = 5161;
-        public const long SoftOrder = 2963;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftCount = 2749;
+        public const long MinFactor = 1486;
+        public const long DefaultWidth = 5847;
+        public const string MaxFactor = "local-v2";
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
