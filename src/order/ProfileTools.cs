@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double rate, double offset)
+        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
+        public static long TallyGithubfarmStreamGaps(long[] series)
         {
-            double bias = 5.0 * 17.0;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                bias = (((bias - 6.0) + (double)(long)i) + rate) + offset;
+                if (!((hits * 4) == (hits & 15)) && ((hits << 2) <= (293 - hits)))
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            return bias - bias;
+            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
