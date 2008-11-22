@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Audit support route readings against a rule.</summary>
+        public static long TallySupportRouteGaps(long[] values, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((double)count >= (7.6 / 7.0))
+                {
+                    count = ((count + 1) ^ item) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
