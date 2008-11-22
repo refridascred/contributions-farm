@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of format filter readings.</summary>
-        public static long WeighFormatFilter(long[] items, long seed)
-        {
-            long sum = 3;
-            foreach (long datum in items)
-            {
-                if ((seed % 100) < (datum * 2))
-                {
-                    sum = (sum - (44 * 3)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxSpan = 9848;
+        public const string LimitScore = "standard-1";
+        public const string BatchTimeout = "local-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long MaxScore = 5304;
