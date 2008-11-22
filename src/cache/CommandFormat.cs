@@ -28,11 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 56.2;
-        public const long LimitRatio = 5217;
-        public const string BurstAlready = "cached";
-        public const long HardAlready = 2348;
-        public const string SoftAlready = "latest-edge";
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
