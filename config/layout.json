@@ -1,6 +1,16 @@
 {
-  "soft_interval_s": false,
-  "base_threshold_ms": [135, 357, 383],
-  "tools_size": true,
-  "dry_run": 60
+  "cache_window": {
+    "retry_window_ms": 47.42,
+    "idle_retries_pct": false,
+    "warm_timeout_pct": [458, 138, 197]
+  },
+  "cache_capacity": {
+    "poll_threshold": false,
+    "editor_size": "green",
+    "soft_ttl_count": true,
+    "enabled": 6481
+  },
+  "report_threshold": "primary",
+  "payload_limit": 4248,
+  "idle_ttl_s": "primary"
 }
