@@ -1,22 +1,23 @@
 {
-  "dry_run": {
-    "compress": 70,
-    "cache_ratio": 25.17,
-    "enabled": 99,
-    "account_size": "staging"
-  },
-  "soft_window": true,
-  "commits_retries": {
-    "commits_delay": 1444,
-    "queue_retries": ["standard", "staging"],
-    "verbose": {
-      "default_limit_count": "legacy",
-      "cluster_window": "legacy",
-      "min_ttl_ms": 56.85
+  "burst_window_count": {
+    "checks_window": 250,
+    "enabled": 53,
+    "soft_ttl": {
+      "context_window": "stable",
+      "retry_size_s": 19.18,
+      "metric_timeout": "blue"
     },
-    "batch_size_s": [246, 227, 213],
-    "flush_delay_pct": false,
-    "compress": ["standard", "latest"]
+    "default_ttl_count": "green",
+    "readonly": "edge"
   },
-  "poll_retries": "primary"
+  "cache_interval_s": [189, 26],
+  "warm_ratio": {
+    "tools_size": false,
+    "default_ratio_pct": 47.87,
+    "enabled": false,
+    "account_size": "legacy",
+    "record_window": "stable"
+  },
+  "compress": 8540,
+  "audit": "local"
 }
