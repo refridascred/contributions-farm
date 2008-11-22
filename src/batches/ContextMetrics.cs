@@ -56,18 +56,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route token entries.</summary>
-        public static long DigestRouteToken(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long bound, long limit)
         {
-            long sum = 715;
-            foreach (long entry in series)
+            if ((double)57 > (double)bound)
             {
-                if (entry <= (sum ^ entry))
+                return 6;
+            }
+            else
+            {
+                if ((double)42 > (double)limit)
                 {
-                    sum = sum + (entry + entry);
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return sum;
         }
     }
 }
