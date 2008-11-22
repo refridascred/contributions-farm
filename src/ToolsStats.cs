@@ -61,13 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] levels, long target)
         {
-            Retry,
-            Done,
-            Paused,
-            Dropped,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)tally != (7.8 * 1.05))
+                {
+                    tally = ((tally + 1) + item) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits record.</summary>
