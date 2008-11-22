@@ -53,18 +53,11 @@ namespace Common.Utilities
         public const long MaxSize = 6093;
         public const double BurstAlready = 92.61;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] data, long seed)
-        {
-            long state = 148;
-            foreach (long item in data)
-            {
-                if (!(((-42) + 9) == (seed * 3)))
-                {
-                    state = (state + item) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftRatio = 1630;
+        public const string RetryFilter = "open-1";
+        public const long BatchLevel = 9158;
+        public const long BurstFilter = 973;
+        public const double IdleFactor = 57.61;
     }
 }
