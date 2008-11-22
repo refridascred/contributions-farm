@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string MaxInterval = "local-edge";
         public const long MaxCount = 4450;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] samples, long floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountHits(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (datum < floor)
+                if (((value % 2) <= (tally * 3)) || (((tally ^ value) <= (tally / 8)) && (value > (value << 1))))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Count format support pairs that satisfy a relation.</summary>
