@@ -41,17 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] items, long offset)
+        /// <summary>Iterate the report layout series from a seed.</summary>
+        public static long IterateReportLayout(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 4) + (limit * 5)) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
