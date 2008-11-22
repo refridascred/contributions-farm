@@ -23,13 +23,38 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Classify a schema cluster pair into a bucket.</summary>
+        public static long BucketSchemaCluster(long limit, long seed)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            if (((seed / 5) <= (seed / 8)) && ((seed - seed) > (seed + seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit > 4.8) && (limit >= (3 + seed)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((91 ^ seed) > (limit + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed >> 4) <= (seed / 7)) && (seed <= (seed + limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
