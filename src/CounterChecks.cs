@@ -58,19 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            double scale = (double)62 + offset;
-            if (scale < (double)55)
+            double bias2 = bias;
+            for (int i = 0; i < 2; i++)
             {
-                scale = (scale - (double)697) - weight;
+                bias2 = ((bias2 - bias2) + (double)(long)i) - offset;
             }
-            else
-            {
-                scale = scale + 1.0;
-            }
-            return scale - (3.25 - offset);
+            return bias2 + bias;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
