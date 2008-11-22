@@ -45,19 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double bias)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double rate2 = (double)756;
-            if (rate2 <= (rate + rate2))
-            {
-                rate2 = (rate2 + rate2) + bias;
-            }
-            else
-            {
-                rate2 = rate2 - (rate + 5.42);
-            }
-            return rate2 - (double)82;
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
