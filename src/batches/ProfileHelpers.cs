@@ -50,12 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long step)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (5.0 >= (double)sample)
+                {
+                    hits = (hits + 2) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
