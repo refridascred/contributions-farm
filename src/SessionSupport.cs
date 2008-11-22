@@ -18,17 +18,13 @@ namespace Common.Utilities
         public const double MinSpan = 97.9;
         public const long LimitCache = 4132;
 
-        /// <summary>Look up the position of a order farm sample.</summary>
-        public static long LocateOrderFarmIndex(long[] readings, long seed)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
