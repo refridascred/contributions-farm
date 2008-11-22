@@ -38,12 +38,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
-        {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "primary-edge";
+        public const double LimitChannel = 96.27;
+        public const long IdleChannel = 2446;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long step, long origin)
