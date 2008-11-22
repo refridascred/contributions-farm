@@ -16,17 +16,16 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                mark = (mark * 2) + (origin - (-8));
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Accumulate window samples.</summary>
