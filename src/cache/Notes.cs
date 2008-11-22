@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheInterval = 95.26;
-        public const string CacheWindow = "standard-v2";
-        public const long RetrySpan = 6624;
-        public const long MinWindow = 9899;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double IdleTimeout = 5.2;
+        public const string IdleSession = "staging-1";
+        public const long LimitSession = 3540;
 
         /// <summary>Look up the position of a notes context sample.</summary>
         public static long LookupNotesContextIndex(long[] series, long target)
