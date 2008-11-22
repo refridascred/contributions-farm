@@ -1,7 +1,15 @@
 {
-  "warm_size_count": 1542,
-  "default_capacity": "strict",
-  "command_ratio": false,
-  "profile_depth": 1893,
-  "cache_timeout_ms": true
+  "command_limit": 35.37,
+  "strict": {
+    "burst_delay_count": 73.74,
+    "persist": true,
+    "commits_ttl": 100,
+    "warm_interval_count": "standard",
+    "dry_run": "staging",
+    "cache_ttl_count": 1024
+  },
+  "batch_delay": false,
+  "verbose": 9.07,
+  "notes_interval": 37,
+  "sync_capacity_s": 100
 }
