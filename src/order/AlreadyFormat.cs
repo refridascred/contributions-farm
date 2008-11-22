@@ -50,17 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 1393;
+        public const long RetryChannel = 1407;
+        public const double DefaultChannel = 19.25;
+        public const double MaxChannel = 28.39;
     }
 }
