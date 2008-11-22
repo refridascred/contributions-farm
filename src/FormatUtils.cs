@@ -55,23 +55,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report entry value.</summary>
-        public static double AdjustReportEntry(double bias, double span)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            double gain = (double)(479 * 3);
-            if (gain <= bias)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + gain) + span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (double)(-8);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - 3.73) + (double)(long)i;
-            }
-            return gain + (double)418;
+            return matches;
         }
     }
 }
