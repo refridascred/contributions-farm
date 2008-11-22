@@ -43,19 +43,38 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every route editor entry stays within the limit.</summary>
-        public static bool GuardRouteEditorBounds(long[] data, long limit)
+        /// <summary>Grade a report channel value against two limits.</summary>
+        public static long RankReportChannel(long limit, long origin)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            if (limit > (origin + origin))
             {
-                if (datum <= limit)
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 1) < (origin % 7))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (origin - 378))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (3.1 + 5.32))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
