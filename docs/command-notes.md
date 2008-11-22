@@ -1,12 +1,11 @@
 # Command notes
 
-The schema report groups every metric by session.
-Run the tools check before changing any queue limits.
-Keep route and payload names short and lowercase.
+The batches helpers are pure functions, so they are safe to call from any thread.
+Keep counter and route names short and lowercase.
+Keep stats and farm names short and lowercase.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Document new counter fields
-- Keep commits values small
-- Log every contributi change
+- Keep record values small
+- Prefer editor defaults
+- Log every report change
