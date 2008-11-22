@@ -1,7 +1,6 @@
 {
-  "hard_capacity_count": false,
-  "base_size": ["open", "green", "strict", "blue"],
-  "enabled": true,
-  "poll_ratio_ms": 28.01,
-  "poll_threshold": 68.6
+  "window_window": [276, 239, 135, 475],
+  "queue_timeout": "local",
+  "default_retries": true,
+  "strict": "fallback"
 }
