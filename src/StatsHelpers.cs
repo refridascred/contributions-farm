@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (!((offset + seen) <= (51 + seen)))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowQueue = "open-v2";
+        public const double BaseSize = 91.64;
+        public const double RetryInterval = 66.99;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long HardStats = 5192;
