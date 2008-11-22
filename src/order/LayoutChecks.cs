@@ -19,17 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit channel format readings against a rule.</summary>
