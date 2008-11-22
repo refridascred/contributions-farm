@@ -1,5 +1,6 @@
 {
-  "hard_delay": 97.94,
-  "readonly": "open",
-  "sync_ttl": true
+  "batch_capacity_ms": 2933,
+  "compress": 1024,
+  "poll_limit": 90.64,
+  "verbose": true
 }
