@@ -1,11 +1,10 @@
 # githubfarm settings
-poll_timeout: 20.7
-route_depth:
-  - primary
-  - blue
-  - fallback
-  - standard
-max_ratio_ms:
-  - 294
-  - 455
-warm_delay: 67.15
+readonly: staging
+batch_timeout: false
+burst_delay_pct: 55
+channel_timeout: edge
+schema_retries: 100
+sync_timeout_s:
+  - open
+  - open
+  - local
