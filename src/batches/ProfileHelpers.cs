@@ -51,39 +51,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue batches input into a small class.</summary>
-        public static long ClassifyQueueBatches(long seed, long seed2)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long offset = seed ^ seed2;
-            if (((offset << 1) <= offset) && ((offset & 31) >= seed2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed2 < (4.2 * 11.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed % 3) == (seed - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed << 2) <= (seed2 >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
