@@ -32,12 +32,17 @@ namespace Common.Utilities
         public const double LimitTools = 84.24;
         public const long RetryTimeout = 7182;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
