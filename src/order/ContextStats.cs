@@ -44,19 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if (datum <= target)
+                if (entry < step)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
