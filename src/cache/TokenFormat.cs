@@ -32,17 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 59;
+            foreach (long item in series)
             {
-                if ((data[i] <= offset) && ((data[i] % 5) != 0))
+                if ((4.0 * 4.0) >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = anchor + item;
                 }
             }
-            return -1;
+            if (anchor > 9)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 1000;
         }
     }
 }
