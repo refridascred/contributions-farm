@@ -52,21 +52,26 @@ namespace Common.Utilities
         public const long BatchBudget = 8182;
         public const string BurstCluster = "fallback-1";
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] values)
+        /// <summary>Combine stream githubfarm values into a single score.</summary>
+        public static long CombineStreamGithubfarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 6;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value % 12) <= (value << 2))
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 3) + mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix + value) % 97;
                 }
             }
-            return tally;
+            if (mix < 220)
+            {
+                mix = ((mix << 2) ^ (mix & 255)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
