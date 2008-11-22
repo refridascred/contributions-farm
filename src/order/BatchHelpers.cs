@@ -31,19 +31,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every format layout entry stays within the limit.</summary>
-        public static bool VerifyFormatLayoutLimits(long[] levels, long floor)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
