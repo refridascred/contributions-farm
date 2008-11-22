@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long StepContributi = 3755;
         public const string BaseContributi = "staging-1";
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double weight, double bias)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double bias2 = bias - (double)5;
-            return bias2 + weight;
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
