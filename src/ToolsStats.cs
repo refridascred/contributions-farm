@@ -52,21 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the cache class values.</summary>
