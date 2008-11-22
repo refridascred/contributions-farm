@@ -31,15 +31,19 @@ namespace Common.Utilities
             return ratio - scale;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool GuardChannelBufferRange(long[] items, long step)
         {
-            double drift = (double)(327 + 88);
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                drift = (drift + (span / 5.0)) + (double)(long)i;
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (bias * 4.0);
+            return ready;
         }
 
         /// <summary>Hold a counter header.</summary>
