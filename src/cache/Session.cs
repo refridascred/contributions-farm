@@ -28,18 +28,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long mark = 607;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (!((double)mark >= (double)sample))
-                {
-                    mark = ((mark + mark) % 1000) + seed;
-                }
+                acc = (acc - (acc % 64)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mark % 4096;
+            return acc;
         }
 
         /// <summary>Describe the profile level values.</summary>
