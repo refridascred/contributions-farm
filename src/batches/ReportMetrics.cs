@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long floor)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long result = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many profile support samples are out of range.</summary>
