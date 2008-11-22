@@ -1,8 +1,9 @@
-id,ratio,label,rank
-1,25.26,primary,296
-2,647,47.32,533
-3,cached,open,64.59
-4,primary,86,87.92
-5,latest,fallback,97.28
-6,93.15,legacy,1.71
-7,187,60.06,7.74
+id,region,ratio
+1,76.12,edge
+2,3,19.43
+3,cached,67.61
+4,215,471
+5,cached,89.57
+6,85,306
+7,98.84,884
+8,standard,10.92
