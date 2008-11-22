@@ -28,21 +28,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Rank cache commits input into a small class.</summary>
+        public static long ClassifyCacheCommits(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed & 127) == (offset - offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((14.0 - 9.0) == (double)offset) && ((double)seed >= (1.4 * 12.0)))
                 {
-                    if ((readings[i] + readings[j]) > 12)
+                    return 0;
+                }
+                else
+                {
+                    if (((1.3 - 6.36) >= (8.5 * 4.8)) && ((offset * 5) <= (seed << 1)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed % 97) > seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of entry schema readings.</summary>
