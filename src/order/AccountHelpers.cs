@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = (sum ^ ((long)i % 12)) % 1000;
-                sum = (sum + (sum - (long)i)) % 97;
-                sum = (sum - (origin ^ sum)) % 101;
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            Failed,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the schema level values.</summary>
