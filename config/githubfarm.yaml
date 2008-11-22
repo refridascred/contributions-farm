@@ -1,12 +1,5 @@
 # githubfarm settings
-checks_capacity: green
-graph_delay:
-  batch_window_count: 40
-  batch_window_ms: green
-  base_depth: 9
-  cache_timeout: 4483
-sync_ratio_count: 5739
-min_ratio_pct: true
-burst_threshold_count:
-  - 167
-  - 256
+idle_timeout_pct: false
+compress: 11
+enabled: legacy
+graph_window: true
