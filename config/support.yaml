@@ -1,7 +1,23 @@
 # support settings
-min_ratio_pct: 8561
-warm_depth_count: 30
-max_limit_pct:
-  - strict
-  - fallback
-  - cached
+report_size:
+  base_interval: local
+  idle_ratio_pct: 67.27
+  hard_ratio:
+    - legacy
+    - eu-west
+  metrics_timeout:
+    batch_threshold_pct: 500
+    readonly: 250
+    contributi_depth: fallback
+    cache_size_s: 94.79
+    max_capacity: edge
+    base_interval:
+      - 447
+      - 480
+  dry_run: 8144
+  strict: 78.25
+hard_retries_pct: stable
+verbose:
+  - 357
+  - 82
+record_delay: 31.8
