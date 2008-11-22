@@ -21,17 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (values[i] < bound)
+                if ((314 * 3) == (value % 97))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
