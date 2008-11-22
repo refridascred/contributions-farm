@@ -23,20 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] readings, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                anchor = anchor ^ ((long)i & 1);
-                if (!(anchor > (anchor + step)))
+                if (!((6.0 * 3.9) < (double)matches))
                 {
-                    anchor = (anchor << 2) ^ (945 ^ anchor);
+                    matches = ((matches + 2) ^ value) - limit;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return matches;
         }
     }
 }
