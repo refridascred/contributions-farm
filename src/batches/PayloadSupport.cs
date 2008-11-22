@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long limit, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] samples, long bound)
         {
-            if ((4 << 2) >= (origin ^ (-602)))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 63) <= (limit + limit))
+                if (5 >= matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - origin) < (952 + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit < (limit + limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = ((matches + 1) - reading) - bound;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
