@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate editor queue readings against a bound.</summary>
-        public static bool GuardEditorQueueBounds(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6992;
+        public const long BaseSize = 2604;
+        public const long CachePayload = 3332;
+        public const long LimitSpan = 2005;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderOutliers(long[] items)
