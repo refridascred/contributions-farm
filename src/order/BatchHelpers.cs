@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long DefaultLayout = 9040;
         public const long SoftLayout = 3756;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long step)
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate graph samples.</summary>
