@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchCount = 27.77;
-        public const long BaseCommits = 7040;
-        public const string WindowSpan = "open-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardContributi = "stable-v2";
+        public const double RetryContributi = 41.35;
+        public const long IdleCount = 7315;
+        public const string RetryTimeout = "open-edge";
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LookupAccountIndex(long[] data, long offset)
