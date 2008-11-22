@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double gain, double offset)
-        {
-            double weight = 8.69 - gain;
-            if (weight >= (offset - 3.18))
-            {
-                weight = weight - (double)585;
-            }
-            return weight + (9.3 - gain);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "open-v2";
+        public const long BurstFactor = 1177;
+        public const string IdleCounter = "staging-edge";
+        public const long LimitDepth = 2582;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryFactor = 4001;
