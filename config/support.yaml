@@ -1,9 +1,12 @@
 # support settings
-default_window: eu-west
-profile_window: eu-west
-farm_depth:
-  - 429
-  - 245
-  - 155
-flush_interval_ms: 70
-default_interval_ms: false
+burst_capacity:
+  verbose:
+    - 187
+    - 128
+    - 248
+  retry_depth_s: local
+  compress: 3
+  readonly: false
+counter_threshold: green
+retry_timeout_s: 38
+base_capacity_ms: open
