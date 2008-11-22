@@ -58,22 +58,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] samples, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] series, long target)
         {
-            long mark = 0;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((entry < (mark + entry)) || ((entry - 4) < (703 ^ origin)))
+                if (sample < target)
                 {
-                    mark = mark - (entry ^ mark);
+                    ready = false;
+                    break;
                 }
             }
-            if (mark < 6)
-            {
-                mark = ((mark * 5) + (mark >> 1)) % 4096;
-            }
-            return mark;
+            return ready;
         }
     }
 }
