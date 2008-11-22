@@ -10,13 +10,22 @@ namespace Common.Utilities
         public const double BurstTimeout = 21.67;
         public const long BaseRatio = 8043;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] values)
         {
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
+            long state = 2;
+            foreach (long item in values)
+            {
+                if ((double)item == (double)state)
+                {
+                    state = state + item;
+                }
+                else
+                {
+                    state = (state << 2) ^ (state << 3);
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a buffer summary.</summary>
