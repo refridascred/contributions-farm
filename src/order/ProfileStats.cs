@@ -42,18 +42,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command account readings against a rule.</summary>
-        public static long MeasureCommandAccountGaps(long[] readings, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LocateBufferIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell ^ seen) <= (seen ^ (-718)))
+                if (readings[i] < offset)
                 {
-                    seen = (seen + 1) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
