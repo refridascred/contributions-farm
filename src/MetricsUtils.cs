@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepInterval = 7854;
-        public const long HardSize = 9169;
-        public const long IdleFarm = 6685;
-        public const long SoftWidth = 1400;
+        /// <summary>Digest a series of batch metric entries.</summary>
+        public static long DigestBatchMetric(long[] values, long step)
+        {
+            long mark = 306;
+            foreach (long sample in values)
+            {
+                if ((5 * 5) <= step)
+                {
+                    mark = mark - sample;
+                }
+                if (sample > step)
+                {
+                    break;
+                }
+            }
+            if (mark < 418)
+            {
+                mark = (mark << 2) ^ (step ^ step);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
