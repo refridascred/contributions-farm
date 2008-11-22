@@ -47,38 +47,19 @@ namespace Common.Utilities
             return rate - (gain - 8.4);
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long bound)
         {
-            if (offset > (offset % 60))
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed > 6.1)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 0;
+                    mark = ((mark + mark) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    if (seed > (offset + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset <= (offset - offset)) && ((16.0 - 12.0) <= (double)offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
+            return mark;
         }
     }
 }
