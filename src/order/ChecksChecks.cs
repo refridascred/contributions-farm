@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const double BaseFilter = 33.85;
         public const long HardBudget = 269;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
