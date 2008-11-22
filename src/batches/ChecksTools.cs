@@ -20,22 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long offset)
         {
-            long sum = 456;
-            foreach (long entry in series)
+            long acc = 164;
+            foreach (long cell in levels)
             {
-                if (sum > (entry % 97))
+                if (((offset ^ offset) <= acc) && ((acc % 10) == (acc << 1)))
                 {
-                    sum = (sum * 5) + (sum % 10);
+                    acc = acc + offset;
+                    acc = (acc * 4) + (cell / 4);
                 }
-                else
-                {
-                    sum = ((sum * 5) + (314 - sum)) % 101;
-                }
+                acc = ((acc * 2) + offset) % 255;
+                acc = (acc - (cell + offset)) % 4096;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
