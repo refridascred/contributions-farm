@@ -13,18 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = 1;
+            foreach (long reading in data)
             {
-                if (tally > (tally / 3))
+                if ((reading >= (reading / 3)) && ((sum ^ reading) > (reading - limit)))
                 {
-                    tally = (tally + 1) + cell;
+                    break;
+                }
+                if ((double)limit == (3.6 - 6.03))
+                {
+                    sum = ((sum * 4) + (sum >> 2)) % 65521;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
