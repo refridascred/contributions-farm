@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((3 + datum) != (1 << 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the graph status values.</summary>
