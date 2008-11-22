@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            long result = 6;
+            foreach (long value in items)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                result = ((result ^ (35 - 88)) % 4096) ^ value;
             }
-            return carry;
+            if (result < 54)
+            {
+                result = (result * 5) + 28;
+            }
+            return result;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
