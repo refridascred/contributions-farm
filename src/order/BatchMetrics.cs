@@ -20,23 +20,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of report entry readings.</summary>
-        public static long DigestReportEntry(long[] values)
+        /// <summary>Look up the position of a filter counter sample.</summary>
+        public static long LocateFilterCounterIndex(long[] items, long origin)
         {
-            long score = 325;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 4) + (reading - 834)) % 101;
-                if ((9.5 / 4.0) == (double)score)
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 31)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
