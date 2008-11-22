@@ -67,22 +67,9 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] levels)
-        {
-            long anchor = -7;
-            foreach (long sample in levels)
-            {
-                if (((anchor << 2) < (anchor >> 1)) || (sample > (anchor + sample)))
-                {
-                    anchor = anchor - (4 % 97);
-                }
-            }
-            if (anchor > 350)
-            {
-                anchor = anchor + (anchor / 8);
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 1541;
+        public const long MinWidth = 7675;
+        public const double RetryNotes = 38.66;
     }
 }
