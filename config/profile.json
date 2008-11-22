@@ -1,12 +1,15 @@
 {
-  "strict": 36.82,
-  "command_limit": 6.38,
-  "graph_depth": false,
-  "cache_interval": {
-    "compress": "cached",
-    "default_limit": true,
-    "persist": 9946,
-    "profile_limit": "local",
-    "channel_ttl": 6046
-  }
+  "batch_threshold": "edge",
+  "min_limit_ms": 2414,
+  "verbose": 29,
+  "poll_capacity_s": {
+    "editor_interval": true,
+    "metric_limit": 72,
+    "batches_window": [76, 146],
+    "readonly": 25.89,
+    "warm_timeout_pct": 100,
+    "token_depth": [330, 353, 143]
+  },
+  "burst_ratio_ms": 60,
+  "retry_depth": "eu-west"
 }
