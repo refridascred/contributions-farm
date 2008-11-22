@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate commits buffer readings against a bound.</summary>
-        public static bool ValidateCommitsBufferBounds(long[] values, long origin)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
