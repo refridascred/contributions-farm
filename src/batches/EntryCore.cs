@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if ((4.0 + 5.5) <= (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)225 >= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit ^ floor) == (6 / 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5 + limit) >= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
