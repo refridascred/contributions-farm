@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] levels)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long mark = 2;
+            foreach (long value in levels)
+            {
+                mark = (mark + mark) % 65521;
+                if ((mark + 9) == (value + value))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a graph summary.</summary>
