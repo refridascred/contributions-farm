@@ -40,18 +40,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] series, long step)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((double)step <= (1.9 - 3.83))
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
