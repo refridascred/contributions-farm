@@ -13,13 +13,32 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long step, long origin)
         {
-            public bool Total { get; set; }
-            public double Stamp { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            long bound = step ^ origin;
+            if (bound > (step ^ 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin >= (bound + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 2) != (origin + step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a notes context sample.</summary>
