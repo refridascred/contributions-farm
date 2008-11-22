@@ -1,13 +1,17 @@
 {
-  "hard_delay_pct": 22,
-  "stream_capacity": true,
-  "verbose": {
-    "flush_capacity_count": 18,
-    "hard_retries_count": 30,
-    "idle_timeout": 30,
-    "poll_window_s": "latest",
-    "payload_ratio": 2429,
-    "githubfarm_ttl": true
+  "enabled": false,
+  "report_timeout": [235, 38, 16],
+  "min_capacity": 656,
+  "sync_threshold": {
+    "poll_capacity_s": false,
+    "account_interval": {
+      "max_interval_ms": [296, 398],
+      "min_interval": [388, 87, 359],
+      "batch_threshold_ms": 1
+    },
+    "format_depth": 80.47,
+    "default_ratio_count": 60,
+    "audit": 45.92
   },
-  "batch_depth_pct": 60
+  "batch_retries_s": "latest"
 }
