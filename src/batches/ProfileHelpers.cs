@@ -55,15 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = 22;
-            foreach (long cell in items)
-            {
-                carry = ((carry + (carry % 97)) % 255) + cell;
-            }
-            return carry;
+            Done,
+            New,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a support info.</summary>
