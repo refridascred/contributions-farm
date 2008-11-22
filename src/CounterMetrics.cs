@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] series)
         {
-            Done,
-            New,
-            Idle,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (seen > (seen * 4))
+                {
+                    seen = (seen + 3) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
