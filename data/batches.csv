@@ -1,6 +1,10 @@
-id,rank,owner,score,label
-1,standard,legacy,strict,16.47
-2,eu-west,333,98.17,77.81
-3,6.15,blue,blue,fallback
-4,341,30.16,green,58.92
-5,48,37.19,66.63,legacy
+id,owner,token,level
+1,cached,429,56.68
+2,15.94,73,307
+3,local,408,555
+4,627,200,66.16
+5,63.34,95.26,standard
+6,eu-west,local,75.76
+7,fallback,18.46,15.44
+8,92.04,67,79.49
+9,552,498,772
