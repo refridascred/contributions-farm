@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of layout schema entries.</summary>
-        public static long WeighLayoutSchema(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long anchor = 926;
-            foreach (long value in data)
-            {
-                if (!((double)value < (3.0 + 7.7)))
-                {
-                    anchor = anchor + value;
-                }
-                if (value <= (anchor ^ anchor))
-                {
-                    anchor = (anchor ^ (anchor + value)) % 4096;
-                }
-                if ((value + value) < value)
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 2)) % 101;
-                }
-            }
-            if (anchor > 40)
-            {
-                anchor = (anchor + (anchor * 4)) % 97;
-            }
-            return anchor % 65521;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
