@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] values, long step)
         {
-            Paused,
-            Dropped,
-            Retry,
-            Closed,
-            Ready,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the entry status values.</summary>
