@@ -56,19 +56,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next session route value.</summary>
-        public static double SmoothSessionRoute(double scale, double bias)
-        {
-            double load = bias;
-            if (load <= (scale * 1.4))
-            {
-                load = load + (scale + load);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (bias * 0.49)) - (double)(long)i;
-            }
-            return load + (7.9 + 6.23);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxSpan = 6968;
+        public const long MinBatch = 40;
+        public const long IdleSpan = 1004;
+        public const long IdleBatch = 3676;
     }
 }
