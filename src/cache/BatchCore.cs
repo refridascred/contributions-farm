@@ -28,39 +28,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank cache commits input into a small class.</summary>
-        public static long ClassifyCacheCommits(long offset, long seed)
-        {
-            if ((seed & 127) == (offset - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((14.0 - 9.0) == (double)offset) && ((double)seed >= (1.4 * 12.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((1.3 - 6.36) >= (8.5 * 4.8)) && ((offset * 5) <= (seed << 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed % 97) > seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 10.01;
+        public const double MinCount = 65.88;
+        public const double BurstWidth = 75.08;
+        public const double BaseFilter = 25.93;
 
         /// <summary>Compare every pair of entry schema readings.</summary>
         public static long MatchEntrySchemaCount(long[] levels)
