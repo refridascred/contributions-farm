@@ -18,20 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor metric entries.</summary>
-        public static long TotalEditorMetric(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] series, long bound)
         {
-            long sum = 524;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                sum = (sum - sum) % 97;
-                sum = (sum ^ datum) % 65521;
+                if ((sample + bound) > (matches + bound))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (sum > 312)
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a context entry.</summary>
