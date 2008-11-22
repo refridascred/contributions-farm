@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batches cluster value from a seed.</summary>
-        public static long RollBatchesCluster(long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (91 >= anchor)
-                {
-                    anchor = ((anchor << 2) ^ (step + (long)i)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Blend two counter measurements.</summary>
