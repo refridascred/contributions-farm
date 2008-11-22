@@ -1,6 +1,9 @@
-id,weight,region,score
-1,60.63,green,fallback
-2,272,32.53,14.91
-3,766,strict,93.32
-4,blue,63.17,705
-5,legacy,33.0,52.63
+id,level,ratio,token
+1,23.77,blue,blue
+2,84.09,352,cached
+3,latest,strict,latest
+4,legacy,25.51,136
+5,28.87,eu-west,latest
+6,93.45,58.47,391
+7,837,76.6,337
+8,green,standard,828
