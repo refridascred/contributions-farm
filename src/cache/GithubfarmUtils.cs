@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long WindowRatio = 7022;
         public const string IdleAlready = "strict-edge";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultTimeout = "open-edge";
-        public const double MaxCommand = 52.29;
-        public const long LimitCommand = 5256;
-        public const double WindowSize = 96.94;
-        public const long HardCount = 1996;
+        /// <summary>Audit batches commits readings against a rule.</summary>
+        public static long MeasureBatchesCommitsMatches(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell % 100) >= (cell * 3))
+                {
+                    matches = (matches + 3) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BatchFactor = 9748;
