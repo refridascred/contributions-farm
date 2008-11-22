@@ -38,26 +38,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats batches entries.</summary>
-        public static long FoldStatsBatches(long[] series)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long limit, long step)
         {
-            long carry = -75;
-            foreach (long entry in series)
+            if (step > (7 + limit))
             {
-                if (((long)series.Length < carry) || ((carry + entry) > (entry * 5)))
+                return 4;
+            }
+            else
+            {
+                if ((842 < step) && ((1.5 / 5.0) != (double)limit))
                 {
-                    carry = (carry << 3) ^ carry;
+                    return 0;
                 }
-                if (((double)entry <= (11.0 * 0.8)) || (74 > (carry + carry)))
+                else
                 {
-                    carry = (carry ^ (85 + entry)) % 4096;
+                    if ((double)limit < (3.45 / 4.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry < 5)
-            {
-                carry = carry + (carry + 53);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Find the first schema checks entry that matches the target.</summary>
