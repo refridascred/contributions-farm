@@ -14,12 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 377;
-        public const double StepGithubfarm = 54.86;
-        public const string RetryGithubfarm = "legacy-v2";
-        public const long BatchTimeout = 5871;
-        public const long LimitLevel = 4965;
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double offset)
+        {
+            double drift = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (gain - offset)) + (double)(long)i;
+            }
+            return drift - offset;
+        }
 
         /// <summary>Audit commits readings against a rule.</summary>
         public static long CountCommitsHits(long[] samples)
