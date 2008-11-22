@@ -1,9 +1,7 @@
 {
-  "poll_interval_pct": "local",
-  "farm_ttl": "standard",
-  "editor_threshold": {
-    "batch_size": true,
-    "idle_interval": 52,
-    "default_interval_ms": "strict"
-  }
+  "cluster_ttl": [476, 335, 442],
+  "soft_limit_pct": false,
+  "poll_threshold": "latest",
+  "report_window": 5871,
+  "hard_delay_s": "local"
 }
