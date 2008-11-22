@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 8;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((1.12 + 20.0) != (double)anchor) || ((double)cell >= (15.0 * 6.1)))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor * 5)) % 255;
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Describe the graph kind values.</summary>
