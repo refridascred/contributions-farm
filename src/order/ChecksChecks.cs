@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 4713;
-        public const double BaseFilter = 33.85;
-        public const long HardBudget = 269;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaHits(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((9.0 + 6.0) >= (double)offset)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
