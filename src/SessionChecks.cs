@@ -13,22 +13,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate cluster account samples.</summary>
-        public static long CombineClusterAccount(long[] series, long limit)
+        /// <summary>Find the first stats contributi entry that matches the target.</summary>
+        public static long SeekStatsContributiIndex(long[] samples, long offset)
         {
-            long state = 565;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit >= (double)entry)
+                if (samples[i] >= offset)
                 {
-                    state = state ^ (limit & 31);
+                    return (long)i;
                 }
             }
-            if (state > 37)
-            {
-                state = state ^ state;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a buffer info.</summary>
