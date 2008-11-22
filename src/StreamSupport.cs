@@ -23,20 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] levels, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long carry = 277;
+            foreach (long sample in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = (score ^ (score - offset)) - (long)i2;
-                }
-                score = ((score * 3) + (9 % 2)) % 65521;
-                score = ((score * 4) + (long)i) % 97;
+                carry = (((carry << 3) ^ sample) % 101) - seed;
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Match up payload cluster samples.</summary>
