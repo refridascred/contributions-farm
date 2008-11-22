@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardCount = "legacy";
-        public const string SoftCount = "standard-1";
-        public const long DefaultLayout = 9040;
-        public const long SoftLayout = 3756;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!(entry < (entry << 3)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate checks profile samples.</summary>
         public static long FoldChecksProfile(long[] levels, long offset)
