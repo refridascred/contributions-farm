@@ -59,12 +59,18 @@ namespace Common.Utilities
             return drift - (drift / 4.0);
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series, long origin)
         {
-            Pending,
-            Paused,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (!(982 > ((long)series.Length + sample)))
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
     }
 }
