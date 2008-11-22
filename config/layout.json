@@ -1,9 +1,8 @@
 {
-  "burst_retries_count": 5640,
-  "cache_timeout_count": {
-    "base_capacity_s": true,
-    "hard_retries": 6.36,
-    "idle_depth_pct": 5361
-  },
-  "verbose": 1024
+  "metric_retries": 2943,
+  "strict": 3.6,
+  "flush_window_ms": 100,
+  "max_size": "staging",
+  "flush_delay": 92.24,
+  "hard_window_ms": 3556
 }
