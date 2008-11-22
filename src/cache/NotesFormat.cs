@@ -30,11 +30,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Locate a channel metrics reading by value.</summary>
+        public static long LocateChannelMetricsIndex(long[] series, long step)
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
