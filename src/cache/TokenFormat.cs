@@ -22,12 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 72.73;
+        public const long DefaultWidth = 2186;
+        public const long HardDepth = 5034;
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] levels)
