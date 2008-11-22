@@ -1,10 +1,6 @@
-id,region,rank,label
-1,262,193,857
-2,cached,553,24
-3,39.77,93.49,91.63
-4,76.28,87.46,28.74
-5,19.02,standard,edge
-6,769,57.98,729
-7,28.07,531,98.32
-8,844,403,689
-9,580,strict,37.25
+id,token,weight,state
+1,blue,cached,standard
+2,15,fallback,307
+3,green,288,136
+4,344,primary,primary
+5,standard,44.28,861
