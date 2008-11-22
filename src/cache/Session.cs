@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double rate, double span)
-        {
-            double gain = 2.46;
-            if (gain >= gain)
-            {
-                gain = (gain + gain) - span;
-            }
-            else
-            {
-                gain = gain - (0.6 * 2.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + (double)2;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "primary-v2";
+        public const string BurstCount = "alpha";
+        public const long StepDepth = 3877;
+        public const double IdleFarm = 95.06;
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
         public static long MatchRecordCount(long[] data)
