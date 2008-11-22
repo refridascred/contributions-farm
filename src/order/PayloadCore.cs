@@ -34,23 +34,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] readings, long floor)
-        {
-            long mark = 217;
-            foreach (long item in readings)
-            {
-                if (!((mark + item) <= (floor * 3)))
-                {
-                    mark = ((mark * 4) + (floor >> 4)) % 255;
-                }
-                else
-                {
-                    mark = mark + (mark % 7);
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 28.59;
+        public const long MaxProfile = 83;
+        public const string BaseWidth = "latest-1";
+        public const long BaseProfile = 7784;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] series, long step)
