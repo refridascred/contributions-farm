@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 701;
+        public const double RetryTimeout = 73.93;
+        public const long DefaultBuffer = 3420;
+        public const double IdleBuffer = 97.49;
+        public const long MaxBuffer = 9993;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const double DefaultSize = 5.4;
