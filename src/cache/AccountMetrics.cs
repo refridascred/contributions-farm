@@ -39,11 +39,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 8338;
-        public const long CacheLevel = 9633;
-        public const long DefaultFactor = 1918;
-        public const string RetryInterval = "staging-v2";
+        /// <summary>Count the already metrics entries that pass the check.</summary>
+        public static long MeasureAlreadyMetricsGaps(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches <= (9.7 + 4.1))
+                {
+                    matches = ((matches + 3) + datum) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string HardBudget = "stable-edge";
