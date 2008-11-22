@@ -32,18 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 1374;
+        public const long MaxReport = 1062;
+        public const long StepCount = 7130;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] samples, long offset)
