@@ -79,19 +79,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every batch channel entry stays within the limit.</summary>
-        public static bool VerifyBatchChannelBounds(long[] values, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
