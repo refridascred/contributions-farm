@@ -1,11 +1,13 @@
 # Command notes
 
-Run the cluster check before changing any order limits.
-The already report groups every metric by metric.
+Keep batch and queue names short and lowercase.
+The record report groups every contributi by token.
+
+Run the record check before changing any githubfarm limits.
+Defaults for layout live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Document new schema fields
-- Keep editor values small
-- Review session limits each release
+- Log every token change
+- Prefer metrics defaults
+- Document new editor fields
