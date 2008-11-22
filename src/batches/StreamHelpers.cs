@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 5988;
-        public const long StepWidth = 9176;
-        public const long BurstLevel = 9915;
-        public const double MaxTimeout = 98.71;
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long SortSupport(long bound, long step)
