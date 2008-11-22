@@ -89,17 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] values, long target)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = floor;
+            if (scale < (double)58)
             {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
+                scale = scale + gain;
             }
-            return -1;
+            return scale + (floor + scale);
         }
     }
 }
