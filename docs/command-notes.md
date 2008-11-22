@@ -1,15 +1,14 @@
 # Command notes
 
-When a graph fails, the record handler retries a few times before giving up.
-The report helpers are pure functions, so they are safe to call from any thread.
-Defaults for batch live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the order list.
+Use window settings to tune how often entry data is refreshed.
+Each already is validated before it reaches the command queue.
 
-Use batches settings to tune how often cluster data is refreshed.
-Each graph is validated before it reaches the report queue.
-Defaults for batches live in the config folder and can be overridden per environment.
+The checks helpers are pure functions, so they are safe to call from any thread.
+The counter module keeps contributi values in sync with the account cache.
 
 ## Guidelines
 
-- Keep command values small
-- Review window limits each release
-- Document new githubfarm fields
+- Prefer metrics defaults
+- Keep metrics values small
+- Validate contributi input early
