@@ -1,6 +1,18 @@
 {
-  "sync_delay_ms": 1.06,
-  "sync_threshold_ms": 594,
-  "audit": "standard",
-  "base_capacity": false
+  "metrics_interval": "standard",
+  "retry_delay_s": {
+    "idle_timeout_ms": "cached",
+    "graph_interval": "local",
+    "flush_interval_count": {
+      "idle_interval": 4466,
+      "enabled": 33.75,
+      "cache_interval": "standard",
+      "readonly": 1270,
+      "sync_depth_count": "cached"
+    },
+    "idle_interval": true,
+    "min_ttl_ms": true
+  },
+  "audit": false,
+  "idle_window_ms": 72
 }
