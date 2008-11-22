@@ -1,6 +1,19 @@
 {
-  "window_window": [276, 239, 135, 475],
-  "queue_timeout": "local",
-  "default_retries": true,
-  "strict": "fallback"
+  "warm_interval_ms": "staging",
+  "verbose": ["local", "latest", "legacy"],
+  "min_retries_s": "edge",
+  "route_window": 30,
+  "channel_timeout": ["edge", "edge", "open"],
+  "compress": {
+    "retry_depth": {
+      "warm_size_pct": "standard",
+      "audit": ["primary", "staging", "fallback", "local"],
+      "warm_retries_count": [353, 281, 228]
+    },
+    "verbose": "strict",
+    "dry_run": 78,
+    "strict": ["stable", "legacy"],
+    "enabled": 6610,
+    "poll_ttl_pct": 36.19
+  }
 }
