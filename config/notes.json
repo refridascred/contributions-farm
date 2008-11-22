@@ -1,5 +1,22 @@
 {
-  "hard_timeout_s": 96,
-  "burst_interval": "latest",
-  "cache_timeout": "open"
+  "dry_run": "staging",
+  "audit": [250, 111],
+  "queue_depth": {
+    "retry_capacity_s": "fallback",
+    "compress": {
+      "enabled": 250,
+      "queue_window": 9528,
+      "burst_size": ["green", "latest", "primary"],
+      "schema_capacity": "standard",
+      "idle_size_ms": "primary",
+      "base_timeout_pct": 48.76
+    },
+    "filter_size": "fallback",
+    "sync_interval_pct": "cached",
+    "strict": 60,
+    "cache_threshold": 42
+  },
+  "verbose": "eu-west",
+  "record_delay": [247, 214, 250],
+  "burst_retries_count": 39.59
 }
