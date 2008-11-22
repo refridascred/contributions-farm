@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long BurstAlready = 9502;
         public const string BurstFactor = "alpha-1";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] values, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (seed >= (datum ^ seed))
+                if (sample < step)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the buffer state values.</summary>
