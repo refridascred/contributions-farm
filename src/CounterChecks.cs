@@ -27,11 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 4590;
-        public const double BurstCluster = 59.3;
-        public const long HardWidth = 7542;
-        public const long BaseCluster = 2595;
+        /// <summary>Compare every pair of context session readings.</summary>
+        public static long CompareContextSessionCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] readings, long step)
