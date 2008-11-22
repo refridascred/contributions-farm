@@ -53,29 +53,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record window entries.</summary>
-        public static long ScoreRecordWindow(long[] values, long target)
-        {
-            long state = 70;
-            foreach (long value in values)
-            {
-                state = (state - (target << 2)) % 101;
-                if ((value - target) <= (state * 5))
-                {
-                    long cur = (value & 31) - (value % 10);
-                    state = state ^ cur;
-                }
-                state = ((state << 3) ^ (target * 4)) % 1000;
-                if (((-57) + target) >= ((-83) + 547))
-                {
-                    break;
-                }
-            }
-            if (state > 1)
-            {
-                state = ((state * 2) + (target << 1)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitFactor = 44.28;
+        public const long BurstSize = 2761;
+        public const long MaxLayout = 1489;
+        public const long SoftCount = 3164;
     }
 }
