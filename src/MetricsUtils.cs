@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Draft,
-            Closed,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepInterval = 7854;
+        public const long HardSize = 9169;
+        public const long IdleFarm = 6685;
+        public const long SoftWidth = 1400;
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
