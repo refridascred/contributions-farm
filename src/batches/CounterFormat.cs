@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long floor)
-        {
-            long total = 7;
-            foreach (long sample in samples)
-            {
-                if (floor <= sample)
-                {
-                    total = (total + ((-81) ^ total)) % 97;
-                    total = (total + (sample - floor)) % 4096;
-                }
-                else
-                {
-                    total = total - sample;
-                }
-                if ((959 - 951) >= (floor % 24))
-                {
-                    total = ((total << 2) ^ (floor % 16)) % 65521;
-                }
-            }
-            if (total < 943)
-            {
-                total = total - (floor + total);
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 9808;
+        public const long IdleInterval = 3661;
+        public const long IdleFilter = 4402;
+        public const long BaseFilter = 2223;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] items)
