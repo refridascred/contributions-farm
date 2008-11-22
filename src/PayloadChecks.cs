@@ -61,20 +61,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long RollBuffer(long bound)
+        /// <summary>Project the next support tools value.</summary>
+        public static double BlendSupportTools(double gain, double offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            double bias = gain;
+            if (bias > offset)
             {
-                anchor = ((anchor << 3) ^ (bound * 3)) % 97;
-                if (!((anchor >> 1) <= (bound * 4)))
-                {
-                    anchor = (anchor - (450 & 31)) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                bias = bias - (double)926;
             }
-            return anchor;
+            else
+            {
+                bias = bias + offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (offset - gain)) - (double)(long)i;
+            }
+            return bias - (offset * 7.56);
         }
 
         /// <summary>Define account limits and defaults.</summary>
