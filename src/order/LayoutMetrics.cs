@@ -26,11 +26,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] samples)
         {
-            double gain = (double)987 - (double)9;
-            return ((gain - (double)782) + rate) + offset;
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((4 + entry) >= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
