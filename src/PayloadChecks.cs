@@ -44,15 +44,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double weight, double bias)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double drift = (double)4;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (((drift + (drift * 4.45)) + (double)(long)i) + weight) + bias;
-            }
-            return drift + (drift / 2.0);
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
