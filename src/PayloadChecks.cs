@@ -54,13 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Token { get; set; }
             public double Limit { get; set; }
             public long Stamp { get; set; }
-            public bool Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
