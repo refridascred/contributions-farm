@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] levels)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((cell ^ seen) < (367 >> 5)) || ((cell ^ seen) > seen))
+                if (item != seed)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
