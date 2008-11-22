@@ -21,12 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] items, long seed)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up already support samples.</summary>
