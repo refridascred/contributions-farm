@@ -14,22 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen % 12) < (seen ^ seen))
-                {
-                    seen = (seen + 1) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
