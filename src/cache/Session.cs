@@ -32,19 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long floor)
+        /// <summary>Adjust a filter commits reading.</summary>
+        public static double SmoothFilterCommits(double gain, double floor)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            double load = floor;
+            if (load > gain)
             {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + floor;
             }
-            return found;
+            else
+            {
+                load = load - (load - 7.3);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (gain / 9.0)) + (double)(long)i;
+            }
+            return load + (double)112;
         }
 
         /// <summary>Fold a list of account readings.</summary>
