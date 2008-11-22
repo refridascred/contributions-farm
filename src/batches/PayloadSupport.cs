@@ -36,9 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 1223;
-        public const long MaxMetrics = 8924;
-        public const double StepSize = 5.18;
+        /// <summary>Rank channel metric input into a small class.</summary>
+        public static long ClassifyChannelMetric(long step, long floor)
+        {
+            long gap = step ^ floor;
+            if (((step >> 2) > gap) || ((floor + step) > (gap << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((90 - 252) != (floor + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) < (floor + gap))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
