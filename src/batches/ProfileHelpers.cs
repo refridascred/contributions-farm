@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            Pending,
-            Active,
-            Failed,
-            Draft,
-            Closed,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((0 >> 1) == (matches - matches))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
