@@ -20,15 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double scale, double offset)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            double ratio = (offset + scale) / 3.0;
-            if (ratio >= scale)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - (double)7;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - (double)273;
+            return count;
         }
 
         /// <summary>Adjust a window reading.</summary>
