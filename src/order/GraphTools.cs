@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mean - (weight / 5.0);
         }
 
-        /// <summary>Count order editor pairs that satisfy a relation.</summary>
-        public static long MatchOrderEditorCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading <= tally)
                 {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
