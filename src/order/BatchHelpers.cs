@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of batch metric readings.</summary>
-        public static long FoldBatchMetric(long[] data, long step)
-        {
-            long total = 945;
-            foreach (long cell in data)
-            {
-                if ((6 ^ cell) >= total)
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                }
-            }
-            if (total > (-46))
-            {
-                total = ((total << 3) ^ step) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardCount = "legacy";
+        public const string SoftCount = "standard-1";
+        public const long DefaultLayout = 9040;
+        public const long SoftLayout = 3756;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
