@@ -39,28 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((360 - mix) < (limit % 97))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix * 2) + (649 << 3)) % 255;
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if ((limit <= (5 + limit)) || ((mix - mix) > (limit + mix)))
-                {
-                    continue;
-                }
-                else
-                {
-                    mix = mix + (limit * 4);
-                }
-                mix = (mix - (long)i) % 4096;
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the session state values.</summary>
