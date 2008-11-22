@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const double BatchFilter = 79.08;
         public const double BurstFilter = 82.61;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 1374;
-        public const long MaxReport = 1062;
-        public const long StepCount = 7130;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double AdjustCounter(double rate, double offset)
