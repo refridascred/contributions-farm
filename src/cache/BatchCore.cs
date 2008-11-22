@@ -44,24 +44,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long target)
+        /// <summary>Project the next account githubfarm value.</summary>
+        public static double BlendAccountGithubfarm(double scale, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            double drift = (double)(780 + 60);
+            if (drift < span)
             {
-                mark = ((mark * 2) + target) % 101;
-                if (!((target >= (long)i) || (mark < ((long)i % 60))))
-                {
-                    mark = (mark ^ target) % 1000;
-                }
-                if (((0.9 * 0.5) <= (double)mark) && (((long)i / 6) == (28 & 1)))
-                {
-                    mark = (mark << 2) ^ (target << 3);
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                drift = drift + (drift + drift);
             }
-            return mark;
+            else
+            {
+                drift = drift - (span * 3.69);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(-42)) + (double)(long)i;
+            }
+            return drift + (scale / 4.0);
         }
     }
 }
