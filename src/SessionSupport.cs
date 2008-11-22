@@ -18,13 +18,17 @@ namespace Common.Utilities
         public const double MinSpan = 97.9;
         public const long LimitCache = 4132;
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
