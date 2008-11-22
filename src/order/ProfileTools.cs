@@ -63,18 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseWidth = 9782;
+        public const long DefaultCounter = 8418;
+        public const long BatchCounter = 6906;
+        public const long LimitCount = 4551;
+        public const double MaxScore = 41.95;
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
