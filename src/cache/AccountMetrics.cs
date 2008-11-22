@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] data)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (18 <= (matches & 7))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
