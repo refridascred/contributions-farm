@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 9508;
-        public const long LimitSchema = 5323;
-        public const double RetrySchema = 41.98;
-        public const long BatchSpan = 2654;
-        public const double SoftSchema = 53.68;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings, long origin)
+        {
+            long state = 76;
+            foreach (long reading in readings)
+            {
+                if ((state + reading) > (origin ^ reading))
+                {
+                    break;
+                }
+                if (!((origin - state) > (state << 3)))
+                {
+                    state = (state - (origin + reading)) % 101;
+                }
+                else
+                {
+                    state = state + (state ^ reading);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
