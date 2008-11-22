@@ -1,9 +1,6 @@
 # entry settings
-already_ttl: primary
-cache_limit: false
-audit: 1024
-min_window_count:
-  - 229
-  - 34
-  - 27
-graph_timeout: true
+burst_ratio_count: cached
+buffer_ttl:
+  - 294
+  - 18
+idle_delay: false
