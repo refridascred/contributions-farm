@@ -20,39 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a context notes value against two limits.</summary>
-        public static long BucketContextNotes(long step, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long offset = step - floor;
-            if ((7.0 / 6.0) != (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= 7.58)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((4 + floor) > (offset - floor)) || (offset >= (floor * 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (1.41 / 3.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            New,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the stream phase values.</summary>
