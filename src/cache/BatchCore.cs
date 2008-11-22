@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Project the next commits stats value.</summary>
+        public static double BlendCommitsStats(double gain, double offset)
         {
-            Active,
-            Failed,
-            Closed,
+            double rate = (double)((-12) % 10);
+            if (rate <= (8.8 + gain))
+            {
+                rate = rate + (gain - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (offset * 7.22)) - (double)(long)i;
+            }
+            return rate - (offset / 9.0);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
