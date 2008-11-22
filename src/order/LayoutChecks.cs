@@ -44,17 +44,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the commits class values.</summary>
