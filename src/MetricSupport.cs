@@ -29,11 +29,13 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
