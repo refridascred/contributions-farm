@@ -1,20 +1,7 @@
 {
-  "max_retries_count": {
-    "max_retries_pct": 1024,
-    "flush_depth_s": 100,
-    "burst_timeout": false,
-    "compress": ["cached", "blue", "local"],
-    "entry_limit": {
-      "default_interval_pct": 43.97,
-      "compress": 27,
-      "route_limit": true,
-      "persist": 8484
-    },
-    "soft_size_ms": true
-  },
-  "context_interval": false,
-  "readonly": "staging",
-  "window_ttl": "eu-west",
-  "soft_depth_s": [170, 322],
-  "batch_interval_s": "edge"
+  "compress": true,
+  "idle_depth_ms": "standard",
+  "burst_interval_count": "edge",
+  "sync_capacity_s": 27,
+  "editor_limit": false
 }
