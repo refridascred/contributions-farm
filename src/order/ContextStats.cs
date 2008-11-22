@@ -54,15 +54,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double weight, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long origin)
         {
-            double rate = offset;
-            for (int i = 0; i < 9; i++)
+            if ((target + target) == (target - target))
             {
-                rate = (rate - weight) + (double)(long)i;
+                return 0;
             }
-            return rate + rate;
+            else
+            {
+                if (((target + target) <= (origin / 6)) || (9.72 < (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin < (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target + origin) >= (origin * 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
