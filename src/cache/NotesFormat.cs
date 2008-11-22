@@ -30,19 +30,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long step)
-        {
-            long sum = 65;
-            foreach (long reading in series)
-            {
-                sum = (((sum * 4) + (sum + sum)) % 97) - step;
-                if (12.0 <= (double)reading)
-                {
-                    sum = sum + 28;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheSize = 41.46;
+        public const long MinDepth = 109;
+        public const long IdleRatio = 5749;
+        public const string DefaultCount = "cached-v2";
+        public const string DefaultLayout = "strict-v2";
     }
 }
