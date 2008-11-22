@@ -43,19 +43,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] readings)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            long mix = 579;
-            foreach (long reading in readings)
+            double drift = bias;
+            if (drift <= drift)
             {
-                mix = mix + (mix ^ mix);
-                if (((double)reading < (double)mix) && ((4.0 + 3.6) <= (double)mix))
-                {
-                    break;
-                }
+                drift = (drift + (double)7) - bias2;
             }
-            return mix;
+            return drift + (double)(-693);
         }
     }
 }
