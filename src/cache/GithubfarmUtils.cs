@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Project the next token value.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            double load = (double)(98 << 1);
+            if (load > load)
+            {
+                load = (load + load) + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load + (double)4;
         }
 
         /// <summary>Audit cache batches readings against a rule.</summary>
