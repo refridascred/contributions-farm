@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank notes githubfarm input into a small class.</summary>
-        public static long BucketNotesGithubfarm(long target, long floor)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long limit)
         {
-            long lane = target ^ floor;
-            if ((lane / 6) != (2 ^ lane))
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                anchor = ((anchor * 4) + limit) % 255;
+                anchor = (anchor - (anchor % 12)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((33 + target) != (lane + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor != (9.0 * 2.6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target << 1) > lane)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Project the next notes metric value.</summary>
