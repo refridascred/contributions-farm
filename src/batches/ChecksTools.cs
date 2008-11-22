@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context contributi entries that pass the check.</summary>
-        public static long TallyContextContributiOutliers(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((bound + 8) >= (bound + bound))
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 4603;
+        public const long WindowCount = 6733;
+        public const double BaseDepth = 91.19;
+        public const long DefaultMetrics = 4584;
+        public const long MinMetrics = 2306;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long TallyContributi(long[] levels, long bound)
