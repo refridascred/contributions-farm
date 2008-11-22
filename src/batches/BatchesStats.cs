@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long mix = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
