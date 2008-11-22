@@ -1,5 +1,8 @@
 {
-  "sync_capacity": false,
-  "already_size": 58,
-  "enabled": "cached"
+  "context_capacity": false,
+  "schema_timeout": "cached",
+  "report_window": 54,
+  "soft_ratio_pct": 45,
+  "soft_delay_count": 500,
+  "enabled": [439, 431]
 }
