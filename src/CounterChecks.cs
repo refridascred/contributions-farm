@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] series, long origin)
         {
-            Pending,
-            Stale,
-            New,
+            long mix = 3;
+            foreach (long reading in series)
+            {
+                if ((reading << 2) == (reading & 255))
+                {
+                    mix = ((mix ^ (reading & 15)) % 4096) - origin;
+                }
+                if (!(85 <= (mix - (long)series.Length)))
+                {
+                    break;
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
