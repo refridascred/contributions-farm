@@ -21,11 +21,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 239;
+        public const long LimitRatio = 8282;
+        public const double MaxDepth = 48.33;
     }
 }
