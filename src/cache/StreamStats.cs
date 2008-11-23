@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a support commits sample.</summary>
-        public static long SeekSupportCommitsIndex(long[] items, long step)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                if ((levels[i] < bound) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
