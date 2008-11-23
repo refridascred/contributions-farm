@@ -56,19 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long carry = 8;
-            foreach (long datum in items)
-            {
-                carry = (((carry << 2) ^ (87 / 6)) % 97) - datum;
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 3) ^ (limit >> 1);
-            }
-            return carry % 65521;
+            Failed,
+            Stale,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
