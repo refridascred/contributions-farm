@@ -24,12 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Locked,
-            Active,
-            Idle,
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the session class values.</summary>
