@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            Dropped,
-            Idle,
-            Retry,
+            double bias = (double)(2 % 100);
+            if (bias > floor)
+            {
+                bias = (bias + (double)(-3)) - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (double)0;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
