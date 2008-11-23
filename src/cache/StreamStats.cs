@@ -45,38 +45,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank schema channel input into a small class.</summary>
-        public static long ClassifySchemaChannel(long step, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] samples, long bound)
         {
-            if (31 >= (seed / 8))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step >> 1) != (26 - seed))
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + seed) < (step ^ step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.0 * 5.26) != (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
