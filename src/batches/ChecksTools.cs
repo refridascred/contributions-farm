@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] series, long step)
+        /// <summary>Count channel session pairs that satisfy a relation.</summary>
+        public static long CompareChannelSessionCount(long[] levels)
         {
-            long total = 5;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (((total << 3) ^ (cell + total)) % 4096) - step;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
