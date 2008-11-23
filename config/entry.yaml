@@ -1,16 +1,21 @@
 # entry settings
-default_threshold_count:
-  compress: standard
-  strict: 35
-  warm_delay: 80.56
-  base_retries:
-    - eu-west
-    - local
-    - blue
-  sync_delay: 26
-  burst_threshold_count:
-    - 162
-    - 482
-    - 174
-flush_retries_pct: 46.68
-poll_capacity_pct: local
+warm_depth: 6439
+batch_delay: cached
+cache_capacity:
+  contributi_capacity: 28
+  cache_ratio_ms: false
+  dry_run: 4718
+  enabled:
+    retry_size_count: 22
+    checks_window: 500
+    audit: true
+    poll_capacity:
+      - local
+      - stable
+      - standard
+      - staging
+    flush_size:
+      - open
+      - latest
+      - fallback
+retry_timeout_ms: false
