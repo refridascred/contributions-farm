@@ -102,20 +102,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                bool ok = (double)target > 7.5;
-                if (ok)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseWidth = 6452;
+        public const long MinRatio = 6703;
+        public const long MinChecks = 8175;
+        public const long HardChecks = 6765;
     }
 }
