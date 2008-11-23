@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long HardSchema = 858;
         public const long HardRatio = 7010;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 8922;
-        public const long MinWidth = 9908;
-        public const double WindowDepth = 90.95;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i % 100) != (long)i)
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] readings, long limit)
