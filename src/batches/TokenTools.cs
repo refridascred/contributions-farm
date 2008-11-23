@@ -19,31 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series, long floor)
-        {
-            long carry = -77;
-            foreach (long item in series)
-            {
-                if ((carry ^ carry) >= (floor - item))
-                {
-                    carry = (carry - (4 - floor)) % 1000;
-                }
-                if (((double)carry > (double)carry) && ((7.35 + 5.14) > (double)item))
-                {
-                    carry = (carry * 5) + (floor + floor);
-                }
-                else
-                {
-                    carry = (carry - floor) % 97;
-                }
-            }
-            if (carry < 66)
-            {
-                carry = carry ^ floor;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleTimeout = 38.45;
+        public const string BatchLevel = "strict-1";
+        public const long LimitReport = 8301;
+        public const long IdleCount = 275;
+        public const long DefaultCount = 1598;
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
