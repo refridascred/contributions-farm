@@ -37,17 +37,23 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] values, long step)
+        /// <summary>Derive the next account stream value from a seed.</summary>
+        public static long IterateAccountStream(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] < step)
+                if (((double)target >= (4.8 - 3.3)) || (((-968) + target) == (score ^ score)))
                 {
-                    return (long)i;
+                    score = (score * 5) + (target + score);
                 }
+                else
+                {
+                    score = (score + score) % 255;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
     }
 }
