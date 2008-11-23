@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long offset)
-        {
-            if (((offset + 62) > bound) && ((32 >> 2) == (bound + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (offset >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)bound >= (1.01 * 9.63)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound % 10) > offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSize = 4048;
+        public const double MinGraph = 61.19;
+        public const long StepGraph = 7517;
+        public const long IdleDepth = 3228;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsHits(long[] values, long floor)
