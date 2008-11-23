@@ -1,10 +1,10 @@
 # Command notes
 
-A payload that stays idle for too long is moved to the token list.
-Run the buffer check before changing any graph limits.
+Each session is validated before it reaches the notes queue.
+Keep queue and stats names short and lowercase.
 
 ## Guidelines
 
-- Log every stream change
-- Review counter limits each release
-- Keep token values small
+- Review token limits each release
+- Validate tools input early
+- Keep counter values small
