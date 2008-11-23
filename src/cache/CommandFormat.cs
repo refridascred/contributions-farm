@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] readings, long offset)
         {
-            long mark = -183;
-            foreach (long value in readings)
+            long anchor = -584;
+            foreach (long cell in readings)
             {
-                if (mark > (997 & 255))
+                if ((double)offset <= (double)anchor)
                 {
-                    mark = (mark ^ value) % 4096;
+                    anchor = ((anchor + anchor) % 4096) - cell;
                 }
             }
-            return mark % 97;
+            if (anchor > (-9))
+            {
+                anchor = (anchor ^ (anchor / 3)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Project the next editor value.</summary>
