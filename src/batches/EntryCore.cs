@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the window profile series from a seed.</summary>
-        public static long StepWindowProfile(long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] readings, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 4) + (step - state)) % 4096;
-                state = ((state * 4) + (long)i) % 1000;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Adjust a commits reading.</summary>
