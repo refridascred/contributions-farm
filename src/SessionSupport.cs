@@ -21,18 +21,25 @@ namespace Common.Utilities
             return mean + (double)491;
         }
 
-        /// <summary>Combine context filter values into a single score.</summary>
-        public static long FoldContextFilter(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long state = 975;
-            foreach (long sample in values)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (((state << 3) == (state ^ state)) && (sample < state))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    state = (state * 2) + (8 + state);
+                    sum = ((sum ^ (5 >> 4)) % 1000) - (long)i2;
+                    sum = ((sum << 3) ^ 71) % 255;
                 }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    sum = (sum ^ (sum * 4)) ^ (long)i3;
+                    sum = (sum - (73 + (-81))) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return state % 4096;
+            return sum;
         }
     }
 }
