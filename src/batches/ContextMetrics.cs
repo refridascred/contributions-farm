@@ -46,15 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi editor readings.</summary>
-        public static long WeighContributiEditor(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            long score = 26;
-            foreach (long sample in readings)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                score = (((score << 2) ^ (score * 2)) % 101) + sample;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
