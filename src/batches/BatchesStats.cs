@@ -45,9 +45,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 1935;
-        public const double MinTools = 9.3;
-        public const string SoftTools = "stable-edge";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Paused,
+            Synced,
+            Ready,
+            Pending,
+            Draft,
+        }
     }
 }
