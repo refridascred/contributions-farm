@@ -59,21 +59,24 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long seed, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (limit <= (limit + 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((seed + seed) == (seed + 1)) || ((double)limit == (9.37 * 6.92)))
                 {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
     }
 }
