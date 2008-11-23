@@ -35,19 +35,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] data, long origin)
+        /// <summary>Digest a series of route token entries.</summary>
+        public static long WeighRouteToken(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long anchor = -885;
+            foreach (long value in series)
             {
-                if (value != origin)
+                if (14.0 < (double)limit)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor - (5 % 60)) - value;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
