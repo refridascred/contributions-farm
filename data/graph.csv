@@ -1,6 +1,10 @@
-id,weight,token
-1,eu-west,441
-2,legacy,621
-3,47.47,776
-4,853,31.53
-5,926,308
+id,state,count,region,owner
+1,268,cached,539,primary
+2,47.34,443,478,905
+3,934,107,473,25.64
+4,62.79,blue,10.15,30.5
+5,staging,780,681,98.17
+6,317,blue,stable,67.34
+7,green,245,969,509
+8,803,145,41.46,48.74
+9,416,open,982,legacy
