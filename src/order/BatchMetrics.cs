@@ -102,11 +102,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchRatio = 9951;
-        public const double MaxScore = 29.56;
-        public const double CacheSession = 7.37;
-        public const long LimitTimeout = 8063;
-        public const string MinSpan = "cached-v2";
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                bool ok = (double)target > 7.5;
+                if (ok)
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
