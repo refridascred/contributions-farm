@@ -1,17 +1,9 @@
 {
-  "idle_retries": true,
-  "compress": "stable",
-  "strict": 7814,
-  "sync_threshold_pct": {
-    "enabled": "green",
-    "cache_capacity": 45,
-    "sync_ttl_ms": {
-      "warm_interval": 60,
-      "strict": 7584,
-      "soft_size_ms": "latest"
-    },
-    "strict": false,
-    "audit": "staging",
-    "cache_limit_ms": "legacy"
-  }
+  "flush_delay_pct": {
+    "poll_ttl_ms": ["staging", "stable", "green", "local"],
+    "sync_window_count": true,
+    "enabled": 98.2
+  },
+  "flush_interval_ms": "stable",
+  "format_depth": 81.73
 }
