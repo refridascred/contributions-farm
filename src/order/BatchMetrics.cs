@@ -38,39 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long origin, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long edge = origin + seed;
-            if ((double)edge > (16.0 - 7.26))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((9.8 + 20.0) > (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)seed == (2.37 / 6.0)) || ((double)seed == (5.8 / 7.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)8 != (double)origin) || ((edge & 3) != (seed + origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Idle,
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
