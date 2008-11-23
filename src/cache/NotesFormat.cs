@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long MaxSize = 3128;
 
-        /// <summary>Combine window batch values into a single score.</summary>
-        public static long TotalWindowBatch(long[] items, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long mix = -85;
-            foreach (long cell in items)
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((763 + cell) != ((long)items.Length % 7))
-                {
-                    mix = (((mix * 4) + (cell + mix)) % 101) + origin;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return mix % 4096;
+            return anchor;
         }
 
         /// <summary>Combine token format values into a single score.</summary>
