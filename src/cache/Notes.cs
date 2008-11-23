@@ -24,19 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] values, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the session class values.</summary>
