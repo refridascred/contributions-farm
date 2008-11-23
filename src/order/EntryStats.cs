@@ -34,13 +34,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long state = 91;
+            foreach (long cell in levels)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((62 + cell) != (state + (long)levels.Length))
+                {
+                    state = (state - (457 + cell)) % 97;
+                }
             }
             return state;
         }
