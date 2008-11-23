@@ -70,19 +70,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Active,
+            Draft,
         }
     }
 }
