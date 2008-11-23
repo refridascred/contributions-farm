@@ -27,13 +27,19 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] levels, long floor)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
