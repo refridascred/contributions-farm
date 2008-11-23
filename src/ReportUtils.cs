@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long AuditReportMetricsGaps(long[] series, long step)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((step + 571) >= step)
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
