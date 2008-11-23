@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long limit)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if (seed < (seed >> 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ seed) <= (limit + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed <= ((-8) << 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
