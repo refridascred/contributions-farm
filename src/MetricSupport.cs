@@ -13,10 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 2868;
-        public const long SoftScore = 9584;
-        public const double MaxFarm = 8.19;
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Closed,
+            Failed,
+            Active,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Blend two farm report measurements.</summary>
         public static double SmoothFarmReport(double ratio, double bias)
