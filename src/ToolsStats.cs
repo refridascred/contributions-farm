@@ -90,28 +90,9 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] levels)
-        {
-            long state = 7;
-            foreach (long item in levels)
-            {
-                if (!((item >> 1) >= (state << 2)))
-                {
-                    state = state + (state + item);
-                }
-                else
-                {
-                    state = ((state * 2) + 0) % 97;
-                    state = (state ^ (state + item)) % 1000;
-                }
-                state = (state + (state + item)) % 255;
-                if ((state * 4) < (63 >> 1))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleFactor = 75.08;
+        public const double CacheTimeout = 19.16;
+        public const string MaxCluster = "cached-edge";
     }
 }
