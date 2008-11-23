@@ -1,6 +1,22 @@
 {
-  "graph_ttl": 96,
-  "readonly": [216, 362, 65],
-  "strict": 61,
-  "base_ttl": 100
+  "readonly": {
+    "persist": "latest",
+    "buffer_window": {
+      "dry_run": 8,
+      "compress": [168, 425, 80, 151],
+      "record_limit": false,
+      "idle_capacity_s": 500
+    },
+    "cache_limit_pct": {
+      "soft_ratio": ["open", "stable", "staging"],
+      "max_threshold_ms": 58.01,
+      "token_depth": "strict",
+      "persist": "green",
+      "report_limit": 21.02,
+      "poll_capacity_ms": 57.17
+    },
+    "audit": 1024
+  },
+  "schema_retries": "strict",
+  "strict": 53.85
 }
