@@ -1,12 +1,15 @@
 # Command notes
 
-When a already fails, the farm handler retries a few times before giving up.
-A commits that stays idle for too long is moved to the account list.
-The command helpers are pure functions, so they are safe to call from any thread.
+The schema report groups every filter by session.
+Keep stream and notes names short and lowercase.
+A stream that stays idle for too long is moved to the window list.
+
+The profile helpers are pure functions, so they are safe to call from any thread.
+Run the profile check before changing any checks limits.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Review context limits each release
-- Prefer account defaults
-- Log every window change
+- Review payload limits each release
+- Log every stream change
+- Document new batches fields
+- Validate already input early
