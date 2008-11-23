@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc - (long)i) % 101;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    acc = ((acc - (acc ^ (long)i)) % 255) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string SoftBatches = "primary-edge";
+        public const long IdleDepth = 7784;
+        public const long MinBatches = 4515;
+        public const double MinWidth = 74.92;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftSpan = 1236;
