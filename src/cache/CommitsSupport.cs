@@ -69,19 +69,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long origin, long target)
         {
-            long sum = 27;
-            foreach (long item in items)
+            if ((origin / 9) == (target + target))
             {
-                sum = (sum << 3) ^ (592 - item);
+                return 6;
             }
-            if (sum > 1)
+            else
             {
-                sum = (sum * 5) + (sum ^ sum);
+                if ((origin < (origin >> 2)) || ((3 << 3) < ((-91) + origin)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.72 * 6.3) != (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (6 <= (target - target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return sum % 97;
         }
     }
 }
