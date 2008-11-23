@@ -1,19 +1,24 @@
 # support settings
-profile_ratio:
-  default_retries:
-    idle_limit_pct:
-      - 154
-      - 242
-    batch_ttl_ms: 60
-    batch_window_count: 183
-    token_timeout: true
-    burst_ttl_count: 21.32
-  sync_window_s: 1695
-  layout_capacity: false
-  poll_capacity_pct:
-    - green
-    - strict
-  dry_run: false
-  commits_ttl: 250
-retry_size_pct: 7838
-batch_capacity: false
+batch_threshold: true
+readonly: eu-west
+account_ratio: 30
+min_size:
+  dry_run: strict
+  min_size_pct: latest
+  min_ratio: 36.42
+  audit: primary
+  counter_retries: primary
+poll_limit_count:
+  retry_timeout_pct:
+    audit: 32
+    hard_threshold_count: legacy
+    burst_threshold_count:
+      - 422
+      - 182
+      - 439
+    min_window_ms: legacy
+  cache_delay: stable
+  min_limit_s: true
+  dry_run: 32
+  persist: false
+dry_run: 1024
