@@ -51,16 +51,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks payload values into a single score.</summary>
-        public static long CombineChecksPayload(long[] values)
-        {
-            long anchor = 199;
-            foreach (long reading in values)
-            {
-                anchor = (anchor ^ (reading - 426)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSpan = 9376;
+        public const long MaxContext = 4119;
+        public const long HardContext = 3311;
+        public const double BurstContext = 97.96;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long target)
