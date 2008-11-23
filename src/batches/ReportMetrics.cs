@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] readings, long offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] items)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
