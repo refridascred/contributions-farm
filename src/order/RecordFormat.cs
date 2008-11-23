@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long AuditStreamRouteGaps(long[] samples, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((double)seen <= (2.93 + 14.0)) || (((entry - entry) == (floor - floor)) || ((double)seen == (1.35 / 8.0))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
