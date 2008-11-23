@@ -1,6 +1,4 @@
 # entry settings
-stats_window: 91
-persist: cached
-warm_capacity_pct: standard
-default_delay: 67
-sync_size_ms: fallback
+persist: false
+commits_depth: 53.16
+soft_size_ms: 17
