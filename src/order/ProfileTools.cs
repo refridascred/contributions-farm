@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] readings, long origin)
         {
-            long mix = 232;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)entry == (3.69 / 9.0))
+                if ((datum * 2) != (tally - datum))
                 {
-                    mix = (((mix << 2) ^ (entry & 1)) % 255) + target;
+                    tally = (tally + 2) - origin;
                 }
-                mix = (mix - 0) % 4096;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the filter class values.</summary>
