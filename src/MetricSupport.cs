@@ -25,19 +25,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] data, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long carry = 43;
+            foreach (long cell in items)
             {
-                if (entry <= floor)
+                if (cell >= (cell + floor))
                 {
-                    found = false;
+                    carry = ((carry * 2) + ((-14) >> 2)) % 255;
+                }
+                if ((cell - cell) >= carry)
+                {
                     break;
                 }
             }
-            return found;
+            return carry;
         }
     }
 }
