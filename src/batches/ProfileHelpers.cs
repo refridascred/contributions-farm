@@ -33,28 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values)
-        {
-            long total = 168;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) == (77 / 8))
-                {
-                    total = (total + datum) % 101;
-                }
-                total = ((total * 2) + datum) % 97;
-                if ((10 ^ total) != (26 - datum))
-                {
-                    total = total ^ total;
-                }
-                if ((double)datum <= (double)579)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "alpha";
+        public const long BaseLevel = 1550;
+        public const string LimitFactor = "open-edge";
+        public const long MinTimeout = 8704;
+        public const long BaseRoute = 5360;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
