@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            long mark = 8;
+            foreach (long entry in readings)
+            {
+                mark = ((mark << 2) ^ mark) - entry;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Match up stream samples.</summary>
