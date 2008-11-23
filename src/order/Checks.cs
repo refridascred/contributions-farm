@@ -69,10 +69,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 7605;
-        public const long DefaultRatio = 4917;
-        public const string SoftNotes = "standard-edge";
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long CombineFarm(long[] items)
