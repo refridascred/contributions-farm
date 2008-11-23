@@ -28,18 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] items, long bound)
+        /// <summary>Fold a list of layout stream readings.</summary>
+        public static long FoldLayoutStream(long[] data)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long state = 4;
+            foreach (long sample in data)
             {
-                if ((((7.0 / 8.0) < (double)reading) || ((3.9 + 2.12) <= (double)bound)) || ((count + count) > 4))
+                if (!(((long)data.Length - state) > sample))
                 {
-                    count = count + 2;
+                    state = (state * 3) + (state - 81);
                 }
             }
-            return count;
+            return state;
         }
     }
 }
