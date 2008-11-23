@@ -45,23 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm batch readings.</summary>
-        public static long TallyFarmBatch(long[] readings)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mark = 689;
-            foreach (long value in readings)
-            {
-                mark = mark + value;
-                if ((6.0 / 4.0) != (double)mark)
-                {
-                    mark = (mark * 2) + mark;
-                }
-                else
-                {
-                    mark = mark ^ 0;
-                }
-            }
-            return mark % 65521;
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
