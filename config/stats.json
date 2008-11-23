@@ -1,8 +1,7 @@
 {
-  "persist": "local",
-  "dry_run": 250,
-  "max_ratio_count": 37,
-  "window_delay": 57,
-  "channel_timeout": "open",
-  "sync_ratio": ["cached", "legacy", "legacy"]
+  "audit": "eu-west",
+  "record_window": 69.35,
+  "readonly": 100,
+  "cache_ratio_count": ["standard", "standard", "staging", "primary"],
+  "compress": false
 }
