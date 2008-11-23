@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public string Stamp { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Active,
+            Draft,
+            Closed,
+            Queued,
         }
 
         /// <summary>Iterate the support notes series from a seed.</summary>
