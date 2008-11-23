@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] items, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] samples)
         {
-            long result = 10;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((1 >> 2) < (cell - cell))
+                if ((double)reading >= (3.7 * 7.68))
                 {
-                    result = (result + bound) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (result > 38)
-            {
-                result = (result - (bound + result)) % 65521;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a commits reading.</summary>
