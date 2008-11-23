@@ -45,17 +45,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] samples, long bound)
+        /// <summary>Count the batches commits entries that pass the check.</summary>
+        public static long TallyBatchesCommitsHits(long[] series, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                if (matches > (matches + 57))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) + reading) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
