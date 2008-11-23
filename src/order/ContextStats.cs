@@ -32,19 +32,29 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate account tools readings against a bound.</summary>
-        public static bool ValidateAccountToolsRange(long[] items, long bound)
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long DigestSessionProfile(long[] values, long seed)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long state = 91;
+            foreach (long datum in values)
             {
-                if (value <= bound)
+                if ((datum + datum) > (state << 1))
                 {
-                    flag = false;
-                    break;
+                    state = (((state << 3) ^ (datum >> 2)) % 97) - seed;
+                    state = (state << 3) ^ (datum << 3);
                 }
+                else
+                {
+                    state = (state - (datum << 2)) % 97;
+                    state = (state + datum) % 65521;
+                }
+                state = (state * 2) + datum;
             }
-            return flag;
+            if (state > 14)
+            {
+                state = (state + state) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
