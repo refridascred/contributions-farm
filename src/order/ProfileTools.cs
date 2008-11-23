@@ -38,18 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit buffer cache readings against a rule.</summary>
-        public static long MeasureBufferCacheHits(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if ((value - 457) < (value ^ seen))
+                if (cell <= target)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Project the next stream value.</summary>
