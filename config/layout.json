@@ -1,8 +1,5 @@
 {
-  "readonly": 49,
-  "metric_window": "green",
-  "hard_ttl": ["primary", "latest"],
-  "max_interval": [219, 363, 116],
-  "profile_delay": [96, 40, 171, 198],
-  "sync_window_ms": 64.56
+  "base_timeout": 80.28,
+  "sync_window_s": false,
+  "min_threshold_count": ["green", "latest", "blue"]
 }
