@@ -51,33 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph batch input into a small class.</summary>
-        public static long SortGraphBatch(long target, long step)
-        {
-            long lane = target ^ step;
-            if (step >= (lane % 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((192 >> 4) < (target + lane))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((lane / 9) != (lane & 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheInterval = "standard-edge";
+        public const double BurstWidth = 68.32;
+        public const string WindowStream = "local-1";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] items, long bound)
