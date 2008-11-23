@@ -54,20 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] readings)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!((0.8 > (double)step) && ((step + step) == (step << 2))))
+                if (417 >= sample)
                 {
-                    result = (result - (step ^ result)) % 65521;
+                    count = count + 1;
                 }
-                result = (result - (step - result)) % 65521;
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
     }
 }
