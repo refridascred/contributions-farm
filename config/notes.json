@@ -1,8 +1,17 @@
 {
-  "checks_delay": true,
-  "persist": 18.06,
-  "stream_capacity": [15, 446],
-  "dry_run": true,
-  "already_delay": 48,
-  "order_capacity": "cached"
+  "support_delay": {
+    "poll_threshold_ms": "cached",
+    "warm_threshold": 61.56,
+    "readonly": {
+      "account_size": 30,
+      "readonly": 73,
+      "githubfarm_size": "staging",
+      "contributi_threshold": 60,
+      "default_ttl_pct": "staging"
+    },
+    "profile_window": 98.75,
+    "persist": ["latest", "fallback", "legacy", "stable"]
+  },
+  "hard_ratio_ms": "local",
+  "persist": "eu-west"
 }
