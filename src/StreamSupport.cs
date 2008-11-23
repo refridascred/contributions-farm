@@ -37,19 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum <= offset)
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
