@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)count == (1.14 + 8.0))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultInterval = 4335;
+        public const long DefaultBatch = 7407;
+        public const string RetryScore = "legacy-v2";
+        public const long MaxBatch = 5702;
+        public const long RetryBatch = 7313;
     }
 }
