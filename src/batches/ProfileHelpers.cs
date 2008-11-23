@@ -51,18 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item / 8) != (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
