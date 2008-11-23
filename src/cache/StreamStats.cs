@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] series, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = 2;
+            foreach (long datum in levels)
             {
-                if (!(((item >> 5) <= (item % 8)) && ((seed >> 4) < (count << 1))))
-                {
-                    count = count + 1;
-                }
+                state = (((state ^ (state >> 2)) % 101) - datum) - limit;
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Rank schema channel input into a small class.</summary>
