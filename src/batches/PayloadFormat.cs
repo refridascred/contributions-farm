@@ -16,22 +16,12 @@ namespace Common.Utilities
             return ratio - (ratio * 9.91);
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                long diff = floor;
-                anchor = anchor + (anchor / 6);
-                if ((diff & 31) <= (floor - 17))
-                {
-                    diff = (diff * 2) + (floor / 4);
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine tools cache values into a single score.</summary>
