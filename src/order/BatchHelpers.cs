@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks filter entry stays within the limit.</summary>
-        public static bool GuardChecksFilterRange(long[] series, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool found = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Paused,
+            Pending,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Describe the farm class values.</summary>
