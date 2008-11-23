@@ -30,11 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9011;
-        public const string DefaultFactor = "strict";
-        public const long LimitOrder = 7396;
-        public const string MinFactor = "standard-v2";
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading % 97) == (hits % 7))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] samples, long limit)
