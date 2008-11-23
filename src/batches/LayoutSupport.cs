@@ -61,13 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] items, long origin)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Total { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (((entry + entry) > entry) && ((entry % 24) != (origin - matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
