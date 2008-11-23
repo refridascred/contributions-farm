@@ -64,19 +64,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of layout checks readings.</summary>
-        public static long TallyLayoutChecks(long[] levels, long offset)
+        /// <summary>Validate context route readings against a bound.</summary>
+        public static bool CheckContextRouteRange(long[] data, long origin)
         {
-            long state = 70;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                state = ((state - (offset % 12)) % 255) + cell;
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 7)
-            {
-                state = ((state * 4) + (offset - state)) % 255;
-            }
-            return state;
+            return ready;
         }
     }
 }
