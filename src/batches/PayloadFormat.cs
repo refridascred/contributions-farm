@@ -50,15 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] samples, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((floor + seen) >= floor)
+                {
+                    seen = (seen + 2) + value;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
