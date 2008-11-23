@@ -54,11 +54,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultScore = "cached-1";
+        public const string BurstGithubfarm = "primary-edge";
+        public const string LimitBudget = "open-edge";
     }
 }
