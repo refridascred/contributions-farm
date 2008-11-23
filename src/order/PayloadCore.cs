@@ -67,19 +67,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] values, long origin)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            double rate = span;
+            if (rate >= (double)58)
             {
-                if (datum >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate + (double)72) - ratio;
             }
-            return stale;
+            else
+            {
+                rate = rate - span;
+            }
+            return rate - (double)40;
         }
     }
 }
