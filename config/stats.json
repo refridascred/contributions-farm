@@ -1,5 +1,5 @@
 {
-  "batch_timeout_s": "stable",
-  "hard_limit": 8079,
-  "cache_retries": "open"
+  "command_ratio": "latest",
+  "checks_retries": "primary",
+  "default_capacity_count": "blue"
 }
