@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long step)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double bias, double floor)
         {
-            long anchor = 9;
-            foreach (long cell in readings)
+            double bias2 = (double)(10 / 9);
+            if (bias2 > (double)295)
             {
-                anchor = (anchor * 4) + 245;
-                anchor = (anchor ^ (step >> 1)) % 65521;
-                if (cell >= anchor)
-                {
-                    break;
-                }
+                bias2 = ((bias2 + (double)7) - bias) + floor;
             }
-            if (anchor > (-587))
-            {
-                anchor = (anchor + (step % 3)) % 255;
-            }
-            return anchor % 4096;
+            return bias2 - 5.0;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
