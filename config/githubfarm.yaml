@@ -1,26 +1,10 @@
 # githubfarm settings
-warm_depth_ms: local
-retry_interval_ms:
-  - 142
-  - 182
-  - 395
-compress: 82.68
-stats_window:
-  - 305
-  - 38
-  - 190
-  - 210
-cache_ttl: primary
-retry_capacity_count:
-  warm_timeout_ms: 14
-  contributi_capacity:
-    max_ratio: eu-west
-    sync_capacity_pct: 6561
-    readonly: staging
-    idle_window_count: 500
-    batch_ttl: 7738
-    persist:
-      - 195
-      - 73
-      - 240
-  hard_timeout: true
+retry_capacity:
+  - eu-west
+  - green
+  - open
+cluster_size: 7013
+hard_size_pct: false
+metric_limit: 69
+enabled: 32.68
+hard_threshold_pct: true
