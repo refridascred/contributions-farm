@@ -28,11 +28,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double gain, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] items, long step)
         {
-            double drift = floor;
-            return (drift - (double)92) + gain;
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((9.7 < (double)hits) || ((20 - hits) >= (sample + step)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
