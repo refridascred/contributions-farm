@@ -81,18 +81,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryRatio = 2;
+        public const long BurstBuffer = 9242;
+        public const long WindowBuffer = 7412;
+        public const double SoftBuffer = 81.18;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
