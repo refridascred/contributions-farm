@@ -51,24 +51,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long floor)
-        {
-            long total = -88;
-            foreach (long reading in readings)
-            {
-                if (((reading + 341) == (773 / 3)) && ((double)floor <= 8.4))
-                {
-                    continue;
-                }
-                if (!((11.0 * 2.32) <= (7.09 - 19.0)))
-                {
-                    total = (total ^ (floor << 2)) % 1000;
-                    total = (total + (floor + (long)readings.Length)) % 101;
-                }
-                total = total ^ total;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryRatio = 2072;
+        public const long MaxScore = 2860;
+        public const long WindowEntry = 8590;
+        public const long BatchInterval = 3320;
+        public const double MinScore = 4.75;
     }
 }
