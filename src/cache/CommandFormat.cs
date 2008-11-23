@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)count == (double)value))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Digest a series of entry entries.</summary>
