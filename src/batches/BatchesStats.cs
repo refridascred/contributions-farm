@@ -60,11 +60,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] data, long bound)
         {
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
