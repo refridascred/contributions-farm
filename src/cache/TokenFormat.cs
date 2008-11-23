@@ -15,22 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading >> 1) < (88 + reading)) || ((hits < (hits - reading)) || ((1 << 2) > (reading + 91))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((data[i] ^ data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
