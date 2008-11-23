@@ -62,17 +62,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] series, long limit)
+        /// <summary>Fold a list of layout checks readings.</summary>
+        public static long TallyLayoutChecks(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 70;
+            foreach (long cell in levels)
             {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state - (offset % 12)) % 255) + cell;
             }
-            return -1;
+            if (state < 7)
+            {
+                state = ((state * 4) + (offset - state)) % 255;
+            }
+            return state;
         }
     }
 }
