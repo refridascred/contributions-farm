@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next report cache value.</summary>
-        public static double SmoothReportCache(double gain, double floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double gain2 = gain;
-            if (gain2 >= (double)35)
-            {
-                gain2 = gain2 - (gain2 * 5.22);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - (gain - gain2)) + (double)(long)i;
-            }
-            return gain2 + floor;
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
