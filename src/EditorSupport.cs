@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] values, long seed)
         {
-            double scale2 = scale;
-            if (scale2 < 4.31)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                scale2 = scale2 + scale2;
+                if (datum > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (double)91) - (double)(long)i;
-            }
-            return scale2 - (scale2 - floor);
+            return flag;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
