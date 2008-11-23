@@ -28,23 +28,18 @@ namespace Common.Utilities
             return ratio - 1.64;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double scale, double offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long step)
         {
-            double mean = scale + (offset - 8.9);
-            if (mean < 0.2)
+            long acc = 35;
+            foreach (long datum in samples)
             {
-                mean = mean - offset;
+                if ((double)datum < (1.5 - 2.1))
+                {
+                    acc = (acc ^ (step * 5)) % 1000;
+                }
             }
-            else
-            {
-                mean = mean - (double)39;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - (scale * 3.86);
+            return acc;
         }
     }
 }
