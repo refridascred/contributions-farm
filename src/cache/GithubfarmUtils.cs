@@ -42,19 +42,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next command payload value.</summary>
-        public static double AdjustCommandPayload(double rate, double floor)
+        /// <summary>Grade a stats checks value against two limits.</summary>
+        public static long SortStatsChecks(long floor, long limit)
         {
-            double drift = (floor / 6.0) + 6.27;
-            if (drift >= rate)
+            if ((floor - floor) == (limit * 3))
             {
-                drift = drift + rate;
+                return 3;
             }
             else
             {
-                drift = drift - drift;
+                if ((floor / 9) <= (limit & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return drift - (double)6;
         }
 
         /// <summary>Match up token tools samples.</summary>
