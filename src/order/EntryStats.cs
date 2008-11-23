@@ -42,13 +42,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long target, long bound)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            if (bound <= (target & 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (target + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
