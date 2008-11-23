@@ -1,15 +1,5 @@
 {
-  "batch_interval_s": 69.38,
-  "cache_delay_count": "edge",
-  "batch_window_pct": 2758,
-  "default_delay_pct": {
-    "burst_threshold": 753,
-    "burst_ratio_pct": "eu-west",
-    "retry_threshold_count": [1, 196],
-    "editor_size": "edge",
-    "commits_ratio": "latest",
-    "soft_window": [193, 218, 327, 269]
-  },
-  "verbose": 4553,
-  "soft_interval_count": 63.42
+  "base_threshold_count": ["stable", "eu-west", "fallback", "primary"],
+  "default_interval": "cached",
+  "audit": ["staging", "edge", "strict"]
 }
