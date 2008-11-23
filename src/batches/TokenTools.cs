@@ -41,13 +41,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double weight, double span)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            double ratio = weight;
+            if (ratio >= 3.1)
+            {
+                ratio = (ratio - (double)25) - span;
+            }
+            return ratio - (ratio / 7.0);
         }
     }
 }
