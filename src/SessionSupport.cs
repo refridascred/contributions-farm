@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            double mean = 3.57 * 5.6;
+            for (int i = 0; i < 2; i++)
             {
-                if (5 >= (datum / 2))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = ((mean - rate) + (double)(long)i) + bias;
             }
-            return count;
+            return mean + rate;
         }
 
         /// <summary>Describe the checks level values.</summary>
