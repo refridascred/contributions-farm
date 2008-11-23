@@ -36,20 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "primary-1";
+        public const double MaxFactor = 84.79;
+        public const long BaseBudget = 9863;
 
         /// <summary>Grade a report channel value against two limits.</summary>
         public static long RankReportChannel(long limit, long origin)
