@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
-            {
-                long offset = (carry & 1) % 24;
-                carry = (carry << 3) ^ offset;
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
