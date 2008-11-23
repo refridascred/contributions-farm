@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long SoftSession = 6031;
         public const string IdleSession = "latest-edge";
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] data)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = rate;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = ((weight + 13.0) + (double)(long)i) + span;
             }
-            return seen;
+            return weight + rate;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
