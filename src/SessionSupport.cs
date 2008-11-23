@@ -37,12 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Combine channel account values into a single score.</summary>
+        public static long WeighChannelAccount(long[] levels)
         {
-            public double Offset { get; set; }
-            public bool Total { get; set; }
-            public long Mode { get; set; }
+            long mix = 4;
+            foreach (long sample in levels)
+            {
+                mix = (mix ^ (sample >> 2)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
