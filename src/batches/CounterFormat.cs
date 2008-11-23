@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor record readings against a bound.</summary>
-        public static bool GuardEditorRecordBounds(long[] levels, long seed)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Accumulate notes samples.</summary>
