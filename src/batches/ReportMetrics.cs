@@ -31,15 +31,11 @@ namespace Common.Utilities
             return bias3 + 2.08;
         }
 
-        /// <summary>Iterate the order editor series from a seed.</summary>
-        public static long RollOrderEditor(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 19.77;
+        public const double MinDepth = 92.78;
+        public const long DefaultSize = 3339;
+        public const long BurstDepth = 5791;
+        public const long RetryRatio = 5007;
     }
 }
