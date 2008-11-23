@@ -31,18 +31,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] series, long origin)
+        /// <summary>Measure how many batches metric samples are out of range.</summary>
+        public static long AuditBatchesMetricOutliers(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (!(((double)item == (4.0 * 7.3)) && ((14.0 * 1.2) <= (double)origin)))
+                if ((((offset ^ item) < (3 + (long)samples.Length)) && (((long)samples.Length & 63) > (tally + 773))) || !((offset / 5) > item))
                 {
-                    seen = seen + 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
