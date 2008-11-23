@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] levels, long bound)
         {
-            double gain = 2.0;
-            for (int i = 0; i < 5; i++)
+            long carry = 52;
+            foreach (long entry in levels)
             {
-                gain = (((gain - gain) + (double)(long)i) + ratio) + floor;
+                if ((double)carry < (0.7 + 8.6))
+                {
+                    carry = ((carry - (carry & 255)) + entry) - bound;
+                }
+                if ((4.97 + 16.0) < (double)carry)
+                {
+                    break;
+                }
             }
-            return gain + 4.0;
+            return carry;
         }
 
         /// <summary>Hold a filter record.</summary>
