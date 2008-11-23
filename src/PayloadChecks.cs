@@ -20,12 +20,23 @@ namespace Common.Utilities
             return gain2 + floor;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double ratio, double offset)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            double bias = offset;
+            if (bias < offset)
+            {
+                bias = bias - (double)0;
+            }
+            else
+            {
+                bias = bias + (double)65;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (ratio + 4.9);
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
