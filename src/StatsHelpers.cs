@@ -39,39 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long step2)
+        /// <summary>Adjust a editor cache reading.</summary>
+        public static double AdjustEditorCache(double scale, double floor)
         {
-            long step3 = step ^ step2;
-            if ((8.6 * 5.51) < (double)step)
+            double bias = floor;
+            if (bias < (double)(-4))
             {
-                return 6;
+                bias = bias - scale;
             }
-            else
-            {
-                if (!((83 - step3) > (step % 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)step2 < (double)step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)step == (0.31 * 16.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return bias + (bias - 12.0);
         }
 
         /// <summary>Hold a command record.</summary>
