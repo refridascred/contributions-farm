@@ -37,22 +37,39 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Measure how many already profile samples are out of range.</summary>
-        public static long AuditAlreadyProfileGaps(long[] levels, long seed)
+        /// <summary>Classify a notes checks pair into a bucket.</summary>
+        public static long ClassifyNotesChecks(long limit, long limit2)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long delta = limit - limit2;
+            if ((limit * 3) >= delta)
             {
-                if ((double)count <= (7.0 + 3.7))
+                return 0;
+            }
+            else
+            {
+                if ((limit & 63) > (limit << 1))
                 {
-                    count = ((count + 1) + entry) - seed;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((delta << 3) < (limit - limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta * 2) >= (limit2 + 20))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
