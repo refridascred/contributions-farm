@@ -39,19 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry metric entry stays within the limit.</summary>
-        public static bool CheckEntryMetricBounds(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8143;
+        public const double HardDepth = 96.23;
+        public const long BaseTimeout = 7885;
+        public const long MaxAccount = 2601;
+        public const long MaxScore = 1556;
     }
 }
