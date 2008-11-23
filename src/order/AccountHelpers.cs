@@ -27,17 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
