@@ -1,7 +1,5 @@
 {
-  "max_capacity_s": 500,
-  "layout_ratio": 500,
-  "batch_interval_pct": "edge",
-  "default_limit": "open",
-  "default_ttl": 95
+  "metric_timeout": [481, 489, 432],
+  "min_window": "primary",
+  "cache_timeout_count": 57
 }
