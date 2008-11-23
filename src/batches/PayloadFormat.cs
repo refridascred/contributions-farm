@@ -38,18 +38,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] levels)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits & 63) < (reading + 71))
+                if (readings[i] >= seed)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
