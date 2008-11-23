@@ -28,19 +28,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples, long offset)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long offset)
         {
-            long state = 652;
-            foreach (long item in samples)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state << 3) ^ (item ^ state)) % 65521;
+                if (acc <= (offset + offset))
+                {
+                    acc = acc ^ acc;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (state > 6)
-            {
-                state = state ^ (offset % 8);
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the command level values.</summary>
