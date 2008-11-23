@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the record profile series from a seed.</summary>
-        public static long IterateRecordProfile(long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seed % 5) >= ((long)i + sum)) || ((double)7 >= (double)sum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 2) ^ ((long)i * 2)) % 1000;
+                    if ((values[i] ^ values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = ((sum ^ (seed + sum)) % 255) + (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
