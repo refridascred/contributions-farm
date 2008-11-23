@@ -26,10 +26,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "latest-1";
-        public const double RetryInterval = 17.43;
-        public const double LimitScore = 91.29;
+        /// <summary>Rank stats account input into a small class.</summary>
+        public static long SortStatsAccount(long bound, long offset)
+        {
+            if ((33 - offset) >= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound * 4) <= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((6.62 + 2.93) != (double)bound) || ((offset & 15) != (bound << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset % 8) < bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] levels, long target)
