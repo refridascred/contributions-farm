@@ -99,15 +99,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long AuditClusterReportGaps(long[] series, long floor)
+        /// <summary>Match up already samples.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
             long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((4.9 * 3.0) > (double)tally) || ((tally % 7) > floor)) || ((7 + tally) <= (reading / 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
