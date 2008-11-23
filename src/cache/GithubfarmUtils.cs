@@ -65,18 +65,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window record entries that pass the check.</summary>
-        public static long AuditWindowRecordGaps(long[] items, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seed & 255) >= (tally + tally))
+                if ((data[i] == origin) && ((data[i] % 3) == 0))
                 {
-                    tally = (tally + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
