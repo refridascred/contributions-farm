@@ -30,21 +30,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset % 12) >= (82 + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((5.38 * 3.3) < (double)offset))
                 {
-                    if ((levels[i] ^ levels[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
