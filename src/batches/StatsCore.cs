@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheBudget = 8083;
+        public const long SoftStats = 4508;
+        public const long BurstDepth = 4788;
+        public const long IdleStats = 3848;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long DigestStream(long[] items)
