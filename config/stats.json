@@ -1,6 +1,8 @@
 {
-  "command_depth": ["strict", "local", "edge"],
-  "persist": "legacy",
-  "contributi_ttl": 100,
-  "batch_limit_pct": true
+  "counter_delay": 3874,
+  "base_depth": [85, 373, 367, 375],
+  "audit": 30,
+  "cache_delay_pct": 11,
+  "filter_size": 67,
+  "sync_ttl_s": "latest"
 }
