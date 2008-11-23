@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardCount = 5423;
-        public const string MinWindow = "open-edge";
-        public const string MinFactor = "legacy-edge";
-        public const long RetryWindow = 9270;
-        public const double LimitWidth = 18.22;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((double)item <= (7.0 / 8.0))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string BatchEditor = "legacy-v2";
