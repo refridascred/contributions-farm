@@ -37,36 +37,28 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long floor, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long bound, long target)
         {
-            long offset = floor ^ step;
-            if ((floor + offset) >= (offset / 4))
+            if (!((double)target == (1.81 / 7.0)))
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((offset % 3) >= (floor & 7))
+                if ((17 - (-4)) >= (target / 6))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)floor <= 8.03)
+                    if ((double)target >= 1.6)
                     {
-                        return 7;
+                        return 1;
                     }
                     else
                     {
-                        if ((197 + step) <= (step << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 6;
                     }
                 }
             }
