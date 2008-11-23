@@ -28,10 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxSize = "strict-edge";
-        public const long BurstPayload = 3619;
-        public const long WindowSpan = 2134;
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
+        {
+            Ready,
+            Done,
+            Draft,
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
