@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double ratio, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            double drift = offset - (offset + 7.3);
+            if (drift <= drift)
             {
-                total = (total << 3) ^ (limit & 1);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total + (limit + total)) % 101) - (long)i2;
-                }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    total = (((total * 2) + (total - 7)) % 101) ^ (long)i3;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                drift = (drift - drift) - ratio;
             }
-            return total;
+            return drift + (double)3;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
