@@ -34,11 +34,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long offset2)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            if ((offset % 16) > (offset >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset << 1) == (offset << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + 5) < (offset2 - offset2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)offset2 >= 6.99))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
