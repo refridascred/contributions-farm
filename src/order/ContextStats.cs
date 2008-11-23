@@ -41,10 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepInterval = "standard-edge";
-        public const string BatchSize = "cached-1";
-        public const string CacheDepth = "standard-edge";
-        public const long DefaultLevel = 4658;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings)
+        {
+            long result = 2;
+            foreach (long entry in readings)
+            {
+                if (!((entry >= (96 / 4)) && ((double)entry < (14.0 * 9.1))))
+                {
+                    result = result - (6 + result);
+                }
+                result = (result ^ (result * 5)) % 255;
+                if ((19.0 / 8.0) <= (double)result)
+                {
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }
