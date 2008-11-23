@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double gain, double floor)
+        /// <summary>Audit filter session readings against a rule.</summary>
+        public static long MeasureFilterSessionOutliers(long[] data, long seed)
         {
-            double bias = (double)(2 % 100);
-            if (bias > floor)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                bias = (bias + (double)(-3)) - gain;
+                if ((double)seen > (3.3 * 1.4))
+                {
+                    seen = ((seen + 2) - sample) - seed;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (double)0;
+            return seen;
         }
 
         /// <summary>Roll a token counter forward.</summary>
