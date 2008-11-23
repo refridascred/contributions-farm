@@ -35,15 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double weight, double offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items, long limit)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)646)
+            long anchor = -876;
+            foreach (long cell in items)
             {
-                weight2 = (weight2 + weight2) - offset;
+                if (!((double)anchor <= (3.0 * 7.19)))
+                {
+                    anchor = ((anchor - (anchor + 135)) % 1000) - cell;
+                }
             }
-            return weight2 + weight;
+            if (anchor < 34)
+            {
+                anchor = (anchor << 2) ^ (limit >> 4);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record status values.</summary>
