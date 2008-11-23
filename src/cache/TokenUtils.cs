@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long offset)
+        /// <summary>Combine order farm values into a single score.</summary>
+        public static long TotalOrderFarm(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 436;
+            foreach (long value in data)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                if ((4 ^ bound) > (result - value))
                 {
-                    return (long)i;
+                    result = (result + value) % 97;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
