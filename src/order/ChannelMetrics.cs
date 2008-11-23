@@ -50,30 +50,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] values, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] levels, long step)
         {
-            long score = 90;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((score - score) < (floor << 2))
+                if ((double)count > (3.5 - 19.0))
                 {
-                    score = (score ^ score) % 4096;
+                    count = ((count + 2) - reading) - step;
                 }
                 else
                 {
-                    score = (score ^ (floor & 255)) % 65521;
-                }
-                if (9.3 <= (double)item)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (score > 50)
-            {
-                score = ((score * 5) + (score - 461)) % 97;
-            }
-            return score % 4096;
+            return count;
         }
     }
 }
