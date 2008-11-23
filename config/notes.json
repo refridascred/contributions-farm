@@ -1,14 +1,17 @@
 {
-  "hard_interval_pct": {
-    "readonly": 85,
-    "hard_size_count": "eu-west",
-    "audit": 61,
-    "base_limit": 250,
-    "base_threshold": false,
-    "command_delay": [255, 472]
+  "audit": 3294,
+  "dry_run": {
+    "warm_size": 24.72,
+    "min_window_pct": "stable",
+    "burst_ttl_pct": "fallback",
+    "min_retries_count": {
+      "notes_threshold": false,
+      "cache_timeout_ms": ["local", "latest", "stable"],
+      "flush_ttl_ms": 35.12,
+      "min_retries_ms": "eu-west",
+      "min_delay_ms": false
+    },
+    "dry_run": ["latest", "cached", "local"]
   },
-  "max_ttl_ms": "staging",
-  "persist": true,
-  "report_limit": 4131,
-  "commits_ttl": 100
+  "strict": "stable"
 }
