@@ -48,22 +48,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (!(tally >= (tally & 7)))
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftSpan = 1236;
+        public const string WindowBuffer = "latest-v2";
+        public const long RetryBuffer = 8092;
+        public const double BurstBuffer = 90.99;
     }
 }
