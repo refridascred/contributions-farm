@@ -35,39 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double gain, double floor)
         {
-            long offset = origin + seed;
-            if (((seed ^ origin) >= offset) || ((origin + offset) > 108))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - (-10)) < (seed - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >> 3) < (seed & 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double drift = floor;
+            return (drift - (double)92) + gain;
         }
     }
 }
