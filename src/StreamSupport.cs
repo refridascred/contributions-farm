@@ -13,24 +13,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Classify a filter queue pair into a bucket.</summary>
-        public static long BucketFilterQueue(long seed, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] series, long seed)
         {
-            if ((bound % 3) < (bound - 6))
+            long mark = 30;
+            foreach (long reading in series)
             {
-                return 0;
+                mark = (((mark * 4) + (reading >> 2)) % 65521) + seed;
             }
-            else
-            {
-                if (((99 ^ seed) > (seed + bound)) || ((bound & 1) >= (bound * 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Compare every pair of window farm readings.</summary>
