@@ -54,20 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 24.14;
+        public const long BatchStream = 5414;
+        public const string MaxWidth = "alpha-1";
+        public const double RetryStream = 21.3;
+        public const long DefaultLevel = 7994;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double SmoothSchema(double bias, double bias2)
