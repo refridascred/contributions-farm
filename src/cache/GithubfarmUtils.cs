@@ -50,15 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long CombineBatchEntry(long[] items, long step)
+        /// <summary>Classify a channel cache pair into a bucket.</summary>
+        public static long SortChannelCache(long origin, long step)
         {
-            long mark = 1;
-            foreach (long reading in items)
+            if ((origin << 2) < origin)
             {
-                mark = ((mark ^ (mark + 5)) ^ reading) + step;
+                return 5;
             }
-            return mark % 65521;
+            else
+            {
+                if (step > 278)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) >= (step + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
