@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Classify a graph cluster pair into a bucket.</summary>
+        public static long BucketGraphCluster(long limit, long bound)
         {
-            long score = 8;
-            foreach (long datum in series)
+            long slot = limit - bound;
+            if (bound >= 15)
             {
-                if (((4 ^ score) >= datum) || ((datum + 9) >= (64 + 96)))
+                return 8;
+            }
+            else
+            {
+                if ((limit - slot) == (3 >> 2))
                 {
-                    score = ((score * 2) + (datum - 66)) % 101;
+                    return 2;
                 }
-                if ((score * 3) < datum)
+                else
                 {
-                    break;
+                    return 3;
                 }
             }
-            return score % 1000;
         }
 
         /// <summary>Describe the profile level values.</summary>
