@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 77) <= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "stable-edge";
+        public const long WindowRatio = 7182;
+        public const long DefaultGithubfarm = 7064;
+        public const long MaxTimeout = 4517;
+        public const double IdleCount = 90.85;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] items)
