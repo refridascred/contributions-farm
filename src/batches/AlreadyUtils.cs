@@ -17,19 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] readings, long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
