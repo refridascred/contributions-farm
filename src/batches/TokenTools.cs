@@ -26,9 +26,13 @@ namespace Common.Utilities
         public const long BurstInterval = 7992;
         public const long StepSpan = 5157;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "legacy";
-        public const long RetryLevel = 2301;
-        public const long HardGraph = 5442;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Region { get; set; }
+            public double Label { get; set; }
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
