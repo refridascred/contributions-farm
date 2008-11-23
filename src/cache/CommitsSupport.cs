@@ -80,10 +80,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 4.69;
-        public const double RetryLevel = 68.39;
-        public const long CacheSpan = 4082;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Failed,
+            Ready,
+            Synced,
+            Done,
+            Active,
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
