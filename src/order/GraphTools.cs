@@ -51,10 +51,17 @@ namespace Common.Utilities
         public const string MinRatio = "open-edge";
         public const long CacheGithubfarm = 9892;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSize = 6613;
-        public const long MinLevel = 9920;
-        public const string RetryScore = "legacy";
-        public const long RetrySpan = 452;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
