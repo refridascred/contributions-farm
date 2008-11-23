@@ -38,22 +38,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit channel command readings against a rule.</summary>
-        public static long CountChannelCommandHits(long[] items, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((0.2 + 7.72) >= (double)limit)
             {
-                if ((offset >> 5) == (matches - 952))
+                return 1;
+            }
+            else
+            {
+                if ((limit & 127) >= (limit * 5))
                 {
-                    matches = (matches + 1) ^ datum;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (limit < (limit + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
