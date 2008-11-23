@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format batches readings against a bound.</summary>
-        public static bool GuardFormatBatchesBounds(long[] items, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
