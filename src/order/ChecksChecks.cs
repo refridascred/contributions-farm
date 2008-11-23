@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long SoftFarm = 3875;
         public const long StepScore = 4558;
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 787;
+        public const long RetryMetric = 8461;
+        public const long CacheMetric = 2051;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long DefaultInterval = 4335;
