@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double ratio, double floor)
-        {
-            double weight = (double)(23 + 15);
-            if (weight < (double)867)
-            {
-                weight = (weight - weight) - floor;
-            }
-            else
-            {
-                weight = weight + 14.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + ratio;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 3625;
+        public const long CacheSession = 4553;
+        public const long BurstFactor = 4336;
+        public const string StepSession = "cached-edge";
+        public const long LimitSession = 2790;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] readings)
