@@ -38,11 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double bias, double floor)
+        /// <summary>Audit buffer cache readings against a rule.</summary>
+        public static long MeasureBufferCacheHits(long[] samples)
         {
-            double ratio = 5.6;
-            return (ratio + (floor - ratio)) + bias;
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value - 457) < (value ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
