@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((limit / 6) < (limit - anchor))
-                {
-                    anchor = ((anchor * 4) + (limit + 704)) % 101;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
