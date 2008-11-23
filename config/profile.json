@@ -1,6 +1,8 @@
 {
-  "audit": 47,
-  "batch_interval_count": 26.68,
-  "base_retries": "local",
-  "sync_depth": "legacy"
+  "burst_delay_pct": 1024,
+  "dry_run": 43.29,
+  "queue_ratio": 500,
+  "idle_interval_count": 39,
+  "context_window": false,
+  "base_capacity": 35.72
 }
