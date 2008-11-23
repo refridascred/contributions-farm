@@ -59,13 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Retry,
-            Idle,
-            Failed,
-            Draft,
+            public string Stamp { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
