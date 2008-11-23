@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     weight REAL,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT,
+    rank INTEGER,
+    label TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
     level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
+CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
