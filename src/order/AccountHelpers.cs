@@ -51,19 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count << 3) < (reading >> 1))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 3654;
+        public const string HardFarm = "fallback-1";
+        public const double StepSize = 6.56;
+        public const double RetryWidth = 93.33;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] items, long bound)
