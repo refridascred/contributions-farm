@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Active,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxCount = 1227;
+        public const long StepSchema = 3934;
+        public const long BatchSchema = 1280;
+        public const long HardSchema = 858;
+        public const long HardRatio = 7010;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
