@@ -34,22 +34,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long mark = 33;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark < (mark - mark)) && ((1.13 / 5.0) == (double)reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (mark + (-77))) % 4096;
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 36)
-            {
-                mark = (mark * 5) + (mark << 3);
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
