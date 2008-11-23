@@ -29,12 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Ready,
-            Queued,
-            Stale,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Describe the tools kind values.</summary>
