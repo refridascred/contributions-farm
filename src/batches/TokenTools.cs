@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Validate already route readings against a bound.</summary>
+        public static bool GuardAlreadyRouteBounds(long[] levels, long offset)
         {
-            long mark = -51;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 6; i++)
+                if (value != offset)
                 {
-                    mark = mark - (long)i;
-                }
-                if ((mark & 255) == (item + mark))
-                {
-                    mark = mark + (item + 102);
-                }
-                if (((item + mark) >= (mark - 5)) || ((item + item) <= (item / 4)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (mark > 20)
-            {
-                mark = ((mark * 2) + mark) % 1000;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the farm state values.</summary>
