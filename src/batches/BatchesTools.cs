@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits class values.</summary>
