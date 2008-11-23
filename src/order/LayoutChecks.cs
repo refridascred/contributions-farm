@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            Active,
-            Synced,
-            Closed,
-            Paused,
-            Locked,
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
