@@ -29,13 +29,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 5578;
         public const long CacheGithubfarm = 9025;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Dropped,
-            Synced,
-            Locked,
             Paused,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
