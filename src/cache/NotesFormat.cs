@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long MaxSize = 3128;
 
-        /// <summary>Find the first context filter entry that matches the target.</summary>
-        public static long SeekContextFilterIndex(long[] levels, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (levels[i] <= limit)
+                if (datum > (datum / 8))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
