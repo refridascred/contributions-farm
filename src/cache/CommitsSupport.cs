@@ -40,13 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Classify a route account pair into a bucket.</summary>
+        public static long RankRouteAccount(long origin, long bound)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            if (!((6.0 - 0.59) < (double)origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound * 2) == (origin << 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + 42) < (bound + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
