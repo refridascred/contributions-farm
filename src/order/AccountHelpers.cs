@@ -33,15 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long state = 2;
-            foreach (long cell in items)
-            {
-                state = ((state + (state / 3)) % 97) + cell;
-            }
-            return state;
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
