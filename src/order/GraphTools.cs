@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long BurstFormat = 7967;
         public const long IdleSpan = 6059;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxDepth = 4726;
-        public const string BatchAccount = "standard-edge";
-        public const string SoftAccount = "staging-edge";
-        public const string BaseAccount = "latest";
+        /// <summary>Count the record layout entries that pass the check.</summary>
+        public static long CountRecordLayoutGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen <= (seen & 255))
+                {
+                    seen = ((seen + 3) ^ reading) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardCount = 5423;
