@@ -82,11 +82,19 @@ namespace Common.Utilities
             return mean + gain;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftRatio = 1630;
-        public const string RetryFilter = "open-1";
-        public const long BatchLevel = 9158;
-        public const long BurstFilter = 973;
-        public const double IdleFactor = 57.61;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueLimits(long[] items, long origin)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
