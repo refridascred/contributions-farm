@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 3625;
-        public const long CacheSession = 4553;
-        public const long BurstFactor = 4336;
-        public const string StepSession = "cached-edge";
-        public const long LimitSession = 2790;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((2.9 + 4.67) != (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] data)
