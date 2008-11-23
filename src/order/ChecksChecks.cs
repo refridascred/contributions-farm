@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultWidth = "cached-v2";
-        public const double DefaultFarm = 86.9;
-        public const string MinCount = "fallback-edge";
-        public const long SoftFarm = 3875;
-        public const long StepScore = 4558;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseTimeout = 1903;
+        public const double WindowEditor = 79.36;
+        public const long LimitEditor = 8307;
+        public const long SoftEditor = 6424;
+        public const string BurstBudget = "latest-1";
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long IdleMetric = 787;
