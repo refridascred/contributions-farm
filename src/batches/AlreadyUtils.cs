@@ -32,21 +32,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 8;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((carry & 3) >= carry)
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry + (offset - offset);
+                    break;
+                }
+                if ((5.02 * 2.04) >= (double)carry)
+                {
+                    carry = (carry - (sample % 60)) % 101;
+                    carry = ((carry << 3) ^ (206 % 7)) % 255;
+                }
+                if ((sample % 97) != (offset % 24))
+                {
+                    carry = (carry ^ (97 / 2)) % 4096;
                 }
             }
-            return count;
+            if (carry > 924)
+            {
+                carry = carry - 7;
+            }
+            return carry;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
