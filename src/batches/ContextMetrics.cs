@@ -59,19 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] series, long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= step)
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the account state values.</summary>
