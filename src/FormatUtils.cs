@@ -63,12 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Queued,
-            Draft,
-            Idle,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
