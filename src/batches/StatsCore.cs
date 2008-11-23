@@ -31,14 +31,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            Synced,
-            Ready,
-            Paused,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchBudget = 72.54;
+        public const double RetrySchema = 89.24;
+        public const long RetrySize = 2684;
+        public const string IdleRatio = "alpha";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 3064;
