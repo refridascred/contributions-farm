@@ -14,18 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 8637;
+        public const double MaxDepth = 44.06;
+        public const long WindowRecord = 6471;
+        public const long BurstTimeout = 7417;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] series)
