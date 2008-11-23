@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string WindowEntry = "fallback-1";
         public const string LimitEntry = "fallback-v2";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsHits(long[] items)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + hits) <= datum)
+                if (data[i] >= offset)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the cluster level values.</summary>
