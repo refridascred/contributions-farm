@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] readings, long origin)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample + sample) < (sample ^ origin)) && ((sample % 7) != (hits / 9)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
