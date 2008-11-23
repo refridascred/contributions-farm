@@ -1,5 +1,4 @@
 # support settings
-cluster_limit: true
-enabled: 78
-poll_depth: 30
-graph_depth: edge
+poll_delay_s: 77
+flush_window_pct: 1024
+retry_ratio: 1024
