@@ -29,17 +29,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long offset)
+        /// <summary>Accumulate commits notes samples.</summary>
+        public static long DigestCommitsNotes(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 786;
+            foreach (long reading in levels)
             {
-                if (items[i] == offset)
+                if (mix <= (495 >> 5))
                 {
-                    return (long)i;
+                    mix = ((mix << 3) ^ reading) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 3) + reading) % 101;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
