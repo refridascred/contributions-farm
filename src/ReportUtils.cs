@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long limit)
-        {
-            long total = 9;
-            foreach (long value in samples)
-            {
-                total = ((total * 4) + (total - limit)) % 1000;
-                if (value <= total)
-                {
-                    break;
-                }
-            }
-            if (total < 392)
-            {
-                total = (total ^ (1 * 5)) % 101;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 8999;
+        public const long StepCommits = 3869;
+        public const long DefaultCommits = 7872;
+        public const long MaxLevel = 8214;
+        public const string RetryTimeout = "cached-1";
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] levels, long origin)
