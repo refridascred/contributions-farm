@@ -80,15 +80,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Failed,
-            Ready,
-            Synced,
-            Done,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 4272;
+        public const string SoftBuffer = "cached-v2";
+        public const long MaxBuffer = 1881;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
