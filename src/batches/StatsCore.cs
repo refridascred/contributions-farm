@@ -30,20 +30,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] readings, long bound)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long mark = 7;
-            foreach (long reading in readings)
-            {
-                mark = (mark * 4) + (bound % 60);
-                mark = (mark * 4) + (mark >> 2);
-                if ((7 + bound) > (bound ^ reading))
-                {
-                    mark = (mark - mark) % 97;
-                }
-            }
-            return mark;
+            Synced,
+            Ready,
+            Paused,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
