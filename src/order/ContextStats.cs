@@ -34,10 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "legacy-edge";
-        public const long CacheFilter = 4534;
-        public const double BurstTimeout = 58.19;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry / 3) < (entry + entry)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long seed, long limit)
