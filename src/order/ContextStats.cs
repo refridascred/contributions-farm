@@ -41,26 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine report queue values into a single score.</summary>
-        public static long WeighReportQueue(long[] items)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long origin)
         {
-            long score = 39;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value / 2) > score)
+                if (samples[i] == origin)
                 {
-                    score = ((score << 3) ^ (467 + score)) % 97;
-                }
-                if ((double)695 <= (double)(long)items.Length)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score > 7)
-            {
-                score = ((score * 2) + score) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
