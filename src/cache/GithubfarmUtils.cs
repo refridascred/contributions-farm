@@ -59,11 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] samples, long floor)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
