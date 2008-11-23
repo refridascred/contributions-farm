@@ -32,28 +32,27 @@ namespace Common.Utilities
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long origin, long target)
+        public static long SortFilter(long step, long target)
         {
-            long offset = origin - target;
-            if ((offset / 7) < ((-513) ^ 283))
+            if ((target - 973) < 973)
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (((origin << 1) < (8 + offset)) || (origin < (offset >> 2)))
+                if (3.3 <= (double)target)
                 {
-                    return 3;
+                    return 5;
                 }
                 else
                 {
-                    if (offset > target)
+                    if ((double)step < 16.0)
                     {
-                        return 0;
+                        return 8;
                     }
                     else
                     {
-                        return 7;
+                        return 6;
                     }
                 }
             }
