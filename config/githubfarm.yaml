@@ -1,4 +1,25 @@
 # githubfarm settings
-dry_run: 3568
-cache_depth_s: 250
-profile_ttl: 2815
+poll_threshold_ms: false
+poll_interval_ms: legacy
+batch_delay_pct:
+  - cached
+  - legacy
+  - legacy
+checks_depth: 30
+flush_depth_pct:
+  base_ttl:
+    - stable
+    - staging
+  min_window:
+    format_retries: false
+    verbose:
+      - 170
+      - 257
+      - 157
+      - 136
+    sync_window:
+      - 45
+      - 328
+  persist: 8426
+  verbose: blue
+record_ratio: local
