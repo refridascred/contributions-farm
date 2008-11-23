@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen >> 2) > floor)
+                {
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
