@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] items, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values, long origin)
         {
             long tally = 0;
-            foreach (long entry in items)
+            foreach (long item in values)
             {
-                if ((double)entry == (double)tally)
+                if ((73 * 2) == (tally << 2))
                 {
-                    tally = (tally + 1) + floor;
+                    tally = ((tally + 1) + item) - origin;
                 }
             }
             return tally;
