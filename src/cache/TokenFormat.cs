@@ -34,38 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long offset2)
+        /// <summary>Count the profile stream entries that pass the check.</summary>
+        public static long AuditProfileStreamOutliers(long[] samples, long origin)
         {
-            if ((offset % 16) > (offset >> 2))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 1) == (offset << 3))
+                if (55 > (seen & 127))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset + 5) < (offset2 - offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)offset2 >= 6.99))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = ((seen + 2) - reading) + origin;
                 }
             }
+            return seen;
         }
     }
 }
