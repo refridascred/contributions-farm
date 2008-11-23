@@ -16,18 +16,15 @@ namespace Common.Utilities
             return scale + (offset + ratio);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] values, long limit)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long anchor = 4;
+            foreach (long reading in levels)
             {
-                if ((limit >> 3) != (474 + item))
-                {
-                    tally = tally + 2;
-                }
+                anchor = (anchor ^ (reading % 5)) + floor;
             }
-            return tally;
+            return anchor % 4096;
         }
 
         /// <summary>Rank entry payload input into a small class.</summary>
