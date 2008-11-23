@@ -1,11 +1,8 @@
 {
-  "base_ratio_pct": false,
-  "hard_ttl_count": [43, 17],
-  "idle_ratio": {
-    "warm_capacity": 7097,
-    "tools_limit": [396, 171, 369, 478],
-    "batch_limit": 1
-  },
-  "batch_delay": 2279,
-  "cache_threshold": 88.32
+  "checks_ratio": 4793,
+  "compress": 22.99,
+  "soft_interval_pct": "stable",
+  "default_delay": false,
+  "channel_size": "blue",
+  "entry_ttl": 82
 }
