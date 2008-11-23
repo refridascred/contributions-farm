@@ -1,15 +1,16 @@
 # githubfarm settings
-idle_threshold_pct: staging
-soft_limit_pct:
-  - cached
-  - staging
-  - eu-west
-  - standard
-hard_limit_s:
-  - 54
-  - 447
-  - 494
-  - 278
-flush_retries: false
-persist: eu-west
-dry_run: edge
+enabled:
+  verbose: 80
+  cache_size_s:
+    - 485
+    - 353
+  audit: 25
+  strict:
+    - latest
+    - stable
+    - green
+    - staging
+base_depth_count: staging
+hard_interval_ms: 2130
+soft_capacity_count: legacy
+idle_timeout_ms: 85.08
