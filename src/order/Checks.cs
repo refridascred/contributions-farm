@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long bound)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long state = 69;
-            foreach (long value in samples)
-            {
-                if ((7 * 4) == (value ^ bound))
-                {
-                    state = (state + value) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ 222;
-                }
-            }
-            return state;
+            public bool Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a checks counter forward.</summary>
