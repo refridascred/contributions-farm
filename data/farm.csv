@@ -1,6 +1,7 @@
-id,score,owner,token
-1,62.22,404,strict
-2,latest,blue,814
-3,strict,85.56,84.19
-4,478,888,latest
-5,60.75,blue,standard
+id,level,region,rank
+1,6.73,55.96,859
+2,fallback,14.62,24.51
+3,local,640,81.79
+4,edge,legacy,71
+5,790,756,standard
+6,eu-west,43.79,840
