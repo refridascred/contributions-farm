@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long StepCounter = 8193;
         public const long MaxCounter = 4015;
 
-        /// <summary>Locate a schema counter reading by value.</summary>
-        public static long FindSchemaCounterIndex(long[] data, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
