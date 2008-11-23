@@ -34,31 +34,19 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] readings, long bound)
         {
-            if ((limit < (limit - target)) || ((double)target < (4.3 / 3.0)))
+            bool found = true;
+            foreach (long reading in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target >> 3) < 3))
+                if (reading >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + target) <= (target >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
