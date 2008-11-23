@@ -26,21 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of counter metrics readings.</summary>
-        public static long OverlapCounterMetricsCount(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a context summary.</summary>
