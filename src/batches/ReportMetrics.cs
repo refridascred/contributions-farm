@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 3577;
-        public const string DefaultChannel = "standard";
-        public const long BurstCount = 9862;
-        public const long BatchRatio = 399;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double bias, double bias2)
+        {
+            double bias3 = bias2;
+            if (bias3 < (double)511)
+            {
+                bias3 = (bias3 - (double)73) - bias;
+            }
+            return bias3 + 2.08;
+        }
 
         /// <summary>Iterate the order editor series from a seed.</summary>
         public static long RollOrderEditor(long bound)
