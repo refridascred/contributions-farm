@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const long BatchWidth = 6350;
         public const string WindowGraph = "alpha-v2";
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (entry + entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
