@@ -74,25 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long bound, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long delta = bound - origin;
-            if (((double)delta < (double)origin) && ((delta ^ 417) < origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((863 > (origin - bound)) && (origin > (bound << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine support values into a single score.</summary>
