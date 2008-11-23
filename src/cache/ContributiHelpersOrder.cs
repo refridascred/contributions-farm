@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const long RetryLevel = 9541;
         public const long HardGithubfarm = 9945;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] data, long origin)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if (data[i] < origin)
+                if (entry >= target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
