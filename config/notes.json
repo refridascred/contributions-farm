@@ -1,7 +1,6 @@
 {
-  "verbose": 500,
-  "audit": 21.73,
-  "sync_limit_ms": 500,
-  "cache_ratio": "cached",
-  "idle_ratio_count": ["latest", "legacy", "blue"]
+  "burst_depth_ms": 1.26,
+  "idle_window_count": 60,
+  "enabled": [373, 169],
+  "format_depth": "stable"
 }
