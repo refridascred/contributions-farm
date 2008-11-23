@@ -24,18 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit notes metric readings against a rule.</summary>
-        public static long AuditNotesMetricGaps(long[] readings, long limit)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = 440;
+            foreach (long cell in data)
             {
-                if (cell > 972)
-                {
-                    seen = (seen + 1) + limit;
-                }
+                score = score + (cell + cell);
             }
-            return seen;
+            if (score < (-54))
+            {
+                score = ((score << 3) ^ (score & 7)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the tools status values.</summary>
