@@ -60,18 +60,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] samples, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long SeekRecordIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound <= (0.34 - 8.0))
+                if (series[i] >= origin)
                 {
-                    seen = (seen + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
