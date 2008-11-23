@@ -52,21 +52,16 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count channel support pairs that satisfy a relation.</summary>
-        public static long MatchChannelSupportCount(long[] values)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result + (long)i) % 4096;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
     }
 }
