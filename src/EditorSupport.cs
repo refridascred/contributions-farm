@@ -79,12 +79,20 @@ namespace Common.Utilities
         public const long WindowBuffer = 7412;
         public const double SoftBuffer = 81.18;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of route batch entries.</summary>
+        public static long CombineRouteBatch(long[] values)
         {
-            Idle,
-            Active,
-            Failed,
+            long mark = 6;
+            foreach (long item in values)
+            {
+                mark = ((mark * 5) + (mark / 2)) % 101;
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark + (mark << 1)) % 255) - (long)i;
+                }
+                mark = (mark << 2) ^ (item << 3);
+            }
+            return mark;
         }
     }
 }
