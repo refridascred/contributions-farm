@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Dropped,
-            Failed,
+            Synced,
             Pending,
-            Ready,
+            Failed,
+            Locked,
             Done,
         }
 
