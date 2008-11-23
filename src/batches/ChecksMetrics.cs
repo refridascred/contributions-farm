@@ -59,39 +59,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long bound, long target)
-        {
-            long next = bound - target;
-            if ((target - bound) < (251 - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next & 127) == (target % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound / 3) >= (930 % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + next) >= bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheOrder = 4537;
+        public const string LimitLevel = "latest-1";
+        public const long RetrySpan = 1507;
+        public const double HardOrder = 83.05;
     }
 }
