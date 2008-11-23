@@ -45,13 +45,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
-        {
-            Idle,
-            Pending,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9132;
+        public const double RetryScore = 56.34;
+        public const string MinOrder = "cached-v2";
+        public const double HardScore = 32.95;
     }
 }
