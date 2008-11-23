@@ -13,25 +13,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long step)
+        /// <summary>Match up metrics metric samples.</summary>
+        public static long PairMetricsMetricCount(long[] series)
         {
-            long diff = limit + step;
-            if ((1 / 8) < (26 ^ step))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff << 3) <= 2)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] ^ series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
