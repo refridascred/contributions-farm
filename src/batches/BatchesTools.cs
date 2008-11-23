@@ -20,13 +20,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] values, long offset)
         {
-            Synced,
-            Paused,
-            Idle,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metric status values.</summary>
