@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items, long offset)
+        /// <summary>Project the next report cache value.</summary>
+        public static double SmoothReportCache(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double gain2 = gain;
+            if (gain2 >= (double)35)
             {
-                if (((offset > (offset - datum)) && ((hits - offset) == (datum / 2))) || ((double)hits > (15.0 / 8.0)))
-                {
-                    hits = hits + 1;
-                }
+                gain2 = gain2 - (gain2 * 5.22);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - (gain - gain2)) + (double)(long)i;
+            }
+            return gain2 + floor;
         }
 
         /// <summary>Hold a report summary.</summary>
