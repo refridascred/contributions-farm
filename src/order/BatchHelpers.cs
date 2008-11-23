@@ -25,22 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] levels, long target)
+        /// <summary>Check that every format record entry stays within the limit.</summary>
+        public static bool CheckFormatRecordLimits(long[] series, long step)
         {
-            long total = 3;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((293 / 4) <= (target + total))
+                if (reading <= step)
                 {
-                    total = ((total << 2) ^ item) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            if (total < 52)
-            {
-                total = (total ^ (88 >> 5)) % 65521;
-            }
-            return total;
+            return stale;
         }
     }
 }
