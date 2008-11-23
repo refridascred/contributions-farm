@@ -35,22 +35,10 @@ namespace Common.Utilities
         public const double HardRatio = 15.46;
         public const long IdleTimeout = 6809;
 
-        /// <summary>Count channel notes pairs that satisfy a relation.</summary>
-        public static long CompareChannelNotesCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitTimeout = "stable";
+        public const long DefaultEntry = 5306;
+        public const long BurstInterval = 8704;
 
         /// <summary>Fold a list of tools session readings.</summary>
         public static long WeighToolsSession(long[] items)
