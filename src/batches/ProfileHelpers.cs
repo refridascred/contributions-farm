@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 701;
-        public const double RetryTimeout = 73.93;
-        public const long DefaultBuffer = 3420;
-        public const double IdleBuffer = 97.49;
-        public const long MaxBuffer = 9993;
+        /// <summary>Project the next tools session value.</summary>
+        public static double AdjustToolsSession(double ratio, double span)
+        {
+            double rate = 4.0;
+            if (rate > ratio)
+            {
+                rate = (rate - (ratio + ratio)) - span;
+            }
+            else
+            {
+                rate = rate + (double)10;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate + (rate / 2.0);
+        }
 
         /// <summary>Derive the next window channel value from a seed.</summary>
         public static long IterateWindowChannel(long limit)
