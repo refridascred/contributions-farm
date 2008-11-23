@@ -29,11 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 1973;
-        public const long DefaultTimeout = 7448;
-        public const long SoftEditor = 6;
-        public const long WindowEditor = 5418;
+        /// <summary>Locate a buffer metrics reading by value.</summary>
+        public static long SeekBufferMetricsIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two metrics account measurements.</summary>
         public static double BlendMetricsAccount(double bias, double offset)
