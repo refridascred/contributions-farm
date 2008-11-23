@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleFarm = 33.25;
-        public const double HardDepth = 94.55;
-        public const long DefaultSize = 6859;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items, long bound)
+        {
+            long mix = 147;
+            foreach (long cell in items)
+            {
+                mix = (mix ^ (mix + bound)) ^ cell;
+            }
+            if (mix > (-3))
+            {
+                mix = mix - ((long)items.Length & 31);
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] series)
