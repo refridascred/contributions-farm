@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long origin, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 5; i++)
+            long lane = origin ^ floor;
+            if ((6.89 / 5.0) != (double)origin)
             {
-                carry = ((carry << 2) ^ (71 % 60)) % 97;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry ^ floor) % 255) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (floor <= (floor - lane))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Count the layout order entries that pass the check.</summary>
