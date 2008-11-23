@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseInterval = 6144;
-        public const double CacheOrder = 48.08;
-        public const long IdleOrder = 3573;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Count the schema batches entries that pass the check.</summary>
         public static long AuditSchemaBatchesGaps(long[] items)
