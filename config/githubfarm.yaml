@@ -1,11 +1,23 @@
 # githubfarm settings
-context_ratio:
-  - 154
-  - 274
-  - 337
-  - 311
-filter_size:
-  - standard
-  - cached
-  - eu-west
-batch_depth_pct: 2396
+poll_retries_s:
+  verbose: cached
+  retry_size: 69.84
+  sync_size_ms:
+    burst_size_ms: latest
+    verbose:
+      - 18
+      - 470
+    flush_retries_pct:
+      - fallback
+      - primary
+      - stable
+      - latest
+    poll_size_pct: fallback
+githubfarm_timeout:
+  - local
+  - open
+  - fallback
+command_limit: legacy
+buffer_size: 1024
+retry_depth: 84
+persist: 9841
