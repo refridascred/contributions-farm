@@ -25,19 +25,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((14.0 + 7.6) > (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultScore = 9729;
+        public const long BaseScore = 7372;
+        public const double HardRatio = 15.46;
+        public const long IdleTimeout = 6809;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
