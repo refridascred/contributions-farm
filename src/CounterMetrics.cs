@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a entry filter pair into a bucket.</summary>
-        public static long GradeEntryFilter(long offset, long bound)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data)
         {
-            long bound2 = offset ^ bound;
-            if (7.31 <= (double)offset)
+            long state = 7;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound2 ^ 77) >= (bound & 3)) || (1.91 <= (double)bound2))
+                if (((3.5 * 15.0) != (double)reading) || (302 <= (state >> 5)))
                 {
-                    return 7;
+                    state = state + reading;
                 }
-                else
+                if (((state & 63) >= (state % 3)) && (reading >= (state >> 3)))
                 {
-                    if ((2.84 - 9.36) >= (double)bound2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound < (double)bound2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state > 43)
+            {
+                state = (state * 4) + (state >> 1);
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
