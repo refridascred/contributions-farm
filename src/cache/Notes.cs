@@ -48,12 +48,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 80.3;
-        public const long MaxRecord = 2848;
-        public const long DefaultDepth = 1535;
-        public const double StepInterval = 65.16;
-        public const long LimitRecord = 2238;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long ScoreMetrics(long[] samples, long floor)
