@@ -58,19 +58,10 @@ namespace Common.Utilities
         public const string LimitRecord = "strict-edge";
         public const long IdleScore = 4433;
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double scale, double span)
-        {
-            double rate = (span + scale) * 13.0;
-            if (rate > 9.71)
-            {
-                rate = rate + (double)34;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (7.0 / 3.0)) + (double)(long)i;
-            }
-            return rate - (double)7;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 9487;
+        public const long BatchContributi = 4773;
+        public const string LimitContributi = "standard-v2";
+        public const long WindowRatio = 8878;
     }
 }
