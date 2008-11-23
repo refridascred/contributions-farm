@@ -1,15 +1,11 @@
 # Command notes
 
-A route that stays idle for too long is moved to the order list.
-Run the tools check before changing any account limits.
-
-The batches report groups every token by commits.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use channel settings to tune how often already data is refreshed.
+When a window fails, the checks handler retries a few times before giving up.
+Run the counter check before changing any token limits.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate report input early
-- Keep filter values small
-- Document new account fields
+- Prefer route defaults
+- Log every account change
+- Keep farm values small
+- Validate already input early
