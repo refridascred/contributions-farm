@@ -1,6 +1,11 @@
 {
-  "filter_timeout": 89.57,
-  "flush_window": "standard",
-  "batch_ratio_s": "standard",
-  "hard_ratio_s": 500
+  "sync_depth_ms": 43,
+  "strict": 49.06,
+  "retry_size": {
+    "readonly": 88.48,
+    "support_limit": "blue",
+    "compress": 56
+  },
+  "base_limit": 250,
+  "sync_retries_pct": 30
 }
