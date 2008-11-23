@@ -95,22 +95,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                score = (score - score) % 255;
-                if ((double)score >= (1.94 / 4.0))
+                if ((total >> 4) > (long)i)
                 {
-                    score = (score + bound) % 101;
-                    score = score ^ (score << 2);
+                    total = (total * 4) + (total * 2);
+                    continue;
                 }
-                score = score ^ (score + 5);
-                score = ((score * 3) + (long)i) % 101;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
