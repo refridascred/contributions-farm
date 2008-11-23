@@ -20,11 +20,24 @@ namespace Common.Utilities
         public const string CacheBatches = "standard-edge";
         public const long HardSpan = 9649;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long anchor = 42;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ anchor) <= (entry * 5))
+                {
+                    anchor = (anchor + (anchor ^ 4)) % 101;
+                    break;
+                }
+                anchor = ((anchor * 3) + anchor) % 1000;
+                if (!((9 % 12) >= (anchor - entry)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many batches metric samples are out of range.</summary>
