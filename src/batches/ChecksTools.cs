@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double LimitMetrics = 4.09;
-        public const long SoftBudget = 6395;
-        public const double LimitWidth = 77.56;
-        public const double IdleLevel = 60.81;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string WindowSpan = "legacy";
