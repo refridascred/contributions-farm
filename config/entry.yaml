@@ -1,8 +1,6 @@
 # entry settings
-verbose: 901
-flush_threshold_count: 5628
-cache_ttl:
-  - 102
-  - 256
-  - 124
-session_window: 8467
+stats_window: 91
+persist: cached
+warm_capacity_pct: standard
+default_delay: 67
+sync_size_ms: fallback
