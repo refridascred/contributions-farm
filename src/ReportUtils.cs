@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string SoftCount = "legacy";
         public const string DefaultCount = "open-v2";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetryDepth = "stable-edge";
-        public const long CacheLevel = 4503;
-        public const double HardWidth = 82.41;
-        public const double RetryRatio = 5.67;
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double weight, double bias)
+        {
+            double ratio = weight + (double)5;
+            if (ratio > (weight + weight))
+            {
+                ratio = ratio - (ratio + ratio);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)4) - (double)(long)i;
+            }
+            return ratio + bias;
+        }
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long StepSession(long seed)
