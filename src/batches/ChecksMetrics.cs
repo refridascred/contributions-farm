@@ -37,15 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] items, long step)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long state = -692;
-            foreach (long value in items)
-            {
-                state = ((((state * 4) + state) % 101) ^ value) + step;
-            }
-            return state;
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
