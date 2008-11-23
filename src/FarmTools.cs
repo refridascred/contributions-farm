@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const string RetryFilter = "local-edge";
         public const double BaseFilter = 80.31;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] samples, long step)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (((6.74 / 8.0) > (double)step) || (((double)tally > (3.9 / 8.0)) && (cell < tally)))
+                if (!((20.0 / 3.0) != (double)mark))
                 {
-                    tally = tally + 3;
+                    mark = ((mark * 2) + (2 + mark)) % 4096;
                 }
+                if (mark > offset)
+                {
+                    mark = ((mark * 2) + (offset >> 3)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Adjust a farm reading.</summary>
