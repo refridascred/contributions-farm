@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1358;
         public const long StepTimeout = 8123;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long origin, long bound)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            long bound2 = origin - bound;
-            if ((bound2 + bound) > (bound / 2))
+            long total = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)origin < (1.45 - 4.06))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound * 3) == (bound2 + origin)) && ((double)origin < (double)bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
