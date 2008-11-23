@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a window record value against two limits.</summary>
-        public static long RankWindowRecord(long step, long target)
+        /// <summary>Count layout window pairs that satisfy a relation.</summary>
+        public static long MatchLayoutWindowCount(long[] series)
         {
-            long prev = step + target;
-            if (!((step - step) == (step + prev)))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((16.0 - 3.2) < (double)target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((prev ^ (-13)) == (6 - target))
+                    if ((series[i] + series[j]) != 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
