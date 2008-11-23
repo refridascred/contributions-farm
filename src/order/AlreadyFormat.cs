@@ -42,38 +42,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long target, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            if ((target + (-8)) <= (seed >> 3))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((4.33 + 14.0) >= (double)target) || ((double)target > (double)seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)target <= (3.8 - 3.84)))
+                    if ((items[i] - items[j]) > 5)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 7) >= (5 - 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
