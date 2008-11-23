@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            public double Score { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
-            public bool Region { get; set; }
+            double mean = (6.0 * 17.0) - bias;
+            if (mean <= (double)5)
+            {
+                mean = mean + (rate + mean);
+            }
+            else
+            {
+                mean = mean - (rate / 8.0);
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Define command limits and defaults.</summary>
