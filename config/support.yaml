@@ -1,7 +1,5 @@
 # support settings
-support_retries: 55
-audit: 1024
-profile_threshold: edge
-idle_threshold_pct: 30
-tools_limit: true
-tools_interval: 3925
+compress: 63
+retry_delay_ms: green
+sync_capacity_count: 43
+poll_depth: blue
