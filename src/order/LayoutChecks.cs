@@ -56,15 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long step)
         {
-            long sum = -5;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                sum = (sum - ((long)series.Length - sum)) + reading;
+                if (((count >> 3) >= (-3)) || ((356 + step) >= entry))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
