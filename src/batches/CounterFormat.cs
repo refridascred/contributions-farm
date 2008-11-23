@@ -35,17 +35,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] samples, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionLimits(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
