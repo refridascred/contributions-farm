@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long MinScore = 2595;
         public const long MaxBudget = 5906;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinTimeout = 10.3;
+        public const string SoftPayload = "legacy-edge";
+        public const double SoftTimeout = 30.34;
+        public const long CacheScore = 8285;
+        public const double MinWidth = 15.71;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] series, long seed)
