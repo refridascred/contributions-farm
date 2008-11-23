@@ -44,15 +44,13 @@ namespace Common.Utilities
         public const string RetryTimeout = "primary-edge";
         public const string BurstRatio = "staging";
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double gain, double bias)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double ratio = bias;
-            if (ratio > ratio)
-            {
-                ratio = ratio - (bias + gain);
-            }
-            return ratio + ratio;
+            public long Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
