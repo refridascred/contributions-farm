@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double rate, double floor)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            double gain = floor;
-            if (gain < (double)585)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - floor) + rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (gain * 15.0)) - (double)(long)i;
-            }
-            return gain - (gain + gain);
+            return seen;
         }
 
         /// <summary>Hold a cluster summary.</summary>
