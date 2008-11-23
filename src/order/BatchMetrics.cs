@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long step, long target)
         {
-            long score = 90;
-            foreach (long reading in items)
+            if (step < (step / 8))
             {
-                score = (score ^ score) + reading;
-                if ((score + score) == (target & 63))
+                return 8;
+            }
+            else
+            {
+                if (target <= step)
                 {
-                    score = (score * 2) + (score * 2);
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (score < 749)
-            {
-                score = score - (score + target);
-            }
-            return score;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
