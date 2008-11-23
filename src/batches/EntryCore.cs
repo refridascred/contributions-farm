@@ -28,22 +28,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many farm token samples are out of range.</summary>
-        public static long CountFarmTokenHits(long[] readings, long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)entry < (16.0 + 6.6))
-                {
-                    matches = (matches + 1) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
