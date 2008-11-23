@@ -1,11 +1,5 @@
 {
-  "compress": 10.52,
-  "audit": {
-    "max_timeout_count": "blue",
-    "readonly": false,
-    "layout_window": 31
-  },
-  "verbose": 52.52,
-  "persist": "cached",
-  "support_depth": 61.58
+  "flush_delay_pct": "staging",
+  "persist": "stable",
+  "compress": 7294
 }
