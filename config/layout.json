@@ -1,8 +1,11 @@
 {
-  "idle_depth_pct": "local",
-  "flush_ttl_s": "open",
-  "batch_window_pct": 69.3,
-  "batch_threshold": "green",
-  "soft_interval": 43,
-  "token_window": true
+  "cache_ttl_pct": "edge",
+  "dry_run": 35,
+  "queue_ttl": "local",
+  "cache_retries": {
+    "queue_ttl": false,
+    "cache_delay_count": 250,
+    "idle_capacity_count": 51,
+    "min_ratio": "staging"
+  }
 }
