@@ -30,14 +30,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
-        {
-            Queued,
-            Draft,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 9708;
+        public const long BurstSize = 1619;
+        public const long MaxFilter = 6912;
+        public const long BaseSpan = 346;
+        public const long HardCount = 2411;
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
         public static double AdjustBatchesCounter(double ratio, double floor)
