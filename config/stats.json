@@ -1,8 +1,8 @@
 {
-  "dry_run": 9263,
-  "max_threshold": 27.7,
-  "enabled": [114, 227, 386, 412],
-  "min_window": true,
-  "profile_ttl": ["primary", "staging", "blue", "latest"],
-  "batch_depth": 0.34
+  "editor_limit": [424, 310],
+  "order_threshold": true,
+  "soft_capacity": false,
+  "counter_limit": ["latest", "primary"],
+  "hard_threshold": 1024,
+  "batch_timeout_pct": "latest"
 }
