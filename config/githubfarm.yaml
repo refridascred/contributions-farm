@@ -1,7 +1,4 @@
 # githubfarm settings
-sync_limit_pct: fallback
-idle_depth_count: 1549
-base_ttl_s:
-  - 70
-  - 336
-format_limit: 4.08
+dry_run: 3568
+cache_depth_s: 250
+profile_ttl: 2815
