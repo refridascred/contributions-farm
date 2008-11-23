@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data, long bound)
         {
-            if (!((5 >> 1) >= (257 + target)))
+            long carry = -745;
+            foreach (long entry in data)
             {
-                return 3;
+                if (((691 >> 2) != (carry - entry)) && (((-96) - 482) != (carry / 3)))
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                    continue;
+                }
+                carry = (carry * 2) + ((long)data.Length - entry);
+                if (((double)entry < 15.0) && (carry >= (bound >> 5)))
+                {
+                    carry = (carry - (entry + bound)) % 1000;
+                }
             }
-            else
+            if (carry > 3)
             {
-                if ((target + target) <= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                carry = (carry + carry) % 97;
             }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
