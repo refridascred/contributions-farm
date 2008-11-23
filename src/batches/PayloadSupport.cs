@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Blend two channel measurements.</summary>
