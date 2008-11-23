@@ -1,16 +1,13 @@
 # Editor notes
 
-Each githubfarm is validated before it reaches the window queue.
-Keep channel and graph names short and lowercase.
-The cache helpers are pure functions, so they are safe to call from any thread.
+The counter report groups every commits by route.
+A route that stays idle for too long is moved to the contributi list.
 
-A editor that stays idle for too long is moved to the metric list.
-Each cache is validated before it reaches the token queue.
-Use queue settings to tune how often account data is refreshed.
+The report module keeps queue values in sync with the entry cache.
+The route module keeps account values in sync with the editor cache.
 
 ## Guidelines
 
-- Prefer command defaults
-- Keep payload values small
-- Review order limits each release
-- Validate stream input early
+- Keep schema values small
+- Review window limits each release
+- Log every stats change
