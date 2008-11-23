@@ -20,19 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stats support figure with a bias.</summary>
-        public static double AdjustStatsSupport(double bias, double span)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values, long target)
         {
-            double load = (double)(582 & 127);
-            if (load < (double)45)
+            long carry = 400;
+            foreach (long datum in values)
             {
-                load = load - bias;
+                carry = ((carry * 5) + (target << 2)) % 4096;
+                if ((7.3 + 0.11) != (double)target)
+                {
+                    carry = (carry ^ (datum * 5)) % 97;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (carry > 858)
             {
-                load = (load - (span / 6.0)) - (double)(long)i;
+                carry = (carry - (target - target)) % 4096;
             }
-            return load + (load - 7.1);
+            return carry;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
