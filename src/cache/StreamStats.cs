@@ -45,18 +45,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the batches commits entries that pass the check.</summary>
-        public static long TallyBatchesCommitsHits(long[] series, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches > (matches + 57))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 2) + reading) - offset;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
