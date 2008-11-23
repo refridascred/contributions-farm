@@ -38,17 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first profile stream entry that matches the target.</summary>
-        public static long SeekProfileStreamIndex(long[] series, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
