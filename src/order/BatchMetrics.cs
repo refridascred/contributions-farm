@@ -84,18 +84,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] readings, long limit)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long acc = 29;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit - sample) == (8 << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 4) + (sample - sample)) % 101;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
