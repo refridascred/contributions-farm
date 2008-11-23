@@ -23,10 +23,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 1567;
-        public const double MaxBudget = 23.55;
-        public const long SoftFilter = 1974;
-        public const double BatchFilter = 49.08;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] data)
+        {
+            long result = 635;
+            foreach (long cell in data)
+            {
+                result = ((result + (result + result)) % 1000) ^ cell;
+            }
+            return result;
+        }
     }
 }
