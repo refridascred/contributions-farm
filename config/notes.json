@@ -1,7 +1,8 @@
 {
-  "hard_depth_pct": "eu-west",
-  "default_retries_count": 17,
-  "already_depth": "primary",
-  "burst_delay_count": 1959,
-  "graph_size": 5207
+  "retry_depth": [469, 348, 384],
+  "payload_size": true,
+  "min_retries_s": [325, 396],
+  "idle_window_ms": 92,
+  "metric_capacity": 19.35,
+  "metric_limit": "legacy"
 }
