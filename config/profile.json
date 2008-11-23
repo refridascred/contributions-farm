@@ -1,20 +1,6 @@
 {
-  "window_interval": 46.94,
-  "soft_ttl_ms": {
-    "strict": {
-      "enabled": 59.68,
-      "soft_limit": "cached",
-      "burst_delay_pct": false,
-      "sync_retries_pct": "open",
-      "metric_depth": 11,
-      "hard_size_s": 60
-    },
-    "default_limit_pct": true,
-    "compress": {
-      "flush_delay_count": "latest",
-      "layout_retries": [172, 82],
-      "idle_size_pct": 72
-    }
-  },
-  "flush_depth": 19
+  "audit": 47,
+  "batch_interval_count": 26.68,
+  "base_retries": "local",
+  "sync_depth": "legacy"
 }
