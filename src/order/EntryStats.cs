@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Pending,
-            Failed,
-            Closed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseDepth = "staging-edge";
+        public const double BaseToken = 43.13;
+        public const long DefaultToken = 3944;
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
