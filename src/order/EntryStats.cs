@@ -46,9 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 2.18;
-        public const double StepPayload = 11.69;
-        public const double BasePayload = 75.72;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((18.0 + 18.0) < (double)cell)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
