@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFactor = 5214;
-        public const long SoftLevel = 7666;
-        public const double BurstFilter = 61.92;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] values)
