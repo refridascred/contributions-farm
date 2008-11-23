@@ -65,13 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Count the window record entries that pass the check.</summary>
+        public static long AuditWindowRecordGaps(long[] items, long seed)
         {
-            public bool Limit { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((seed & 255) >= (tally + tally))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
     }
 }
