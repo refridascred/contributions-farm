@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long seed, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long gap = seed - step;
+            if ((gap + seed) > (step - step))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (gap <= (gap ^ seed))
                 {
-                    if ((readings[i] ^ readings[j]) > 6)
+                    return 8;
+                }
+                else
+                {
+                    if (((step + 10) > gap) || (seed < (step % 12)))
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap * 2) >= gap)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the batch state values.</summary>
