@@ -64,32 +64,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long limit, long origin)
-        {
-            long edge = limit ^ origin;
-            if ((origin & 63) <= edge)
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (limit << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((edge + 569) == (limit + 40)) && ((origin + origin) >= (edge + (-682))))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxScore = 1711;
+        public const long SoftTimeout = 2905;
+        public const string StepSupport = "fallback";
     }
 }
