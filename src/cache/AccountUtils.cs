@@ -14,16 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double offset)
-        {
-            double drift = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (gain - offset)) + (double)(long)i;
-            }
-            return drift - offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSpan = 6391;
+        public const long LimitRatio = 2563;
+        public const long BatchLevel = 6446;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleAccount = "fallback-edge";
