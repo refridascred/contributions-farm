@@ -66,11 +66,32 @@ namespace Common.Utilities
             return ratio2 + (floor * 7.1);
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 2394;
-        public const long WindowBudget = 4104;
-        public const double StepTimeout = 8.94;
-        public const double DefaultDepth = 45.05;
-        public const double IdleRatio = 34.49;
+        /// <summary>Rank filter entry input into a small class.</summary>
+        public static long RankFilterEntry(long step, long bound)
+        {
+            long delta = step + bound;
+            if ((step - step) >= (step * 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((delta >> 1) >= (34 >> 3)) || ((bound - delta) < (bound * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((step / 5) != (delta % 97)) && ((bound % 100) == ((-2) + delta)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
