@@ -1,7 +1,7 @@
 {
-  "idle_size": "cached",
-  "schema_ttl": 10.47,
-  "command_delay": "blue",
-  "verbose": [306, 375, 1, 52],
-  "soft_threshold": 7782
+  "audit": "cached",
+  "schema_retries": [19, 55],
+  "token_threshold": 12.48,
+  "persist": 8245,
+  "max_limit_count": [414, 283]
 }
