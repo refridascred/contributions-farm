@@ -34,17 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter already value from a seed.</summary>
-        public static long IterateCounterAlready(long seed)
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - (seed ^ seed)) % 97;
-                carry = (carry - carry) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
