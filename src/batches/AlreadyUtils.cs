@@ -63,19 +63,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (((mark * 5) + (offset % 97)) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
     }
 }
