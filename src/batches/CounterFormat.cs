@@ -35,16 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] samples, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mark = 58;
-            foreach (long entry in samples)
-            {
-                mark = ((mark - (mark >> 5)) % 255) - seed;
-                mark = ((mark * 4) + entry) % 1000;
-            }
-            return mark;
+            Done,
+            Paused,
+            Ready,
+            Failed,
+            Locked,
         }
     }
 }
