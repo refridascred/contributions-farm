@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a token format pair into a bucket.</summary>
-        public static long SortTokenFormat(long seed, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long offset2 = seed - offset;
-            if (seed < (seed - offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset % 64) == (seed + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((-403) & 127) < (offset2 / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((612 >> 5) <= offset2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
