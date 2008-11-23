@@ -21,10 +21,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string LimitLevel = "local-1";
-        public const double CacheGithubfarm = 6.75;
-        public const long MinGithubfarm = 9607;
-        public const long LimitGithubfarm = 1357;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((1.0 * 5.01) > (double)tally)
+                {
+                    tally = ((tally + 1) ^ cell) + floor;
+                }
+            }
+            return tally;
+        }
     }
 }
