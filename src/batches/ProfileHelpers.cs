@@ -33,22 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] data)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long floor, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((floor + origin) == (501 >> 4))
             {
-                if ((double)item == (7.3 + 15.0))
+                return 3;
+            }
+            else
+            {
+                if (((floor >> 2) > (origin * 2)) && (origin >= 92))
                 {
-                    count = count + 2;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a token options.</summary>
