@@ -58,32 +58,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank filter entry input into a small class.</summary>
-        public static long RankFilterEntry(long step, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long offset)
         {
-            long delta = step + bound;
-            if ((step - step) >= (step * 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((delta >> 1) >= (34 >> 3)) || ((bound - delta) < (bound * 2)))
+                if (levels[i] <= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((step / 5) != (delta % 97)) && ((bound % 100) == ((-2) + delta)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
