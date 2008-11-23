@@ -49,14 +49,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
+            Retry,
             Idle,
-            Active,
-            Pending,
-            Dropped,
-            Closed,
+            Failed,
+            Draft,
         }
     }
 }
