@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const double RetryDepth = 33.87;
         public const long RetryScore = 9616;
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double bias, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenMatches(long[] series)
         {
-            double gain = offset;
-            return gain - bias;
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((hits & 127) <= (hits - hits)) || ((cell - cell) > hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
