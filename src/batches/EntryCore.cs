@@ -58,10 +58,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepSize = 3850;
-        public const long WindowStats = 5989;
-        public const long WindowInterval = 4555;
-        public const string MaxStats = "legacy-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheBudget = 61.1;
+        public const double IdleOrder = 46.72;
+        public const long BurstOrder = 7810;
     }
 }
