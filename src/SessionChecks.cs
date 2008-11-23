@@ -19,38 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long seed, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((origin * 2) > (origin + seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin >= (-127)) || ((double)origin > (double)71))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)seed != (19.0 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)seed > (4.7 * 3.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Rank command input into a small class.</summary>
