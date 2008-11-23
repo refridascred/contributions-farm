@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Idle,
-            New,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchRecord = 40.36;
+        public const long MinRecord = 1103;
+        public const string MinWidth = "latest-1";
+        public const double RetryTimeout = 79.53;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
