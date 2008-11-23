@@ -31,31 +31,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long step, long target)
+        /// <summary>Count the checks order entries that pass the check.</summary>
+        public static long TallyChecksOrderMatches(long[] data, long floor)
         {
-            if ((target - 973) < 973)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (3.3 <= (double)target)
+                if (floor < (hits >> 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step < 16.0)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 3) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine checks payload values into a single score.</summary>
