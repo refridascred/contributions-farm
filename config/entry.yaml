@@ -1,16 +1,7 @@
 # entry settings
-batch_size: 50.46
-dry_run: 55
-poll_depth_count:
-  max_limit_ms: 9.68
-  soft_retries_pct: false
-  idle_ttl_count:
-    - fallback
-    - blue
-    - stable
-    - staging
-  retry_threshold_count: 3664
-  sync_capacity_pct:
-    - 31
-    - 491
-flush_ratio: staging
+persist:
+  - 302
+  - 316
+  - 156
+idle_depth_count: 7955
+payload_limit: true
