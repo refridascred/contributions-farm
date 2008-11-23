@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long result = 7;
+            foreach (long sample in values)
             {
-                if (((long)readings.Length + reading) < matches)
-                {
-                    matches = (matches + 2) - floor;
-                }
+                result = result + result;
+                result = result - (sample % 16);
+                result = (result - (origin + result)) % 65521;
             }
-            return matches;
+            if (result < 370)
+            {
+                result = result - (origin + result);
+            }
+            return result;
         }
 
         /// <summary>Audit support stream readings against a rule.</summary>
