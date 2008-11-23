@@ -1,6 +1,11 @@
 {
-  "min_ttl_s": "fallback",
-  "dry_run": "strict",
-  "warm_capacity_count": [182, 241, 145, 242],
-  "audit": false
+  "base_ratio_pct": false,
+  "hard_ttl_count": [43, 17],
+  "idle_ratio": {
+    "warm_capacity": 7097,
+    "tools_limit": [396, 171, 369, 478],
+    "batch_limit": 1
+  },
+  "batch_delay": 2279,
+  "cache_threshold": 88.32
 }
