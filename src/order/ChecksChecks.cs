@@ -16,10 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 787;
-        public const long RetryMetric = 8461;
-        public const long CacheMetric = 2051;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long GradeContext(long bound, long origin)
