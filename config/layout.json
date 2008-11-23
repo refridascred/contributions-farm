@@ -1,10 +1,5 @@
 {
-  "dry_run": 2948,
-  "max_window_ms": "standard",
-  "base_capacity_s": "green",
-  "audit": {
-    "schema_capacity": 26,
-    "persist": "edge",
-    "burst_delay": 92
-  }
+  "batch_delay_s": false,
+  "max_threshold": "latest",
+  "verbose": 90
 }
