@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long IdleInterval = 5958;
         public const long RetrySession = 1436;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 91.1;
-        public const long IdleCommand = 852;
-        public const string HardBudget = "cached-1";
-        public const long BurstCommand = 1680;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] samples)
