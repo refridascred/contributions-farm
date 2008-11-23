@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long floor)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long TallyMetricsCommitsGaps(long[] levels)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (!((floor / 4) >= floor))
+                if (!(((double)datum == (6.37 / 7.0)) && ((seen + datum) != (datum & 15))))
                 {
-                    result = ((result * 4) + (result ^ datum)) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (result > 7)
-            {
-                result = (result * 2) + (7 >> 2);
-            }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
