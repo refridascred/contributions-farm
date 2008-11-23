@@ -35,19 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double bias, double offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            double rate = bias;
-            if (rate < offset)
-            {
-                rate = rate - 3.7;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (offset + bias)) + (double)(long)i;
-            }
-            return rate - (rate / 9.0);
+            Failed,
+            Ready,
+            Queued,
         }
     }
 }
