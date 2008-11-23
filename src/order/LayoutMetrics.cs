@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double scale, double floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] values, long seed)
         {
-            double drift = 1.1 * 6.61;
-            if (drift >= (drift - floor))
+            long hits = 0;
+            foreach (long sample in values)
             {
-                drift = (drift - floor) - scale;
+                if (((seed + (long)values.Length) == (hits & 127)) && (((double)seed >= (double)hits) && ((double)56 != (double)hits)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (10.0 + drift)) + (double)(long)i;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
