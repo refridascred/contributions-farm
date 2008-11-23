@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long HardSchema = 858;
         public const long HardRatio = 7010;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Closed,
-            Failed,
+            Stale,
             Active,
-            Pending,
-            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
