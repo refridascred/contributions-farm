@@ -27,11 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3253;
-        public const string WindowFarm = "open-1";
-        public const double DefaultFarm = 7.21;
-        public const long LimitWidth = 3944;
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double bias, double bias2)
+        {
+            double mean = (double)(2 >> 5);
+            if (mean > (bias * 10.0))
+            {
+                mean = mean + bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + bias2) - (double)(long)i;
+            }
+            return mean - bias;
+        }
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] series, long target)
