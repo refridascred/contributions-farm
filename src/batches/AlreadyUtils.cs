@@ -64,11 +64,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinScore = 13.86;
-        public const long BatchWidth = 4362;
-        public const double MinChannel = 73.61;
-        public const double HardSpan = 71.24;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc - (long)i;
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
