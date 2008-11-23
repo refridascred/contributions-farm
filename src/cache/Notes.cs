@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] data, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 385;
+            foreach (long datum in samples)
             {
-                if (data[i] >= origin)
+                carry = ((carry << 2) ^ 5) % 1000;
+                if (((carry + datum) >= (carry / 4)) || (datum < (788 >> 3)))
                 {
-                    return (long)i;
+                    carry = (carry - datum) % 65521;
                 }
             }
-            return -1;
+            if (carry < 555)
+            {
+                carry = (carry ^ (carry * 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit notes metric readings against a rule.</summary>
