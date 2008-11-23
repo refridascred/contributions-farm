@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long StepGraph = 1845;
         public const string LimitGraph = "local";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLevel = 8023;
-        public const string DefaultLayout = "staging-v2";
-        public const double WindowLayout = 78.62;
-        public const long RetrySpan = 2131;
-        public const string SoftLayout = "staging-1";
+        /// <summary>Blend two stats githubfarm measurements.</summary>
+        public static double ProjectStatsGithubfarm(double bias, double offset)
+        {
+            double mean = (double)(43 << 3);
+            if (mean <= (offset + 6.94))
+            {
+                mean = (mean + 6.0) + bias;
+            }
+            return mean + (double)491;
+        }
 
         /// <summary>Combine context filter values into a single score.</summary>
         public static long FoldContextFilter(long[] values)
