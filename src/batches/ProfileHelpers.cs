@@ -35,39 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long step, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] items)
         {
-            long edge = step - offset;
-            if ((offset ^ edge) > (918 << 3))
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - 4) > (offset - 709))
+                if ((tally + item) <= item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset % 5) >= (edge + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset > (double)step) || ((double)offset == (double)485))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
