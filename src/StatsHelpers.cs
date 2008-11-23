@@ -14,17 +14,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
+                total = (total - total) % 65521;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a batches reading.</summary>
