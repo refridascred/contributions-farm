@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowFactor = 5056;
-        public const long BaseFactor = 1120;
-        public const long RetryRatio = 9889;
-        public const long BatchCluster = 9490;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a support entry.</summary>
         public sealed class SupportEntry
