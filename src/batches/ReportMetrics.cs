@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchFactor = 63.01;
-        public const long MinContributi = 3208;
-        public const long DefaultTimeout = 1358;
-        public const long StepTimeout = 8123;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 1890;
+        public const long BurstCounter = 5030;
+        public const double BurstSpan = 87.93;
+        public const long StepCounter = 8193;
+        public const long MaxCounter = 4015;
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long RollFarm(long step)
