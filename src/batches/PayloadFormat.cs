@@ -32,32 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long seed)
-        {
-            if ((seed - seed) <= (bound / 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 63) != (seed ^ seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed ^ bound) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardStream = "fallback-1";
+        public const long StepStream = 2324;
+        public const double WindowStream = 19.7;
+        public const double IdleDepth = 7.56;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmGaps(long[] levels)
