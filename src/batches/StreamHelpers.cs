@@ -90,19 +90,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen << 2) <= (item + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3091;
+        public const string StepFactor = "stable-1";
+        public const long BaseQueue = 6573;
+        public const double HardQueue = 54.52;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardPayload = 10.97;
