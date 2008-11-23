@@ -38,15 +38,19 @@ namespace Common.Utilities
         public const double BaseEditor = 69.62;
         public const long LimitEditor = 6180;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] samples, long seed)
         {
-            double gain = (span + weight) / 6.0;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                gain = (gain + (weight * 0.6)) + (double)(long)i;
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - 8.69;
+            return flag;
         }
     }
 }
