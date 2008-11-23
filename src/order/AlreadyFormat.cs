@@ -20,18 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Find the first entry already entry that matches the target.</summary>
+        public static long SeekEntryAlreadyIndex(long[] values, long step)
         {
-            long mix = 8;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((2.1 - 6.34) == (double)mix) || ((mix / 4) == (value - mix)))
+                if (values[i] < step)
                 {
-                    mix = (mix - (mix % 97)) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
