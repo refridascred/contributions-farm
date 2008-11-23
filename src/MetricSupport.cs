@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Active,
-            Stale,
-            Pending,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 266;
+        public const string SoftRatio = "open-edge";
+        public const long HardCluster = 77;
+        public const long SoftCluster = 6613;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadOutliers(long[] items, long bound)
