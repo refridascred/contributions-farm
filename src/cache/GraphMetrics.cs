@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] levels, long target)
         {
-            long total = -77;
-            foreach (long cell in items)
+            long result = 2;
+            foreach (long cell in levels)
             {
-                if (((cell - cell) <= cell) && ((total + 52) > cell))
+                if (((7 * 5) == (target % 100)) && ((target - result) <= result))
                 {
-                    total = total - total;
-                }
-                else
-                {
-                    total = (total * 4) + (total - total);
+                    result = ((result ^ (result / 5)) % 65521) + cell;
                 }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
