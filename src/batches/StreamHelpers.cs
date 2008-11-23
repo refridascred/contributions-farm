@@ -51,21 +51,22 @@ namespace Common.Utilities
             return drift - (double)15;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] levels)
+        /// <summary>Measure how many batch window samples are out of range.</summary>
+        public static long MeasureBatchWindowHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((count - value) > ((long)samples.Length ^ 9))
                 {
-                    if ((levels[i] + levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
