@@ -20,12 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 56.07;
+        public const long SoftScore = 2102;
+        public const double IdleReport = 43.16;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 6322;
