@@ -27,15 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
