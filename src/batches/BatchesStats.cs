@@ -51,25 +51,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long limit, long step)
+        /// <summary>Derive the next layout order value from a seed.</summary>
+        public static long IterateLayoutOrder(long floor)
         {
-            long slot = limit + step;
-            if (!((slot + slot) < (slot + 1)))
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (68 < (limit / 3))
+                score = score + (2 + (long)i);
+                if (!((floor & 15) != ((long)i ^ score)))
                 {
-                    return 8;
+                    score = ((score * 5) + (score - score)) % 1000;
+                    score = (score + (floor * 3)) % 101;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
