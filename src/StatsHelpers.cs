@@ -39,38 +39,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long floor)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series, long seed)
         {
-            if ((double)floor == (6.86 - 4.4))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)floor < (9.2 - 13.0)) && ((floor + limit) <= (floor + 66)))
+                if ((entry + matches) < (666 - entry))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + floor) < limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor > (282 + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = (matches + 2) + seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
