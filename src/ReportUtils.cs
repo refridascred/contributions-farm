@@ -28,10 +28,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchCount = 1472;
-        public const long WindowGraph = 3803;
-        public const long BatchGraph = 9297;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long origin, long target)
+        {
+            long span = origin - target;
+            if (span <= (2 ^ target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span >> 3) >= (6 + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Audit order layout readings against a rule.</summary>
         public static long CountOrderLayoutOutliers(long[] samples, long bound)
