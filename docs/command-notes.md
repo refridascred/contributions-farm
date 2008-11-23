@@ -1,13 +1,15 @@
 # Command notes
 
-The entry report groups every context by profile.
-Run the batch check before changing any support limits.
+A route that stays idle for too long is moved to the order list.
+Run the tools check before changing any account limits.
 
-Run the graph check before changing any report limits.
-Each already is validated before it reaches the farm queue.
+The batches report groups every token by commits.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often already data is refreshed.
 
 ## Guidelines
 
-- Review checks limits each release
-- Validate counter input early
+- Review window limits each release
+- Validate report input early
 - Keep filter values small
+- Document new account fields
