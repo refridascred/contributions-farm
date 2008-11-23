@@ -36,18 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelHits(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((7.2 - 15.0) < (double)count)
+                if (!(((double)target > (4.6 - 4.27)) || ((6.2 - 4.1) <= (double)target)))
                 {
-                    count = (count + 2) + value;
+                    long gap = -7;
+                    acc = acc ^ (gap - gap);
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
     }
 }
