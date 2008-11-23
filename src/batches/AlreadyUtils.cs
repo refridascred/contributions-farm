@@ -17,31 +17,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a contributi editor value against two limits.</summary>
-        public static long GradeContributiEditor(long limit, long step)
+        /// <summary>Count graph filter pairs that satisfy a relation.</summary>
+        public static long OverlapGraphFilterCount(long[] readings)
         {
-            if ((step + step) > (step ^ step))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((121 + limit) > (limit - 991)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (7.71 > (double)step)
+                    if ((readings[i] + readings[j]) != 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
