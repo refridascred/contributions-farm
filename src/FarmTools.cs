@@ -30,22 +30,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long floor)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long floor, long step)
         {
-            if ((3.2 * 13.0) >= (double)target)
+            if ((step <= (53 / 3)) || ((double)step >= (double)floor))
             {
                 return 7;
             }
             else
             {
-                if ((12.0 < (double)floor) && ((floor * 4) < target))
+                if ((8.0 / 3.0) <= (double)step)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    return 6;
+                    return 4;
                 }
             }
         }
