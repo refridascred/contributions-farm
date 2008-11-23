@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxInterval = 7558;
+        public const long HardAccount = 6224;
+        public const double RetryWidth = 74.73;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double bias, double offset)
