@@ -46,23 +46,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache metric entries.</summary>
-        public static long TallyCacheMetric(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long total = 81;
-            foreach (long cell in readings)
-            {
-                total = (total + (total & 3)) % 4096;
-                if ((cell + total) != (total + total))
-                {
-                    total = (total ^ (cell / 9)) % 97;
-                }
-            }
-            if (total > 976)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 4096;
+            Ready,
+            Draft,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the metrics status values.</summary>
