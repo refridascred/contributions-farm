@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const string StepTimeout = "stable-edge";
         public const long BurstFactor = 4524;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 7823;
+        public const double RetryFactor = 41.77;
+        public const string LimitNotes = "primary-edge";
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool ValidateGraphRange(long[] values, long seed)
