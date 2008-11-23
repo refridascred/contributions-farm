@@ -47,32 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report cluster value against two limits.</summary>
-        public static long SortReportCluster(long limit, long bound)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long lane = limit ^ bound;
-            if (bound > (lane >> 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane <= (15.0 * 2.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)limit >= (double)lane))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
     }
 }
