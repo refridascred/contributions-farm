@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = (6.0 * 17.0) - bias;
-            if (mean <= (double)5)
-            {
-                mean = mean + (rate + mean);
-            }
-            else
-            {
-                mean = mean - (rate / 8.0);
-            }
-            return mean - (double)0;
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
