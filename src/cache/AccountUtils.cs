@@ -14,10 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSpan = 6391;
-        public const long LimitRatio = 2563;
-        public const long BatchLevel = 6446;
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string IdleAccount = "fallback-edge";
