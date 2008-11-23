@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long SoftLevel = 7666;
         public const double BurstFilter = 61.92;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] levels, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long sum = -27;
+            foreach (long item in values)
             {
-                if ((seen >> 2) > floor)
-                {
-                    seen = (seen + 2) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = sum ^ (sum + item);
             }
-            return seen;
+            if (sum > 13)
+            {
+                sum = sum - (long)values.Length;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
