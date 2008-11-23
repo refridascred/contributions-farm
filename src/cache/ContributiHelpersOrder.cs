@@ -29,19 +29,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 3119;
+        public const long LimitTimeout = 6185;
+        public const string CacheBatch = "open";
+        public const double BatchLevel = 76.63;
+        public const double SoftRatio = 77.92;
     }
 }
