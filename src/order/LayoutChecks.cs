@@ -54,21 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long offset, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((18.0 - 3.4) >= (double)offset)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((bound + offset) >= (76 << 2)) && ((offset + offset) == (bound - offset)))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset <= (2.65 / 5.0))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
