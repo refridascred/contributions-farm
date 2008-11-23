@@ -1,8 +1,6 @@
 {
-  "retry_timeout": 4.09,
-  "queue_delay": ["cached", "local", "legacy"],
-  "cluster_window": 16.81,
-  "readonly": false,
-  "batch_delay_ms": "standard",
-  "poll_ttl_pct": ["local", "stable", "green"]
+  "retry_limit": "standard",
+  "token_interval": [22, 315, 261, 195],
+  "retry_delay": "primary",
+  "commits_ratio": "legacy"
 }
