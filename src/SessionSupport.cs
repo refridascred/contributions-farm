@@ -26,32 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long origin)
+        /// <summary>Compare every pair of counter metrics readings.</summary>
+        public static long OverlapCounterMetricsCount(long[] data)
         {
-            long offset = floor + origin;
-            if (((double)offset < 7.99) || ((floor - 69) == (floor + offset)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (origin % 2))
+                    if ((data[i] + data[j]) == 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a context summary.</summary>
