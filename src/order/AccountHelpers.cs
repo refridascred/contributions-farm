@@ -60,13 +60,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] data)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long sum = 795;
+            foreach (long reading in data)
+            {
+                if (((reading + sum) >= (reading >> 5)) || (sum < (reading >> 1)))
+                {
+                    sum = (sum << 3) ^ reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
