@@ -85,11 +85,26 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double bias2)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels, long seed)
         {
-            double ratio = bias2;
-            return (ratio + ratio) + bias;
+            long carry = 54;
+            foreach (long sample in levels)
+            {
+                if (((double)carry != (9.54 * 8.3)) || ((carry * 5) > seed))
+                {
+                    carry = (carry + ((-3) ^ (-847))) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ sample;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = (carry - ((long)levels.Length % 10)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
