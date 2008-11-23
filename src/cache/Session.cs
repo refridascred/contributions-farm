@@ -40,20 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next buffer notes value from a seed.</summary>
-        public static long StepBufferNotes(long bound)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((carry - carry) > bound)
-                {
-                    carry = ((carry * 5) + carry) % 1000;
-                    carry = ((carry << 3) ^ (bound + bound)) % 4096;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Failed,
+            New,
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the contributi level values.</summary>
