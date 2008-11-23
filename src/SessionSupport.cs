@@ -37,15 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine channel account values into a single score.</summary>
-        public static long WeighChannelAccount(long[] levels)
+        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
+        public static long TallyContextGithubfarmGaps(long[] data, long offset)
         {
-            long mix = 4;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                mix = (mix ^ (sample >> 2)) % 101;
+                if (tally >= (reading & 31))
+                {
+                    tally = (tally + 1) - offset;
+                }
             }
-            return mix % 4096;
+            return tally;
         }
     }
 }
