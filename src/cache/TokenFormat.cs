@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long AuditSchemaBatchesGaps(long[] items)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long limit, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            if (offset < limit)
             {
-                if ((923 * 2) <= count)
+                return 6;
+            }
+            else
+            {
+                if (((limit - offset) >= offset) || ((double)limit == (0.6 / 8.0)))
                 {
-                    count = (count + 1) - reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + limit) < (limit - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define support limits and defaults.</summary>
