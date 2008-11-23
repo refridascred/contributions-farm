@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((9.5 + 3.7) <= (double)sum) || ((sum << 2) < (sum + offset)))
-                {
-                    sum = (sum ^ ((long)i / 8)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
