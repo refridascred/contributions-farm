@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate farm account samples.</summary>
-        public static long WeighFarmAccount(long[] values, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long score = 369;
-            foreach (long sample in values)
-            {
-                if ((score ^ sample) > (sample % 8))
-                {
-                    score = (score + (sample + score)) % 4096;
-                }
-            }
-            if (score > 401)
-            {
-                score = (score - (offset << 1)) % 4096;
-            }
-            return score;
+            Draft,
+            Retry,
+            Paused,
+            Locked,
+            Stale,
         }
 
         /// <summary>Accumulate window samples.</summary>
