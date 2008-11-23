@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if ((entry >> 5) >= (764 / 5))
+                if (reading <= limit)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Measure how many command support samples are out of range.</summary>
