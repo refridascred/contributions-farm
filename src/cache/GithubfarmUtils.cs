@@ -35,24 +35,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a commits graph pair into a bucket.</summary>
-        public static long RankCommitsGraph(long seed, long step)
+        /// <summary>Match up githubfarm account samples.</summary>
+        public static long CompareGithubfarmAccountCount(long[] readings)
         {
-            if ((5.29 * 3.71) < (double)step)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step * 2) <= step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
