@@ -73,26 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples, long bound)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] data, long seed)
         {
-            long mark = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.62 * 9.2) == (double)mark)
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
-                    mark = ((mark << 2) ^ (bound * 4)) ^ datum;
-                }
-                if (!((215 % 24) < bound))
-                {
-                    mark = mark - mark;
-                }
-                else
-                {
-                    mark = mark + (mark + bound);
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
