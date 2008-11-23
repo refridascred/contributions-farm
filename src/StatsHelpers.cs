@@ -27,12 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 3253;
+        public const string WindowFarm = "open-1";
+        public const double DefaultFarm = 7.21;
+        public const long LimitWidth = 3944;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long DigestSupport(long[] series, long target)
