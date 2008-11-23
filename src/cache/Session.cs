@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] data, long target)
+        /// <summary>Derive the next buffer notes value from a seed.</summary>
+        public static long StepBufferNotes(long bound)
         {
-            long carry = 592;
-            foreach (long datum in data)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (((carry * 5) + (target * 3)) % 97) - datum;
-                if ((carry >> 5) != ((-6) - target))
+                if ((carry - carry) > bound)
                 {
-                    break;
+                    carry = ((carry * 5) + carry) % 1000;
+                    carry = ((carry << 3) ^ (bound + bound)) % 4096;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
             return carry;
         }
