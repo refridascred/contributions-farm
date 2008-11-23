@@ -1,4 +1,25 @@
 # entry settings
-persist: false
-commits_depth: 53.16
-soft_size_ms: 17
+batch_capacity: open
+githubfarm_interval: false
+batch_timeout_s:
+  order_depth: 5.99
+  profile_retries: local
+  support_threshold: true
+  batch_depth:
+    - 135
+    - 249
+    - 3
+    - 206
+  command_limit: 71.73
+  route_interval:
+    base_interval_pct: 7466
+    format_window: 76.74
+    idle_size_count: stable
+    warm_ttl_count: true
+    cache_depth_pct:
+      - 382
+      - 277
+      - 390
+retry_retries_s: stable
+cache_limit: 41
+buffer_capacity: 61.4
