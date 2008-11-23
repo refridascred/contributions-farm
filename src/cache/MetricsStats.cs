@@ -44,19 +44,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] series, long target)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            double ratio = (double)(3 * 5);
+            if (ratio >= (rate * 5.1))
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = (ratio - (double)16) - floor;
             }
-            return ready;
+            else
+            {
+                ratio = ratio + 4.74;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio - (double)181;
         }
     }
 }
