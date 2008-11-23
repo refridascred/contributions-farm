@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate buffer graph samples.</summary>
-        public static long TallyBufferGraph(long[] levels, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            long carry = 6;
-            foreach (long reading in levels)
+            double gain = offset * 1.8;
+            if (gain <= gain)
             {
-                carry = (carry - (carry + bound)) % 65521;
-                if ((reading % 100) < reading)
-                {
-                    break;
-                }
+                gain = (gain - (double)4) - rate;
             }
-            return carry;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (double)47;
         }
 
         /// <summary>Locate a session report reading by value.</summary>
