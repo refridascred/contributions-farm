@@ -54,13 +54,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long floor)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long total = -88;
+            foreach (long reading in readings)
+            {
+                if (((reading + 341) == (773 / 3)) && ((double)floor <= 8.4))
+                {
+                    continue;
+                }
+                if (!((11.0 * 2.32) <= (7.09 - 19.0)))
+                {
+                    total = (total ^ (floor << 2)) % 1000;
+                    total = (total + (floor + (long)readings.Length)) % 101;
+                }
+                total = total ^ total;
+            }
+            return total % 65521;
         }
     }
 }
