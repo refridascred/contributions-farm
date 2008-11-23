@@ -48,15 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((hits << 2) < entry)
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
