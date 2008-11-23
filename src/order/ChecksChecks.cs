@@ -33,13 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaHits(long[] values)
         {
-            Stale,
-            Draft,
-            Idle,
-            Active,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)count == (1.14 + 8.0))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
