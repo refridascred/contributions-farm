@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowScore = 5147;
-        public const long LimitSize = 8848;
-        public const long MaxFarm = 1721;
-        public const double HardFarm = 97.27;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the schema stats entries that pass the check.</summary>
         public static long AuditSchemaStatsOutliers(long[] levels, long bound)
