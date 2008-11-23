@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] samples, long step)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (value < step)
+                if (entry != floor)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Classify a commits graph pair into a bucket.</summary>
