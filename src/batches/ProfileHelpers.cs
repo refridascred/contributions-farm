@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series, long limit)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = 666;
-            foreach (long reading in series)
-            {
-                acc = ((acc - (acc - acc)) + reading) + limit;
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
