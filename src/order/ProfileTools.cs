@@ -33,23 +33,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double bias)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long origin)
         {
-            double bias2 = (bias * 13.0) / 6.0;
-            if (bias2 >= bias)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                bias2 = bias2 + (scale - 8.8);
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias * 5.21);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (double)798) + (double)(long)i;
-            }
-            return bias2 + bias;
+            return found;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
