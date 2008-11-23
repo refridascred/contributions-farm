@@ -13,20 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] data, long limit)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleSpan = 11.71;
+        public const string StepGithubfarm = "fallback-1";
+        public const long CacheInterval = 9635;
+        public const long HardSpan = 7701;
+        public const long RetryGithubfarm = 3544;
 
         /// <summary>Fold a list of layout stream readings.</summary>
         public static long FoldLayoutStream(long[] data)
