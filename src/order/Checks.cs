@@ -52,21 +52,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Grade a report window value against two limits.</summary>
+        public static long RankReportWindow(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (!(offset2 >= (offset2 + 593)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((11.0 + 8.0) < (double)offset2)
                 {
-                    if ((readings[i] + readings[j]) < 3)
+                    return 6;
+                }
+                else
+                {
+                    if (0.6 >= (double)offset2)
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
     }
 }
