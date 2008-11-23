@@ -41,10 +41,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxInterval = "strict-edge";
-        public const string BaseTools = "alpha-edge";
-        public const long WindowTools = 3666;
-        public const long StepTools = 7497;
+        /// <summary>Blend two metric order measurements.</summary>
+        public static double BlendMetricOrder(double ratio, double offset)
+        {
+            double rate = 3.0;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = ((rate + (rate - 12.0)) + (double)(long)i) + ratio;
+            }
+            return rate - (offset / 4.0);
+        }
     }
 }
