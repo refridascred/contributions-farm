@@ -1,4 +1,6 @@
 # support settings
-poll_delay_s: 77
-flush_window_pct: 1024
-retry_ratio: 1024
+flush_timeout_pct: green
+audit: false
+flush_limit:
+  - 205
+  - 273
