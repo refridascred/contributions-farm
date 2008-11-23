@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series, long seed)
         {
-            public bool Label { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long result = 564;
+            foreach (long entry in series)
+            {
+                result = (((result ^ (result + (long)series.Length)) % 255) + entry) + seed;
+            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
