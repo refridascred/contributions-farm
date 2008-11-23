@@ -35,14 +35,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] data, long origin)
         {
-            Queued,
-            Retry,
-            Active,
-            Dropped,
-            Closed,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
