@@ -56,18 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = 2;
+            foreach (long cell in readings)
             {
-                if (((count >> 3) >= (-3)) || ((356 + step) >= entry))
+                if (10.0 > (double)offset)
                 {
-                    count = count + 3;
+                    score = (score << 2) ^ (score * 5);
+                }
+                else
+                {
+                    score = (score + (cell / 6)) % 101;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
