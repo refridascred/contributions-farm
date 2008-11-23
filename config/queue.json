@@ -1,5 +1,5 @@
 {
-  "command_depth": 52.2,
-  "context_threshold": 1024,
-  "record_ratio": "fallback"
+  "audit": true,
+  "poll_depth_ms": "primary",
+  "persist": [149, 144, 200]
 }
