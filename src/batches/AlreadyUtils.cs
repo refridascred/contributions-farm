@@ -17,15 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count graph filter pairs that satisfy a relation.</summary>
-        public static long OverlapGraphFilterCount(long[] readings)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) != 1)
+                    if ((values[i] + values[j]) > 20)
                     {
                         seen = seen + 1;
                     }
