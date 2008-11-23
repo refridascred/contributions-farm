@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 4561;
-        public const long MaxTimeout = 9515;
-        public const long BaseFactor = 9351;
-        public const double WindowReport = 20.22;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Active,
+            Draft,
+            Paused,
+            Failed,
+        }
 
         /// <summary>Audit editor route readings against a rule.</summary>
         public static long MeasureEditorRouteOutliers(long[] samples, long bound)
