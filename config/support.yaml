@@ -1,4 +1,10 @@
 # support settings
-compress: latest
-token_delay: false
-verbose: standard
+flush_timeout_ms:
+  poll_depth_count:
+    retry_threshold: legacy
+    default_ttl_pct: stable
+    default_capacity_pct: false
+  min_timeout: false
+  min_limit: false
+enabled: standard
+max_ttl_pct: legacy
