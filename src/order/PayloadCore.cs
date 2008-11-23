@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Compare every pair of tools contributi readings.</summary>
+        public static long PairToolsContributiCount(long[] data)
         {
-            long total = 22;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((57 + sample) <= (total - sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total - (total >> 3)) % 65521;
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 603)
-            {
-                total = ((total * 3) + (total % 64)) % 65521;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
