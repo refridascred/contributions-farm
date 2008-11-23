@@ -34,10 +34,20 @@ namespace Common.Utilities
         public const string StepTimeout = "stable-edge";
         public const long BurstFactor = 4524;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 7823;
-        public const double RetryFactor = 41.77;
-        public const string LimitNotes = "primary-edge";
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
