@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] items)
         {
-            Queued,
-            Active,
-            Draft,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!(matches > (matches - sample)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
