@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long StepLevel = 2346;
         public const long StepBudget = 8367;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Derive the next checks notes value from a seed.</summary>
+        public static long SeriesChecksNotes(long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
