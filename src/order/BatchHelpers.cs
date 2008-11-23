@@ -35,12 +35,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Failed,
             Ready,
+            Draft,
             Queued,
+            Closed,
         }
     }
 }
