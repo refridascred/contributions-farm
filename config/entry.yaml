@@ -1,20 +1,9 @@
 # entry settings
-cluster_window: 6308
-max_timeout:
-  profile_limit: cached
-  counter_retries: false
-  strict:
-    - 474
-    - 204
-    - 436
-    - 284
-  base_size: 250
-  persist: false
-  route_ratio:
-    - 246
-    - 336
-    - 130
-    - 39
-burst_interval_pct: 2692
-sync_threshold_s: 250
-soft_ratio_ms: eu-west
+cache_capacity_ms:
+  - 242
+  - 51
+  - 227
+  - 265
+poll_ratio_ms: 5193
+soft_timeout_ms: standard
+readonly: primary
