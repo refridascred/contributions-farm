@@ -45,11 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 6093;
-        public const double StepLevel = 60.68;
-        public const long SoftBudget = 9360;
-        public const double MinFactor = 13.18;
+        /// <summary>Audit tools notes readings against a rule.</summary>
+        public static long AuditToolsNotesMatches(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((limit + reading) < (count >> 2)) && ((6.0 * 5.0) == (double)reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
