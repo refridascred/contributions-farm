@@ -1,8 +1,5 @@
 {
-  "retry_depth": [469, 348, 384],
-  "payload_size": true,
-  "min_retries_s": [325, 396],
-  "idle_window_ms": 92,
-  "metric_capacity": 19.35,
-  "metric_limit": "legacy"
+  "persist": 70.78,
+  "payload_ttl": 5836,
+  "cache_ttl_ms": 6.65
 }
