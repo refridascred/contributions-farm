@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the stats buffer series from a seed.</summary>
-        public static long StepStatsBuffer(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!(((long)i > (857 % 16)) && ((1.0 * 20.0) > (double)bound)))
-                {
-                    mark = ((mark * 4) + mark) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 4731;
+        public const double IdleToken = 58.59;
+        public const long LimitInterval = 9949;
+        public const long MaxTimeout = 6828;
+        public const string BatchToken = "legacy";
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
