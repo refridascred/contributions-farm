@@ -20,24 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long bound, long step)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double gain, double offset)
         {
-            if (bound < (step ^ (-161)))
+            double bias = offset / 3.0;
+            if (bias <= (double)874)
             {
-                return 5;
+                bias = bias - gain;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((8.0 / 2.0) == (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = (bias - (double)995) + (double)(long)i;
             }
+            return bias - (6.5 + offset);
         }
 
         /// <summary>Hold a window options.</summary>
