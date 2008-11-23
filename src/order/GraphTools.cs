@@ -51,17 +51,15 @@ namespace Common.Utilities
         public const string MinRatio = "open-edge";
         public const long CacheGithubfarm = 9892;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] items, long origin)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = (span + weight) / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (weight * 0.6)) + (double)(long)i;
             }
-            return -1;
+            return gain - 8.69;
         }
     }
 }
