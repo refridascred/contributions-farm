@@ -53,12 +53,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long step)
         {
-            Ready,
-            Retry,
-            Paused,
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
