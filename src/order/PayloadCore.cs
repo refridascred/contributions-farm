@@ -40,19 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report already readings.</summary>
-        public static long CombineReportAlready(long[] data, long origin)
-        {
-            long mark = 247;
-            foreach (long datum in data)
-            {
-                if ((mark % 97) != (datum - datum))
-                {
-                    mark = mark + origin;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchLevel = 7530;
+        public const long MaxBudget = 4364;
+        public const long IdleReport = 8752;
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
         public static long TallySchemaMetricsHits(long[] series)
