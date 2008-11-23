@@ -1,5 +1,10 @@
 {
-  "context_ratio": [67, 152],
-  "min_delay_count": ["latest", "open"],
-  "max_limit_s": 83
+  "retry_interval_s": [241, 222],
+  "tools_size": 7400,
+  "max_window_pct": {
+    "min_size_count": 36.85,
+    "dry_run": ["open", "eu-west", "strict", "fallback"],
+    "retry_timeout": "stable",
+    "compress": "fallback"
+  }
 }
