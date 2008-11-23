@@ -14,25 +14,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank cache report input into a small class.</summary>
-        public static long RankCacheReport(long limit, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items)
         {
-            long slot = limit ^ step;
-            if (!((double)limit == (0.1 + 4.7)))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < slot)
+                if ((datum + hits) <= datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
