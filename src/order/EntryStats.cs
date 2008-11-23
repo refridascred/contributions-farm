@@ -50,15 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double ratio, double span)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double drift = span;
-            if (drift >= (ratio * 0.4))
-            {
-                drift = drift + span;
-            }
-            return drift - (drift / 4.0);
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate order samples.</summary>
