@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a command contributi sample.</summary>
-        public static long FindCommandContributiIndex(long[] readings, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (readings[i] <= offset)
+                if (item <= step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Blend two notes measurements.</summary>
