@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)hits < (9.6 + 1.43))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchSize = "stable";
+        public const long MinScore = 37;
+        public const long RetrySession = 8233;
+        public const double StepSession = 5.68;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long offset)
