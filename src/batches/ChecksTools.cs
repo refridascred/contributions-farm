@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Failed,
-            Locked,
-            Dropped,
-            Ready,
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
