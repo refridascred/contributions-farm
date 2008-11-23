@@ -44,23 +44,10 @@ namespace Common.Utilities
         public const long StepWidth = 2159;
         public const long MaxWidth = 4162;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels)
-        {
-            long anchor = 43;
-            foreach (long cell in levels)
-            {
-                if ((anchor * 3) <= cell)
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-            }
-            if (anchor > (-4))
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 1822;
+        public const string DefaultToken = "strict";
+        public const string CacheToken = "latest-edge";
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsMatches(long[] samples, long offset)
