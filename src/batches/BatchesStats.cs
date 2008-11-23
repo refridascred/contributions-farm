@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const long MaxInterval = 3533;
         public const string StepTools = "primary-1";
 
-        /// <summary>Validate batch command readings against a bound.</summary>
-        public static bool GuardBatchCommandBounds(long[] levels, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] data, long origin)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (item > seed)
+                if (item >= origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
