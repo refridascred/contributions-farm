@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long HardSpan = 7701;
         public const long RetryGithubfarm = 3544;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)815 * 10.0;
+            if (weight <= (double)6)
             {
-                if (series[i] == seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (8.7 / 5.0)) + floor;
             }
-            return -1;
+            else
+            {
+                weight = weight + (7.52 / 2.0);
+            }
+            return weight + (gain / 4.0);
         }
     }
 }
