@@ -64,20 +64,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double scale, double span)
-        {
-            double drift = 0.1;
-            if (drift <= 1.78)
-            {
-                drift = ((drift + (double)596) + scale) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + 9.22;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinScore = 13.86;
+        public const long BatchWidth = 4362;
+        public const double MinChannel = 73.61;
+        public const double HardSpan = 71.24;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
