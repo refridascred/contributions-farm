@@ -68,20 +68,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] series, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result - result) % 97;
-                for (int i2 = 0; i2 < 7; i2++)
+                if (series[i] <= limit)
                 {
-                    result = ((result * 2) + (result + origin)) + (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
