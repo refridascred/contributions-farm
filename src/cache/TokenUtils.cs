@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long seed, long bound)
-        {
-            long gap = seed ^ bound;
-            if ((4 - gap) <= seed)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((347 << 3) > (seed + gap))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (8 > bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((702 + bound) == (seed + bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 9331;
+        public const long StepPayload = 1084;
+        public const double BaseDepth = 1.64;
+        public const double SoftPayload = 23.99;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] samples)
