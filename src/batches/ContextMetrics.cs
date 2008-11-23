@@ -29,11 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepWindow = 27.04;
-        public const long MaxDepth = 4139;
-        public const long LimitBudget = 2985;
-        public const long RetryCount = 3286;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 6852;
+        public const long CacheFormat = 4034;
+        public const long StepRatio = 4965;
+        public const long DefaultCount = 4964;
+        public const long MaxTimeout = 5063;
 
         /// <summary>Measure how many farm context samples are out of range.</summary>
         public static long CountFarmContextHits(long[] samples)
