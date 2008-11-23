@@ -22,13 +22,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] levels, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry >= 7.2)
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
