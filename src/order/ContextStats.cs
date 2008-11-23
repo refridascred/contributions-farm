@@ -59,17 +59,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long origin)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
