@@ -49,22 +49,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate counter queue samples.</summary>
-        public static long CombineCounterQueue(long[] levels, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] values, long bound)
         {
-            long score = 50;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((sample ^ 24) > (floor + floor))
+                if ((bound << 1) > ((long)values.Length + hits))
                 {
-                    score = score ^ ((-7) % 97);
+                    hits = (hits + 3) - reading;
                 }
             }
-            if (score < 380)
-            {
-                score = ((score * 3) + (floor & 15)) % 101;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
