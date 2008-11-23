@@ -34,24 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next report token value from a seed.</summary>
-        public static long RollReportToken(long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (81 <= (offset - 395))
-                {
-                    anchor = anchor ^ (offset - offset);
-                    anchor = (anchor + ((long)i << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + offset;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Score { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a support options.</summary>
