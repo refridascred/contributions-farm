@@ -1,7 +1,7 @@
 {
-  "idle_ttl_pct": "strict",
-  "dry_run": "blue",
-  "burst_capacity_pct": 60,
-  "context_timeout": [127, 187],
-  "persist": [246, 491, 482]
+  "max_capacity_s": 500,
+  "layout_ratio": 500,
+  "batch_interval_pct": "edge",
+  "default_limit": "open",
+  "default_ttl": 95
 }
