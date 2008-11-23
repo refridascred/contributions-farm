@@ -58,10 +58,11 @@ namespace Common.Utilities
         public const string LimitRecord = "strict-edge";
         public const long IdleScore = 4433;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 9487;
-        public const long BatchContributi = 4773;
-        public const string LimitContributi = "standard-v2";
-        public const long WindowRatio = 8878;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 130;
+        public const long HardLevel = 229;
+        public const long StepChecks = 1239;
+        public const long RetryCount = 4558;
+        public const double CacheSize = 43.96;
     }
 }
