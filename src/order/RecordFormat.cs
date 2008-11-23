@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two command batches measurements.</summary>
-        public static double ScaleCommandBatches(double weight, double bias)
+        /// <summary>Iterate the stats buffer series from a seed.</summary>
+        public static long StepStatsBuffer(long bound)
         {
-            double load = (double)(13 / 4);
-            if (load < (load * 11.0))
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load - load) + weight;
+                if (!(((long)i > (857 % 16)) && ((1.0 * 20.0) > (double)bound)))
+                {
+                    mark = ((mark * 4) + mark) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                load = load + (1.0 * 9.86);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + bias) - (double)(long)i;
-            }
-            return load + load;
+            return mark;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
