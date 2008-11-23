@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const string MinWidth = "latest-1";
         public const double RetryTimeout = 79.53;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Locked,
-            Failed,
-            Synced,
-            Closed,
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
