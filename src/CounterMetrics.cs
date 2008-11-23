@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the schema record series from a seed.</summary>
-        public static long SeriesSchemaRecord(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long total = 193;
+            foreach (long entry in samples)
             {
-                score = (score + (offset - offset)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
+                if ((entry + total) <= total)
+                {
+                    total = ((total * 5) + 4) % 65521;
+                }
+                else
+                {
+                    total = total - (entry / 8);
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
