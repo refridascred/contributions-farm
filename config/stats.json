@@ -1,12 +1,8 @@
 {
-  "metric_interval": "fallback",
-  "audit": 68.5,
-  "idle_size_pct": "strict",
-  "batch_ttl_count": 30,
-  "enabled": {
-    "soft_size_s": 84.48,
-    "retry_threshold_ms": ["standard", "primary", "edge", "latest"],
-    "idle_limit": "open",
-    "strict": false
-  }
+  "min_delay": ["cached", "legacy", "staging"],
+  "hard_window_pct": "green",
+  "queue_ratio": "local",
+  "retry_ttl": "local",
+  "burst_interval_count": "blue",
+  "already_threshold": [206, 498, 88, 455]
 }
