@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapProfileGithubfarmCount(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
