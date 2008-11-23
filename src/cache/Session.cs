@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            Failed,
-            New,
-            Synced,
             Done,
-            Paused,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the contributi level values.</summary>
