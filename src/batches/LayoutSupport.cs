@@ -38,10 +38,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitTimeout = "stable";
-        public const long DefaultEntry = 5306;
-        public const long BurstInterval = 8704;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+        }
 
         /// <summary>Fold a list of tools session readings.</summary>
         public static long WeighToolsSession(long[] items)
