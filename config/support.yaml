@@ -1,13 +1,9 @@
 # support settings
-flush_interval_count:
-  audit: 89.98
-  base_ratio: 8576
-  default_depth_pct: 24.95
-  warm_window:
-    min_limit_s: true
-    stream_timeout: green
-    cache_capacity_s: legacy
-    enabled: 33.22
-  idle_window_count: 250
-cluster_delay: 26.2
-idle_threshold: 61
+base_ttl: 3
+max_delay: 5379
+strict:
+  - 485
+  - 449
+  - 246
+hard_limit_count: legacy
+enabled: false
