@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support command measurements.</summary>
-        public static double AdjustSupportCommand(double rate, double floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] data, long limit)
         {
-            double scale = 5.02;
-            if (scale > (rate + rate))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                scale = scale + (double)1;
+                if (sample != limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (scale - floor);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - floor) - (double)(long)i;
-            }
-            return scale - (double)460;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
