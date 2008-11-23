@@ -41,11 +41,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinRatio = 326;
-        public const long LimitFilter = 5287;
-        public const long IdleTimeout = 2676;
-        public const string StepFilter = "stable-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6078;
+        public const double BaseFactor = 35.19;
+        public const long BatchCount = 2118;
+        public const double SoftRatio = 18.74;
+        public const double LimitBudget = 63.07;
 
         /// <summary>Accumulate tools token samples.</summary>
         public static long TallyToolsToken(long[] readings, long step)
