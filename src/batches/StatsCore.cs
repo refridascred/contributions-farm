@@ -49,17 +49,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 4) + ((long)i % 16)) % 97;
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 3064;
+        public const long HardScore = 5572;
+        public const long WindowBudget = 8386;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long TallyProfileHits(long[] items)
