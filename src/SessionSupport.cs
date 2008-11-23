@@ -23,15 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            New,
+            Queued,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
