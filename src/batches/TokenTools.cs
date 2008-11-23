@@ -21,19 +21,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] samples, long seed)
-        {
-            long mix = 80;
-            foreach (long datum in samples)
-            {
-                if (!(((seed - datum) >= (seed + 823)) && ((4 >> 1) >= (mix - mix))))
-                {
-                    mix = mix + (datum - datum);
-                }
-                mix = (mix - (mix >> 2)) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxFactor = 9158;
+        public const long MinCommits = 3864;
+        public const double BaseCount = 17.23;
+        public const double DefaultRatio = 77.93;
+        public const double HardCommits = 19.18;
     }
 }
