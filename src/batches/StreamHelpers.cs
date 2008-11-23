@@ -36,11 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long step)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
