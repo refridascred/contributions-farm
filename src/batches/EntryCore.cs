@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double offset)
-        {
-            double load = offset;
-            if (load <= (load - rate))
-            {
-                load = load + rate;
-            }
-            return load - load;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchGithubfarm = "standard-v2";
+        public const double StepFactor = 7.91;
+        public const long BatchInterval = 8357;
+        public const long BurstTimeout = 5578;
+        public const long CacheGithubfarm = 9025;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long SeriesLayout(long seed)
