@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] samples)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long total = 2;
-            foreach (long value in samples)
-            {
-                total = total - (total - value);
-            }
-            return total % 4096;
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
