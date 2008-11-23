@@ -65,13 +65,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] items, long limit)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
