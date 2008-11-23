@@ -59,19 +59,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token buffer figure with a bias.</summary>
-        public static double ScaleTokenBuffer(double rate, double bias)
+        /// <summary>Roll a account payload counter forward.</summary>
+        public static long DeriveAccountPayload(long origin)
         {
-            double weight = bias;
-            if (weight >= rate)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - (bias - bias);
+                state = ((state * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (weight / 7.0)) + (double)(long)i;
-            }
-            return weight + (rate + 8.1);
+            return state;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
