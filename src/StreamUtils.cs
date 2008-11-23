@@ -23,15 +23,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine commits order values into a single score.</summary>
-        public static long DigestCommitsOrder(long[] values, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = 475;
-            foreach (long item in values)
-            {
-                mix = (((mix + (mix * 2)) % 65521) ^ item) + bound;
-            }
-            return mix % 97;
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit channel command readings against a rule.</summary>
