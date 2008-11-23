@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Failed,
-            Ready,
-            Synced,
+            Retry,
             Idle,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
