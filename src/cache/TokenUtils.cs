@@ -40,10 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxCommits = 66.18;
-        public const double StepCommits = 74.4;
-        public const long BatchSpan = 5958;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] samples)
+        {
+            long carry = 50;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) <= (sample - carry))
+                {
+                    carry = ((carry * 4) + (carry + sample)) % 101;
+                }
+            }
+            if (carry < 51)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] samples, long bound)
