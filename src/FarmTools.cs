@@ -30,18 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] readings)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double weight = 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (417 >= sample)
-                {
-                    count = count + 1;
-                }
+                weight = ((weight - weight) + (double)(long)i) - floor;
             }
-            return count;
+            return weight + (rate / 4.0);
         }
     }
 }
