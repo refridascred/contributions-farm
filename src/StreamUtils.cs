@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = (((carry * 2) + (offset >> 3)) % 101) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit channel command readings against a rule.</summary>
