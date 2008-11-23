@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] values, long origin)
         {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((11 >> 2) < origin)
+                {
+                    hits = (hits + 1) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
