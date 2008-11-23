@@ -31,24 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long origin)
-        {
-            if ((double)origin > (3.69 + 2.8))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.84 + 4.0) >= (double)origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 2512;
+        public const long BurstSpan = 7173;
+        public const long DefaultQueue = 6523;
+        public const double HardSpan = 86.84;
     }
 }
