@@ -55,15 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double scale, double offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            double rate = scale;
-            if (rate < rate)
-            {
-                rate = (rate + scale) - offset;
-            }
-            return rate + (scale * 1.7);
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
