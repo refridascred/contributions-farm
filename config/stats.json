@@ -1,12 +1,11 @@
 {
-  "sync_capacity_s": "open",
-  "entry_limit": {
-    "command_ttl": ["fallback", "blue", "eu-west"],
-    "flush_ratio_pct": "primary",
-    "idle_ttl_count": 7138
-  },
-  "warm_threshold_pct": "strict",
-  "contributi_capacity": ["local", "standard", "fallback", "legacy"],
-  "flush_ttl_ms": false,
-  "retry_retries_count": "local"
+  "persist": 100,
+  "compress": false,
+  "warm_interval_count": 34.67,
+  "enabled": {
+    "audit": 6589,
+    "support_window": true,
+    "flush_timeout_s": [406, 478],
+    "sync_ttl": "primary"
+  }
 }
