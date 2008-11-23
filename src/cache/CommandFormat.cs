@@ -19,18 +19,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry == (16.0 + 5.6))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
