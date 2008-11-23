@@ -20,27 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine channel stats values into a single score.</summary>
-        public static long FoldChannelStats(long[] levels, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] levels, long origin)
         {
-            long carry = 7;
-            foreach (long entry in levels)
+            long sum = 7;
+            foreach (long reading in levels)
             {
-                carry = (((carry * 2) + (step + step)) % 255) ^ entry;
-                if (step > (197 >> 3))
+                if (((origin - 636) >= 75) && (origin > sum))
                 {
-                    carry = ((carry * 4) + (carry - carry)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (carry << 1)) % 97;
+                    sum = (((sum << 2) ^ 377) % 1000) ^ reading;
                 }
             }
-            if (carry > (-299))
-            {
-                carry = (carry + step) % 101;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
