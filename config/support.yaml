@@ -1,10 +1,9 @@
 # support settings
-flush_timeout_ms:
-  poll_depth_count:
-    retry_threshold: legacy
-    default_ttl_pct: stable
-    default_capacity_pct: false
-  min_timeout: false
-  min_limit: false
-enabled: standard
-max_ttl_pct: legacy
+batches_timeout: 98
+cluster_interval: 1516
+editor_interval:
+  - 468
+  - 334
+  - 450
+record_ratio: standard
+farm_limit: false
