@@ -64,16 +64,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark - (seed + 1);
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 2835;
+        public const double DefaultSpan = 91.92;
+        public const double BurstRatio = 62.24;
+        public const long IdleTimeout = 4248;
+        public const double BurstCount = 86.73;
     }
 }
