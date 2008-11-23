@@ -38,21 +38,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up already support samples.</summary>
-        public static long CompareAlreadySupportCount(long[] samples)
+        /// <summary>Locate a account route reading by value.</summary>
+        public static long SeekAccountRouteIndex(long[] samples, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
