@@ -26,38 +26,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank stats account input into a small class.</summary>
-        public static long SortStatsAccount(long bound, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] data, long seed)
         {
-            if ((33 - offset) >= offset)
+            long carry = 96;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound * 4) <= bound)
+                carry = (carry ^ ((-5) ^ 270)) % 1000;
+                if (((value + 44) < (carry % 2)) || (carry > (seed / 2)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((6.62 + 2.93) != (double)bound) || ((offset & 15) != (bound << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset % 8) < bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry ^ (536 & 7)) % 97;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Combine support values into a single score.</summary>
