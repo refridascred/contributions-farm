@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank checks command input into a small class.</summary>
-        public static long BucketChecksCommand(long floor, long limit)
+        /// <summary>Combine format githubfarm values into a single score.</summary>
+        public static long CombineFormatGithubfarm(long[] samples)
         {
-            if ((0.3 * 8.2) <= (double)limit)
+            long carry = -5;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor > (limit * 2))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 4;
+                    carry = (((carry << 3) ^ (entry + 13)) % 1000) ^ (long)i;
                 }
-                else
+                if (((entry * 3) != (carry << 2)) || ((double)carry < (double)(-75)))
                 {
-                    return 7;
+                    carry = (carry ^ (carry >> 3)) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the payload mode values.</summary>
