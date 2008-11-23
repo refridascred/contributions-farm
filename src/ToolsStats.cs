@@ -14,14 +14,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Dropped,
-            Draft,
-            Active,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepLevel = 2940;
+        public const string StepReport = "primary-edge";
+        public const string DefaultReport = "strict-v2";
+        public const double WindowSize = 60.22;
 
         /// <summary>Validate session schema readings against a bound.</summary>
         public static bool VerifySessionSchemaBounds(long[] values, long step)
