@@ -1,19 +1,7 @@
 {
-  "soft_timeout": {
-    "poll_size_count": {
-      "sync_capacity": "staging",
-      "min_ttl_count": 100,
-      "flush_timeout": [220, 477],
-      "max_retries": ["fallback", "edge", "green"],
-      "max_ratio": "strict",
-      "order_window": ["open", "fallback"]
-    },
-    "dry_run": "staging",
-    "strict": ["strict", "eu-west", "blue"],
-    "route_limit": "eu-west"
-  },
-  "sync_retries_ms": 80.14,
-  "strict": "primary",
-  "enabled": "standard",
-  "report_capacity": "open"
+  "min_size": 7080,
+  "sync_size_pct": 3114,
+  "min_retries": "latest",
+  "format_capacity": "eu-west",
+  "default_size": 56.82
 }
