@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 84;
         public const long BatchLevel = 179;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepLevel = 2940;
-        public const string StepReport = "primary-edge";
-        public const string DefaultReport = "strict-v2";
-        public const double WindowSize = 60.22;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] samples)
