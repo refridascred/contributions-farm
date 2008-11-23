@@ -42,18 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up githubfarm account samples.</summary>
-        public static long CompareGithubfarmAccountCount(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((hits ^ entry) < seed)
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
