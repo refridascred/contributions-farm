@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] data, long bound)
         {
-            Draft,
-            New,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell - cell) != (75 & 1))
+                {
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank batches filter input into a small class.</summary>
