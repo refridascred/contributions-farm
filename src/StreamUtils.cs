@@ -38,31 +38,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] readings, long limit)
         {
-            if ((0.2 + 7.72) >= (double)limit)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 127) >= (limit * 5))
+                if (value >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (limit + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
