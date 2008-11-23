@@ -29,13 +29,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
-            public long Region { get; set; }
-            public double Label { get; set; }
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 3) <= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
