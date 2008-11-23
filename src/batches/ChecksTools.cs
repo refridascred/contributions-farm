@@ -54,18 +54,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 4228;
+        public const string BurstAlready = "latest-1";
+        public const string IdleCount = "standard-v2";
+        public const double MaxLevel = 17.71;
+        public const long BatchAlready = 1711;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultMetrics = "alpha-1";
