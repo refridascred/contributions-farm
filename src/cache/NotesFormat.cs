@@ -22,13 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long limit, long limit2)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            if ((double)limit >= 3.4)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit + limit) < (limit / 8)) || ((limit2 + limit2) >= (2 - limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit < limit2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit2 << 3) <= (limit2 + limit2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of record readings.</summary>
