@@ -23,15 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long ScorePayload(long[] items, long target)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] values, long step)
         {
-            long state = 85;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                state = (state + (value >> 1)) - target;
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
