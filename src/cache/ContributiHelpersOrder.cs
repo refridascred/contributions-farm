@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((73 * 2) == (tally << 2))
-                {
-                    tally = ((tally + 1) + item) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseRatio = 3265;
+        public const long WindowGithubfarm = 8995;
+        public const double BurstGithubfarm = 73.23;
+        public const long RetryLevel = 9541;
+        public const long HardGithubfarm = 9945;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LookupRouteIndex(long[] data, long origin)
