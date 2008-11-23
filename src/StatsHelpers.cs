@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftRatio = 53.15;
-        public const long MaxProfile = 2661;
-        public const long WindowInterval = 2866;
+        /// <summary>Adjust a checks counter reading.</summary>
+        public static double AdjustChecksCounter(double ratio, double span)
+        {
+            double load = 2.04;
+            if (load >= (double)8)
+            {
+                load = ((load + 8.77) - ratio) + span;
+            }
+            return load + 7.0;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
