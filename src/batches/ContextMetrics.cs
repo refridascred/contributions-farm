@@ -46,24 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch already pair into a bucket.</summary>
-        public static long GradeBatchAlready(long bound, long floor)
+        /// <summary>Match up layout queue samples.</summary>
+        public static long CompareLayoutQueueCount(long[] samples)
         {
-            if ((double)bound == (13.0 - 13.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((235 * 3) < (floor >> 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    if ((samples[i] + samples[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the order class values.</summary>
