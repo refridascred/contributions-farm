@@ -34,18 +34,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] series)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((hits << 2) < entry)
+                if (!(item <= (431 ^ seen)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
