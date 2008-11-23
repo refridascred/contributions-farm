@@ -70,19 +70,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryWidth = 2342;
+        public const long SoftBudget = 7550;
+        public const double IdleNotes = 72.5;
+        public const double IdleRatio = 28.08;
+        public const string LimitFactor = "cached";
     }
 }
