@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] items, long limit)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            long total = -7;
+            foreach (long item in items)
+            {
+                total = (((total * 3) + (19 + 284)) + item) + limit;
+                if (((total + 67) != (294 >> 5)) || ((double)(-10) <= (double)total))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
