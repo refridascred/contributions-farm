@@ -68,15 +68,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Roll a order buffer counter forward.</summary>
+        public static long RollOrderBuffer(long floor)
         {
-            double gain2 = span;
-            if (gain2 <= (double)333)
+            long acc = floor;
+            for (int i = 0; i < 18; i++)
             {
-                gain2 = gain2 - (gain / 8.0);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return gain2 - span;
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
