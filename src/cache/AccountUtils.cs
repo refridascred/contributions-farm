@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] items, long limit)
-        {
-            long total = -7;
-            foreach (long item in items)
-            {
-                total = (((total * 3) + (19 + 284)) + item) + limit;
-                if (((total + 67) != (294 >> 5)) || ((double)(-10) <= (double)total))
-                {
-                    break;
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftFactor = "standard-1";
+        public const long MaxSpan = 9764;
+        public const long IdleLevel = 9552;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long CompareBatchesCount(long[] data)
