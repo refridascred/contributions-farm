@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Idle,
-            Dropped,
-            Done,
+            Active,
+            Synced,
+            Closed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
