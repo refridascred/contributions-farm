@@ -1,6 +1,5 @@
 {
-  "cache_timeout_ms": "cached",
-  "idle_ttl": 43.62,
-  "strict": false,
-  "flush_capacity_pct": "standard"
+  "retry_ratio_pct": 167,
+  "checks_interval": false,
+  "counter_size": 83.72
 }
