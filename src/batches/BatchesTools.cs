@@ -13,18 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long mark = 109;
-            foreach (long sample in readings)
-            {
-                if ((sample + mark) >= (sample + sample))
-                {
-                    mark = ((mark ^ (6 / 6)) % 255) - seed;
-                }
-            }
-            return mark % 65521;
+            Locked,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
