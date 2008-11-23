@@ -19,22 +19,32 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics format entries.</summary>
-        public static long WeighMetricsFormat(long[] items, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long bound)
         {
-            long mix = 82;
-            foreach (long item in items)
+            long gap = limit + bound;
+            if (((gap / 9) > (limit << 2)) || ((gap >> 3) < (gap & 1)))
             {
-                if ((item - (-503)) >= (mix - item))
+                return 8;
+            }
+            else
+            {
+                if (gap < (gap + gap))
                 {
-                    mix = (mix - (offset / 2)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    mix = (mix << 2) ^ (item + item);
+                    if (((double)gap != (9.0 + 9.0)) || (bound < (bound + gap)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix % 4096;
         }
     }
 }
