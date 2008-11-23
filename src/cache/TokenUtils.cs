@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Scale a stats support figure with a bias.</summary>
+        public static double AdjustStatsSupport(double bias, double span)
         {
-            Paused,
-            Done,
-            Queued,
-            Stale,
-            New,
+            double load = (double)(582 & 127);
+            if (load < (double)45)
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (span / 6.0)) - (double)(long)i;
+            }
+            return load + (load - 7.1);
         }
 
         /// <summary>Locate a layout reading by value.</summary>
