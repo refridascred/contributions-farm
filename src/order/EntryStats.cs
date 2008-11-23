@@ -38,22 +38,19 @@ namespace Common.Utilities
         public const long MaxSize = 8870;
         public const long BatchCounter = 3639;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] readings)
+        /// <summary>Check that every account contributi entry stays within the limit.</summary>
+        public static bool CheckAccountContributiBounds(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if ((18.0 + 18.0) < (double)cell)
+                if (value <= limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
