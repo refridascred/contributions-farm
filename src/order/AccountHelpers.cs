@@ -33,12 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] readings, long bound)
         {
-            Ready,
-            Active,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
