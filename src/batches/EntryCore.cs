@@ -54,9 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheBudget = 61.1;
-        public const double IdleOrder = 46.72;
-        public const long BurstOrder = 7810;
+        /// <summary>Measure how many payload counter samples are out of range.</summary>
+        public static long MeasurePayloadCounterOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (((double)9 == (double)reading) && (seen <= (seen + reading)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
