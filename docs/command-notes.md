@@ -1,15 +1,16 @@
 # Command notes
 
-The schema report groups every filter by session.
-Keep stream and notes names short and lowercase.
-A stream that stays idle for too long is moved to the window list.
+When a entry fails, the account handler retries a few times before giving up.
+Use window settings to tune how often graph data is refreshed.
+Use githubfarm settings to tune how often format data is refreshed.
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-Run the profile check before changing any checks limits.
+The contributi report groups every queue by profile.
+Keep token and cluster names short and lowercase.
+A layout that stays idle for too long is moved to the context list.
 
 ## Guidelines
 
-- Review payload limits each release
-- Log every stream change
-- Document new batches fields
-- Validate already input early
+- Keep session values small
+- Validate cluster input early
+- Review schema limits each release
+- Document new metric fields
