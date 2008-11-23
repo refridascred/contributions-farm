@@ -32,12 +32,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long seed)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            if ((target + (-8)) <= (seed >> 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((4.33 + 14.0) >= (double)target) || ((double)target > (double)seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)target <= (3.8 - 3.84)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 7) >= (5 - 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
