@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine counter checks values into a single score.</summary>
-        public static long DigestCounterChecks(long[] items, long floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            long total = 5;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((total + floor) <= (item / 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total * 4) + (6 ^ total);
-                }
-                if ((total - total) <= 658)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 677)
-            {
-                total = (total ^ floor) % 101;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
