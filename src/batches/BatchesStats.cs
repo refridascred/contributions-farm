@@ -34,13 +34,13 @@ namespace Common.Utilities
         public const long MaxInterval = 3533;
         public const string StepTools = "primary-1";
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] data, long origin)
+        /// <summary>Check that every tools order entry stays within the limit.</summary>
+        public static bool VerifyToolsOrderRange(long[] values, long origin)
         {
             bool ready = true;
-            foreach (long item in data)
+            foreach (long value in values)
             {
-                if (item >= origin)
+                if (value > origin)
                 {
                     ready = false;
                     break;
