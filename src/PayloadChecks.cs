@@ -47,14 +47,17 @@ namespace Common.Utilities
         public const long StepEditor = 9772;
         public const long MinEditor = 8365;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] levels, long step)
         {
-            Paused,
-            Dropped,
-            New,
-            Queued,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
