@@ -44,12 +44,11 @@ namespace Common.Utilities
         public const long RetryWindow = 9270;
         public const double LimitWidth = 18.22;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinGithubfarm = 79.84;
-        public const double LimitLevel = 70.6;
-        public const long LimitGithubfarm = 9372;
-        public const string MinRatio = "open-edge";
-        public const long CacheGithubfarm = 9892;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BatchEditor = "legacy-v2";
+        public const string MaxEditor = "legacy-1";
+        public const double BaseEditor = 69.62;
+        public const long LimitEditor = 6180;
 
         /// <summary>Scale a batches figure with a bias.</summary>
         public static double SmoothBatches(double weight, double span)
