@@ -1,6 +1,7 @@
 # githubfarm settings
-warm_limit: fallback
-enabled: staging
-counter_interval: 79
-min_depth_s: 75.23
-poll_timeout_count: standard
+idle_delay_pct: false
+retry_size_ms: 6906
+min_limit_s: edge
+retry_ttl: false
+metrics_window: eu-west
+notes_threshold: 37.94
