@@ -73,18 +73,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] data)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches > (datum + matches)) && (((datum + matches) <= matches) && ((matches >> 5) == (datum % 97))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Pending,
         }
     }
 }
