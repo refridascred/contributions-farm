@@ -50,17 +50,38 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] readings, long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (5.0 > (double)seed)
             {
-                if (readings[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((8.4 - 7.0) < (double)seed)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((target ^ seed) <= (target & 127)) && ((seed % 2) <= seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target >= (double)4)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
