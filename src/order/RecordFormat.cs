@@ -40,13 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Locked,
-            Closed,
-            Active,
-            Done,
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
