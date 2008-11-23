@@ -44,18 +44,22 @@ namespace Common.Utilities
         public const long StepWidth = 2159;
         public const long MaxWidth = 4162;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] data, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = 43;
+            foreach (long cell in levels)
             {
-                if (((floor + floor) != (floor & 255)) && ((double)value >= (0.57 + 12.0)))
+                if ((anchor * 3) <= cell)
                 {
-                    count = count + 2;
+                    anchor = ((anchor << 3) ^ anchor) % 255;
                 }
             }
-            return count;
+            if (anchor > (-4))
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
