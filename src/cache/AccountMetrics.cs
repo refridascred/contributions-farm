@@ -64,17 +64,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] series, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                if ((sample - target) <= sample)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
