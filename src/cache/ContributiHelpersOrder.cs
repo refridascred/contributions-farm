@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] data, long origin)
+        /// <summary>Count already contributi pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyContributiCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] + levels[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
