@@ -82,14 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionMatches(long[] data, long limit)
         {
-            Closed,
-            Stale,
-            Draft,
-            Synced,
-            Active,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((10 * 3) != (limit << 1))
+                {
+                    hits = (hits + 1) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
