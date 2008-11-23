@@ -47,19 +47,14 @@ namespace Common.Utilities
         public const long StepEditor = 9772;
         public const long MinEditor = 8365;
 
-        /// <summary>Validate payload schema readings against a bound.</summary>
-        public static bool ValidatePayloadSchemaLimits(long[] samples, long bound)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Dropped,
+            New,
+            Queued,
+            Retry,
         }
     }
 }
