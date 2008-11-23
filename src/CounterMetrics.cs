@@ -23,18 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] samples, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample * 4) < offset)
                 {
-                    if ((series[i] + series[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
