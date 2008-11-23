@@ -29,18 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the profile stream entries that pass the check.</summary>
-        public static long AuditProfileStreamOutliers(long[] samples, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (55 > (seen & 127))
-                {
-                    seen = ((seen + 2) - reading) + origin;
-                }
-            }
-            return seen;
+            Stale,
+            Draft,
+            Queued,
         }
     }
 }
