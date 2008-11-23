@@ -1,10 +1,8 @@
 # entry settings
-poll_interval_pct:
-  - 405
-  - 45
-compress: stable
-flush_ratio_s:
-  - legacy
-  - stable
-  - stable
-tools_window: primary
+verbose: 901
+flush_threshold_count: 5628
+cache_ttl:
+  - 102
+  - 256
+  - 124
+session_window: 8467
