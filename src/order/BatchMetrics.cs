@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long step, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] items, long origin)
         {
-            if (step < (step / 8))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (target <= step)
+                if (origin < (matches + matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) + cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the queue class values.</summary>
