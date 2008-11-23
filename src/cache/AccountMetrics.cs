@@ -51,12 +51,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a schema payload sample.</summary>
+        public static long FindSchemaPayloadIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > limit)
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
