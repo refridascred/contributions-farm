@@ -47,22 +47,31 @@ namespace Common.Utilities
         public const long StepEditor = 9772;
         public const long MinEditor = 8365;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long bound, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((bound + step) < (bound - step))
             {
-                if (((69 / 9) <= (value - count)) || !((double)value > (2.9 * 4.7)))
+                return 0;
+            }
+            else
+            {
+                if (bound <= (bound - step))
                 {
-                    count = count + 2;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)step > (8.0 + 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
     }
 }
