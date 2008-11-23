@@ -1,6 +1,6 @@
 {
-  "audit": "staging",
-  "metrics_capacity": false,
-  "cache_interval_pct": 21,
-  "hard_delay_ms": 490
+  "idle_size_ms": "open",
+  "default_depth_pct": "fallback",
+  "retry_ttl_s": 65.1,
+  "max_delay_ms": "blue"
 }
