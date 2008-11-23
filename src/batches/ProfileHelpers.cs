@@ -24,21 +24,15 @@ namespace Common.Utilities
             return rate + (rate / 2.0);
         }
 
-        /// <summary>Derive the next window channel value from a seed.</summary>
-        public static long IterateWindowChannel(long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 23; i++)
+            long acc = 666;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mark = (mark + mark) ^ (long)i2;
-                }
-                mark = mark ^ 547;
-                mark = mark ^ 42;
-                mark = ((mark * 3) + (long)i) % 97;
+                acc = ((acc - (acc - acc)) + reading) + limit;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
