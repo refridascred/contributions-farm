@@ -82,18 +82,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] data, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long carry = 52;
+            foreach (long entry in data)
             {
-                if ((10 * 3) != (limit << 1))
-                {
-                    hits = (hits + 1) + datum;
-                }
+                carry = (carry - (entry + entry)) % 255;
+                carry = (carry - (entry + carry)) % 1000;
             }
-            return hits;
+            if (carry < 57)
+            {
+                carry = (carry - (carry - carry)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
