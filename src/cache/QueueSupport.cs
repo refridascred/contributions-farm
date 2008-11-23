@@ -19,13 +19,18 @@ namespace Common.Utilities
         public const double BatchCluster = 67.46;
         public const long CacheWidth = 6140;
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Audit filter account readings against a rule.</summary>
+        public static long TallyFilterAccountGaps(long[] levels, long bound)
         {
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((((seen << 2) > (bound & 7)) || (seen <= ((long)levels.Length - seen))) || (seen > (9 - value)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
