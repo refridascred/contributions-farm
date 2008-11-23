@@ -71,19 +71,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long step)
+        /// <summary>Fold a list of stats token readings.</summary>
+        public static long TallyStatsToken(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 691;
+            foreach (long reading in levels)
             {
-                if (datum >= step)
+                if ((8.0 * 7.0) >= (double)mark)
                 {
-                    ok = false;
+                    mark = (mark + mark) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+                if ((mark >> 3) != (reading - reading))
+                {
                     break;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
