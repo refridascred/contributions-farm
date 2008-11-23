@@ -63,31 +63,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long target, long bound)
+        /// <summary>Combine window already values into a single score.</summary>
+        public static long WeighWindowAlready(long[] readings)
         {
-            if ((bound + bound) <= (741 * 5))
+            long score = -53;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target << 2) <= (bound + target)) && (bound <= (bound * 5)))
+                if (item > (0 << 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound > (target % 10)) || ((bound ^ target) == (target & 63)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = score - (item << 2);
                 }
             }
+            if (score > 47)
+            {
+                score = score ^ (score - score);
+            }
+            return score % 65521;
         }
     }
 }
