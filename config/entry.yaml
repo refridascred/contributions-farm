@@ -1,8 +1,6 @@
 # entry settings
-flush_timeout: 6
-poll_retries: 1024
-warm_timeout: green
-min_size:
-  min_timeout_count: true
-  persist: true
-  entry_limit: primary
+cache_delay: true
+min_threshold: false
+order_ratio: 250
+burst_limit_ms: false
+session_interval: true
