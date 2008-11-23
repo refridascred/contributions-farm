@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] readings, long seed)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6963;
+        public const long MinScore = 2595;
+        public const long MaxBudget = 5906;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long LookupSessionIndex(long[] series, long offset)
