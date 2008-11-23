@@ -67,26 +67,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long step)
+        /// <summary>Derive the next profile channel value from a seed.</summary>
+        public static long IterateProfileChannel(long seed)
         {
-            long carry = 95;
-            foreach (long value in data)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if ((6.46 * 6.11) == (double)carry)
+                anchor = anchor ^ (seed % 7);
+                if ((9.0 - 13.0) <= (double)anchor)
                 {
-                    carry = (carry ^ (step << 3)) % 65521;
+                    anchor = (anchor - (anchor % 24)) % 97;
                 }
-                else
+                if ((seed << 1) != ((-546) + seed))
                 {
-                    carry = (carry * 2) + value;
+                    anchor = anchor ^ anchor;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            if (carry < 854)
-            {
-                carry = (carry * 4) + (step - carry);
-            }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
