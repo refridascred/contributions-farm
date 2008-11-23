@@ -43,14 +43,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] data, long floor)
         {
-            Stale,
-            Pending,
-            Active,
-            Paused,
-            Dropped,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((floor + floor) != (floor & 255)) && ((double)value >= (0.57 + 12.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
