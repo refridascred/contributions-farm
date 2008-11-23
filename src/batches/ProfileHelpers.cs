@@ -29,16 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 2) + 26) % 4096;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Idle,
+            Failed,
+            Closed,
         }
 
         /// <summary>Check that every stats channel entry stays within the limit.</summary>
