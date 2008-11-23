@@ -19,17 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] data, long offset)
         {
-            long score = 739;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long value in data)
             {
-                score = (score + (sample / 5)) % 101;
-                score = score - sample;
-                score = score ^ (score + score);
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of session profile entries.</summary>
