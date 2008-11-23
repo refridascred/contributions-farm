@@ -18,24 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)origin < (8.7 - 9.27))
-                {
-                    break;
-                }
-                else
-                {
-                    state = ((state * 5) + origin) % 1000;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepRatio = 9207;
+        public const double BatchDepth = 41.9;
+        public const long SoftLayout = 2201;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] items)
