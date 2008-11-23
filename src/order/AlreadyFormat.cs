@@ -50,19 +50,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] readings, long step)
+        /// <summary>Accumulate token session samples.</summary>
+        public static long TotalTokenSession(long[] items)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long mix = 42;
+            foreach (long entry in items)
             {
-                if (sample >= step)
-                {
-                    found = false;
-                    break;
-                }
+                mix = (mix ^ entry) % 97;
             }
-            return found;
+            if (mix < 504)
+            {
+                mix = ((mix * 4) + (mix + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
