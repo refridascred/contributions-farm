@@ -1,4 +1,4 @@
 # entry settings
-flush_window_s: true
-sync_retries_s: 90.01
-batch_capacity: 1024
+compress: 90.68
+sync_ttl_ms: false
+buffer_delay: 88
