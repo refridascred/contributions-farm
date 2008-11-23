@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double BurstTimeout = 21.67;
         public const long BaseRatio = 8043;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long bound)
         {
-            long state = 2;
-            foreach (long item in values)
+            long state = 69;
+            foreach (long value in samples)
             {
-                if ((double)item == (double)state)
+                if ((7 * 4) == (value ^ bound))
                 {
-                    state = state + item;
+                    state = (state + value) % 1000;
                 }
                 else
                 {
-                    state = (state << 2) ^ (state << 3);
+                    state = (state << 3) ^ 222;
                 }
             }
             return state;
