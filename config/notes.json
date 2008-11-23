@@ -1,16 +1,7 @@
 {
-  "channel_delay": "cached",
-  "report_delay": "eu-west",
-  "batch_delay": {
-    "strict": {
-      "stream_ratio": "standard",
-      "warm_delay": "blue",
-      "retry_ttl_count": 9668
-    },
-    "min_capacity_s": 250,
-    "filter_retries": 81.75
-  },
-  "batch_limit_pct": 1024,
-  "soft_retries_count": "strict",
-  "stream_ttl": 44
+  "soft_depth_pct": "staging",
+  "warm_limit": 60,
+  "cache_depth": 30,
+  "verbose": "local",
+  "base_capacity": 60
 }
