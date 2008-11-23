@@ -68,19 +68,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] readings, long floor)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry < floor)
+                result = (result - result) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 2) + (result + origin)) + (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
     }
 }
