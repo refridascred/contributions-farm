@@ -1,13 +1,6 @@
 {
-  "notes_retries": {
-    "compress": true,
-    "route_threshold": 60,
-    "hard_timeout_count": ["local", "standard", "open", "edge"],
-    "poll_threshold": "standard",
-    "batch_interval_s": "eu-west",
-    "strict": false
-  },
-  "token_capacity": false,
-  "default_size": "fallback",
-  "soft_capacity": 89
+  "max_capacity_s": "local",
+  "command_interval": 71.05,
+  "editor_delay": "eu-west",
+  "burst_depth": "standard"
 }
