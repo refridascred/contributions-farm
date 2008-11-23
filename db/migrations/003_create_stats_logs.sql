@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    count INTEGER NOT NULL DEFAULT 0,
-    region TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
+    rank INTEGER,
     owner TEXT NOT NULL,
-    weight REAL
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_region ON stats_logs (region);
-
-INSERT INTO stats_logs (token, count, region, owner, weight) VALUES ('standard', 4, 'cached', 'eu-west', 37.35);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_token ON stats_logs (token);
