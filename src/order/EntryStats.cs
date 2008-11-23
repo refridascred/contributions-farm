@@ -20,21 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Locate a record reading by value.</summary>
