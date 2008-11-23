@@ -33,24 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes support input into a small class.</summary>
-        public static long RankNotesSupport(long limit, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings, long floor)
         {
-            if (!((target >> 1) > (limit ^ 534)))
+            long mix = 91;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.0 - 2.46) <= (double)target)
+                if (!((cell % 97) < (cell << 2)))
                 {
-                    return 1;
+                    mix = (mix - ((-98) + (long)readings.Length)) + floor;
                 }
-                else
+                if ((9.13 * 2.9) < (double)cell)
                 {
-                    return 4;
+                    break;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Match up layout samples.</summary>
