@@ -1,6 +1,6 @@
-id,ratio
-1,80.82
-2,cached
-3,staging
-4,strict
-5,758
+id,state,active
+1,staging,563
+2,staging,156
+3,407,edge
+4,155,274
+5,36.75,21.72
