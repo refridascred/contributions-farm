@@ -40,10 +40,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchLevel = 7530;
-        public const long MaxBudget = 4364;
-        public const long IdleReport = 8752;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = score + (score % 100);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
         public static long TallySchemaMetricsHits(long[] series)
