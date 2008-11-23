@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] readings, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 10;
+            foreach (long cell in items)
             {
-                if (readings[i] <= offset)
+                if ((1 >> 2) < (cell - cell))
                 {
-                    return (long)i;
+                    result = (result + bound) % 101;
                 }
             }
-            return -1;
+            if (result > 38)
+            {
+                result = (result - (bound + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Adjust a commits reading.</summary>
