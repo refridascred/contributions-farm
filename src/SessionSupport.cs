@@ -37,18 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many context githubfarm samples are out of range.</summary>
-        public static long TallyContextGithubfarmGaps(long[] data, long offset)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (tally >= (reading & 31))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) - offset;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
