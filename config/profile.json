@@ -1,18 +1,5 @@
 {
-  "sync_delay_pct": {
-    "format_limit": false,
-    "idle_ratio_pct": 36.48,
-    "burst_interval": "local"
-  },
-  "base_capacity_ms": {
-    "burst_ratio_pct": 500,
-    "soft_limit_pct": 60,
-    "base_limit": "open",
-    "warm_delay_s": [253, 182, 64, 17]
-  },
-  "enabled": {
-    "schema_limit": true,
-    "warm_delay_count": "fallback",
-    "cache_timeout_pct": 81.62
-  }
+  "base_retries": "blue",
+  "support_timeout": "strict",
+  "farm_ratio": 34
 }
