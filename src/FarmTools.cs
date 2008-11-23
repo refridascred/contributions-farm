@@ -41,15 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metric order measurements.</summary>
-        public static double BlendMetricOrder(double ratio, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data, long seed)
         {
-            double rate = 3.0;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                rate = ((rate + (rate - 12.0)) + (double)(long)i) + ratio;
+                if ((((seed + 34) > 99) && ((seed * 5) == (matches << 1))) || ((item & 127) > matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - (offset / 4.0);
+            return matches;
         }
     }
 }
