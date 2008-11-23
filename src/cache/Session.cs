@@ -11,15 +11,22 @@ namespace Common.Utilities
         public const long StepDepth = 3877;
         public const double IdleFarm = 95.06;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels)
         {
-            double ratio = span;
-            if (ratio <= (span / 6.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio - ratio) - gain;
+                if (((item % 7) == (item << 1)) && ((tally < (tally >> 3)) || (item >= (item + tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return ratio + (double)5;
+            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
