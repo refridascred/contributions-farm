@@ -40,9 +40,11 @@ namespace Common.Utilities
         public const long CacheCount = 5805;
         public const double StepWidth = 73.02;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowSpan = 4326;
-        public const double BatchLevel = 71.06;
-        public const long LimitWidth = 9456;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "primary-1";
+        public const double HardToken = 52.36;
+        public const string CacheScore = "strict-edge";
+        public const double RetryToken = 25.65;
+        public const string BatchTimeout = "open-v2";
     }
 }
