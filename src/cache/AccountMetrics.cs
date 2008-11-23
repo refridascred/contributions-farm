@@ -33,17 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long target)
+        /// <summary>Scale a order profile figure with a bias.</summary>
+        public static double BlendOrderProfile(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = (double)(4 ^ 29);
+            if (drift >= (scale / 7.0))
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                drift = drift + span;
             }
-            return -1;
+            return drift + (drift + 2.6);
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
