@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            long mark = -51;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = mark - (long)i;
+                }
+                if ((mark & 255) == (item + mark))
+                {
+                    mark = mark + (item + 102);
+                }
+                if (((item + mark) >= (mark - 5)) || ((item + item) <= (item / 4)))
+                {
+                    break;
+                }
+            }
+            if (mark > 20)
+            {
+                mark = ((mark * 2) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
