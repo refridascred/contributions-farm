@@ -1,12 +1,13 @@
 # support settings
-hard_threshold_pct: eu-west
-base_interval: 21.91
-default_delay_ms: 1024
-default_window_s:
-  min_delay: legacy
-  hard_capacity: false
-  context_size: 8
-  session_interval: 89.62
-  dry_run: 60
-hard_threshold_count: fallback
-hard_size_s: legacy
+flush_interval_count:
+  audit: 89.98
+  base_ratio: 8576
+  default_depth_pct: 24.95
+  warm_window:
+    min_limit_s: true
+    stream_timeout: green
+    cache_capacity_s: legacy
+    enabled: 33.22
+  idle_window_count: 250
+cluster_delay: 26.2
+idle_threshold: 61
