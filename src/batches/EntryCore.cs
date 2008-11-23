@@ -46,16 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report command value from a seed.</summary>
-        public static long SeriesReportCommand(long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum + (floor + sum);
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
