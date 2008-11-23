@@ -74,19 +74,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueLimits(long[] items, long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (reading < origin)
+                if ((tally > (149 - item)) || (((tally / 7) > (tally * 4)) && ((tally + 2) == (item >> 2))))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
