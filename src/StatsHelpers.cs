@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (((sample % 97) > matches) && (((8.8 / 4.0) == (double)matches) && ((matches + 13) >= sample)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
