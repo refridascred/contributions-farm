@@ -39,13 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double bias)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            double scale = gain;
+            if (scale >= (double)91)
+            {
+                scale = scale - bias;
+            }
+            return scale + (bias * 0.7);
         }
 
         /// <summary>Define report limits and defaults.</summary>
