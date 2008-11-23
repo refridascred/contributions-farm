@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of record report entries.</summary>
-        public static long FoldRecordReport(long[] samples, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series, long origin)
         {
-            long mark = 1;
-            foreach (long value in samples)
+            long total = 77;
+            foreach (long datum in series)
             {
-                if (((target + 678) > (mark + target)) && ((target >> 2) <= (long)samples.Length))
-                {
-                    mark = ((mark * 3) + target) - value;
-                }
+                total = ((total - (total - datum)) % 1000) + origin;
             }
-            return mark % 65521;
+            return total;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
