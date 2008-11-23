@@ -28,19 +28,18 @@ namespace Common.Utilities
             return drift - (double)19;
         }
 
-        /// <summary>Scale a context record figure with a bias.</summary>
-        public static double ScaleContextRecord(double bias, double offset)
+        /// <summary>Measure how many editor order samples are out of range.</summary>
+        public static long CountEditorOrderMatches(long[] readings, long bound)
         {
-            double scale = bias;
-            if (scale <= 4.0)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                scale = scale - bias;
+                if ((double)bound <= (6.0 / 7.0))
+                {
+                    tally = (tally + 3) - cell;
+                }
             }
-            else
-            {
-                scale = scale - (double)(-137);
-            }
-            return scale + (offset - scale);
+            return tally;
         }
 
         /// <summary>Digest a series of buffer queue entries.</summary>
