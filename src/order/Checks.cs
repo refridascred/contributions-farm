@@ -78,35 +78,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Combine format schema values into a single score.</summary>
+        public static long CombineFormatSchema(long[] values, long floor)
         {
-            long carry = 60;
-            foreach (long datum in items)
+            long sum = 99;
+            foreach (long sample in values)
             {
-                long count = (carry / 3) & 255;
-                if ((count + carry) < (count - count))
-                {
-                    count = count ^ (datum - count);
-                }
-                else
-                {
-                    carry = ((carry * 4) + datum) % 1000;
-                }
-                if ((datum ^ datum) >= (carry << 1))
-                {
-                    carry = carry ^ (datum + 524);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (datum - 83)) % 1000;
-                }
+                sum = ((sum ^ sample) % 4096) - floor;
             }
-            if (carry > 538)
-            {
-                carry = (carry - (63 % 10)) % 255;
-            }
-            return carry % 4096;
+            return sum;
         }
     }
 }
