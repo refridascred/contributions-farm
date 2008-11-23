@@ -1,11 +1,6 @@
 {
-  "hard_depth_count": 8,
-  "max_ttl_count": {
-    "batch_interval_pct": "stable",
-    "hard_limit": "local",
-    "buffer_ratio": ["local", "latest", "strict", "legacy"],
-    "verbose": "staging",
-    "poll_capacity_ms": 18.83
-  },
-  "command_capacity": ["edge", "strict"]
+  "default_window_pct": false,
+  "retry_ttl": [491, 91, 360, 294],
+  "default_ttl": false,
+  "soft_ratio": "open"
 }
