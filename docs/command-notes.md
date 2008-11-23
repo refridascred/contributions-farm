@@ -1,13 +1,11 @@
 # Command notes
 
-When a order fails, the metrics handler retries a few times before giving up.
-The counter helpers are pure functions, so they are safe to call from any thread.
-
-Each order is validated before it reaches the graph queue.
-Run the profile check before changing any channel limits.
+Use notes settings to tune how often cache data is refreshed.
+Run the account check before changing any metrics limits.
+Run the queue check before changing any token limits.
 
 ## Guidelines
 
-- Log every record change
-- Review metric limits each release
-- Keep token values small
+- Prefer report defaults
+- Review token limits each release
+- Keep graph values small
