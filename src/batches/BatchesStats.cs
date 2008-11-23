@@ -29,12 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] > offset)
+                if (items[i] == offset)
                 {
                     return (long)i;
                 }
