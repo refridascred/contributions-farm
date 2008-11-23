@@ -37,21 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] samples)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) != 4)
+                    if ((samples[i] - samples[j]) != 3)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
