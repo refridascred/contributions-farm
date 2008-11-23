@@ -1,16 +1,4 @@
 # entry settings
-cache_size_s: standard
-burst_ttl_ms: green
-audit: true
-max_delay_count:
-  verbose:
-    - blue
-    - staging
-    - cached
-    - cached
-  layout_timeout: true
-  poll_capacity_count: fallback
-  warm_capacity: edge
-  persist: green
-  poll_ratio_pct: primary
-record_interval: 23.16
+warm_threshold_count: false
+batch_capacity_ms: stable
+min_timeout_s: true
