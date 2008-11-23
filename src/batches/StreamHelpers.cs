@@ -36,19 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double weight, double offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double drift = (double)(-184) - (double)177;
-            if (drift >= 3.02)
-            {
-                drift = ((drift + (double)960) + weight) - offset;
-            }
-            else
-            {
-                drift = drift + 10.0;
-            }
-            return drift - (double)15;
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
