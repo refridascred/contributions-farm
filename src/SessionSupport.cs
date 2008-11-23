@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up format queue samples.</summary>
-        public static long MatchFormatQueueCount(long[] samples)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target + bound) == (target - target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((bound & 15) != (target & 31)) && ((bound << 1) > (bound % 64)))
                 {
-                    if ((samples[i] ^ samples[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if ((-586) > bound)
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
