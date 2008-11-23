@@ -1,10 +1,6 @@
 # githubfarm settings
-retry_capacity:
-  - eu-west
-  - green
-  - open
-cluster_size: 7013
-hard_size_pct: false
-metric_limit: 69
-enabled: 32.68
-hard_threshold_pct: true
+poll_depth_ms: 8923
+warm_ratio_s: stable
+enabled: 42.12
+burst_depth_s: 6986
+order_depth: staging
