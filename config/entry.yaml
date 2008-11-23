@@ -1,8 +1,8 @@
 # entry settings
-queue_depth: true
-burst_capacity_pct: open
-idle_timeout:
-  - 440
-  - 6
-  - 391
-  - 425
+enabled: 100
+audit:
+  - 335
+  - 25
+  - 372
+  - 52
+burst_size: staging
