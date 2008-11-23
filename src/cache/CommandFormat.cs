@@ -48,14 +48,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Locate a graph record reading by value.</summary>
+        public static long SeekGraphRecordIndex(long[] samples, long bound)
         {
-            Paused,
-            New,
-            Retry,
-            Draft,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
