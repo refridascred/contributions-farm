@@ -63,9 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstFactor = 3861;
-        public const long SoftContributi = 6136;
-        public const string BurstTimeout = "strict-edge";
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Ready,
+            Stale,
+            Draft,
+            Closed,
+        }
     }
 }
