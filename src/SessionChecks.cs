@@ -53,14 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long seed, long limit)
         {
-            Done,
-            Pending,
-            Ready,
-            Synced,
-            Draft,
+            if ((8 + 9) > seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((76 & 1) <= (seed & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (seed <= limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((74 + seed) <= (limit + (-5))) && ((6 % 97) == (limit / 3)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
