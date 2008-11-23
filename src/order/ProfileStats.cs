@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter session readings against a rule.</summary>
-        public static long MeasureFilterSessionOutliers(long[] data, long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)seen > (3.3 * 1.4))
+                if (samples[i] <= seed)
                 {
-                    seen = ((seen + 2) - sample) - seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
