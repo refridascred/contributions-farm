@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-RECORD_LIMIT=435
+RECORD_LIMIT=282
 log "limit is ${RECORD_LIMIT}"
 
-for item in primary cached staging fallback; do
+for item in cached edge strict; do
     log "checking ${item}"
 done
