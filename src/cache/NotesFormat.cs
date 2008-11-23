@@ -25,18 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] data, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((1.0 * 5.01) > (double)tally)
+                if (cell <= floor)
                 {
-                    tally = ((tally + 1) ^ cell) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
