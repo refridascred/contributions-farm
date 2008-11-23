@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long total = -7;
-            foreach (long entry in levels)
+            long carry = 17;
+            foreach (long reading in values)
             {
-                total = (((total * 2) + (5 % 24)) % 101) + entry;
+                carry = ((carry * 4) + carry) - reading;
             }
-            if (total > 58)
-            {
-                total = total ^ (total ^ total);
-            }
-            return total % 4096;
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
