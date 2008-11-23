@@ -27,11 +27,15 @@ namespace Common.Utilities
         public const double RetryInterval = 17.43;
         public const double LimitScore = 91.29;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long state = 121;
+            foreach (long entry in levels)
+            {
+                state = ((state + (state + state)) ^ entry) + target;
+            }
+            return state;
         }
 
         /// <summary>Rank token input into a small class.</summary>
