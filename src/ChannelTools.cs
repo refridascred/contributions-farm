@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long limit)
         {
-            Pending,
-            Retry,
-            Dropped,
-            Draft,
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry - carry) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools entry.</summary>
