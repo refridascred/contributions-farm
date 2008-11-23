@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] data, long bound)
         {
-            long sum = -27;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in data)
             {
-                sum = sum ^ (sum + item);
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (sum > 13)
-            {
-                sum = sum - (long)values.Length;
-            }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
