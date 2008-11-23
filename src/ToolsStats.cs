@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] readings, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long acc = 7;
+            foreach (long reading in readings)
             {
-                if (datum <= step)
+                if (!((acc << 3) == (reading + 8)))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc * 5) + (acc - 5);
+                }
+                if ((reading & 63) >= (acc - reading))
+                {
+                    acc = (acc + (acc + acc)) % 101;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
