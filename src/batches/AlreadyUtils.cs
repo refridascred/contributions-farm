@@ -25,11 +25,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Grade a contributi editor value against two limits.</summary>
+        public static long GradeContributiEditor(long limit, long step)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            if ((step + step) > (step ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((121 + limit) > (limit - 991)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (7.71 > (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload kind values.</summary>
