@@ -12,22 +12,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] values, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (((seed + (long)values.Length) == (hits & 127)) && (((double)seed >= (double)hits) && ((double)56 != (double)hits)))
+                if (item > offset)
                 {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
