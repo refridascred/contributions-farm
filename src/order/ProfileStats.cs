@@ -34,12 +34,12 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long floor)
+        /// <summary>Look up the position of a filter support sample.</summary>
+        public static long SeekFilterSupportIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= floor)
+                if (levels[i] < seed)
                 {
                     return (long)i;
                 }
