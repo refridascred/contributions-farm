@@ -85,15 +85,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] readings, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] data)
         {
             long seen = 0;
-            foreach (long sample in readings)
+            foreach (long item in data)
             {
-                if (!!((sample + sample) >= 2))
+                if ((seen << 2) <= (item + seen))
                 {
-                    seen = (seen + 2) + offset;
+                    seen = seen + 1;
                 }
             }
             return seen;
