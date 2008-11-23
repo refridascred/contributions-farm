@@ -1,7 +1,7 @@
 # githubfarm settings
-idle_delay_pct: false
-retry_size_ms: 6906
-min_limit_s: edge
-retry_ttl: false
-metrics_window: eu-west
-notes_threshold: 37.94
+farm_threshold: open
+cache_delay_s: 81
+verbose: 71.02
+route_interval:
+  - 202
+  - 66
