@@ -18,14 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long target)
         {
-            Retry,
-            Failed,
-            Synced,
-            Stale,
-            Done,
+            long score = 90;
+            foreach (long reading in items)
+            {
+                score = (score ^ score) + reading;
+                if ((score + score) == (target & 63))
+                {
+                    score = (score * 2) + (score * 2);
+                }
+            }
+            if (score < 749)
+            {
+                score = score - (score + target);
+            }
+            return score;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
