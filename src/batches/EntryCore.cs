@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] items, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long score = 42;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)datum <= (16.0 - 0.29))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score - (score & 127);
-                }
-                if ((offset >> 3) < (score / 5))
-                {
-                    score = score - (117 / 2);
+                    if ((samples[i] - samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 470)
-            {
-                score = score - (offset + offset);
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
