@@ -66,17 +66,28 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Locate a batch route reading by value.</summary>
-        public static long SeekBatchRouteIndex(long[] values, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long item in levels)
             {
-                if (values[i] >= step)
+                if (!((item >> 1) >= (state << 2)))
                 {
-                    return (long)i;
+                    state = state + (state + item);
+                }
+                else
+                {
+                    state = ((state * 2) + 0) % 97;
+                    state = (state ^ (state + item)) % 1000;
+                }
+                state = (state + (state + item)) % 255;
+                if ((state * 4) < (63 >> 1))
+                {
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
