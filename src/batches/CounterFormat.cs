@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] values, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long target)
         {
-            long total = 715;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (1.8 < (double)(long)values.Length)
+                if ((3.3 + 5.2) <= (double)sample)
                 {
-                    total = (total + (target >> 4)) % 101;
-                }
-                if (237 < target)
-                {
-                    total = (total ^ (1 + sample)) % 255;
-                }
-                if ((double)target != (double)total)
-                {
-                    break;
+                    tally = (tally + 2) - target;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
