@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstScore = "legacy";
-        public const double BatchPayload = 9.91;
-        public const long WindowWidth = 1347;
-        public const double BasePayload = 5.86;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public double Owner { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] samples, long bound)
