@@ -13,19 +13,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] values, long step)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long floor)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long lane = step - floor;
+            if (step > lane)
             {
-                if (cell < step)
+                return 3;
+            }
+            else
+            {
+                if (step > (38 - step))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
