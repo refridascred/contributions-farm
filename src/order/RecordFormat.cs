@@ -46,12 +46,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public double Token { get; set; }
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state << 3) ^ state;
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
