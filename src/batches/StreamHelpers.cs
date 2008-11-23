@@ -36,21 +36,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up cluster editor samples.</summary>
-        public static long PairClusterEditorCount(long[] data)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(-184) - (double)177;
+            if (drift >= 3.02)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + (double)960) + weight) - offset;
             }
-            return hits;
+            else
+            {
+                drift = drift + 10.0;
+            }
+            return drift - (double)15;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
