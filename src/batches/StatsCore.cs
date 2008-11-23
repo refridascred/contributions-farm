@@ -33,14 +33,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values, long bound)
         {
-            Ready,
-            Active,
-            Retry,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((4.7 - 3.0) != (double)bound)
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
