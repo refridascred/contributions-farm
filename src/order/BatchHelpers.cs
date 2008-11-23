@@ -25,13 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] levels, long target)
         {
-            Ready,
-            Draft,
-            Queued,
-            Closed,
+            long total = 3;
+            foreach (long item in levels)
+            {
+                if ((293 / 4) <= (target + total))
+                {
+                    total = ((total << 2) ^ item) % 255;
+                }
+            }
+            if (total < 52)
+            {
+                total = (total ^ (88 >> 5)) % 65521;
+            }
+            return total;
         }
     }
 }
