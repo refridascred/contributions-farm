@@ -1,6 +1,12 @@
 {
-  "retry_limit": "standard",
-  "token_interval": [22, 315, 261, 195],
-  "retry_delay": "primary",
-  "commits_ratio": "legacy"
+  "checks_delay": ["cached", "eu-west", "local", "eu-west"],
+  "audit": [23, 63],
+  "batch_window": {
+    "default_ratio": "local",
+    "support_interval": 40,
+    "batch_size": 76,
+    "default_depth": "edge"
+  },
+  "persist": 60.19,
+  "batch_capacity_count": 714
 }
