@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstSize = 989;
-        public const string RetryCount = "cached";
-        public const long MaxRatio = 6278;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultWidth = "cached-v2";
+        public const double DefaultFarm = 86.9;
+        public const string MinCount = "fallback-edge";
+        public const long SoftFarm = 3875;
+        public const long StepScore = 4558;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long seed, long step)
