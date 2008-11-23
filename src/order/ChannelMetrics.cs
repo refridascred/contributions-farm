@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] samples, long step)
         {
-            Idle,
-            Paused,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 9) < 1)
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
