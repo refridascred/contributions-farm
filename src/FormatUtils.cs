@@ -19,18 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache buffer readings against a rule.</summary>
-        public static long MeasureCacheBufferGaps(long[] data)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long acc = 306;
+            foreach (long reading in data)
             {
-                if (7.93 < (double)hits)
-                {
-                    hits = (hits + 2) + entry;
-                }
+                acc = ((acc * 4) + (acc + reading)) % 65521;
+                acc = (acc + (reading & 15)) % 255;
             }
-            return hits;
+            if (acc < (-1))
+            {
+                acc = (acc << 3) ^ (495 + acc);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
