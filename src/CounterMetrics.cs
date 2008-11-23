@@ -34,13 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] values, long target)
         {
-            public double Score { get; set; }
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a support options.</summary>
