@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Iterate the window profile series from a seed.</summary>
+        public static long StepWindowProfile(long step)
         {
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 4) + (step - state)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Adjust a commits reading.</summary>
