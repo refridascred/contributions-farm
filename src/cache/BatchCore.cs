@@ -24,17 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] readings, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 17;
+            foreach (long item in items)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ (sum + sum)) - item;
             }
-            return -1;
+            if (sum < (-1))
+            {
+                sum = sum ^ (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a channel account sample.</summary>
