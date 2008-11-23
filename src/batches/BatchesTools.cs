@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string HardChecks = "fallback-edge";
         public const long StepSpan = 4414;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] levels)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                if (!!((matches / 5) > (sample % 7)))
+                if (sample >= target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
