@@ -1,6 +1,17 @@
 {
-  "sync_threshold_ms": "strict",
-  "batch_delay_pct": ["open", "green", "strict", "open"],
-  "retry_size_ms": 96,
-  "profile_ttl": false
+  "enabled": {
+    "enabled": false,
+    "support_capacity": false,
+    "warm_limit_pct": {
+      "default_size_count": 72.04,
+      "sync_delay": 17,
+      "readonly": 93,
+      "stats_depth": 61.4,
+      "route_threshold": 79.03
+    },
+    "audit": 95.84,
+    "base_limit": false
+  },
+  "persist": "legacy",
+  "readonly": "stable"
 }
