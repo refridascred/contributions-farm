@@ -21,15 +21,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double weight, double span)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double offset)
         {
-            double ratio = weight;
-            if (ratio >= 3.1)
+            double gain = weight;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio - (double)25) - span;
+                gain = ((gain - (weight * 6.1)) + (double)(long)i) + offset;
             }
-            return ratio - (ratio / 7.0);
+            return gain + (3.9 / 2.0);
         }
     }
 }
