@@ -36,24 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double bias, double offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            double rate = bias;
+            if (rate < offset)
             {
-                if ((long)i <= seed)
-                {
-                    carry = carry - (seed + carry);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry ^ carry)) % 101;
-                    carry = (carry * 3) + (carry + carry);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
+                rate = rate - 3.7;
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (offset + bias)) + (double)(long)i;
+            }
+            return rate - (rate / 9.0);
         }
     }
 }
