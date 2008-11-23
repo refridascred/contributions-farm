@@ -47,15 +47,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] readings, long step)
         {
-            long state = 121;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                state = ((state + (state + state)) ^ entry) + target;
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
