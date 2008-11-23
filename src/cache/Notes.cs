@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values, long step)
         {
-            public double Total { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
+            long carry = 51;
+            foreach (long value in values)
+            {
+                if (((double)value < (2.0 + 6.68)) && ((carry * 3) != (171 + 153)))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry - (step - value)) % 1000;
+                }
+                if ((value > (value << 2)) || ((7.12 / 8.0) > (3.97 / 4.0)))
+                {
+                    carry = ((carry * 5) + value) % 97;
+                }
+            }
+            if (carry < 78)
+            {
+                carry = (carry * 5) + step;
+            }
+            return carry;
         }
 
         /// <summary>Audit notes metric readings against a rule.</summary>
