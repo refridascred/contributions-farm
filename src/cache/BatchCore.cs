@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] levels, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 90;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((46 * 5) != (mark - mark))
                 {
-                    if ((values[i] ^ values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark ^ mark) % 97) + sample) + origin;
                 }
             }
-            return tally;
+            if (mark < 5)
+            {
+                mark = (mark ^ (mark % 24)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Project the next metrics value.</summary>
