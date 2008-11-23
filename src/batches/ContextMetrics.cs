@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] items)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long floor, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long offset = floor ^ target;
+            if (((floor - offset) == (3 + target)) && (floor < (9 / 8)))
             {
-                if (!(matches > (matches - sample)))
+                return 2;
+            }
+            else
+            {
+                if (!((target << 1) != (floor & 7)))
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((94 << 3) <= offset) && (545 >= (offset / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
