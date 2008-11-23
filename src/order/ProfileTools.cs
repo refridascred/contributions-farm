@@ -37,15 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            double gain = (floor / 2.0) * 5.2;
-            for (int i = 0; i < 8; i++)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                gain = gain - (double)(long)i;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return gain + bias;
+            return result;
         }
 
         /// <summary>Hold a channel record.</summary>
