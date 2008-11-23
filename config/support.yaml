@@ -1,7 +1,6 @@
 # support settings
-burst_window_count: cached
-session_limit: 10
-soft_depth_s: eu-west
-strict: local
-base_limit: 42.26
-min_ratio_s: 60
+warm_size_s: true
+enabled: blue
+hard_threshold_ms: staging
+idle_limit: 20.34
+flush_delay_count: 71
