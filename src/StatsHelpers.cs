@@ -39,22 +39,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long target)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long state = 89;
-            foreach (long sample in series)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((3 & 15) == (sample * 4)))
-                {
-                    state = ((state ^ (346 + state)) % 65521) - target;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            if (state < (-9))
-            {
-                state = (state - state) % 255;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
