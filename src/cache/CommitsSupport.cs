@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Count the cache filter entries that pass the check.</summary>
+        public static long AuditCacheFilterMatches(long[] series, long origin)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((origin + origin) != (reading << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
