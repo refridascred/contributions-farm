@@ -61,13 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] data, long target)
         {
-            Dropped,
-            Failed,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (((-8) + count) >= target)
+                {
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up token tools samples.</summary>
