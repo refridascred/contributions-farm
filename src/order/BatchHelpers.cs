@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long StepLevel = 2346;
         public const long StepBudget = 8367;
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] data, long offset)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
