@@ -47,14 +47,12 @@ namespace Common.Utilities
         public const long DefaultCount = 4964;
         public const long MaxTimeout = 5063;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "stable-edge";
+        public const long MinInterval = 9916;
+        public const long MinWidth = 7494;
+        public const long MaxContributi = 2191;
+        public const double MinContributi = 62.43;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstLevel = 4205;
