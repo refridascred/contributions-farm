@@ -42,18 +42,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((double)value != (18.0 + 3.0)))
-                {
-                    hits = (hits + 1) + target;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
