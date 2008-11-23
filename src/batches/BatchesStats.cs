@@ -47,17 +47,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 50;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= seed)
+                if (!(offset < 100))
                 {
-                    return (long)i;
+                    sum = (sum + (732 + offset)) % 4096;
+                }
+                else
+                {
+                    sum = sum - (reading + offset);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
