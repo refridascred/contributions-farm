@@ -24,17 +24,24 @@ namespace Common.Utilities
         public const long IdleBudget = 7527;
         public const double SoftLevel = 35.89;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] levels, long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long seed, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit + limit) <= (seed * 5))
             {
-                if (levels[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if (((799 >> 4) < (seed ^ limit)) || ((96 >> 5) <= (seed + 956)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
