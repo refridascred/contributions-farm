@@ -1,10 +1,5 @@
 {
-  "retry_interval_s": [241, 222],
-  "tools_size": 7400,
-  "max_window_pct": {
-    "min_size_count": 36.85,
-    "dry_run": ["open", "eu-west", "strict", "fallback"],
-    "retry_timeout": "stable",
-    "compress": "fallback"
-  }
+  "queue_delay": [162, 354],
+  "audit": 51.3,
+  "default_depth_s": 8892
 }
