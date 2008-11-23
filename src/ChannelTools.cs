@@ -25,22 +25,38 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] items, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long bound, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            if (target <= (target & 7))
             {
-                if (datum > (3 - count))
+                return 2;
+            }
+            else
+            {
+                if (!(3 <= (target % 24)))
                 {
-                    count = (count + 1) - step;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)bound >= (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound == (3.3 * 7.38))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
