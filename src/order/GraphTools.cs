@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command support samples are out of range.</summary>
-        public static long CountCommandSupportGaps(long[] items, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((tally ^ offset) > datum)
+                if (value >= origin)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
