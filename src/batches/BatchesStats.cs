@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context session measurements.</summary>
-        public static double BlendContextSession(double weight, double bias)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 - (bias * 9.7)) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias2 - (weight - bias);
+            return seen;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
