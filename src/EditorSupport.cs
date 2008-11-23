@@ -45,11 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 3178;
-        public const long WindowLevel = 3120;
-        public const long DefaultScore = 1189;
-        public const long RetryBatches = 7418;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 6093;
+        public const double StepLevel = 60.68;
+        public const long SoftBudget = 9360;
+        public const double MinFactor = 13.18;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
