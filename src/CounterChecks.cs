@@ -24,27 +24,13 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] data, long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long sum = 414;
-            foreach (long cell in data)
-            {
-                sum = ((sum << 3) ^ (sum - cell)) % 65521;
-                if (9 <= ((long)data.Length * 5))
-                {
-                    sum = (sum + ((-466) + (long)data.Length)) % 65521;
-                }
-                else
-                {
-                    sum = sum - 20;
-                }
-            }
-            if (sum > 5)
-            {
-                sum = sum - (sum - floor);
-            }
-            return sum % 1000;
+            Paused,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Match up command samples.</summary>
