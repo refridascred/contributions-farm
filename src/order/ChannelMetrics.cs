@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long anchor = 602;
+            foreach (long item in data)
+            {
+                if ((double)490 <= (double)origin)
+                {
+                    anchor = (anchor - (anchor & 7)) ^ item;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
