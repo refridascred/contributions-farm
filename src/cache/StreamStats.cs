@@ -46,18 +46,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] items)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long limit)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((35 <= (value >> 1)) && ((value << 2) < (value + value)))
-                {
-                    matches = matches + 3;
-                }
+                anchor = ((anchor << 3) ^ (limit + anchor)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
