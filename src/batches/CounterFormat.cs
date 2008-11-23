@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings, long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long prev = seed + seed2;
+            if (!((seed2 + seed2) >= prev))
             {
-                if ((3.3 + 5.2) <= (double)sample)
+                return 4;
+            }
+            else
+            {
+                if (prev > (seed >> 3))
                 {
-                    tally = (tally + 2) - target;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + 3) < (seed + seed2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed <= (prev - prev)) && ((seed2 - seed) <= (seed2 ^ seed2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate profile samples.</summary>
