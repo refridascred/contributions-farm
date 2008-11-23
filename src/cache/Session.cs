@@ -11,21 +11,31 @@ namespace Common.Utilities
         public const long StepDepth = 3877;
         public const double IdleFarm = 95.06;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long bound, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((step << 1) <= (step - step)) && ((7.41 - 1.64) <= (double)step))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((bound >> 3) >= (step >> 3)) || (bound <= (step >> 2)))
                 {
-                    if ((data[i] - data[j]) == 15)
+                    return 2;
+                }
+                else
+                {
+                    if (((step ^ step) >= 6) && ((4 + bound) >= (bound * 5)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the contributi level values.</summary>
