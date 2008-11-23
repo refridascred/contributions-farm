@@ -16,19 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] series, long limit)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (reading > limit)
+                if ((tally - value) > (value / 6))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + offset;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
