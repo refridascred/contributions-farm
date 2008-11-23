@@ -37,15 +37,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Grade a record token value against two limits.</summary>
+        public static long SortRecordToken(long origin, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long diff = origin - limit;
+            if ((origin & 1) <= (diff ^ limit))
             {
-                result = ((result * 5) + (long)i) % 65521;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((double)14 <= (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin == (8.9 / 5.0)) && (origin < diff))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin / 6) <= (origin ^ diff))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel record.</summary>
