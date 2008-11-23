@@ -1,5 +1,7 @@
 {
-  "metric_timeout": [481, 489, 432],
-  "min_window": "primary",
-  "cache_timeout_count": 57
+  "idle_size": "cached",
+  "schema_ttl": 10.47,
+  "command_delay": "blue",
+  "verbose": [306, 375, 1, 52],
+  "soft_threshold": 7782
 }
