@@ -67,19 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Scale a command account figure with a bias.</summary>
+        public static double ScaleCommandAccount(double bias, double floor)
         {
-            double scale = 2.84;
-            if (scale > gain)
+            double bias2 = bias;
+            if (bias2 <= (double)371)
             {
-                scale = (scale - (gain + 2.98)) + offset;
+                bias2 = bias2 - (double)(-2);
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
-                scale = (scale - gain) + (double)(long)i;
+                bias2 = (bias2 + floor) - (double)(long)i;
             }
-            return scale - scale;
+            return bias2 - (bias2 * 8.2);
         }
     }
 }
