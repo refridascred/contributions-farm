@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const long DefaultCount = 4964;
         public const long MaxTimeout = 5063;
 
-        /// <summary>Measure how many farm context samples are out of range.</summary>
-        public static long CountFarmContextHits(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ datum) >= (seen >> 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a commits batch counter forward.</summary>
