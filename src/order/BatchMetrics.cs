@@ -49,17 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                if ((data[i] < offset) && ((data[i] % 3) == 0))
+                if ((3.62 * 9.2) == (double)mark)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (bound * 4)) ^ datum;
+                }
+                if (!((215 % 24) < bound))
+                {
+                    mark = mark - mark;
+                }
+                else
+                {
+                    mark = mark + (mark + bound);
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
