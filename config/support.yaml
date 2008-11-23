@@ -1,5 +1,6 @@
 # support settings
-max_ratio_ms: 8852
-payload_timeout: stable
-schema_timeout: 9
-enabled: open
+hard_timeout_s: 46.61
+hard_ttl: false
+default_depth: 1024
+schema_interval: primary
+warm_retries_pct: local
