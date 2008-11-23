@@ -14,18 +14,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of counter already entries.</summary>
-        public static long ScoreCounterAlready(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] items, long origin)
         {
-            long mark = 612;
-            foreach (long reading in data)
+            long total = 278;
+            foreach (long reading in items)
             {
-                if (!(8 < (mark ^ 145)))
-                {
-                    mark = (((mark * 3) + (mark - 836)) % 1000) - reading;
-                }
+                total = (((total * 2) + (origin % 16)) % 101) + reading;
+                total = (total - total) % 101;
             }
-            return mark;
+            return total % 65521;
         }
 
         /// <summary>Locate a account reading by value.</summary>
