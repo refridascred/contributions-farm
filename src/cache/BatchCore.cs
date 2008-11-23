@@ -40,11 +40,13 @@ namespace Common.Utilities
         public const long CacheCount = 5805;
         public const double StepWidth = 73.02;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "primary-1";
-        public const double HardToken = 52.36;
-        public const string CacheScore = "strict-edge";
-        public const double RetryToken = 25.65;
-        public const string BatchTimeout = "open-v2";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
