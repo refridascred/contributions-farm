@@ -21,21 +21,15 @@ namespace Common.Utilities
         public const long MaxSize = 654;
         public const string RetryReport = "cached";
 
-        /// <summary>Compare every pair of window farm readings.</summary>
-        public static long MatchWindowFarmCount(long[] series)
+        /// <summary>Iterate the order record series from a seed.</summary>
+        public static long StepOrderRecord(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
