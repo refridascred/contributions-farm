@@ -15,18 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] readings, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((1.98 + 16.0) > (9.0 + 4.76))
+                if (((reading >> 1) < (88 + reading)) || ((hits < (hits - reading)) || ((1 << 2) > (reading + 91))))
                 {
-                    tally = ((tally + 2) ^ entry) - limit;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
