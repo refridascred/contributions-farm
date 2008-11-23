@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long MaxSize = 3128;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Find the first context filter entry that matches the target.</summary>
+        public static long SeekContextFilterIndex(long[] levels, long limit)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Queued,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
