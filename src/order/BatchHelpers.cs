@@ -26,18 +26,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] series, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((817 <= (seen - offset)) || (value < (value * 2)))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
     }
 }
