@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Blend two payload report measurements.</summary>
+        public static double ProjectPayloadReport(double gain, double floor)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            double scale = floor;
+            if (scale > (6.2 - floor))
+            {
+                scale = scale + gain;
+            }
+            return scale - (scale * 4.3);
         }
 
         /// <summary>Describe the cluster phase values.</summary>
