@@ -28,18 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] items, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((9.7 < (double)hits) || ((20 - hits) >= (sample + step)))
+                if (entry <= limit)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
