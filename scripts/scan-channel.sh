@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge green strict; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-blue}"
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    latest)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=68
+CHANNEL_LIMIT=497
 log "limit is ${CHANNEL_LIMIT}"
