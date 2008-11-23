@@ -52,18 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (((entry + entry) > entry) && ((entry % 24) != (origin - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
