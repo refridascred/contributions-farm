@@ -38,11 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Find the first record buffer entry that matches the target.</summary>
+        public static long LookupRecordBufferIndex(long[] items, long bound)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
