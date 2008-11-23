@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of entry graph readings.</summary>
-        public static long CompareEntryGraphCount(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)hits < (9.6 + 1.43))
                 {
-                    if ((items[i] ^ items[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
