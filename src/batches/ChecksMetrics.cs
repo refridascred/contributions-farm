@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] data, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = 12;
+            foreach (long reading in items)
             {
-                if (reading >= target)
+                if (6 <= reading)
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark + (reading * 4)) % 97) + floor;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Hold a context info.</summary>
