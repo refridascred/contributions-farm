@@ -30,11 +30,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double rate, double offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double rate2 = offset;
-            return rate2 - (offset + rate);
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
