@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] items, long floor)
+        /// <summary>Check that every metric record entry stays within the limit.</summary>
+        public static bool VerifyMetricRecordBounds(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((reading << 3) >= floor)
+                if (reading >= step)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the context class values.</summary>
