@@ -1,5 +1,8 @@
 {
-  "base_timeout": 80.28,
-  "sync_window_s": false,
-  "min_threshold_count": ["green", "latest", "blue"]
+  "idle_depth_pct": "local",
+  "flush_ttl_s": "open",
+  "batch_window_pct": 69.3,
+  "batch_threshold": "green",
+  "soft_interval": 43,
+  "token_window": true
 }
