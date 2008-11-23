@@ -50,20 +50,13 @@ namespace Common.Utilities
         public const long IdleCount = 1612;
         public const string MinTimeout = "local-edge";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result - (result + origin)) % 65521;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (((result * 2) + result) % 255) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            New,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Define window limits and defaults.</summary>
