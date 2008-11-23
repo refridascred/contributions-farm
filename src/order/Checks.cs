@@ -48,21 +48,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up buffer metrics samples.</summary>
-        public static long CompareBufferMetricsCount(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 17)
+                    if ((samples[i] - samples[j]) < 9)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
