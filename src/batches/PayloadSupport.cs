@@ -19,18 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools command samples.</summary>
-        public static long MatchToolsCommandCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((hits / 5) < hits))
                 {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) + entry;
                 }
             }
             return hits;
