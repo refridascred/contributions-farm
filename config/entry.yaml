@@ -1,57 +1,16 @@
 # entry settings
-hard_threshold:
-  default_ttl:
-    hard_threshold: primary
-    sync_interval: true
-    hard_window_ms: 11.77
-    sync_ttl_s: green
-    checks_ratio: 13.74
-    base_timeout_count: 72
-  cache_threshold:
-    - standard
-    - fallback
-    - green
-  strict: edge
-  compress: 24
-  profile_ttl: 46.16
-retry_delay: false
-verbose: staging
-min_threshold: 1024
-audit:
-  base_retries_ms: 500
-  buffer_capacity: primary
-  flush_ttl_count: latest
-  buffer_threshold: staging
-  channel_window: 60
-min_capacity_ms:
-  hard_threshold: true
-  idle_limit_ms: 2085
-  min_size:
-    base_depth_ms:
-      - 426
-      - 313
-      - 54
-      - 393
-    queue_size:
-      - 15
-      - 192
-    retry_size:
-      - 257
-      - 447
-      - 240
-    poll_timeout_count: true
-    max_interval_pct: 30
-    strict: open
-  cache_interval_ms:
-    - 298
-    - 281
-    - 397
-    - 193
-  warm_limit_pct:
-    cache_ratio_count: 71
-    warm_interval: legacy
-    persist: 81.95
-    retry_ttl: 56.78
-  batch_window:
-    - local
+cache_size_s: standard
+burst_ttl_ms: green
+audit: true
+max_delay_count:
+  verbose:
+    - blue
+    - staging
     - cached
+    - cached
+  layout_timeout: true
+  poll_capacity_count: fallback
+  warm_capacity: edge
+  persist: green
+  poll_ratio_pct: primary
+record_interval: 23.16
