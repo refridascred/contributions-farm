@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data, long bound)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long seed)
         {
-            long carry = -745;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((691 >> 2) != (carry - entry)) && (((-96) - 482) != (carry / 3)))
+                if ((series[i] == seed) && ((series[i] % 5) != 0))
                 {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                    continue;
-                }
-                carry = (carry * 2) + ((long)data.Length - entry);
-                if (((double)entry < 15.0) && (carry >= (bound >> 5)))
-                {
-                    carry = (carry - (entry + bound)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry > 3)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two context session measurements.</summary>
