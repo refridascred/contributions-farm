@@ -25,35 +25,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine queue farm values into a single score.</summary>
-        public static long TotalQueueFarm(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] readings, long offset)
         {
-            long mark = 93;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = mark - (mark >> 1);
-                if (!((mark - reading) <= reading))
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
                 {
-                    mark = (mark + (reading - reading)) % 97;
-                }
-                if (7 > mark)
-                {
-                    mark = mark ^ (reading % 8);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (reading % 60)) % 97;
-                }
-                if ((18.0 + 9.2) >= (double)reading)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 462)
-            {
-                mark = ((mark * 3) + 86) % 1000;
-            }
-            return mark;
+            return -1;
         }
     }
 }
