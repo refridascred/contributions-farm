@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long MinScore = 2595;
         public const long MaxBudget = 5906;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinTimeout = 10.3;
-        public const string SoftPayload = "legacy-edge";
-        public const double SoftTimeout = 30.34;
-        public const long CacheScore = 8285;
-        public const double MinWidth = 15.71;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Failed,
+            Draft,
+            Paused,
+            Active,
+            Closed,
+        }
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double AdjustGithubfarm(double rate, double floor)
