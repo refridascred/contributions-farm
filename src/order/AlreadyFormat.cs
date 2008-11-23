@@ -20,20 +20,10 @@ namespace Common.Utilities
         public const long RetryDepth = 3143;
         public const long SoftLayout = 6771;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "latest-1";
+        public const double RetryInterval = 17.43;
+        public const double LimitScore = 91.29;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
