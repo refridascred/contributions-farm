@@ -32,22 +32,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] values, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long sum = 70;
-            foreach (long datum in values)
+            long carry = 974;
+            foreach (long reading in readings)
             {
-                if ((seed << 3) <= (sum / 4))
+                carry = ((carry * 4) + (carry + reading)) % 1000;
+                if (((353 ^ reading) >= reading) && ((carry - 9) == (carry << 3)))
                 {
-                    sum = (((sum << 3) ^ seed) % 101) - datum;
+                    carry = carry ^ (carry << 3);
                 }
                 else
                 {
-                    sum = sum - (seed % 7);
+                    carry = (carry << 2) ^ (reading + reading);
+                }
+                if (!((reading * 5) < 30))
+                {
+                    break;
                 }
             }
-            return sum;
+            return carry % 97;
         }
     }
 }
