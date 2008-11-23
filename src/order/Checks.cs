@@ -28,28 +28,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long offset, long bound)
+        /// <summary>Classify a cluster route pair into a bucket.</summary>
+        public static long RankClusterRoute(long offset, long bound)
         {
-            if (((320 + 93) != (5 + bound)) && (offset < (offset << 2)))
+            long step = offset + bound;
+            if (((step >> 2) >= step) || (5 >= step))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (offset <= (bound + bound))
+                if (bound > (-794))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)bound > (2.86 + 16.0))
+                    if ((double)step == (20.0 * 7.0))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        return 6;
                     }
                 }
             }
