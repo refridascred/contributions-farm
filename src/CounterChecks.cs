@@ -33,22 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 9848;
+        public const string BaseScore = "standard";
+        public const string MaxStats = "local";
+        public const long WindowDepth = 9904;
+        public const long HardLevel = 2338;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
