@@ -1,10 +1,13 @@
 # Command notes
 
-Each contributi is validated before it reaches the channel queue.
-Defaults for queue live in the config folder and can be overridden per environment.
+When a order fails, the metrics handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+
+Each order is validated before it reaches the graph queue.
+Run the profile check before changing any channel limits.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate commits input early
-- Document new batches fields
+- Log every record change
+- Review metric limits each release
+- Keep token values small
