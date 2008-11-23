@@ -36,31 +36,19 @@ namespace Common.Utilities
         public const double WindowProfile = 6.4;
         public const long SoftCount = 8011;
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long bound, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long step)
         {
-            if ((bound % 2) > (bound ^ bound))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 2) < (bound % 97))
+                if (entry <= step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((-16) >= (step & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
