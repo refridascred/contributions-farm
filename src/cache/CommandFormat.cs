@@ -19,19 +19,10 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count - count) >= 32)
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryRatio = 8759;
+        public const long IdleBudget = 7527;
+        public const double SoftLevel = 35.89;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] readings, long floor)
