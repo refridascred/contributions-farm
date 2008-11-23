@@ -33,18 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 2815;
+        public const long MaxSize = 8870;
+        public const long BatchCounter = 3639;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long AuditSupportGaps(long[] readings)
