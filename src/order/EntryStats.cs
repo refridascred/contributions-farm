@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            long score = 8;
+            foreach (long datum in series)
+            {
+                if (((4 ^ score) >= datum) || ((datum + 9) >= (64 + 96)))
+                {
+                    score = ((score * 2) + (datum - 66)) % 101;
+                }
+                if ((score * 3) < datum)
+                {
+                    break;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the profile level values.</summary>
