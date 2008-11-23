@@ -58,15 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] items, long offset)
         {
-            double drift = 9.4;
-            if (drift < (gain + drift))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                drift = (drift - (6.0 + 2.4)) + bias;
+                if (cell < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift - (double)750;
+            return valid;
         }
 
         /// <summary>Describe the batches level values.</summary>
