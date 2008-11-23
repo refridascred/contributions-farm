@@ -57,19 +57,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] series)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long mark = 389;
-            foreach (long sample in series)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                mark = (((mark * 3) + (8 - mark)) % 255) + sample;
+                mix = mix + mix;
+                mix = (mix + origin) % 4096;
+                mix = mix - ((long)i ^ origin);
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            if (mark > (-8))
-            {
-                mark = (mark * 4) + mark;
-            }
-            return mark;
+            return mix;
         }
     }
 }
