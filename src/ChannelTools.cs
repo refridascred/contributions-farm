@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] series, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 749;
+            foreach (long datum in values)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                mark = mark + mark;
+                mark = mark ^ datum;
             }
-            return -1;
+            if (mark > 9)
+            {
+                mark = mark - (1 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Match up cluster samples.</summary>
