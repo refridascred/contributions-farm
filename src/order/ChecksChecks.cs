@@ -18,29 +18,22 @@ namespace Common.Utilities
         public const long RetryMetric = 8461;
         public const long CacheMetric = 2051;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long origin, long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long origin)
         {
-            if ((495 + bound) == (origin + origin))
+            if ((double)origin > (3.69 + 2.8))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((double)origin != (4.2 + 9.78)) && ((double)bound != (double)origin))
+                if ((5.84 + 4.0) >= (double)origin)
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)origin >= (0.04 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 4;
                 }
             }
         }
