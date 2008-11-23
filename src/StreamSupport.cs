@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            Paused,
-            Active,
-            Synced,
-            New,
+            long total = -7;
+            foreach (long entry in levels)
+            {
+                total = (((total * 2) + (5 % 24)) % 101) + entry;
+            }
+            if (total > 58)
+            {
+                total = total ^ (total ^ total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
