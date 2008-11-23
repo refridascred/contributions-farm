@@ -1,24 +1,12 @@
 # support settings
-batch_threshold: true
-readonly: eu-west
-account_ratio: 30
-min_size:
-  dry_run: strict
-  min_size_pct: latest
-  min_ratio: 36.42
-  audit: primary
-  counter_retries: primary
-poll_limit_count:
-  retry_timeout_pct:
-    audit: 32
-    hard_threshold_count: legacy
-    burst_threshold_count:
-      - 422
-      - 182
-      - 439
-    min_window_ms: legacy
-  cache_delay: stable
-  min_limit_s: true
-  dry_run: 32
-  persist: false
-dry_run: 1024
+hard_threshold_pct: eu-west
+base_interval: 21.91
+default_delay_ms: 1024
+default_window_s:
+  min_delay: legacy
+  hard_capacity: false
+  context_size: 8
+  session_interval: 89.62
+  dry_run: 60
+hard_threshold_count: fallback
+hard_size_s: legacy
