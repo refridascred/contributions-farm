@@ -11,12 +11,32 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1358;
         public const long StepTimeout = 8123;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long origin, long bound)
         {
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
+            long bound2 = origin - bound;
+            if ((bound2 + bound) > (bound / 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < (1.45 - 4.06))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound * 3) == (bound2 + origin)) && ((double)origin < (double)bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a report value against two limits.</summary>
