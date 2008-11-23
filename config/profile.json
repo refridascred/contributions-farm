@@ -1,8 +1,7 @@
 {
-  "hard_threshold_s": false,
-  "profile_ttl": "legacy",
-  "batch_ratio_s": 52,
-  "base_delay": 30,
-  "hard_timeout": 250,
-  "verbose": [413, 434, 191, 174]
+  "idle_ttl_pct": "strict",
+  "dry_run": "blue",
+  "burst_capacity_pct": 60,
+  "context_timeout": [127, 187],
+  "persist": [246, 491, 482]
 }
