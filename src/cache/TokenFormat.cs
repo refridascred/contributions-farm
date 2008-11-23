@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a filter support reading by value.</summary>
-        public static long LocateFilterSupportIndex(long[] series, long bound)
+        /// <summary>Project the next route stream value.</summary>
+        public static double ScaleRouteStream(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = ratio;
+            if (load >= floor)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                load = load - load;
             }
-            return -1;
+            else
+            {
+                load = load - 7.78;
+            }
+            return load - (ratio * 8.0);
         }
 
         /// <summary>Grade a record value against two limits.</summary>
