@@ -1,7 +1,11 @@
 {
-  "audit": "eu-west",
-  "record_window": 69.35,
-  "readonly": 100,
-  "cache_ratio_count": ["standard", "standard", "staging", "primary"],
-  "compress": false
+  "hard_depth_count": 8,
+  "max_ttl_count": {
+    "batch_interval_pct": "stable",
+    "hard_limit": "local",
+    "buffer_ratio": ["local", "latest", "strict", "legacy"],
+    "verbose": "staging",
+    "poll_capacity_ms": 18.83
+  },
+  "command_capacity": ["edge", "strict"]
 }
