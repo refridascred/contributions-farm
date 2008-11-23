@@ -1,14 +1,13 @@
 # Command notes
 
-Use counter settings to tune how often layout data is refreshed.
-Run the account check before changing any token limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
+A farm that stays idle for too long is moved to the counter list.
+When a filter fails, the batch handler retries a few times before giving up.
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Keep already and stats names short and lowercase.
+Each graph is validated before it reaches the batch queue.
+Use account settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Document new account fields
-- Review channel limits each release
-- Log every format change
+- Validate already input early
+- Review token limits each release
+- Prefer counter defaults
