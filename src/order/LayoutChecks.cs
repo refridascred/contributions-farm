@@ -17,11 +17,20 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftDepth = 42.12;
-        public const string BaseSpan = "strict-edge";
-        public const long SoftSession = 6031;
-        public const string IdleSession = "latest-edge";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] series, long origin)
+        {
+            long mix = 32;
+            foreach (long datum in series)
+            {
+                mix = (mix + (mix ^ datum)) % 65521;
+            }
+            if (mix < 880)
+            {
+                mix = (mix - (origin % 60)) % 255;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double rate, double span)
