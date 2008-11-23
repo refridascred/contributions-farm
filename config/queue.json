@@ -1,8 +1,13 @@
 {
-  "batch_capacity_s": [434, 160],
-  "batch_ttl": 7161,
-  "readonly": 28,
-  "retry_window_pct": 34.74,
-  "hard_interval_count": "strict",
-  "default_retries": false
+  "profile_threshold": {
+    "default_capacity_pct": true,
+    "queue_ratio": "legacy",
+    "base_size": "latest",
+    "default_ttl_count": "strict",
+    "batch_ratio_pct": [312, 285],
+    "githubfarm_capacity": "edge"
+  },
+  "hard_timeout_count": ["fallback", "primary", "blue", "green"],
+  "flush_size_ms": false,
+  "idle_ttl_s": true
 }
