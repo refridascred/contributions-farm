@@ -37,15 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double scale, double span)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long offset)
         {
-            double scale2 = scale * 1.36;
-            if (scale2 < 4.9)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                scale2 = (scale2 - 1.83) + span;
+                if (datum <= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return scale2 + scale2;
+            return ready;
         }
     }
 }
