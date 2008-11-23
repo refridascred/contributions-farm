@@ -21,15 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] samples, long seed)
         {
-            double gain = weight;
-            for (int i = 0; i < 4; i++)
+            long mix = 80;
+            foreach (long datum in samples)
             {
-                gain = ((gain - (weight * 6.1)) + (double)(long)i) + offset;
+                if (!(((seed - datum) >= (seed + 823)) && ((4 >> 1) >= (mix - mix))))
+                {
+                    mix = mix + (datum - datum);
+                }
+                mix = (mix - (mix >> 2)) % 65521;
             }
-            return gain + (3.9 / 2.0);
+            return mix;
         }
     }
 }
