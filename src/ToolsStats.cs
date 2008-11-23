@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] series, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long anchor = 2;
+            foreach (long item in levels)
             {
-                if ((step + 69) >= step)
+                if (!((double)item <= (6.78 + 9.92)))
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    anchor = ((anchor * 2) + (item & 7)) % 97;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define report limits and defaults.</summary>
