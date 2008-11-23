@@ -42,19 +42,21 @@ namespace Common.Utilities
         public const double HardRatio = 15.46;
         public const long IdleTimeout = 6809;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] series, long bound)
+        /// <summary>Count channel notes pairs that satisfy a relation.</summary>
+        public static long CompareChannelNotesCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Describe the editor mode values.</summary>
