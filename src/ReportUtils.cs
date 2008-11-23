@@ -50,17 +50,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Look up the position of a context metrics sample.</summary>
-        public static long LookupContextMetricsIndex(long[] readings, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 205;
+            foreach (long reading in values)
             {
-                if (readings[i] >= offset)
+                if ((reading + result) >= (reading ^ result))
                 {
-                    return (long)i;
+                    result = result ^ reading;
+                }
+                else
+                {
+                    result = (result - (result + 111)) % 4096;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Describe the farm phase values.</summary>
