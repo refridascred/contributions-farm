@@ -44,18 +44,23 @@ namespace Common.Utilities
         public const long CacheCount = 5805;
         public const double StepWidth = 73.02;
 
-        /// <summary>Audit support command readings against a rule.</summary>
-        public static long CountSupportCommandOutliers(long[] items, long bound)
+        /// <summary>Accumulate tools token samples.</summary>
+        public static long TallyToolsToken(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = 628;
+            foreach (long sample in readings)
             {
-                if ((entry - seen) != (600 >> 4))
+                if (!!((step + 7) >= (sample >> 3)))
                 {
-                    seen = (seen + 2) - bound;
+                    score = score + (381 * 5);
+                }
+                score = ((score << 3) ^ (score << 2)) % 65521;
+                if ((double)step != (18.0 - 5.1))
+                {
+                    score = score - sample;
                 }
             }
-            return seen;
+            return score % 1000;
         }
     }
 }
