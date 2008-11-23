@@ -1,17 +1,8 @@
 {
-  "metric_limit": true,
-  "cache_delay": 7482,
-  "token_interval": {
-    "persist": 60,
-    "already_size": "local",
-    "default_delay_pct": 35.21,
-    "retry_limit_ms": 17
-  },
-  "persist": false,
-  "strict": 11,
-  "cache_ratio": {
-    "enabled": [342, 37],
-    "compress": 40,
-    "idle_capacity_ms": 45.05
-  }
+  "checks_delay": true,
+  "persist": 18.06,
+  "stream_capacity": [15, 446],
+  "dry_run": true,
+  "already_delay": 48,
+  "order_capacity": "cached"
 }
