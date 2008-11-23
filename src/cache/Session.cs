@@ -40,12 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long seed, long seed2)
         {
-            Done,
-            Locked,
-            Closed,
+            if (((17.0 * 16.0) >= (double)seed) || ((double)seed2 != (11.0 - 9.98)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((20.0 / 9.0) >= (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((26 - seed2) == ((-844) >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi level values.</summary>
