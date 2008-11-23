@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long BaseEditor = 8290;
         public const long BatchEditor = 2660;
 
-        /// <summary>Adjust a context checks reading.</summary>
-        public static double AdjustContextChecks(double ratio, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] levels, long seed)
         {
-            double rate = 4.6;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                rate = ((rate - ratio) + (double)(long)i) + bias;
+                if (sample >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return rate + ratio;
+            return stale;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
