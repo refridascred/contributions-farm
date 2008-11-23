@@ -29,11 +29,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 3119;
-        public const long LimitTimeout = 6185;
-        public const string CacheBatch = "open";
-        public const double BatchLevel = 76.63;
-        public const double SoftRatio = 77.92;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
