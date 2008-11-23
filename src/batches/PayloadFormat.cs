@@ -37,19 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long mix = 813;
+            foreach (long reading in items)
             {
-                if (datum <= target)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 3) + reading) % 4096;
             }
-            return found;
+            if (mix > 29)
+            {
+                mix = ((mix * 3) + (mix << 2)) % 255;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
