@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report metric samples are out of range.</summary>
-        public static long TallyReportMetricHits(long[] samples, long limit)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if (((bound << 1) != (bound + bound)) || (6.2 >= (double)bound))
             {
-                if (!(matches < limit))
+                return 3;
+            }
+            else
+            {
+                if ((5 >= (seed << 1)) && ((seed - bound) != (bound / 3)))
                 {
-                    matches = (matches + 1) + sample;
+                    return 0;
+                }
+                else
+                {
+                    if ((1.2 - 9.0) <= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the queue class values.</summary>
