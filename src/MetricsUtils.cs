@@ -13,12 +13,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Draft,
-            Retry,
-            Dropped,
+            Synced,
+            Pending,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
