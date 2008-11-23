@@ -1,9 +1,5 @@
 # githubfarm settings
-warm_interval_count: 39
-warm_ratio_pct: true
-hard_capacity_ms:
-  - 258
-  - 79
-  - 382
-profile_threshold: 30
-idle_interval_count: 90
+min_retries_count: 4622
+poll_window: 17.91
+base_capacity: true
+session_timeout: 50.28
