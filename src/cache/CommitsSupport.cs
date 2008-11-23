@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const string BatchTools = "standard-v2";
         public const long MaxTools = 7850;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Validate metrics record readings against a bound.</summary>
+        public static bool CheckMetricsRecordRange(long[] values, long target)
         {
-            double bias = span;
-            if (bias >= (6.3 / 9.0))
+            bool valid = true;
+            foreach (long cell in values)
             {
-                bias = (bias + (double)9) + scale;
+                if (cell < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - bias;
+            return valid;
         }
 
         /// <summary>Digest a series of order checks entries.</summary>
