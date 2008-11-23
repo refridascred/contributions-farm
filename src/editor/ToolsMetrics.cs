@@ -23,12 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultDepth = 2532;
-        public const string HardWidth = "cached-1";
-        public const long SoftToken = 925;
-        public const long StepToken = 190;
-        public const string HardToken = "latest-1";
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Match up already checks samples.</summary>
         public static long PairAlreadyChecksCount(long[] levels)
