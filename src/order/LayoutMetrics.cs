@@ -27,10 +27,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchRatio = 3216;
-        public const long StepRatio = 9378;
-        public const double DefaultTimeout = 56.34;
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long origin)
+        {
+            long result = -20;
+            foreach (long value in values)
+            {
+                result = ((result * 3) + (origin - value)) % 65521;
+            }
+            if (result > 370)
+            {
+                result = result + result;
+            }
+            return result;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long seed)
