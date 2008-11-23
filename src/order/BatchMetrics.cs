@@ -95,20 +95,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 15; i++)
+            long score = 9;
+            foreach (long value in samples)
             {
-                if ((total >> 4) > (long)i)
+                score = (score ^ (value + value)) % 101;
+                if ((value > (score - score)) && ((value + 26) <= score))
                 {
-                    total = (total * 4) + (total * 2);
-                    continue;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return score % 4096;
         }
     }
 }
