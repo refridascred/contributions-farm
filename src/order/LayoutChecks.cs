@@ -38,13 +38,22 @@ namespace Common.Utilities
         public const long MaxMetrics = 3493;
         public const string MinMetrics = "fallback-edge";
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] readings)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (matches < (datum + matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
