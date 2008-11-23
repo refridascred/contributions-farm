@@ -22,18 +22,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools cache samples are out of range.</summary>
-        public static long TallyToolsCacheMatches(long[] levels, long target)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long state = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (count <= (target >> 4))
+                if ((state + 1) <= 736)
                 {
-                    count = (count + 3) + value;
+                    state = (state + (origin + origin)) % 101;
                 }
+                else
+                {
+                    state = (state + origin) % 65521;
+                    state = (state - (747 + (long)i)) % 4096;
+                }
+                long span = state;
+                if (state > span)
+                {
+                    span = ((span * 3) + (origin - state)) % 65521;
+                    span = ((span * 2) + (state % 7)) % 101;
+                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
