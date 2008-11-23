@@ -1,8 +1,6 @@
 {
-  "editor_limit": [424, 310],
-  "order_threshold": true,
-  "soft_capacity": false,
-  "counter_limit": ["latest", "primary"],
-  "hard_threshold": 1024,
-  "batch_timeout_pct": "latest"
+  "sync_ratio_count": 250,
+  "soft_ttl_count": 40,
+  "batch_interval_pct": true,
+  "soft_interval": "staging"
 }
