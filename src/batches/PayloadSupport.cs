@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Fold a list of window cache readings.</summary>
+        public static long TotalWindowCache(long[] data)
         {
-            long acc = 154;
-            foreach (long value in data)
+            long acc = 276;
+            foreach (long cell in data)
             {
-                if (value <= (896 / 3))
-                {
-                    acc = (acc - value) % 4096;
-                }
+                acc = (acc - (acc ^ cell)) % 255;
             }
-            if (acc > 238)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
