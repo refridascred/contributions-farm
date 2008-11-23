@@ -25,24 +25,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a account already counter forward.</summary>
-        public static long DeriveAccountAlready(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!(floor > (anchor << 2)))
-                {
-                    anchor = (anchor ^ (anchor * 4)) % 101;
-                    anchor = (anchor + (floor << 2)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + ((long)i * 4);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "local";
+        public const string WindowSize = "standard-v2";
+        public const long RetryLevel = 3736;
+        public const long IdleSpan = 2947;
+        public const long MaxChecks = 1102;
     }
 }
