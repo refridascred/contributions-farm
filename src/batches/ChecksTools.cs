@@ -31,22 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session schema entries that pass the check.</summary>
-        public static long MeasureSessionSchemaHits(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = 12;
+            foreach (long reading in levels)
             {
-                if ((double)value <= (8.08 + 5.5))
+                if ((844 >> 4) < acc)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = ((acc ^ floor) % 4096) + reading;
                 }
             }
-            return count;
+            return acc % 97;
         }
     }
 }
