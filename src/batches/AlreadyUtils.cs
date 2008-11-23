@@ -52,12 +52,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            Paused,
-            Pending,
-            Done,
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mix = (mix - ((long)i % 60)) % 65521;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Project the next batch value.</summary>
