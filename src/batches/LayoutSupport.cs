@@ -60,11 +60,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryWidth = 2342;
-        public const long SoftBudget = 7550;
-        public const double IdleNotes = 72.5;
-        public const double IdleRatio = 28.08;
-        public const string LimitFactor = "cached";
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Idle,
+            Active,
+            Pending,
+            Dropped,
+            Closed,
+        }
     }
 }
