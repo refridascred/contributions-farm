@@ -25,13 +25,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Draft,
-            New,
-            Retry,
+            Queued,
+            Synced,
             Paused,
+            New,
         }
     }
 }
