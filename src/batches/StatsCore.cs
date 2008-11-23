@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 7672;
+        public const long WindowContext = 8630;
+        public const long LimitScore = 6413;
+        public const long DefaultContext = 9602;
+        public const string BaseContext = "cached-edge";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowMatches(long[] series, long bound)
