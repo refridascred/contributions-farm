@@ -55,14 +55,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Draft,
-            Done,
-            Retry,
-            Active,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepWidth = 6407;
+        public const long LimitSchema = 5687;
+        public const long MaxFactor = 4306;
+        public const double LimitLevel = 28.0;
     }
 }
