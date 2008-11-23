@@ -47,14 +47,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            Closed,
-            Done,
-            Synced,
-            Stale,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer entry.</summary>
