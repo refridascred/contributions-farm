@@ -41,12 +41,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long SortCluster(long step, long offset)
         {
-            Idle,
-            Failed,
-            Closed,
+            long edge = step - offset;
+            if ((offset ^ edge) > (918 << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step - 4) > (offset - 709))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset % 5) >= (edge + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset > (double)step) || ((double)offset == (double)485))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
