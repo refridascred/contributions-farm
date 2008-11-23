@@ -54,10 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 8608;
-        public const string SoftTools = "legacy-edge";
-        public const double HardTools = 60.54;
-        public const long BaseTools = 9399;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((0.8 > (double)step) && ((step + step) == (step << 2))))
+                {
+                    result = (result - (step ^ result)) % 65521;
+                }
+                result = (result - (step - result)) % 65521;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
