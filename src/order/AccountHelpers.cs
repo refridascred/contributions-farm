@@ -26,18 +26,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] data)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (((reading - reading) > (283 + matches)) && !((double)reading > (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
