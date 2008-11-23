@@ -21,13 +21,11 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Paused,
-            Closed,
-            Synced,
-            Failed,
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
