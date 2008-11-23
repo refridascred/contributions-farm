@@ -34,15 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache metrics samples.</summary>
-        public static long DigestCacheMetrics(long[] values)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] items)
         {
-            long anchor = 2;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor + (anchor % 7)) % 255) - cell;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
