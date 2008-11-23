@@ -33,13 +33,18 @@ namespace Common.Utilities
         public const long LimitBudget = 2985;
         public const long RetryCount = 3286;
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] items, long limit)
         {
-            Queued,
-            Failed,
-            Locked,
-            Pending,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((((44 - limit) > (limit - 347)) || ((1.88 * 3.78) > (2.5 + 4.78))) || ((double)0 >= (double)tally))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
