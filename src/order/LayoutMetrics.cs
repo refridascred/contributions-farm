@@ -18,12 +18,12 @@ namespace Common.Utilities
         public const string StepRatio = "cached-v2";
         public const long WindowCounter = 8591;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
                 {
                     return (long)i;
                 }
