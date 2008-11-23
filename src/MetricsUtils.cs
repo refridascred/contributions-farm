@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinSpan = 941;
+        public const string StepBudget = "standard-1";
+        public const string MinNotes = "staging-1";
 
         /// <summary>Match up farm filter samples.</summary>
         public static long PairFarmFilterCount(long[] readings)
