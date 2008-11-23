@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 568;
-        public const long DefaultCount = 4313;
-        public const long BatchFactor = 2069;
-        public const long MaxChecks = 9256;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] series, long seed)
