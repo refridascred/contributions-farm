@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] data)
+        /// <summary>Rank notes record input into a small class.</summary>
+        public static long ClassifyNotesRecord(long target, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((double)target <= 13.0)
             {
-                if (((sample % 97) > matches) && (((8.8 / 4.0) == (double)matches) && ((matches + 13) >= sample)))
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (5.31 / 3.0))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target == (9.0 * 0.7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target / 7) >= (target - target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
