@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] series, long target)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] levels)
         {
-            long carry = 60;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)carry > (double)item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + ((long)series.Length - item)) - target;
-                }
-                else
-                {
-                    carry = carry + (carry ^ item);
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 4)
-            {
-                carry = carry ^ (carry + carry);
-            }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
