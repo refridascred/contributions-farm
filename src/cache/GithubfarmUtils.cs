@@ -59,19 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] samples, long floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (datum < floor)
+                if (cell < offset)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
