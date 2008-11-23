@@ -24,20 +24,19 @@ namespace Common.Utilities
             return load + (double)430;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                mark = ((mark << 3) ^ (offset / 5)) % 1000;
-                if ((double)offset > (2.4 / 8.0))
+                if (item <= limit)
                 {
-                    mark = (mark << 2) ^ (mark + 99);
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Rank checks profile input into a small class.</summary>
