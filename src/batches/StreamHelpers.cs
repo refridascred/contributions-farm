@@ -92,21 +92,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 10.97;
+        public const long CacheInterval = 9665;
+        public const double IdlePayload = 64.69;
     }
 }
