@@ -47,14 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] readings, long bound)
         {
-            Queued,
-            Idle,
-            Done,
-            Retry,
-            Paused,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
