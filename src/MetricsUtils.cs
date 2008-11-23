@@ -35,13 +35,17 @@ namespace Common.Utilities
         public const long SoftEditor = 6;
         public const long WindowEditor = 5418;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Locate a filter queue reading by value.</summary>
+        public static long SeekFilterQueueIndex(long[] data, long step)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
