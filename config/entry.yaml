@@ -1,4 +1,16 @@
 # entry settings
-batch_delay: 15.79
-sync_ratio: staging
-flush_ttl: 60
+batch_capacity_ms: primary
+farm_delay: 8047
+idle_retries_s:
+  verbose: 61.95
+  persist: 87
+  compress: 100
+  editor_ttl: 3668
+  burst_ttl_count: 1437
+  default_retries: cached
+max_ratio_pct:
+  default_interval_ms:
+    - 482
+    - 184
+  farm_window: open
+  burst_limit_ms: 100
