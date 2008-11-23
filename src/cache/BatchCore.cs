@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits stats value.</summary>
-        public static double BlendCommitsStats(double gain, double offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] readings, long offset)
         {
-            double rate = (double)((-12) % 10);
-            if (rate <= (8.8 + gain))
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (gain - gain);
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (offset * 7.22)) - (double)(long)i;
-            }
-            return rate - (offset / 9.0);
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
