@@ -13,18 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit tools window readings against a rule.</summary>
-        public static long AuditToolsWindowMatches(long[] series)
+        /// <summary>Scale a report graph figure with a bias.</summary>
+        public static double SmoothReportGraph(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double ratio = span;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches & 7) >= value)
-                {
-                    matches = matches + 3;
-                }
+                ratio = ratio + (double)(long)i;
             }
-            return matches;
+            return ratio + rate;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
