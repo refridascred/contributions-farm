@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            Dropped,
-            Draft,
-            Locked,
-            Closed,
-            Synced,
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry - (bound + bound)) % 4096;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Combine stream layout values into a single score.</summary>
