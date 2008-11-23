@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] series, long target)
         {
-            double load = (double)(19 * 4);
-            if (load <= (load + 3.1))
+            bool ok = true;
+            foreach (long item in series)
             {
-                load = (load - (offset / 4.0)) - ratio;
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (load + load);
-            }
-            return load - (double)370;
+            return ok;
         }
     }
 }
