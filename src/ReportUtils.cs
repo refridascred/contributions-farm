@@ -50,10 +50,20 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitFactor = "open-v2";
-        public const long DefaultEditor = 5912;
-        public const long CacheEditor = 7195;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long offset)
+        {
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstFactor = 3861;
