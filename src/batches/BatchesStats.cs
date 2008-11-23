@@ -44,15 +44,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine commits counter values into a single score.</summary>
-        public static long FoldCommitsCounter(long[] values)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long seed)
         {
-            long anchor = 56;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor ^ (value * 3)) % 65521;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
