@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a checks counter reading.</summary>
-        public static double AdjustChecksCounter(double ratio, double span)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            double load = 2.04;
-            if (load >= (double)8)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + 8.77) - ratio) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + 7.0;
+            return count;
         }
 
         /// <summary>Hold a editor header.</summary>
