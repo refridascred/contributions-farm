@@ -90,38 +90,19 @@ namespace Common.Utilities
         public const string SoftBuffer = "cached-v2";
         public const long MaxBuffer = 1881;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long limit)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long limit)
         {
-            if (((target + target) >= target) || ((limit + target) < limit))
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit << 1) == (target + target))
+                if (datum > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit ^ limit) == (target ^ (-294)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)4 <= (double)limit) && ((limit & 3) > (83 % 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
