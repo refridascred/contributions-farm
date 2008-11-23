@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate format farm samples.</summary>
-        public static long WeighFormatFarm(long[] samples)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long mix = 374;
-            foreach (long item in samples)
-            {
-                if ((double)item >= (double)mix)
-                {
-                    mix = ((mix << 3) ^ item) % 4096;
-                }
-                if ((double)mix == (5.0 * 10.0))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
