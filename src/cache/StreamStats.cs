@@ -46,22 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes metrics samples are out of range.</summary>
-        public static long TallyNotesMetricsHits(long[] levels, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (!((tally << 2) == (datum * 4)))
+                if (!(((double)datum <= (double)count) || (count < ((long)data.Length + 7))))
                 {
-                    tally = (tally + 2) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
