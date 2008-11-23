@@ -34,15 +34,12 @@ namespace Common.Utilities
         public const long BurstTimeout = 5578;
         public const long CacheGithubfarm = 9025;
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
