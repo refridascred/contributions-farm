@@ -20,19 +20,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 9750;
         public const long DefaultGraph = 9220;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double weight = (double)815 * 10.0;
-            if (weight <= (double)6)
-            {
-                weight = (weight - (8.7 / 5.0)) + floor;
-            }
-            else
-            {
-                weight = weight + (7.52 / 2.0);
-            }
-            return weight + (gain / 4.0);
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
