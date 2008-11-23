@@ -27,19 +27,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 255) > entry)
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 956;
+        public const long BurstLevel = 5639;
+        public const string BaseTimeout = "standard-1";
+        public const long SoftBuffer = 4096;
+        public const long RetryBuffer = 9362;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] readings)
