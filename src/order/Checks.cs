@@ -67,15 +67,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format schema values into a single score.</summary>
-        public static long CombineFormatSchema(long[] values, long floor)
+        /// <summary>Match up buffer metrics samples.</summary>
+        public static long CompareBufferMetricsCount(long[] items)
         {
-            long sum = 99;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum ^ sample) % 4096) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
