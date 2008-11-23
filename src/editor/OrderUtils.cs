@@ -42,38 +42,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long offset, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesLimits(long[] series, long target)
         {
-            if (!((offset % 10) == (seed ^ 57)))
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed + (-35)) <= (1 % 60)) || (((-78) + offset) != (seed + seed)))
+                if (item != target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.91 - 19.0) > (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)offset == (2.0 - 19.0)) || ((6.2 / 8.0) <= (double)seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
