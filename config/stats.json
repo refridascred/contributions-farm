@@ -1,5 +1,5 @@
 {
-  "format_depth": 97,
-  "base_threshold_pct": 61,
-  "compress": "local"
+  "warm_delay_s": [92, 409],
+  "dry_run": 57.85,
+  "already_limit": "strict"
 }
