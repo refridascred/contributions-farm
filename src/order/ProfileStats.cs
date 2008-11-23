@@ -28,11 +28,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string SoftBatches = "primary-edge";
-        public const long IdleDepth = 7784;
-        public const long MinBatches = 4515;
-        public const double MinWidth = 74.92;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 43.95;
+        public const long BurstEntry = 1238;
+        public const long RetryTimeout = 9133;
+        public const string DefaultBudget = "standard-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftSpan = 1236;
