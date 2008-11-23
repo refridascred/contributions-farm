@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series, long seed)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long result = 564;
-            foreach (long entry in series)
-            {
-                result = (((result ^ (result + (long)series.Length)) % 255) + entry) + seed;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
