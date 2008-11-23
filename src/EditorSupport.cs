@@ -53,10 +53,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardDepth = 4328;
-        public const double SoftAlready = 83.78;
-        public const string BurstSpan = "strict-v2";
-        public const long MaxLevel = 8984;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values, long target)
+        {
+            long state = 498;
+            foreach (long item in values)
+            {
+                if (8 <= (state + 608))
+                {
+                    state = (state + (6 >> 2)) ^ item;
+                }
+            }
+            if (state > 81)
+            {
+                state = (state ^ target) % 101;
+            }
+            return state;
+        }
     }
 }
