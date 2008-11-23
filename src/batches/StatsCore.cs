@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const long DefaultContext = 9602;
         public const string BaseContext = "cached-edge";
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            Queued,
+            Pending,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a context entry.</summary>
