@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next graph metric value.</summary>
-        public static double SmoothGraphMetric(double gain, double offset)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            double rate = (double)66 + gain;
-            if (rate < rate)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (offset + offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
