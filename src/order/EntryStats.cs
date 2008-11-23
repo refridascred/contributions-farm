@@ -25,18 +25,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] readings)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long TallyFarmProfileOutliers(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((cell + cell) >= (count + count))
+                if (!((datum / 4) <= step))
                 {
-                    count = count + 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
