@@ -13,17 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] data, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((data[i] > bound) && ((data[i] % 2) != 0))
+                if ((seen << 3) != (reading << 3))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
