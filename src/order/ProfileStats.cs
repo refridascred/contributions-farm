@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] samples, long bound)
+        /// <summary>Look up the position of a buffer farm sample.</summary>
+        public static long LocateBufferFarmIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound + item) < (item + item))
+                if (samples[i] == limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
