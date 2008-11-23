@@ -44,12 +44,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a session format pair into a bucket.</summary>
+        public static long SortSessionFormat(long seed, long origin)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            if ((double)origin != (double)seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)origin > (4.71 + 20.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
