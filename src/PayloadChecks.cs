@@ -48,18 +48,12 @@ namespace Common.Utilities
         public const long SoftOrder = 4771;
         public const long RetryInterval = 63;
 
-        /// <summary>Digest a series of counter editor entries.</summary>
-        public static long TallyCounterEditor(long[] data)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long acc = -93;
-            foreach (long value in data)
-            {
-                if ((double)value != (6.91 - 8.0))
-                {
-                    acc = ((acc * 3) + value) % 1000;
-                }
-            }
-            return acc % 4096;
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
