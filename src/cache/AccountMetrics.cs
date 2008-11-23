@@ -14,39 +14,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long offset, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long slot = offset ^ origin;
-            if (!((slot + offset) < (slot & 255)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >> 3) < 3)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin >= (slot ^ origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= (slot - slot))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Accumulate route samples.</summary>
