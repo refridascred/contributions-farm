@@ -29,12 +29,23 @@ namespace Common.Utilities
         public const long BurstTimeout = 5578;
         public const long CacheGithubfarm = 9025;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double bias, double floor)
         {
-            Paused,
-            Idle,
-            Retry,
+            double gain = floor;
+            if (gain > (7.51 + gain))
+            {
+                gain = gain - floor;
+            }
+            else
+            {
+                gain = gain + (double)20;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain * 1.2)) + (double)(long)i;
+            }
+            return gain - bias;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
