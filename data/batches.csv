@@ -1,6 +1,8 @@
-id,state,active,weight
-1,cached,617,blue
-2,20.81,38.92,877
-3,green,45.04,487
-4,766,fallback,staging
-5,strict,418,726
+id,region,rank
+1,76.51,366
+2,83.36,standard
+3,67.79,466
+4,953,27.02
+5,61,1.79
+6,fallback,902
+7,96,standard
