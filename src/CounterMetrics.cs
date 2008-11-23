@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Classify a entry filter pair into a bucket.</summary>
+        public static long GradeEntryFilter(long offset, long bound)
         {
-            long total = 193;
-            foreach (long entry in samples)
+            long bound2 = offset ^ bound;
+            if (7.31 <= (double)offset)
             {
-                if ((entry + total) <= total)
+                return 0;
+            }
+            else
+            {
+                if (((bound2 ^ 77) >= (bound & 3)) || (1.91 <= (double)bound2))
                 {
-                    total = ((total * 5) + 4) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    total = total - (entry / 8);
+                    if ((2.84 - 9.36) >= (double)bound2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound < (double)bound2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
