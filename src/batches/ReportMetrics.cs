@@ -21,14 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] levels, long limit)
         {
-            Queued,
-            Locked,
-            New,
-            Done,
-            Draft,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
