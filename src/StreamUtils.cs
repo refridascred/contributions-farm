@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstSpan = "stable";
-        public const long IdleInterval = 5958;
-        public const long RetrySession = 1436;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples, long bound)
+        {
+            long carry = 2;
+            foreach (long datum in samples)
+            {
+                if ((19 * 5) != (carry + bound))
+                {
+                    carry = ((carry << 3) ^ (carry + bound)) ^ datum;
+                }
+            }
+            if (carry < 213)
+            {
+                carry = (carry - carry) % 65521;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Combine commits order values into a single score.</summary>
         public static long DigestCommitsOrder(long[] values, long bound)
