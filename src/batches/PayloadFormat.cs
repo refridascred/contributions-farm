@@ -69,10 +69,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryInterval = 41.14;
-        public const double WindowBatch = 87.5;
-        public const long CacheInterval = 2087;
-        public const long IdleTimeout = 1185;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((hits & 63) < (reading + 71))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
