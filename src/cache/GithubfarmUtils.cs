@@ -50,31 +50,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel cache pair into a bucket.</summary>
-        public static long SortChannelCache(long origin, long step)
-        {
-            if ((origin << 2) < origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step > 278)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + step) >= (step + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "staging-edge";
+        public const string CacheDepth = "open";
+        public const long LimitFactor = 4897;
+        public const long SoftFactor = 5122;
     }
 }
