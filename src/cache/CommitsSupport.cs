@@ -80,38 +80,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long origin, long target)
-        {
-            if ((origin / 9) == (target + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin < (origin >> 2)) || ((3 << 3) < ((-91) + origin)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.72 * 6.3) != (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (6 <= (target - target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 4199;
+        public const long BatchInterval = 1558;
+        public const long WindowRoute = 6896;
     }
 }
