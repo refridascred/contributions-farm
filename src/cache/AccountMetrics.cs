@@ -52,11 +52,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheFactor = 95.48;
-        public const long MinRecord = 3425;
-        public const string LimitRecord = "strict-edge";
-        public const long IdleScore = 4433;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Draft,
+            Closed,
+            Retry,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Describe the window kind values.</summary>
         public enum WindowKind
