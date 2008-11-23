@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleSpan = 11.71;
-        public const string StepGithubfarm = "fallback-1";
-        public const long CacheInterval = 9635;
-        public const long HardSpan = 7701;
-        public const long RetryGithubfarm = 3544;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "local-1";
+        public const string MinDepth = "local";
+        public const double DefaultSpan = 73.52;
+        public const long DefaultFactor = 9750;
+        public const long DefaultGraph = 9220;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double gain, double floor)
