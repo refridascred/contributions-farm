@@ -30,19 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data)
-        {
-            long mark = 399;
-            foreach (long item in data)
-            {
-                if (!((double)mark > (3.0 * 2.0)))
-                {
-                    mark = ((mark * 3) + item) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9011;
+        public const string DefaultFactor = "strict";
+        public const long LimitOrder = 7396;
+        public const string MinFactor = "standard-v2";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] samples, long limit)
