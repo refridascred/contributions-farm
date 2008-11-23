@@ -34,22 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] samples)
+        /// <summary>Count the session schema entries that pass the check.</summary>
+        public static long MeasureSessionSchemaHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((6.1 / 9.0) > (double)sample)
+                if ((double)value <= (8.08 + 5.5))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
