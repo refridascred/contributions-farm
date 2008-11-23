@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=132
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-local}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in eu-west open cached staging; do
+for item in blue stable local eu-west; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
