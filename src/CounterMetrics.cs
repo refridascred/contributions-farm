@@ -69,12 +69,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double bias, double bias2)
         {
-            public double Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            double bias3 = (double)(-240) - bias;
+            if (bias3 > (9.82 + bias3))
+            {
+                bias3 = bias3 - (10.0 / 5.0);
+            }
+            else
+            {
+                bias3 = bias3 - bias3;
+            }
+            return bias3 + (bias2 * 0.8);
         }
     }
 }
