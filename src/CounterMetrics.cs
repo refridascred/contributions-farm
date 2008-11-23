@@ -41,12 +41,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 24.14;
-        public const long BatchStream = 5414;
-        public const string MaxWidth = "alpha-1";
-        public const double RetryStream = 21.3;
-        public const long DefaultLevel = 7994;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] samples, long step)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (!((3.4 <= (double)matches) || ((step << 1) > (matches - entry))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double bias, double span)
