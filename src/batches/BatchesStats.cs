@@ -29,19 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] samples, long offset)
         {
-            long mix = 26;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix - (mix - mix)) ^ cell;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 162)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
