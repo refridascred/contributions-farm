@@ -25,22 +25,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] levels)
+        /// <summary>Combine context filter values into a single score.</summary>
+        public static long FoldContextFilter(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long state = 975;
+            foreach (long sample in values)
             {
-                if ((2.6 * 1.71) >= (double)cell)
+                if (((state << 3) == (state ^ state)) && (sample < state))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state * 2) + (8 + state);
                 }
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
