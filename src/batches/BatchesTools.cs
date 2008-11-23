@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] values, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the commits class values.</summary>
