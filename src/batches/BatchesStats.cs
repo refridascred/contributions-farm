@@ -58,17 +58,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardLevel = 3507;
+        public const long IdleBatches = 1838;
+        public const long RetryBatches = 6074;
+        public const double RetryTimeout = 50.66;
     }
 }
