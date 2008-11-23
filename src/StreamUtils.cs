@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultBatches = "standard-v2";
+        public const long BatchSpan = 4577;
+        public const string CacheBatches = "standard-edge";
+        public const long HardSpan = 9649;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
