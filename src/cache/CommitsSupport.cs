@@ -59,13 +59,17 @@ namespace Common.Utilities
         public const double RetryLevel = 68.39;
         public const long CacheSpan = 4082;
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] series, long step)
         {
-            Draft,
-            Synced,
-            Dropped,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
