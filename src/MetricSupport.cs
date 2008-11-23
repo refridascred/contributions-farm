@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const double MaxSpan = 68.7;
         public const long MaxTimeout = 6835;
 
-        /// <summary>Count the schema stats entries that pass the check.</summary>
-        public static long AuditSchemaStatsOutliers(long[] levels, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (!(bound <= (long)levels.Length))
+                mix = mix - ((long)i << 1);
+                mix = (mix * 5) + 3;
+                if ((mix - (long)i) >= (mix + (long)i))
                 {
-                    tally = (tally + 2) - value;
+                    mix = mix - ((long)i - mix);
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
