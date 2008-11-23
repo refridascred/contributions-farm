@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] samples)
+        /// <summary>Measure how many tools cache samples are out of range.</summary>
+        public static long TallyToolsCacheMatches(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count <= (target >> 4))
                 {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + value;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
