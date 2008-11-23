@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 1890;
-        public const long BurstCounter = 5030;
-        public const double BurstSpan = 87.93;
-        public const long StepCounter = 8193;
-        public const long MaxCounter = 4015;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Closed,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] values, long offset)
