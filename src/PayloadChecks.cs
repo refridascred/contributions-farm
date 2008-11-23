@@ -61,13 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
-        {
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 47.66;
+        public const double StepRecord = 86.07;
+        public const double BatchRecord = 39.53;
+        public const long SoftSpan = 8045;
+        public const double MinRatio = 96.47;
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] levels, long step)
