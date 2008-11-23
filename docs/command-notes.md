@@ -1,13 +1,12 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the counter list.
-When a filter fails, the batch handler retries a few times before giving up.
-
-Each graph is validated before it reaches the batch queue.
-Use account settings to tune how often metric data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The githubfarm module keeps filter values in sync with the counter cache.
 
 ## Guidelines
 
-- Validate already input early
-- Review token limits each release
-- Prefer counter defaults
+- Prefer graph defaults
+- Validate route input early
+- Log every payload change
+- Review format limits each release
