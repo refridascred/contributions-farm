@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Find the first editor schema entry that matches the target.</summary>
+        public static long FindEditorSchemaIndex(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] < origin)
                 {
-                    if ((samples[i] + samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
