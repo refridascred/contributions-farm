@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long seed, long seed2)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] samples, long seed)
         {
-            if (((17.0 * 16.0) >= (double)seed) || ((double)seed2 != (11.0 - 9.98)))
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((20.0 / 9.0) >= (double)seed)
+                if (datum < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((26 - seed2) == ((-844) >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the contributi level values.</summary>
