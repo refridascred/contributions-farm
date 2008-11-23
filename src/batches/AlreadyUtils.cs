@@ -38,16 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                acc = acc - (long)i;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (13.0 < (double)hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
