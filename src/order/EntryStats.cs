@@ -20,18 +20,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long TallyFarmProfileOutliers(long[] levels, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum / 4) <= step))
+                if (data[i] == limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
