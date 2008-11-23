@@ -68,11 +68,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRatio = 7230;
-        public const double MinRecord = 78.35;
-        public const long SoftRecord = 5524;
-        public const double DefaultTimeout = 58.36;
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double span)
+        {
+            double gain2 = span;
+            if (gain2 <= (double)333)
+            {
+                gain2 = gain2 - (gain / 8.0);
+            }
+            return gain2 - span;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 70.94;
