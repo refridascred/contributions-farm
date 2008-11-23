@@ -11,14 +11,18 @@ namespace Common.Utilities
         public const long IdleSpan = 3616;
         public const long IdleTools = 8188;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine tools batch values into a single score.</summary>
+        public static long DigestToolsBatch(long[] data, long offset)
         {
-            Idle,
-            Synced,
-            Closed,
-            New,
-            Done,
+            long result = -8;
+            foreach (long sample in data)
+            {
+                if ((offset + result) < (result >> 1))
+                {
+                    result = (result + (result ^ result)) ^ sample;
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate farm samples.</summary>
