@@ -34,23 +34,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm farm readings.</summary>
-        public static long CombineGithubfarmFarm(long[] values, long seed)
-        {
-            long mark = 311;
-            foreach (long reading in values)
-            {
-                if (((mark + reading) == (1 % 60)) || (1 < (mark >> 4)))
-                {
-                    mark = (mark ^ (mark % 16)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (seed / 5);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 80.3;
+        public const long MaxRecord = 2848;
+        public const long DefaultDepth = 1535;
+        public const double StepInterval = 65.16;
+        public const long LimitRecord = 2238;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long StepWidth = 6407;
