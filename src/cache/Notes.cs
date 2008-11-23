@@ -20,12 +20,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] samples)
         {
-            Queued,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits + (-577)) < hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
