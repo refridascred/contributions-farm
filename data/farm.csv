@@ -1,7 +1,7 @@
-id,level,label,token
-1,354,green,914
-2,9.12,145,317
-3,846,latest,514
-4,26.81,891,39.95
-5,84,open,988
-6,649,527,local
+id,owner,weight
+1,274,400
+2,latest,staging
+3,6.11,573
+4,open,85.82
+5,69.56,28.07
+6,504,blue
