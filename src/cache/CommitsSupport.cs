@@ -35,32 +35,10 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a route account pair into a bucket.</summary>
-        public static long RankRouteAccount(long origin, long bound)
-        {
-            if (!((6.0 - 0.59) < (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound * 2) == (origin << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + 42) < (bound + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryLevel = 7446;
+        public const string MinCounter = "standard-v2";
+        public const long MinDepth = 7325;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] data)
