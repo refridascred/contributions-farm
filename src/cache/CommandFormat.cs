@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            if (((offset >> 2) > (7 + 6)) && ((origin % 2) > (17 - origin)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset >= (25 + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset / 2) > (origin << 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Combine stream layout values into a single score.</summary>
