@@ -16,11 +16,23 @@ namespace Common.Utilities
             return ratio - (ratio * 9.91);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleLevel = 71.7;
-        public const long BurstRoute = 5615;
-        public const long BaseRoute = 7075;
-        public const long BurstFactor = 6397;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                long diff = floor;
+                anchor = anchor + (anchor / 6);
+                if ((diff & 31) <= (floor - 17))
+                {
+                    diff = (diff * 2) + (floor / 4);
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
