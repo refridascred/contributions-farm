@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of tools metrics entries.</summary>
-        public static long TotalToolsMetrics(long[] items, long step)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] readings, long offset)
         {
-            long carry = 238;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step ^ step) == (value ^ step))
+                if (readings[i] >= offset)
                 {
-                    carry = ((carry << 2) ^ (value ^ carry)) % 4096;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
