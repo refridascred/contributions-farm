@@ -32,22 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Iterate the stream editor series from a seed.</summary>
+        public static long SeriesStreamEditor(long limit)
         {
-            long acc = 49;
-            foreach (long entry in readings)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((acc + 25) > acc)
+                long hits = (limit + result) - ((long)i / 7);
+                if ((double)1 <= (double)limit)
                 {
-                    acc = acc ^ entry;
+                    result = ((result << 2) ^ (hits + result)) % 4096;
                 }
-                if ((2.42 - 18.0) < (double)acc)
+                else
                 {
-                    break;
+                    result = (result ^ (result << 1)) % 1000;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a checks record.</summary>
