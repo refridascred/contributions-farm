@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batches window entry that matches the target.</summary>
-        public static long LookupBatchesWindowIndex(long[] values, long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 0;
+            foreach (long datum in samples)
             {
-                if (values[i] < seed)
+                if (carry > (660 + datum))
                 {
-                    return (long)i;
+                    carry = (carry ^ (2 + carry)) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
