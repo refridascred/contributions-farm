@@ -56,15 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] series, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if (!((long)series.Length <= (floor - floor)))
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
