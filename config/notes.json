@@ -1,5 +1,6 @@
 {
-  "strict": ["standard", "primary", "stable"],
-  "dry_run": "strict",
-  "base_capacity": "edge"
+  "dry_run": 384,
+  "sync_size_pct": "primary",
+  "readonly": 100,
+  "batch_timeout": 74
 }
