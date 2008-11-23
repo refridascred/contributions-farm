@@ -1,5 +1,11 @@
 {
-  "batches_capacity": "strict",
-  "idle_retries_s": 250,
-  "idle_limit_ms": 38
+  "layout_threshold": 100,
+  "flush_depth": 9048,
+  "warm_ratio_s": [101, 457],
+  "strict": {
+    "filter_ratio": 47,
+    "batch_window_count": 83.66,
+    "graph_depth": 60
+  },
+  "hard_retries": ["eu-west", "edge"]
 }
