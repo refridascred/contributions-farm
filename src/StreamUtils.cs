@@ -31,38 +31,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long floor2)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] series, long origin)
         {
-            if (((floor2 ^ floor2) <= (63 * 2)) && ((736 / 6) <= floor))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor & 15) != (floor2 + floor))
+                if (!(((double)item == (4.0 * 7.3)) && ((14.0 * 1.2) <= (double)origin)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor2 & 7) > 892)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor2 * 2) != (floor / 5)) && ((double)floor < (0.8 - 1.5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
