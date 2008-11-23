@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Audit support stream readings against a rule.</summary>
