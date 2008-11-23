@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "strict";
-        public const long LimitSize = 8451;
-        public const long IdleCount = 2763;
-        public const long IdleToken = 4029;
-        public const string SoftTimeout = "alpha-v2";
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double bias, double offset)
+        {
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ((ratio - ratio) + (double)(long)i) + offset;
+            }
+            return ratio - (ratio * 9.91);
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double IdleLevel = 71.7;
