@@ -35,13 +35,21 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Match up filter queue samples.</summary>
+        public static long OverlapFilterQueueCount(long[] readings)
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
