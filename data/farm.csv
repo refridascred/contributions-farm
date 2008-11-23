@@ -1,7 +1,9 @@
-id,owner,weight
-1,274,400
-2,latest,staging
-3,6.11,573
-4,open,85.82
-5,69.56,28.07
-6,504,blue
+id,weight,score,rank
+1,285,84.17,471
+2,962,83,58
+3,edge,752,54.18
+4,46.62,blue,green
+5,548,247,blue
+6,872,916,standard
+7,edge,291,staging
+8,stable,36.0,717
