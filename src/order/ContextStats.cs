@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm tools readings against a bound.</summary>
-        public static bool GuardFarmToolsBounds(long[] readings, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (cell > step)
+                if ((entry & 255) > entry)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) - bound;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
