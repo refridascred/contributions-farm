@@ -20,31 +20,18 @@ namespace Common.Utilities
             return load - (ratio * 8.0);
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long limit, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] readings, long limit)
         {
-            if (offset < limit)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit - offset) >= offset) || ((double)limit == (0.6 / 8.0)))
+                if ((1.98 + 16.0) > (9.0 + 4.76))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + limit) < (limit - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = ((tally + 2) ^ entry) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metric header.</summary>
