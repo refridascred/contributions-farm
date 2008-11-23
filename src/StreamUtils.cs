@@ -31,14 +31,38 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long floor2)
         {
-            Stale,
-            Queued,
-            Paused,
-            Active,
-            Idle,
+            if (((floor2 ^ floor2) <= (63 * 2)) && ((736 / 6) <= floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor & 15) != (floor2 + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor2 & 7) > 892)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor2 * 2) != (floor / 5)) && ((double)floor < (0.8 - 1.5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
