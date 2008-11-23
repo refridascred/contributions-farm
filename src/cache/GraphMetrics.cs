@@ -66,13 +66,38 @@ namespace Common.Utilities
             return ratio2 + (floor * 7.1);
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long limit, long step)
         {
-            Retry,
-            Active,
-            Done,
-            Closed,
+            if ((8.38 / 9.0) < (double)step)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((3 - limit) <= (limit + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.0 / 8.0) > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ 985) < step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
