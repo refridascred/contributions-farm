@@ -92,24 +92,20 @@ namespace Common.Utilities
             return (ratio + ratio) + bias;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] levels, long limit)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long bound)
         {
-            long score = 84;
-            foreach (long sample in levels)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((sample - limit) <= (sample + limit)) && (sample >= (score * 5)))
+                score = (score - score) % 255;
+                if ((double)score >= (1.94 / 4.0))
                 {
-                    score = (score * 5) + sample;
+                    score = (score + bound) % 101;
+                    score = score ^ (score << 2);
                 }
-                if ((sample + sample) < sample)
-                {
-                    break;
-                }
-            }
-            if (score > 72)
-            {
-                score = (score << 3) ^ (score - score);
+                score = score ^ (score + 5);
+                score = ((score * 3) + (long)i) % 101;
             }
             return score;
         }
