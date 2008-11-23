@@ -46,10 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheInterval = "standard-edge";
-        public const double BurstWidth = 68.32;
-        public const string WindowStream = "local-1";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((offset - matches) <= (5 + matches))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
