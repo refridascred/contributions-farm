@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultDepth = "stable-v2";
+        public const long RetryTimeout = 4153;
+        public const double IdleChecks = 79.87;
+        public const long MinSize = 1746;
+        public const long CacheScore = 1161;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
