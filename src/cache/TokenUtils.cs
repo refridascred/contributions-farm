@@ -18,22 +18,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] samples)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] levels)
         {
-            long carry = 50;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((sample - sample) <= (sample - carry))
+                if ((66 / 3) < ((-538) ^ tally))
                 {
-                    carry = ((carry * 4) + (carry + sample)) % 101;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            if (carry < 51)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
