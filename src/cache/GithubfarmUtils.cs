@@ -55,22 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items, long origin)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long FindTokenIndex(long[] items, long seed)
         {
-            long result = 478;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result & 7) > 6)
+                if ((items[i] > seed) && ((items[i] % 5) != 0))
                 {
-                    result = (result + (cell + origin)) % 101;
+                    return (long)i;
                 }
             }
-            if (result > 97)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return -1;
         }
     }
 }
