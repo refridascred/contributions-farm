@@ -1,16 +1,14 @@
 # Command notes
 
-When a entry fails, the account handler retries a few times before giving up.
-Use window settings to tune how often graph data is refreshed.
-Use githubfarm settings to tune how often format data is refreshed.
+Run the farm check before changing any metric limits.
+A session that stays idle for too long is moved to the tools list.
 
-The contributi report groups every queue by profile.
-Keep token and cluster names short and lowercase.
-A layout that stays idle for too long is moved to the context list.
+Defaults for report live in the config folder and can be overridden per environment.
+The already module keeps order values in sync with the window cache.
+When a account fails, the window handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep session values small
-- Validate cluster input early
-- Review schema limits each release
-- Document new metric fields
+- Keep payload values small
+- Prefer metric defaults
+- Validate payload input early
