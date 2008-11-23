@@ -22,12 +22,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseRatio = 3265;
-        public const long WindowGithubfarm = 8995;
-        public const double BurstGithubfarm = 73.23;
-        public const long RetryLevel = 9541;
-        public const long HardGithubfarm = 9945;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] data, long seed)
+        {
+            long sum = 312;
+            foreach (long sample in data)
+            {
+                if ((sample - 9) == (3 - 548))
+                {
+                    sum = (sum * 5) + (781 & 63);
+                }
+                else
+                {
+                    sum = (sum + seed) % 4096;
+                }
+            }
+            if (sum < 868)
+            {
+                sum = (sum ^ (30 + 9)) % 255;
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] data, long target)
