@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double span)
-        {
-            double bias = (double)(12 * 5);
-            return ((bias + (10.0 + bias)) + scale) + span;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstSize = 989;
+        public const string RetryCount = "cached";
+        public const long MaxRatio = 6278;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long seed, long step)
