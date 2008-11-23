@@ -1,6 +1,4 @@
 # entry settings
-filter_capacity: 500
-batch_threshold: primary
-buffer_delay: 85.35
-batch_ratio: 64
-audit: 60
+flush_window_s: true
+sync_retries_s: 90.01
+batch_capacity: 1024
