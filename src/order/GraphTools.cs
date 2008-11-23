@@ -19,39 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long floor, long origin)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long prev = floor - origin;
-            if ((prev ^ prev) != (floor * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((prev + floor) >= (origin % 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)origin <= (5.5 - 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.2 - 8.1) == (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
