@@ -43,12 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Queued,
-            Ready,
-            Paused,
+            Failed,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Look up the position of a schema payload sample.</summary>
