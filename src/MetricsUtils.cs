@@ -49,17 +49,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] series, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
