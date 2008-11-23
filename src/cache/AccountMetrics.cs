@@ -79,26 +79,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long origin)
-        {
-            long cur = target - origin;
-            if (((origin & 63) >= (cur >> 5)) && ((double)target >= (0.5 / 2.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (cur >= (origin + cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "open-1";
+        public const long WindowRatio = 4668;
+        public const long LimitScore = 6643;
+        public const string MaxWindow = "latest-1";
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] samples, long seed)
