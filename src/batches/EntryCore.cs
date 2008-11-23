@@ -39,21 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many payload counter samples are out of range.</summary>
