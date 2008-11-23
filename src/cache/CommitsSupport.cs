@@ -58,25 +58,11 @@ namespace Common.Utilities
         public const double RetryLevel = 68.39;
         public const long CacheSpan = 4082;
 
-        /// <summary>Roll a buffer token counter forward.</summary>
-        public static long StepBufferToken(long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((double)mark <= 5.0)
-                {
-                    mark = (mark << 2) ^ limit;
-                    break;
-                }
-                else
-                {
-                    mark = mark - (long)i;
-                }
-                mark = ((mark << 2) ^ (limit / 3)) % 255;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
