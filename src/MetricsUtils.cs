@@ -35,17 +35,19 @@ namespace Common.Utilities
         public const long SoftEditor = 6;
         public const long WindowEditor = 5418;
 
-        /// <summary>Locate a filter queue reading by value.</summary>
-        public static long SeekFilterQueueIndex(long[] data, long step)
+        /// <summary>Blend two metrics account measurements.</summary>
+        public static double BlendMetricsAccount(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = bias;
+            if (bias2 >= (double)(-103))
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + (offset / 9.0);
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - offset;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
