@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Validate editor record readings against a bound.</summary>
+        public static bool GuardEditorRecordBounds(long[] levels, long seed)
         {
-            long total = 208;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                total = ((total - (total >> 3)) % 1000) - item;
+                if (cell >= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total % 97;
+            return valid;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
