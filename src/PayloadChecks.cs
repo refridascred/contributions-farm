@@ -47,19 +47,11 @@ namespace Common.Utilities
             return gain - (3.0 + floor);
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((reading <= (283 + hits)) || !(reading >= (8 >> 3)))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardCount = 9922;
+        public const string SoftFormat = "standard";
+        public const long StepSize = 6424;
+        public const long IdleFormat = 8467;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double IdleRecord = 47.66;
