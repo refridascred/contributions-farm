@@ -29,10 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 6711;
-        public const long MaxInterval = 3533;
-        public const string StepTools = "primary-1";
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Dropped,
+            Done,
+            Retry,
+            Failed,
+            Paused,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long SoftLevel = 5674;
