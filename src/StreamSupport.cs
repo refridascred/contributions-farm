@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Active,
-            Queued,
-            Dropped,
-            Locked,
+            Failed,
+            Ready,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
