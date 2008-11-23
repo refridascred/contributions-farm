@@ -70,15 +70,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double rate, double span)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long AuditReportChecksHits(long[] samples, long seed)
         {
-            double load = rate / 7.0;
-            if (load > (double)668)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                load = load + (1.48 + span);
+                if (((double)datum < (0.5 / 8.0)) || ((seed * 5) == (3 >> 2)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - 15.0;
+            return tally;
         }
     }
 }
