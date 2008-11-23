@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long RetryDepth = 3143;
         public const long SoftLayout = 6771;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] readings)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (!((reading + reading) <= (reading / 5)))
+                if (cell <= bound)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Hold a entry options.</summary>
