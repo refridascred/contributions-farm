@@ -60,31 +60,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long step, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] samples, long floor)
         {
-            if (step < (offset + offset))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step / 7) < offset)
+                if (samples[i] >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step / 7) > offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
