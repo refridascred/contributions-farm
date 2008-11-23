@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] values)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] samples)
         {
-            long mark = 749;
-            foreach (long datum in values)
+            long total = 2;
+            foreach (long value in samples)
             {
-                mark = mark + mark;
-                mark = mark ^ datum;
+                total = total - (total - value);
             }
-            if (mark > 9)
-            {
-                mark = mark - (1 - mark);
-            }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Match up cluster samples.</summary>
