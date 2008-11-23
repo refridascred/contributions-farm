@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Digest a series of graph entry entries.</summary>
+        public static long TallyGraphEntry(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 870;
+            foreach (long entry in items)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                result = (((result + 903) % 65521) - entry) + origin;
             }
-            return -1;
+            if (result < 196)
+            {
+                result = (result * 2) + (result - (long)items.Length);
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a support commits sample.</summary>
