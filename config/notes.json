@@ -1,22 +1,7 @@
 {
-  "persist": {
-    "commits_window": 86,
-    "format_depth": 3155,
-    "dry_run": {
-      "retry_limit_s": 3342,
-      "schema_threshold": [79, 35, 280, 436],
-      "cache_depth": [200, 452, 111, 466]
-    },
-    "sync_interval_pct": 5291,
-    "burst_limit_ms": 5498
-  },
-  "already_depth": 95.76,
-  "report_ratio": {
-    "soft_delay_ms": false,
-    "idle_threshold_s": 4.64,
-    "record_window": "primary",
-    "burst_size": "local"
-  },
-  "metrics_threshold": 13.13,
-  "githubfarm_depth": "edge"
+  "verbose": 500,
+  "audit": 21.73,
+  "sync_limit_ms": 500,
+  "cache_ratio": "cached",
+  "idle_ratio_count": ["latest", "legacy", "blue"]
 }
