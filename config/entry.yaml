@@ -1,8 +1,10 @@
 # entry settings
-enabled: 100
-audit:
-  - 335
-  - 25
-  - 372
-  - 52
-burst_size: staging
+poll_interval_pct:
+  - 405
+  - 45
+compress: stable
+flush_ratio_s:
+  - legacy
+  - stable
+  - stable
+tools_window: primary
