@@ -14,22 +14,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] data)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            if ((origin * 2) > (origin + seed))
             {
-                if ((value + value) < (count >> 5))
+                return 1;
+            }
+            else
+            {
+                if ((origin >= (-127)) || ((double)origin > (double)71))
                 {
-                    count = count + 2;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)seed != (19.0 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)seed > (4.7 * 3.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the stream editor series from a seed.</summary>
