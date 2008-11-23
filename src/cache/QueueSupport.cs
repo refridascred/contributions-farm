@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowSpan = 2611;
-        public const string BatchStats = "alpha-edge";
-        public const double IdleStats = 45.0;
-        public const double BurstStats = 7.19;
-        public const double WindowSize = 49.55;
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor + (origin << 1)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
         public static long PairGithubfarmAccountCount(long[] data)
