@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long StepCounter = 8193;
         public const long MaxCounter = 4015;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Stale,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the account state values.</summary>
