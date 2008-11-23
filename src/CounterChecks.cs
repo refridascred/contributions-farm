@@ -55,19 +55,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double weight, double bias)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] samples, long step)
         {
-            double gain = (double)(3 % 8);
-            if (gain > bias)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                gain = gain + weight;
+                if ((step + sample) <= 586)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain + 14.0;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
