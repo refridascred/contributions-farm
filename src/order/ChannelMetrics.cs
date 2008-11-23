@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            Locked,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Combine queue farm values into a single score.</summary>
