@@ -1,13 +1,4 @@
 # entry settings
-default_retries_s: 95
-max_delay:
-  base_timeout_s: 9803
-  dry_run: 30
-  githubfarm_interval: 17.56
-  readonly: true
-batch_limit: 46
-soft_ratio_ms: 2391
-poll_window_pct:
-  - primary
-  - eu-west
-  - primary
+warm_interval: 32.19
+max_ttl: 1036
+channel_timeout: 80
