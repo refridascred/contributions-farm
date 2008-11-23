@@ -45,9 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultRatio = 4328;
-        public const long LimitSupport = 9834;
-        public const string SoftSupport = "local-1";
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Queued,
+            Idle,
+            Done,
+            Retry,
+            Paused,
+        }
     }
 }
