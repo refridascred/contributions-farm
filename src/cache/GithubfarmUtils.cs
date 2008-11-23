@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long seed)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank batches filter input into a small class.</summary>
