@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Use cache settings to tune how often profile data is refreshed.
+A context that stays idle for too long is moved to the entry list.
+Each record is validated before it reaches the graph queue.
+Keep payload and context names short and lowercase.
 
-Use cache settings to tune how often cache data is refreshed.
-When a route fails, the context handler retries a few times before giving up.
+Each record is validated before it reaches the format queue.
+Keep already and commits names short and lowercase.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Validate notes input early
-- Document new report fields
-- Prefer layout defaults
+- Document new session fields
+- Prefer notes defaults
+- Validate layout input early
+- Keep batch values small
