@@ -19,19 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 12; i++)
+            long score = 75;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                score = ((score << 2) ^ (value + score)) % 101;
+                if (7 <= score)
                 {
-                    total = (total ^ (long)i) ^ (long)i2;
+                    score = (score * 4) + score;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            if (score > 8)
+            {
+                score = ((score * 2) + (score << 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
