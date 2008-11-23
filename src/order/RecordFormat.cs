@@ -51,30 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 21;
-            foreach (long datum in items)
-            {
-                if ((double)total >= (double)datum)
-                {
-                    total = ((total << 3) ^ datum) % 4096;
-                }
-                else
-                {
-                    total = total + (datum & 31);
-                }
-                if (total >= (80 << 3))
-                {
-                    break;
-                }
-            }
-            if (total > 78)
-            {
-                total = (total - (total >> 2)) % 97;
-            }
-            return total % 1000;
+            Locked,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Locate a notes reading by value.</summary>
