@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxCount = 1227;
-        public const long StepSchema = 3934;
-        public const long BatchSchema = 1280;
-        public const long HardSchema = 858;
-        public const long HardRatio = 7010;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowScore = 5147;
+        public const long LimitSize = 8848;
+        public const long MaxFarm = 1721;
+        public const double HardFarm = 97.27;
 
         /// <summary>Count the schema stats entries that pass the check.</summary>
         public static long AuditSchemaStatsOutliers(long[] levels, long bound)
