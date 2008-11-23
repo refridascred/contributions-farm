@@ -52,21 +52,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 389;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark * 3) + (8 - mark)) % 255) + sample;
             }
-            return tally;
+            if (mark > (-8))
+            {
+                mark = (mark * 4) + mark;
+            }
+            return mark;
         }
     }
 }
