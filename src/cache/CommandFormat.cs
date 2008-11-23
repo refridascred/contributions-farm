@@ -26,12 +26,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseWidth = "strict-1";
-        public const long MinScore = 2562;
-        public const long BaseScore = 8629;
-        public const long BatchRecord = 5527;
-        public const long StepRecord = 4449;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Dropped,
+            Done,
+            Ready,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] values, long step)
