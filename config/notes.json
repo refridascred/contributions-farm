@@ -1,8 +1,14 @@
 {
-  "warm_retries": [299, 57],
-  "cache_depth_s": 33,
-  "sync_timeout_count": true,
-  "enabled": ["eu-west", "cached", "standard"],
-  "persist": 48,
-  "warm_limit": 1024
+  "hard_interval_pct": {
+    "readonly": 85,
+    "hard_size_count": "eu-west",
+    "audit": 61,
+    "base_limit": 250,
+    "base_threshold": false,
+    "command_delay": [255, 472]
+  },
+  "max_ttl_ms": "staging",
+  "persist": true,
+  "report_limit": 4131,
+  "commits_ttl": 100
 }
