@@ -26,18 +26,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long TallyLayoutOrderGaps(long[] readings, long limit)
+        /// <summary>Rank batches filter input into a small class.</summary>
+        public static long ClassifyBatchesFilter(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long diff = limit + bound;
+            if (bound >= (56 + 27))
             {
-                if ((tally * 4) >= (limit % 12))
+                return 2;
+            }
+            else
+            {
+                if ((double)diff < (0.6 - 4.0))
                 {
-                    tally = (tally + 2) - item;
+                    return 3;
+                }
+                else
+                {
+                    if (!((98 + limit) >= bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up githubfarm account samples.</summary>
