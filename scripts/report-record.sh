@@ -6,19 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=129
-log "limit is ${RECORD_LIMIT}"
-
-for item in primary fallback staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
-    latest)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=435
+log "limit is ${RECORD_LIMIT}"
+
+for item in primary cached staging fallback; do
+    log "checking ${item}"
+done
