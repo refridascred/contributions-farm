@@ -15,23 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long total = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                if (((total ^ bound) > total) && ((double)bound >= (6.52 / 3.0)))
-                {
-                    total = (total - (long)i) % 65521;
-                }
-                if (bound < ((long)i ^ (long)i))
-                {
-                    total = (total ^ ((-974) / 2)) % 1000;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            New,
+            Stale,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
