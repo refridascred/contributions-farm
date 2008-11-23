@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long acc = 306;
-            foreach (long reading in data)
-            {
-                acc = ((acc * 4) + (acc + reading)) % 65521;
-                acc = (acc + (reading & 15)) % 255;
-            }
-            if (acc < (-1))
-            {
-                acc = (acc << 3) ^ (495 + acc);
-            }
-            return acc % 4096;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
