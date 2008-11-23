@@ -14,12 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Done,
-            Dropped,
+            Ready,
             New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
