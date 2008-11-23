@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long seed)
         {
-            double load = scale;
-            if (load <= 18.0)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                load = (load + (7.2 / 4.0)) - floor;
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - scale;
-            }
-            return load - 0.9;
+            return flag;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
