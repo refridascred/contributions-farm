@@ -1,9 +1,4 @@
 # support settings
-batches_timeout: 98
-cluster_interval: 1516
-editor_interval:
-  - 468
-  - 334
-  - 450
-record_ratio: standard
-farm_limit: false
+hard_ttl_count: 20.53
+audit: 4
+cache_depth_ms: staging
