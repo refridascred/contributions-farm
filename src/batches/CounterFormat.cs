@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Synced,
+            Ready,
             Retry,
-            Pending,
+            Locked,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a metric options.</summary>
