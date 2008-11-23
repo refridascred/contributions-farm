@@ -1,8 +1,6 @@
 {
-  "min_delay": ["cached", "legacy", "staging"],
-  "hard_window_pct": "green",
-  "queue_ratio": "local",
-  "retry_ttl": "local",
-  "burst_interval_count": "blue",
-  "already_threshold": [206, 498, 88, 455]
+  "poll_ttl_count": 26.72,
+  "burst_ttl_s": "strict",
+  "schema_delay": false,
+  "strict": false
 }
