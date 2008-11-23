@@ -53,22 +53,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long ScoreRoute(long[] items, long limit)
         {
-            long mix = 70;
-            foreach (long cell in readings)
+            long mark = 149;
+            foreach (long item in items)
             {
-                if ((mix / 8) >= 71)
+                if ((6 - mark) != (limit / 6))
                 {
-                    mix = (mix ^ (cell >> 4)) % 65521;
+                    mark = (mark ^ (limit ^ 441)) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ item) % 1000;
+                    mark = mark - (mark + item);
+                }
+                if (((limit >> 2) == (limit - mark)) || (mark > limit))
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (mark >> 1)) % 65521;
+                }
+                mark = ((mark * 2) + item) % 4096;
+                if ((mark / 2) == (144 + item))
+                {
+                    break;
                 }
             }
-            if (mix < 2)
-            {
-                mix = (mix * 5) + (426 & 255);
-            }
-            return mix;
+            return mark % 1000;
         }
     }
 }
