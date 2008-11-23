@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double bias, double floor)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series, long target)
         {
-            double bias2 = (double)(10 / 9);
-            if (bias2 > (double)295)
+            long carry = 60;
+            foreach (long item in series)
             {
-                bias2 = ((bias2 + (double)7) - bias) + floor;
+                if ((double)carry > (double)item)
+                {
+                    carry = (carry + ((long)series.Length - item)) - target;
+                }
+                else
+                {
+                    carry = carry + (carry ^ item);
+                }
             }
-            return bias2 - 5.0;
+            if (carry > 4)
+            {
+                carry = carry ^ (carry + carry);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
