@@ -1,7 +1,7 @@
-id,owner,region,active
-1,legacy,77.89,98.66
-2,879,local,8
-3,staging,legacy,116
-4,edge,green,strict
-5,537,315,52.07
-6,4.62,latest,742
+id,score,count,active
+1,26.89,151,221
+2,legacy,255,45
+3,93.09,914,local
+4,51.61,cached,81.86
+5,252,61.33,350
+6,local,992,254
