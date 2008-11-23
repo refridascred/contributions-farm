@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout context readings against a bound.</summary>
-        public static bool ValidateLayoutContextLimits(long[] data, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define already limits and defaults.</summary>
