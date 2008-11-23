@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Look up the position of a command contributi sample.</summary>
+        public static long FindCommandContributiIndex(long[] readings, long offset)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((10.0 / 4.0) <= (double)datum)
+                if (readings[i] <= offset)
                 {
-                    sum = (sum + (datum >> 5)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 255;
-                    sum = ((sum * 2) + (sum << 2)) % 101;
-                }
-                if (datum <= (sum & 7))
-                {
-                    sum = ((sum << 3) ^ (sum + sum)) % 255;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
