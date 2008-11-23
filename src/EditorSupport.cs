@@ -14,13 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] data, long seed)
         {
-            Closed,
-            Queued,
-            Done,
-            Stale,
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define order limits and defaults.</summary>
