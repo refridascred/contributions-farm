@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] items, long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((matches & 31) <= (67 - 8))
-                {
-                    matches = ((matches + 3) ^ reading) + target;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a order options.</summary>
