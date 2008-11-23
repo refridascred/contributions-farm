@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long StepGraph = 1845;
         public const string LimitGraph = "local";
 
-        /// <summary>Find the first route context entry that matches the target.</summary>
-        public static long FindRouteContextIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLevel = 8023;
+        public const string DefaultLayout = "staging-v2";
+        public const double WindowLayout = 78.62;
+        public const long RetrySpan = 2131;
+        public const string SoftLayout = "staging-1";
 
         /// <summary>Combine context filter values into a single score.</summary>
         public static long FoldContextFilter(long[] values)
