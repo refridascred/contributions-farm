@@ -24,17 +24,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsMatches(long[] series, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                if ((-9) >= (reading / 4))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of githubfarm farm readings.</summary>
