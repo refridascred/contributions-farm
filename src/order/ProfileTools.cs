@@ -65,11 +65,21 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftWidth = 2664;
-        public const double RetryDepth = 36.38;
-        public const double RetryEditor = 86.63;
-        public const string WindowBudget = "primary";
-        public const long BatchDepth = 4960;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
