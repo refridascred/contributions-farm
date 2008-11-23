@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            Done,
-            Active,
-            Locked,
+            Failed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
