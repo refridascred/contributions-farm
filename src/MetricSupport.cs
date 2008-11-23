@@ -28,24 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long target, long seed)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            if ((target >= seed) || (target <= (target + seed)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) > 139) && (seed <= (target / 8)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Locked,
+            Synced,
         }
     }
 }
