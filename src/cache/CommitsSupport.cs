@@ -30,11 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 2467;
-        public const long HardProfile = 737;
-        public const double WindowProfile = 6.4;
-        public const long SoftCount = 8011;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data)
+        {
+            long mark = 399;
+            foreach (long item in data)
+            {
+                if (!((double)mark > (3.0 * 2.0)))
+                {
+                    mark = ((mark * 3) + item) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricMatches(long[] samples, long limit)
