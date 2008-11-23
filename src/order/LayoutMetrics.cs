@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public string Rank { get; set; } = "";
-            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
