@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double bias, double span)
+        /// <summary>Iterate the support notes series from a seed.</summary>
+        public static long StepSupportNotes(long limit)
         {
-            double load = bias - 7.4;
-            if (load < (load * 15.0))
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load + 9.9) - span;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - (double)(-312)) + (double)(long)i;
-            }
-            return load - bias;
+            return sum;
         }
 
         /// <summary>Combine queue farm values into a single score.</summary>
