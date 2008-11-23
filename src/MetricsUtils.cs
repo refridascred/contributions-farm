@@ -39,13 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] readings, long seed)
         {
-            Queued,
-            Draft,
-            Stale,
-            Closed,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
