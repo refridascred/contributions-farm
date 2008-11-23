@@ -35,17 +35,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] levels, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = target - origin;
+            if (origin <= (target + target))
             {
-                if (levels[i] < offset)
+                return 0;
+            }
+            else
+            {
+                if ((gap >> 2) < (origin & 255))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)28 < (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap - gap) <= (target ^ (-643)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
