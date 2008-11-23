@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstSpan = "stable";
+        public const long IdleInterval = 5958;
+        public const long RetrySession = 1436;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double LimitCommand = 91.1;
