@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a report notes figure with a bias.</summary>
-        public static double ScaleReportNotes(double gain, double offset)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            double ratio = (9.63 * 8.6) / 8.0;
-            if (ratio >= (double)40)
-            {
-                ratio = ratio - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - offset) + (double)(long)i;
-            }
-            return ratio + gain;
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
