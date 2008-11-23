@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long HardCluster = 77;
         public const long SoftCluster = 6613;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] items, long bound)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((9.47 < (double)datum) || ((bound / 3) < bound)) && ((15.0 / 2.0) == (double)matches))
+                if (((96 + 3) >= (reading + 4)) && ((step >> 1) < 6))
                 {
-                    matches = matches + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
