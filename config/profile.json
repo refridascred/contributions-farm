@@ -1,5 +1,6 @@
 {
-  "compress": 250,
-  "metrics_interval": "local",
-  "warm_depth": "open"
+  "filter_timeout": 89.57,
+  "flush_window": "standard",
+  "batch_ratio_s": "standard",
+  "hard_ratio_s": 500
 }
