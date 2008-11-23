@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (250 < (hits + hits))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheWidth = 7481;
+        public const string StepRecord = "fallback-v2";
+        public const string StepScore = "fallback";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BurstLevel = 6349;
