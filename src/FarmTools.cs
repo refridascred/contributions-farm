@@ -30,23 +30,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            if ((3.2 * 13.0) >= (double)target)
             {
-                if (((step % 100) >= (step ^ (long)i)) || ((result * 3) > (step % 3)))
-                {
-                    continue;
-                }
-                if ((step - (long)i) > 1)
-                {
-                    result = ((result * 3) + (step - result)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((12.0 < (double)floor) && ((floor * 4) < target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
