@@ -18,23 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long WeighChannelLayout(long[] samples)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            long total = 316;
-            foreach (long item in samples)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                total = total ^ (item << 1);
-                if (total > item)
+                carry = (carry << 3) ^ (offset >> 4);
+                if ((offset * 4) > offset)
                 {
-                    total = (total - 799) % 101;
+                    carry = ((carry * 5) + (offset * 5)) % 4096;
+                    carry = carry + carry;
                 }
-                else
+                if (!((230 * 5) < offset))
                 {
-                    total = (total - (total + total)) % 255;
+                    carry = ((carry << 2) ^ (carry / 9)) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
