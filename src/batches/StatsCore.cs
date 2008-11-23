@@ -32,14 +32,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Closed,
-            Active,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinLevel = 4199;
+        public const long StepAlready = 7149;
+        public const long BaseAlready = 3968;
 
         /// <summary>Project the next profile report value.</summary>
         public static double BlendProfileReport(double bias, double offset)
