@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first editor schema entry that matches the target.</summary>
-        public static long FindEditorSchemaIndex(long[] data, long origin)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long span = origin ^ floor;
+            if (!(6 < (floor << 2)))
             {
-                if (data[i] < origin)
+                return 6;
+            }
+            else
+            {
+                if (((origin << 2) < 69) && ((origin % 3) >= span))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of tools contributi readings.</summary>
