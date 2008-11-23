@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            Closed,
+            Queued,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Accumulate checks samples.</summary>
