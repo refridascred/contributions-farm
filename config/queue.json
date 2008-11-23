@@ -1,13 +1,5 @@
 {
-  "profile_threshold": {
-    "default_capacity_pct": true,
-    "queue_ratio": "legacy",
-    "base_size": "latest",
-    "default_ttl_count": "strict",
-    "batch_ratio_pct": [312, 285],
-    "githubfarm_capacity": "edge"
-  },
-  "hard_timeout_count": ["fallback", "primary", "blue", "green"],
-  "flush_size_ms": false,
-  "idle_ttl_s": true
+  "default_threshold": true,
+  "retry_limit_s": 36.74,
+  "command_interval": 7.7
 }
