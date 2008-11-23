@@ -40,18 +40,24 @@ namespace Common.Utilities
         public const double BurstWidth = 68.32;
         public const string WindowStream = "local-1";
 
-        /// <summary>Audit format already readings against a rule.</summary>
-        public static long CountFormatAlreadyOutliers(long[] series, long step)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if ((origin + origin) != ((-714) / 4))
             {
-                if (((tally & 31) != (23 ^ 840)) || (((long)series.Length >> 3) < tally))
+                return 5;
+            }
+            else
+            {
+                if (((6 << 2) != (origin - limit)) || ((13.0 * 6.84) > (5.98 - 9.77)))
                 {
-                    tally = ((tally + 2) - item) - step;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate cache metric readings against a bound.</summary>
