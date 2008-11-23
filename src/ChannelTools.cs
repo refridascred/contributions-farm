@@ -16,21 +16,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] levels)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark ^ (357 % 100)) % 255;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Hold a window summary.</summary>
