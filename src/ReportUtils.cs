@@ -28,11 +28,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowWidth = 6959;
-        public const long RetryLevel = 763;
-        public const long WindowBudget = 9889;
-        public const long LimitCommand = 5940;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchCount = 1472;
+        public const long WindowGraph = 3803;
+        public const long BatchGraph = 9297;
 
         /// <summary>Audit order layout readings against a rule.</summary>
         public static long CountOrderLayoutOutliers(long[] samples, long bound)
