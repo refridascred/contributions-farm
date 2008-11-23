@@ -36,24 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long bound)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
         {
-            if (bound <= (target & 3))
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (target + bound))
+                result = (result - (result + origin)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    return 7;
+                    result = (((result * 2) + result) % 255) + (long)i2;
                 }
-                else
-                {
-                    return 2;
-                }
+                result = ((result * 2) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
