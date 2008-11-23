@@ -84,11 +84,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitSize = 4542;
-        public const long HardFactor = 5647;
-        public const long RetryAccount = 1378;
-        public const long WindowRatio = 6699;
-        public const long BaseAccount = 5819;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Idle,
+            Active,
+            Failed,
+        }
     }
 }
