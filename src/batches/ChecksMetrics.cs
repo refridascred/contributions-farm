@@ -70,22 +70,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long AuditReportChecksHits(long[] samples, long seed)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long next = bound - target;
+            if ((target - bound) < (251 - target))
             {
-                if (((double)datum < (0.5 / 8.0)) || ((seed * 5) == (3 >> 2)))
+                return 3;
+            }
+            else
+            {
+                if ((next & 127) == (target % 60))
                 {
-                    tally = tally + 3;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound / 3) >= (930 % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + next) >= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
