@@ -19,18 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long TallyMetricsCommitsGaps(long[] levels)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((double)datum == (6.37 / 7.0)) && ((seen + datum) != (datum & 15))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
