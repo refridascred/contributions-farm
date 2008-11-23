@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long RetrySession = 8233;
         public const double StepSession = 5.68;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score << 2) ^ ((long)i + score);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the buffer class values.</summary>
