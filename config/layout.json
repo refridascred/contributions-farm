@@ -1,14 +1,6 @@
 {
-  "enabled": {
-    "layout_ratio": "cached",
-    "batch_ratio_s": true,
-    "poll_capacity": 1024,
-    "readonly": true,
-    "hard_interval_pct": "fallback"
-  },
-  "cache_threshold": 91.33,
-  "cluster_interval": "green",
-  "soft_interval_s": "green",
-  "metric_interval": 100,
-  "cache_timeout_s": 7478
+  "queue_ratio": false,
+  "checks_ttl": 12,
+  "audit": 1903,
+  "min_size_count": 3437
 }
