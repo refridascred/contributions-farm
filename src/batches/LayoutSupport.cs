@@ -31,12 +31,17 @@ namespace Common.Utilities
         public const double HardRatio = 15.46;
         public const long IdleTimeout = 6809;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] values, long limit)
         {
-            Draft,
-            New,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
