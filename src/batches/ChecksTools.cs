@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] levels, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long acc = 6;
+            foreach (long value in readings)
             {
-                if (!((floor + tally) < (floor / 9)))
+                if ((value - value) >= acc)
                 {
-                    tally = (tally + 3) + value;
+                    acc = (acc + (acc % 60)) % 4096;
                 }
+                acc = ((acc * 2) + (acc + acc)) % 255;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
