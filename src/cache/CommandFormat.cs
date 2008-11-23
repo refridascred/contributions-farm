@@ -33,21 +33,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Retry,
+            Draft,
+            Dropped,
         }
     }
 }
