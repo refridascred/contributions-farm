@@ -45,10 +45,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 3064;
-        public const long HardScore = 5572;
-        public const long WindowBudget = 8386;
+        /// <summary>Project the next profile report value.</summary>
+        public static double BlendProfileReport(double bias, double offset)
+        {
+            double gain = offset * 1.63;
+            if (gain < gain)
+            {
+                gain = gain + 15.0;
+            }
+            else
+            {
+                gain = gain + (bias + offset);
+            }
+            return gain - gain;
+        }
 
         /// <summary>Count channel support pairs that satisfy a relation.</summary>
         public static long MatchChannelSupportCount(long[] values)
