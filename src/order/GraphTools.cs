@@ -30,18 +30,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] items, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if ((origin + origin) == (seed * 3))
             {
-                if ((double)item <= (7.0 / 8.0))
+                return 7;
+            }
+            else
+            {
+                if ((3.38 - 9.3) < (double)origin)
                 {
-                    matches = (matches + 3) + seed;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed / 7) != (0 << 1)) || (969 > (seed * 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
