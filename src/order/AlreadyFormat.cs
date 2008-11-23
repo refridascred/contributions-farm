@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long offset)
         {
-            long acc = 449;
-            foreach (long item in values)
+            if (((offset + 62) > bound) && ((32 >> 2) == (bound + offset)))
             {
-                acc = (acc ^ (acc % 10)) % 255;
-                if (!((acc + item) < (item + item)))
+                return 7;
+            }
+            else
+            {
+                if (bound <= (offset >> 5))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)bound >= (1.01 * 9.63)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound % 10) > offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
