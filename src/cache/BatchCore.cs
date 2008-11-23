@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels, long bound)
+        /// <summary>Rank checks command input into a small class.</summary>
+        public static long BucketChecksCommand(long floor, long limit)
         {
-            long anchor = 37;
-            foreach (long value in levels)
+            if ((0.3 * 8.2) <= (double)limit)
             {
-                anchor = (anchor - (bound >> 5)) ^ value;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (floor > (limit * 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the payload mode values.</summary>
