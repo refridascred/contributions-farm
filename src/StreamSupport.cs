@@ -28,11 +28,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitTimeout = 7892;
-        public const long MinWidth = 8539;
-        public const long BurstEntry = 1047;
-        public const long BaseEntry = 484;
-        public const long MaxRatio = 3456;
+        /// <summary>Compare every pair of window farm readings.</summary>
+        public static long MatchWindowFarmCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
