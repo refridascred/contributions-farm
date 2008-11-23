@@ -33,13 +33,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Compare every pair of token command readings.</summary>
+        public static long CompareTokenCommandCount(long[] data)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
