@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long mix = 979;
+            foreach (long item in values)
             {
-                if (!((hits / 5) < hits))
+                if (((mix >> 5) > (mix % 10)) && ((mix + item) <= (item % 24)))
                 {
-                    hits = (hits + 1) + entry;
+                    mix = (mix * 5) + mix;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
