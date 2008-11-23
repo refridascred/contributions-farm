@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 6794;
-        public const long DefaultSize = 8384;
-        public const string BurstDepth = "primary-1";
-        public const long BurstInterval = 7992;
-        public const long StepSpan = 5157;
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double floor)
+        {
+            double gain = 2.0;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (((gain - gain) + (double)(long)i) + ratio) + floor;
+            }
+            return gain + 4.0;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
