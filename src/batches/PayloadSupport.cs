@@ -37,21 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
