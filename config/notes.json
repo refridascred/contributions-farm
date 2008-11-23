@@ -1,13 +1,13 @@
 {
-  "retry_delay_s": {
-    "graph_interval": "eu-west",
-    "soft_delay": 6586,
-    "cache_capacity": "legacy",
-    "cache_interval_s": true,
-    "entry_capacity": "cached"
+  "notes_retries": {
+    "compress": true,
+    "route_threshold": 60,
+    "hard_timeout_count": ["local", "standard", "open", "edge"],
+    "poll_threshold": "standard",
+    "batch_interval_s": "eu-west",
+    "strict": false
   },
-  "stats_ttl": [483, 143, 498],
-  "batch_depth": 74,
-  "flush_ratio_pct": 63.7,
-  "verbose": "staging"
+  "token_capacity": false,
+  "default_size": "fallback",
+  "soft_capacity": 89
 }
