@@ -71,14 +71,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
+            Retry,
             Paused,
-            Queued,
             Stale,
-            Pending,
+            Failed,
+            Ready,
         }
     }
 }
