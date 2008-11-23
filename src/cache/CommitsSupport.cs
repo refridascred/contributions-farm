@@ -58,11 +58,13 @@ namespace Common.Utilities
         public const double RetryLevel = 68.39;
         public const long CacheSpan = 4082;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            New,
+            Closed,
+            Stale,
+            Draft,
         }
     }
 }
