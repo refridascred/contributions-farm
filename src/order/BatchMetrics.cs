@@ -73,15 +73,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order buffer counter forward.</summary>
-        public static long RollOrderBuffer(long floor)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            Dropped,
+            Draft,
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
