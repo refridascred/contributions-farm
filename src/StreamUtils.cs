@@ -59,18 +59,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] series, long floor)
+        /// <summary>Locate a context route reading by value.</summary>
+        public static long SeekContextRouteIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((long)series.Length <= (floor - floor)))
+                if (series[i] == bound)
                 {
-                    count = (count + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
