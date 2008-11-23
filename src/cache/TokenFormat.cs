@@ -39,27 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Check that every entry metric entry stays within the limit.</summary>
+        public static bool CheckEntryMetricBounds(long[] items, long origin)
         {
-            long carry = 974;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                carry = ((carry * 4) + (carry + reading)) % 1000;
-                if (((353 ^ reading) >= reading) && ((carry - 9) == (carry << 3)))
+                if (cell >= origin)
                 {
-                    carry = carry ^ (carry << 3);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (reading + reading);
-                }
-                if (!((reading * 5) < 30))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry % 97;
+            return flag;
         }
     }
 }
