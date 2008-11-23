@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] levels, long bound)
         {
-            long score = 483;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((score - reading) >= (reading / 5))
+                if ((4.72 - 6.68) >= (double)bound)
                 {
-                    score = score - score;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Roll a order counter forward.</summary>
