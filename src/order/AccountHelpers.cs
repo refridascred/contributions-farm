@@ -71,12 +71,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long step, long offset)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
+            if (step < (offset + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step / 7) < offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 7) > offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
