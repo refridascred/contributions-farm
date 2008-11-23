@@ -1,12 +1,14 @@
 {
-  "checks_delay": ["cached", "eu-west", "local", "eu-west"],
-  "audit": [23, 63],
-  "batch_window": {
-    "default_ratio": "local",
-    "support_interval": 40,
-    "batch_size": 76,
-    "default_depth": "edge"
+  "poll_timeout_ms": {
+    "persist": ["local", "staging", "latest"],
+    "session_interval": 31,
+    "cache_size_pct": {
+      "readonly": 7707,
+      "batch_size": 19,
+      "poll_ttl_ms": 84.17,
+      "poll_retries_count": 9
+    }
   },
-  "persist": 60.19,
-  "batch_capacity_count": 714
+  "sync_window": 3979,
+  "hard_depth_pct": [101, 497]
 }
