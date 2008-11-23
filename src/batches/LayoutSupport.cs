@@ -47,12 +47,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 4962;
-        public const string MinEditor = "local";
-        public const long BaseEditor = 1909;
-        public const long SoftEditor = 2121;
-        public const double StepLevel = 50.33;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((14.0 + 7.6) > (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
