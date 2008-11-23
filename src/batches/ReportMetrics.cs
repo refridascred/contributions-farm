@@ -13,17 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)259;
+            if (ratio >= floor)
             {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)576;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio - 1.64;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
