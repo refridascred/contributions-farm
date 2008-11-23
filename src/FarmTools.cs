@@ -47,18 +47,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data, long seed)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((((seed + 34) > 99) && ((seed * 5) == (matches << 1))) || ((item & 127) > matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
