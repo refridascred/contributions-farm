@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long target, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            if (!(target >= (target * 4)))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target % 24) < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - limit) < 173)
+                    if ((samples[i] + samples[j]) < 5)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit * 5) >= (limit ^ target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Match up stats samples.</summary>
