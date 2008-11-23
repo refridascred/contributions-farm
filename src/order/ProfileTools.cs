@@ -27,13 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long offset)
         {
-            Locked,
-            Synced,
-            Pending,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a contributi token value against two limits.</summary>
