@@ -12,25 +12,21 @@ namespace Common.Utilities
         public const long SoftFarm = 3875;
         public const long StepScore = 4558;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long seed, long step)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] values)
         {
-            long diff = seed - step;
-            if ((1.8 * 3.0) != (double)diff)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((diff - seed) > (diff ^ diff))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
