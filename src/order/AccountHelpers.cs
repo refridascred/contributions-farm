@@ -45,18 +45,18 @@ namespace Common.Utilities
         public const double BurstWidth = 68.32;
         public const string WindowStream = "local-1";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] levels, long limit)
+        /// <summary>Audit format already readings against a rule.</summary>
+        public static long CountFormatAlreadyOutliers(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((((seen & 1) >= (limit - 180)) || (limit > (60 % 10))) || (((item + limit) >= (item / 4)) && ((9.7 * 4.0) <= (double)item)))
+                if (((tally & 31) != (23 ^ 840)) || (((long)series.Length >> 3) < tally))
                 {
-                    seen = seen + 1;
+                    tally = ((tally + 2) - item) - step;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the channel class values.</summary>
