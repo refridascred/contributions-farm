@@ -17,14 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Ready,
-            Done,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 1824;
+        public const long HardMetric = 7065;
+        public const double DefaultTimeout = 51.05;
+        public const long RetryWidth = 84;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
