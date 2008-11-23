@@ -19,23 +19,18 @@ namespace Common.Utilities
         public const long RetryBatches = 9916;
         public const long StepBatches = 6238;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] series)
         {
-            long total = 53;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = ((total * 3) + (seed * 4)) % 97;
-                if (((total - seed) <= (total - entry)) || ((entry >> 2) > (4 % 3)))
+                if ((entry % 2) != (entry >> 5))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            if (total > 647)
-            {
-                total = (total - (seed % 3)) % 4096;
-            }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
