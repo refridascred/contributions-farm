@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] levels, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = 90;
-            foreach (long sample in levels)
-            {
-                if ((46 * 5) != (mark - mark))
-                {
-                    mark = (((mark ^ mark) % 97) + sample) + origin;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = (mark ^ (mark % 24)) % 101;
-            }
-            return mark;
+            Retry,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Project the next metrics value.</summary>
