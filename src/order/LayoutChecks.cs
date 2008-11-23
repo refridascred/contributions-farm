@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window account readings against a rule.</summary>
-        public static long CountWindowAccountOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen + seen) < item)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double SoftDepth = 42.12;
+        public const string BaseSpan = "strict-edge";
+        public const long SoftSession = 6031;
+        public const string IdleSession = "latest-edge";
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] data)
