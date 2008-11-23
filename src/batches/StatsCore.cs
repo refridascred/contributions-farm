@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long DefaultContext = 9602;
         public const string BaseContext = "cached-edge";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] series, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((sample + bound) > (matches + bound))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a context entry.</summary>
