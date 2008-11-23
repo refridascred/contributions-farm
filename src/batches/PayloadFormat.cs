@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const long BaseRoute = 7075;
         public const long BurstFactor = 6397;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] values, long seed)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum < seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
