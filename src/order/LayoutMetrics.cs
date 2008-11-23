@@ -23,19 +23,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] levels, long floor)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long state = 85;
+            foreach (long value in items)
             {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state + (value >> 1)) - target;
             }
-            return ok;
+            return state;
         }
     }
 }
