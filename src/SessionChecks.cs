@@ -53,18 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((91 + cell) >= cell) && ((double)matches == (double)54))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
