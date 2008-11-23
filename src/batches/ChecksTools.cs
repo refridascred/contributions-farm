@@ -38,15 +38,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
-        public static long SeriesGithubfarmBatch(long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long mark = 5;
+            foreach (long reading in levels)
             {
-                long tally = mark;
-                mark = (mark << 3) ^ (tally - (long)i);
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (((double)reading >= 2.2) && ((mark - reading) != (reading + reading)))
+                {
+                    mark = (mark - ((-633) * 4)) % 97;
+                    mark = ((mark << 2) ^ reading) % 255;
+                    continue;
+                }
+                if (((reading + 417) > (1 & 15)) || ((mark - reading) >= mark))
+                {
+                    mark = (mark - (reading - mark)) % 4096;
+                }
+                else
+                {
+                    mark = mark ^ (reading - 685);
+                }
+            }
+            if (mark > 2)
+            {
+                mark = (mark * 2) + 412;
             }
             return mark;
         }
