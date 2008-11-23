@@ -45,21 +45,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] series)
+        /// <summary>Fold a list of farm batch readings.</summary>
+        public static long TallyFarmBatch(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 689;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = mark + value;
+                if ((6.0 / 4.0) != (double)mark)
                 {
-                    if ((series[i] ^ series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark * 2) + mark;
+                }
+                else
+                {
+                    mark = mark ^ 0;
                 }
             }
-            return count;
+            return mark % 65521;
         }
     }
 }
