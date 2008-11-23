@@ -34,22 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items, long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long origin, long floor)
         {
-            long anchor = -876;
-            foreach (long cell in items)
+            if (origin >= (floor & 31))
             {
-                if (!((double)anchor <= (3.0 * 7.19)))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= (9.29 / 5.0))
                 {
-                    anchor = ((anchor - (anchor + 135)) % 1000) - cell;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (anchor < 34)
-            {
-                anchor = (anchor << 2) ^ (limit >> 4);
-            }
-            return anchor;
         }
 
         /// <summary>Roll a window counter forward.</summary>
