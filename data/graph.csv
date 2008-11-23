@@ -1,8 +1,9 @@
-id,token,score,count
-1,cached,cached,45.48
-2,fallback,179,590
-3,latest,open,green
-4,369,902,315
-5,395,cached,standard
-6,53.73,65.8,310
-7,blue,762,475
+id,rank,owner
+1,green,392
+2,546,926
+3,35.99,legacy
+4,670,local
+5,21.08,52.99
+6,88.99,676
+7,606,edge
+8,98.26,905
