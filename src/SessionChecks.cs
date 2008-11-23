@@ -28,38 +28,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long seed, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series, long offset)
         {
-            if ((8 + 9) > seed)
+            long result = 509;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((76 & 1) <= (seed & 63))
+                if (((284 + offset) < result) || ((double)reading > 9.4))
                 {
-                    return 3;
+                    result = result ^ reading;
                 }
-                else
+                if ((offset * 3) != (offset << 1))
                 {
-                    if (seed <= limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((74 + seed) <= (limit + (-5))) && ((6 % 97) == (limit / 3)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = (result - (946 << 3)) % 65521;
+                    break;
                 }
+                result = (result * 2) + offset;
             }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
