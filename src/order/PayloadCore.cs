@@ -49,12 +49,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long TallySchemaMetricsHits(long[] series)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (3.0 < (double)value)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
