@@ -30,11 +30,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
