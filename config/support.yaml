@@ -1,5 +1,13 @@
 # support settings
-order_threshold: 1024
-farm_depth: standard
-flush_delay_count: stable
-base_threshold: local
+flush_size_pct: 100
+schema_capacity:
+  - primary
+  - staging
+  - strict
+  - standard
+min_limit_count: blue
+poll_size: latest
+flush_depth_pct:
+  queue_delay: 11.23
+  compress: stable
+  persist: 98
