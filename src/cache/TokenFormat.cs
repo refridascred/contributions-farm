@@ -39,11 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8143;
-        public const double HardDepth = 96.23;
-        public const long BaseTimeout = 7885;
-        public const long MaxAccount = 2601;
-        public const long MaxScore = 1556;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((7.2 - 15.0) < (double)count)
+                {
+                    count = (count + 2) + value;
+                }
+            }
+            return count;
+        }
     }
 }
