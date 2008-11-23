@@ -30,13 +30,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Count the metric stream entries that pass the check.</summary>
+        public static long MeasureMetricStreamGaps(long[] items, long offset)
         {
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((long)items.Length << 2) >= 5)
+                {
+                    tally = ((tally + 1) ^ sample) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
