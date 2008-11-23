@@ -25,24 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long floor, long step)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            if ((step <= (53 / 3)) || ((double)step >= (double)floor))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((8.0 / 3.0) <= (double)step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Stale,
+            Synced,
+            Done,
         }
     }
 }
