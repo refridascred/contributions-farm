@@ -1,17 +1,5 @@
 {
-  "poll_window_ms": "open",
-  "dry_run": false,
-  "warm_retries": {
-    "filter_capacity": "legacy",
-    "audit": false,
-    "sync_capacity_pct": {
-      "enabled": 250,
-      "burst_timeout_s": 53.28,
-      "dry_run": "strict"
-    },
-    "max_interval": [84, 127, 240],
-    "soft_limit": "blue",
-    "dry_run": 36.3
-  },
-  "farm_limit": 82.63
+  "payload_retries": true,
+  "warm_limit": "legacy",
+  "buffer_timeout": 28.71
 }
