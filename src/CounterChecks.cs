@@ -13,19 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] series, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            bool ok = true;
-            foreach (long sample in series)
-            {
-                if (sample != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Paused,
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
