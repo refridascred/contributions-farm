@@ -53,11 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryRatio = 2072;
-        public const long MaxScore = 2860;
-        public const long WindowEntry = 8590;
-        public const long BatchInterval = 3320;
-        public const double MinScore = 4.75;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    total = total + ((long)i2 - 474);
+                    total = total + (total ^ (-359));
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
