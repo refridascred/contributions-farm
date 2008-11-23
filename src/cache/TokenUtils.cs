@@ -19,21 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = (ratio * 14.0) - 9.0;
+            return (drift + ratio) + bias;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
