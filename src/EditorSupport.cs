@@ -64,19 +64,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi counter entries.</summary>
-        public static long TallyContributiCounter(long[] readings)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mix = 83;
-            foreach (long value in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (((mix << 3) ^ (value ^ mix)) % 255) + (long)i;
-                }
-                mix = (mix - (592 & 127)) % 101;
-            }
-            return mix;
+            Retry,
+            Failed,
+            Active,
+            Ready,
+            New,
         }
 
         /// <summary>Describe the commits phase values.</summary>
