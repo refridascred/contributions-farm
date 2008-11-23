@@ -80,9 +80,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 4199;
-        public const long BatchInterval = 1558;
-        public const long WindowRoute = 6896;
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
+        {
+            Draft,
+            Synced,
+            Dropped,
+            Done,
+        }
     }
 }
