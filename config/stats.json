@@ -1,5 +1,6 @@
 {
-  "warm_delay_s": [92, 409],
-  "dry_run": 57.85,
-  "already_limit": "strict"
+  "command_depth": ["strict", "local", "edge"],
+  "persist": "legacy",
+  "contributi_ttl": 100,
+  "batch_limit_pct": true
 }
