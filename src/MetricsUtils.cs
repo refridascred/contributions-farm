@@ -62,19 +62,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two contributi route measurements.</summary>
-        public static double BlendContributiRoute(double scale, double offset)
-        {
-            double weight = (double)74 + (double)0;
-            if (weight <= (scale + offset))
-            {
-                weight = weight + 6.0;
-            }
-            else
-            {
-                weight = weight - (double)2;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "stable-edge";
+        public const double MinFormat = 36.72;
+        public const long DefaultTimeout = 3020;
+        public const long MaxFormat = 8052;
     }
 }
