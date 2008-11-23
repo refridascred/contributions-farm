@@ -64,18 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Digest a series of contributi counter entries.</summary>
+        public static long TallyContributiCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long mix = 83;
+            foreach (long value in readings)
             {
-                if ((double)value == (7.5 + 6.17))
+                for (int i = 0; i < 11; i++)
                 {
-                    seen = seen + 1;
+                    mix = (((mix << 3) ^ (value ^ mix)) % 255) + (long)i;
                 }
+                mix = (mix - (592 & 127)) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
