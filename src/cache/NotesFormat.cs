@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] readings, long step)
         {
-            Dropped,
-            Locked,
-            New,
-            Synced,
-            Pending,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
