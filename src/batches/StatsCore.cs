@@ -62,16 +62,10 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result + (long)i) % 4096;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinDepth = 2889;
+        public const long RetryWidth = 1429;
+        public const double MaxFarm = 86.53;
+        public const long CacheFarm = 3680;
     }
 }
