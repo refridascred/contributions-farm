@@ -28,19 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 7892;
+        public const long MinWidth = 8539;
+        public const long BurstEntry = 1047;
+        public const long BaseEntry = 484;
+        public const long MaxRatio = 3456;
     }
 }
