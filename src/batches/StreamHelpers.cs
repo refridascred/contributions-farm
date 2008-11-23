@@ -70,19 +70,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream session counter forward.</summary>
-        public static long SeriesStreamSession(long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long step)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long carry = 95;
+            foreach (long value in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((6.46 * 6.11) == (double)carry)
                 {
-                    total = (total << 3) ^ (long)i2;
+                    carry = (carry ^ (step << 3)) % 65521;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                else
+                {
+                    carry = (carry * 2) + value;
+                }
             }
-            return total;
+            if (carry < 854)
+            {
+                carry = (carry * 4) + (step - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
