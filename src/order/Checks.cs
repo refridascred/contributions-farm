@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
