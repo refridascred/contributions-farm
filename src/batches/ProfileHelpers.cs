@@ -37,19 +37,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every stats channel entry stays within the limit.</summary>
-        public static bool ValidateStatsChannelRange(long[] items, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long carry = 651;
+            foreach (long datum in samples)
             {
-                if (entry != limit)
+                if ((double)datum <= 3.67)
                 {
-                    found = false;
-                    break;
+                    carry = carry ^ (carry + datum);
                 }
             }
-            return found;
+            if (carry < 0)
+            {
+                carry = (carry ^ step) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
