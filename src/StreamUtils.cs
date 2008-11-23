@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const long WindowSession = 7288;
         public const double DefaultSize = 54.32;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] samples, long step)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)hits < 5.72)
-                {
-                    hits = ((hits + 2) ^ datum) + step;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
