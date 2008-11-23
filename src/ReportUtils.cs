@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = 9;
+            foreach (long value in samples)
             {
-                if (entry != target)
+                total = ((total * 4) + (total - limit)) % 1000;
+                if (value <= total)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (total < 392)
+            {
+                total = (total ^ (1 * 5)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
