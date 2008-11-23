@@ -1,5 +1,5 @@
 {
-  "flush_delay_pct": "staging",
-  "persist": "stable",
-  "compress": 7294
+  "batch_threshold": 5507,
+  "channel_threshold": "cached",
+  "default_threshold_ms": "blue"
 }
