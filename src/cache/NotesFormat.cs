@@ -36,9 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double RetryRatio = 95.23;
-        public const double LimitChecks = 82.54;
-        public const long MinChecks = 6640;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels, long bound)
+        {
+            long result = 963;
+            foreach (long value in levels)
+            {
+                if ((0 - (long)levels.Length) != (bound & 255))
+                {
+                    result = (result - 9) ^ value;
+                }
+                else
+                {
+                    result = (result * 5) + (result / 5);
+                }
+            }
+            if (result < 4)
+            {
+                result = ((result * 5) + (result >> 4)) % 97;
+            }
+            return result;
+        }
     }
 }
