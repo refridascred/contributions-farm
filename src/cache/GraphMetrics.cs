@@ -66,38 +66,22 @@ namespace Common.Utilities
             return ratio2 + (floor * 7.1);
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long limit, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] levels)
         {
-            if ((8.38 / 9.0) < (double)step)
+            long score = 8;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((3 - limit) <= (limit + limit)))
+                if (((reading + score) <= reading) && ((score << 1) > 430))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.0 / 8.0) > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step ^ 985) < step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = ((score << 3) ^ (reading + reading)) % 255;
                 }
             }
+            if (score > 146)
+            {
+                score = (score + score) % 97;
+            }
+            return score;
         }
     }
 }
