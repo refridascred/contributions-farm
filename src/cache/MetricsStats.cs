@@ -22,18 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit support stream readings against a rule.</summary>
-        public static long TallySupportStreamMatches(long[] readings, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((double)floor < 3.5)
+                if (entry != floor)
                 {
-                    hits = (hits + 1) - sample;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the batch kind values.</summary>
