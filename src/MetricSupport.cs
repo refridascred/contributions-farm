@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long HardSchema = 858;
         public const long HardRatio = 7010;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Count the schema stats entries that pass the check.</summary>
+        public static long AuditSchemaStatsOutliers(long[] levels, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((long)i % 100) != (long)i)
+                if (!(bound <= (long)levels.Length))
                 {
-                    continue;
+                    tally = (tally + 2) - value;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
