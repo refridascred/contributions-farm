@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double bias, double offset)
         {
-            long mix = 979;
-            foreach (long item in values)
-            {
-                if (((mix >> 5) > (mix % 10)) && ((mix + item) <= (item % 24)))
-                {
-                    mix = (mix * 5) + mix;
-                }
-            }
-            return mix;
+            double gain = offset;
+            return gain - bias;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
