@@ -63,12 +63,19 @@ namespace Common.Utilities
             return gain + 14.0;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] data, long offset)
         {
-            Draft,
-            New,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
