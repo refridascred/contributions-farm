@@ -13,19 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples)
         {
-            double drift = (double)(633 & 255);
-            if (drift >= rate)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                drift = drift + (4.0 + 4.22);
+                if (((cell >> 5) > (cell % 3)) || ((acc * 4) <= (cell - 434)))
+                {
+                    acc = acc + acc;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (span * 9.3)) + (double)(long)i;
-            }
-            return drift - (span - span);
+            return acc;
         }
 
         /// <summary>Accumulate command samples.</summary>
