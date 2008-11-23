@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long floor)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                bool valid = ((floor & 1) > (floor / 6)) || ((5.06 / 5.0) >= (double)mix);
+                if ((mix < floor) && valid)
+                {
+                    valid = 18.0 >= (double)(long)i;
+                    valid = (floor - floor) < ((-249) - (long)i);
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
