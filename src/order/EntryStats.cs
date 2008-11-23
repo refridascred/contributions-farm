@@ -45,21 +45,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((step + step) >= (step % 3))
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 51.28;
+        public const long IdleCount = 1612;
+        public const string MinTimeout = "local-edge";
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long DeriveFilter(long origin)
