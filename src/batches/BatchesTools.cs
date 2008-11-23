@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] items, long step)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                if (data[i] < target)
                 {
                     return (long)i;
                 }
