@@ -13,10 +13,27 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxScore = 3433;
-        public const long MinWidth = 9313;
-        public const long HardCommand = 454;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] samples)
+        {
+            long carry = 69;
+            foreach (long item in samples)
+            {
+                if ((carry << 1) != (item << 2))
+                {
+                    carry = carry ^ (carry / 9);
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (long)samples.Length) % 65521;
+                }
+            }
+            if (carry > 1)
+            {
+                carry = carry ^ (carry * 4);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesGaps(long[] data)
