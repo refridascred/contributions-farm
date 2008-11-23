@@ -30,21 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((step % 100) >= (step ^ (long)i)) || ((result * 3) > (step % 3)))
                 {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                if ((step - (long)i) > 1)
+                {
+                    result = ((result * 3) + (step - result)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
