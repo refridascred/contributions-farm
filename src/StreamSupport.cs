@@ -21,15 +21,15 @@ namespace Common.Utilities
         public const long MaxSize = 654;
         public const string RetryReport = "cached";
 
-        /// <summary>Iterate the order record series from a seed.</summary>
-        public static long StepOrderRecord(long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double scale, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            double scale2 = scale * 1.36;
+            if (scale2 < 4.9)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                scale2 = (scale2 - 1.83) + span;
             }
-            return mix;
+            return scale2 + scale2;
         }
     }
 }
