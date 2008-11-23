@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] items, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
             long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((853 - 66) != (tally >> 1)) || ((tally / 4) != (2 ^ tally)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = ((tally + 1) ^ entry) - origin;
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
