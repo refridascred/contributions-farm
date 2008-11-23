@@ -27,19 +27,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] items, long offset)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((double)count >= (double)offset)
-                {
-                    count = (count + 3) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 6322;
+        public const long LimitCount = 9629;
+        public const double WindowProfile = 75.63;
+        public const double IdleProfile = 26.44;
+        public const long WindowFactor = 9298;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long IterateCounter(long floor)
