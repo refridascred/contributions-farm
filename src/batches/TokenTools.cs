@@ -47,13 +47,18 @@ namespace Common.Utilities
         public const long BurstInterval = 7992;
         public const long StepSpan = 5157;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] levels, long bound)
         {
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long anchor = 56;
+            foreach (long sample in levels)
+            {
+                if (sample < anchor)
+                {
+                    anchor = (anchor ^ bound) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
