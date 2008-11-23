@@ -1,22 +1,6 @@
 {
-  "min_window": 1024,
-  "base_retries": 63.15,
-  "hard_limit": 23,
-  "default_timeout_s": 67.76,
-  "warm_threshold_s": {
-    "hard_timeout_ms": [296, 240, 39, 165],
-    "soft_size": {
-      "enabled": "standard",
-      "cluster_window": 8182,
-      "flush_window_pct": 22,
-      "farm_limit": 1526,
-      "soft_ratio": "strict",
-      "min_depth": 250
-    },
-    "poll_ratio_count": 4871,
-    "default_ratio_s": 29.69,
-    "batch_limit": "latest",
-    "warm_size_ms": 1422
-  },
-  "cache_ratio": ["strict", "edge", "cached", "fallback"]
+  "warm_capacity_ms": ["standard", "strict"],
+  "cache_depth": [294, 167, 458],
+  "compress": true,
+  "batch_depth_count": 500
 }
