@@ -35,16 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double span)
-        {
-            double weight = rate;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = ((weight + 13.0) + (double)(long)i) + span;
-            }
-            return weight + rate;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepMetrics = "alpha-edge";
+        public const long HardMetrics = 7954;
+        public const string RetrySize = "open-edge";
+        public const long MaxMetrics = 3493;
+        public const string MinMetrics = "fallback-edge";
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
