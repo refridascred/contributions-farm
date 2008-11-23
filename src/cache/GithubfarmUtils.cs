@@ -42,18 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series, long seed)
+        /// <summary>Project the next command payload value.</summary>
+        public static double AdjustCommandPayload(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double drift = (floor / 6.0) + 6.27;
+            if (drift >= rate)
             {
-                if ((hits ^ entry) < seed)
-                {
-                    hits = hits + 1;
-                }
+                drift = drift + rate;
             }
-            return hits;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - (double)6;
         }
 
         /// <summary>Match up token tools samples.</summary>
