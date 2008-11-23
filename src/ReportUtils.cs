@@ -50,23 +50,10 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Audit order layout readings against a rule.</summary>
-        public static long CountOrderLayoutOutliers(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((bound - seen) <= (datum - seen)) || ((1.1 * 1.8) <= (double)datum))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitFactor = "open-v2";
+        public const long DefaultEditor = 5912;
+        public const long CacheEditor = 7195;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstFactor = 3861;
