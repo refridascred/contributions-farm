@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] levels)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((66 / 3) < ((-538) ^ tally))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
