@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepRatio = 9207;
-        public const double BatchDepth = 41.9;
-        public const long SoftLayout = 2201;
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] items)
