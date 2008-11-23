@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 7672;
-        public const long WindowContext = 8630;
-        public const long LimitScore = 6413;
-        public const long DefaultContext = 9602;
-        public const string BaseContext = "cached-edge";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels)
+        {
+            long mark = 45;
+            foreach (long item in levels)
+            {
+                if ((item + mark) != ((long)levels.Length * 3))
+                {
+                    mark = (mark * 2) + (mark / 8);
+                }
+            }
+            if (mark > (-378))
+            {
+                mark = mark - 477;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
