@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSpan = 5946;
-        public const long DefaultWidth = 6142;
-        public const double BurstSupport = 97.54;
-        public const long StepSupport = 4616;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 20; i++)
+            {
+                long offset = (carry & 1) % 24;
+                carry = (carry << 3) ^ offset;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] samples)
