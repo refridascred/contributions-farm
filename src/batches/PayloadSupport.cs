@@ -23,11 +23,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            double load = (double)(19 * 4);
+            if (load <= (load + 3.1))
+            {
+                load = (load - (offset / 4.0)) - ratio;
+            }
+            else
+            {
+                load = load + (load + load);
+            }
+            return load - (double)370;
         }
     }
 }
