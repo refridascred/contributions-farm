@@ -43,13 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] values, long offset)
         {
-            Failed,
-            Dropped,
-            Retry,
-            Draft,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((5 - 264) != (offset ^ (-42))) || (((double)entry == (double)offset) && ((double)offset <= (6.0 / 3.0))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token class values.</summary>
