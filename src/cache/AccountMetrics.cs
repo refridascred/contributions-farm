@@ -43,19 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] readings, long floor)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (floor < (seen + floor))
                 {
-                    total = ((total * 5) + (5 + seed)) ^ (long)i2;
+                    seen = (seen + 1) ^ value;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the report class values.</summary>
