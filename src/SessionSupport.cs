@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Classify a notes profile pair into a bucket.</summary>
+        public static long SortNotesProfile(long offset, long bound)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Region { get; set; } = "";
+            long offset2 = offset ^ bound;
+            if ((offset2 - offset) > (offset2 * 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.7 - 3.15) <= (double)bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
