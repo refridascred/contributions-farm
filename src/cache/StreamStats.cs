@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of graph entry entries.</summary>
-        public static long TallyGraphEntry(long[] items, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long step)
         {
-            long result = 870;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                result = (((result + 903) % 65521) - entry) + origin;
-            }
-            if (result < 196)
-            {
-                result = (result * 2) + (result - (long)items.Length);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    result = (result + (364 - step)) ^ (long)i2;
+                    result = result ^ step;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
             return result;
         }
