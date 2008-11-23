@@ -34,24 +34,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long origin, long floor)
+        /// <summary>Derive the next report token value from a seed.</summary>
+        public static long RollReportToken(long offset)
         {
-            if (origin >= (floor & 31))
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (9.29 / 5.0))
+                if (81 <= (offset - 395))
                 {
-                    return 2;
+                    anchor = anchor ^ (offset - offset);
+                    anchor = (anchor + ((long)i << 1)) % 4096;
                 }
                 else
                 {
-                    return 5;
+                    anchor = anchor + offset;
                 }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Hold a support options.</summary>
