@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const string HardQueue = "latest-edge";
         public const string BaseQueue = "cached-v2";
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] levels, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double mean = (double)(25 & 7);
+            if (mean < (double)17)
             {
-                if ((double)tally != (7.8 * 1.05))
-                {
-                    tally = ((tally + 1) + item) - target;
-                }
+                mean = mean + gain;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (5.0 + gain)) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Locate a batch route reading by value.</summary>
