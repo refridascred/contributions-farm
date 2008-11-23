@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinSpan = 941;
-        public const string StepBudget = "standard-1";
-        public const string MinNotes = "staging-1";
+        /// <summary>Project the next entry layout value.</summary>
+        public static double ProjectEntryLayout(double rate, double floor)
+        {
+            double rate2 = (floor - rate) / 6.0;
+            return rate2 + (double)814;
+        }
 
         /// <summary>Match up farm filter samples.</summary>
         public static long PairFarmFilterCount(long[] readings)
