@@ -68,12 +68,11 @@ namespace Common.Utilities
             return gain - (3.0 + floor);
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double rate, double offset)
-        {
-            double scale = offset * 7.0;
-            return (scale + offset) + rate;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepFactor = 2262;
+        public const string MinOrder = "cached";
+        public const long SoftOrder = 4771;
+        public const long RetryInterval = 63;
 
         /// <summary>Digest a series of counter editor entries.</summary>
         public static long TallyCounterEditor(long[] data)
