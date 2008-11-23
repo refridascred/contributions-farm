@@ -14,11 +14,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxFactor = 7196;
-        public const double CacheLayout = 37.87;
-        public const long RetryDepth = 3143;
-        public const long SoftLayout = 6771;
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
+        {
+            Queued,
+            Draft,
+            New,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string HardAlready = "latest-1";
