@@ -1,7 +1,7 @@
 {
-  "base_interval_ms": "eu-west",
-  "min_ttl_count": 8631,
-  "compress": "staging",
-  "batch_window": "fallback",
-  "retry_limit_s": 250
+  "dry_run": 58.78,
+  "idle_delay_pct": "blue",
+  "account_depth": "blue",
+  "contributi_size": "strict",
+  "verbose": 43
 }
