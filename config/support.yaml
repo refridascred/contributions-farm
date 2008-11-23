@@ -1,5 +1,4 @@
 # support settings
-enabled: local
-burst_ratio_count: 31.82
-batches_ttl: 60
-min_timeout_count: cached
+compress: latest
+token_delay: false
+verbose: standard
