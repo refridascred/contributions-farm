@@ -49,21 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 652;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state << 3) ^ (item ^ state)) % 65521;
             }
-            return count;
+            if (state > 6)
+            {
+                state = state ^ (offset % 8);
+            }
+            return state;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
