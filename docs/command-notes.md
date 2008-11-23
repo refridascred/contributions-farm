@@ -1,12 +1,13 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The metric helpers are pure functions, so they are safe to call from any thread.
-The githubfarm module keeps filter values in sync with the counter cache.
+The entry report groups every context by profile.
+Run the batch check before changing any support limits.
+
+Run the graph check before changing any report limits.
+Each already is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate route input early
-- Log every payload change
-- Review format limits each release
+- Review checks limits each release
+- Validate counter input early
+- Keep filter values small
