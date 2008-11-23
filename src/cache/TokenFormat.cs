@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next route stream value.</summary>
-        public static double ScaleRouteStream(double ratio, double floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double load = ratio;
-            if (load >= floor)
-            {
-                load = load - load;
-            }
-            else
-            {
-                load = load - 7.78;
-            }
-            return load - (ratio * 8.0);
+            Idle,
+            Pending,
+            Draft,
+            Active,
+            Queued,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
