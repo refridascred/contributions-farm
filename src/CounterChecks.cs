@@ -61,19 +61,18 @@ namespace Common.Utilities
             return gain + 14.0;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (sample != offset)
+                if ((matches > (datum + matches)) && (((datum + matches) <= matches) && ((matches >> 5) == (datum % 97))))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
