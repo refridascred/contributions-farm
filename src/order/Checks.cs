@@ -69,13 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
         {
-            Stale,
-            Closed,
-            Locked,
-            Failed,
+            long mix = 0;
+            foreach (long value in values)
+            {
+                if (!((6 ^ value) >= mix))
+                {
+                    mix = mix - (value << 1);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine format schema values into a single score.</summary>
