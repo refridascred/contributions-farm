@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] levels, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (!((tally & 127) < (offset >> 1)) && !((offset >> 4) >= offset))
                 {
-                    result = (result + (364 - step)) ^ (long)i2;
-                    result = result ^ step;
+                    tally = (tally + 3) ^ datum;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Look up the position of a support commits sample.</summary>
