@@ -1,6 +1,13 @@
 {
-  "retry_timeout_count": [392, 354, 433],
-  "batch_capacity": 250,
-  "cache_retries_pct": 92.71,
-  "readonly": 55.76
+  "retry_ttl_ms": "standard",
+  "idle_size": "staging",
+  "batch_retries_s": {
+    "compress": 91.09,
+    "persist": 43,
+    "notes_timeout": "eu-west",
+    "max_ttl": "staging"
+  },
+  "window_retries": 1213,
+  "readonly": 38.64,
+  "format_timeout": "strict"
 }
