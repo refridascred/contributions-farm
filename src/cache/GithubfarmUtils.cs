@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every checks stats entry stays within the limit.</summary>
-        public static bool ValidateChecksStatsRange(long[] levels, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long floor)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (item <= floor)
+                carry = ((carry << 2) ^ (71 % 60)) % 97;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry ^ floor) % 255) ^ (long)i2;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count the layout order entries that pass the check.</summary>
