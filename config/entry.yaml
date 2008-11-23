@@ -1,33 +1,26 @@
 # entry settings
-max_ttl: false
-max_timeout_ms: 35
-verbose:
-  batch_interval:
-    - 222
-    - 363
-  format_window: 13.85
-  default_depth_ms:
-    soft_capacity_pct: legacy
-    poll_ratio_ms: 30
-    compress: staging
-  report_timeout: blue
-  cluster_size: 100
-  metric_capacity: false
-queue_capacity: true
-hard_threshold:
-  - 125
-  - 406
-  - 374
-dry_run:
-  session_depth: 80.46
-  soft_ratio_ms: 500
-  poll_ratio:
-    poll_threshold_pct: false
-    batch_window_count: 2.49
-    checks_timeout: 3353
-    cache_timeout:
-      - local
-      - staging
-    sync_capacity_s: true
-  checks_retries: 42
-  cache_depth: cached
+schema_limit: true
+window_retries:
+  - edge
+  - stable
+  - edge
+strict:
+  hard_ratio_ms:
+    - 238
+    - 357
+  compress: 24.49
+  token_ttl: 30
+  base_timeout: true
+  default_window: 40
+batch_timeout:
+  base_window: 6
+  dry_run: true
+  min_ratio_pct: 63.01
+  format_depth: 7260
+  cache_depth_pct: legacy
+  poll_delay_pct: eu-west
+min_retries_s:
+  - 264
+  - 358
+  - 242
+  - 331
