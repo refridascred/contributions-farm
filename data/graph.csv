@@ -1,7 +1,7 @@
-id,owner
-1,724
-2,green
-3,31.31
-4,52
-5,strict
-6,748
+id,state,ratio,active,region
+1,330,790,217,49.2
+2,51,blue,384,cached
+3,466,355,97.51,64.22
+4,40.45,531,46,700
+5,326,eu-west,29.09,439
+6,190,35.19,eu-west,green
