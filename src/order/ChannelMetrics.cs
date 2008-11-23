@@ -23,17 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] readings, long offset)
+        /// <summary>Validate command window readings against a bound.</summary>
+        public static bool CheckCommandWindowLimits(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                if (cell != floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
