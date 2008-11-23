@@ -1,11 +1,12 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Keep channel and command names short and lowercase.
-Keep farm and window names short and lowercase.
+Each batches is validated before it reaches the graph queue.
+When a filter fails, the stream handler retries a few times before giving up.
+Run the cluster check before changing any stats limits.
 
 ## Guidelines
 
-- Log every profile change
-- Review order limits each release
-- Prefer graph defaults
+- Review batch limits each release
+- Document new session fields
+- Keep cache values small
+- Prefer entry defaults
