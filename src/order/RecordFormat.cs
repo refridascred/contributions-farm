@@ -38,18 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] series, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((((7.1 / 5.0) >= (double)offset) && (1 < tally)) && ((double)offset < (9.0 + 1.18)))
+                if ((double)count >= (double)offset)
                 {
-                    tally = (tally + 3) ^ datum;
+                    count = (count + 3) + item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
