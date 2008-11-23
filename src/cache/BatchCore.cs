@@ -25,18 +25,19 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = 393;
+            foreach (long sample in values)
             {
-                if ((0.4 - 18.0) != (double)datum)
-                {
-                    hits = hits + 2;
-                }
+                result = (((result ^ (57 + 0)) % 255) ^ sample) - bound;
             }
-            return hits;
+            if (result > (-52))
+            {
+                result = ((result << 2) ^ (74 << 1)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Accumulate tools token samples.</summary>
