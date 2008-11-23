@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const long MinBudget = 5255;
         public const string StepRatio = "standard-edge";
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
