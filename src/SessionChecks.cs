@@ -52,11 +52,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] values, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
