@@ -29,11 +29,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultScore = 9729;
-        public const long BaseScore = 7372;
-        public const double HardRatio = 15.46;
-        public const long IdleTimeout = 6809;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string LimitTimeout = "stable";
