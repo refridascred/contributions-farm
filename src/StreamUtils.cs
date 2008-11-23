@@ -69,38 +69,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long floor, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long offset)
         {
-            if ((floor - floor) > (floor + seed))
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) > seed)
+                if ((long)i <= ((long)i << 3))
                 {
-                    return 4;
+                    score = score - (long)i;
+                    break;
                 }
-                else
-                {
-                    if ((seed + 557) != (seed << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor > (30 + seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Locate a context route reading by value.</summary>
