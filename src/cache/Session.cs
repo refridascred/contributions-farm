@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "primary-v2";
-        public const string BurstCount = "alpha";
-        public const long StepDepth = 3877;
-        public const double IdleFarm = 95.06;
+        /// <summary>Classify a batch batches pair into a bucket.</summary>
+        public static long BucketBatchBatches(long offset, long target)
+        {
+            long bound = offset + target;
+            if ((double)target > (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((801 >> 1) > (offset % 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (71 < (target - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long CountOrderHits(long[] levels)
