@@ -34,15 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] levels, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            long state = 2;
-            foreach (long datum in levels)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                state = (((state ^ (state >> 2)) % 101) - datum) - limit;
+                mix = (mix ^ mix) % 65521;
+                mix = (mix - (origin << 2)) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Fold a list of farm batch readings.</summary>
