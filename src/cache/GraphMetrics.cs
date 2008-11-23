@@ -66,22 +66,11 @@ namespace Common.Utilities
             return ratio2 + (floor * 7.1);
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] levels)
-        {
-            long score = 8;
-            foreach (long reading in levels)
-            {
-                if (((reading + score) <= reading) && ((score << 1) > 430))
-                {
-                    score = ((score << 3) ^ (reading + reading)) % 255;
-                }
-            }
-            if (score > 146)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 2394;
+        public const long WindowBudget = 4104;
+        public const double StepTimeout = 8.94;
+        public const double DefaultDepth = 45.05;
+        public const double IdleRatio = 34.49;
     }
 }
