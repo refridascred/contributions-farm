@@ -1,5 +1,6 @@
 {
-  "persist": 70.78,
-  "payload_ttl": 5836,
-  "cache_ttl_ms": 6.65
+  "enabled": 60,
+  "warm_size_ms": "local",
+  "min_retries_pct": "stable",
+  "batch_ratio_pct": "eu-west"
 }
