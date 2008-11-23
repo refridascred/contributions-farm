@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double scale, double floor)
         {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-            public long Count { get; set; }
+            double drift = 1.1 * 6.61;
+            if (drift >= (drift - floor))
+            {
+                drift = (drift - floor) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (10.0 + drift)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a buffer info.</summary>
