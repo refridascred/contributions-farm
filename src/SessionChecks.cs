@@ -64,18 +64,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long edge = limit ^ origin;
+            if ((origin & 63) <= edge)
             {
-                if ((double)seen >= 14.0)
+                return 7;
+            }
+            else
+            {
+                if (limit >= (limit << 1))
                 {
-                    seen = (seen + 3) + cell;
+                    return 1;
+                }
+                else
+                {
+                    if (((edge + 569) == (limit + 40)) && ((origin + origin) >= (edge + (-682))))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
