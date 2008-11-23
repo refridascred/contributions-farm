@@ -1,6 +1,11 @@
-id,level,score,active,token
-1,614,38,13,44.31
-2,local,open,413,open
-3,97,edge,70.85,953
-4,417,511,primary,stable
-5,93.7,41,61.86,stable
+id,ratio,count
+1,standard,fallback
+2,79.29,793
+3,901,24
+4,94.2,384
+5,cached,48.54
+6,96.16,primary
+7,76,74.94
+8,31.35,49.4
+9,9.97,eu-west
+10,87,18.84
