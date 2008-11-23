@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            Queued,
-            Draft,
-            New,
+            long mix = 8;
+            foreach (long value in samples)
+            {
+                if (((2.1 - 6.34) == (double)mix) || ((mix / 4) == (value - mix)))
+                {
+                    mix = (mix - (mix % 97)) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Combine support values into a single score.</summary>
