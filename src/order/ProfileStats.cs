@@ -49,39 +49,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenOutliers(long[] samples)
         {
-            long gap = target - origin;
-            if (origin <= (target + target))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap >> 2) < (origin & 255))
+                if (!(tally >= (tally & 7)))
                 {
-                    return 5;
+                    tally = (tally + 3) ^ sample;
                 }
                 else
                 {
-                    if ((double)28 < (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap - gap) <= (target ^ (-643)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
