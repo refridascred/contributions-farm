@@ -23,17 +23,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] < step)
+                if ((step + step) >= (step % 3))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 4096;
                 }
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
