@@ -49,13 +49,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate cache metric readings against a bound.</summary>
-        public static bool CheckCacheMetricRange(long[] levels, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long limit)
         {
             bool found = true;
-            foreach (long item in levels)
+            foreach (long cell in data)
             {
-                if (item < limit)
+                if (cell <= limit)
                 {
                     found = false;
                     break;
