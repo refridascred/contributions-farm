@@ -34,34 +34,34 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long bound)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long bound, long seed)
         {
-            if ((20.0 - 2.9) > (double)step)
+            if (((bound << 3) >= seed) && (seed > (bound - seed)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if ((double)step == (8.35 + 12.0))
+                if ((bound & 31) > (seed * 5))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (step >= (step % 97))
+                    if ((seed % 12) > (seed * 3))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        if ((bound ^ step) < 5)
+                        if ((0.7 - 2.73) < (double)seed)
                         {
-                            return 3;
+                            return 0;
                         }
                         else
                         {
-                            return 6;
+                            return 4;
                         }
                     }
                 }
