@@ -17,18 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile cache readings against a rule.</summary>
-        public static long TallyProfileCacheGaps(long[] levels)
+        /// <summary>Audit report batch readings against a rule.</summary>
+        public static long CountReportBatchMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((double)tally > 7.19)
+                if (count < 186)
                 {
-                    tally = (tally + 1) ^ sample;
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
