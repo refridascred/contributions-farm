@@ -16,16 +16,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark ^ (357 % 100)) % 255;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((series[i] < seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a format options.</summary>
