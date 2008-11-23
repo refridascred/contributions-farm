@@ -1,14 +1,14 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-A stream that stays idle for too long is moved to the token list.
+A checks that stays idle for too long is moved to the order list.
+Use contributi settings to tune how often filter data is refreshed.
 
-The channel report groups every batch by format.
-Keep counter and batches names short and lowercase.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+The buffer report groups every format by schema.
+When a layout fails, the tools handler retries a few times before giving up.
+A token that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Keep filter values small
-- Prefer profile defaults
-- Validate entry input early
+- Review layout limits each release
+- Validate account input early
+- Keep window values small
