@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterLimits(long[] samples, long limit)
         {
-            long step = limit - bound;
-            if (696 <= (limit ^ bound))
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((19.0 + 17.0) <= (double)limit) || (5 >= (limit + step)))
+                if (entry >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((step % 16) == (limit % 5)) || ((bound - 304) >= bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the graph kind values.</summary>
