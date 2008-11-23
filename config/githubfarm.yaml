@@ -1,6 +1,11 @@
 # githubfarm settings
-format_ttl: 28.02
-dry_run: 1024
-channel_timeout: 6727
-soft_capacity_ms: 48
-persist: 30
+context_ratio:
+  - 154
+  - 274
+  - 337
+  - 311
+filter_size:
+  - standard
+  - cached
+  - eu-west
+batch_depth_pct: 2396
