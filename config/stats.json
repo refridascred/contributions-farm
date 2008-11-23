@@ -1,6 +1,8 @@
 {
-  "default_window_pct": false,
-  "retry_ttl": [491, 91, 360, 294],
-  "default_ttl": false,
-  "soft_ratio": "open"
+  "flush_timeout_s": 9008,
+  "base_depth": "standard",
+  "flush_size": 2,
+  "batch_ttl": 2888,
+  "max_capacity": 1666,
+  "soft_limit": "strict"
 }
