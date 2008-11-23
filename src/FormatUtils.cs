@@ -22,19 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] data, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
