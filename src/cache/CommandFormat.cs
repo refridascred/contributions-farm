@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long mark = -183;
+            foreach (long value in readings)
+            {
+                if (mark > (997 & 255))
+                {
+                    mark = (mark ^ value) % 4096;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
