@@ -20,15 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Locate a session report reading by value.</summary>
+        public static long LocateSessionReportIndex(long[] data, long seed)
         {
-            double ratio = (double)(509 & 63);
-            if (ratio <= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = (ratio + (scale / 5.0)) - offset;
+                if (data[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - scale;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
