@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((hits >> 1) >= (entry << 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Validate context readings against a bound.</summary>
