@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!((sample + count) > ((-78) * 5)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two stream measurements.</summary>
