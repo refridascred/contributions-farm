@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double weight, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long limit, long bound)
         {
-            double rate = (double)(2 + 617);
-            return (rate + (offset * 9.0)) + weight;
+            long step = limit - bound;
+            if (696 <= (limit ^ bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((19.0 + 17.0) <= (double)limit) || (5 >= (limit + step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step % 16) == (limit % 5)) || ((bound - 304) >= bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph kind values.</summary>
