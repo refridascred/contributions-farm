@@ -35,11 +35,17 @@ namespace Common.Utilities
             return bias - (6.5 + offset);
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Derive the next counter already value from a seed.</summary>
+        public static long IterateCounterAlready(long seed)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry - (seed ^ seed)) % 97;
+                carry = (carry - carry) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
