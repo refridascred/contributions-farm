@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats githubfarm measurements.</summary>
-        public static double ProjectStatsGithubfarm(double bias, double offset)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] readings, long offset)
         {
-            double mean = (double)(43 << 3);
-            if (mean <= (offset + 6.94))
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + 6.0) + bias;
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)491;
+            return -1;
         }
 
         /// <summary>Hold a context summary.</summary>
