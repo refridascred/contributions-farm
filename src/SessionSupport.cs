@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            if ((target + bound) == (target - target))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((bound & 15) != (target & 31)) && ((bound << 1) > (bound % 64)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((-586) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
