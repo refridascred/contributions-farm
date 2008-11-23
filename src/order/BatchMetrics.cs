@@ -69,20 +69,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] items, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRatio = 7230;
+        public const double MinRecord = 78.35;
+        public const long SoftRecord = 5524;
+        public const double DefaultTimeout = 58.36;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 70.94;
