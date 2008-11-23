@@ -29,21 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Audit already githubfarm readings against a rule.</summary>
+        public static long AuditAlreadyGithubfarmOutliers(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((7.27 + 5.8) >= (double)seen)
                 {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
