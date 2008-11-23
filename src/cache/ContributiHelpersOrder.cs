@@ -22,26 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] data, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long sum = 312;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample - 9) == (3 - 548))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum * 5) + (781 & 63);
-                }
-                else
-                {
-                    sum = (sum + seed) % 4096;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (sum < 868)
-            {
-                sum = (sum ^ (30 + 9)) % 255;
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
