@@ -22,21 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] data, long seed)
         {
-            long seen = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] > seed)
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
