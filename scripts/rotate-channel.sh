@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict fallback blue; do
+CHANNEL_LIMIT=132
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in eu-west open cached staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=262
-log "limit is ${CHANNEL_LIMIT}"
