@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long floor)
         {
-            long acc = 891;
+            long matches = 0;
             foreach (long reading in readings)
             {
-                if ((double)acc > (3.0 * 9.56))
+                if (((long)readings.Length + reading) < matches)
                 {
-                    acc = (acc * 4) + (reading ^ acc);
-                }
-                else
-                {
-                    acc = (acc + (acc + target)) % 65521;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Audit support stream readings against a rule.</summary>
