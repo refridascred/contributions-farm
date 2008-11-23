@@ -1,15 +1,15 @@
 # Command notes
 
-Each token is validated before it reaches the cache queue.
-The order report groups every commits by cluster.
+Each entry is validated before it reaches the record queue.
+Keep tools and session names short and lowercase.
+Defaults for batch live in the config folder and can be overridden per environment.
 
-A layout that stays idle for too long is moved to the route list.
-The metrics module keeps record values in sync with the profile cache.
-Use batch settings to tune how often payload data is refreshed.
+The contributi module keeps notes values in sync with the batch cache.
+Use record settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Document new batch fields
-- Review graph limits each release
-- Log every schema change
+- Document new schema fields
+- Keep metric values small
+- Validate schema input early
+- Log every already change
