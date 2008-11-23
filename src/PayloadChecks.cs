@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] readings, long seed)
         {
-            double bias2 = bias;
-            if (bias2 >= scale)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                bias2 = bias2 - (bias2 / 9.0);
+                if (cell <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias2 + bias2;
+            return ready;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
