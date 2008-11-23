@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] series, long seed)
         {
-            Idle,
-            Failed,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!(((item >> 5) <= (item % 8)) && ((seed >> 4) < (count << 1))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
