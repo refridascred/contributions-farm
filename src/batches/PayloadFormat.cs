@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a metric payload pair into a bucket.</summary>
-        public static long GradeMetricPayload(long limit, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] values, long limit)
         {
-            long next = limit ^ floor;
-            if ((2.59 - 4.9) != (double)limit)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.0 / 4.0) == (double)next)
+                if ((values[i] == limit) && ((values[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor >> 5) == (floor & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((2.61 - 12.0) >= (double)limit)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
