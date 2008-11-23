@@ -1,7 +1,13 @@
 {
-  "compress": "blue",
-  "batch_ratio_s": ["eu-west", "standard", "eu-west"],
-  "cache_timeout_ms": "green",
-  "flush_ttl_s": 9966,
-  "retry_ttl": "fallback"
+  "poll_capacity": {
+    "poll_ratio": true,
+    "strict": 32.33,
+    "filter_interval": false,
+    "batch_ttl": true
+  },
+  "cluster_timeout": false,
+  "entry_timeout": true,
+  "farm_capacity": "open",
+  "sync_timeout": 100,
+  "batch_size_pct": ["local", "fallback", "standard", "strict"]
 }
