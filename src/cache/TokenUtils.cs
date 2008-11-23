@@ -13,18 +13,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine order farm values into a single score.</summary>
-        public static long TotalOrderFarm(long[] data, long bound)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long step)
         {
-            long result = 436;
-            foreach (long value in data)
+            long diff = limit + step;
+            if ((1 / 8) < (26 ^ step))
             {
-                if ((4 ^ bound) > (result - value))
+                return 8;
+            }
+            else
+            {
+                if ((diff << 3) <= 2)
                 {
-                    result = (result + value) % 97;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return result;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
