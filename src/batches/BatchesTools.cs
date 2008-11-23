@@ -13,18 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mark = 109;
+            foreach (long sample in readings)
             {
-                if ((seen << 3) != (reading << 3))
+                if ((sample + mark) >= (sample + sample))
                 {
-                    seen = seen + 2;
+                    mark = ((mark ^ (6 / 6)) % 255) - seed;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
