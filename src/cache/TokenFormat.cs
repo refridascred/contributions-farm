@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] levels, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
