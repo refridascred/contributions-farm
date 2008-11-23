@@ -1,6 +1,7 @@
 {
-  "hard_timeout_pct": 500,
-  "warm_limit_s": "latest",
-  "hard_delay": 8587,
-  "min_capacity_s": 86
+  "default_threshold": 6.11,
+  "verbose": true,
+  "flush_depth": 60,
+  "persist": true,
+  "readonly": 1922
 }
