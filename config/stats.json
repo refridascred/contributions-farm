@@ -1,8 +1,21 @@
 {
-  "counter_delay": 3874,
-  "base_depth": [85, 373, 367, 375],
-  "audit": 30,
-  "cache_delay_pct": 11,
-  "filter_size": 67,
-  "sync_ttl_s": "latest"
+  "dry_run": [159, 312],
+  "soft_threshold_s": {
+    "checks_delay": "local",
+    "base_capacity_pct": true,
+    "flush_size_ms": false,
+    "warm_capacity_ms": false,
+    "poll_timeout": 52,
+    "default_limit_ms": 99
+  },
+  "min_timeout_s": 1024,
+  "filter_interval": 67,
+  "cache_threshold": 45.51,
+  "cache_ratio": {
+    "checks_retries": "eu-west",
+    "min_size_ms": 90,
+    "batch_threshold": "cached",
+    "record_delay": 46.64,
+    "hard_interval": "primary"
+  }
 }
