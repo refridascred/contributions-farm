@@ -1,9 +1,9 @@
 # support settings
-base_ttl: 3
-max_delay: 5379
-strict:
-  - 485
-  - 449
-  - 246
-hard_limit_count: legacy
-enabled: false
+enabled: green
+base_interval_pct: primary
+cache_retries_s:
+  - strict
+  - eu-west
+  - green
+  - blue
+audit: blue
