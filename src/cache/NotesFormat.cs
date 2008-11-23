@@ -22,19 +22,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] values, long floor)
+        /// <summary>Combine token format values into a single score.</summary>
+        public static long CombineTokenFormat(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long acc = 8;
+            foreach (long datum in data)
             {
-                if (cell <= floor)
+                if ((double)acc > (double)(long)data.Length)
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 5) + (floor + acc)) + datum;
                 }
+                acc = ((acc << 2) ^ (floor - floor)) % 65521;
             }
-            return flag;
+            if (acc > 9)
+            {
+                acc = acc + (acc << 2);
+            }
+            return acc;
         }
     }
 }
