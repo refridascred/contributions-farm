@@ -5,10 +5,29 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 62;
-        public const long DefaultBudget = 84;
-        public const long BatchLevel = 179;
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] data)
+        {
+            long carry = 51;
+            foreach (long datum in data)
+            {
+                carry = carry - (carry + carry);
+                carry = ((carry << 2) ^ datum) % 65521;
+                if ((carry / 8) >= 935)
+                {
+                    carry = ((carry << 3) ^ (carry / 2)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 5) + (datum + datum)) % 1000;
+                }
+                if (!((datum ^ datum) < (carry / 7)))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long LocateChannelIndex(long[] values, long seed)
