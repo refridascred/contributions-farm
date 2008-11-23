@@ -26,28 +26,31 @@ namespace Common.Utilities
         public const double WindowProfile = 6.4;
         public const long SoftCount = 8011;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long target)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long bound, long step)
         {
-            long score = target;
-            for (int i = 0; i < 4; i++)
+            if ((bound % 2) > (bound ^ bound))
             {
-                if (score > (target * 3))
+                return 1;
+            }
+            else
+            {
+                if ((bound / 2) < (bound % 97))
                 {
-                    break;
+                    return 5;
                 }
                 else
                 {
-                    score = score ^ 63;
+                    if ((-16) >= (step & 31))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long delta = (553 % 100) << 1;
-                    score = ((score ^ (delta << 2)) % 4096) - (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
