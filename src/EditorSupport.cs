@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Blend two counter contributi measurements.</summary>
+        public static double AdjustCounterContributi(double ratio, double offset)
         {
-            Failed,
-            Paused,
-            Retry,
+            double scale = (ratio / 2.0) - (offset / 8.0);
+            if (scale >= offset)
+            {
+                scale = scale + (double)84;
+            }
+            return scale + (offset + ratio);
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
