@@ -53,10 +53,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardLevel = 3507;
-        public const long IdleBatches = 1838;
-        public const long RetryBatches = 6074;
-        public const double RetryTimeout = 50.66;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long step)
+        {
+            long slot = limit + step;
+            if (!((slot + slot) < (slot + 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (68 < (limit / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
