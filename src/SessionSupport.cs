@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long StepGraph = 1845;
         public const string LimitGraph = "local";
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] items)
+        /// <summary>Find the first route context entry that matches the target.</summary>
+        public static long FindRouteContextIndex(long[] data, long target)
         {
-            long result = 21;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result ^ (result >> 5)) % 255) - item;
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 7)
-            {
-                result = result - result;
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Combine context filter values into a single score.</summary>
