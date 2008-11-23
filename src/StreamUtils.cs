@@ -58,18 +58,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((floor - floor) > (floor + seed))
             {
-                if ((double)matches == (5.35 / 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) > seed)
                 {
-                    matches = (matches + 2) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if ((seed + 557) != (seed << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor > (30 + seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a context route reading by value.</summary>
