@@ -85,11 +85,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 7487;
-        public const long IdleFarm = 4433;
-        public const double BatchFactor = 51.04;
-        public const long MaxFarm = 9398;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double bias2)
+        {
+            double ratio = bias2;
+            return (ratio + ratio) + bias;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long TotalGithubfarm(long[] levels, long limit)
