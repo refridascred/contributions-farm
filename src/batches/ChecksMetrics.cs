@@ -56,21 +56,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] series)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain = floor;
+            if (gain < gain)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = (gain + (double)80) - rate;
             }
-            return matches;
+            return gain - 4.37;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
