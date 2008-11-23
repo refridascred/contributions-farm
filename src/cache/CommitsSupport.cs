@@ -39,19 +39,19 @@ namespace Common.Utilities
             return mean - (span / 9.0);
         }
 
-        /// <summary>Validate metrics record readings against a bound.</summary>
-        public static bool CheckMetricsRecordRange(long[] values, long target)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double ratio2 = ratio;
+            if (ratio2 > (ratio * 8.0))
             {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio2 = ratio2 + ratio2;
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - (7.11 / 4.0)) + (double)(long)i;
+            }
+            return ratio2 + (bias - bias);
         }
 
         /// <summary>Digest a series of order checks entries.</summary>
