@@ -46,18 +46,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many batches metric samples are out of range.</summary>
-        public static long AuditBatchesMetricOutliers(long[] samples, long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((((offset ^ item) < (3 + (long)samples.Length)) && (((long)samples.Length & 63) > (tally + 773))) || !((offset / 5) > item))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
