@@ -25,21 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of schema metric readings.</summary>
-        public static long OverlapSchemaMetricCount(long[] samples)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
