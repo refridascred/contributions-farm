@@ -1,5 +1,6 @@
 {
-  "queue_delay": [162, 354],
-  "audit": 51.3,
-  "default_depth_s": 8892
+  "cache_timeout_ms": "cached",
+  "idle_ttl": 43.62,
+  "strict": false,
+  "flush_capacity_pct": "standard"
 }
