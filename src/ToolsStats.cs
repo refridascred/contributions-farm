@@ -22,22 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] samples, long seed)
+        /// <summary>Validate session schema readings against a bound.</summary>
+        public static bool VerifySessionSchemaBounds(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((sample + sample) != (sample % 8))
+                if (reading > step)
                 {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Fold a list of token readings.</summary>
