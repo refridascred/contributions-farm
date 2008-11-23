@@ -30,17 +30,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long step)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = total ^ step;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
     }
 }
