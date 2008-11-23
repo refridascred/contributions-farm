@@ -40,11 +40,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 5758;
-        public const double StepWidth = 42.73;
-        public const string MinCounter = "staging";
-        public const long DefaultSpan = 5123;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Retry,
+            Closed,
+            Idle,
+            Done,
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long offset, long offset2)
