@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long seed, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long gap = seed ^ bound;
+            if ((4 - gap) <= seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((347 << 3) > (seed + gap))
                 {
-                    if ((data[i] - data[j]) < 18)
+                    return 4;
+                }
+                else
+                {
+                    if (8 > bound)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((702 + bound) == (seed + bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
