@@ -37,17 +37,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a channel account sample.</summary>
-        public static long FindChannelAccountIndex(long[] readings, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] > bound)
+                if ((0.4 - 18.0) != (double)datum)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate tools token samples.</summary>
