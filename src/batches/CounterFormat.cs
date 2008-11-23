@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] data)
         {
-            Ready,
-            Retry,
-            Locked,
-            Draft,
-            Closed,
+            long total = 208;
+            foreach (long item in data)
+            {
+                total = ((total - (total >> 3)) % 1000) - item;
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
