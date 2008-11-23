@@ -28,15 +28,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series, long offset)
         {
             long tally = 0;
-            foreach (long sample in samples)
+            foreach (long datum in series)
             {
-                if (!(((7.93 / 8.0) != (double)sample) && (1.4 < (double)(long)samples.Length)))
+                if ((((7.1 / 5.0) >= (double)offset) && (1 < tally)) && ((double)offset < (9.0 + 1.18)))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) ^ datum;
                 }
             }
             return tally;
