@@ -51,14 +51,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Scale a batches counter figure with a bias.</summary>
+        public static double AdjustBatchesCounter(double ratio, double floor)
         {
-            Ready,
-            Draft,
-            Retry,
-            Active,
-            Pending,
+            double ratio2 = floor / 3.0;
+            if (ratio2 <= (ratio - ratio))
+            {
+                ratio2 = ratio2 + (ratio2 - ratio2);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 - (2.4 / 5.0)) - (double)(long)i;
+            }
+            return ratio2 + (floor * 7.1);
         }
 
         /// <summary>Describe the metrics status values.</summary>
