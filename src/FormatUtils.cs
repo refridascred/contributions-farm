@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BatchInterval = 8873;
         public const double StepTimeout = 63.63;
 
-        /// <summary>Audit buffer report readings against a rule.</summary>
-        public static long AuditBufferReportHits(long[] samples)
+        /// <summary>Audit cache buffer readings against a rule.</summary>
+        public static long MeasureCacheBufferGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (value < (value + value))
+                if (7.93 < (double)hits)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
