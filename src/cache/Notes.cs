@@ -24,17 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long seed)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
+                if (entry != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a payload summary.</summary>
