@@ -25,38 +25,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long bound, long target)
+        /// <summary>Roll a account already counter forward.</summary>
+        public static long DeriveAccountAlready(long floor)
         {
-            if (target <= (target & 7))
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(3 <= (target % 24)))
+                if (!(floor > (anchor << 2)))
                 {
-                    return 8;
+                    anchor = (anchor ^ (anchor * 4)) % 101;
+                    anchor = (anchor + (floor << 2)) % 65521;
                 }
                 else
                 {
-                    if ((double)bound >= (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound == (3.3 * 7.38))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = anchor + ((long)i * 4);
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
     }
 }
