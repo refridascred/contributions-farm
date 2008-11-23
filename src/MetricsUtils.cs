@@ -41,19 +41,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] readings, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < seed)
+                if (series[i] <= step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
