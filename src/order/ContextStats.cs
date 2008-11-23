@@ -15,22 +15,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit editor route readings against a rule.</summary>
-        public static long MeasureEditorRouteOutliers(long[] samples, long bound)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LookupPayloadIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample - count) < (-2)) && ((sample + bound) < bound))
+                if (readings[i] >= seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
