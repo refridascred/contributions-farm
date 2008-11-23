@@ -47,18 +47,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] samples, long floor)
+        /// <summary>Measure how many stats already samples are out of range.</summary>
+        public static long CountStatsAlreadyOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((floor + seen) >= floor)
+                if (608 > (hits << 1))
                 {
-                    seen = (seen + 2) + value;
+                    hits = ((hits + 1) + cell) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
