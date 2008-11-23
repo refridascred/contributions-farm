@@ -1,14 +1,15 @@
 # Command notes
 
-Each token is validated before it reaches the cluster queue.
-The stats module keeps metrics values in sync with the counter cache.
+Use editor settings to tune how often record data is refreshed.
+Run the format check before changing any command limits.
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Defaults for buffer live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the command list.
+When a commits fails, the stats handler retries a few times before giving up.
+The profile module keeps githubfarm values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate channel input early
-- Log every route change
-- Review buffer limits each release
+- Document new farm fields
+- Validate counter input early
+- Review format limits each release
+- Keep record values small
