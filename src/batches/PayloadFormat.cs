@@ -19,22 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleLevel = 71.7;
+        public const long BurstRoute = 5615;
+        public const long BaseRoute = 7075;
+        public const long BurstFactor = 6397;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] items, long bound)
