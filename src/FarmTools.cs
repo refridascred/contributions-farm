@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double bias2)
-        {
-            double ratio = bias2;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - (bias2 + bias2)) + (double)(long)i) - bias;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MinFilter = 58.49;
+        public const long BatchFilter = 4970;
+        public const string RetryFilter = "local-edge";
+        public const double BaseFilter = 80.31;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] levels, long origin)
