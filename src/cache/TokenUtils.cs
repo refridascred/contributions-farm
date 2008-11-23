@@ -20,13 +20,17 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long offset)
         {
-            Ready,
-            New,
-            Pending,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
