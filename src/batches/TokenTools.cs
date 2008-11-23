@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
