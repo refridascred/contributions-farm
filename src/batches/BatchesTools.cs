@@ -28,21 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Scale a checks buffer figure with a bias.</summary>
+        public static double ProjectChecksBuffer(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double mean = 2.26;
+            return (mean - bias) + ratio;
         }
     }
 }
