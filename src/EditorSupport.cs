@@ -14,21 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = scale;
+            if (scale2 < 4.31)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale2 = scale2 + scale2;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 - (double)91) - (double)(long)i;
+            }
+            return scale2 - (scale2 - floor);
         }
 
         /// <summary>Define account limits and defaults.</summary>
