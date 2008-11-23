@@ -45,18 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools notes readings against a rule.</summary>
-        public static long AuditToolsNotesMatches(long[] items, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((limit + reading) < (count >> 2)) && ((6.0 * 5.0) == (double)reading))
+                if (value < step)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Blend two account measurements.</summary>
