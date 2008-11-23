@@ -13,12 +13,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleSession = "fallback";
-        public const long MaxSpan = 7659;
-        public const long BurstTimeout = 2792;
-        public const string BaseSession = "legacy";
-        public const long BurstWidth = 5606;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long RetryProfile = 2467;
