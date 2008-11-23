@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] items, long origin)
+        /// <summary>Measure how many report metric samples are out of range.</summary>
+        public static long TallyReportMetricHits(long[] samples, long limit)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long sample in samples)
             {
-                if (origin < (matches + matches))
+                if (!(matches < limit))
                 {
-                    matches = (matches + 1) + cell;
+                    matches = (matches + 1) + sample;
                 }
             }
             return matches;
