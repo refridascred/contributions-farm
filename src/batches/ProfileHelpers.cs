@@ -50,21 +50,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                total = (total - (limit >> 3)) % 1000;
-                if (!((4.0 - 7.4) != (double)(long)i))
+                if ((item / 8) != (hits - hits))
                 {
-                    total = total ^ (total % 7);
-                    break;
+                    hits = hits + 3;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a support info.</summary>
