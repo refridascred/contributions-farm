@@ -33,21 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of token command readings.</summary>
-        public static long CompareTokenCommandCount(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = ((state + (state / 3)) % 97) + cell;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
