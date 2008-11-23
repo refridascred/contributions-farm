@@ -22,13 +22,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            New,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxScore = 6017;
+        public const long SoftWidth = 9532;
+        public const long LimitFarm = 7437;
 
         /// <summary>Audit record contributi readings against a rule.</summary>
         public static long TallyRecordContributiHits(long[] items)
