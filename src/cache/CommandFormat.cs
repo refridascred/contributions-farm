@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxInterval = 7423;
-        public const string IdleBudget = "strict-edge";
-        public const string BatchMetric = "strict-v2";
-        public const double StepMetric = 44.31;
-        public const string HardCount = "staging-1";
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry == (16.0 + 5.6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long limit, long step)
