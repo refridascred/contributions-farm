@@ -67,19 +67,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double floor)
+        /// <summary>Combine graph filter values into a single score.</summary>
+        public static long TotalGraphFilter(long[] data)
         {
-            double mean = gain;
-            if (mean >= (double)6)
+            long mix = 0;
+            foreach (long item in data)
             {
-                mean = (mean - (double)5) + floor;
+                mix = (((mix * 5) + (7 & 255)) % 255) + item;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - gain) + (double)(long)i;
-            }
-            return mean + gain;
+            return mix;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
