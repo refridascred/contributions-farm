@@ -1,9 +1,6 @@
-id,score,region,active
-1,26.69,79,66.24
-2,167,22.43,781
-3,10.85,fallback,921
-4,strict,36.86,fallback
-5,0.79,green,blue
-6,68.65,16.0,85.42
-7,8.58,23.78,latest
-8,primary,767,standard
+id,level,score,active,token
+1,614,38,13,44.31
+2,local,open,413,open
+3,97,edge,70.85,953
+4,417,511,primary,stable
+5,93.7,41,61.86,stable
