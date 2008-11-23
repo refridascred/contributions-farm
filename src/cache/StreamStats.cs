@@ -18,25 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Look up the position of a support commits sample.</summary>
+        public static long SeekSupportCommitsIndex(long[] items, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry << 3) ^ (offset >> 4);
-                if ((offset * 4) > offset)
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
                 {
-                    carry = ((carry * 5) + (offset * 5)) % 4096;
-                    carry = carry + carry;
+                    return (long)i;
                 }
-                if (!((230 * 5) < offset))
-                {
-                    carry = ((carry << 2) ^ (carry / 9)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
