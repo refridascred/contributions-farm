@@ -1,7 +1,7 @@
 {
-  "filter_limit": [354, 202, 125, 388],
-  "route_capacity": [185, 56],
-  "compress": ["primary", "staging"],
-  "cache_capacity": false,
-  "max_ratio_count": "staging"
+  "hard_capacity": [278, 224],
+  "burst_threshold": ["latest", "local"],
+  "audit": "open",
+  "enabled": 33,
+  "sync_threshold_pct": 3711
 }
