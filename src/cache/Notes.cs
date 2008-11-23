@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Audit notes metric readings against a rule.</summary>
+        public static long AuditNotesMetricGaps(long[] readings, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (cell > 972)
+                {
+                    seen = (seen + 1) + limit;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
