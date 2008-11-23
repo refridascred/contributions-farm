@@ -28,17 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = (acc - (acc % 64)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxSize = "strict-edge";
+        public const long BurstPayload = 3619;
+        public const long WindowSpan = 2134;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
