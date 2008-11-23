@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const double RetryFactor = 41.77;
         public const string LimitNotes = "primary-edge";
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphRange(long[] values, long seed)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
