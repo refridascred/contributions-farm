@@ -51,38 +51,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            if (5.0 > (double)seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8.4 - 7.0) < (double)seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target ^ seed) <= (target & 127)) && ((seed % 2) <= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target >= (double)4)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Retry,
+            Dropped,
+            Idle,
         }
     }
 }
