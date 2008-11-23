@@ -24,10 +24,20 @@ namespace Common.Utilities
             return gain + (double)47;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardInterval = 79.59;
-        public const string BatchTools = "standard-v2";
-        public const long MaxTools = 7850;
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double rate, double span)
+        {
+            double mean = 0.67;
+            if (mean > (mean - 9.76))
+            {
+                mean = (mean - (8.0 / 8.0)) + rate;
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (span / 9.0);
+        }
 
         /// <summary>Validate metrics record readings against a bound.</summary>
         public static bool CheckMetricsRecordRange(long[] values, long target)
