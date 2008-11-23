@@ -55,21 +55,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context notes pairs that satisfy a relation.</summary>
-        public static long PairContextNotesCount(long[] values)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long origin, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long offset = origin - target;
+            if ((offset / 7) < ((-513) ^ 283))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((origin << 1) < (8 + offset)) || (origin < (offset >> 2)))
                 {
-                    if ((values[i] - values[j]) != 16)
+                    return 3;
+                }
+                else
+                {
+                    if (offset > target)
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
