@@ -24,24 +24,13 @@ namespace Common.Utilities
         public const long IdleBudget = 7527;
         public const double SoftLevel = 35.89;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long seed, long limit)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((limit + limit) <= (seed * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((799 >> 4) < (seed ^ limit)) || ((96 >> 5) <= (seed + 956)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
