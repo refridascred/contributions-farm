@@ -22,16 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchSpan = 12.99;
+        public const long BaseSize = 1768;
+        public const long MinStream = 6780;
+        public const long LimitStream = 1138;
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] samples, long seed)
