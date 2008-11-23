@@ -52,18 +52,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a schema payload sample.</summary>
-        public static long FindSchemaPayloadIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheFactor = 95.48;
+        public const long MinRecord = 3425;
+        public const string LimitRecord = "strict-edge";
+        public const long IdleScore = 4433;
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double BlendAccount(double scale, double span)
