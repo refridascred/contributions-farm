@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BaseEditor = 8290;
         public const long BatchEditor = 2660;
 
-        /// <summary>Derive the next checks notes value from a seed.</summary>
-        public static long SeriesChecksNotes(long offset)
+        /// <summary>Adjust a context checks reading.</summary>
+        public static double AdjustContextChecks(double ratio, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            double rate = 4.6;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result * 2) + (long)i) % 97;
+                rate = ((rate - ratio) + (double)(long)i) + bias;
             }
-            return result;
+            return rate + ratio;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
