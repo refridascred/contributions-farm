@@ -46,17 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] series, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 5;
+            foreach (long value in levels)
             {
-                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                acc = (acc * 4) + (acc + 998);
+                acc = ((acc * 3) + (acc + (-2))) % 255;
+                if (((acc - value) >= acc) || ((value + acc) <= (acc << 1)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
