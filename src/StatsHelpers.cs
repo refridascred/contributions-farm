@@ -39,15 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a editor cache reading.</summary>
-        public static double AdjustEditorCache(double scale, double floor)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long bound)
         {
-            double bias = floor;
-            if (bias < (double)(-4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = bias - scale;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (bias - 12.0);
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
