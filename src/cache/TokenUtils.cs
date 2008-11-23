@@ -35,12 +35,12 @@ namespace Common.Utilities
             return load + (load - 7.1);
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] samples, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] == bound)
+                if (readings[i] < bound)
                 {
                     return (long)i;
                 }
