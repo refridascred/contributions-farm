@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a context queue value against two limits.</summary>
-        public static long BucketContextQueue(long target, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] readings, long floor)
         {
-            long cur = target - origin;
-            if (!((double)cur != (5.79 + 17.0)))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= (4.62 / 3.0))
+                if ((floor - item) == (item / 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((-23) > cur)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((24 - cur) > (cur + cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
