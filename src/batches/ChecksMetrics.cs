@@ -66,10 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheOrder = 4537;
-        public const string LimitLevel = "latest-1";
-        public const long RetrySpan = 1507;
-        public const double HardOrder = 83.05;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
