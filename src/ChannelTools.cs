@@ -38,31 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long offset, long bound)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            if ((double)offset <= (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((2 >= offset) || ((double)offset > (double)(-7)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset << 3) != (bound >> 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
