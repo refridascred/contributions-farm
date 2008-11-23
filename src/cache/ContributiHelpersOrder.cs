@@ -19,10 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1391;
-        public const long MaxBuffer = 6115;
-        public const long BurstBuffer = 150;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Idle,
+            Done,
+            Locked,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsLimits(long[] samples, long floor)
