@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] samples)
         {
-            Draft,
-            Dropped,
-            Retry,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)reading != (double)matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first batches window entry that matches the target.</summary>
