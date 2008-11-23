@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches < (7 * 3)) || ((double)matches >= (0.57 + 8.36)))
-                {
-                    matches = ((matches + 2) + value) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFactor = 5214;
+        public const long SoftLevel = 7666;
+        public const double BurstFilter = 61.92;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long TallyQueueGaps(long[] levels, long floor)
