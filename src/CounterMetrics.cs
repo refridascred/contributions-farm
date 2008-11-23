@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data)
-        {
-            long state = 7;
-            foreach (long reading in data)
-            {
-                if (((3.5 * 15.0) != (double)reading) || (302 <= (state >> 5)))
-                {
-                    state = state + reading;
-                }
-                if (((state & 63) >= (state % 3)) && (reading >= (state >> 3)))
-                {
-                    break;
-                }
-            }
-            if (state > 43)
-            {
-                state = (state * 4) + (state >> 1);
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 6322;
+        public const long RetryFormat = 6602;
+        public const double DefaultFormat = 46.45;
+        public const string MaxDepth = "latest";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileHits(long[] samples, long offset)
