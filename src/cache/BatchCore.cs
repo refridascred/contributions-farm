@@ -37,12 +37,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftRatio = 57.63;
-        public const double StepCache = 43.12;
-        public const double MaxCache = 58.64;
-        public const long CacheCount = 5805;
-        public const double StepWidth = 73.02;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate tools token samples.</summary>
         public static long TallyToolsToken(long[] readings, long step)
