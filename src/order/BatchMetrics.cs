@@ -102,19 +102,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] samples)
-        {
-            long score = 9;
-            foreach (long value in samples)
-            {
-                score = (score ^ (value + value)) % 101;
-                if ((value > (score - score)) && ((value + 26) <= score))
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchRatio = 9951;
+        public const double MaxScore = 29.56;
+        public const double CacheSession = 7.37;
+        public const long LimitTimeout = 8063;
+        public const string MinSpan = "cached-v2";
     }
 }
