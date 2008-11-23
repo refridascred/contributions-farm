@@ -1,7 +1,5 @@
 {
-  "sync_depth_ms": "cached",
-  "flush_limit_count": 662,
-  "filter_capacity": 93.27,
-  "report_size": ["green", "fallback", "open"],
-  "idle_delay_s": "stable"
+  "window_interval": ["standard", "local", "local"],
+  "checks_depth": false,
+  "poll_window": 33.69
 }
