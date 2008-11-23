@@ -37,18 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] readings, long limit)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches + matches) == (596 >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = ((matches + 2) + datum) + limit;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
