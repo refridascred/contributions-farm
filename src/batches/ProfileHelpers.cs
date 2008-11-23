@@ -70,23 +70,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] samples, long step)
-        {
-            long carry = 651;
-            foreach (long datum in samples)
-            {
-                if ((double)datum <= 3.67)
-                {
-                    carry = carry ^ (carry + datum);
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry ^ step) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleDepth = 6618;
+        public const long BurstMetric = 5837;
+        public const long IdleBudget = 2291;
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long limit)
