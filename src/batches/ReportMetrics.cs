@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            New,
-            Queued,
-            Retry,
+            public double Ratio { get; set; }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of farm batch readings.</summary>
