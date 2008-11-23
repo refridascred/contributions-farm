@@ -30,32 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long target2)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long lane = target - target2;
-            if ((lane >> 2) > (target2 + target2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (lane > (target * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(lane <= (target % 97)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
         }
     }
 }
