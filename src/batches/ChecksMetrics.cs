@@ -79,10 +79,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryTimeout = 2589;
-        public const long MinTimeout = 2227;
-        public const long StepProfile = 7044;
+        /// <summary>Combine checks payload values into a single score.</summary>
+        public static long CombineChecksPayload(long[] values)
+        {
+            long anchor = 199;
+            foreach (long reading in values)
+            {
+                anchor = (anchor ^ (reading - 426)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long RankFarm(long bound, long origin)
