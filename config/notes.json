@@ -1,5 +1,8 @@
 {
-  "route_interval": 1702,
-  "persist": 75.26,
-  "poll_depth": "staging"
+  "poll_interval": 7904,
+  "report_threshold": "local",
+  "poll_ttl": 88,
+  "base_ttl_ms": 46,
+  "strict": "staging",
+  "cache_limit_s": "eu-west"
 }
