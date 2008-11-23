@@ -1,4 +1,5 @@
 # support settings
-hard_ttl_count: 20.53
-audit: 4
-cache_depth_ms: staging
+order_threshold: 1024
+farm_depth: standard
+flush_delay_count: stable
+base_threshold: local
