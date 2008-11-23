@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const long IdleFactor = 8090;
         public const long SoftCount = 3864;
 
-        /// <summary>Find the first cache contributi entry that matches the target.</summary>
-        public static long LocateCacheContributiIndex(long[] readings, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (readings[i] < offset)
+                if ((double)value == (7.5 + 6.17))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of profile window entries.</summary>
