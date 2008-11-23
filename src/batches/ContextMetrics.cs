@@ -33,11 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 4945;
-        public const long WindowCommand = 8936;
-        public const double BaseFactor = 83.67;
-        public const long MaxCount = 2697;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSpan = 5089;
+        public const string BatchEditor = "cached-1";
+        public const long RetryScore = 7639;
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] series, long origin)
