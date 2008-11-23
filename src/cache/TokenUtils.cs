@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 9331;
-        public const long StepPayload = 1084;
-        public const double BaseDepth = 1.64;
-        public const double SoftPayload = 23.99;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSpan = 5946;
+        public const long DefaultWidth = 6142;
+        public const double BurstSupport = 97.54;
+        public const long StepSupport = 4616;
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] samples)
