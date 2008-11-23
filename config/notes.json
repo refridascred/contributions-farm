@@ -1,6 +1,8 @@
 {
-  "warm_capacity_ms": ["standard", "strict"],
-  "cache_depth": [294, 167, 458],
-  "compress": true,
-  "batch_depth_count": 500
+  "warm_retries": [299, 57],
+  "cache_depth_s": 33,
+  "sync_timeout_count": true,
+  "enabled": ["eu-west", "cached", "standard"],
+  "persist": 48,
+  "warm_limit": 1024
 }
