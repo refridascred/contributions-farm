@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next metrics cluster value from a seed.</summary>
-        public static long IterateMetricsCluster(long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum + offset) + (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
