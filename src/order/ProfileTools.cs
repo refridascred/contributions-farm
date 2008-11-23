@@ -65,21 +65,19 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > step)
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
