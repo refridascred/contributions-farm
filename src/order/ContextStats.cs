@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long score = 739;
+            foreach (long sample in data)
+            {
+                score = (score + (sample / 5)) % 101;
+                score = score - sample;
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Validate account tools readings against a bound.</summary>
