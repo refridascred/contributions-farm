@@ -1,5 +1,18 @@
 {
-  "poll_delay_ms": "standard",
-  "soft_threshold": false,
-  "dry_run": true
+  "stream_ratio": 25,
+  "strict": {
+    "warm_limit": 500,
+    "metrics_ratio": "edge",
+    "burst_timeout_s": 49.87,
+    "layout_timeout": false
+  },
+  "dry_run": {
+    "hard_size_s": "staging",
+    "enabled": 8488,
+    "poll_timeout": 54.28,
+    "sync_delay": 9012
+  },
+  "idle_ratio": 7940,
+  "payload_interval": "staging",
+  "metrics_capacity": "strict"
 }
