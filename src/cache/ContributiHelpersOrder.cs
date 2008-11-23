@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const long MinBudget = 5255;
         public const string StepRatio = "standard-edge";
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] samples)
-        {
-            long mix = 6;
-            foreach (long reading in samples)
-            {
-                mix = (mix + (reading * 5)) % 255;
-                mix = (mix - (reading & 63)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftDepth = 4638;
+        public const long BaseCount = 6520;
+        public const double MaxOrder = 30.89;
+        public const long BurstOrder = 8295;
+        public const long RetryLevel = 1169;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] data, long target)
