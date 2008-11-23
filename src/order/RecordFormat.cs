@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double bias, double span)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] values, long seed)
         {
-            double bias2 = (bias / 3.0) * 6.2;
-            return (bias2 - (double)372) + span;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
