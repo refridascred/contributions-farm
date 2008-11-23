@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const long SoftLevel = 9920;
         public const long StepRatio = 4061;
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double scale, double offset)
-        {
-            double gain = scale;
-            if (gain <= gain)
-            {
-                gain = (gain + (double)54) + offset;
-            }
-            else
-            {
-                gain = gain - (double)625;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultRatio = 4344;
+        public const double IdleInterval = 94.01;
+        public const long BatchCommand = 40;
 
         /// <summary>Match up filter queue samples.</summary>
         public static long OverlapFilterQueueCount(long[] readings)
