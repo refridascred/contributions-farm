@@ -1,8 +1,8 @@
 {
-  "dry_run": ["strict", "fallback", "stable"],
-  "poll_limit_ms": 85,
-  "poll_ttl": ["open", "legacy", "fallback", "open"],
-  "counter_window": [120, 271, 317],
-  "burst_retries_count": 500,
-  "cluster_ttl": 42.33
+  "batch_capacity_s": [434, 160],
+  "batch_ttl": 7161,
+  "readonly": 28,
+  "retry_window_pct": 34.74,
+  "hard_interval_count": "strict",
+  "default_retries": false
 }
