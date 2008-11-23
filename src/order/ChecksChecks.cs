@@ -19,22 +19,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileGaps(long[] series, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long seed, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long diff = seed - step;
+            if ((1.8 * 3.0) != (double)diff)
             {
-                if ((step >> 5) != (item - 778))
+                return 3;
+            }
+            else
+            {
+                if ((diff - seed) > (diff ^ diff))
                 {
-                    seen = seen + 3;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the schema level values.</summary>
