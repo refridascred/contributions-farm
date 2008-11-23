@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long carry = 4;
-            foreach (long entry in items)
-            {
-                carry = (((carry << 3) ^ (312 + (long)items.Length)) % 65521) ^ entry;
-            }
-            return carry % 4096;
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
