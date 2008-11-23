@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long limit)
         {
-            double bias3 = bias2;
-            if (bias3 < (double)511)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                bias3 = (bias3 - (double)73) - bias;
+                if ((limit / 6) < (limit - anchor))
+                {
+                    anchor = ((anchor * 4) + (limit + 704)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return bias3 + 2.08;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
