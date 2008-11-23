@@ -34,21 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((4.8 / 6.0) != (double)step)
-                {
-                    total = (total << 3) ^ ((long)i & 63);
-                    total = (total ^ ((long)i ^ 355)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowWidth = 6959;
+        public const long RetryLevel = 763;
+        public const long WindowBudget = 9889;
+        public const long LimitCommand = 5940;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] samples)
