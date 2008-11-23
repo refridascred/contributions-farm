@@ -26,17 +26,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a cache githubfarm reading by value.</summary>
-        public static long FindCacheGithubfarmIndex(long[] levels, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (levels[i] > offset)
+                if ((817 <= (seen - offset)) || (value < (value * 2)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
