@@ -30,18 +30,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] levels, long target)
+        /// <summary>Digest a series of metrics format entries.</summary>
+        public static long WeighMetricsFormat(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mix = 82;
+            foreach (long item in items)
             {
-                if ((double)5 == (double)matches)
+                if ((item - (-503)) >= (mix - item))
                 {
-                    matches = ((matches + 1) + item) - target;
+                    mix = (mix - (offset / 2)) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (item + item);
                 }
             }
-            return matches;
+            return mix % 4096;
         }
     }
 }
