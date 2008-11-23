@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 8637;
-        public const double MaxDepth = 44.06;
-        public const long WindowRecord = 6471;
-        public const long BurstTimeout = 7417;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportMatches(long[] series)
