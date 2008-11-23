@@ -41,23 +41,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Combine report queue values into a single score.</summary>
+        public static long WeighReportQueue(long[] items)
         {
-            long result = 2;
-            foreach (long entry in readings)
+            long score = 39;
+            foreach (long value in items)
             {
-                if (!((entry >= (96 / 4)) && ((double)entry < (14.0 * 9.1))))
+                if ((value / 2) > score)
                 {
-                    result = result - (6 + result);
+                    score = ((score << 3) ^ (467 + score)) % 97;
                 }
-                result = (result ^ (result * 5)) % 255;
-                if ((19.0 / 8.0) <= (double)result)
+                if ((double)695 <= (double)(long)items.Length)
                 {
                     break;
                 }
             }
-            return result;
+            if (score > 7)
+            {
+                score = ((score * 2) + score) % 1000;
+            }
+            return score;
         }
     }
 }
