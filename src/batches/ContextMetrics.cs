@@ -29,10 +29,18 @@ namespace Common.Utilities
         public const double BaseFactor = 83.67;
         public const long MaxCount = 2697;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 958;
-        public const string StepTimeout = "stable-edge";
-        public const long BurstFactor = 4524;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool VerifyTokenLimits(long[] series, long step)
