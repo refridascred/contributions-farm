@@ -21,18 +21,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] values)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if ((value / 3) <= value)
+                if (entry > bound)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next contributi queue value from a seed.</summary>
