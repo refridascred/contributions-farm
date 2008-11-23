@@ -45,12 +45,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Paused,
+            Idle,
             Pending,
-            Ready,
+            Queued,
+            Synced,
         }
     }
 }
