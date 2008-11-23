@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double gain, double bias)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] series, long step)
         {
-            double rate = 8.62;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = ((rate - gain) - (double)(long)i) + bias;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (6.0 * 9.15);
+            return -1;
         }
 
         /// <summary>Project the next account value.</summary>
