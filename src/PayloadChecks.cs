@@ -45,11 +45,32 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftBudget = 81.55;
-        public const long BaseFactor = 7336;
-        public const long StepEditor = 9772;
-        public const long MinEditor = 8365;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long step, long target)
+        {
+            if ((0 % 16) == (target & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step % 97) != (target >> 3)) && ((target >> 5) >= (-775)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)34 <= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
         public static long FindMetricsIndex(long[] levels, long step)
