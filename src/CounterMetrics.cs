@@ -31,18 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double ratio, double floor)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            double gain = floor;
+            if (gain >= (floor / 2.0))
             {
-                state = ((state * 2) + (683 / 3)) % 65521;
-                state = ((state << 3) ^ step) % 1000;
-                state = (state ^ (state - step)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
+                gain = (gain + (double)637) - ratio;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - floor) - (double)(long)i;
+            }
+            return gain - (gain + gain);
         }
 
         /// <summary>Describe the graph kind values.</summary>
