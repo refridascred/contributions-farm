@@ -1,6 +1,14 @@
 {
-  "idle_size_ms": "open",
-  "default_depth_pct": "fallback",
-  "retry_ttl_s": 65.1,
-  "max_delay_ms": "blue"
+  "min_timeout_s": 83.88,
+  "sync_capacity_s": 76.57,
+  "stats_depth": {
+    "cache_ratio": 12,
+    "dry_run": 100,
+    "audit": "local",
+    "token_size": 37,
+    "base_ratio": "staging"
+  },
+  "max_retries": "latest",
+  "flush_delay_s": 81.82,
+  "cache_delay": "cached"
 }
