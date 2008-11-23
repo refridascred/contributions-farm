@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] series)
         {
-            double rate2 = rate;
-            if (rate2 <= (6.0 + 7.4))
+            long sum = 65;
+            foreach (long sample in series)
             {
-                rate2 = rate2 - rate2;
+                if ((0 - sum) == (sample + sum))
+                {
+                    sum = (sum - (sum & 63)) % 97;
+                }
             }
-            return rate2 - (offset / 3.0);
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
