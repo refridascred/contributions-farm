@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value < target)
                 {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
