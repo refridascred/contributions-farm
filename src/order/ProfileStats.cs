@@ -34,17 +34,31 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Look up the position of a filter support sample.</summary>
-        public static long SeekFilterSupportIndex(long[] levels, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit < (limit - target)) || ((double)target < (4.3 / 3.0)))
             {
-                if (levels[i] < seed)
+                return 6;
+            }
+            else
+            {
+                if (!((target >> 3) < 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + target) <= (target >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
