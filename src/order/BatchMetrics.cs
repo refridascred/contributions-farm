@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double bias, double offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long offset)
         {
-            double load = bias - (offset / 9.0);
-            if (load <= (bias * 5.32))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (double)729;
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + (bias / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (double)430;
+            return -1;
         }
 
         /// <summary>Describe the command state values.</summary>
