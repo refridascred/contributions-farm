@@ -25,22 +25,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] values)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((target >= seed) || (target <= (target + seed)))
             {
-                if ((20.0 + 5.0) > (double)count)
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) > 139) && (seed <= (target / 8)))
                 {
-                    count = (count + 3) + reading;
+                    return 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
