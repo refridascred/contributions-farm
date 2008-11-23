@@ -47,19 +47,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] readings, long bound)
+        /// <summary>Grade a report cluster value against two limits.</summary>
+        public static long SortReportCluster(long limit, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long lane = limit ^ bound;
+            if (bound > (lane >> 1))
             {
-                if (reading < bound)
+                return 6;
+            }
+            else
+            {
+                if ((double)lane <= (15.0 * 2.0))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)limit >= (double)lane))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
