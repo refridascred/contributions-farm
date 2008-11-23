@@ -37,19 +37,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] series, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long anchor = 4;
+            foreach (long value in data)
             {
-                if (sample >= step)
+                anchor = ((anchor + (anchor * 2)) % 1000) ^ value;
+                if ((637 & 7) <= (anchor >> 1))
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
                 }
             }
-            return stale;
+            if (anchor < (-7))
+            {
+                anchor = (anchor << 2) ^ (bound + bound);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
