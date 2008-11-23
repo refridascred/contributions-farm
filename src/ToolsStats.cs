@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] readings, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] series, long step)
         {
-            long result = 690;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (7.52 >= (double)item)
+                if ((step + 69) >= step)
                 {
-                    result = (result << 3) ^ (step / 5);
+                    hits = (hits + 1) + datum;
                 }
-                result = ((result << 3) ^ result) % 65521;
-                if ((item + step) > result)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
