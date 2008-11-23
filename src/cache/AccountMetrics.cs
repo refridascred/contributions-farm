@@ -62,15 +62,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long seed)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double scale, double span)
         {
-            long carry = 1;
-            foreach (long cell in samples)
+            double rate = (span + scale) * 13.0;
+            if (rate > 9.71)
             {
-                carry = (((carry * 5) + cell) % 255) - seed;
+                rate = rate + (double)34;
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (7.0 / 3.0)) + (double)(long)i;
+            }
+            return rate - (double)7;
         }
     }
 }
