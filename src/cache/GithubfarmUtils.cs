@@ -51,24 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats checks value against two limits.</summary>
-        public static long SortStatsChecks(long floor, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if ((floor - floor) == (limit * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor / 9) <= (limit & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up token tools samples.</summary>
