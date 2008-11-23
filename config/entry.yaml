@@ -1,26 +1,20 @@
 # entry settings
-schema_limit: true
-window_retries:
-  - edge
-  - stable
-  - edge
-strict:
-  hard_ratio_ms:
-    - 238
-    - 357
-  compress: 24.49
-  token_ttl: 30
-  base_timeout: true
-  default_window: 40
-batch_timeout:
-  base_window: 6
-  dry_run: true
-  min_ratio_pct: 63.01
-  format_depth: 7260
-  cache_depth_pct: legacy
-  poll_delay_pct: eu-west
-min_retries_s:
-  - 264
-  - 358
-  - 242
-  - 331
+cluster_window: 6308
+max_timeout:
+  profile_limit: cached
+  counter_retries: false
+  strict:
+    - 474
+    - 204
+    - 436
+    - 284
+  base_size: 250
+  persist: false
+  route_ratio:
+    - 246
+    - 336
+    - 130
+    - 39
+burst_interval_pct: 2692
+sync_threshold_s: 250
+soft_ratio_ms: eu-west
