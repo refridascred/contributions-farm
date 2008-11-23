@@ -1,5 +1,15 @@
 # githubfarm settings
-compress: 38
-default_ratio_count: 6108
-base_capacity: local
-hard_interval_ms: 60
+idle_threshold_pct: staging
+soft_limit_pct:
+  - cached
+  - staging
+  - eu-west
+  - standard
+hard_limit_s:
+  - 54
+  - 447
+  - 494
+  - 278
+flush_retries: false
+persist: eu-west
+dry_run: edge
