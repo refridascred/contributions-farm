@@ -13,14 +13,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] readings, long offset)
         {
-            Synced,
-            Pending,
-            Locked,
-            Done,
-            New,
+            long sum = 557;
+            foreach (long reading in readings)
+            {
+                if (((offset << 2) < sum) || ((reading + reading) >= sum))
+                {
+                    sum = (sum - (offset & 63)) % 4096;
+                }
+                if ((17.0 / 8.0) < (double)reading)
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
