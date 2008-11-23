@@ -55,13 +55,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cluster class values.</summary>
