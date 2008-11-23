@@ -15,13 +15,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Idle,
-            Done,
-            Locked,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchDepth = 92.99;
+        public const double MinFactor = 83.01;
+        public const string MaxRatio = "legacy-edge";
 
         /// <summary>Validate command window readings against a bound.</summary>
         public static bool CheckCommandWindowLimits(long[] values, long floor)
