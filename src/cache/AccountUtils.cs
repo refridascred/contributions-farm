@@ -30,13 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples, long step)
         {
-            Idle,
-            Retry,
-            Draft,
-            Locked,
+            long anchor = 375;
+            foreach (long value in samples)
+            {
+                if (((anchor - step) < (6 + value)) && ((double)value <= (7.91 / 5.0)))
+                {
+                    anchor = anchor - (anchor + step);
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
