@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "local-1";
-        public const string MinDepth = "local";
-        public const double DefaultSpan = 73.52;
-        public const long DefaultFactor = 9750;
-        public const long DefaultGraph = 9220;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            Retry,
+            Ready,
+            Idle,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
