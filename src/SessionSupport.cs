@@ -25,19 +25,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] items, long origin)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (item >= origin)
+                if ((2.6 * 1.71) >= (double)cell)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
