@@ -35,18 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit already githubfarm readings against a rule.</summary>
-        public static long AuditAlreadyGithubfarmOutliers(long[] values)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((7.27 + 5.8) >= (double)seen)
-                {
-                    seen = (seen + 1) - item;
-                }
-            }
-            return seen;
+            Pending,
+            Locked,
+            Synced,
         }
     }
 }
