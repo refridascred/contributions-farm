@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadMatches(long[] items, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (origin <= (2 + 1))
+                {
+                    tally = (tally + 1) + reading;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
