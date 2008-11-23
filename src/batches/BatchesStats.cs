@@ -25,21 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((long)i >= 82))
-                {
-                    mark = (mark - mark) % 97;
-                }
-                mark = (mark * 4) + (step - (long)i);
-                mark = mark + (mark - (long)i);
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Retry,
+            Paused,
+            Idle,
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
