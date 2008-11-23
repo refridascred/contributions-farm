@@ -1,5 +1,21 @@
 # githubfarm settings
-audit: cached
-poll_delay_count: strict
-batch_size: stable
-poll_limit_pct: 70
+default_limit:
+  idle_size_ms: 21
+  metrics_capacity: strict
+  batch_limit_ms:
+    - cached
+    - blue
+    - blue
+  compress: 100
+sync_timeout_count: false
+tools_timeout:
+  session_interval: 59
+  soft_size_ms:
+    - strict
+    - stable
+    - open
+  hard_ratio_s: 11.86
+  farm_timeout:
+    max_size: 34.64
+    min_ttl: stable
+    retry_threshold_pct: 9391
