@@ -22,14 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many schema counter samples are out of range.</summary>
+        public static long TallySchemaCounterGaps(long[] samples)
         {
-            Synced,
-            Paused,
-            Pending,
-            Ready,
-            Dropped,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value > (4.0 * 7.64))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
