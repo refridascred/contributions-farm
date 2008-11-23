@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] items, long step)
         {
-            long score = 7;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (((score << 2) ^ (4 / 4)) % 255) ^ item;
+                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < 862)
-            {
-                score = (score + (score ^ score)) % 97;
-            }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
