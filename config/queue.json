@@ -1,6 +1,8 @@
 {
-  "window_depth": ["legacy", "open"],
-  "max_ttl": false,
-  "compress": "blue",
-  "counter_limit": "blue"
+  "entry_window": "primary",
+  "stream_capacity": 4,
+  "githubfarm_threshold": "legacy",
+  "cache_size": "latest",
+  "filter_timeout": 60.31,
+  "readonly": 9246
 }
