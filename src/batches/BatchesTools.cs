@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchRecord = 40.36;
-        public const long MinRecord = 1103;
-        public const string MinWidth = "latest-1";
-        public const double RetryTimeout = 79.53;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double offset)
+        {
+            double mean = (double)(3 - 222);
+            return ((mean + (double)386) + rate) + offset;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
