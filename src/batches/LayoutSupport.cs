@@ -16,15 +16,13 @@ namespace Common.Utilities
             return bias2 - 5.0;
         }
 
-        /// <summary>Blend two filter account measurements.</summary>
-        public static double AdjustFilterAccount(double bias, double offset)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double mean = offset;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - mean) + (double)(long)i) - bias;
-            }
-            return mean - mean;
+            Failed,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
