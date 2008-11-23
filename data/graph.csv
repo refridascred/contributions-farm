@@ -1,10 +1,7 @@
-id,rank,level
-1,726,97
-2,403,58.67
-3,372,staging
-4,409,452
-5,cached,149
-6,52.48,75.32
-7,995,primary
-8,8.75,919
-9,991,51.51
+id,owner,region,active
+1,legacy,77.89,98.66
+2,879,local,8
+3,staging,legacy,116
+4,edge,green,strict
+5,537,315,52.07
+6,4.62,latest,742
