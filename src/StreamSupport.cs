@@ -20,12 +20,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepWidth = 53.6;
-        public const double IdleTimeout = 45.37;
-        public const long BurstWidth = 6219;
-        public const long MaxSize = 654;
-        public const string RetryReport = "cached";
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ScaleFilter(double scale, double span)
