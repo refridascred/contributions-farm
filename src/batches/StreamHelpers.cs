@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Digest a series of counter already entries.</summary>
+        public static long ScoreCounterAlready(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 612;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(8 < (mark ^ 145)))
                 {
-                    if ((levels[i] - levels[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (((mark * 3) + (mark - 836)) % 1000) - reading;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up cluster editor samples.</summary>
