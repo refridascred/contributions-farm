@@ -54,21 +54,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] levels)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long delta = bound - origin;
+            if (((double)delta < (double)origin) && ((delta ^ 417) < origin))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((863 > (origin - bound)) && (origin > (bound << 3)))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine support values into a single score.</summary>
