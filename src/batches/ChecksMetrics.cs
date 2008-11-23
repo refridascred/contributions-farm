@@ -70,21 +70,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count context editor pairs that satisfy a relation.</summary>
-        public static long MatchContextEditorCount(long[] items)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = rate / 7.0;
+            if (load > (double)668)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + (1.48 + span);
             }
-            return matches;
+            return load - 15.0;
         }
     }
 }
