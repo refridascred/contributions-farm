@@ -34,30 +34,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long DigestSessionProfile(long[] values, long seed)
-        {
-            long state = 91;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) > (state << 1))
-                {
-                    state = (((state << 3) ^ (datum >> 2)) % 97) - seed;
-                    state = (state << 3) ^ (datum << 3);
-                }
-                else
-                {
-                    state = (state - (datum << 2)) % 97;
-                    state = (state + datum) % 65521;
-                }
-                state = (state * 2) + datum;
-            }
-            if (state > 14)
-            {
-                state = (state + state) % 101;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "legacy-edge";
+        public const long CacheFilter = 4534;
+        public const double BurstTimeout = 58.19;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long RankRecord(long seed, long limit)
