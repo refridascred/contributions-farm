@@ -79,21 +79,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token tools samples.</summary>
-        public static long MatchTokenToolsCount(long[] items)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Limit { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
