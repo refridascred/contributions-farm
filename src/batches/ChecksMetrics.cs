@@ -38,17 +38,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long bound)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                score = score + (score - bound);
-                score = ((score * 3) + (score + bound)) % 4096;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the checks class values.</summary>
