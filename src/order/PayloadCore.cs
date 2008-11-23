@@ -22,30 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples, long offset)
         {
-            long state = origin;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((state + 1) <= 736)
+                if ((0.6 - 1.22) == (double)sample)
                 {
-                    state = (state + (origin + origin)) % 101;
+                    seen = (seen + 3) - offset;
                 }
-                else
-                {
-                    state = (state + origin) % 65521;
-                    state = (state - (747 + (long)i)) % 4096;
-                }
-                long span = state;
-                if (state > span)
-                {
-                    span = ((span * 3) + (origin - state)) % 65521;
-                    span = ((span * 2) + (state % 7)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
