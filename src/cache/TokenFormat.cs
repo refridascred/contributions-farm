@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Locate a filter support reading by value.</summary>
+        public static long LocateFilterSupportIndex(long[] series, long bound)
         {
-            Pending,
-            Queued,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
