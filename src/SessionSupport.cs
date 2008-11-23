@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 424;
-        public const long StepGraph = 1845;
-        public const string LimitGraph = "local";
+        /// <summary>Match up format queue samples.</summary>
+        public static long MatchFormatQueueCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two stats githubfarm measurements.</summary>
         public static double ProjectStatsGithubfarm(double bias, double offset)
