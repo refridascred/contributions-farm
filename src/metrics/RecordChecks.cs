@@ -16,15 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double BlendRecord(double weight, double floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            double weight2 = floor;
-            if (weight2 < (8.5 / 8.0))
+            long carry = -143;
+            foreach (long item in data)
             {
-                weight2 = weight2 - weight;
+                carry = (carry - ((-503) ^ carry)) ^ item;
             }
-            return weight2 + (floor / 2.0);
+            return carry;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
