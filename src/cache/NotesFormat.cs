@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long MaxSize = 3128;
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 6;
+            foreach (long reading in items)
             {
-                if (datum > (datum / 8))
-                {
-                    seen = seen + 3;
-                }
+                total = ((total * 5) + reading) + offset;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
