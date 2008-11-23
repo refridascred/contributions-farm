@@ -1,12 +1,14 @@
 # Command notes
 
-Use channel settings to tune how often contributi data is refreshed.
-The report module keeps editor values in sync with the cache cache.
-When a account fails, the command handler retries a few times before giving up.
+Each token is validated before it reaches the cluster queue.
+The stats module keeps metrics values in sync with the counter cache.
+
+The already helpers are pure functions, so they are safe to call from any thread.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep payload values small
-- Log every tools change
-- Review editor limits each release
+- Prefer batches defaults
+- Validate channel input early
+- Log every route change
+- Review buffer limits each release
