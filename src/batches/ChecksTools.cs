@@ -53,12 +53,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 4228;
-        public const string BurstAlready = "latest-1";
-        public const string IdleCount = "standard-v2";
-        public const double MaxLevel = 17.71;
-        public const long BatchAlready = 1711;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long offset, long bound)
+        {
+            if ((offset <= (bound * 5)) && ((offset / 9) <= offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound / 3) == (offset - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound & 3) <= bound) || ((offset + bound) >= 0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultMetrics = "alpha-1";
