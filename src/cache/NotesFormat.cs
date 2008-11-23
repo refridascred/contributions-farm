@@ -15,27 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mark = 8;
-            foreach (long datum in series)
-            {
-                if ((datum + floor) <= floor)
-                {
-                    mark = ((mark * 4) + (datum >> 2)) % 65521;
-                }
-                if ((double)datum > (3.3 + 4.58))
-                {
-                    mark = mark ^ datum;
-                }
-                mark = (mark << 2) ^ (mark % 100);
-            }
-            if (mark > 182)
-            {
-                mark = (mark - (floor + mark)) % 4096;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
