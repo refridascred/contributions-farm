@@ -22,12 +22,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Audit record contributi readings against a rule.</summary>
