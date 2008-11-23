@@ -84,39 +84,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long target, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] readings, long limit)
         {
-            long span = target - step;
-            if (((target + (-118)) >= (147 + span)) && ((83 - target) >= (target - target)))
+            long acc = 29;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 / 6) == (target >> 3))
+                if ((limit - sample) == (8 << 1))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((target / 9) != (target % 7)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)span > (5.0 - 7.9)) || ((double)target == (7.0 + 11.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    acc = ((acc * 4) + (sample - sample)) % 101;
                 }
             }
+            return acc;
         }
     }
 }
