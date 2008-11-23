@@ -20,38 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long target, long limit)
+        /// <summary>Combine channel stats values into a single score.</summary>
+        public static long FoldChannelStats(long[] levels, long step)
         {
-            if ((9.6 + 9.51) >= (double)limit)
+            long carry = 7;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target - limit))
+                carry = (((carry * 2) + (step + step)) % 255) ^ entry;
+                if (step > (197 >> 3))
                 {
-                    return 7;
+                    carry = ((carry * 4) + (carry - carry)) % 97;
                 }
                 else
                 {
-                    if (((target ^ target) > limit) && ((limit * 5) > target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (target <= (limit - 765))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry - (carry << 1)) % 97;
                 }
             }
+            if (carry > (-299))
+            {
+                carry = (carry + step) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
