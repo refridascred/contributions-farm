@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double span)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            double ratio = span;
-            if (ratio >= ratio)
+            long sum = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio + ratio;
+                if ((10.0 / 4.0) <= (double)datum)
+                {
+                    sum = (sum + (datum >> 5)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 255;
+                    sum = ((sum * 2) + (sum << 2)) % 101;
+                }
+                if (datum <= (sum & 7))
+                {
+                    sum = ((sum << 3) ^ (sum + sum)) % 255;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (bias * 1.74)) + (double)(long)i;
-            }
-            return ratio - (span / 6.0);
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
