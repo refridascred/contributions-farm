@@ -59,17 +59,25 @@ namespace Common.Utilities
         public const double RetryLevel = 68.39;
         public const long CacheSpan = 4082;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] series, long step)
+        /// <summary>Roll a buffer token counter forward.</summary>
+        public static long StepBufferToken(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] == step) && ((series[i] % 3) != 0))
+                if ((double)mark <= 5.0)
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ limit;
+                    break;
                 }
+                else
+                {
+                    mark = mark - (long)i;
+                }
+                mark = ((mark << 2) ^ (limit / 3)) % 255;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
     }
 }
