@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Retry,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 6711;
+        public const long MaxInterval = 3533;
+        public const string StepTools = "primary-1";
 
         /// <summary>Validate batch command readings against a bound.</summary>
         public static bool GuardBatchCommandBounds(long[] levels, long seed)
