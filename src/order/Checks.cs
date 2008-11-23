@@ -56,31 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a report window value against two limits.</summary>
-        public static long RankReportWindow(long offset, long offset2)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            if (!(offset2 >= (offset2 + 593)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((11.0 + 8.0) < (double)offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (0.6 >= (double)offset2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            New,
+            Stale,
+            Synced,
         }
     }
 }
