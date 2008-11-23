@@ -29,22 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits notes samples.</summary>
-        public static long DigestCommitsNotes(long[] levels)
+        /// <summary>Blend two context session measurements.</summary>
+        public static double BlendContextSession(double weight, double bias)
         {
-            long mix = 786;
-            foreach (long reading in levels)
+            double bias2 = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (mix <= (495 >> 5))
-                {
-                    mix = ((mix << 3) ^ reading) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 3) + reading) % 101;
-                }
+                bias2 = (bias2 - (bias * 9.7)) - (double)(long)i;
             }
-            return mix;
+            return bias2 - (weight - bias);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
