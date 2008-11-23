@@ -19,14 +19,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftChannel = "staging-1";
+        public const long WindowChannel = 1011;
+        public const long BurstChannel = 9162;
+        public const long RetryLevel = 2026;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long limit, long step)
