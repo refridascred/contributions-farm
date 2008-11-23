@@ -1,8 +1,9 @@
-id,token,active,level
-1,688,eu-west,22.3
-2,fallback,10.0,48.48
-3,fallback,eu-west,924
-4,37.87,356,760
-5,101,350,627
-6,edge,67.82,58.62
-7,458,349,484
+id,state,owner,weight,token
+1,217,54.94,911,green
+2,530,599,517,fallback
+3,98.68,638,181,latest
+4,0.02,386,755,411
+5,57.78,green,314,latest
+6,65.47,50.62,867,511
+7,585,27,214,477
+8,stable,blue,eu-west,edge
