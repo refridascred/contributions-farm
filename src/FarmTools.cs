@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string RetryFilter = "local-edge";
         public const double BaseFilter = 80.31;
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] levels, long origin)
-        {
-            long sum = 7;
-            foreach (long reading in levels)
-            {
-                if (((origin - 636) >= 75) && (origin > sum))
-                {
-                    sum = (((sum << 2) ^ 377) % 1000) ^ reading;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 4590;
+        public const long HardCache = 8986;
+        public const long MaxCache = 7446;
+        public const long SoftCache = 3834;
+        public const long BurstCache = 6476;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long floor, long step)
