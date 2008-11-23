@@ -46,14 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public long Label { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 5758;
+        public const double StepWidth = 42.73;
+        public const string MinCounter = "staging";
+        public const long DefaultSpan = 5123;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long RankAccount(long offset, long offset2)
