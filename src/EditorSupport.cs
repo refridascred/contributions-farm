@@ -29,15 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Pending,
-            Draft,
-            Done,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double DefaultScore = 72.86;
+        public const long SoftBudget = 6466;
+        public const long IdleFactor = 8090;
+        public const long SoftCount = 3864;
 
         /// <summary>Find the first cache contributi entry that matches the target.</summary>
         public static long LocateCacheContributiIndex(long[] readings, long offset)
