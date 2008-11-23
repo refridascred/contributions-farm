@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] levels, long floor)
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long TallyLayoutOrderGaps(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (entry != floor)
+                if ((tally * 4) >= (limit % 12))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - item;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Match up githubfarm account samples.</summary>
