@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long target)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long offset = floor ^ target;
-            if (((floor - offset) == (3 + target)) && (floor < (9 / 8)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((target << 1) != (floor & 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((94 << 3) <= offset) && (545 >= (offset / 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Locate a cache entry reading by value.</summary>
