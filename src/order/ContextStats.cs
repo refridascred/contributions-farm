@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] levels)
+        /// <summary>Validate account tools readings against a bound.</summary>
+        public static bool ValidateAccountToolsRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((count + sample) <= (sample ^ sample))
+                if (value <= bound)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Locate a window reading by value.</summary>
