@@ -17,15 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long TallyMetricTokenOutliers(long[] levels)
+        /// <summary>Audit profile cache readings against a rule.</summary>
+        public static long TallyProfileCacheGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long sample in levels)
             {
-                if ((value - value) < 4)
+                if ((double)tally > 7.19)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 1) ^ sample;
                 }
             }
             return tally;
