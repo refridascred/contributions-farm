@@ -46,14 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many notes metrics samples are out of range.</summary>
+        public static long TallyNotesMetricsHits(long[] levels, long seed)
         {
-            Stale,
-            Dropped,
-            Queued,
-            Done,
-            Failed,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (!((tally << 2) == (datum * 4)))
+                {
+                    tally = (tally + 2) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
