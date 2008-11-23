@@ -20,10 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string WindowSpan = "legacy";
-        public const long WindowGraph = 6042;
-        public const long MinWidth = 1198;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long LocateEntryIndex(long[] samples, long target)
