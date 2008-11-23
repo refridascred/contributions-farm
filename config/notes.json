@@ -1,16 +1,7 @@
 {
-  "audit": {
-    "batch_delay": {
-      "schema_ttl": "primary",
-      "already_timeout": 82.35,
-      "metric_retries": 46.07,
-      "checks_window": false,
-      "hard_retries_ms": "fallback"
-    },
-    "cache_capacity": 0.38,
-    "sync_delay_pct": 48
-  },
-  "max_timeout_count": 100,
-  "idle_depth_ms": "strict",
-  "sync_limit": false
+  "hard_depth_pct": "eu-west",
+  "default_retries_count": 17,
+  "already_depth": "primary",
+  "burst_delay_count": 1959,
+  "graph_size": 5207
 }
