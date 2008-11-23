@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultDepth = 83.82;
-        public const string BurstFormat = "stable-v2";
-        public const long IdleFormat = 1366;
-        public const long DefaultFormat = 2131;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels, long bound)
+        {
+            long anchor = 37;
+            foreach (long value in levels)
+            {
+                anchor = (anchor - (bound >> 5)) ^ value;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
