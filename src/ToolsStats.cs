@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            Paused,
-            Stale,
-            Synced,
+            Failed,
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the filter class values.</summary>
