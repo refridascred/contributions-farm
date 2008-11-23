@@ -16,11 +16,21 @@ namespace Common.Utilities
         public const string DefaultReport = "strict-v2";
         public const double WindowSize = 60.22;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
