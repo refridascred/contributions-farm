@@ -28,10 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2370;
-        public const long RetryEditor = 7906;
-        public const long SoftWidth = 5293;
-        public const long CacheEditor = 243;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Label { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
