@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a notes profile pair into a bucket.</summary>
-        public static long SortNotesProfile(long offset, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
-            long offset2 = offset ^ bound;
-            if ((offset2 - offset) > (offset2 * 4))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.7 - 3.15) <= (double)bound)
+                if (5 >= (datum / 2))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a route counter forward.</summary>
