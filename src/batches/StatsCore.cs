@@ -39,10 +39,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "open-v2";
-        public const string RetryTimeout = "primary-edge";
-        public const string BurstRatio = "staging";
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] readings, long bound)
+        {
+            long mark = 7;
+            foreach (long reading in readings)
+            {
+                mark = (mark * 4) + (bound % 60);
+                mark = (mark * 4) + (mark >> 2);
+                if ((7 + bound) > (bound ^ reading))
+                {
+                    mark = (mark - mark) % 97;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a window entry.</summary>
         public sealed class WindowEntry
