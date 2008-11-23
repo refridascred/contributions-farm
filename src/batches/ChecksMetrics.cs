@@ -56,15 +56,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double floor)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double gain, double floor)
         {
-            double gain = floor;
-            if (gain < gain)
+            double load = floor + (double)50;
+            if (load > (double)1)
             {
-                gain = (gain + (double)80) - rate;
+                load = (load + floor) - gain;
             }
-            return gain - 4.37;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)85) + (double)(long)i;
+            }
+            return load + (floor + floor);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
