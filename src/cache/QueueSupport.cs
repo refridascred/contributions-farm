@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheDepth = 6645;
-        public const long LimitFarm = 5722;
-        public const long BatchFarm = 3982;
-        public const long HardLevel = 2063;
-        public const long MaxFarm = 9578;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
         public static long PairGithubfarmAccountCount(long[] data)
