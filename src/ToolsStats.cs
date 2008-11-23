@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string DefaultReport = "strict-v2";
         public const double WindowSize = 60.22;
 
-        /// <summary>Validate session schema readings against a bound.</summary>
-        public static bool VerifySessionSchemaBounds(long[] values, long step)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Level { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
