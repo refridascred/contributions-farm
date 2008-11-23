@@ -100,12 +100,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long seed)
         {
-            Dropped,
-            Idle,
-            Done,
+            long carry = 1;
+            foreach (long cell in samples)
+            {
+                carry = (((carry * 5) + cell) % 255) - seed;
+            }
+            return carry;
         }
     }
 }
