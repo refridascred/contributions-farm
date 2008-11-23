@@ -17,12 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] readings, long origin)
         {
-            Draft,
-            Retry,
-            Ready,
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
