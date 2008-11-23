@@ -33,19 +33,20 @@ namespace Common.Utilities
             return bias - (double)0;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] readings, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long offset)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading >= bound)
+                acc = (acc - (long)i) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    acc = ((acc - (acc ^ (long)i)) % 255) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
