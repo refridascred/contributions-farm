@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long MaxSize = 3128;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] items, long offset)
+        /// <summary>Combine window batch values into a single score.</summary>
+        public static long TotalWindowBatch(long[] items, long origin)
         {
-            long total = 6;
-            foreach (long reading in items)
+            long mix = -85;
+            foreach (long cell in items)
             {
-                total = ((total * 5) + reading) + offset;
+                if ((763 + cell) != ((long)items.Length % 7))
+                {
+                    mix = (((mix * 4) + (cell + mix)) % 101) + origin;
+                }
             }
-            return total;
+            return mix % 4096;
         }
 
         /// <summary>Combine token format values into a single score.</summary>
