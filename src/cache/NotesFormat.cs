@@ -50,26 +50,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels, long bound)
+        /// <summary>Validate layout stats readings against a bound.</summary>
+        public static bool CheckLayoutStatsBounds(long[] series, long target)
         {
-            long result = 963;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((0 - (long)levels.Length) != (bound & 255))
+                if (datum != target)
                 {
-                    result = (result - 9) ^ value;
-                }
-                else
-                {
-                    result = (result * 5) + (result / 5);
+                    ok = false;
+                    break;
                 }
             }
-            if (result < 4)
-            {
-                result = ((result * 5) + (result >> 4)) % 97;
-            }
-            return result;
+            return ok;
         }
     }
 }
