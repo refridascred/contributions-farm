@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const long HardSchema = 858;
         public const long HardRatio = 7010;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Stale,
-            Active,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 8922;
+        public const long MinWidth = 9908;
+        public const double WindowDepth = 90.95;
 
         /// <summary>Fold a list of entry readings.</summary>
         public static long DigestEntry(long[] readings, long limit)
