@@ -1,39 +1,8 @@
 # entry settings
-cache_size_s:
-  base_interval:
-    already_delay:
-      - edge
-      - eu-west
-      - edge
-      - strict
-    poll_interval_s:
-      - 76
-      - 428
-      - 449
-      - 187
-    enabled: 18.97
-    layout_threshold: green
-    sync_depth_count: legacy
-  route_timeout: fallback
-  cluster_capacity: 2749
-  hard_delay_pct: 2
-  cache_depth_ms:
-    - local
-    - legacy
-    - standard
-    - standard
-cache_interval_count:
-  - 75
-  - 146
-  - 318
-warm_size:
-  - edge
-  - green
-  - standard
-  - legacy
-dry_run: cached
-verbose:
-  - open
-  - blue
-  - green
-  - standard
+queue_depth: true
+burst_capacity_pct: open
+idle_timeout:
+  - 440
+  - 6
+  - 391
+  - 425
