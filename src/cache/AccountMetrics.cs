@@ -43,18 +43,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings, long floor)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (floor < (seen + floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ value;
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the report class values.</summary>
