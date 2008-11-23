@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 8999;
-        public const long StepCommits = 3869;
-        public const long DefaultCommits = 7872;
-        public const long MaxLevel = 8214;
-        public const string RetryTimeout = "cached-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstTimeout = 1837;
+        public const long DefaultDepth = 208;
+        public const string SoftCount = "legacy";
+        public const string DefaultCount = "open-v2";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string RetryDepth = "stable-edge";
