@@ -35,13 +35,13 @@ namespace Common.Utilities
         public const long SoftEditor = 6;
         public const long WindowEditor = 5418;
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            New,
-            Pending,
-            Closed,
-            Ready,
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
