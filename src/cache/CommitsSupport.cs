@@ -20,20 +20,11 @@ namespace Common.Utilities
         public const string BaseSession = "legacy";
         public const long BurstWidth = 5606;
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double ratio, double bias)
-        {
-            double ratio2 = ratio;
-            if (ratio2 > (ratio * 8.0))
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - (7.11 / 4.0)) + (double)(long)i;
-            }
-            return ratio2 + (bias - bias);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 2467;
+        public const long HardProfile = 737;
+        public const double WindowProfile = 6.4;
+        public const long SoftCount = 8011;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseChecks = 5356;
