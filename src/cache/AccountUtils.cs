@@ -42,15 +42,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long target)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long value in items)
             {
-                if ((hits % 3) <= (hits - 18))
+                if (!((double)value != (18.0 + 3.0)))
                 {
-                    hits = (hits + 1) ^ datum;
+                    hits = (hits + 1) + target;
                 }
             }
             return hits;
