@@ -20,11 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
