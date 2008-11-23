@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum & 255) < (floor / 2))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
