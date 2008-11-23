@@ -13,25 +13,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long step, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] data, long bound)
         {
-            long lane = step - floor;
-            if (step > lane)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > (38 - step))
+                if ((data[i] > bound) && ((data[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
