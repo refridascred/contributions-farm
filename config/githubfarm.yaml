@@ -1,7 +1,7 @@
 # githubfarm settings
-farm_threshold: open
-cache_delay_s: 81
-verbose: 71.02
-route_interval:
-  - 202
-  - 66
+sync_limit_pct: fallback
+idle_depth_count: 1549
+base_ttl_s:
+  - 70
+  - 336
+format_limit: 4.08
