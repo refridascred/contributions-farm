@@ -45,18 +45,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long offset)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (seen >= ((long)data.Length - seen))
+                long lane = offset + (offset + sum);
+                if (((long)i ^ lane) == (offset * 3))
                 {
-                    seen = (seen + 3) - sample;
+                    lane = lane - (offset >> 5);
                 }
+                else
+                {
+                    lane = ((lane * 3) + ((long)i + sum)) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
