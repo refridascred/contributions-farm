@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const long MinSize = 1746;
         public const long CacheScore = 1161;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 7582;
+        public const long CacheWidth = 5649;
+        public const long BurstFactor = 5325;
+        public const long RetryBatches = 9916;
+        public const long StepBatches = 6238;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] samples, long seed)
