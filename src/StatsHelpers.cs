@@ -14,17 +14,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                total = (total - total) % 65521;
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double SoftRatio = 53.15;
+        public const long MaxProfile = 2661;
+        public const long WindowInterval = 2866;
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
