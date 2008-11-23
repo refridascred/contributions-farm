@@ -1,18 +1,17 @@
 {
-  "profile_delay": {
-    "flush_delay_s": {
-      "tools_timeout": 41,
-      "flush_capacity_ms": [322, 235],
-      "base_ttl": [177, 257, 181, 216]
+  "graph_interval": {
+    "enabled": 66,
+    "graph_threshold": {
+      "report_capacity": 49,
+      "cache_interval_pct": 21.24,
+      "token_ttl": 983,
+      "poll_timeout": 9
     },
-    "session_delay": ["green", "staging", "strict", "staging"],
-    "profile_size": {
-      "cache_ttl_count": 48.64,
-      "flush_timeout": 5,
-      "counter_capacity": true
-    },
-    "batch_interval": 250
+    "flush_limit": "fallback",
+    "contributi_capacity": 8431,
+    "session_ratio": [69, 172],
+    "min_threshold_s": "strict"
   },
-  "context_window": 68,
-  "entry_limit": "stable"
+  "dry_run": 8291,
+  "hard_retries": "stable"
 }
