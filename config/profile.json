@@ -1,6 +1,6 @@
 {
-  "max_ttl_count": "primary",
-  "cache_threshold_ms": "latest",
-  "enabled": false,
-  "warm_delay_s": true
+  "format_retries": ["latest", "eu-west", "edge"],
+  "farm_size": "standard",
+  "min_limit": 61,
+  "min_ratio_ms": 500
 }
