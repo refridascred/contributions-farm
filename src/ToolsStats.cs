@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const double StepRecord = 10.61;
         public const long RetryRecord = 7628;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 2412;
-        public const double IdleQueue = 62.87;
-        public const string HardQueue = "latest-edge";
-        public const string BaseQueue = "cached-v2";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples, long floor)
+        {
+            long mix = 8;
+            foreach (long value in samples)
+            {
+                if ((value >> 5) > value)
+                {
+                    mix = ((mix << 3) ^ mix) + floor;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double gain, double floor)
