@@ -29,11 +29,40 @@ namespace Common.Utilities
             return scale2 - (scale2 - floor);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultScore = 72.86;
-        public const long SoftBudget = 6466;
-        public const long IdleFactor = 8090;
-        public const long SoftCount = 3864;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long floor, long step)
+        {
+            long offset = floor ^ step;
+            if ((floor + offset) >= (offset / 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset % 3) >= (floor & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor <= 8.03)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((197 + step) <= (step << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteOutliers(long[] data)
