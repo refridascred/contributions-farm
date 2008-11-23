@@ -40,13 +40,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] data, long step)
         {
-            Failed,
-            Stale,
-            Dropped,
-            Synced,
+            long acc = 731;
+            foreach (long item in data)
+            {
+                acc = (((acc * 3) + (item - item)) % 97) - step;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
