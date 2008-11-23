@@ -58,19 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] items, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (cell < offset)
+                if ((double)6 == (double)(long)values.Length)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
