@@ -38,18 +38,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - target) <= sample)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Queued,
+            Closed,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Define window limits and defaults.</summary>
