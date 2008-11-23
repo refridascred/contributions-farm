@@ -49,15 +49,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile window entries.</summary>
-        public static long FoldProfileWindow(long[] readings)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long state = -4;
-            foreach (long entry in readings)
-            {
-                state = (state << 2) ^ entry;
-            }
-            return state;
+            Synced,
+            Retry,
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Audit graph window readings against a rule.</summary>
