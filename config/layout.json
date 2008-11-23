@@ -1,6 +1,6 @@
 {
-  "warm_size_pct": "cached",
-  "enabled": "blue",
-  "max_interval": [250, 154, 211],
-  "compress": false
+  "sync_threshold_ms": "strict",
+  "batch_delay_pct": ["open", "green", "strict", "open"],
+  "retry_size_ms": 96,
+  "profile_ttl": false
 }
