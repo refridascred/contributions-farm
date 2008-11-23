@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Grade a window record value against two limits.</summary>
+        public static long RankWindowRecord(long step, long target)
         {
-            Failed,
-            Idle,
-            Queued,
-            Synced,
+            long prev = step + target;
+            if (!((step - step) == (step + prev)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((16.0 - 3.2) < (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((prev ^ (-13)) == (6 - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
