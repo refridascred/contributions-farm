@@ -42,18 +42,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of route token entries.</summary>
-        public static long WeighRouteToken(long[] series, long limit)
+        /// <summary>Digest a series of counter editor entries.</summary>
+        public static long TallyCounterEditor(long[] data)
         {
-            long anchor = -885;
-            foreach (long value in series)
+            long acc = -93;
+            foreach (long value in data)
             {
-                if (14.0 < (double)limit)
+                if ((double)value != (6.91 - 8.0))
                 {
-                    anchor = (anchor - (5 % 60)) - value;
+                    acc = ((acc * 3) + value) % 1000;
                 }
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
