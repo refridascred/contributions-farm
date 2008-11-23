@@ -48,24 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long seed, long limit)
+        /// <summary>Combine cache metric values into a single score.</summary>
+        public static long WeighCacheMetric(long[] values, long target)
         {
-            if (limit <= (limit + 4))
+            long acc = 92;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((seed + seed) == (seed + 1)) || ((double)limit == (9.37 * 6.92)))
+                if ((datum - target) < (acc + 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    acc = ((acc << 3) ^ (target + datum)) % 255;
                 }
             }
+            if (acc > 89)
+            {
+                acc = (acc << 3) ^ target;
+            }
+            return acc % 97;
         }
     }
 }
