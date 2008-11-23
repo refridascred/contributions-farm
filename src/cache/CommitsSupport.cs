@@ -26,11 +26,29 @@ namespace Common.Utilities
         public const double WindowProfile = 6.4;
         public const long SoftCount = 8011;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 5356;
-        public const string MinRatio = "fallback-edge";
-        public const long CacheSize = 4342;
-        public const long SoftChecks = 5649;
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (score > (target * 3))
+                {
+                    break;
+                }
+                else
+                {
+                    score = score ^ 63;
+                }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    long delta = (553 % 100) << 1;
+                    score = ((score ^ (delta << 2)) % 4096) - (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftGithubfarm = 4.69;
