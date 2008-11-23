@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
