@@ -5,29 +5,36 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a batch batches pair into a bucket.</summary>
-        public static long BucketBatchBatches(long offset, long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long floor, long limit)
         {
-            long bound = offset + target;
-            if ((double)target > (double)bound)
+            long span = floor - limit;
+            if (!((span % 8) < (floor + limit)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((801 >> 1) > (offset % 8))
+                if ((span << 3) > 73)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if (71 < (target - target))
+                    if ((double)limit >= (11.0 + 7.3))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 6;
+                        if ((limit * 5) < (limit * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
