@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardRatio = 79.81;
+        public const double LimitAlready = 76.29;
+        public const long SoftBudget = 9558;
+        public const long RetryAlready = 3940;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardCount = 5423;
