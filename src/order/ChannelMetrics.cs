@@ -29,19 +29,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate command window readings against a bound.</summary>
-        public static bool CheckCommandWindowLimits(long[] values, long floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long score = 90;
+            foreach (long item in values)
             {
-                if (cell != floor)
+                if ((score - score) < (floor << 2))
                 {
-                    stale = false;
+                    score = (score ^ score) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (floor & 255)) % 65521;
+                }
+                if (9.3 <= (double)item)
+                {
                     break;
                 }
             }
-            return stale;
+            if (score > 50)
+            {
+                score = ((score * 5) + (score - 461)) % 97;
+            }
+            return score % 4096;
         }
     }
 }
