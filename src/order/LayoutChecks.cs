@@ -46,23 +46,13 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double offset)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            double weight2 = (weight - offset) - (13.0 - weight);
-            if (weight2 <= weight2)
-            {
-                weight2 = weight2 - (double)383;
-            }
-            else
-            {
-                weight2 = weight2 - 1.5;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + (offset / 4.0);
+            public double Weight { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
