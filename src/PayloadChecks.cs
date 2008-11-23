@@ -35,11 +35,11 @@ namespace Common.Utilities
             return gain - (3.0 + floor);
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            double scale = offset * 7.0;
+            return (scale + offset) + rate;
         }
 
         /// <summary>Digest a series of counter editor entries.</summary>
