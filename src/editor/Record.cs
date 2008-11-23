@@ -32,13 +32,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Draft,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
