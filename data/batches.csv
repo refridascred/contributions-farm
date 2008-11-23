@@ -1,8 +1,8 @@
-id,level,state
-1,58.97,stable
-2,37,456
-3,25.55,669
-4,63.82,852
-5,89.19,430
-6,49.11,288
-7,859,94.49
+id,active,label,ratio
+1,stable,edge,425
+2,832,standard,36.93
+3,open,47.9,stable
+4,stable,43.98,121
+5,94.11,25.91,strict
+6,edge,621,fallback
+7,edge,48.4,622
