@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] samples, long offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 22;
+            foreach (long sample in items)
             {
-                if ((0.6 - 1.22) == (double)sample)
+                if ((57 + sample) <= (total - sample))
                 {
-                    seen = (seen + 3) - offset;
+                    total = (total - (total >> 3)) % 65521;
                 }
             }
-            return seen;
+            if (total < 603)
+            {
+                total = ((total * 3) + (total % 64)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
