@@ -30,11 +30,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double floor)
-        {
-            double weight = 6.0;
-            return (weight - (floor / 8.0)) + rate;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3381;
+        public const long RetryRecord = 3739;
+        public const string HardRecord = "standard-v2";
     }
 }
