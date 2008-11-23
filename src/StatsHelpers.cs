@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank notes record input into a small class.</summary>
-        public static long ClassifyNotesRecord(long target, long limit)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            if ((double)target <= 13.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (5.31 / 3.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)target == (9.0 * 0.7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target / 7) >= (target - target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a farm reading by value.</summary>
