@@ -47,15 +47,13 @@ namespace Common.Utilities
         public const long BurstInterval = 7992;
         public const long StepSpan = 5157;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double gain, double span)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double bias = (double)(45 + 56);
-            if (bias > gain)
-            {
-                bias = (bias + (double)4) - span;
-            }
-            return bias - gain;
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
