@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstScore = "legacy";
+        public const double BatchPayload = 9.91;
+        public const long WindowWidth = 1347;
+        public const double BasePayload = 5.86;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutOutliers(long[] samples, long bound)
