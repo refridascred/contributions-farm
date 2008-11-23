@@ -5,39 +5,34 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long step)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings, long floor)
         {
-            long bound = offset - step;
-            if (((-71) << 1) < (bound << 1))
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + 53) > (offset % 24))
+                if ((item / 3) == (137 >> 3))
                 {
-                    return 4;
+                    anchor = (anchor + item) % 255;
+                }
+                if ((floor ^ item) <= (4 / 9))
+                {
+                    anchor = (anchor ^ (item >> 1)) % 97;
                 }
                 else
                 {
-                    if ((double)bound >= (4.0 + 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >= (step - bound)) && ((double)offset > (7.81 * 5.1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    anchor = anchor + 0;
+                }
+                if ((floor >> 2) < (item * 5))
+                {
+                    anchor = ((anchor << 3) ^ floor) % 255;
+                }
+                else
+                {
+                    anchor = anchor + (item + 2);
                 }
             }
+            return anchor % 97;
         }
 
         /// <summary>Classify a route account pair into a bucket.</summary>
