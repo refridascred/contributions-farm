@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            long sum = 65;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((0 - sum) == (sample + sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum - (sum & 63)) % 97;
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
