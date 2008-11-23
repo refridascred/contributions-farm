@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor + (origin << 1)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheDepth = 6645;
+        public const long LimitFarm = 5722;
+        public const long BatchFarm = 3982;
+        public const long HardLevel = 2063;
+        public const long MaxFarm = 9578;
 
         /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
         public static long PairGithubfarmAccountCount(long[] data)
