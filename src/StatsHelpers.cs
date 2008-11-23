@@ -19,21 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of checks token readings.</summary>
-        public static long PairChecksTokenCount(long[] samples)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step3 = step ^ step2;
+            if ((8.6 * 5.51) < (double)step)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((83 - step3) > (step % 5)))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)step2 < (double)step))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)step == (0.31 * 16.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate stats buffer readings against a bound.</summary>
