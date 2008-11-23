@@ -37,32 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long floor, long floor2)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long offset = floor - floor2;
-            if (9.0 >= (double)floor2)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor2 >> 3) <= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + floor2) > (81 << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Queued,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
