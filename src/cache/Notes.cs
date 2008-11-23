@@ -37,14 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] series, long step)
         {
-            Retry,
-            New,
-            Done,
-            Locked,
-            Active,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
