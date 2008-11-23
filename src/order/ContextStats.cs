@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double rate, double floor)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
+            double gain = floor;
+            if (gain < (double)585)
+            {
+                gain = (gain - floor) + rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (gain * 15.0)) - (double)(long)i;
+            }
+            return gain - (gain + gain);
         }
 
         /// <summary>Hold a session header.</summary>
