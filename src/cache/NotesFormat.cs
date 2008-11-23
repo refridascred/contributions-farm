@@ -21,19 +21,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate layout stats readings against a bound.</summary>
-        public static bool CheckLayoutStatsBounds(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitLevel = "local-1";
+        public const double CacheGithubfarm = 6.75;
+        public const long MinGithubfarm = 9607;
+        public const long LimitGithubfarm = 1357;
     }
 }
