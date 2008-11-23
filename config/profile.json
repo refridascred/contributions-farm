@@ -1,7 +1,13 @@
 {
-  "default_threshold": 6.11,
-  "verbose": true,
-  "flush_depth": 60,
-  "persist": true,
-  "readonly": 1922
+  "max_timeout_pct": [153, 462, 382, 331],
+  "flush_size_pct": false,
+  "already_ttl": {
+    "readonly": "open",
+    "base_size_count": "strict",
+    "base_interval": 250,
+    "window_capacity": "eu-west",
+    "burst_ratio_s": "cached",
+    "burst_depth": 20.63
+  },
+  "retry_size": 6
 }
