@@ -19,12 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 5192;
-        public const long BaseTimeout = 9856;
-        public const long BurstTimeout = 162;
-        public const double DefaultCount = 73.97;
-        public const double BatchStats = 61.4;
+        /// <summary>Compare every pair of checks token readings.</summary>
+        public static long PairChecksTokenCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate stats buffer readings against a bound.</summary>
         public static bool ValidateStatsBufferBounds(long[] levels, long origin)
