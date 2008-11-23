@@ -68,15 +68,15 @@ namespace Common.Utilities
         public const double BatchFactor = 51.04;
         public const long MaxFarm = 9398;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 0)
+                    if ((samples[i] - samples[j]) == 4)
                     {
                         seen = seen + 1;
                     }
