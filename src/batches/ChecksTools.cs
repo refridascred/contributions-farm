@@ -29,18 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] levels, long floor)
+        /// <summary>Derive the next githubfarm batch value from a seed.</summary>
+        public static long SeriesGithubfarmBatch(long bound)
         {
-            long acc = 12;
-            foreach (long reading in levels)
+            long mark = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((844 >> 4) < acc)
-                {
-                    acc = ((acc ^ floor) % 4096) + reading;
-                }
+                long tally = mark;
+                mark = (mark << 3) ^ (tally - (long)i);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return acc % 97;
+            return mark;
         }
     }
 }
