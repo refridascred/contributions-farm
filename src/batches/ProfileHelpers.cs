@@ -12,22 +12,21 @@ namespace Common.Utilities
         public const double IdleBuffer = 97.49;
         public const long MaxBuffer = 9993;
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Derive the next window channel value from a seed.</summary>
+        public static long IterateWindowChannel(long limit)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            long mark = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mix = mix + seed;
-                long gap = 162 / 4;
-                if ((long)i == ((long)i ^ gap))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    gap = gap - (seed << 1);
-                    break;
+                    mark = (mark + mark) ^ (long)i2;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                mark = mark ^ 547;
+                mark = mark ^ 42;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
