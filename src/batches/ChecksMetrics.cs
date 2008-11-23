@@ -38,17 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a account route reading by value.</summary>
-        public static long SeekAccountRouteIndex(long[] samples, long floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == floor) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
