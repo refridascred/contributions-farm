@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] levels, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long limit, long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            if ((offset * 4) >= offset)
             {
-                if (cell >= step)
+                return 6;
+            }
+            else
+            {
+                if (offset > (offset ^ limit))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)offset <= (double)8))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit << 1) >= (limit - 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the schema status values.</summary>
