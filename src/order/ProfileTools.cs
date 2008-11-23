@@ -57,21 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftWidth = 2664;
+        public const double RetryDepth = 36.38;
+        public const double RetryEditor = 86.63;
+        public const string WindowBudget = "primary";
+        public const long BatchDepth = 4960;
     }
 }
