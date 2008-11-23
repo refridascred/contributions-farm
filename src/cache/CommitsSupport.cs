@@ -29,12 +29,20 @@ namespace Common.Utilities
         public const string BatchTools = "standard-v2";
         public const long MaxTools = 7850;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string StepBudget = "local-1";
-        public const double LimitGithubfarm = 23.21;
-        public const long WindowGithubfarm = 5456;
-        public const string HardGithubfarm = "stable-1";
-        public const double BaseGithubfarm = 20.4;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double span)
+        {
+            double bias = span;
+            if (bias >= (6.3 / 9.0))
+            {
+                bias = (bias + (double)9) + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - bias;
+        }
 
         /// <summary>Digest a series of order checks entries.</summary>
         public static long DigestOrderChecks(long[] data, long target)
