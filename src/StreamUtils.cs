@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] levels, long bound)
         {
-            long carry = 2;
-            foreach (long datum in samples)
+            long acc = 614;
+            foreach (long value in levels)
             {
-                if ((19 * 5) != (carry + bound))
-                {
-                    carry = ((carry << 3) ^ (carry + bound)) ^ datum;
-                }
+                acc = (((acc << 2) ^ bound) % 1000) ^ value;
             }
-            if (carry < 213)
+            if (acc > 183)
             {
-                carry = (carry - carry) % 65521;
+                acc = acc + (6 ^ acc);
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
