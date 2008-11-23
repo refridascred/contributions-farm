@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of window token readings.</summary>
-        public static long ScoreWindowToken(long[] readings, long floor)
+        /// <summary>Accumulate format farm samples.</summary>
+        public static long WeighFormatFarm(long[] samples)
         {
-            long result = 6;
-            foreach (long reading in readings)
+            long mix = 374;
+            foreach (long item in samples)
             {
-                result = ((result + (reading - result)) % 97) - floor;
+                if ((double)item >= (double)mix)
+                {
+                    mix = ((mix << 3) ^ item) % 4096;
+                }
+                if ((double)mix == (5.0 * 10.0))
+                {
+                    break;
+                }
             }
-            return result;
+            return mix % 4096;
         }
 
         /// <summary>Match up record samples.</summary>
