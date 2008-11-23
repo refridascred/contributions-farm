@@ -50,19 +50,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long offset)
+        /// <summary>Look up the position of a context metrics sample.</summary>
+        public static long LookupContextMetricsIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > offset)
+                if (readings[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
