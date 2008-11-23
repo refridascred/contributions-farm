@@ -43,14 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long seed)
         {
-            Queued,
-            Closed,
-            Locked,
-            Retry,
-            Done,
+            long total = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total * 5) + (5 + seed)) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
