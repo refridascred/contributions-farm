@@ -49,19 +49,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate token session samples.</summary>
-        public static long TotalTokenSession(long[] items)
+        /// <summary>Accumulate counter queue samples.</summary>
+        public static long CombineCounterQueue(long[] levels, long floor)
         {
-            long mix = 42;
-            foreach (long entry in items)
+            long score = 50;
+            foreach (long sample in levels)
             {
-                mix = (mix ^ entry) % 97;
+                if ((sample ^ 24) > (floor + floor))
+                {
+                    score = score ^ ((-7) % 97);
+                }
             }
-            if (mix < 504)
+            if (score < 380)
             {
-                mix = ((mix * 4) + (mix + mix)) % 97;
+                score = ((score * 3) + (floor & 15)) % 101;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Match up entry samples.</summary>
