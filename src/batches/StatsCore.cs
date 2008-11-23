@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheBudget = 8083;
-        public const long SoftStats = 4508;
-        public const long BurstDepth = 4788;
-        public const long IdleStats = 3848;
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long DigestStream(long[] items)
