@@ -36,10 +36,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleScore = 2878;
-        public const long StepBudget = 8100;
-        public const double CacheSchema = 90.49;
-        public const string IdleWidth = "staging-edge";
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((long)i <= seed)
+                {
+                    carry = carry - (seed + carry);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry ^ carry)) % 101;
+                    carry = (carry * 3) + (carry + carry);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
