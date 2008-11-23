@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long StepGraph = 1845;
         public const string LimitGraph = "local";
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] items)
         {
-            double weight = 0.6;
-            if (weight > bias)
+            long result = 21;
+            foreach (long item in items)
             {
-                weight = (weight + (double)6) + gain;
+                result = ((result ^ (result >> 5)) % 255) - item;
             }
-            else
+            if (result > 7)
             {
-                weight = weight + bias;
+                result = result - result;
             }
-            return weight - bias;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of commits window readings.</summary>
