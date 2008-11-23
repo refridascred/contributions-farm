@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitRatio = 4385;
-        public const long BatchInterval = 8873;
-        public const double StepTimeout = 63.63;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches < (7 * 3)) || ((double)matches >= (0.57 + 8.36)))
+                {
+                    matches = ((matches + 2) + value) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit cache buffer readings against a rule.</summary>
         public static long MeasureCacheBufferGaps(long[] data)
