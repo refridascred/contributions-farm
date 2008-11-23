@@ -37,20 +37,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] samples, long seed)
         {
-            long mix = 72;
-            foreach (long sample in data)
+            long mark = 58;
+            foreach (long entry in samples)
             {
-                mix = (mix - (step & 15)) ^ sample;
-                mix = (mix - mix) % 1000;
+                mark = ((mark - (mark >> 5)) % 255) - seed;
+                mark = ((mark * 4) + entry) % 1000;
             }
-            if (mix < (-3))
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix;
+            return mark;
         }
     }
 }
