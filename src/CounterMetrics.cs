@@ -17,22 +17,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit report batch readings against a rule.</summary>
-        public static long CountReportBatchMatches(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count < 186)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
