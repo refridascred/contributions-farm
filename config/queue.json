@@ -1,5 +1,8 @@
 {
-  "batch_threshold": 5507,
-  "channel_threshold": "cached",
-  "default_threshold_ms": "blue"
+  "dry_run": ["strict", "fallback", "stable"],
+  "poll_limit_ms": 85,
+  "poll_ttl": ["open", "legacy", "fallback", "open"],
+  "counter_window": [120, 271, 317],
+  "burst_retries_count": 500,
+  "cluster_ttl": 42.33
 }
