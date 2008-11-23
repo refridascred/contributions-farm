@@ -1,7 +1,11 @@
 # entry settings
-compress:
-  persist: green
-  default_window_pct: 5192
-  enabled: false
-hard_threshold_count: 4621
-cache_interval_ms: strict
+stats_size: 60
+max_interval:
+  - local
+  - green
+  - standard
+  - stable
+min_delay:
+  - cached
+  - legacy
+  - staging
