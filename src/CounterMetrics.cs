@@ -31,19 +31,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double ratio, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            double gain = floor;
-            if (gain >= (floor / 2.0))
+            long mix = 33;
+            foreach (long sample in samples)
             {
-                gain = (gain + (double)637) - ratio;
+                if (sample < mix)
+                {
+                    mix = mix - (mix >> 2);
+                }
+                else
+                {
+                    mix = mix - mix;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mix > 814)
             {
-                gain = (gain - floor) - (double)(long)i;
+                mix = ((mix * 5) + (mix - mix)) % 65521;
             }
-            return gain - (gain + gain);
+            return mix;
         }
 
         /// <summary>Describe the graph kind values.</summary>
