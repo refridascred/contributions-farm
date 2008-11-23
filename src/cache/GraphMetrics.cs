@@ -30,22 +30,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long mix = 1;
-            foreach (long datum in items)
-            {
-                if ((mix >> 1) <= (datum / 3))
-                {
-                    mix = ((mix * 5) + datum) % 97;
-                }
-            }
-            if (mix < 698)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix % 1000;
+            Queued,
+            Draft,
+            Synced,
+            Paused,
         }
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
