@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long offset)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long total = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading >= seed)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    flag = false;
-                    break;
+                    total = (total ^ (long)i) ^ (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
