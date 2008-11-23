@@ -16,26 +16,12 @@ namespace Common.Utilities
             return bias2 - 5.0;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series, long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long result = -358;
-            foreach (long datum in series)
-            {
-                if (!((double)datum >= (5.24 - 9.47)))
-                {
-                    result = result - (datum ^ limit);
-                }
-                if ((limit >= (65 & 15)) || (datum > (result / 5)))
-                {
-                    result = ((result << 2) ^ limit) % 4096;
-                }
-                else
-                {
-                    result = (result << 2) ^ (result / 3);
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
