@@ -72,12 +72,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Count the order batch entries that pass the check.</summary>
+        public static long TallyOrderBatchHits(long[] data, long step)
         {
-            Draft,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((((74 + count) >= (1 << 3)) || (datum < (60 / 7))) || ((double)step <= (2.1 - 4.0)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
