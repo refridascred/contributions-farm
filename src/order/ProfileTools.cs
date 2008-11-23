@@ -20,21 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Locked,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a batch info.</summary>
