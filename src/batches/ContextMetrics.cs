@@ -27,22 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout queue samples.</summary>
-        public static long CompareLayoutQueueCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepWindow = 27.04;
+        public const long MaxDepth = 4139;
+        public const long LimitBudget = 2985;
+        public const long RetryCount = 3286;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
