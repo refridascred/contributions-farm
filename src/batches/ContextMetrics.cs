@@ -47,32 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long limit, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long span = limit + target;
-            if (((target / 3) > span) || ((19.0 - 2.3) == (double)span))
-            {
-                return 1;
-            }
-            else
-            {
-                if (span > (5 >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(span <= (limit * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public double Total { get; set; }
         }
     }
 }
