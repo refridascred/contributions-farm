@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((matches & 31) <= (67 - 8))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = ((matches + 3) ^ reading) + target;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
