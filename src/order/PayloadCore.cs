@@ -67,19 +67,9 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleScore = 542;
+        public const string BatchLevel = "staging-1";
+        public const long MinDepth = 2490;
     }
 }
