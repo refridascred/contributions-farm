@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 5332;
-        public const long CacheSize = 167;
-        public const double HardPayload = 5.34;
-        public const string IdlePayload = "cached-edge";
-        public const long SoftPayload = 5107;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxCommits = 66.18;
+        public const double StepCommits = 74.4;
+        public const long BatchSpan = 5958;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] samples, long bound)
