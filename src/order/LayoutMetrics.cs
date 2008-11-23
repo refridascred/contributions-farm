@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long result = -20;
-            foreach (long value in values)
-            {
-                result = ((result * 3) + (origin - value)) % 65521;
-            }
-            if (result > 370)
-            {
-                result = result + result;
-            }
-            return result;
+            public double Mode { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a buffer info.</summary>
