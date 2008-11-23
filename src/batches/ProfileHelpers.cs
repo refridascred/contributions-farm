@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next tools session value.</summary>
-        public static double AdjustToolsSession(double ratio, double span)
+        /// <summary>Count profile githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapProfileGithubfarmCount(long[] values)
         {
-            double rate = 4.0;
-            if (rate > ratio)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (ratio + ratio)) - span;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)10;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate + (rate / 2.0);
+            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
