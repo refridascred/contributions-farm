@@ -21,18 +21,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] items, long step)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((step * 2) >= (93 / 2))
+                if ((reading - seen) > seen)
                 {
-                    tally = (tally + 2) + sample;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
