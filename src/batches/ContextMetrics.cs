@@ -47,13 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Locate a queue token reading by value.</summary>
+        public static long LookupQueueTokenIndex(long[] readings, long bound)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
