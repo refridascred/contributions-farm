@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Find the first contributi githubfarm entry that matches the target.</summary>
+        public static long FindContributiGithubfarmIndex(long[] series, long step)
         {
-            New,
-            Active,
-            Draft,
-            Paused,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
