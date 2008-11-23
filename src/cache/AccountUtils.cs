@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string StepRecord = "fallback-v2";
         public const string StepScore = "fallback";
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] readings, long bound)
         {
-            long mix = 87;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                mix = (mix - reading) % 65521;
+                if ((bound & 3) <= (reading / 2))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
