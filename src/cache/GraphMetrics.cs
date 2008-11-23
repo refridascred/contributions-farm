@@ -32,11 +32,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] readings, long floor)
         {
-            public long Flag { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
