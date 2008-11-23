@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum + (2 - origin)) + value;
+                if ((5.7 - 0.5) <= (double)origin)
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of record entries.</summary>
