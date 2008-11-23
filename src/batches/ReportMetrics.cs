@@ -20,19 +20,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] levels, long limit)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            double mean = scale + (offset - 8.9);
+            if (mean < 0.2)
             {
-                if (reading >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - offset;
             }
-            return stale;
+            else
+            {
+                mean = mean - (double)39;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - scale) + (double)(long)i;
+            }
+            return mean - (scale * 3.86);
         }
     }
 }
