@@ -1,13 +1,7 @@
 # support settings
-flush_size_pct: 100
-schema_capacity:
-  - primary
-  - staging
-  - strict
-  - standard
-min_limit_count: blue
-poll_size: latest
-flush_depth_pct:
-  queue_delay: 11.23
-  compress: stable
-  persist: 98
+support_retries: 55
+audit: 1024
+profile_threshold: edge
+idle_threshold_pct: 30
+tools_limit: true
+tools_interval: 3925
