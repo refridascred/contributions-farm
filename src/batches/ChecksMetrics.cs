@@ -77,11 +77,23 @@ namespace Common.Utilities
         public const long MinTimeout = 2227;
         public const long StepProfile = 7044;
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series)
         {
-            public bool Token { get; set; }
-            public bool Label { get; set; }
+            long total = 502;
+            foreach (long item in series)
+            {
+                total = (total ^ total) % 65521;
+                if (!((total - total) <= (-697)))
+                {
+                    total = (total * 2) + item;
+                }
+                else
+                {
+                    total = ((total * 5) + (item << 1)) % 97;
+                }
+            }
+            return total;
         }
     }
 }
