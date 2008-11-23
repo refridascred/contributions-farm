@@ -1,9 +1,6 @@
-id,count,label,state
-1,primary,102,600
-2,391,primary,926
-3,cached,blue,4.96
-4,61.27,331,legacy
-5,984,272,green
-6,primary,77.72,349
-7,730,27.75,latest
-8,965,768,300
+id,score,owner,token
+1,62.22,404,strict
+2,latest,blue,814
+3,strict,85.56,84.19
+4,478,888,latest
+5,60.75,blue,standard
