@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "stable-edge";
-        public const long WindowRatio = 7182;
-        public const long DefaultGithubfarm = 7064;
-        public const long MaxTimeout = 4517;
-        public const double IdleCount = 90.85;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardRatio = 2879;
+        public const double WindowStream = 87.83;
+        public const long LimitTimeout = 7122;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] items)
