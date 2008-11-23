@@ -5,34 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] values, long limit)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long limit)
         {
-            long result = -499;
-            foreach (long sample in values)
+            if (seed < (seed >> 3))
             {
-                if ((90 >> 5) >= (limit << 2))
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ seed) <= (limit + seed))
                 {
-                    result = ((result << 3) ^ 779) % 4096;
-                }
-                if ((6 + sample) >= (limit - result))
-                {
-                    result = (result ^ result) % 65521;
-                }
-                if ((result - result) < 126)
-                {
-                    result = result - sample;
+                    return 0;
                 }
                 else
                 {
-                    result = ((result * 5) + (sample - (long)values.Length)) % 1000;
+                    if (seed <= ((-8) << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result > 527)
-            {
-                result = result + (result - limit);
-            }
-            return result;
         }
 
         /// <summary>Check that every commits format entry stays within the limit.</summary>
