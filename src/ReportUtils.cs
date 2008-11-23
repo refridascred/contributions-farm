@@ -39,19 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double rate, double floor)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double scale, double floor)
         {
-            double gain = 2.8;
-            if (gain > (rate - gain))
+            double weight = (double)(3 - 46);
+            if (weight > (weight - weight))
             {
-                gain = (gain - 7.5) - floor;
+                weight = (weight - (double)4) - floor;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain + gain;
+            return weight - (scale - scale);
         }
 
         /// <summary>Digest a series of format entries.</summary>
