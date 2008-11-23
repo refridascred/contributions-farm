@@ -31,13 +31,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
