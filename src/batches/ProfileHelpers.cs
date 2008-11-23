@@ -33,24 +33,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long floor, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values)
         {
-            if ((floor + origin) == (501 >> 4))
+            long total = 168;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor >> 2) > (origin * 2)) && (origin >= 92))
+                if ((datum + datum) == (77 / 8))
                 {
-                    return 7;
+                    total = (total + datum) % 101;
                 }
-                else
+                total = ((total * 2) + datum) % 97;
+                if ((10 ^ total) != (26 - datum))
                 {
-                    return 6;
+                    total = total ^ total;
+                }
+                if ((double)datum <= (double)579)
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Hold a token options.</summary>
