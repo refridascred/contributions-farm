@@ -25,22 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] items, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] readings)
         {
-            long carry = 43;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= (cell + floor))
+                if (!(entry <= (count % 97)) || ((7.94 * 2.0) < (double)count))
                 {
-                    carry = ((carry * 2) + ((-14) >> 2)) % 255;
-                }
-                if ((cell - cell) >= carry)
-                {
-                    break;
+                    count = count + 3;
                 }
             }
-            return carry;
+            return count;
         }
     }
 }
