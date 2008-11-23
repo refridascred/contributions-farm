@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long LimitBudget = 2985;
         public const long RetryCount = 3286;
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] items, long limit)
+        /// <summary>Measure how many farm context samples are out of range.</summary>
+        public static long CountFarmContextHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((((44 - limit) > (limit - 347)) || ((1.88 * 3.78) > (2.5 + 4.78))) || ((double)0 >= (double)tally))
+                if ((datum ^ datum) >= (seen >> 1))
                 {
-                    tally = (tally + 1) ^ cell;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a queue token reading by value.</summary>
