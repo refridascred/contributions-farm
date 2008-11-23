@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a graph cluster pair into a bucket.</summary>
-        public static long BucketGraphCluster(long limit, long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long slot = limit - bound;
-            if (bound >= 15)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit - slot) == (3 >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Failed,
+            Closed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
