@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Stale,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string HardFactor = "cached";
+        public const long RetryContributi = 1735;
+        public const double BurstLevel = 19.78;
 
         /// <summary>Scale a report graph figure with a bias.</summary>
         public static double SmoothReportGraph(double rate, double span)
