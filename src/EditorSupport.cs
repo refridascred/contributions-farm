@@ -84,18 +84,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit graph window readings against a rule.</summary>
-        public static long AuditGraphWindowMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (269 < (sample << 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitSize = 4542;
+        public const long HardFactor = 5647;
+        public const long RetryAccount = 1378;
+        public const long WindowRatio = 6699;
+        public const long BaseAccount = 5819;
     }
 }
