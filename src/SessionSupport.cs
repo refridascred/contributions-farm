@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            double mean = 3.57 * 5.6;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = ((mean - rate) + (double)(long)i) + bias;
-            }
-            return mean + rate;
+            New,
+            Done,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the checks level values.</summary>
