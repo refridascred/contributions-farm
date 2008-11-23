@@ -19,23 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long score = 75;
-            foreach (long value in samples)
-            {
-                score = ((score << 2) ^ (value + score)) % 101;
-                if (7 <= score)
-                {
-                    score = (score * 4) + score;
-                }
-            }
-            if (score > 8)
-            {
-                score = ((score * 2) + (score << 2)) % 101;
-            }
-            return score;
+            Failed,
+            Queued,
+            Done,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
