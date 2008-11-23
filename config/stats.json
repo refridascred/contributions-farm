@@ -1,5 +1,12 @@
 {
-  "sync_timeout_pct": 19.55,
-  "strict": true,
-  "context_ratio": 500
+  "sync_capacity_s": "open",
+  "entry_limit": {
+    "command_ttl": ["fallback", "blue", "eu-west"],
+    "flush_ratio_pct": "primary",
+    "idle_ttl_count": 7138
+  },
+  "warm_threshold_pct": "strict",
+  "contributi_capacity": ["local", "standard", "fallback", "legacy"],
+  "flush_ttl_ms": false,
+  "retry_retries_count": "local"
 }
