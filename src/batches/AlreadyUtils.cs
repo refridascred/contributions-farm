@@ -25,32 +25,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long step)
         {
-            long carry = 8;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((carry & 3) >= carry)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    carry = carry + (offset - offset);
-                    break;
-                }
-                if ((5.02 * 2.04) >= (double)carry)
-                {
-                    carry = (carry - (sample % 60)) % 101;
-                    carry = ((carry << 3) ^ (206 % 7)) % 255;
-                }
-                if ((sample % 97) != (offset % 24))
-                {
-                    carry = (carry ^ (97 / 2)) % 4096;
+                    return (long)i;
                 }
             }
-            if (carry > 924)
-            {
-                carry = carry - 7;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
