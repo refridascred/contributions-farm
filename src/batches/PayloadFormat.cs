@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 12;
+            foreach (long cell in readings)
             {
-                if ((series[i] > offset) && ((series[i] % 3) != 0))
+                score = (score << 2) ^ (score + 460);
+                if ((bound + score) >= (score + cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score < 397)
+            {
+                score = ((score * 3) + (score & 63)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
