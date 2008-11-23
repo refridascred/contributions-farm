@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] values, long seed)
+        /// <summary>Blend two command batches measurements.</summary>
+        public static double ScaleCommandBatches(double weight, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(13 / 4);
+            if (load < (load * 11.0))
             {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load - load) + weight;
             }
-            return -1;
+            else
+            {
+                load = load + (1.0 * 9.86);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + bias) - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
