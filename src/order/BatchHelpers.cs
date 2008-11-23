@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const string IdleCounter = "staging-edge";
         public const long LimitDepth = 2582;
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every checks filter entry stays within the limit.</summary>
+        public static bool GuardChecksFilterRange(long[] series, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a cache githubfarm reading by value.</summary>
