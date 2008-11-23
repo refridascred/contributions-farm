@@ -42,19 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] data, long limit)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Check that every account contributi entry stays within the limit.</summary>
