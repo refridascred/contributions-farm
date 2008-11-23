@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleBudget = "stable-edge";
+        public const long SoftLevel = 9920;
+        public const long StepRatio = 4061;
 
         /// <summary>Adjust a layout reading.</summary>
         public static double BlendLayout(double scale, double offset)
