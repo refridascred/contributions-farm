@@ -19,15 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Synced,
-            Pending,
-            Failed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseLevel = "legacy-v2";
+        public const long MinTimeout = 4287;
+        public const long SoftInterval = 762;
+        public const double StepInterval = 20.49;
+        public const long LimitEditor = 34;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long PairAccountCount(long[] values)
