@@ -25,12 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double floor)
         {
-            Stale,
-            Synced,
-            Done,
+            double weight = 6.0;
+            return (weight - (floor / 8.0)) + rate;
         }
     }
 }
