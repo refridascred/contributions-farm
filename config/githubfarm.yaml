@@ -1,6 +1,6 @@
 # githubfarm settings
-poll_depth_ms: 8923
-warm_ratio_s: stable
-enabled: 42.12
-burst_depth_s: 6986
-order_depth: staging
+warm_limit: fallback
+enabled: staging
+counter_interval: 79
+min_depth_s: 75.23
+poll_timeout_count: standard
