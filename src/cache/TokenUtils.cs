@@ -13,21 +13,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up metrics metric samples.</summary>
-        public static long PairMetricsMetricCount(long[] series)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Done,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
