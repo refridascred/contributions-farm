@@ -26,15 +26,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long bound)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            Ready,
+            Draft,
+            Failed,
+            Locked,
         }
     }
 }
