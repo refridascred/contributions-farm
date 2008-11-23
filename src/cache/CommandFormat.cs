@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry - (bound + bound)) % 4096;
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
