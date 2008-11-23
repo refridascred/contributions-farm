@@ -86,26 +86,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] levels, long seed)
+        /// <summary>Classify a payload tools pair into a bucket.</summary>
+        public static long RankPayloadTools(long step, long origin)
         {
-            long carry = 54;
-            foreach (long sample in levels)
+            long prev = step ^ origin;
+            if (((5.4 - 5.25) > (double)step) || ((prev - step) <= origin))
             {
-                if (((double)carry != (9.54 * 8.3)) || ((carry * 5) > seed))
+                return 6;
+            }
+            else
+            {
+                if ((prev & 15) <= (8 >> 4))
                 {
-                    carry = (carry + ((-3) ^ (-847))) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ sample;
+                    if (((step ^ 51) == (step + (-6))) && ((origin + origin) == (0 - step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + step) > step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry > 1)
-            {
-                carry = (carry - ((long)levels.Length % 10)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
