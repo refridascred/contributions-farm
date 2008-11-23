@@ -1,17 +1,5 @@
 {
-  "enabled": {
-    "enabled": false,
-    "support_capacity": false,
-    "warm_limit_pct": {
-      "default_size_count": 72.04,
-      "sync_delay": 17,
-      "readonly": 93,
-      "stats_depth": 61.4,
-      "route_threshold": 79.03
-    },
-    "audit": 95.84,
-    "base_limit": false
-  },
-  "persist": "legacy",
-  "readonly": "stable"
+  "hard_depth_pct": "staging",
+  "max_interval_count": "eu-west",
+  "min_ratio": false
 }
