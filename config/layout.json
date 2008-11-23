@@ -1,5 +1,10 @@
 {
-  "retry_ratio_pct": 167,
-  "checks_interval": false,
-  "counter_size": 83.72
+  "dry_run": 2948,
+  "max_window_ms": "standard",
+  "base_capacity_s": "green",
+  "audit": {
+    "schema_capacity": 26,
+    "persist": "edge",
+    "burst_delay": 92
+  }
 }
