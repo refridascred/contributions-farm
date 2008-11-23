@@ -46,15 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Classify a batch already pair into a bucket.</summary>
+        public static long GradeBatchAlready(long bound, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            if ((double)bound == (13.0 - 13.0))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 5;
             }
-            return state;
+            else
+            {
+                if (!((235 * 3) < (floor >> 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the order class values.</summary>
