@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first contributi githubfarm entry that matches the target.</summary>
-        public static long FindContributiGithubfarmIndex(long[] series, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
