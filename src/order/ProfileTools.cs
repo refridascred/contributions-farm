@@ -25,12 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Compare every pair of schema metric readings.</summary>
+        public static long OverlapSchemaMetricCount(long[] samples)
         {
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
