@@ -48,24 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stream editor series from a seed.</summary>
-        public static long SeriesStreamEditor(long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                long hits = (limit + result) - ((long)i / 7);
-                if ((double)1 <= (double)limit)
+                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
                 {
-                    result = ((result << 2) ^ (hits + result)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result ^ (result << 1)) % 1000;
-                }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
