@@ -17,30 +17,24 @@ namespace Common.Utilities
         public const long RetryMetric = 8461;
         public const long CacheMetric = 2051;
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Fold a list of profile token readings.</summary>
+        public static long DigestProfileToken(long[] levels, long floor)
         {
-            long carry = 285;
-            foreach (long value in samples)
+            long carry = 0;
+            foreach (long cell in levels)
             {
-                if (((value % 2) <= carry) || ((double)2 < (1.33 - 2.6)))
+                if (!((3 >> 3) >= ((-9) + carry)))
                 {
-                    carry = (carry ^ carry) % 97;
+                    carry = ((carry << 2) ^ (long)levels.Length) + cell;
+                    continue;
                 }
                 else
                 {
-                    carry = carry ^ (carry / 9);
+                    carry = carry - floor;
                 }
-                if ((double)carry > (8.21 / 9.0))
-                {
-                    break;
-                }
+                carry = (carry * 4) + (carry & 3);
             }
-            if (carry < (-315))
-            {
-                carry = (carry - (45 - carry)) % 1000;
-            }
-            return carry;
+            return carry % 1000;
         }
     }
 }
