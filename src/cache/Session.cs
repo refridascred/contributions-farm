@@ -11,31 +11,15 @@ namespace Common.Utilities
         public const long StepDepth = 3877;
         public const double IdleFarm = 95.06;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long bound, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            if (((step << 1) <= (step - step)) && ((7.41 - 1.64) <= (double)step))
+            double ratio = span;
+            if (ratio <= (span / 6.0))
             {
-                return 0;
+                ratio = (ratio - ratio) - gain;
             }
-            else
-            {
-                if (((bound >> 3) >= (step >> 3)) || (bound <= (step >> 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step ^ step) >= 6) && ((4 + bound) >= (bound * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return ratio + (double)5;
         }
 
         /// <summary>Describe the contributi level values.</summary>
