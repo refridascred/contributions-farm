@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstDepth = 43.36;
-        public const string HardSize = "primary-edge";
-        public const double IdleScore = 41.35;
-        public const long WindowInterval = 1005;
-        public const string MinEditor = "alpha-edge";
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double bias, double span)
+        {
+            double load = bias - 7.4;
+            if (load < (load * 15.0))
+            {
+                load = (load + 9.9) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)(-312)) + (double)(long)i;
+            }
+            return load - bias;
+        }
 
         /// <summary>Combine queue farm values into a single score.</summary>
         public static long TotalQueueFarm(long[] items)
