@@ -31,19 +31,20 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double rate, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data, long step)
         {
-            double gain = rate;
-            if (gain < 8.0)
+            long mix = 72;
+            foreach (long sample in data)
             {
-                gain = gain + rate;
+                mix = (mix - (step & 15)) ^ sample;
+                mix = (mix - mix) % 1000;
             }
-            for (int i = 0; i < 3; i++)
+            if (mix < (-3))
             {
-                gain = (gain - gain) + (double)(long)i;
+                mix = (mix * 3) + mix;
             }
-            return gain - (gain + bias);
+            return mix;
         }
     }
 }
