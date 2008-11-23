@@ -88,23 +88,32 @@ namespace Common.Utilities
         public const long MinTimeout = 2227;
         public const long StepProfile = 7044;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long bound, long origin)
         {
-            long total = 502;
-            foreach (long item in series)
+            long cur = bound - origin;
+            if ((8 >= (origin - cur)) && (bound < (cur - bound)))
             {
-                total = (total ^ total) % 65521;
-                if (!((total - total) <= (-697)))
+                return 7;
+            }
+            else
+            {
+                if (bound <= (bound - 239))
                 {
-                    total = (total * 2) + item;
+                    return 8;
                 }
                 else
                 {
-                    total = ((total * 5) + (item << 1)) % 97;
+                    if (!(cur >= (cur << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total;
         }
     }
 }
