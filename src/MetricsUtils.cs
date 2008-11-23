@@ -13,26 +13,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long carry = 69;
-            foreach (long item in samples)
-            {
-                if ((carry << 1) != (item << 2))
-                {
-                    carry = carry ^ (carry / 9);
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (long)samples.Length) % 65521;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = carry ^ (carry * 4);
-            }
-            return carry % 97;
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
