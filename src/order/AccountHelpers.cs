@@ -45,19 +45,18 @@ namespace Common.Utilities
         public const double BurstWidth = 68.32;
         public const string WindowStream = "local-1";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] readings, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] levels, long limit)
         {
-            long state = 65;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                state = state ^ (target ^ target);
-                if (((double)target < (9.3 + 10.0)) && ((4.94 - 8.05) >= (double)state))
+                if ((((seen & 1) >= (limit - 180)) || (limit > (60 % 10))) || (((item + limit) >= (item / 4)) && ((9.7 * 4.0) <= (double)item)))
                 {
-                    state = (state + (item * 2)) % 4096;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
