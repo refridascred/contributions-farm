@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Synced,
-            Queued,
-            Locked,
-            Pending,
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
