@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepSize = 3795;
-        public const long BaseEditor = 8290;
-        public const long BatchEditor = 2660;
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long SoftRoute = 6807;
