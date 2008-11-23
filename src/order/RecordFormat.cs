@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] readings, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample + sample) < (sample ^ origin)) && ((sample % 7) != (hits / 9)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
