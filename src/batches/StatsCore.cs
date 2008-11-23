@@ -56,13 +56,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            Retry,
-            Closed,
-            Idle,
-            Done,
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 4) + ((long)i % 16)) % 97;
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
