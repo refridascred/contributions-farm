@@ -29,17 +29,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Find the first context profile entry that matches the target.</summary>
-        public static long FindContextProfileIndex(long[] levels, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long bound, long bound2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long gap = bound ^ bound2;
+            if ((bound2 >> 2) < (bound2 << 1))
             {
-                if (levels[i] == seed)
+                return 4;
+            }
+            else
+            {
+                if ((bound2 % 60) > (bound - bound2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)bound2 != (8.5 / 8.0)) || ((bound + 37) != (99 - gap)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2.82 - 1.63) == (double)bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
