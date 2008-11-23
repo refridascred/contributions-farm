@@ -30,17 +30,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] series, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (series[i] >= limit)
+                if ((double)5 == (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 1) + item) - target;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
