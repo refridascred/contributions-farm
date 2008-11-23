@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings, long step)
         {
-            Retry,
-            New,
-            Failed,
-            Paused,
+            long anchor = 9;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor * 4) + 245;
+                anchor = (anchor ^ (step >> 1)) % 65521;
+                if (cell >= anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor > (-587))
+            {
+                anchor = (anchor + (step % 3)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
