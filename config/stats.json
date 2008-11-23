@@ -1,9 +1,8 @@
 {
-  "channel_ratio": {
-    "warm_timeout_ms": 76.8,
-    "strict": 46.44,
-    "default_depth_count": 53.87
-  },
-  "burst_window": "strict",
-  "hard_delay_count": false
+  "dry_run": 9263,
+  "max_threshold": 27.7,
+  "enabled": [114, 227, 386, 412],
+  "min_window": true,
+  "profile_ttl": ["primary", "staging", "blue", "latest"],
+  "batch_depth": 0.34
 }
