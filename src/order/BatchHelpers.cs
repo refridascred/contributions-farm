@@ -22,18 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema counter samples are out of range.</summary>
-        public static long TallySchemaCounterGaps(long[] samples)
+        /// <summary>Rank cache report input into a small class.</summary>
+        public static long RankCacheReport(long limit, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long slot = limit ^ step;
+            if (!((double)limit == (0.1 + 4.7)))
             {
-                if ((double)value > (4.0 * 7.64))
+                return 8;
+            }
+            else
+            {
+                if (limit < slot)
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
