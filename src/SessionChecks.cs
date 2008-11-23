@@ -19,13 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            Stale,
-            Draft,
-            Paused,
-            Retry,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item << 1) == (seen >> 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
