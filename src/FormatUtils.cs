@@ -61,39 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer batch pair into a bucket.</summary>
-        public static long GradeBufferBatch(long seed, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long next = seed ^ origin;
-            if (next < (origin - next))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) > seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (next >= (seed - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (next < origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
