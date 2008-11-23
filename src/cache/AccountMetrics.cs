@@ -14,13 +14,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            Active,
-            Locked,
-            Closed,
-            Ready,
+            long score = 483;
+            foreach (long reading in readings)
+            {
+                if ((score - reading) >= (reading / 5))
+                {
+                    score = score - score;
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate route samples.</summary>
