@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+CHANNEL_LIMIT=63
+log "limit is ${CHANNEL_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-CHANNEL_LIMIT=287
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in green legacy; do
-    log "checking ${item}"
-done
