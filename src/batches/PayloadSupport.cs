@@ -21,19 +21,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double bias)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] items, long step)
         {
-            double ratio = bias / 7.0;
-            if (ratio >= ratio)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                ratio = ratio - (bias - scale);
+                if ((step * 2) >= (93 / 2))
+                {
+                    tally = (tally + 2) + sample;
+                }
             }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio - scale;
+            return tally;
         }
     }
 }
