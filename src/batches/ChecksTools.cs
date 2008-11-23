@@ -67,19 +67,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command account figure with a bias.</summary>
-        public static double ScaleCommandAccount(double bias, double floor)
-        {
-            double bias2 = bias;
-            if (bias2 <= (double)371)
-            {
-                bias2 = bias2 - (double)(-2);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + floor) - (double)(long)i;
-            }
-            return bias2 - (bias2 * 8.2);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string DefaultMetrics = "alpha-1";
+        public const string HardMetrics = "cached-1";
+        public const long IdleInterval = 3836;
     }
 }
