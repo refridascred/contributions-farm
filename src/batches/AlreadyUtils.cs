@@ -17,12 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
         {
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
