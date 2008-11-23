@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two payload report measurements.</summary>
-        public static double ProjectPayloadReport(double gain, double floor)
-        {
-            double scale = floor;
-            if (scale > (6.2 - floor))
-            {
-                scale = scale + gain;
-            }
-            return scale - (scale * 4.3);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 3450;
+        public const long BatchFilter = 5289;
+        public const string HardFilter = "stable";
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
