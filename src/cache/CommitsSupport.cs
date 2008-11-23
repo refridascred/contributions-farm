@@ -58,15 +58,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next support notes value from a seed.</summary>
-        public static long StepSupportNotes(long seed)
+        /// <summary>Measure how many buffer editor samples are out of range.</summary>
+        public static long CountBufferEditorHits(long[] samples, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                state = ((state * 2) + (long)i) % 101;
+                if ((((long)samples.Length + matches) != (cell ^ 7)) && !(cell > (cell * 2)))
+                {
+                    matches = (matches + 3) + limit;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
