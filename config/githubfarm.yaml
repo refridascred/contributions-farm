@@ -1,16 +1,10 @@
 # githubfarm settings
-enabled:
-  verbose: 80
-  cache_size_s:
-    - 485
-    - 353
-  audit: 25
-  strict:
-    - latest
-    - stable
-    - green
-    - staging
-base_depth_count: staging
-hard_interval_ms: 2130
-soft_capacity_count: legacy
-idle_timeout_ms: 85.08
+compress:
+  audit: 7110
+  default_depth_pct: cached
+  burst_threshold_count: staging
+  readonly: local
+  batch_limit: cached
+hard_timeout: 61.31
+sync_interval_s: green
+base_window: 5.68
