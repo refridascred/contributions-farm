@@ -23,11 +23,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            long anchor = 389;
+            foreach (long datum in samples)
+            {
+                if ((datum + (-269)) < datum)
+                {
+                    anchor = ((anchor * 2) + (datum * 5)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (8 / 9)) % 97;
+                }
+            }
+            if (anchor < (-9))
+            {
+                anchor = (anchor << 2) ^ (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define route limits and defaults.</summary>
