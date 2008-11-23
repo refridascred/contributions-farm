@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Closed,
-            New,
-            Done,
-            Paused,
-            Retry,
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate format samples.</summary>
