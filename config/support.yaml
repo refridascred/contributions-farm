@@ -1,22 +1,5 @@
 # support settings
-base_ratio_pct: false
-poll_timeout:
-  - 225
-  - 343
-  - 395
-  - 305
-channel_threshold:
-  - staging
-  - cached
-default_window:
-  persist: 1636
-  hard_interval_s:
-    - 348
-    - 113
-    - 186
-    - 100
-  base_window_ms:
-    - 295
-    - 335
-  idle_interval: 50
-  soft_retries_s: blue
+max_ratio_ms: 8852
+payload_timeout: stable
+schema_timeout: 9
+enabled: open
