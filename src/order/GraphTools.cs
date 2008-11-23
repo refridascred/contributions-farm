@@ -51,19 +51,18 @@ namespace Common.Utilities
         public const double BaseEditor = 69.62;
         public const long LimitEditor = 6180;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] samples, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (value != seed)
+                if (tally >= entry)
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 1) - limit;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
