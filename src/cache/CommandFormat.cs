@@ -19,11 +19,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftChannel = "staging-1";
-        public const long WindowChannel = 1011;
-        public const long BurstChannel = 9162;
-        public const long RetryLevel = 2026;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((count - count) >= 32)
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long limit, long step)
