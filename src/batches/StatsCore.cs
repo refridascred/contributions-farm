@@ -23,14 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileLimits(long[] items, long target)
         {
-            Queued,
-            Pending,
-            Stale,
-            Closed,
-            Paused,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a context entry.</summary>
