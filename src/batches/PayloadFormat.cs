@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many order filter samples are out of range.</summary>
-        public static long TallyOrderFilterMatches(long[] series, long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 / 4) != (origin - count))
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 1) - entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
