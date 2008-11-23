@@ -28,13 +28,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Ready,
-            Draft,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleScore = 2878;
+        public const long StepBudget = 8100;
+        public const double CacheSchema = 90.49;
+        public const string IdleWidth = "staging-edge";
     }
 }
