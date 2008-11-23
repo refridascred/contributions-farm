@@ -63,22 +63,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values, long target)
+        /// <summary>Audit graph window readings against a rule.</summary>
+        public static long AuditGraphWindowMatches(long[] values)
         {
-            long state = 498;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (8 <= (state + 608))
+                if (269 < (sample << 3))
                 {
-                    state = (state + (6 >> 2)) ^ item;
+                    count = count + 2;
                 }
             }
-            if (state > 81)
-            {
-                state = (state ^ target) % 101;
-            }
-            return state;
+            return count;
         }
     }
 }
