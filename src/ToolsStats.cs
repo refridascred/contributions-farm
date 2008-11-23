@@ -75,19 +75,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long mark = 9;
-            foreach (long item in samples)
-            {
-                mark = ((mark << 2) ^ (item % 16)) % 255;
-                if (!((item + mark) > 121))
-                {
-                    mark = (mark - (-2)) % 101;
-                }
-            }
-            return mark % 1000;
+            Closed,
+            Stale,
+            Draft,
+            Synced,
+            Active,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
