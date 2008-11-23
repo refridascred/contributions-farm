@@ -1,8 +1,8 @@
-id,active,rank
-1,897,63.23
-2,65.24,560
-3,eu-west,open
-4,9.56,82.56
-5,657,15.46
-6,standard,455
-7,staging,staging
+id,weight,score
+1,479,local
+2,89.84,primary
+3,local,118
+4,25.53,19.1
+5,stable,24.09
+6,47.42,471
+7,91.8,stable
