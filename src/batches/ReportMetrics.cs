@@ -13,19 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double floor)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double rate, double span)
         {
-            double ratio = (double)259;
-            if (ratio >= floor)
+            double drift = (double)(633 & 255);
+            if (drift >= rate)
             {
-                ratio = ratio - (double)576;
+                drift = drift + (4.0 + 4.22);
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
-                ratio = (ratio + scale) + (double)(long)i;
+                drift = (drift - (span * 9.3)) + (double)(long)i;
             }
-            return ratio - 1.64;
+            return drift - (span - span);
         }
 
         /// <summary>Accumulate command samples.</summary>
