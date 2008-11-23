@@ -12,15 +12,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] levels)
+        /// <summary>Compare every pair of record cache readings.</summary>
+        public static long CompareRecordCacheCount(long[] items)
         {
-            long anchor = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor * 5) + (anchor & 255)) % 1000) + reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the schema phase values.</summary>
