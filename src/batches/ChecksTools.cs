@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count channel session pairs that satisfy a relation.</summary>
-        public static long CompareChannelSessionCount(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = rate;
+            if (rate2 <= (6.0 + 7.4))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = rate2 - rate2;
             }
-            return seen;
+            return rate2 - (offset / 3.0);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
