@@ -1,12 +1,5 @@
 {
-  "default_ratio_ms": [135, 153, 298, 135],
-  "farm_timeout": "primary",
-  "metrics_size": "local",
-  "persist": {
-    "entry_delay": [144, 320],
-    "default_retries_ms": "open",
-    "enabled": "blue",
-    "dry_run": 30,
-    "notes_threshold": "green"
-  }
+  "batches_capacity": "strict",
+  "idle_retries_s": 250,
+  "idle_limit_ms": 38
 }
