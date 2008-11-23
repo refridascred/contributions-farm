@@ -59,12 +59,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            Draft,
-            Locked,
+            Paused,
             Pending,
+            Ready,
         }
     }
 }
