@@ -1,6 +1,5 @@
 {
-  "burst_depth_ms": 1.26,
-  "idle_window_count": 60,
-  "enabled": [373, 169],
-  "format_depth": "stable"
+  "strict": ["standard", "primary", "stable"],
+  "dry_run": "strict",
+  "base_capacity": "edge"
 }
