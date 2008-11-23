@@ -61,18 +61,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] samples, long step)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((step + sample) <= 586)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
