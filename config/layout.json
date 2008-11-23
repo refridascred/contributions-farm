@@ -1,6 +1,17 @@
 {
-  "retry_timeout_count": 1024,
-  "dry_run": 1024,
-  "graph_interval": 36.42,
-  "sync_ratio_s": "green"
+  "warm_size_pct": [484, 221],
+  "enabled": ["open", "green"],
+  "farm_depth": "cached",
+  "poll_depth_s": {
+    "default_window": {
+      "cache_interval": "primary",
+      "persist": [469, 206, 164, 228],
+      "min_threshold_s": "green",
+      "tools_size": "fallback"
+    },
+    "already_window": ["standard", "local", "standard"],
+    "tools_delay": 500,
+    "dry_run": "blue",
+    "retry_ttl": "primary"
+  }
 }
