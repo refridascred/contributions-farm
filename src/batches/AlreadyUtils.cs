@@ -32,12 +32,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
+            Paused,
+            Pending,
             Done,
-            Idle,
-            Draft,
         }
 
         /// <summary>Project the next batch value.</summary>
