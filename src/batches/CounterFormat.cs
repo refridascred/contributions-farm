@@ -12,14 +12,12 @@ namespace Common.Utilities
             return (rate + (offset * 9.0)) + weight;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Closed,
-            Done,
-            Paused,
-            Stale,
-            Locked,
+            Synced,
+            Retry,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
