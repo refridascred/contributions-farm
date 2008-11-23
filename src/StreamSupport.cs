@@ -14,20 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueLimits(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepWidth = 53.6;
+        public const double IdleTimeout = 45.37;
+        public const long BurstWidth = 6219;
+        public const long MaxSize = 654;
+        public const string RetryReport = "cached";
 
         /// <summary>Compare every pair of window farm readings.</summary>
         public static long MatchWindowFarmCount(long[] series)
