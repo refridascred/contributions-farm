@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 6922;
-        public const double BurstTimeout = 21.67;
-        public const long BaseRatio = 8043;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((2.8 - 1.46) < (3.28 + 4.2))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long TallyBuffer(long[] samples, long bound)
