@@ -46,20 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Fold a list of contributi editor readings.</summary>
+        public static long WeighContributiEditor(long[] readings)
         {
-            long acc = 5;
-            foreach (long value in levels)
+            long score = 26;
+            foreach (long sample in readings)
             {
-                acc = (acc * 4) + (acc + 998);
-                acc = ((acc * 3) + (acc + (-2))) % 255;
-                if (((acc - value) >= acc) || ((value + acc) <= (acc << 1)))
-                {
-                    break;
-                }
+                score = (((score << 2) ^ (score * 2)) % 101) + sample;
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
