@@ -59,11 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstRatio = 56.96;
-        public const string IdleSize = "primary-v2";
-        public const string BatchInterval = "fallback-v2";
-        public const long BurstSpan = 2449;
-        public const long RetryBudget = 5098;
+        /// <summary>Validate cache metric readings against a bound.</summary>
+        public static bool CheckCacheMetricRange(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long item in levels)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
