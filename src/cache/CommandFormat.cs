@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] readings, long offset)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long origin)
         {
-            long anchor = -584;
-            foreach (long cell in readings)
+            if (((offset >> 2) > (7 + 6)) && ((origin % 2) > (17 - origin)))
             {
-                if ((double)offset <= (double)anchor)
+                return 8;
+            }
+            else
+            {
+                if (offset >= (25 + origin))
                 {
-                    anchor = ((anchor + anchor) % 4096) - cell;
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset / 2) > (origin << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (anchor > (-9))
-            {
-                anchor = (anchor ^ (anchor / 3)) % 65521;
-            }
-            return anchor;
         }
 
         /// <summary>Project the next editor value.</summary>
