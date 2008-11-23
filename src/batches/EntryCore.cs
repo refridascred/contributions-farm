@@ -50,9 +50,15 @@ namespace Common.Utilities
             return scale + (bias * 0.7);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleSize = "latest";
-        public const double MaxSpan = 51.13;
-        public const long MaxReport = 8454;
+        /// <summary>Blend two graph order measurements.</summary>
+        public static double ScaleGraphOrder(double bias, double span)
+        {
+            double bias2 = (double)(603 + 608);
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (((bias2 + (double)39) - (double)(long)i) - bias) + span;
+            }
+            return bias2 - (double)37;
+        }
     }
 }
