@@ -62,18 +62,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] levels)
+        /// <summary>Blend two contributi route measurements.</summary>
+        public static double BlendContributiRoute(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double weight = (double)74 + (double)0;
+            if (weight <= (scale + offset))
             {
-                if ((sample * 4) <= seen)
-                {
-                    seen = seen + 1;
-                }
+                weight = weight + 6.0;
             }
-            return seen;
+            else
+            {
+                weight = weight - (double)2;
+            }
+            return weight - weight;
         }
     }
 }
