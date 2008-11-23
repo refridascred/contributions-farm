@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
-        public static bool CheckGithubfarmChecksLimits(long[] samples, long step)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            double rate = 8.62;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = ((rate - gain) - (double)(long)i) + bias;
             }
-            return stale;
+            return rate + (6.0 * 9.15);
         }
 
         /// <summary>Describe the contributi level values.</summary>
