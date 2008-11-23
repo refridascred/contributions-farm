@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long StepCounter = 8193;
         public const long MaxCounter = 4015;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] values, long offset)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
