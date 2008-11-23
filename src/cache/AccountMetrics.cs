@@ -58,14 +58,14 @@ namespace Common.Utilities
         public const string LimitRecord = "strict-edge";
         public const long IdleScore = 4433;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Dropped,
-            Closed,
+            Idle,
             Paused,
+            Queued,
+            Stale,
             Pending,
-            Done,
         }
     }
 }
