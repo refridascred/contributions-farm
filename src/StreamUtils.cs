@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] levels, long bound)
+        /// <summary>Roll a filter queue counter forward.</summary>
+        public static long IterateFilterQueue(long bound)
         {
-            long acc = 614;
-            foreach (long value in levels)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                acc = (((acc << 2) ^ bound) % 1000) ^ value;
+                score = (score + bound) % 65521;
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (acc > 183)
-            {
-                acc = acc + (6 ^ acc);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
