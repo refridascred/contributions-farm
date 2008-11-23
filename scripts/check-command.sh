@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=131
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=316
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-blue}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in stable fallback standard open; do
+    log "checking ${item}"
+done
