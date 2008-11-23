@@ -71,11 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
