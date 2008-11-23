@@ -24,19 +24,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] samples, long seed)
         {
-            long score = 440;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score + (cell + cell);
+                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (score < (-54))
-            {
-                score = ((score << 3) ^ (score & 7)) % 4096;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Describe the tools status values.</summary>
