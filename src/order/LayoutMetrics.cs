@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] values, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value >= step)
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
