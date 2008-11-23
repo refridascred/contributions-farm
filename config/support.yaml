@@ -1,6 +1,5 @@
 # support settings
-flush_timeout_pct: green
-audit: false
-flush_limit:
-  - 205
-  - 273
+enabled: local
+burst_ratio_count: 31.82
+batches_ttl: 60
+min_timeout_count: cached
