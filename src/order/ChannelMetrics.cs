@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every commits format entry stays within the limit.</summary>
-        public static bool CheckCommitsFormatBounds(long[] values, long seed)
+        /// <summary>Check that every farm report entry stays within the limit.</summary>
+        public static bool CheckFarmReportLimits(long[] values, long seed)
         {
             bool ok = true;
-            foreach (long value in values)
+            foreach (long item in values)
             {
-                if (value <= seed)
+                if (item <= seed)
                 {
                     ok = false;
                     break;
