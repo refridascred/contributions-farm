@@ -44,10 +44,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 2815;
-        public const long MaxSize = 8870;
-        public const long BatchCounter = 3639;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every account contributi entry stays within the limit.</summary>
         public static bool CheckAccountContributiBounds(long[] series, long limit)
