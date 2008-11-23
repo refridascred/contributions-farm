@@ -41,10 +41,26 @@ namespace Common.Utilities
         public const double StepInterval = 65.16;
         public const long LimitRecord = 2238;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepWidth = 6407;
-        public const long LimitSchema = 5687;
-        public const long MaxFactor = 4306;
-        public const double LimitLevel = 28.0;
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] samples, long floor)
+        {
+            long result = -7;
+            foreach (long reading in samples)
+            {
+                if ((reading + reading) == (floor % 2))
+                {
+                    result = (result << 2) ^ (83 & 7);
+                }
+                else
+                {
+                    result = ((result << 3) ^ (435 + reading)) % 65521;
+                }
+                if ((8.0 / 4.0) < (double)result)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
     }
 }
