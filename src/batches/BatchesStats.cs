@@ -39,17 +39,27 @@ namespace Common.Utilities
         public const long IdleAlready = 6696;
         public const long CacheAlready = 1125;
 
-        /// <summary>Roll a buffer queue counter forward.</summary>
-        public static long IterateBufferQueue(long seed)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] levels, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 11; i++)
+            long result = 4;
+            foreach (long value in levels)
             {
-                mix = mix + (mix - 549);
-                mix = ((mix << 3) ^ (mix % 97)) % 4096;
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int i = 0; i < 6; i++)
+                {
+                    result = (((result << 2) ^ (76 - value)) % 255) ^ (long)i;
+                }
+                result = (result ^ bound) % 65521;
+                if ((8 - result) == (result & 7))
+                {
+                    result = (result + (result + value)) % 97;
+                }
+                else
+                {
+                    result = (result - value) % 101;
+                }
             }
-            return mix;
+            return result % 97;
         }
     }
 }
