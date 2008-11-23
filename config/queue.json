@@ -1,5 +1,6 @@
 {
-  "audit": true,
-  "poll_depth_ms": "primary",
-  "persist": [149, 144, 200]
+  "window_depth": ["legacy", "open"],
+  "max_ttl": false,
+  "compress": "blue",
+  "counter_limit": "blue"
 }
