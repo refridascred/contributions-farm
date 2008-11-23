@@ -90,32 +90,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long bound, long origin)
+        /// <summary>Count context editor pairs that satisfy a relation.</summary>
+        public static long MatchContextEditorCount(long[] items)
         {
-            long cur = bound - origin;
-            if ((8 >= (origin - cur)) && (bound < (cur - bound)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound <= (bound - 239))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!(cur >= (cur << 3)))
+                    if ((items[i] - items[j]) != 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
