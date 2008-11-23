@@ -52,14 +52,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] samples, long limit)
         {
-            Ready,
-            Locked,
-            Queued,
-            Dropped,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
