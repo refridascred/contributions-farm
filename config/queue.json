@@ -1,8 +1,17 @@
 {
-  "enabled": "open",
-  "readonly": 1024,
-  "max_timeout": [435, 145, 435],
-  "audit": ["stable", "open", "fallback"],
-  "layout_capacity": 66.24,
-  "metrics_threshold": "legacy"
+  "strict": 8760,
+  "batch_interval": 250,
+  "stats_capacity": 30,
+  "metric_depth": {
+    "min_window_pct": ["staging", "fallback", "legacy"],
+    "command_threshold": ["legacy", "latest", "open", "staging"],
+    "cache_timeout_count": 55,
+    "default_size_count": {
+      "profile_interval": [368, 353, 392],
+      "batch_window_pct": 36.93,
+      "cache_ttl": ["primary", "primary"],
+      "burst_ttl": 3,
+      "max_ratio_s": 8261
+    }
+  }
 }
