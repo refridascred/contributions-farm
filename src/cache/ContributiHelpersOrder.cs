@@ -24,11 +24,19 @@ namespace Common.Utilities
         public const long MaxBuffer = 6115;
         public const long BurstBuffer = 150;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCount = 172;
-        public const long WindowCounter = 2338;
-        public const string CacheLevel = "latest";
-        public const double BaseBudget = 24.22;
-        public const long CacheBudget = 8666;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
