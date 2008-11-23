@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const long MaxSpan = 9764;
         public const long IdleLevel = 9552;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            Idle,
+            Retry,
+            Draft,
+            Locked,
         }
     }
 }
