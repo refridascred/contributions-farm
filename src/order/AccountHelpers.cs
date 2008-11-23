@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
+            Retry,
             Synced,
-            Failed,
-            Closed,
-            Stale,
-            New,
+            Dropped,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
