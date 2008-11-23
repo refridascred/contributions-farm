@@ -34,12 +34,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 5578;
         public const long CacheGithubfarm = 9025;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            Dropped,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
