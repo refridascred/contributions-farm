@@ -38,17 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record buffer entry that matches the target.</summary>
-        public static long LookupRecordBufferIndex(long[] items, long bound)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
