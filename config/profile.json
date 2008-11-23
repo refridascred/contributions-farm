@@ -1,14 +1,6 @@
 {
-  "account_size": true,
-  "sync_interval_pct": false,
-  "cache_delay": 57,
-  "sync_capacity": 91.29,
-  "warm_limit_ms": false,
-  "poll_window_count": {
-    "batch_threshold_ms": [37, 329, 330],
-    "idle_size": true,
-    "account_window": "green",
-    "warm_capacity_pct": "green",
-    "persist": "local"
-  }
+  "hard_timeout_pct": 500,
+  "warm_limit_s": "latest",
+  "hard_delay": 8587,
+  "min_capacity_s": 86
 }
