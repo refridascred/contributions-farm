@@ -46,11 +46,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 3011;
-        public const long MinCount = 7598;
-        public const long BatchFactor = 5239;
-        public const string LimitEditor = "open";
-        public const long StepRatio = 8867;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxInterval = 6594;
+        public const long RetryContext = 9279;
+        public const long BaseDepth = 1416;
+        public const long MinLevel = 4985;
+        public const string HardContext = "local-1";
     }
 }
