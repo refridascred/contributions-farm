@@ -1,7 +1,23 @@
 {
-  "hard_capacity": [278, 224],
-  "burst_threshold": ["latest", "local"],
-  "audit": "open",
-  "enabled": 33,
-  "sync_threshold_pct": 3711
+  "min_delay": {
+    "hard_ratio": 62.68,
+    "warm_window": 17,
+    "enabled": "stable",
+    "batches_delay": "open"
+  },
+  "base_retries_ms": {
+    "sync_ratio_count": false,
+    "account_limit": "strict",
+    "base_window": 60,
+    "counter_threshold": false,
+    "cache_retries_pct": {
+      "record_delay": "legacy",
+      "enabled": 20.31,
+      "persist": "eu-west"
+    },
+    "min_interval_s": 60
+  },
+  "flush_capacity_s": 8317,
+  "base_ratio": true,
+  "batch_ratio_s": "open"
 }
