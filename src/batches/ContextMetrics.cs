@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Locate a cache entry reading by value.</summary>
-        public static long FindCacheEntryIndex(long[] items, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (items[i] >= floor)
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
