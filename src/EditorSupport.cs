@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two counter contributi measurements.</summary>
-        public static double AdjustCounterContributi(double ratio, double offset)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            double scale = (ratio / 2.0) - (offset / 8.0);
-            if (scale >= offset)
-            {
-                scale = scale + (double)84;
-            }
-            return scale + (offset + ratio);
+            Failed,
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
