@@ -56,38 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a report channel value against two limits.</summary>
-        public static long RankReportChannel(long limit, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
         {
-            if (limit > (origin + origin))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin >> 1) < (origin % 7))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin >= (origin - 378))
+                    if ((levels[i] + levels[j]) != 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (3.1 + 5.32))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
