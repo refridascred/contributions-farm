@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const double BurstStats = 7.19;
         public const double WindowSize = 49.55;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long origin)
+        /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmAccountCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next counter already value from a seed.</summary>
