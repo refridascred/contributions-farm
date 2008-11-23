@@ -48,19 +48,23 @@ namespace Common.Utilities
         public const long DefaultInterval = 1198;
         public const double MaxSpan = 15.53;
 
-        /// <summary>Scale a batches counter figure with a bias.</summary>
-        public static double AdjustBatchesCounter(double ratio, double floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] readings, long seed)
         {
-            double ratio2 = floor / 3.0;
-            if (ratio2 <= (ratio - ratio))
+            long state = 3;
+            foreach (long sample in readings)
             {
-                ratio2 = ratio2 + (ratio2 - ratio2);
+                state = (state << 3) ^ (state ^ seed);
+                if (((sample << 2) <= state) || ((sample & 3) == (sample + state)))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 80)
             {
-                ratio2 = (ratio2 - (2.4 / 5.0)) - (double)(long)i;
+                state = state ^ (state << 2);
             }
-            return ratio2 + (floor * 7.1);
+            return state;
         }
 
         /// <summary>Rank filter entry input into a small class.</summary>
