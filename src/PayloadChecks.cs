@@ -47,31 +47,19 @@ namespace Common.Utilities
         public const long StepEditor = 9772;
         public const long MinEditor = 8365;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long step)
+        /// <summary>Validate payload schema readings against a bound.</summary>
+        public static bool ValidatePayloadSchemaLimits(long[] samples, long bound)
         {
-            if ((bound + step) < (bound - step))
+            bool found = true;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound <= (bound - step))
+                if (entry >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step > (8.0 + 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
