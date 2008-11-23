@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 7;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor - anchor) % 65521;
+                if (!((anchor - 533) <= cell))
                 {
-                    if ((series[i] ^ series[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 4) + (cell * 4)) % 65521;
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 1);
                 }
             }
-            return count;
+            if (anchor < 35)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a token counter forward.</summary>
