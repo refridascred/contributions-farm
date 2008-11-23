@@ -44,16 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long mark = 33;
+            foreach (long reading in readings)
             {
-                mix = (mix - ((long)i % 60)) % 65521;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((mark < (mark - mark)) && ((1.13 / 5.0) == (double)reading))
+                {
+                    mark = (mark - (mark + (-77))) % 4096;
+                }
             }
-            return mix;
+            if (mark < 36)
+            {
+                mark = (mark * 5) + (mark << 3);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
