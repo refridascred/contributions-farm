@@ -24,22 +24,17 @@ namespace Common.Utilities
         public const long IdleBudget = 7527;
         public const double SoftLevel = 35.89;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings, long floor)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long origin)
         {
-            long mix = 91;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((cell % 97) < (cell << 2)))
+                if (levels[i] == origin)
                 {
-                    mix = (mix - ((-98) + (long)readings.Length)) + floor;
-                }
-                if ((9.13 * 2.9) < (double)cell)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
