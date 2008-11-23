@@ -67,9 +67,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleScore = 542;
-        public const string BatchLevel = "staging-1";
-        public const long MinDepth = 2490;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
