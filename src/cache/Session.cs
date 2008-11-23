@@ -58,13 +58,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            Dropped,
-            Failed,
-            Ready,
-            Pending,
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
