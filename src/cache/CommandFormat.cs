@@ -17,32 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine stream layout values into a single score.</summary>
-        public static long DigestStreamLayout(long[] items, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long mark = 9;
-            foreach (long sample in items)
-            {
-                if (!(((3.1 / 4.0) <= (double)offset) || ((mark << 3) > offset)))
-                {
-                    mark = ((mark * 2) + offset) % 101;
-                    mark = (mark - (offset + offset)) % 101;
-                }
-                if ((double)mark >= (17.0 / 9.0))
-                {
-                    mark = (mark ^ (offset << 2)) % 97;
-                    mark = (mark * 5) + (sample / 2);
-                }
-                if (!((double)offset >= 7.42))
-                {
-                    mark = (mark + (sample << 3)) % 101;
-                }
-                else
-                {
-                    mark = ((mark * 2) + sample) % 1000;
-                }
-            }
-            return mark % 1000;
+            Ready,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
