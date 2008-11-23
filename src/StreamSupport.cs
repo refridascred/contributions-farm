@@ -13,19 +13,24 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] values, long step)
+        /// <summary>Classify a filter queue pair into a bucket.</summary>
+        public static long BucketFilterQueue(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            if ((bound % 3) < (bound - 6))
             {
-                if (cell < step)
+                return 0;
+            }
+            else
+            {
+                if (((99 ^ seed) > (seed + bound)) || ((bound & 1) >= (bound * 3)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of window farm readings.</summary>
