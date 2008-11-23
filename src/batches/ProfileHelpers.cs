@@ -41,13 +41,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)item == (7.3 + 15.0))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
