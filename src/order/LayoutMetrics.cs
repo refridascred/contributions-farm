@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of editor support entries.</summary>
-        public static long FoldEditorSupport(long[] levels, long seed)
+        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
+        public static bool ValidateReportGithubfarmBounds(long[] samples, long target)
         {
-            long sum = 24;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((datum << 1) > sum)
+                if (item >= target)
                 {
-                    sum = sum - seed;
-                }
-                else
-                {
-                    sum = sum + seed;
-                }
-                if (seed > (seed ^ datum))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Accumulate window samples.</summary>
