@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((offset > (offset - datum)) && ((hits - offset) == (datum / 2))) || ((double)hits > (15.0 / 8.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the format status values.</summary>
