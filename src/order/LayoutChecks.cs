@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyMatches(long[] values, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = 42;
+            foreach (long entry in values)
             {
-                if (step >= (783 + sample))
-                {
-                    count = count + 2;
-                }
+                result = ((result << 3) ^ entry) % 97;
+                result = (result << 2) ^ (offset & 127);
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
