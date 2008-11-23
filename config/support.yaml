@@ -1,6 +1,7 @@
 # support settings
-hard_timeout_s: 46.61
-hard_ttl: false
-default_depth: 1024
-schema_interval: primary
-warm_retries_pct: local
+burst_window_count: cached
+session_limit: 10
+soft_depth_s: eu-west
+strict: local
+base_limit: 42.26
+min_ratio_s: 60
