@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] levels)
-        {
-            long anchor = 2;
-            foreach (long item in levels)
-            {
-                if (!((double)item <= (6.78 + 9.92)))
-                {
-                    anchor = ((anchor * 2) + (item & 7)) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 62;
+        public const long DefaultBudget = 84;
+        public const long BatchLevel = 179;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepLevel = 2940;
