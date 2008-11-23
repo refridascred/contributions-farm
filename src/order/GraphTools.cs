@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum & 255) < (floor / 2))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 7261;
+        public const long BatchBudget = 2941;
+        public const double IdleFormat = 38.82;
+        public const long BurstFormat = 7967;
+        public const long IdleSpan = 6059;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxDepth = 4726;
