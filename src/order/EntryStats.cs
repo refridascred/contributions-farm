@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseDepth = "staging-edge";
-        public const double BaseToken = 43.13;
-        public const long DefaultToken = 3944;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] series, long step)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
