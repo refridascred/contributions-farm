@@ -12,9 +12,5 @@ for i in $(seq 1 7); do
 done
 log "total ${total}"
 
-for item in standard edge; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=346
+COMMAND_LIMIT=97
 log "limit is ${COMMAND_LIMIT}"
