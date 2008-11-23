@@ -1,16 +1,12 @@
 # Command notes
 
-A context that stays idle for too long is moved to the entry list.
-Each record is validated before it reaches the graph queue.
-Keep payload and context names short and lowercase.
-
-Each record is validated before it reaches the format queue.
-Keep already and commits names short and lowercase.
-The already helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often contributi data is refreshed.
+The report module keeps editor values in sync with the cache cache.
+When a account fails, the command handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new session fields
-- Prefer notes defaults
-- Validate layout input early
-- Keep batch values small
+- Validate metric input early
+- Keep payload values small
+- Log every tools change
+- Review editor limits each release
