@@ -31,21 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of githubfarm batch readings.</summary>
-        public static long MatchGithubfarmBatchCount(long[] values)
+        /// <summary>Validate farm tools readings against a bound.</summary>
+        public static bool GuardFarmToolsBounds(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (cell > step)
                 {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
