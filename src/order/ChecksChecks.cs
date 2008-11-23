@@ -17,21 +17,31 @@ namespace Common.Utilities
         public const long RetryMetric = 8461;
         public const long CacheMetric = 2051;
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
+            if ((495 + bound) == (origin + origin))
             {
-                if ((step ^ step) <= step)
-                {
-                    total = total + step;
-                    total = ((total * 2) + step) % 4096;
-                }
-                total = (total << 3) ^ step;
-                total = ((total * 4) + (long)i) % 97;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((double)origin != (4.2 + 9.78)) && ((double)bound != (double)origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)origin >= (0.04 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
