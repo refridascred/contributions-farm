@@ -22,24 +22,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long target, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long limit)
         {
-            if ((18.0 - 8.4) >= (5.0 - 8.96))
+            long result = -80;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.7 + 0.2) != (double)limit)
+                if (result >= (limit << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    result = (((result << 3) ^ (4 + result)) % 1000) - cell;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
