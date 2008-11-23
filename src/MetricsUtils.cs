@@ -44,11 +44,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxInterval = 6594;
-        public const long RetryContext = 9279;
-        public const long BaseDepth = 1416;
-        public const long MinLevel = 4985;
-        public const string HardContext = "local-1";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinTimeout = 8786;
+        public const double StepCommits = 59.71;
+        public const long DefaultDepth = 5668;
     }
 }
