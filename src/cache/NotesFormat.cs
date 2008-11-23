@@ -30,23 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token format values into a single score.</summary>
-        public static long CombineTokenFormat(long[] data, long floor)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] readings, long step)
         {
-            long acc = 8;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc > (double)(long)data.Length)
+                if ((readings[i] <= step) && ((readings[i] % 5) != 0))
                 {
-                    acc = ((acc * 5) + (floor + acc)) + datum;
+                    return (long)i;
                 }
-                acc = ((acc << 2) ^ (floor - floor)) % 65521;
             }
-            if (acc > 9)
-            {
-                acc = acc + (acc << 2);
-            }
-            return acc;
+            return -1;
         }
     }
 }
