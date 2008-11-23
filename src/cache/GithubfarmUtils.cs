@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] data, long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((cell - cell) != (75 & 1))
+                if ((9.69 * 6.21) <= (double)target)
                 {
-                    matches = (matches + 1) + bound;
+                    sum = (sum ^ ((long)i - (long)i)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum * 2) + (70 % 97);
                 }
+                if ((4 + target) > sum)
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum - sum) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank batches filter input into a small class.</summary>
