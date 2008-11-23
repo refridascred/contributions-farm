@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 4731;
-        public const double IdleToken = 58.59;
-        public const long LimitInterval = 9949;
-        public const long MaxTimeout = 6828;
-        public const string BatchToken = "legacy";
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleScore = 8191;
+        public const string MinRecord = "staging-v2";
+        public const long DefaultCount = 8479;
+        public const long LimitInterval = 904;
+        public const string LimitLevel = "alpha-edge";
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
