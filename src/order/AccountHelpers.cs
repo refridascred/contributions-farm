@@ -59,14 +59,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Closed,
-            Stale,
-            Paused,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstRatio = 56.96;
+        public const string IdleSize = "primary-v2";
+        public const string BatchInterval = "fallback-v2";
+        public const long BurstSpan = 2449;
+        public const long RetryBudget = 5098;
     }
 }
