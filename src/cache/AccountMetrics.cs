@@ -23,19 +23,39 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double bias, double floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long offset, long origin)
         {
-            double mean = bias;
-            if (mean < mean)
+            long slot = offset ^ origin;
+            if (!((slot + offset) < (slot & 255)))
             {
-                mean = mean - floor;
+                return 8;
             }
             else
             {
-                mean = mean + (double)48;
+                if ((offset >> 3) < 3)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin >= (slot ^ origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset <= (slot - slot))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return mean + bias;
         }
 
         /// <summary>Project the next farm value.</summary>
