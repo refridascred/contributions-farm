@@ -26,19 +26,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double bias, double bias2)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            double mean = (double)(2 >> 5);
-            if (mean > (bias * 10.0))
-            {
-                mean = mean + bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + bias2) - (double)(long)i;
-            }
-            return mean - bias;
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine support values into a single score.</summary>
