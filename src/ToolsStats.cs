@@ -49,19 +49,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double gain, double floor)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            double mean = (double)(25 & 7);
-            if (mean < (double)17)
+            long mark = 9;
+            foreach (long item in samples)
             {
-                mean = mean + gain;
+                mark = ((mark << 2) ^ (item % 16)) % 255;
+                if (!((item + mark) > 121))
+                {
+                    mark = (mark - (-2)) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (5.0 + gain)) + (double)(long)i;
-            }
-            return mean - floor;
+            return mark % 1000;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
