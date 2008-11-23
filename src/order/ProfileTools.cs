@@ -27,17 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] < offset) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a contributi token value against two limits.</summary>
