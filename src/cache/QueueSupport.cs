@@ -42,18 +42,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit filter account readings against a rule.</summary>
-        public static long TallyFilterAccountGaps(long[] levels, long bound)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((((seen << 2) > (bound & 7)) || (seen <= ((long)levels.Length - seen))) || (seen > (9 - value)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
