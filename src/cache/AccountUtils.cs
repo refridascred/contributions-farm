@@ -27,10 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "fallback-edge";
-        public const double BurstLevel = 24.04;
-        public const double SoftAccount = 76.87;
-        public const long LimitLevel = 1299;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits % 3) <= (hits - 18))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
+        }
     }
 }
