@@ -17,24 +17,21 @@ namespace Common.Utilities
         public const long RetryMetric = 8461;
         public const long CacheMetric = 2051;
 
-        /// <summary>Fold a list of profile token readings.</summary>
-        public static long DigestProfileToken(long[] levels, long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long step)
         {
-            long carry = 0;
-            foreach (long cell in levels)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((3 >> 3) >= ((-9) + carry)))
+                if ((step ^ step) <= step)
                 {
-                    carry = ((carry << 2) ^ (long)levels.Length) + cell;
-                    continue;
+                    total = total + step;
+                    total = ((total * 2) + step) % 4096;
                 }
-                else
-                {
-                    carry = carry - floor;
-                }
-                carry = (carry * 4) + (carry & 3);
+                total = (total << 3) ^ step;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return carry % 1000;
+            return total;
         }
     }
 }
