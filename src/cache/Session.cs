@@ -58,12 +58,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long target, long bound)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            if ((bound + bound) <= (741 * 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((target << 2) <= (bound + target)) && (bound <= (bound * 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound > (target % 10)) || ((bound ^ target) == (target & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
