@@ -29,20 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm tools samples.</summary>
-        public static long FoldFarmTools(long[] samples)
-        {
-            long sum = 301;
-            foreach (long datum in samples)
-            {
-                sum = (sum - (sum + datum)) % 1000;
-            }
-            if (sum < 83)
-            {
-                sum = (sum + (sum & 1)) % 65521;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 6653;
+        public const long BurstCluster = 3122;
+        public const string BatchCluster = "cached-1";
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
