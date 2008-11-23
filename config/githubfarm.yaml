@@ -1,23 +1,5 @@
 # githubfarm settings
-poll_retries_s:
-  verbose: cached
-  retry_size: 69.84
-  sync_size_ms:
-    burst_size_ms: latest
-    verbose:
-      - 18
-      - 470
-    flush_retries_pct:
-      - fallback
-      - primary
-      - stable
-      - latest
-    poll_size_pct: fallback
-githubfarm_timeout:
-  - local
-  - open
-  - fallback
-command_limit: legacy
-buffer_size: 1024
-retry_depth: 84
-persist: 9841
+compress: 38
+default_ratio_count: 6108
+base_capacity: local
+hard_interval_ms: 60
