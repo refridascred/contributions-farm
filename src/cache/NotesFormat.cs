@@ -11,15 +11,23 @@ namespace Common.Utilities
         public const string HardWidth = "stable-edge";
         public const long MaxSize = 3128;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
+            long state = origin;
+            for (int i = 0; i < 24; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((origin & 15) >= (long)i)
+                {
+                    state = (state * 2) + (origin << 3);
+                }
+                else
+                {
+                    state = (state + (state - state)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Combine token format values into a single score.</summary>
