@@ -19,14 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long seed2)
         {
-            Failed,
-            Draft,
-            Paused,
-            Active,
-            Closed,
+            if ((double)seed2 != (double)99)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)410 >= (double)seed2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((3 % 100) < (seed2 % 100))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed2 ^ seed) >= seed2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
