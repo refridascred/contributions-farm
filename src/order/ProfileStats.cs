@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a buffer farm sample.</summary>
-        public static long LocateBufferFarmIndex(long[] samples, long limit)
+        /// <summary>Audit queue route readings against a rule.</summary>
+        public static long MeasureQueueRouteMatches(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if (samples[i] == limit)
+                if ((1.71 - 19.0) > (double)entry)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a queue summary.</summary>
