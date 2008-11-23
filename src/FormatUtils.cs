@@ -64,19 +64,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate context route readings against a bound.</summary>
-        public static bool CheckContextRouteRange(long[] data, long origin)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] data)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
