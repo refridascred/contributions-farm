@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 449;
+            foreach (long item in values)
             {
-                if (levels[i] <= seed)
+                acc = (acc ^ (acc % 10)) % 255;
+                if (!((acc + item) < (item + item)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of window readings.</summary>
