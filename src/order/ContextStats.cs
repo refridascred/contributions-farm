@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            Dropped,
-            Ready,
-            Paused,
-            Stale,
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
