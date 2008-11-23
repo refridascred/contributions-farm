@@ -1,6 +1,5 @@
 {
-  "route_depth": 1024,
-  "sync_threshold_count": 35,
-  "compress": 11.45,
-  "retry_retries_count": 250
+  "batch_timeout_s": "stable",
+  "hard_limit": 8079,
+  "cache_retries": "open"
 }
