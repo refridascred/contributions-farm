@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] readings, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (entry < step)
+                if (cell < origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
