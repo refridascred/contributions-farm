@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] series, long limit)
+        /// <summary>Digest a series of tools metrics entries.</summary>
+        public static long TotalToolsMetrics(long[] items, long step)
         {
-            long state = 0;
-            foreach (long entry in series)
+            long carry = 238;
+            foreach (long value in items)
             {
-                if ((state < (entry - 5)) && ((long)series.Length <= (15 - entry)))
+                if ((step ^ step) == (value ^ step))
                 {
-                    state = state + (limit - 52);
+                    carry = ((carry << 2) ^ (value ^ carry)) % 4096;
                 }
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
