@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const string IdleCounter = "staging-edge";
         public const long LimitDepth = 2582;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryFactor = 4001;
-        public const string BurstTimeout = "cached-1";
-        public const long WindowReport = 2843;
-        public const long HardDepth = 8730;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Locate a cache githubfarm reading by value.</summary>
         public static long FindCacheGithubfarmIndex(long[] levels, long offset)
