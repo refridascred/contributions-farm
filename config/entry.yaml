@@ -1,25 +1,33 @@
 # entry settings
-batch_capacity: open
-githubfarm_interval: false
-batch_timeout_s:
-  order_depth: 5.99
-  profile_retries: local
-  support_threshold: true
-  batch_depth:
-    - 135
-    - 249
-    - 3
-    - 206
-  command_limit: 71.73
-  route_interval:
-    base_interval_pct: 7466
-    format_window: 76.74
-    idle_size_count: stable
-    warm_ttl_count: true
-    cache_depth_pct:
-      - 382
-      - 277
-      - 390
-retry_retries_s: stable
-cache_limit: 41
-buffer_capacity: 61.4
+max_ttl: false
+max_timeout_ms: 35
+verbose:
+  batch_interval:
+    - 222
+    - 363
+  format_window: 13.85
+  default_depth_ms:
+    soft_capacity_pct: legacy
+    poll_ratio_ms: 30
+    compress: staging
+  report_timeout: blue
+  cluster_size: 100
+  metric_capacity: false
+queue_capacity: true
+hard_threshold:
+  - 125
+  - 406
+  - 374
+dry_run:
+  session_depth: 80.46
+  soft_ratio_ms: 500
+  poll_ratio:
+    poll_threshold_pct: false
+    batch_window_count: 2.49
+    checks_timeout: 3353
+    cache_timeout:
+      - local
+      - staging
+    sync_capacity_s: true
+  checks_retries: 42
+  cache_depth: cached
