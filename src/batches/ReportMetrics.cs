@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long StepCounter = 8193;
         public const long MaxCounter = 4015;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Stale,
-            Queued,
-            Dropped,
+            Ready,
+            Closed,
             Failed,
         }
 
