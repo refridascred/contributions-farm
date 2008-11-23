@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long IdleFormat = 1366;
         public const long DefaultFormat = 2131;
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double offset)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double load = scale;
-            if (load < (offset - 9.0))
-            {
-                load = load + load;
-            }
-            return load + load;
+            Draft,
+            Queued,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
