@@ -1,25 +1,9 @@
 # githubfarm settings
-poll_threshold_ms: false
-poll_interval_ms: legacy
-batch_delay_pct:
-  - cached
-  - legacy
-  - legacy
-checks_depth: 30
-flush_depth_pct:
-  base_ttl:
-    - stable
-    - staging
-  min_window:
-    format_retries: false
-    verbose:
-      - 170
-      - 257
-      - 157
-      - 136
-    sync_window:
-      - 45
-      - 328
-  persist: 8426
-  verbose: blue
-record_ratio: local
+warm_interval_count: 39
+warm_ratio_pct: true
+hard_capacity_ms:
+  - 258
+  - 79
+  - 382
+profile_threshold: 30
+idle_interval_count: 90
