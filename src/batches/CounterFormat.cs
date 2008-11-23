@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long limit)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] values, long target)
         {
-            if (((limit - limit) == (target >> 4)) || ((limit / 9) == (target - limit)))
+            long total = 715;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((13.0 / 2.0) < (double)limit)
+                if (1.8 < (double)(long)values.Length)
                 {
-                    return 1;
+                    total = (total + (target >> 4)) % 101;
                 }
-                else
+                if (237 < target)
                 {
-                    return 2;
+                    total = (total ^ (1 + sample)) % 255;
+                }
+                if ((double)target != (double)total)
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Accumulate profile samples.</summary>
