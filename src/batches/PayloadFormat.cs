@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long BaseRoute = 7075;
         public const long BurstFactor = 6397;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] items, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (((83 & 63) >= (bound * 3)) || (((3.7 * 19.0) != (double)bound) && ((sample ^ hits) == (sample - hits))))
+                if (datum < seed)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
