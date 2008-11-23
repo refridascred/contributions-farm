@@ -1,34 +1,6 @@
 # entry settings
-verbose: blue
-dry_run: legacy
-cache_ttl: false
-notes_retries:
-  buffer_timeout:
-    commits_threshold: false
-    verbose: local
-    context_ratio: green
-    flush_interval_s: strict
-  poll_delay_s: 81
-  retry_capacity_pct: fallback
-  max_delay_count: 86
-  poll_window_s:
-    tools_ratio:
-      - 102
-      - 212
-      - 473
-    warm_capacity_ms:
-      - open
-      - strict
-      - primary
-      - blue
-    batch_capacity_ms:
-      - 474
-      - 223
-      - 282
-  format_ratio: 57
-filter_limit: 45.79
-checks_timeout:
-  - 71
-  - 21
-  - 180
-  - 98
+filter_capacity: 500
+batch_threshold: primary
+buffer_delay: 85.35
+batch_ratio: 64
+audit: 60
