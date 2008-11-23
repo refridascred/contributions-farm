@@ -34,22 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order metrics samples.</summary>
-        public static long WeighOrderMetrics(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data, long bound)
         {
-            long score = 406;
-            foreach (long datum in data)
+            long state = 4;
+            foreach (long cell in data)
             {
-                if (score > (datum & 127))
-                {
-                    score = ((score << 3) ^ (score << 1)) % 1000;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (90 << 1)) % 97;
-                }
+                state = ((state - (state >> 5)) ^ cell) + bound;
             }
-            return score % 1000;
+            if (state > 7)
+            {
+                state = state + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate token session samples.</summary>
