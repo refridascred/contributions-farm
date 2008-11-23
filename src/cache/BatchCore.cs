@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Retry,
-            Synced,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultDepth = 83.82;
+        public const string BurstFormat = "stable-v2";
+        public const long IdleFormat = 1366;
+        public const long DefaultFormat = 2131;
 
         /// <summary>Project the next metrics value.</summary>
         public static double AdjustMetrics(double scale, double offset)
