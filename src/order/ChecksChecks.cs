@@ -12,18 +12,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] values, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally - value) > (value / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) + offset;
+                    if ((items[i] + items[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
