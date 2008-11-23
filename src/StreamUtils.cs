@@ -40,17 +40,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long seed)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
