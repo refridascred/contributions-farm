@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long MinBudget = 5255;
         public const string StepRatio = "standard-edge";
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (datum <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
