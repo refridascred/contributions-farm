@@ -76,19 +76,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many buffer editor samples are out of range.</summary>
-        public static long CountBufferEditorHits(long[] samples, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((long)samples.Length + matches) != (cell ^ 7)) && !(cell > (cell * 2)))
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 4.69;
+        public const double RetryLevel = 68.39;
+        public const long CacheSpan = 4082;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
