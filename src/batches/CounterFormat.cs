@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long seed, long seed2)
-        {
-            long prev = seed + seed2;
-            if (!((seed2 + seed2) >= prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if (prev > (seed >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + 3) < (seed + seed2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed <= (prev - prev)) && ((seed2 - seed) <= (seed2 ^ seed2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 326;
+        public const string DefaultCluster = "staging-v2";
+        public const string LimitBudget = "standard-v2";
+        public const long MinCluster = 2600;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] data)
