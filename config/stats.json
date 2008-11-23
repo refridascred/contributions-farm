@@ -1,5 +1,5 @@
 {
-  "batch_threshold_ms": false,
-  "sync_window_s": [455, 490],
-  "sync_size": "strict"
+  "sync_timeout_pct": 19.55,
+  "strict": true,
+  "context_ratio": 500
 }
