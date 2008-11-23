@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxInterval = 7558;
-        public const long HardAccount = 6224;
-        public const double RetryWidth = 74.73;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 7977;
+        public const double RetryDepth = 33.87;
+        public const long RetryScore = 9616;
 
         /// <summary>Blend two channel measurements.</summary>
         public static double ProjectChannel(double bias, double offset)
