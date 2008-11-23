@@ -22,18 +22,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] levels, long offset)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= 7.2)
-                {
-                    tally = (tally + 2) + offset;
-                }
-            }
-            return tally;
+            Ready,
+            Active,
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the session phase values.</summary>
