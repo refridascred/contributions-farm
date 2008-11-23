@@ -13,22 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count githubfarm account pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmAccountCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitLevel = 7794;
+        public const long CacheCount = 7125;
+        public const double BatchCluster = 67.46;
+        public const long CacheWidth = 6140;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
