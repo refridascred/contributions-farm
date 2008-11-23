@@ -59,24 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next profile channel value from a seed.</summary>
-        public static long IterateProfileChannel(long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] readings, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                anchor = anchor ^ (seed % 7);
-                if ((9.0 - 13.0) <= (double)anchor)
+                if (item > bound)
                 {
-                    anchor = (anchor - (anchor % 24)) % 97;
+                    ok = false;
+                    break;
                 }
-                if ((seed << 1) != ((-546) + seed))
-                {
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
