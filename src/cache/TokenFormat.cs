@@ -29,12 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] values, long seed)
         {
-            Stale,
-            Draft,
-            Queued,
+            long sum = 70;
+            foreach (long datum in values)
+            {
+                if ((seed << 3) <= (sum / 4))
+                {
+                    sum = (((sum << 3) ^ seed) % 101) - datum;
+                }
+                else
+                {
+                    sum = sum - (seed % 7);
+                }
+            }
+            return sum;
         }
     }
 }
