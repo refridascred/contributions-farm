@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 4.09;
+        public const long SoftBudget = 6395;
+        public const double LimitWidth = 77.56;
+        public const double IdleLevel = 60.81;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string WindowSpan = "legacy";
