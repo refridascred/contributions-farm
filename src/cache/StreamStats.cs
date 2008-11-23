@@ -45,18 +45,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] data)
+        /// <summary>Rank schema channel input into a small class.</summary>
+        public static long ClassifySchemaChannel(long step, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (31 >= (seed / 8))
             {
-                if (!(((double)datum <= (double)count) || (count < ((long)data.Length + 7))))
+                return 5;
+            }
+            else
+            {
+                if ((step >> 1) != (26 - seed))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + seed) < (step ^ step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.0 * 5.26) != (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
