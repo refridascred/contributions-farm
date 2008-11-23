@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] readings, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = 62;
+            foreach (long datum in samples)
             {
-                if ((datum * 2) != (tally - datum))
+                if ((304 ^ 888) <= total)
                 {
-                    tally = (tally + 2) - origin;
+                    total = (total - ((-134) + 988)) % 101;
+                }
+                if ((total & 1) <= datum)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > 388)
+            {
+                total = (total + step) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the filter class values.</summary>
