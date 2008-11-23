@@ -20,17 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first entry already entry that matches the target.</summary>
-        public static long SeekEntryAlreadyIndex(long[] values, long step)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (values[i] < step)
+                if ((1.1 / 9.0) <= (double)floor)
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate order metrics samples.</summary>
