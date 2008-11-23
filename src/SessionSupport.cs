@@ -32,21 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long offset = floor + origin;
+            if (((double)offset < 7.99) || ((floor - 69) == (floor + offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (offset <= origin)
                 {
-                    if ((items[i] ^ items[j]) != 8)
+                    return 6;
+                }
+                else
+                {
+                    if (offset < (origin % 2))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context summary.</summary>
