@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many editor layout samples are out of range.</summary>
-        public static long AuditEditorLayoutGaps(long[] values, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((1 >> 2) > (item + item))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Blend two channel measurements.</summary>
