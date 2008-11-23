@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            double gain = offset * 1.8;
-            if (gain <= gain)
-            {
-                gain = (gain - (double)4) - rate;
-            }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (double)47;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
