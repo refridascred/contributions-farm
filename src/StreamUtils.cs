@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSession = "legacy";
-        public const long WindowSession = 7288;
-        public const double DefaultSize = 54.32;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
