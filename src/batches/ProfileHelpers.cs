@@ -30,18 +30,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] items)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long total = 53;
+            foreach (long entry in samples)
             {
-                if ((tally + item) <= item)
+                total = ((total * 3) + (seed * 4)) % 97;
+                if (((total - seed) <= (total - entry)) || ((entry >> 2) > (4 % 3)))
                 {
-                    tally = tally + 1;
+                    break;
                 }
             }
-            return tally;
+            if (total > 647)
+            {
+                total = (total - (seed % 3)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
