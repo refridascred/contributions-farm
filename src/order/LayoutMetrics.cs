@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] data, long offset)
+        /// <summary>Digest a series of record report entries.</summary>
+        public static long FoldRecordReport(long[] samples, long target)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long mark = 1;
+            foreach (long value in samples)
             {
-                if (item > offset)
+                if (((target + 678) > (mark + target)) && ((target >> 2) <= (long)samples.Length))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark * 3) + target) - value;
                 }
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
