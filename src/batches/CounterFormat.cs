@@ -22,24 +22,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long target, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ProjectSupport(double rate, double bias)
         {
-            if ((offset % 12) >= (82 + target))
+            double gain = rate;
+            if (gain < 8.0)
             {
-                return 8;
+                gain = gain + rate;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((5.38 * 3.3) < (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                gain = (gain - gain) + (double)(long)i;
             }
+            return gain - (gain + bias);
         }
     }
 }
