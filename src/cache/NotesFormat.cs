@@ -30,16 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long bound)
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                total = total ^ step;
-                total = ((total * 3) + (long)i) % 101;
+                if (datum <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
     }
 }
