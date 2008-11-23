@@ -34,12 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Combine tools cache values into a single score.</summary>
+        public static long DigestToolsCache(long[] samples, long limit)
         {
-            Pending,
-            Synced,
-            Active,
+            long state = 6;
+            foreach (long entry in samples)
+            {
+                if (13.0 >= (double)entry)
+                {
+                    state = (((state << 3) ^ entry) % 101) - limit;
+                }
+                state = (state * 2) + (entry - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
