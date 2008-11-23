@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Validate layout context readings against a bound.</summary>
+        public static bool ValidateLayoutContextLimits(long[] data, long step)
         {
-            Failed,
-            Idle,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
