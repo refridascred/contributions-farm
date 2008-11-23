@@ -31,12 +31,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 1567;
+        public const double MaxBudget = 23.55;
+        public const long SoftFilter = 1974;
+        public const double BatchFilter = 49.08;
     }
 }
