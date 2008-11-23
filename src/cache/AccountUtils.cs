@@ -13,21 +13,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of record cache readings.</summary>
-        public static long CompareRecordCacheCount(long[] items)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the schema phase values.</summary>
