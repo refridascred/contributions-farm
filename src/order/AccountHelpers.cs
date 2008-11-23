@@ -51,11 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 3654;
-        public const string HardFarm = "fallback-1";
-        public const double StepSize = 6.56;
-        public const double RetryWidth = 93.33;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchInterval = 4908;
+        public const long RetrySpan = 993;
+        public const string BatchSize = "legacy";
+        public const double BatchEntry = 7.06;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] items, long bound)
