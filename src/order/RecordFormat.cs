@@ -20,10 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 56.07;
-        public const long SoftScore = 2102;
-        public const double IdleReport = 43.16;
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 6322;
