@@ -1,9 +1,6 @@
-id,weight,score,rank
-1,285,84.17,471
-2,962,83,58
-3,edge,752,54.18
-4,46.62,blue,green
-5,548,247,blue
-6,872,916,standard
-7,edge,291,staging
-8,stable,36.0,717
+id,ratio,weight,count
+1,edge,eu-west,517
+2,open,staging,780
+3,primary,892,115
+4,471,167,open
+5,932,736,77.66
