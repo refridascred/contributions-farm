@@ -15,19 +15,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] items, long seed)
+        /// <summary>Accumulate stats queue samples.</summary>
+        public static long TotalStatsQueue(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long carry = 868;
+            foreach (long cell in series)
             {
-                if (sample < seed)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry ^ (carry % 8)) % 1000) - (long)i;
+                }
+                carry = ((carry << 3) ^ ((long)series.Length + 14)) % 4096;
+                if (cell < carry)
+                {
+                    carry = (carry - 4) % 65521;
                 }
             }
-            return stale;
+            if (carry < 4)
+            {
+                carry = (carry ^ (carry - carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Match up already support samples.</summary>
