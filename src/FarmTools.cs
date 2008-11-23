@@ -30,9 +30,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 3381;
-        public const long RetryRecord = 3739;
-        public const string HardRecord = "standard-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxInterval = "strict-edge";
+        public const string BaseTools = "alpha-edge";
+        public const long WindowTools = 3666;
+        public const long StepTools = 7497;
     }
 }
