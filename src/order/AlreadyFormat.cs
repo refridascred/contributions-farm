@@ -34,19 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] series)
         {
-            long state = 4;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                state = ((state - (state >> 5)) ^ cell) + bound;
+                if ((double)value >= (double)matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (state > 7)
-            {
-                state = state + state;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Accumulate batch samples.</summary>
