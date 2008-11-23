@@ -1,17 +1,5 @@
 {
-  "commits_interval": 7.28,
-  "audit": {
-    "metrics_interval": "fallback",
-    "base_size_pct": 1024,
-    "poll_capacity_ms": 3232,
-    "sync_depth": false,
-    "strict": 989,
-    "batch_delay": 867
-  },
-  "cache_delay": [492, 227],
-  "base_timeout_ms": {
-    "cache_threshold": "green",
-    "filter_ttl": 6811,
-    "strict": 13.91
-  }
+  "format_depth": 97,
+  "base_threshold_pct": 61,
+  "compress": "local"
 }
