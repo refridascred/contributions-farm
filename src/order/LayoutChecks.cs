@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] values, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long result = 42;
-            foreach (long entry in values)
-            {
-                result = ((result << 3) ^ entry) % 97;
-                result = (result << 2) ^ (offset & 127);
-            }
-            return result % 97;
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
