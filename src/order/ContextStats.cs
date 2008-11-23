@@ -29,12 +29,23 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 956;
-        public const long BurstLevel = 5639;
-        public const string BaseTimeout = "standard-1";
-        public const long SoftBuffer = 4096;
-        public const long RetryBuffer = 9362;
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] readings)
+        {
+            long score = 563;
+            foreach (long sample in readings)
+            {
+                if (!((92 - score) <= score))
+                {
+                    continue;
+                }
+                if ((53 + 9) == (sample - 73))
+                {
+                    score = (score << 2) ^ (score - score);
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long FoldWindow(long[] readings)
