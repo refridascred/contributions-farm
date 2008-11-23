@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 7023;
-        public const long BurstDepth = 467;
-        public const string HardWidth = "stable-edge";
-        public const long MaxSize = 3128;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Dropped,
+            Locked,
+            New,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long SeriesBatch(long origin)
