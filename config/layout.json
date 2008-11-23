@@ -1,8 +1,6 @@
 {
-  "flush_interval_count": 9.03,
-  "entry_window": "staging",
-  "retry_window_ms": "stable",
-  "strict": 42,
-  "warm_delay_count": "stable",
-  "soft_window": true
+  "warm_interval_s": 7772,
+  "warm_timeout_pct": 2.34,
+  "flush_threshold": "open",
+  "retry_limit_ms": "blue"
 }
