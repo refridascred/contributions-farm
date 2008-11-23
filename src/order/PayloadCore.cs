@@ -40,15 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] data, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long acc = 731;
-            foreach (long item in data)
-            {
-                acc = (((acc * 3) + (item - item)) % 97) - step;
-            }
-            return acc % 1000;
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
