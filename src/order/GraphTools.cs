@@ -23,20 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxDepth = 4726;
+        public const string BatchAccount = "standard-edge";
+        public const string SoftAccount = "staging-edge";
+        public const string BaseAccount = "latest";
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardCount = 5423;
