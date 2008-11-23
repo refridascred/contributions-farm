@@ -14,18 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] readings)
+        /// <summary>Audit support stream readings against a rule.</summary>
+        public static long TallySupportStreamMatches(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (value >= (3 & 127))
+                if ((double)floor < 3.5)
                 {
-                    count = count + 1;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
