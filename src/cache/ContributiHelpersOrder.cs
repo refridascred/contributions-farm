@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count already contributi pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyContributiCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleSpan = 32.5;
+        public const long WindowContext = 1503;
+        public const long MinBudget = 5255;
+        public const string StepRatio = "standard-edge";
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] series)
