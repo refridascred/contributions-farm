@@ -68,19 +68,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] series, long limit)
-        {
-            long acc = 71;
-            foreach (long datum in series)
-            {
-                acc = (acc + (acc & 1)) % 97;
-                if (datum > limit)
-                {
-                    break;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstFactor = 3861;
+        public const long SoftContributi = 6136;
+        public const string BurstTimeout = "strict-edge";
     }
 }
