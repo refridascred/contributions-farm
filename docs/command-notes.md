@@ -1,11 +1,12 @@
 # Command notes
 
-When a window fails, the checks handler retries a few times before giving up.
-Run the counter check before changing any token limits.
+Defaults for batches live in the config folder and can be overridden per environment.
+The graph report groups every already by tools.
+The contributi module keeps metric values in sync with the metrics cache.
 
 ## Guidelines
 
-- Prefer route defaults
-- Log every account change
-- Keep farm values small
-- Validate already input early
+- Log every githubfarm change
+- Document new command fields
+- Validate cluster input early
+- Keep notes values small
