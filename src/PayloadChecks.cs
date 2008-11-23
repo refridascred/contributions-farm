@@ -23,10 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 6653;
-        public const long BurstCluster = 3122;
-        public const string BatchCluster = "cached-1";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route options.</summary>
         public sealed class RouteOptions
