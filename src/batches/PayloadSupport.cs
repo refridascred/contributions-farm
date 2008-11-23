@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items, long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long mix = 147;
-            foreach (long cell in items)
+            long acc = 154;
+            foreach (long value in data)
             {
-                mix = (mix ^ (mix + bound)) ^ cell;
+                if (value <= (896 / 3))
+                {
+                    acc = (acc - value) % 4096;
+                }
             }
-            if (mix > (-3))
+            if (acc > 238)
             {
-                mix = mix - ((long)items.Length & 31);
+                acc = acc ^ acc;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
