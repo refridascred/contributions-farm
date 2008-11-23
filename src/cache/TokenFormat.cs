@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long MeasureBatchSchemaHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)floor > (8.4 * 2.27))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseInterval = 6144;
+        public const double CacheOrder = 48.08;
+        public const long IdleOrder = 3573;
 
         /// <summary>Count the schema batches entries that pass the check.</summary>
         public static long AuditSchemaBatchesGaps(long[] items)
