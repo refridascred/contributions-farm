@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long target)
-        {
-            long result = 2;
-            foreach (long cell in levels)
-            {
-                if (((7 * 5) == (target % 100)) && ((target - result) <= result))
-                {
-                    result = ((result ^ (result / 5)) % 65521) + cell;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftSize = 3637;
+        public const long BaseNotes = 6425;
+        public const string BaseDepth = "primary-v2";
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] samples)
