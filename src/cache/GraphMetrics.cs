@@ -30,13 +30,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "open-1";
+        public const long RetryRoute = 7592;
+        public const long CacheRoute = 1947;
+        public const long DefaultInterval = 1198;
+        public const double MaxSpan = 15.53;
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
         public static double AdjustBatchesCounter(double ratio, double floor)
