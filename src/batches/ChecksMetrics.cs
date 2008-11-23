@@ -38,15 +38,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the checks order entries that pass the check.</summary>
-        public static long TallyChecksOrderMatches(long[] data, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] samples)
         {
             long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (floor < (hits >> 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - cell;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
