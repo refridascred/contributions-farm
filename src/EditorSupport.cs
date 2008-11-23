@@ -25,26 +25,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank entry payload input into a small class.</summary>
-        public static long RankEntryPayload(long origin, long floor)
-        {
-            long cur = origin - floor;
-            if (((532 + cur) != (floor ^ cur)) && ((origin ^ origin) <= cur))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)cur <= (8.2 + 3.0)) && ((double)floor > (9.58 * 1.8)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 556;
+        public const double IdleOrder = 78.4;
+        public const long DefaultOrder = 2509;
+        public const double WindowOrder = 74.18;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricRange(long[] samples, long step)
