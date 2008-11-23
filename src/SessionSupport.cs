@@ -15,14 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] readings, long origin)
         {
-            New,
-            Queued,
-            Failed,
-            Stale,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits & 15) > (origin - origin)) || ((hits ^ 771) != (value % 16)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
