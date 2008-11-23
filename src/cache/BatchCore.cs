@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] items)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double offset)
         {
-            long sum = 17;
-            foreach (long item in items)
+            double load = scale;
+            if (load < (offset - 9.0))
             {
-                sum = ((sum << 2) ^ (sum + sum)) - item;
+                load = load + load;
             }
-            if (sum < (-1))
-            {
-                sum = sum ^ (sum - sum);
-            }
-            return sum % 65521;
+            return load + load;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
