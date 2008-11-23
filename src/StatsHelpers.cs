@@ -39,15 +39,38 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            if ((double)floor == (6.86 - 4.4))
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (((double)floor < (9.2 - 13.0)) && ((floor + limit) <= (floor + 66)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((limit + floor) < limit)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor > (282 + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
