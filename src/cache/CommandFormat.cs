@@ -45,14 +45,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseWidth = "strict-1";
+        public const long MinScore = 2562;
+        public const long BaseScore = 8629;
+        public const long BatchRecord = 5527;
+        public const long StepRecord = 4449;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
