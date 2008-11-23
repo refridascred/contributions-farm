@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Ready,
-            Queued,
-            Synced,
-            Retry,
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
