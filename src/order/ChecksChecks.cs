@@ -31,10 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 2512;
-        public const long BurstSpan = 7173;
-        public const long DefaultQueue = 6523;
-        public const double HardSpan = 86.84;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
