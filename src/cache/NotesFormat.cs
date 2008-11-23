@@ -24,19 +24,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long bound)
+        /// <summary>Find the first context profile entry that matches the target.</summary>
+        public static long FindContextProfileIndex(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= bound)
+                if (levels[i] == seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
