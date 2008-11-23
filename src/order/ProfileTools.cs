@@ -52,19 +52,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] series, long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double bias2 = (bias * 13.0) / 6.0;
+            if (bias2 >= bias)
             {
-                if (sample <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 + (scale - 8.8);
             }
-            return valid;
+            else
+            {
+                bias2 = bias2 + (bias * 5.21);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (double)798) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
