@@ -1,11 +1,5 @@
 {
-  "burst_size": 96,
-  "min_delay": {
-    "idle_ttl_s": ["primary", "cached", "latest", "latest"],
-    "base_capacity": "fallback",
-    "readonly": 30
-  },
-  "warm_window_s": 3983,
-  "metric_window": 57,
-  "verbose": 250
+  "burst_capacity_ms": 5022,
+  "hard_interval": [74, 105, 240, 62],
+  "strict": 8781
 }
