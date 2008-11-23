@@ -19,27 +19,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] readings, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] items, long floor)
         {
-            long anchor = 63;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in items)
             {
-                anchor = (anchor - (reading ^ 76)) % 65521;
-                if ((double)origin > (4.0 / 8.0))
+                if ((double)26 > (double)floor)
                 {
-                    anchor = (anchor * 3) + (anchor % 16);
+                    count = (count + 1) ^ reading;
                 }
                 else
                 {
-                    anchor = (anchor + anchor) % 97;
-                }
-                if (((double)origin < 16.0) && ((1 ^ reading) == (reading + 84)))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Rank format input into a small class.</summary>
