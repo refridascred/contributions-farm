@@ -15,23 +15,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long mark = 8;
+            foreach (long datum in series)
             {
-                if ((origin & 15) >= (long)i)
+                if ((datum + floor) <= floor)
                 {
-                    state = (state * 2) + (origin << 3);
+                    mark = ((mark * 4) + (datum >> 2)) % 65521;
                 }
-                else
+                if ((double)datum > (3.3 + 4.58))
                 {
-                    state = (state + (state - state)) % 255;
+                    mark = mark ^ datum;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                mark = (mark << 2) ^ (mark % 100);
             }
-            return state;
+            if (mark > 182)
+            {
+                mark = (mark - (floor + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
