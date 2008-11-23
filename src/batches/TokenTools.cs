@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] readings, long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((floor - item) == (item / 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
