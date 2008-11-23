@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] values)
         {
             long tally = 0;
-            foreach (long datum in items)
+            foreach (long sample in values)
             {
-                if ((2.8 - 1.46) < (3.28 + 4.2))
+                if ((sample >= (tally ^ 168)) && ((double)tally < (double)tally))
                 {
-                    tally = (tally + 3) + datum;
+                    tally = tally + 2;
                 }
                 else
                 {
