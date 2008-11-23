@@ -13,13 +13,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public string Level { get; set; } = "";
-            public double Flag { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleSession = "fallback";
+        public const long MaxSpan = 7659;
+        public const long BurstTimeout = 2792;
+        public const string BaseSession = "legacy";
+        public const long BurstWidth = 5606;
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double ratio, double bias)
