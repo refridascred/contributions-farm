@@ -20,13 +20,11 @@ namespace Common.Utilities
             return gain - (gain + gain);
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
