@@ -53,18 +53,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (tally >= (cell << 3))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSize = 3850;
+        public const long WindowStats = 5989;
+        public const long WindowInterval = 4555;
+        public const string MaxStats = "legacy-1";
     }
 }
