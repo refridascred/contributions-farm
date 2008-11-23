@@ -44,11 +44,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BatchEditor = "legacy-v2";
-        public const string MaxEditor = "legacy-1";
-        public const double BaseEditor = 69.62;
-        public const long LimitEditor = 6180;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long floor)
+        {
+            long cur = bound + floor;
+            if ((bound & 63) > (cur + 976))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound <= (bound & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor * 2) > (cur + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((cur + cur) != (6 % 10))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderHits(long[] items, long limit)
