@@ -1,6 +1,5 @@
 {
-  "dry_run": 384,
-  "sync_size_pct": "primary",
-  "readonly": 100,
-  "batch_timeout": 74
+  "route_interval": 1702,
+  "persist": 75.26,
+  "poll_depth": "staging"
 }
