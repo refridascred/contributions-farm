@@ -1,10 +1,12 @@
 # Metric notes
 
-When a commits fails, the already handler retries a few times before giving up.
-The context module keeps cache values in sync with the buffer cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Keep already and cache names short and lowercase.
+The account report groups every entry by already.
 
 ## Guidelines
 
-- Document new session fields
+- Document new commits fields
 - Prefer record defaults
-- Review token limits each release
+- Validate route input early
+- Keep metric values small
