@@ -17,17 +17,19 @@ namespace Common.Utilities
         public const long CacheScore = 8285;
         public const double MinWidth = 15.71;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)39 - 6.0;
+            if (gain < (double)986)
             {
-                if ((series[i] > seed) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain + (gain - 4.8)) - rate;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (9.8 * 3.5)) + (double)(long)i;
+            }
+            return gain - (3.0 + floor);
         }
 
         /// <summary>Hold a route options.</summary>
