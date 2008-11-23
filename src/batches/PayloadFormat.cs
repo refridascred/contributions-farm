@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] values, long limit)
+        /// <summary>Measure how many order filter samples are out of range.</summary>
+        public static long TallyOrderFilterMatches(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((values[i] == limit) && ((values[i] % 2) != 0))
+                if ((1 / 4) != (origin - count))
                 {
-                    return (long)i;
+                    count = (count + 1) - entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
