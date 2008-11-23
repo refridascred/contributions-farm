@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseSpan = 64.34;
-        public const double CacheChecks = 55.23;
-        public const string HardChecks = "fallback-edge";
-        public const long StepSpan = 4414;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples, long floor)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 24) < (matches * 3))
+                {
+                    matches = (matches + 1) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsRange(long[] data, long target)
