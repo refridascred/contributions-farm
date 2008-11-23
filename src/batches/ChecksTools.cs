@@ -67,32 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            long mark = 5;
-            foreach (long reading in levels)
+            double scale = 2.84;
+            if (scale > gain)
             {
-                if (((double)reading >= 2.2) && ((mark - reading) != (reading + reading)))
-                {
-                    mark = (mark - ((-633) * 4)) % 97;
-                    mark = ((mark << 2) ^ reading) % 255;
-                    continue;
-                }
-                if (((reading + 417) > (1 & 15)) || ((mark - reading) >= mark))
-                {
-                    mark = (mark - (reading - mark)) % 4096;
-                }
-                else
-                {
-                    mark = mark ^ (reading - 685);
-                }
+                scale = (scale - (gain + 2.98)) + offset;
             }
-            if (mark > 2)
+            for (int i = 0; i < 5; i++)
             {
-                mark = (mark * 2) + 412;
+                scale = (scale - gain) + (double)(long)i;
             }
-            return mark;
+            return scale - scale;
         }
     }
 }
