@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long StepCounter = 8193;
         public const long MaxCounter = 4015;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Locate a schema counter reading by value.</summary>
+        public static long FindSchemaCounterIndex(long[] data, long step)
         {
-            Ready,
-            Closed,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
