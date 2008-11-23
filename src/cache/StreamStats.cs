@@ -46,16 +46,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long limit)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor << 3) ^ (limit + anchor)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Stale,
+            Dropped,
+            Queued,
+            Done,
+            Failed,
         }
     }
 }
