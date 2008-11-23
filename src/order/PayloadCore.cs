@@ -45,19 +45,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double ratio, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data)
         {
-            double rate = span;
-            if (rate >= (double)58)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                rate = (rate + (double)72) - ratio;
+                if (seen >= ((long)data.Length - seen))
+                {
+                    seen = (seen + 3) - sample;
+                }
             }
-            else
-            {
-                rate = rate - span;
-            }
-            return rate - (double)40;
+            return seen;
         }
     }
 }
