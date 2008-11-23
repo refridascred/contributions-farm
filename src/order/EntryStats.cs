@@ -34,18 +34,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long seed)
         {
-            long state = 91;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((62 + cell) != (state + (long)levels.Length))
+                if (items[i] > seed)
                 {
-                    state = (state - (457 + cell)) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
