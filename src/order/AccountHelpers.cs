@@ -40,24 +40,13 @@ namespace Common.Utilities
         public const double BurstWidth = 68.32;
         public const string WindowStream = "local-1";
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long origin)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if ((origin + origin) != ((-714) / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((6 << 2) != (origin - limit)) || ((13.0 * 6.84) > (5.98 - 9.77)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate cache metric readings against a bound.</summary>
