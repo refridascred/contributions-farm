@@ -22,18 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings, long floor)
+        /// <summary>Validate format batches readings against a bound.</summary>
+        public static bool GuardFormatBatchesBounds(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (((matches >> 3) < floor) || ((matches ^ floor) != (81 * 3)))
+                if (item >= step)
                 {
-                    matches = (matches + 2) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Fold a list of record readings.</summary>
