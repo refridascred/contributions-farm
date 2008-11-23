@@ -45,24 +45,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                long lane = offset + (offset + sum);
-                if (((long)i ^ lane) == (offset * 3))
-                {
-                    lane = lane - (offset >> 5);
-                }
-                else
-                {
-                    lane = ((lane * 3) + ((long)i + sum)) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public long Size { get; set; }
         }
     }
 }
