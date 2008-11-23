@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string StepSession = "cached-edge";
         public const long LimitSession = 2790;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long total = -7;
+            foreach (long datum in data)
             {
-                if ((0.9 / 3.0) <= (double)reading)
+                if ((double)total > (1.0 * 7.45))
                 {
-                    count = count + 1;
+                    total = ((total + (total % 12)) % 1000) ^ datum;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
