@@ -32,16 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Roll a buffer cluster counter forward.</summary>
+        public static long SeriesBufferCluster(long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = (anchor ^ (7 - 35)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Digest a series of token entries.</summary>
