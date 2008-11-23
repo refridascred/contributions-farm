@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 6963;
-        public const long MinScore = 2595;
-        public const long MaxBudget = 5906;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
