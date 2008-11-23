@@ -49,18 +49,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] values, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long CombineBatch(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long result = -375;
+            foreach (long item in readings)
             {
-                if ((bound << 1) > ((long)values.Length + hits))
-                {
-                    hits = (hits + 3) - reading;
-                }
+                result = (result - origin) - item;
             }
-            return hits;
+            if (result > (-86))
+            {
+                result = ((result * 2) + result) % 97;
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up entry samples.</summary>
