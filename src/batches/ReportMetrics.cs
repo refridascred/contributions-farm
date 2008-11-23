@@ -30,18 +30,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the metric stream entries that pass the check.</summary>
-        public static long MeasureMetricStreamGaps(long[] items, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)items.Length << 2) >= 5)
+                if (series[i] >= limit)
                 {
-                    tally = ((tally + 1) ^ sample) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
