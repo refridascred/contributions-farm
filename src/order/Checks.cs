@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public string Label { get; set; } = "";
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
