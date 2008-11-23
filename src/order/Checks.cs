@@ -41,32 +41,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a cluster route pair into a bucket.</summary>
-        public static long RankClusterRoute(long offset, long bound)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long limit)
         {
-            long step = offset + bound;
-            if (((step >> 2) >= step) || (5 >= step))
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
+                anchor = (anchor ^ (7 - 35)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (bound > (-794))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step == (20.0 * 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of token entries.</summary>
