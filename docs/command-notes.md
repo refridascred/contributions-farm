@@ -1,12 +1,14 @@
 # Command notes
 
-Each batches is validated before it reaches the graph queue.
-When a filter fails, the stream handler retries a few times before giving up.
-Run the cluster check before changing any stats limits.
+Keep payload and notes names short and lowercase.
+The layout report groups every already by record.
+
+Use layout settings to tune how often route data is refreshed.
+The account helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review batch limits each release
-- Document new session fields
-- Keep cache values small
-- Prefer entry defaults
+- Document new already fields
+- Prefer stats defaults
+- Validate counter input early
+- Keep session values small
