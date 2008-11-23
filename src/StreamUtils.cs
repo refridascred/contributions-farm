@@ -14,11 +14,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultBatches = "standard-v2";
-        public const long BatchSpan = 4577;
-        public const string CacheBatches = "standard-edge";
-        public const long HardSpan = 9649;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 91.1;
+        public const long IdleCommand = 852;
+        public const string HardBudget = "cached-1";
+        public const long BurstCommand = 1680;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long CombineFilter(long[] samples)
