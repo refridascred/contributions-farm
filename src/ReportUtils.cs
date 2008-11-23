@@ -28,25 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long origin, long target)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double rate, double floor)
         {
-            long span = origin - target;
-            if (span <= (2 ^ target))
+            double gain = 2.8;
+            if (gain > (rate - gain))
             {
-                return 0;
+                gain = (gain - 7.5) - floor;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((span >> 3) >= (6 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
+                gain = (gain - rate) + (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Audit order layout readings against a rule.</summary>
