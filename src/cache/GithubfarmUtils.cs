@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Check that every checks stats entry stays within the limit.</summary>
+        public static bool ValidateChecksStatsRange(long[] levels, long floor)
         {
-            Stale,
-            Queued,
-            Closed,
-            Ready,
-            Done,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
