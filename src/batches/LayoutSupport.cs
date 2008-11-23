@@ -16,12 +16,15 @@ namespace Common.Utilities
             return bias2 - 5.0;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Blend two filter account measurements.</summary>
+        public static double AdjustFilterAccount(double bias, double offset)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            double mean = offset;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = ((mean - mean) + (double)(long)i) - bias;
+            }
+            return mean - mean;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
