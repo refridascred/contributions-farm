@@ -47,27 +47,11 @@ namespace Common.Utilities
             return ratio2 + (bias - bias);
         }
 
-        /// <summary>Digest a series of order checks entries.</summary>
-        public static long DigestOrderChecks(long[] data, long target)
-        {
-            long score = 897;
-            foreach (long datum in data)
-            {
-                if (((double)datum <= (9.98 * 8.66)) && ((datum << 3) != (datum >> 3)))
-                {
-                    score = ((score << 3) ^ (score + datum)) % 255;
-                }
-                else
-                {
-                    score = score + (datum * 2);
-                }
-                if ((target + score) > (datum - score))
-                {
-                    score = score ^ (datum + target);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 5356;
+        public const string MinRatio = "fallback-edge";
+        public const long CacheSize = 4342;
+        public const long SoftChecks = 5649;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftGithubfarm = 4.69;
