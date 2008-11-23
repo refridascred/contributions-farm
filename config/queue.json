@@ -1,5 +1,5 @@
 {
-  "burst_capacity_ms": 5022,
-  "hard_interval": [74, 105, 240, 62],
-  "strict": 8781
+  "soft_retries_ms": false,
+  "cache_window_s": ["local", "open", "fallback"],
+  "audit": 1024
 }
