@@ -37,18 +37,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples, long floor)
+        /// <summary>Measure how many already profile samples are out of range.</summary>
+        public static long AuditAlreadyProfileGaps(long[] levels, long seed)
         {
-            long mix = 8;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((value >> 5) > value)
+                if ((double)count <= (7.0 + 3.7))
                 {
-                    mix = ((mix << 3) ^ mix) + floor;
+                    count = ((count + 1) + entry) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
