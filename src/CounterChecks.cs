@@ -13,12 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Audit tools window readings against a rule.</summary>
+        public static long AuditToolsWindowMatches(long[] series)
         {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches & 7) >= value)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
