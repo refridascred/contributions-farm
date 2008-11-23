@@ -29,13 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Active,
-            New,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 1973;
+        public const long DefaultTimeout = 7448;
+        public const long SoftEditor = 6;
+        public const long WindowEditor = 5418;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
