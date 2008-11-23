@@ -19,32 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches filter input into a small class.</summary>
-        public static long ClassifyBatchesFilter(long limit, long bound)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long limit)
         {
-            long diff = limit + bound;
-            if (bound >= (56 + 27))
+            long state = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                state = ((state * 4) + (long)i) % 4096;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)diff < (0.6 - 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((98 + limit) >= bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
