@@ -50,10 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "staging-edge";
-        public const string CacheDepth = "open";
-        public const long LimitFactor = 4897;
-        public const long SoftFactor = 5122;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items, long origin)
+        {
+            long result = 478;
+            foreach (long cell in items)
+            {
+                if ((result & 7) > 6)
+                {
+                    result = (result + (cell + origin)) % 101;
+                }
+            }
+            if (result > 97)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
     }
 }
