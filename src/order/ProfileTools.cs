@@ -37,10 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySpan = 9865;
-        public const long BatchWidth = 6350;
-        public const string WindowGraph = "alpha-v2";
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterGaps(long[] readings)
