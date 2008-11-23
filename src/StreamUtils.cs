@@ -21,24 +21,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long CountChannelCommandHits(long[] items, long offset)
         {
-            long anchor = 42;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((entry ^ anchor) <= (entry * 5))
+                if ((offset >> 5) == (matches - 952))
                 {
-                    anchor = (anchor + (anchor ^ 4)) % 101;
-                    break;
+                    matches = (matches + 1) ^ datum;
                 }
-                anchor = ((anchor * 3) + anchor) % 1000;
-                if (!((9 % 12) >= (anchor - entry)))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
