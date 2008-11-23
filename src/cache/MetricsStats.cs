@@ -44,23 +44,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double rate, double floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] samples, long offset)
         {
-            double ratio = (double)(3 * 5);
-            if (ratio >= (rate * 5.1))
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                ratio = (ratio - (double)16) - floor;
+                if (!!((long)samples.Length == (matches >> 1)))
+                {
+                    matches = ((matches + 1) + entry) + offset;
+                }
             }
-            else
-            {
-                ratio = ratio + 4.74;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio - (double)181;
+            return matches;
         }
     }
 }
