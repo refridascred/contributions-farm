@@ -77,21 +77,26 @@ namespace Common.Utilities
         public const double BatchFactor = 51.04;
         public const long MaxFarm = 9398;
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 84;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sample - limit) <= (sample + limit)) && (sample >= (score * 5)))
                 {
-                    if ((samples[i] - samples[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 5) + sample;
+                }
+                if ((sample + sample) < sample)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score > 72)
+            {
+                score = (score << 3) ^ (score - score);
+            }
+            return score;
         }
     }
 }
