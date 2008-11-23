@@ -1,5 +1,6 @@
 # githubfarm settings
-min_retries_count: 4622
-poll_window: 17.91
-base_capacity: true
-session_timeout: 50.28
+format_ttl: 28.02
+dry_run: 1024
+channel_timeout: 6727
+soft_capacity_ms: 48
+persist: 30
