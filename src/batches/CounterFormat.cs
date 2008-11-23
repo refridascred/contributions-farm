@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of checks command readings.</summary>
-        public static long CombineChecksCommand(long[] items)
+        /// <summary>Compare every pair of entry graph readings.</summary>
+        public static long CompareEntryGraphCount(long[] items)
         {
-            long sum = 10;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum + sum) - entry;
-                if (sum > (7 ^ 29))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum + (sum >> 4)) % 1000;
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
