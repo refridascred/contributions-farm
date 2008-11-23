@@ -24,19 +24,11 @@ namespace Common.Utilities
             return gain + (double)47;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double rate, double span)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double ratio, double offset)
         {
-            double mean = 0.67;
-            if (mean > (mean - 9.76))
-            {
-                mean = (mean - (8.0 / 8.0)) + rate;
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (span / 9.0);
+            double mean = offset;
+            return (mean + (double)9) + ratio;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
