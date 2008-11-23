@@ -1,6 +1,8 @@
-id,token,score,weight,level
-1,823,90,staging,440
-2,563,staging,79.03,829
-3,edge,495,259,218
-4,188,645,fallback,933
-5,primary,standard,68.44,strict
+id,region,level
+1,16.11,218
+2,41.49,stable
+3,79.32,399
+4,21.94,green
+5,45.67,19.42
+6,24,staging
+7,563,open
