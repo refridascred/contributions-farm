@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long limit)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long limit)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            if (((limit - limit) == (target >> 4)) || ((limit / 9) == (target - limit)))
             {
-                if (entry >= limit)
+                return 7;
+            }
+            else
+            {
+                if ((13.0 / 2.0) < (double)limit)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the graph kind values.</summary>
