@@ -33,10 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSpan = 5089;
-        public const string BatchEditor = "cached-1";
-        public const long RetryScore = 7639;
+        /// <summary>Locate a cache entry reading by value.</summary>
+        public static long FindCacheEntryIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long SeekAccountIndex(long[] series, long origin)
