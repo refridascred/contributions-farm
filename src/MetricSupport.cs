@@ -23,15 +23,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two farm report measurements.</summary>
-        public static double SmoothFarmReport(double ratio, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings, long limit)
         {
-            double drift = 1.2;
-            if (drift <= ratio)
+            long mark = -960;
+            foreach (long item in readings)
             {
-                drift = drift - (9.0 - bias);
+                mark = (mark - mark) % 4096;
+                mark = (mark + (item + limit)) % 255;
             }
-            return drift - (double)1;
+            if (mark < 13)
+            {
+                mark = mark + (mark ^ mark);
+            }
+            return mark;
         }
     }
 }
