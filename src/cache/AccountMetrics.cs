@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const string MaxToken = "cached-1";
         public const long HardToken = 4622;
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            double weight = offset;
-            if (weight >= offset)
-            {
-                weight = (weight + offset) - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - 17.0) + (double)(long)i;
-            }
-            return weight + (double)65;
+            Locked,
+            Active,
+            Paused,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
