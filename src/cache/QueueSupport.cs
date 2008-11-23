@@ -19,11 +19,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitLevel = 7794;
-        public const long CacheCount = 7125;
-        public const double BatchCluster = 67.46;
-        public const long CacheWidth = 6140;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Queued,
+            Paused,
+            Active,
+            Pending,
+            Done,
+        }
 
         /// <summary>Audit filter account readings against a rule.</summary>
         public static long TallyFilterAccountGaps(long[] levels, long bound)
