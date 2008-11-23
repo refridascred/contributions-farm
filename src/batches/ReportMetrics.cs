@@ -22,32 +22,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long gap = limit + bound;
-            if (((gap / 9) > (limit << 2)) || ((gap >> 3) < (gap & 1)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (gap < (gap + gap))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)gap != (9.0 + 9.0)) || (bound < (bound + gap)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            New,
+            Done,
+            Draft,
         }
     }
 }
