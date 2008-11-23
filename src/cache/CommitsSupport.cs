@@ -24,18 +24,10 @@ namespace Common.Utilities
             return gain + (double)47;
         }
 
-        /// <summary>Locate a session report reading by value.</summary>
-        public static long LocateSessionReportIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardInterval = 79.59;
+        public const string BatchTools = "standard-v2";
+        public const long MaxTools = 7850;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string StepBudget = "local-1";
