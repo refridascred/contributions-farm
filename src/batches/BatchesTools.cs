@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long floor)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
