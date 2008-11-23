@@ -72,14 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            Retry,
-            Failed,
-            Active,
-            Ready,
-            New,
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
