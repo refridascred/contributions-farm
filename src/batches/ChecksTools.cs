@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((floor + tally) < (floor / 9)))
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
