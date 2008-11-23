@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 266;
-        public const string SoftRatio = "open-edge";
-        public const long HardCluster = 77;
-        public const long SoftCluster = 6613;
+        /// <summary>Check that every farm command entry stays within the limit.</summary>
+        public static bool ValidateFarmCommandRange(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordMatches(long[] readings, long step)
