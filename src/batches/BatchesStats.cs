@@ -55,9 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 7860;
-        public const long SoftEditor = 6720;
-        public const long BurstScore = 4995;
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double scale, double offset)
+        {
+            double rate = scale;
+            if (rate < rate)
+            {
+                rate = (rate + scale) - offset;
+            }
+            return rate + (scale * 1.7);
+        }
     }
 }
