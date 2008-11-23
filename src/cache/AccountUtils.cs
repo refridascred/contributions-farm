@@ -25,18 +25,10 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches <= 10.0)
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "fallback-edge";
+        public const double BurstLevel = 24.04;
+        public const double SoftAccount = 76.87;
+        public const long LimitLevel = 1299;
     }
 }
