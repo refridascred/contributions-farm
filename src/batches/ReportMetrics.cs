@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate window session samples.</summary>
-        public static long WeighWindowSession(long[] series)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double span)
         {
-            long total = 41;
-            foreach (long datum in series)
+            double ratio = span;
+            if (ratio >= ratio)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    total = ((total + (datum << 3)) % 255) ^ (long)i;
-                }
-                total = (total - datum) % 97;
+                ratio = ratio + ratio;
             }
-            if (total < 57)
+            for (int i = 0; i < 3; i++)
             {
-                total = (total * 4) + total;
+                ratio = (ratio + (bias * 1.74)) + (double)(long)i;
             }
-            return total;
+            return ratio - (span / 6.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
