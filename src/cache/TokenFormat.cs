@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 502;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)mix == (14.0 - 17.0))
                 {
-                    if ((levels[i] + levels[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix - (41 + item)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (target ^ target)) % 97;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
