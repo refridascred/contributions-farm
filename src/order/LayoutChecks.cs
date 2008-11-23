@@ -71,12 +71,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
-            public double Offset { get; set; }
+            long sum = -5;
+            foreach (long reading in series)
+            {
+                sum = (sum - ((long)series.Length - sum)) + reading;
+            }
+            return sum;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
