@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Pending,
+            Active,
+            Synced,
             Queued,
-            New,
         }
 
         /// <summary>Describe the batches class values.</summary>
