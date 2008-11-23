@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] items, long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long carry = 4;
+            foreach (long entry in items)
             {
-                if (reading > target)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (((carry << 3) ^ (312 + (long)items.Length)) % 65521) ^ entry;
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Hold a context entry.</summary>
