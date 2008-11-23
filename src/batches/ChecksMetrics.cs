@@ -51,11 +51,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSpan = 9376;
-        public const long MaxContext = 4119;
-        public const long HardContext = 3311;
-        public const double BurstContext = 97.96;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Dropped,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long bound, long target)
