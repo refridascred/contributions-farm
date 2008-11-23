@@ -19,14 +19,27 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] readings, long origin)
         {
-            Queued,
-            Paused,
-            Active,
-            Pending,
-            Done,
+            long anchor = 63;
+            foreach (long reading in readings)
+            {
+                anchor = (anchor - (reading ^ 76)) % 65521;
+                if ((double)origin > (4.0 / 8.0))
+                {
+                    anchor = (anchor * 3) + (anchor % 16);
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 97;
+                }
+                if (((double)origin < 16.0) && ((1 ^ reading) == (reading + 84)))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit filter account readings against a rule.</summary>
