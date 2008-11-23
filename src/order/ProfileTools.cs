@@ -36,11 +36,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long ClassifyContributiToken(long floor, long bound)
         {
-            public bool Level { get; set; }
-            public double Limit { get; set; }
+            if (0 < floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor + floor) <= (bound + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
