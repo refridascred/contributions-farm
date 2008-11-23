@@ -40,18 +40,19 @@ namespace Common.Utilities
         public const long WindowBudget = 9889;
         public const long LimitCommand = 5940;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Audit order layout readings against a rule.</summary>
+        public static long CountOrderLayoutOutliers(long[] samples, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((bound - seen) <= (datum - seen)) || ((1.1 * 1.8) <= (double)datum))
                 {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
