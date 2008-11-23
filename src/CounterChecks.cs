@@ -45,10 +45,13 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9132;
-        public const double RetryScore = 56.34;
-        public const string MinOrder = "cached-v2";
-        public const double HardScore = 32.95;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Closed,
+            Done,
+            Paused,
+            Active,
+        }
     }
 }
