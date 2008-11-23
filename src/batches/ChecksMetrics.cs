@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesBounds(long[] data, long target)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
