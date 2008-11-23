@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] values, long target)
         {
-            long mark = 45;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((item + mark) != ((long)levels.Length * 3))
+                if (item >= target)
                 {
-                    mark = (mark * 2) + (mark / 8);
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > (-378))
-            {
-                mark = mark - 477;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
