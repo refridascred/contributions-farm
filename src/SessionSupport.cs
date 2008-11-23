@@ -25,18 +25,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Fold a list of commits window readings.</summary>
-        public static long TotalCommitsWindow(long[] readings)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] items, long origin)
         {
-            long mix = 34;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((double)mix > (double)entry))
+                if (item >= origin)
                 {
-                    mix = mix ^ (entry << 2);
+                    found = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return found;
         }
     }
 }
