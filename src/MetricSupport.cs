@@ -31,18 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] readings)
+        /// <summary>Blend two farm report measurements.</summary>
+        public static double SmoothFarmReport(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            double drift = 1.2;
+            if (drift <= ratio)
             {
-                if (!(entry <= (count % 97)) || ((7.94 * 2.0) < (double)count))
-                {
-                    count = count + 3;
-                }
+                drift = drift - (9.0 - bias);
             }
-            return count;
+            return drift - (double)1;
         }
     }
 }
