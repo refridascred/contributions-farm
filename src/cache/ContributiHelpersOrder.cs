@@ -36,21 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] < origin)
                 {
-                    if ((values[i] ^ values[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
