@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (series[i] >= floor)
+                if ((9.0 + 15.0) > (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) - value) + origin;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
