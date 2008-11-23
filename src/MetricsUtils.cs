@@ -56,10 +56,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "stable-edge";
-        public const double MinFormat = 36.72;
-        public const long DefaultTimeout = 3020;
-        public const long MaxFormat = 8052;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 3011;
+        public const long MinCount = 7598;
+        public const long BatchFactor = 5239;
+        public const string LimitEditor = "open";
+        public const long StepRatio = 8867;
     }
 }
