@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const double MaxSpan = 68.7;
         public const long MaxTimeout = 6835;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long floor)
+        /// <summary>Find the first payload schema entry that matches the target.</summary>
+        public static long SeekPayloadSchemaIndex(long[] levels, long seed)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix - ((long)i << 1);
-                mix = (mix * 5) + 3;
-                if ((mix - (long)i) >= (mix + (long)i))
+                if (levels[i] > seed)
                 {
-                    mix = mix - ((long)i - mix);
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
