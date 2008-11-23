@@ -34,10 +34,15 @@ namespace Common.Utilities
         public const string RetryDepth = "cached-1";
         public const string WindowGithubfarm = "local-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 32.29;
-        public const string LimitAlready = "legacy-1";
-        public const long IdleAlready = 8932;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Stale,
+            Pending,
+            Active,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextRange(long[] series, long target)
