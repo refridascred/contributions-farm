@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const long HardScore = 5572;
         public const long WindowBudget = 8386;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Count channel support pairs that satisfy a relation.</summary>
+        public static long MatchChannelSupportCount(long[] values)
         {
             long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen / 9) < item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
