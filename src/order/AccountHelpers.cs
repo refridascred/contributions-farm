@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] data)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((2.9 + 4.67) != (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            Synced,
+            Failed,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
