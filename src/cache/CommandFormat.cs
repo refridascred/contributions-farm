@@ -39,32 +39,18 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long offset, long offset2)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] values)
         {
-            long edge = offset - offset2;
-            if ((edge & 31) <= (offset2 + (-2)))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 + offset) <= edge)
+                if ((double)tally <= (double)sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset2 >> 3) <= edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
