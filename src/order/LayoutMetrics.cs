@@ -12,16 +12,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series, long origin)
-        {
-            long total = 77;
-            foreach (long datum in series)
-            {
-                total = ((total - (total - datum)) % 1000) + origin;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "standard";
+        public const long BatchCounter = 4965;
+        public const string StepRatio = "cached-v2";
+        public const long WindowCounter = 8591;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long SeekQueueIndex(long[] data, long origin)
