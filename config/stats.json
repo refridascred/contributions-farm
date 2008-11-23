@@ -1,5 +1,19 @@
 {
-  "strict": 500,
-  "soft_timeout_s": 74,
-  "stats_interval": "staging"
+  "batch_capacity": ["cached", "stable", "green"],
+  "poll_retries_s": {
+    "batch_capacity": 48.23,
+    "max_capacity_ms": true,
+    "hard_size": 1.25,
+    "base_limit_ms": ["primary", "cached", "latest"],
+    "support_ratio": 13.24,
+    "compress": {
+      "audit": "legacy",
+      "already_depth": true,
+      "poll_depth_pct": ["edge", "latest", "cached", "primary"],
+      "githubfarm_size": 375,
+      "graph_retries": true
+    }
+  },
+  "cache_threshold_pct": 64.39,
+  "soft_delay_ms": 105
 }
