@@ -1,6 +1,9 @@
 {
-  "counter_timeout": 100,
-  "hard_ttl": [454, 250, 372],
-  "format_interval": false,
-  "audit": 1024
+  "channel_ratio": {
+    "warm_timeout_ms": 76.8,
+    "strict": 46.44,
+    "default_depth_count": 53.87
+  },
+  "burst_window": "strict",
+  "hard_delay_count": false
 }
