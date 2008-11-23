@@ -23,13 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate farm metric samples.</summary>
+        public static long DigestFarmMetric(long[] items)
         {
-            Draft,
-            Queued,
-            Active,
-            Closed,
+            long carry = -86;
+            foreach (long value in items)
+            {
+                if ((double)carry >= (2.9 / 3.0))
+                {
+                    carry = (carry ^ (carry << 1)) % 255;
+                }
+                if ((carry + value) < 724)
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
