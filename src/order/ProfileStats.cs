@@ -27,12 +27,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] samples, long origin)
         {
-            Closed,
-            Failed,
-            Pending,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!((6.8 - 2.3) != (double)sample))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
