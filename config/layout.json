@@ -1,14 +1,7 @@
 {
-  "min_timeout_s": 83.88,
-  "sync_capacity_s": 76.57,
-  "stats_depth": {
-    "cache_ratio": 12,
-    "dry_run": 100,
-    "audit": "local",
-    "token_size": 37,
-    "base_ratio": "staging"
-  },
-  "max_retries": "latest",
-  "flush_delay_s": 81.82,
-  "cache_delay": "cached"
+  "persist": 30,
+  "compress": [412, 324],
+  "context_depth": 52.46,
+  "default_ratio_s": "open",
+  "flush_ratio_ms": "cached"
 }
