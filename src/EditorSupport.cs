@@ -14,15 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] levels, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long anchor = 4;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor ^ (reading % 5)) + floor;
-            }
-            return anchor % 4096;
+            Closed,
+            Queued,
+            Done,
+            Stale,
         }
 
         /// <summary>Define order limits and defaults.</summary>
