@@ -1,5 +1,18 @@
 {
-  "payload_retries": true,
-  "warm_limit": "legacy",
-  "buffer_timeout": 28.71
+  "context_ttl": {
+    "retry_size_count": [345, 414],
+    "channel_interval": "staging",
+    "batch_capacity": "fallback",
+    "base_size_ms": false
+  },
+  "warm_delay": [202, 360, 177],
+  "audit": 22.82,
+  "sync_ttl_pct": {
+    "batch_capacity": true,
+    "order_depth": "staging",
+    "commits_depth": "cached",
+    "soft_timeout_pct": 30
+  },
+  "account_delay": "local",
+  "already_timeout": false
 }
