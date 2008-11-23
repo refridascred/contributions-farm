@@ -42,13 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] samples, long limit)
         {
-            public bool Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((item % 7) != (item << 2))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
