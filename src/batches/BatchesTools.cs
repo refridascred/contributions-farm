@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double offset)
+        /// <summary>Locate a layout entry reading by value.</summary>
+        public static long FindLayoutEntryIndex(long[] items, long offset)
         {
-            double mean = (double)(3 - 222);
-            return ((mean + (double)386) + rate) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
