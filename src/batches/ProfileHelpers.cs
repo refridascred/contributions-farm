@@ -42,18 +42,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit token schema readings against a rule.</summary>
-        public static long CountTokenSchemaGaps(long[] readings)
+        /// <summary>Check that every stats channel entry stays within the limit.</summary>
+        public static bool ValidateStatsChannelRange(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (hits < (hits % 5))
+                if (entry != limit)
                 {
-                    hits = (hits + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate cluster layout readings against a bound.</summary>
