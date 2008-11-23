@@ -1,6 +1,8 @@
 {
-  "enabled": 60,
-  "warm_size_ms": "local",
-  "min_retries_pct": "stable",
-  "batch_ratio_pct": "eu-west"
+  "retry_interval": false,
+  "poll_ratio": 30,
+  "tools_ttl": 19,
+  "sync_depth_count": 86.89,
+  "batch_ratio": 40.77,
+  "batch_ttl_s": 4720
 }
