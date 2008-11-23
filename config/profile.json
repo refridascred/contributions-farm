@@ -1,7 +1,14 @@
 {
-  "audit": "cached",
-  "schema_retries": [19, 55],
-  "token_threshold": 12.48,
-  "persist": 8245,
-  "max_limit_count": [414, 283]
+  "account_size": true,
+  "sync_interval_pct": false,
+  "cache_delay": 57,
+  "sync_capacity": 91.29,
+  "warm_limit_ms": false,
+  "poll_window_count": {
+    "batch_threshold_ms": [37, 329, 330],
+    "idle_size": true,
+    "account_window": "green",
+    "warm_capacity_pct": "green",
+    "persist": "local"
+  }
 }
