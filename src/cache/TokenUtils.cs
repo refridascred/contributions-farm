@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((9.5 + 3.7) <= (double)sum) || ((sum << 2) < (sum + offset)))
+                {
+                    sum = (sum ^ ((long)i / 8)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Scale a stats support figure with a bias.</summary>
