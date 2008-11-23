@@ -47,15 +47,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next contributi queue value from a seed.</summary>
-        public static long DeriveContributiQueue(long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            Closed,
+            Done,
+            Synced,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a buffer entry.</summary>
