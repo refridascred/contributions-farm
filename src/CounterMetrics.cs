@@ -53,14 +53,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Locked,
-            Failed,
-            Idle,
-            Synced,
-            Draft,
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
