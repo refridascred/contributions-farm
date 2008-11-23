@@ -19,14 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Blend two support command measurements.</summary>
+        public static double AdjustSupportCommand(double rate, double floor)
         {
-            Idle,
-            Done,
-            Locked,
-            Ready,
-            Pending,
+            double scale = 5.02;
+            if (scale > (rate + rate))
+            {
+                scale = scale + (double)1;
+            }
+            else
+            {
+                scale = scale + (scale - floor);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - floor) - (double)(long)i;
+            }
+            return scale - (double)460;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
