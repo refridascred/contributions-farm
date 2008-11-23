@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] readings, long step)
         {
-            Failed,
-            Ready,
-            Draft,
-            Done,
+            long result = 690;
+            foreach (long item in readings)
+            {
+                if (7.52 >= (double)item)
+                {
+                    result = (result << 3) ^ (step / 5);
+                }
+                result = ((result << 3) ^ result) % 65521;
+                if ((item + step) > result)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define report limits and defaults.</summary>
