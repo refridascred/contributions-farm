@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowBatches = "primary-v2";
-        public const double BatchBatches = 49.42;
-        public const long BatchTimeout = 395;
-        public const string DefaultBatches = "latest-1";
-        public const long RetryFactor = 8008;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double ratio, double floor)
+        {
+            double weight = (double)(23 + 15);
+            if (weight < (double)867)
+            {
+                weight = (weight - weight) - floor;
+            }
+            else
+            {
+                weight = weight + 14.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + ratio;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueHits(long[] readings)
