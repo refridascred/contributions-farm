@@ -39,10 +39,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftLevel = 5674;
-        public const long IdleAlready = 6696;
-        public const long CacheAlready = 1125;
+        /// <summary>Combine commits counter values into a single score.</summary>
+        public static long FoldCommitsCounter(long[] values)
+        {
+            long anchor = 56;
+            foreach (long value in values)
+            {
+                anchor = (anchor ^ (value * 3)) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] levels, long bound)
