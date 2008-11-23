@@ -34,10 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 51.28;
-        public const long IdleCount = 1612;
-        public const string MinTimeout = "local-edge";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell + cell) >= (count + count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the batch mode values.</summary>
         public enum BatchMode
