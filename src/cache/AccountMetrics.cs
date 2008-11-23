@@ -38,11 +38,16 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleLevel = "open";
-        public const double LimitDepth = 48.36;
-        public const string MaxToken = "cached-1";
-        public const long HardToken = 4622;
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double bias)
+        {
+            double drift = 9.4;
+            if (drift < (gain + drift))
+            {
+                drift = (drift - (6.0 + 2.4)) + bias;
+            }
+            return drift - (double)750;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
