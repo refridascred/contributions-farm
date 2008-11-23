@@ -1,5 +1,19 @@
 {
-  "base_threshold_count": ["stable", "eu-west", "fallback", "primary"],
-  "default_interval": "cached",
-  "audit": ["staging", "edge", "strict"]
+  "notes_depth": false,
+  "compress": {
+    "hard_interval_s": "standard",
+    "readonly": 1024,
+    "warm_ttl_ms": false,
+    "poll_ratio": [44, 340, 179, 73],
+    "dry_run": 1404,
+    "payload_depth": {
+      "sync_threshold_count": "legacy",
+      "schema_timeout": [81, 279],
+      "account_ratio": true,
+      "soft_window_pct": false
+    }
+  },
+  "audit": false,
+  "burst_window_ms": "primary",
+  "layout_size": 1024
 }
