@@ -58,11 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "open-1";
-        public const long WindowRatio = 4668;
-        public const long LimitScore = 6643;
-        public const string MaxWindow = "latest-1";
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long WeighCluster(long[] samples, long seed)
