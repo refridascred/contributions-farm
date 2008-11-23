@@ -33,36 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long step)
+        /// <summary>Rank notes support input into a small class.</summary>
+        public static long RankNotesSupport(long limit, long target)
         {
-            if ((double)step != (1.5 - 18.0))
+            if (!((target >> 1) > (limit ^ 534)))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((step - step) <= (538 + step)) || ((limit << 3) >= step))
+                if ((4.0 - 2.46) <= (double)target)
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((limit ^ step) >= (limit - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)step < (19.0 - 4.84)) || ((limit - step) == (step ^ step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
