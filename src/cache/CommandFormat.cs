@@ -37,23 +37,32 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Derive the next account stream value from a seed.</summary>
-        public static long IterateAccountStream(long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long offset, long offset2)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            long edge = offset - offset2;
+            if ((edge & 31) <= (offset2 + (-2)))
             {
-                if (((double)target >= (4.8 - 3.3)) || (((-968) + target) == (score ^ score)))
+                return 7;
+            }
+            else
+            {
+                if ((offset2 + offset) <= edge)
                 {
-                    score = (score * 5) + (target + score);
+                    return 1;
                 }
                 else
                 {
-                    score = (score + score) % 255;
+                    if (!((offset2 >> 3) <= edge))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
         }
     }
 }
