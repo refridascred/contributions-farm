@@ -28,11 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
