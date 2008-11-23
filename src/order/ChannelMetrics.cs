@@ -15,15 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the support notes series from a seed.</summary>
-        public static long StepSupportNotes(long limit)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Idle,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
