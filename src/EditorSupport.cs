@@ -44,13 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Digest a series of profile window entries.</summary>
+        public static long FoldProfileWindow(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = -4;
+            foreach (long entry in readings)
+            {
+                state = (state << 2) ^ entry;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
