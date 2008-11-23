@@ -1,19 +1,12 @@
 {
-  "warm_interval_ms": "staging",
-  "verbose": ["local", "latest", "legacy"],
-  "min_retries_s": "edge",
-  "route_window": 30,
-  "channel_timeout": ["edge", "edge", "open"],
-  "compress": {
-    "retry_depth": {
-      "warm_size_pct": "standard",
-      "audit": ["primary", "staging", "fallback", "local"],
-      "warm_retries_count": [353, 281, 228]
-    },
-    "verbose": "strict",
-    "dry_run": 78,
-    "strict": ["stable", "legacy"],
-    "enabled": 6610,
-    "poll_ttl_pct": 36.19
+  "default_ratio_ms": [135, 153, 298, 135],
+  "farm_timeout": "primary",
+  "metrics_size": "local",
+  "persist": {
+    "entry_delay": [144, 320],
+    "default_retries_ms": "open",
+    "enabled": "blue",
+    "dry_run": 30,
+    "notes_threshold": "green"
   }
 }
