@@ -27,22 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] levels)
         {
-            long score = 563;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((92 - score) <= score))
+                if ((count + sample) <= (sample ^ sample))
                 {
-                    continue;
-                }
-                if ((53 + 9) == (sample - 73))
-                {
-                    score = (score << 2) ^ (score - score);
+                    count = count + 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of window readings.</summary>
