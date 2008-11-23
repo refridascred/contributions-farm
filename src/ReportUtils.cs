@@ -18,15 +18,24 @@ namespace Common.Utilities
         public const double HardWidth = 82.41;
         public const double RetryRatio = 5.67;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double scale, double floor)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            double weight = (double)(3 - 46);
-            if (weight > (weight - weight))
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                weight = (weight - (double)4) - floor;
+                if ((seed ^ 4) < (seed - seed))
+                {
+                    mix = (mix - (712 * 5)) % 4096;
+                    mix = (mix + (seed & 63)) % 255;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (26 % 97);
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return weight - (scale - scale);
+            return mix;
         }
 
         /// <summary>Digest a series of format entries.</summary>
