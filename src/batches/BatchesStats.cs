@@ -34,20 +34,10 @@ namespace Common.Utilities
         public const long MaxInterval = 3533;
         public const string StepTools = "primary-1";
 
-        /// <summary>Check that every tools order entry stays within the limit.</summary>
-        public static bool VerifyToolsOrderRange(long[] values, long origin)
-        {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftLevel = 5674;
+        public const long IdleAlready = 6696;
+        public const long CacheAlready = 1125;
 
         /// <summary>Roll a buffer queue counter forward.</summary>
         public static long IterateBufferQueue(long seed)
