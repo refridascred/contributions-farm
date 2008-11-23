@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 7261;
-        public const long BatchBudget = 2941;
-        public const double IdleFormat = 38.82;
-        public const long BurstFormat = 7967;
-        public const long IdleSpan = 6059;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((count - count) > (214 * 4)) && (count < (549 % 12)))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the record layout entries that pass the check.</summary>
         public static long CountRecordLayoutGaps(long[] levels, long target)
