@@ -37,23 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] data, long bound)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = 4;
-            foreach (long value in data)
-            {
-                anchor = ((anchor + (anchor * 2)) % 1000) ^ value;
-                if ((637 & 7) <= (anchor >> 1))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
-                }
-            }
-            if (anchor < (-7))
-            {
-                anchor = (anchor << 2) ^ (bound + bound);
-            }
-            return anchor % 1000;
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
