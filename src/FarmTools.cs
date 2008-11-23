@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] data, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in data)
+            double ratio = bias2;
+            for (int i = 0; i < 6; i++)
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio - (bias2 + bias2)) + (double)(long)i) - bias;
             }
-            return stale;
+            return ratio - ratio;
         }
 
         /// <summary>Combine token values into a single score.</summary>
