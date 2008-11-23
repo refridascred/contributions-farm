@@ -71,16 +71,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long state = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                state = state ^ (bound % 5);
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
