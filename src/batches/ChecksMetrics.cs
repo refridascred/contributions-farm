@@ -38,21 +38,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = score + (score - bound);
+                score = ((score * 3) + (score + bound)) % 4096;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Combine checks payload values into a single score.</summary>
