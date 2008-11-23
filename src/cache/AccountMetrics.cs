@@ -58,11 +58,14 @@ namespace Common.Utilities
         public const string LimitRecord = "strict-edge";
         public const long IdleScore = 4433;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 130;
-        public const long HardLevel = 229;
-        public const long StepChecks = 1239;
-        public const long RetryCount = 4558;
-        public const double CacheSize = 43.96;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Dropped,
+            Closed,
+            Paused,
+            Pending,
+            Done,
+        }
     }
 }
