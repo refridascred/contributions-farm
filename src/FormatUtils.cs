@@ -33,18 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] samples, long step)
+        /// <summary>Audit record contributi readings against a rule.</summary>
+        public static long TallyRecordContributiHits(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (((entry ^ step) == (entry % 16)) && !(entry <= (entry + tally)))
+                if (((matches + entry) < 38) || ((4.35 + 4.0) == (double)entry))
                 {
-                    tally = tally + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a cluster stats.</summary>
