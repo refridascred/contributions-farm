@@ -29,14 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] values)
         {
-            Dropped,
-            Done,
-            Retry,
-            Failed,
-            Paused,
+            long mix = 26;
+            foreach (long cell in values)
+            {
+                mix = (mix - (mix - mix)) ^ cell;
+            }
+            if (mix > 162)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Combine commits counter values into a single score.</summary>
