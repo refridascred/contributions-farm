@@ -13,11 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 1824;
-        public const long HardMetric = 7065;
-        public const double DefaultTimeout = 51.05;
-        public const long RetryWidth = 84;
+        /// <summary>Find the first batches window entry that matches the target.</summary>
+        public static long LookupBatchesWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
