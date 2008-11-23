@@ -26,14 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a report contributi reading.</summary>
+        public static double AdjustReportContributi(double ratio, double offset)
         {
-            Dropped,
-            Done,
-            Ready,
-            Draft,
-            Retry,
+            double drift = (ratio - offset) + ratio;
+            if (drift < drift)
+            {
+                drift = drift + (drift * 2.77);
+            }
+            return drift - (double)0;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
