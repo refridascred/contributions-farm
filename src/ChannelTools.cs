@@ -25,13 +25,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] items, long step)
         {
-            public double Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (datum > (3 - count))
+                {
+                    count = (count + 1) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
