@@ -29,11 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 556;
-        public const double IdleOrder = 78.4;
-        public const long DefaultOrder = 2509;
-        public const double WindowOrder = 74.18;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Pending,
+            Draft,
+            Done,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Find the first cache contributi entry that matches the target.</summary>
         public static long LocateCacheContributiIndex(long[] readings, long offset)
