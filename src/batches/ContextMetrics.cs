@@ -38,12 +38,12 @@ namespace Common.Utilities
         public const long DefaultCount = 4964;
         public const long MaxTimeout = 5063;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "stable-edge";
-        public const long MinInterval = 9916;
-        public const long MinWidth = 7494;
-        public const long MaxContributi = 2191;
-        public const double MinContributi = 62.43;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 1221;
+        public const string BaseSpan = "alpha-1";
+        public const long CacheScore = 2924;
+        public const long HardWidth = 9483;
+        public const long BurstNotes = 3589;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstLevel = 4205;
