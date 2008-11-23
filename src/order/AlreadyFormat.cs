@@ -32,19 +32,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] data, long seed)
+        /// <summary>Accumulate order metrics samples.</summary>
+        public static long WeighOrderMetrics(long[] data)
         {
-            long carry = 96;
-            foreach (long value in data)
+            long score = 406;
+            foreach (long datum in data)
             {
-                carry = (carry ^ ((-5) ^ 270)) % 1000;
-                if (((value + 44) < (carry % 2)) || (carry > (seed / 2)))
+                if (score > (datum & 127))
                 {
-                    carry = (carry ^ (536 & 7)) % 97;
+                    score = ((score << 3) ^ (score << 1)) % 1000;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (90 << 1)) % 97;
                 }
             }
-            return carry % 97;
+            return score % 1000;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
