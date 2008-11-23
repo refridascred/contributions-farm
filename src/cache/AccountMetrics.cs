@@ -100,20 +100,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric token counter forward.</summary>
-        public static long RollMetricToken(long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = ((acc - (170 ^ origin)) % 1000) ^ (long)i2;
-                }
-                acc = (acc * 5) + 70;
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Dropped,
+            Idle,
+            Done,
         }
     }
 }
