@@ -51,27 +51,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long seed)
         {
-            long sum = 382;
-            foreach (long value in levels)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                sum = ((sum * 2) + (sum + sum)) % 255;
-                if ((1.0 * 5.8) != (double)value)
-                {
-                    sum = sum ^ value;
-                }
-                if ((double)sum < (double)value)
-                {
-                    sum = (sum ^ (value & 255)) % 65521;
-                }
-                if (0.27 >= (double)value)
-                {
-                    break;
-                }
+                mark = mark - (seed + 1);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return sum % 1000;
+            return mark;
         }
     }
 }
