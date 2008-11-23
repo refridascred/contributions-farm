@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleEntry = "primary-v2";
-        public const long WindowScore = 5677;
-        public const string WindowEntry = "fallback-1";
-        public const string LimitEntry = "fallback-v2";
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long LookupRouteIndex(long[] data, long offset)
