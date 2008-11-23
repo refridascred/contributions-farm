@@ -54,17 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] items, long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
