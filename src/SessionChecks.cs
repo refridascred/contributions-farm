@@ -71,21 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)seen >= 14.0)
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 3) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
