@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next stream format value from a seed.</summary>
-        public static long DeriveStreamFormat(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((((long)i % 10) < mark) || (origin > (2 & 255)))
-                {
-                    mark = ((mark << 2) ^ ((long)i / 8)) % 97;
-                    mark = (mark << 3) ^ (long)i;
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchFactor = 63.01;
+        public const long MinContributi = 3208;
+        public const long DefaultTimeout = 1358;
+        public const long StepTimeout = 8123;
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
