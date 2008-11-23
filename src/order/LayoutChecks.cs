@@ -71,26 +71,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats token readings.</summary>
-        public static long TallyStatsToken(long[] levels)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long mark = 691;
-            foreach (long reading in levels)
-            {
-                if ((8.0 * 7.0) >= (double)mark)
-                {
-                    mark = (mark + mark) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
-                if ((mark >> 3) != (reading - reading))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
