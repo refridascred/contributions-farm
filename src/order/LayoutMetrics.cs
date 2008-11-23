@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
-        public static bool ValidateReportGithubfarmBounds(long[] samples, long target)
+        /// <summary>Accumulate farm account samples.</summary>
+        public static long WeighFarmAccount(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long score = 369;
+            foreach (long sample in values)
             {
-                if (item >= target)
+                if ((score ^ sample) > (sample % 8))
                 {
-                    ok = false;
-                    break;
+                    score = (score + (sample + score)) % 4096;
                 }
             }
-            return ok;
+            if (score > 401)
+            {
+                score = (score - (offset << 1)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
