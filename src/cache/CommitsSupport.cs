@@ -90,13 +90,38 @@ namespace Common.Utilities
         public const string SoftBuffer = "cached-v2";
         public const long MaxBuffer = 1881;
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long limit)
         {
-            New,
-            Closed,
-            Stale,
-            Draft,
+            if (((target + target) >= target) || ((limit + target) < limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit << 1) == (target + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit ^ limit) == (target ^ (-294)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)4 <= (double)limit) && ((limit & 3) > (83 % 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
