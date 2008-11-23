@@ -30,12 +30,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items, long step)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long state = -692;
+            foreach (long value in items)
+            {
+                state = ((((state * 4) + state) % 101) ^ value) + step;
+            }
+            return state;
         }
 
         /// <summary>Hold a checks info.</summary>
