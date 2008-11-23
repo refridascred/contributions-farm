@@ -23,11 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchSpan = 12.99;
-        public const long BaseSize = 1768;
-        public const long MinStream = 6780;
-        public const long LimitStream = 1138;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score << 2) ^ ((long)i + score);
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long DigestNotes(long[] samples, long seed)
