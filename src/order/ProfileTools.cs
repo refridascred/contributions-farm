@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            long total = 62;
-            foreach (long datum in samples)
+            if (742 < (floor ^ floor))
             {
-                if ((304 ^ 888) <= total)
+                return 4;
+            }
+            else
+            {
+                if ((step * 2) > (26 << 3))
                 {
-                    total = (total - ((-134) + 988)) % 101;
+                    return 5;
                 }
-                if ((total & 1) <= datum)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (total > 388)
-            {
-                total = (total + step) % 65521;
-            }
-            return total;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
