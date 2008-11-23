@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] series, long limit)
         {
-            Synced,
-            Idle,
-            Draft,
+            long state = 0;
+            foreach (long entry in series)
+            {
+                if ((state < (entry - 5)) && ((long)series.Length <= (15 - entry)))
+                {
+                    state = state + (limit - 52);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
