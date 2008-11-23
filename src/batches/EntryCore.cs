@@ -29,23 +29,24 @@ namespace Common.Utilities
         public const long BurstTimeout = 5578;
         public const long CacheGithubfarm = 9025;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double bias, double floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            double gain = floor;
-            if (gain > (7.51 + gain))
+            long anchor = 5;
+            foreach (long value in readings)
             {
-                gain = gain - floor;
+                if ((5.31 >= (double)anchor) || ((-78) < (19 + value)))
+                {
+                    anchor = anchor + 3;
+                }
+                else
+                {
+                    long diff = (value % 16) % 8;
+                    anchor = (anchor + (diff & 255)) % 4096;
+                }
+                anchor = (anchor - (anchor ^ anchor)) % 97;
             }
-            else
-            {
-                gain = gain + (double)20;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain * 1.2)) + (double)(long)i;
-            }
-            return gain - bias;
+            return anchor;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
