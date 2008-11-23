@@ -19,16 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstLevel = 6349;
+        public const string BaseEditor = "fallback-v2";
+        public const long LimitRatio = 52;
+        public const double BaseSpan = 35.94;
+        public const string BurstEditor = "fallback-v2";
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] samples, long step)
