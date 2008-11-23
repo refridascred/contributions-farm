@@ -24,11 +24,12 @@ namespace Common.Utilities
             return gain + (double)47;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double ratio, double offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double mean = offset;
-            return (mean + (double)9) + ratio;
+            public string Level { get; set; } = "";
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Blend two cluster measurements.</summary>
