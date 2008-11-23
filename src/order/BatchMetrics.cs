@@ -24,19 +24,14 @@ namespace Common.Utilities
             return load + (double)430;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Failed,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Rank checks profile input into a small class.</summary>
