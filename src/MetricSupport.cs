@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every farm command entry stays within the limit.</summary>
-        public static bool ValidateFarmCommandRange(long[] data, long step)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
