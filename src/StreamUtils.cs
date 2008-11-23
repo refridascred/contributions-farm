@@ -10,19 +10,15 @@ namespace Common.Utilities
         public const long IdleInterval = 5958;
         public const long RetrySession = 1436;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] items, long limit)
+        /// <summary>Combine commits order values into a single score.</summary>
+        public static long DigestCommitsOrder(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long mix = 475;
+            foreach (long item in values)
             {
-                if (sample >= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (((mix + (mix * 2)) % 65521) ^ item) + bound;
             }
-            return ok;
+            return mix % 97;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
