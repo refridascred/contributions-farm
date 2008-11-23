@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseTimeout = 1903;
-        public const double WindowEditor = 79.36;
-        public const long LimitEditor = 8307;
-        public const long SoftEditor = 6424;
-        public const string BurstBudget = "latest-1";
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Label { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long IdleMetric = 787;
