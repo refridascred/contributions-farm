@@ -33,16 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a order profile figure with a bias.</summary>
-        public static double BlendOrderProfile(double scale, double span)
-        {
-            double drift = (double)(4 ^ 29);
-            if (drift >= (scale / 7.0))
-            {
-                drift = drift + span;
-            }
-            return drift + (drift + 2.6);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleLevel = "open";
+        public const double LimitDepth = 48.36;
+        public const string MaxToken = "cached-1";
+        public const long HardToken = 4622;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double BlendContext(double scale, double offset)
