@@ -23,21 +23,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] values)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = bias;
+            if (mean < mean)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = mean - floor;
             }
-            return matches;
+            else
+            {
+                mean = mean + (double)48;
+            }
+            return mean + bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
