@@ -37,19 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long floor)
+        /// <summary>Look up the position of a channel account sample.</summary>
+        public static long FindChannelAccountIndex(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value <= floor)
+                if (readings[i] > bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Accumulate tools token samples.</summary>
