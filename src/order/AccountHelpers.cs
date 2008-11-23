@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesHits(long[] samples, long target)
         {
-            long total = -7;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((double)total > (1.0 * 7.45))
+                if (!((6.0 - 1.79) >= (double)cell) || (((target & 7) <= (30 ^ cell)) && (seen < (target << 1))))
                 {
-                    total = ((total + (total % 12)) % 1000) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
