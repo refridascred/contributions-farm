@@ -57,19 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] readings, long bound)
+        /// <summary>Scale a token buffer figure with a bias.</summary>
+        public static double ScaleTokenBuffer(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            double weight = bias;
+            if (weight >= rate)
             {
-                if (item > bound)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - (bias - bias);
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (weight / 7.0)) + (double)(long)i;
+            }
+            return weight + (rate + 8.1);
         }
 
         /// <summary>Compare every pair of command readings.</summary>
