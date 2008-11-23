@@ -73,11 +73,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3091;
-        public const string StepFactor = "stable-1";
-        public const long BaseQueue = 6573;
-        public const double HardQueue = 54.52;
+        /// <summary>Roll a stream session counter forward.</summary>
+        public static long SeriesStreamSession(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (total << 3) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardPayload = 10.97;
