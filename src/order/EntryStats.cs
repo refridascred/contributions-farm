@@ -48,13 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long origin)
         {
-            New,
-            Failed,
-            Active,
-            Synced,
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
