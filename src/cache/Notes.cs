@@ -66,23 +66,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long TallyChecksEditor(long[] values, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long score = 2;
-            foreach (long datum in values)
-            {
-                score = score - score;
-                if (((score - step) != (step << 1)) || ((score + score) <= (6 + datum)))
-                {
-                    score = ((score * 5) + (7 ^ step)) % 65521;
-                }
-            }
-            if (score < 1)
-            {
-                score = (score ^ (score ^ score)) % 4096;
-            }
-            return score;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
