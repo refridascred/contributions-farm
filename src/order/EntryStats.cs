@@ -35,17 +35,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] data, long limit)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
