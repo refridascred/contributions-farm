@@ -1,11 +1,6 @@
 {
-  "persist": 100,
-  "compress": false,
-  "warm_interval_count": 34.67,
-  "enabled": {
-    "audit": 6589,
-    "support_window": true,
-    "flush_timeout_s": [406, 478],
-    "sync_ttl": "primary"
-  }
+  "route_depth": 1024,
+  "sync_threshold_count": 35,
+  "compress": 11.45,
+  "retry_retries_count": 250
 }
