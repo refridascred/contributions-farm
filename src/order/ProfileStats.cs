@@ -27,18 +27,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] samples, long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((6.8 - 2.3) != (double)sample))
+                if (items[i] >= floor)
                 {
-                    hits = (hits + 3) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
