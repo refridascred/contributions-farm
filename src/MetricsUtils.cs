@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] readings, long offset)
+        /// <summary>Match up farm filter samples.</summary>
+        public static long PairFarmFilterCount(long[] readings)
         {
-            long sum = 557;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((offset << 2) < sum) || ((reading + reading) >= sum))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum - (offset & 63)) % 4096;
-                }
-                if ((17.0 / 8.0) < (double)reading)
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
