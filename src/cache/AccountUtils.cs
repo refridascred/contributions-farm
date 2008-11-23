@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string StepRecord = "fallback-v2";
         public const string StepScore = "fallback";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstLevel = 6349;
-        public const string BaseEditor = "fallback-v2";
-        public const long LimitRatio = 52;
-        public const double BaseSpan = 35.94;
-        public const string BurstEditor = "fallback-v2";
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series)
+        {
+            long mix = 87;
+            foreach (long reading in series)
+            {
+                mix = (mix - reading) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] samples, long step)
