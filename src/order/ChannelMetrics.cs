@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Locked,
-            Done,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstDepth = 43.36;
+        public const string HardSize = "primary-edge";
+        public const double IdleScore = 41.35;
+        public const long WindowInterval = 1005;
+        public const string MinEditor = "alpha-edge";
 
         /// <summary>Combine queue farm values into a single score.</summary>
         public static long TotalQueueFarm(long[] items)
