@@ -22,11 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double ratio, double bias)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            double drift = (ratio * 14.0) - 9.0;
-            return (drift + ratio) + bias;
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
