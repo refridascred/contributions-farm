@@ -25,19 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] series, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell <= step)
+                if (!((long)i >= 82))
                 {
-                    valid = false;
-                    break;
+                    mark = (mark - mark) % 97;
                 }
+                mark = (mark * 4) + (step - (long)i);
+                mark = mark + (mark - (long)i);
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
