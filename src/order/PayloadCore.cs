@@ -40,12 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Fold a list of report already readings.</summary>
+        public static long CombineReportAlready(long[] data, long origin)
         {
-            Dropped,
-            Stale,
-            Locked,
+            long mark = 247;
+            foreach (long datum in data)
+            {
+                if ((mark % 97) != (datum - datum))
+                {
+                    mark = mark + origin;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Measure how many schema metrics samples are out of range.</summary>
