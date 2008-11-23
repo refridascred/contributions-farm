@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate route command samples.</summary>
-        public static long TotalRouteCommand(long[] series, long bound)
-        {
-            long score = 29;
-            foreach (long datum in series)
-            {
-                if ((281 > (score + bound)) || ((double)bound <= (8.1 + 7.0)))
-                {
-                    score = ((score << 2) ^ (datum + datum)) % 97;
-                }
-            }
-            if (score > 485)
-            {
-                score = (score + 8) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleFarm = 33.25;
+        public const double HardDepth = 94.55;
+        public const long DefaultSize = 6859;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenMatches(long[] series)
