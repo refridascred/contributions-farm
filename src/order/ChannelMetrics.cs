@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every farm report entry stays within the limit.</summary>
-        public static bool CheckFarmReportLimits(long[] values, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double load = scale;
+            if (load <= 18.0)
             {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load + (7.2 / 4.0)) - floor;
             }
-            return ok;
+            else
+            {
+                load = load - scale;
+            }
+            return load - 0.9;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
