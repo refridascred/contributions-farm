@@ -1,7 +1,16 @@
 # entry settings
-persist:
-  - 302
-  - 316
-  - 156
-idle_depth_count: 7955
-payload_limit: true
+default_threshold_count:
+  compress: standard
+  strict: 35
+  warm_delay: 80.56
+  base_retries:
+    - eu-west
+    - local
+    - blue
+  sync_delay: 26
+  burst_threshold_count:
+    - 162
+    - 482
+    - 174
+flush_retries_pct: 46.68
+poll_capacity_pct: local
