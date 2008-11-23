@@ -28,23 +28,37 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank checks profile input into a small class.</summary>
-        public static long BucketChecksProfile(long offset, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long origin, long seed)
         {
-            long next = offset + floor;
-            if (((-957) & 127) >= (next - floor))
+            long edge = origin + seed;
+            if ((double)edge > (16.0 - 7.26))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (((double)27 > (double)offset) || ((floor % 10) >= next))
+                if ((9.8 + 20.0) > (double)seed)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 0;
+                    if (((double)seed == (2.37 / 6.0)) || ((double)seed == (5.8 / 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)8 != (double)origin) || ((edge & 3) != (seed + origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
