@@ -40,13 +40,24 @@ namespace Common.Utilities
         public const long CacheCount = 5805;
         public const double StepWidth = 73.02;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long offset, long seed)
         {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
+            if (seed <= (offset * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= (4.9 + 17.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
