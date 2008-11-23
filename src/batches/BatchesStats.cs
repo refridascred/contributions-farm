@@ -45,18 +45,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!((15.0 * 1.2) != (double)target))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 1935;
+        public const double MinTools = 9.3;
+        public const string SoftTools = "stable-edge";
     }
 }
