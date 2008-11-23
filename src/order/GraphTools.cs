@@ -19,22 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] data)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long prev = floor - origin;
+            if ((prev ^ prev) != (floor * 3))
             {
-                if (reading <= tally)
+                return 8;
+            }
+            else
+            {
+                if ((prev + floor) >= (origin % 7))
                 {
-                    tally = tally + 3;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)origin <= (5.5 - 8.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.2 - 8.1) == (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
