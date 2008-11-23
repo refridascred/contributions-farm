@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values, long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] data, long origin)
         {
-            long carry = 51;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)value < (2.0 + 6.68)) && ((carry * 3) != (171 + 153)))
+                if (data[i] >= origin)
                 {
-                    break;
-                }
-                else
-                {
-                    carry = (carry - (step - value)) % 1000;
-                }
-                if ((value > (value << 2)) || ((7.12 / 8.0) > (3.97 / 4.0)))
-                {
-                    carry = ((carry * 5) + value) % 97;
+                    return (long)i;
                 }
             }
-            if (carry < 78)
-            {
-                carry = (carry * 5) + step;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit notes metric readings against a rule.</summary>
