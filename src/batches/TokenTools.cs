@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate already route readings against a bound.</summary>
-        public static bool GuardAlreadyRouteBounds(long[] levels, long offset)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 2135;
+        public const string WindowRecord = "latest-v2";
+        public const long CacheCount = 2241;
+        public const long DefaultRecord = 3280;
 
         /// <summary>Describe the farm state values.</summary>
         public enum FarmState
