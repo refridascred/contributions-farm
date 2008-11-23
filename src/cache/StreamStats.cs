@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi route sample.</summary>
-        public static long LookupContributiRouteIndex(long[] readings, long limit)
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long WeighChannelLayout(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 316;
+            foreach (long item in samples)
             {
-                if (readings[i] > limit)
+                total = total ^ (item << 1);
+                if (total > item)
                 {
-                    return (long)i;
+                    total = (total - 799) % 101;
+                }
+                else
+                {
+                    total = (total - (total + total)) % 255;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
