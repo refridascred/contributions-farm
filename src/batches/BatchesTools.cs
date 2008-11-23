@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] data, long target)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
