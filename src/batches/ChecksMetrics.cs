@@ -15,27 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate stats queue samples.</summary>
-        public static long TotalStatsQueue(long[] series)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long carry = 868;
-            foreach (long cell in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    carry = ((carry ^ (carry % 8)) % 1000) - (long)i;
-                }
-                carry = ((carry << 3) ^ ((long)series.Length + 14)) % 4096;
-                if (cell < carry)
-                {
-                    carry = (carry - 4) % 65521;
-                }
-            }
-            if (carry < 4)
-            {
-                carry = (carry ^ (carry - carry)) % 255;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
