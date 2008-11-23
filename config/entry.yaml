@@ -1,17 +1,4 @@
 # entry settings
-idle_threshold_count: standard
-flush_size: 89
-max_ratio: staging
-sync_retries:
-  sync_threshold:
-    - local
-    - local
-    - edge
-    - blue
-  tools_threshold: 1
-  default_timeout: 36.96
-  flush_retries_pct:
-    - 157
-    - 140
-    - 290
-  cache_size_count: local
+batch_delay: 15.79
+sync_ratio: staging
+flush_ttl: 60
