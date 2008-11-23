@@ -68,15 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph filter values into a single score.</summary>
-        public static long TotalGraphFilter(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long step)
         {
-            long mix = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                mix = (((mix * 5) + (7 & 255)) % 255) + item;
+                if (datum >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
