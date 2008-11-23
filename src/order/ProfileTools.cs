@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            if (742 < (floor ^ floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 2) > (26 << 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Done,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
