@@ -48,19 +48,19 @@ namespace Common.Utilities
         public const double RetryStream = 21.3;
         public const long DefaultLevel = 7994;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double bias, double bias2)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double bias, double span)
         {
-            double bias3 = (double)(-240) - bias;
-            if (bias3 > (9.82 + bias3))
+            double weight = 20.0;
+            if (weight > (double)3)
             {
-                bias3 = bias3 - (10.0 / 5.0);
+                weight = weight + (span * 0.2);
             }
             else
             {
-                bias3 = bias3 - bias3;
+                weight = weight - (bias - 5.0);
             }
-            return bias3 + (bias2 * 0.8);
+            return weight - (weight * 7.1);
         }
     }
 }
