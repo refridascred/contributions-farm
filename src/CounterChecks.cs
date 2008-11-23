@@ -30,12 +30,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 9848;
-        public const string BaseScore = "standard";
-        public const string MaxStats = "local";
-        public const long WindowDepth = 9904;
-        public const long HardLevel = 2338;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
