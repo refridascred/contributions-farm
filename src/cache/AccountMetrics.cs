@@ -79,12 +79,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long origin)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long cur = target - origin;
+            if (((origin & 63) >= (cur >> 5)) && ((double)target >= (0.5 / 2.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (cur >= (origin + cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the metric class values.</summary>
