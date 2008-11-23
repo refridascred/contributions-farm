@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const long DefaultScore = 1189;
         public const long RetryBatches = 7418;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] readings, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)step < (0.91 + 1.1))
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
