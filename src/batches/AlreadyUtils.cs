@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank editor channel input into a small class.</summary>
-        public static long RankEditorChannel(long limit, long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long offset)
         {
-            if ((limit ^ limit) != (step - step))
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                acc = (acc - (offset / 8)) % 4096;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit + step) >= 6)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a contributi editor value against two limits.</summary>
