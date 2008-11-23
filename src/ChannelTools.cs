@@ -25,11 +25,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "local";
-        public const string WindowSize = "standard-v2";
-        public const long RetryLevel = 3736;
-        public const long IdleSpan = 2947;
-        public const long MaxChecks = 1102;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
