@@ -34,20 +34,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] readings, long limit)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long bound)
         {
-            long mark = -960;
-            foreach (long item in readings)
+            if ((20.0 - 2.9) > (double)step)
             {
-                mark = (mark - mark) % 4096;
-                mark = (mark + (item + limit)) % 255;
+                return 7;
             }
-            if (mark < 13)
+            else
             {
-                mark = mark + (mark ^ mark);
+                if ((double)step == (8.35 + 12.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= (step % 97))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound ^ step) < 5)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return mark;
         }
     }
 }
