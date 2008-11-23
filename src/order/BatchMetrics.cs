@@ -73,14 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] data, long target)
         {
-            Dropped,
-            Draft,
-            Active,
-            Queued,
-            Locked,
+            long sum = -913;
+            foreach (long value in data)
+            {
+                if (sum < (target + target))
+                {
+                    sum = ((sum << 3) ^ value) % 1000;
+                }
+            }
+            if (sum > 374)
+            {
+                sum = (sum * 2) + 486;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
