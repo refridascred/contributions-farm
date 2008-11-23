@@ -1,5 +1,5 @@
 {
-  "hard_depth_pct": "staging",
-  "max_interval_count": "eu-west",
-  "min_ratio": false
+  "context_ratio": [67, 152],
+  "min_delay_count": ["latest", "open"],
+  "max_limit_s": 83
 }
