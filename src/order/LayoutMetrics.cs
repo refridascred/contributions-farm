@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate payload cluster readings against a bound.</summary>
-        public static bool CheckPayloadClusterBounds(long[] items, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate window samples.</summary>
