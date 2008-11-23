@@ -84,9 +84,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 70.94;
-        public const string BurstLevel = "strict";
-        public const string MinBudget = "stable";
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long target, long step)
+        {
+            long span = target - step;
+            if (((target + (-118)) >= (147 + span)) && ((83 - target) >= (target - target)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 / 6) == (target >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((target / 9) != (target % 7)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)span > (5.0 - 7.9)) || ((double)target == (7.0 + 11.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
