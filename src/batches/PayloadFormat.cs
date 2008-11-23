@@ -18,21 +18,12 @@ namespace Common.Utilities
         public const long BaseRoute = 7075;
         public const long BurstFactor = 6397;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Active,
         }
 
         /// <summary>Measure how many stats already samples are out of range.</summary>
