@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] data, long origin)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((9.0 + 15.0) > (double)seen)
-                {
-                    seen = ((seen + 3) - value) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 568;
+        public const long DefaultCount = 4313;
+        public const long BatchFactor = 2069;
+        public const long MaxChecks = 9256;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] series, long seed)
