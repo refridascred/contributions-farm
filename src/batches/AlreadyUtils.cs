@@ -17,12 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
