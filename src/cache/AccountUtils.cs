@@ -12,10 +12,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftFactor = "standard-1";
-        public const long MaxSpan = 9764;
-        public const long IdleLevel = 9552;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] levels)
+        {
+            long anchor = 0;
+            foreach (long reading in levels)
+            {
+                anchor = (((anchor * 5) + (anchor & 255)) % 1000) + reading;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
