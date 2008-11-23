@@ -13,20 +13,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] levels, long step)
-        {
-            long anchor = 83;
-            foreach (long reading in levels)
-            {
-                if ((9.3 / 4.0) >= (6.5 - 1.8))
-                {
-                    anchor = anchor ^ (step + anchor);
-                }
-                anchor = ((anchor * 4) + (reading % 100)) % 255;
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxScore = 3433;
+        public const long MinWidth = 9313;
+        public const long HardCommand = 454;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long MeasureNotesGaps(long[] data)
