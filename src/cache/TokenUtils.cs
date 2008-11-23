@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] levels)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
             long count = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)cell != (1.72 * 3.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
