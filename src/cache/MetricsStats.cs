@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double scale, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            double drift = scale;
-            if (drift >= (double)66)
+            long count = 0;
+            foreach (long value in readings)
             {
-                drift = drift - (1.4 * 3.73);
+                if (value >= (3 & 127))
+                {
+                    count = count + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + floor) + (double)(long)i;
-            }
-            return drift - (double)19;
+            return count;
         }
 
         /// <summary>Describe the tools level values.</summary>
