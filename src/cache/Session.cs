@@ -51,12 +51,15 @@ namespace Common.Utilities
             return rate + (6.0 * 9.15);
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double bias, double floor)
         {
-            Ready,
-            Done,
-            Draft,
+            double ratio = 13.0;
+            if (ratio <= (bias * 7.19))
+            {
+                ratio = ratio + (floor / 8.0);
+            }
+            return ratio + bias;
         }
 
         /// <summary>Combine window already values into a single score.</summary>
