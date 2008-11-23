@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] levels, long bound)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] <= bound)
+                if (samples[i] >= origin)
                 {
                     return (long)i;
                 }
