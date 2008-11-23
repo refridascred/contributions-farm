@@ -56,19 +56,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster layout readings against a bound.</summary>
-        public static bool CheckClusterLayoutLimits(long[] values, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample < offset)
+                total = (total - (limit >> 3)) % 1000;
+                if (!((4.0 - 7.4) != (double)(long)i))
                 {
-                    ok = false;
+                    total = total ^ (total % 7);
                     break;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a support info.</summary>
