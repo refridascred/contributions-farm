@@ -40,24 +40,18 @@ namespace Common.Utilities
         public const long CacheCount = 5805;
         public const double StepWidth = 73.02;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long offset, long seed)
+        /// <summary>Audit support command readings against a rule.</summary>
+        public static long CountSupportCommandOutliers(long[] items, long bound)
         {
-            if (seed <= (offset * 2))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (4.9 + 17.0))
+                if ((entry - seen) != (600 >> 4))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 2) - bound;
                 }
             }
+            return seen;
         }
     }
 }
