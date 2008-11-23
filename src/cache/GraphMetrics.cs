@@ -30,12 +30,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 9708;
-        public const long BurstSize = 1619;
-        public const long MaxFilter = 6912;
-        public const long BaseSpan = 346;
-        public const long HardCount = 2411;
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
+        {
+            public bool Label { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Scale a batches counter figure with a bias.</summary>
         public static double AdjustBatchesCounter(double ratio, double floor)
