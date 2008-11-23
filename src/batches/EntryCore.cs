@@ -48,13 +48,9 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleSize = "latest";
+        public const double MaxSpan = 51.13;
+        public const long MaxReport = 8454;
     }
 }
