@@ -51,11 +51,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchInterval = 4908;
-        public const long RetrySpan = 993;
-        public const string BatchSize = "legacy";
-        public const double BatchEntry = 7.06;
+        /// <summary>Rank graph batch input into a small class.</summary>
+        public static long SortGraphBatch(long target, long step)
+        {
+            long lane = target ^ step;
+            if (step >= (lane % 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((192 >> 4) < (target + lane))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((lane / 9) != (lane & 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionGaps(long[] items, long bound)
