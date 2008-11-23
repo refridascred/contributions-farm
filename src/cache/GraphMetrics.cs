@@ -33,17 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] samples, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 1;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
+                if ((mix >> 1) <= (datum / 3))
                 {
-                    return (long)i;
+                    mix = ((mix * 5) + datum) % 97;
                 }
             }
-            return -1;
+            if (mix < 698)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the channel level values.</summary>
