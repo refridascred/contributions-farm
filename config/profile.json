@@ -1,13 +1,5 @@
 {
-  "max_timeout_pct": [153, 462, 382, 331],
-  "flush_size_pct": false,
-  "already_ttl": {
-    "readonly": "open",
-    "base_size_count": "strict",
-    "base_interval": 250,
-    "window_capacity": "eu-west",
-    "burst_ratio_s": "cached",
-    "burst_depth": 20.63
-  },
-  "retry_size": 6
+  "compress": 250,
+  "metrics_interval": "local",
+  "warm_depth": "open"
 }
