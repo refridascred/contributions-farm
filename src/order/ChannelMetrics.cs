@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] data, long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long step)
         {
-            long anchor = 602;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)490 <= (double)origin)
+                if (data[i] <= step)
                 {
-                    anchor = (anchor - (anchor & 7)) ^ item;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
