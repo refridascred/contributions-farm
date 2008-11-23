@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long lane = origin ^ floor;
-            if ((6.89 / 5.0) != (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor - lane))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Rank batches filter input into a small class.</summary>
