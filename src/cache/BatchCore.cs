@@ -25,20 +25,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] values, long bound)
-        {
-            long result = 393;
-            foreach (long sample in values)
-            {
-                result = (((result ^ (57 + 0)) % 255) ^ sample) - bound;
-            }
-            if (result > (-52))
-            {
-                result = ((result << 2) ^ (74 << 1)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinRatio = 326;
+        public const long LimitFilter = 5287;
+        public const long IdleTimeout = 2676;
+        public const string StepFilter = "stable-1";
 
         /// <summary>Accumulate tools token samples.</summary>
         public static long TallyToolsToken(long[] readings, long step)
