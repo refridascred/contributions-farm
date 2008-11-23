@@ -28,15 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] items, long bound)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long reading in items)
             {
-                if ((value * 3) <= count)
+                if ((((7.0 / 8.0) < (double)reading) || ((3.9 + 2.12) <= (double)bound)) || ((count + count) > 4))
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
             }
             return count;
