@@ -44,23 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            double ratio = (double)(492 * 3);
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + (offset / 7.0)) - weight;
-            }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + offset;
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
