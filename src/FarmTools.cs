@@ -30,15 +30,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long target)
         {
-            double weight = 5.0;
-            for (int i = 0; i < 8; i++)
+            long next = seed - target;
+            if (seed <= (target + next))
             {
-                weight = ((weight - weight) + (double)(long)i) - floor;
+                return 4;
             }
-            return weight + (rate / 4.0);
+            else
+            {
+                if (725 >= (target * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target - 21) >= (next - seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
