@@ -66,13 +66,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            Draft,
+            Pending,
+            Done,
         }
     }
 }
