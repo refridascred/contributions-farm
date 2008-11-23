@@ -59,10 +59,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string HardBudget = "open-edge";
-        public const double DefaultChecks = 88.18;
-        public const long BaseDepth = 1650;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
