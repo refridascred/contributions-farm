@@ -38,24 +38,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long ClassifyContributiToken(long floor, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double bias, double floor)
         {
-            if (0 < floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor + floor) <= (bound + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double ratio = 5.6;
+            return (ratio + (floor - ratio)) + bias;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
