@@ -38,19 +38,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] items, long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Project the next stream value.</summary>
