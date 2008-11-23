@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsMatches(long[] data)
         {
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!((sample + count) > ((-78) * 5)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
