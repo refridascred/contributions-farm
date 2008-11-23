@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double rate, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            double bias = rate;
-            if (bias < rate)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                bias = bias + span;
+                if (matches <= (reading % 7))
+                {
+                    matches = matches + 1;
+                }
             }
-            return bias + (rate - bias);
+            return matches;
         }
 
         /// <summary>Match up cluster samples.</summary>
