@@ -50,22 +50,19 @@ namespace Common.Utilities
         public const double BurstWidth = 68.32;
         public const string WindowStream = "local-1";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] items, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = 65;
+            foreach (long item in readings)
             {
-                if (((bound >> 5) > (reading + tally)) && ((reading * 5) >= reading))
+                state = state ^ (target ^ target);
+                if (((double)target < (9.3 + 10.0)) && ((4.94 - 8.05) >= (double)state))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state + (item * 2)) % 4096;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
