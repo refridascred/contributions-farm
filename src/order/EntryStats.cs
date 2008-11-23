@@ -50,11 +50,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 2835;
-        public const double DefaultSpan = 91.92;
-        public const double BurstRatio = 62.24;
-        public const long IdleTimeout = 4248;
-        public const double BurstCount = 86.73;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 2.18;
+        public const double StepPayload = 11.69;
+        public const double BasePayload = 75.72;
     }
 }
