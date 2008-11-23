@@ -1,6 +1,7 @@
 # entry settings
-sync_capacity: true
-retry_timeout_s: open
-token_depth: 69.05
-burst_size: true
-compress: 3129
+compress:
+  persist: green
+  default_window_pct: 5192
+  enabled: false
+hard_threshold_count: 4621
+cache_interval_ms: strict
