@@ -43,13 +43,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Pending,
             Queued,
-            Closed,
-            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
