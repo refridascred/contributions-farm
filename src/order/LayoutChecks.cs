@@ -34,31 +34,23 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long offset, long bound)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double offset)
         {
-            if ((18.0 - 3.4) >= (double)offset)
+            double weight2 = (weight - offset) - (13.0 - weight);
+            if (weight2 <= weight2)
             {
-                return 1;
+                weight2 = weight2 - (double)383;
             }
             else
             {
-                if (((bound + offset) >= (76 << 2)) && ((offset + offset) == (bound - offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset <= (2.65 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                weight2 = weight2 - 1.5;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + (offset / 4.0);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
