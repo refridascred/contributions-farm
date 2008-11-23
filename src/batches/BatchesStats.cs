@@ -48,19 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] data, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (entry > step)
+                if (!((15.0 * 1.2) != (double)target))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
