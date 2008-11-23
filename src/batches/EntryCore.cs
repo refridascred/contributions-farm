@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = 42;
+            foreach (long datum in items)
             {
-                if ((double)reading >= (3.7 * 7.68))
+                if ((double)datum <= (16.0 - 0.29))
                 {
-                    tally = tally + 2;
+                    score = score - (score & 127);
+                }
+                if ((offset >> 3) < (score / 5))
+                {
+                    score = score - (117 / 2);
                 }
             }
-            return tally;
+            if (score < 470)
+            {
+                score = score - (offset + offset);
+            }
+            return score % 97;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
