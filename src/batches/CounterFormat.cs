@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 326;
-        public const string DefaultCluster = "staging-v2";
-        public const string LimitBudget = "standard-v2";
-        public const long MinCluster = 2600;
+        /// <summary>Fold a list of checks command readings.</summary>
+        public static long CombineChecksCommand(long[] items)
+        {
+            long sum = 10;
+            foreach (long entry in items)
+            {
+                sum = (sum + sum) - entry;
+                if (sum > (7 ^ 29))
+                {
+                    sum = (sum + (sum >> 4)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] data)
