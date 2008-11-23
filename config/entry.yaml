@@ -1,28 +1,13 @@
 # entry settings
-burst_capacity_s:
-  - 335
-  - 327
-  - 184
-enabled: legacy
-max_limit_s: 6917
-poll_ratio_pct: standard
-flush_capacity_pct:
-  burst_ttl_pct: 1024
-  batch_capacity:
-    idle_limit_s: staging
-    sync_timeout_count: eu-west
-    warm_retries: 85.5
-  token_delay: 73
-  tools_limit:
-    tools_ratio: strict
-    default_ratio_s: 6789
-    counter_depth: blue
-    enabled: open
-  soft_timeout: 28.7
-  hard_ratio_ms:
-    verbose: primary
-    base_delay_count: blue
-    flush_interval_s:
-      - 173
-      - 158
-      - 373
+default_retries_s: 95
+max_delay:
+  base_timeout_s: 9803
+  dry_run: 30
+  githubfarm_interval: 17.56
+  readonly: true
+batch_limit: 46
+soft_ratio_ms: 2391
+poll_window_pct:
+  - primary
+  - eu-west
+  - primary
