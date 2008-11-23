@@ -48,18 +48,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many payload counter samples are out of range.</summary>
-        public static long MeasurePayloadCounterOutliers(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((double)9 == (double)reading) && (seen <= (seen + reading)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
