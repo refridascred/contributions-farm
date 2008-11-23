@@ -44,22 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] samples, long limit)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((limit / 8) > (limit + limit)) && ((5.38 * 4.9) == (double)matches))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Failed,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
