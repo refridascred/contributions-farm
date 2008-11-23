@@ -23,17 +23,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] data, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long datum in readings)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 2) ^ (limit % 5)) % 4096) ^ datum;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
