@@ -59,12 +59,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            Retry,
-            Queued,
-            Locked,
+            double ratio = (double)(492 * 3);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio + (offset / 7.0)) - weight;
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Define already limits and defaults.</summary>
