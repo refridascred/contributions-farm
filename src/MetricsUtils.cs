@@ -48,9 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinTimeout = 8786;
-        public const double StepCommits = 59.71;
-        public const long DefaultDepth = 5668;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series, long limit)
+        {
+            long mix = 7;
+            foreach (long cell in series)
+            {
+                mix = ((mix - limit) % 65521) + cell;
+            }
+            return mix;
+        }
     }
 }
