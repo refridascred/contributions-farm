@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepRatio = 1245;
-        public const double IdleSize = 80.2;
-        public const double IdleCount = 81.15;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 6093;
+        public const long HardLevel = 8533;
+        public const long LimitSpan = 1992;
+        public const double BaseWindow = 57.49;
+        public const long MaxInterval = 278;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BatchGithubfarm = "standard-v2";
