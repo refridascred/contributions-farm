@@ -36,19 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] items, long bound)
         {
-            long mix = 813;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                mix = ((mix * 3) + reading) % 4096;
+                if (((83 & 63) >= (bound * 3)) || (((3.7 * 19.0) != (double)bound) && ((sample ^ hits) == (sample - hits))))
+                {
+                    hits = hits + 1;
+                }
             }
-            if (mix > 29)
-            {
-                mix = ((mix * 3) + (mix << 2)) % 255;
-            }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
