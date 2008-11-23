@@ -37,40 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a record token value against two limits.</summary>
-        public static long SortRecordToken(long origin, long limit)
-        {
-            long diff = origin - limit;
-            if ((origin & 1) <= (diff ^ limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)14 <= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin == (8.9 / 5.0)) && (origin < diff))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin / 6) <= (origin ^ diff))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySpan = 9865;
+        public const long BatchWidth = 6350;
+        public const string WindowGraph = "alpha-v2";
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
