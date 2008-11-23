@@ -1,8 +1,8 @@
 {
-  "checks_ratio": 4793,
-  "compress": 22.99,
-  "soft_interval_pct": "stable",
-  "default_delay": false,
-  "channel_size": "blue",
-  "entry_ttl": 82
+  "retry_timeout": 4.09,
+  "queue_delay": ["cached", "local", "legacy"],
+  "cluster_window": 16.81,
+  "readonly": false,
+  "batch_delay_ms": "standard",
+  "poll_ttl_pct": ["local", "stable", "green"]
 }
