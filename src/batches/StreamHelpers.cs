@@ -39,10 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepChecks = "primary-1";
-        public const double MaxFactor = 84.79;
-        public const long BaseBudget = 9863;
+        /// <summary>Match up cluster editor samples.</summary>
+        public static long PairClusterEditorCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a report channel value against two limits.</summary>
         public static long RankReportChannel(long limit, long origin)
