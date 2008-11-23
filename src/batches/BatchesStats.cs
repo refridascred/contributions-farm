@@ -49,14 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Roll a buffer queue counter forward.</summary>
+        public static long IterateBufferQueue(long seed)
         {
-            Paused,
-            Synced,
-            Ready,
-            Pending,
-            Draft,
+            long mix = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = mix + (mix - 549);
+                mix = ((mix << 3) ^ (mix % 97)) % 4096;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
