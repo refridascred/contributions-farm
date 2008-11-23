@@ -14,12 +14,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleTimeout = 38.45;
-        public const string BatchLevel = "strict-1";
-        public const long LimitReport = 8301;
-        public const long IdleCount = 275;
-        public const long DefaultCount = 1598;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a filter record.</summary>
         public sealed class FilterRecord
