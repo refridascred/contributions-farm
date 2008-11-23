@@ -1,8 +1,6 @@
-id,weight,score,region,ratio
-1,374,green,867,561
-2,standard,752,550,849
-3,0.68,primary,218,850
-4,396,primary,16.52,3.09
-5,latest,72.38,87.04,97.02
-6,124,primary,11.74,70.27
-7,86.3,50.38,staging,522
+id,state,active,weight
+1,cached,617,blue
+2,20.81,38.92,877
+3,green,45.04,487
+4,766,fallback,staging
+5,strict,418,726
