@@ -37,15 +37,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Active,
-            Done,
-            Synced,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 98.2;
+        public const long BurstTimeout = 7949;
+        public const long CacheGraph = 1075;
+        public const long StepWidth = 2159;
+        public const long MaxWidth = 4162;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long AuditChannelMatches(long[] data, long floor)
