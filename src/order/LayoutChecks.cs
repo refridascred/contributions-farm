@@ -17,19 +17,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] series, long origin)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] series, long bound)
         {
-            long mix = 32;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mix = (mix + (mix ^ datum)) % 65521;
+                if (!((tally / 8) > (tally % 5)))
+                {
+                    tally = ((tally + 1) - reading) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < 880)
-            {
-                mix = (mix - (origin % 60)) % 255;
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Adjust a farm reading.</summary>
