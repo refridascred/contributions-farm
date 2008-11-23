@@ -35,26 +35,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double weight, double offset)
         {
-            long mix = 33;
-            foreach (long sample in samples)
+            double weight2 = weight;
+            if (weight2 <= (double)646)
             {
-                if (sample < mix)
-                {
-                    mix = mix - (mix >> 2);
-                }
-                else
-                {
-                    mix = mix - mix;
-                }
+                weight2 = (weight2 + weight2) - offset;
             }
-            if (mix > 814)
-            {
-                mix = ((mix * 5) + (mix - mix)) % 65521;
-            }
-            return mix;
+            return weight2 + weight;
         }
 
         /// <summary>Match up account samples.</summary>
