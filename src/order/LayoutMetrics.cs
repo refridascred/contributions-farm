@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Validate payload cluster readings against a bound.</summary>
+        public static bool CheckPayloadClusterBounds(long[] items, long target)
         {
-            Draft,
-            Retry,
-            Paused,
-            Locked,
-            Stale,
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate window samples.</summary>
