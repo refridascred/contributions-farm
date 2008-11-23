@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] data)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] readings, long step)
         {
-            long carry = 51;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                carry = carry - (carry + carry);
-                carry = ((carry << 2) ^ datum) % 65521;
-                if ((carry / 8) >= 935)
+                if (datum <= step)
                 {
-                    carry = ((carry << 3) ^ (carry / 2)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (datum + datum)) % 1000;
-                }
-                if (!((datum ^ datum) < (carry / 7)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
