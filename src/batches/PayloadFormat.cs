@@ -32,19 +32,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a contributi metric counter forward.</summary>
-        public static long SeriesContributiMetric(long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
+            if ((seed - seed) <= (bound / 2))
             {
-                if ((686 - result) >= (result / 6))
-                {
-                    result = ((result * 3) + ((long)i << 3)) % 255;
-                }
-                result = ((result * 4) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((seed & 63) != (seed ^ seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed ^ bound) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
