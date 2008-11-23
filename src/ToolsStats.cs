@@ -22,11 +22,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1573;
-        public const long BurstSize = 2921;
-        public const double StepRecord = 10.61;
-        public const long RetryRecord = 7628;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample + sample) != (sample % 8))
+                {
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long CombineToken(long[] samples, long floor)
