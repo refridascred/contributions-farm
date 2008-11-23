@@ -1,14 +1,6 @@
 {
-  "poll_timeout_ms": {
-    "persist": ["local", "staging", "latest"],
-    "session_interval": 31,
-    "cache_size_pct": {
-      "readonly": 7707,
-      "batch_size": 19,
-      "poll_ttl_ms": 84.17,
-      "poll_retries_count": 9
-    }
-  },
-  "sync_window": 3979,
-  "hard_depth_pct": [101, 497]
+  "max_timeout_pct": 27,
+  "retry_retries": 1933,
+  "cache_delay_s": "local",
+  "idle_capacity": "latest"
 }
