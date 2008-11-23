@@ -19,22 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] levels, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series, long floor)
         {
-            long carry = 52;
-            foreach (long entry in levels)
+            long carry = -77;
+            foreach (long item in series)
             {
-                if ((double)carry < (0.7 + 8.6))
+                if ((carry ^ carry) >= (floor - item))
                 {
-                    carry = ((carry - (carry & 255)) + entry) - bound;
+                    carry = (carry - (4 - floor)) % 1000;
                 }
-                if ((4.97 + 16.0) < (double)carry)
+                if (((double)carry > (double)carry) && ((7.35 + 5.14) > (double)item))
                 {
-                    break;
+                    carry = (carry * 5) + (floor + floor);
+                }
+                else
+                {
+                    carry = (carry - floor) % 97;
                 }
             }
-            return carry;
+            if (carry < 66)
+            {
+                carry = carry ^ floor;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a filter record.</summary>
