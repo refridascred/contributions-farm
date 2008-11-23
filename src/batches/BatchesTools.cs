@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (0 < (item - tally))
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
