@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer editor samples are out of range.</summary>
-        public static long TallyBufferEditorGaps(long[] series, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((((5.3 * 14.0) >= (double)target) && (entry > 4)) || ((double)target >= (3.29 * 2.0)))
+                if ((value + value) < (count >> 5))
                 {
-                    matches = matches + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Iterate the stream editor series from a seed.</summary>
