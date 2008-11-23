@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardRatio = 79.81;
-        public const double LimitAlready = 76.29;
-        public const long SoftBudget = 9558;
-        public const long RetryAlready = 3940;
+        /// <summary>Measure how many command support samples are out of range.</summary>
+        public static long CountCommandSupportGaps(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally ^ offset) > datum)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long HardCount = 5423;
