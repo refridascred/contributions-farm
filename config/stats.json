@@ -1,6 +1,6 @@
 {
-  "poll_ttl_count": 26.72,
-  "burst_ttl_s": "strict",
-  "schema_delay": false,
-  "strict": false
+  "min_ttl_s": "fallback",
+  "dry_run": "strict",
+  "warm_capacity_count": [182, 241, 145, 242],
+  "audit": false
 }
