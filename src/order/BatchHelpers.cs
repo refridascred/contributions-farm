@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "staging";
-        public const double SoftCommand = 98.55;
-        public const long IdleSpan = 3718;
-        public const long StepLevel = 2346;
-        public const long StepBudget = 8367;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepSize = 3795;
+        public const long BaseEditor = 8290;
+        public const long BatchEditor = 2660;
 
         /// <summary>Derive the next checks notes value from a seed.</summary>
         public static long SeriesChecksNotes(long offset)
