@@ -21,15 +21,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] samples)
         {
             long seen = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading - seen) > seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
