@@ -41,22 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (seed <= (seed >> 2))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepInterval = "standard-edge";
+        public const string BatchSize = "cached-1";
+        public const string CacheDepth = "standard-edge";
+        public const long DefaultLevel = 4658;
     }
 }
