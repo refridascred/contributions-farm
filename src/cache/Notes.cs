@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] samples)
-        {
-            long carry = 385;
-            foreach (long datum in samples)
-            {
-                carry = ((carry << 2) ^ 5) % 1000;
-                if (((carry + datum) >= (carry / 4)) || (datum < (788 >> 3)))
-                {
-                    carry = (carry - datum) % 65521;
-                }
-            }
-            if (carry < 555)
-            {
-                carry = (carry ^ (carry * 3)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSize = 2519;
+        public const long BurstContributi = 985;
+        public const long BaseContributi = 1484;
+        public const string CacheTimeout = "primary";
+        public const long SoftContributi = 864;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
