@@ -56,20 +56,9 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a commits batch counter forward.</summary>
-        public static long DeriveCommitsBatch(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 24; i++)
-            {
-                state = (state + state) % 255;
-                if ((state & 15) < (-570))
-                {
-                    state = state - (state % 7);
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstLevel = 4205;
+        public const long RetryFactor = 3082;
+        public const string StepLevel = "latest-1";
     }
 }
