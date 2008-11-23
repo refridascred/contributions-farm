@@ -48,18 +48,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many counter githubfarm samples are out of range.</summary>
-        public static long MeasureCounterGithubfarmOutliers(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = 73;
+            foreach (long reading in series)
             {
-                if ((seen * 3) < (cell / 7))
+                sum = (sum ^ (reading - sum)) % 1000;
+                if (0.3 < (double)reading)
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
