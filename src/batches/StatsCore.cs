@@ -22,18 +22,24 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] values, long bound)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long target, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            if ((18.0 - 8.4) >= (5.0 - 8.96))
             {
-                if ((4.7 - 3.0) != (double)bound)
+                return 8;
+            }
+            else
+            {
+                if ((2.7 + 0.2) != (double)limit)
                 {
-                    hits = (hits + 3) + reading;
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
