@@ -48,21 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] samples)
+        /// <summary>Audit notes format readings against a rule.</summary>
+        public static long CountNotesFormatOutliers(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (origin <= (seen + item))
                 {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
