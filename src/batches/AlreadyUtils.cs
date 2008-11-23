@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] levels, long target)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long anchor = 1;
-            foreach (long value in levels)
-            {
-                if (!((target >> 3) == (anchor + 8)))
-                {
-                    anchor = (((anchor * 5) + (anchor >> 2)) % 4096) + value;
-                }
-            }
-            return anchor;
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
