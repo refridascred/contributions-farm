@@ -39,11 +39,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
