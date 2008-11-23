@@ -1,6 +1,6 @@
 {
-  "warm_interval_s": 7772,
-  "warm_timeout_pct": 2.34,
-  "flush_threshold": "open",
-  "retry_limit_ms": "blue"
+  "audit": "staging",
+  "metrics_capacity": false,
+  "cache_interval_pct": 21,
+  "hard_delay_ms": 490
 }
