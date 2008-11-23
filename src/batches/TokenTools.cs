@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long HardSpan = 7701;
         public const long RetryGithubfarm = 3544;
 
-        /// <summary>Fold a list of layout stream readings.</summary>
-        public static long FoldLayoutStream(long[] data)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] series, long seed)
         {
-            long state = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)data.Length - state) > sample))
+                if (series[i] == seed)
                 {
-                    state = (state * 3) + (state - 81);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
