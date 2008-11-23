@@ -27,18 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsMatches(long[] series, long bound)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((-9) >= (reading / 4))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm farm readings.</summary>
