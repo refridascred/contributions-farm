@@ -61,19 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] items, long limit)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = 71;
+            foreach (long datum in series)
             {
-                if (entry != limit)
+                acc = (acc + (acc & 1)) % 97;
+                if (datum > limit)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return acc % 4096;
         }
     }
 }
