@@ -31,12 +31,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepMetrics = "alpha-edge";
-        public const long HardMetrics = 7954;
-        public const string RetrySize = "open-edge";
-        public const long MaxMetrics = 3493;
-        public const string MinMetrics = "fallback-edge";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry < tally) && ((3.41 - 3.0) >= (double)target))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamOutliers(long[] readings)
