@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 5332;
+        public const long CacheSize = 167;
+        public const double HardPayload = 5.34;
+        public const string IdlePayload = "cached-edge";
+        public const long SoftPayload = 5107;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LookupLayoutIndex(long[] samples, long bound)
