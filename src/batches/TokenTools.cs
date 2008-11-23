@@ -47,18 +47,9 @@ namespace Common.Utilities
         public const long BurstInterval = 7992;
         public const long StepSpan = 5157;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] levels, long bound)
-        {
-            long anchor = 56;
-            foreach (long sample in levels)
-            {
-                if (sample < anchor)
-                {
-                    anchor = (anchor ^ bound) % 97;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "legacy";
+        public const long RetryLevel = 2301;
+        public const long HardGraph = 5442;
     }
 }
