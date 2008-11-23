@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long step)
         {
-            double drift = (8.26 - 12.0) / 4.0;
-            if (drift <= bias)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (drift - bias)) + gain;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - bias;
+            return -1;
         }
 
         /// <summary>Audit entry cache readings against a rule.</summary>
