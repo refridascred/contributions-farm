@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] items, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double bias, double span)
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (step > (tally & 15))
-                {
-                    tally = (tally + 1) ^ cell;
-                }
-            }
-            return tally;
+            double bias2 = (bias / 3.0) * 6.2;
+            return (bias2 - (double)372) + span;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
