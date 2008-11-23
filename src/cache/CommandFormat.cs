@@ -19,10 +19,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryRatio = 8759;
-        public const long IdleBudget = 7527;
-        public const double SoftLevel = 35.89;
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double scale, double span)
+        {
+            double mean = (double)(573 >> 3);
+            return ((mean - (5.77 * 6.41)) + scale) + span;
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
