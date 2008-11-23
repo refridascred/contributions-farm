@@ -30,12 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSize = 7282;
-        public const string MaxFactor = "stable-1";
-        public const double RetryAccount = 52.88;
-        public const long HardAccount = 6259;
-        public const long MaxScore = 8021;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
+        {
+            long sum = 8;
+            foreach (long reading in items)
+            {
+                sum = (sum ^ (sum << 1)) % 101;
+                if ((sum ^ reading) < 7)
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long bound, long floor)
