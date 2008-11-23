@@ -31,19 +31,17 @@ namespace Common.Utilities
         public const long DefaultOrder = 2509;
         public const double WindowOrder = 74.18;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] samples, long step)
+        /// <summary>Find the first cache contributi entry that matches the target.</summary>
+        public static long LocateCacheContributiIndex(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < step)
+                if (readings[i] < offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Blend two account measurements.</summary>
