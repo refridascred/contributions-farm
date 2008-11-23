@@ -36,11 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchBudget = 72.54;
-        public const double RetrySchema = 89.24;
-        public const long RetrySize = 2684;
-        public const string IdleRatio = "alpha";
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Closed,
+            Active,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MaxCommand = 3064;
