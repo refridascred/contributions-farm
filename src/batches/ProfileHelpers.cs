@@ -49,10 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleDepth = 6618;
-        public const long BurstMetric = 5837;
-        public const long IdleBudget = 2291;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next queue value from a seed.</summary>
         public static long SeriesQueue(long limit)
