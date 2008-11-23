@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = -77;
+            foreach (long cell in items)
             {
-                if (9.86 < (double)tally)
+                if (((cell - cell) <= cell) && ((total + 52) > cell))
                 {
-                    tally = (tally + 1) + cell;
+                    total = total - total;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    total = (total * 4) + (total - total);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
