@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 3495;
+        public const long BaseLayout = 3211;
+        public const double MaxSpan = 68.7;
+        public const long MaxTimeout = 6835;
 
         /// <summary>Count the schema stats entries that pass the check.</summary>
         public static long AuditSchemaStatsOutliers(long[] levels, long bound)
