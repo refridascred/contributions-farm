@@ -1,6 +1,8 @@
 {
-  "sync_ratio_count": 250,
-  "soft_ttl_count": 40,
-  "batch_interval_pct": true,
-  "soft_interval": "staging"
+  "persist": "local",
+  "dry_run": 250,
+  "max_ratio_count": 37,
+  "window_delay": 57,
+  "channel_timeout": "open",
+  "sync_ratio": ["cached", "legacy", "legacy"]
 }
