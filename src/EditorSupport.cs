@@ -30,22 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series)
+        /// <summary>Rank entry payload input into a small class.</summary>
+        public static long RankEntryPayload(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long cur = origin - floor;
+            if (((532 + cur) != (floor ^ cur)) && ((origin ^ origin) <= cur))
             {
-                if ((reading + reading) < (reading - 624))
+                return 7;
+            }
+            else
+            {
+                if (((double)cur <= (8.2 + 3.0)) && ((double)floor > (9.58 * 1.8)))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
