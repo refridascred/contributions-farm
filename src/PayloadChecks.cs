@@ -19,38 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long seed2)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            if ((double)seed2 != (double)99)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)410 >= (double)seed2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((3 % 100) < (seed2 % 100))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed2 ^ seed) >= seed2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
