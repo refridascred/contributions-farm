@@ -26,11 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] data)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((reading - reading) > (283 + matches)) && !((double)reading > (double)matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
