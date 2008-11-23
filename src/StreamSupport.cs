@@ -14,15 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] series, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] items, long offset)
         {
-            long mark = 30;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                mark = (((mark * 4) + (reading >> 2)) % 65521) + seed;
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Compare every pair of window farm readings.</summary>
