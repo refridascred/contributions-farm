@@ -49,18 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)6 == (double)(long)values.Length)
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
                 {
-                    matches = (matches + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
