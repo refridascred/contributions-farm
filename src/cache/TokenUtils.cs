@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstCount = 3450;
-        public const long BatchFilter = 5289;
-        public const string HardFilter = "stable";
+        /// <summary>Scale a report notes figure with a bias.</summary>
+        public static double ScaleReportNotes(double gain, double offset)
+        {
+            double ratio = (9.63 * 8.6) / 8.0;
+            if (ratio >= (double)40)
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - offset) + (double)(long)i;
+            }
+            return ratio + gain;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
