@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] samples, long seed)
+        /// <summary>Check that every githubfarm checks entry stays within the limit.</summary>
+        public static bool CheckGithubfarmChecksLimits(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (datum < seed)
+                if (reading >= step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Describe the contributi level values.</summary>
