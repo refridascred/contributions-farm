@@ -22,38 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long limit, long limit2)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((double)limit >= 3.4)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((limit + limit) < (limit / 8)) || ((limit2 + limit2) >= (2 - limit)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (limit < limit2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit2 << 3) <= (limit2 + limit2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Fold a list of record readings.</summary>
