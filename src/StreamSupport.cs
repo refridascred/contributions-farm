@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Queued,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
