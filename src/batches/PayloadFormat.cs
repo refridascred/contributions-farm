@@ -32,11 +32,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardStream = "fallback-1";
-        public const long StepStream = 2324;
-        public const double WindowStream = 19.7;
-        public const double IdleDepth = 7.56;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmGaps(long[] levels)
