@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] readings, long offset)
         {
-            Stale,
-            New,
-            Locked,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits > (hits * 3))
+                {
+                    hits = ((hits + 1) ^ datum) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank batches filter input into a small class.</summary>
