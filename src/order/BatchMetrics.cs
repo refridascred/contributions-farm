@@ -73,22 +73,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] data, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            long sum = -913;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sum < (target + target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = ((sum << 3) ^ value) % 1000;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 374)
-            {
-                sum = (sum * 2) + 486;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
