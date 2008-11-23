@@ -56,17 +56,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                if ((double)bound <= (0.34 - 8.0))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
