@@ -53,22 +53,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order batch entries that pass the check.</summary>
-        public static long TallyOrderBatchHits(long[] data, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long limit, long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long span = limit + target;
+            if (((target / 3) > span) || ((19.0 - 2.3) == (double)span))
             {
-                if ((((74 + count) >= (1 << 3)) || (datum < (60 / 7))) || ((double)step <= (2.1 - 4.0)))
+                return 1;
+            }
+            else
+            {
+                if (span > (5 >> 5))
                 {
-                    count = count + 2;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!(span <= (limit * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
     }
 }
