@@ -1,8 +1,5 @@
 {
-  "flush_timeout_s": 9008,
-  "base_depth": "standard",
-  "flush_size": 2,
-  "batch_ttl": 2888,
-  "max_capacity": 1666,
-  "soft_limit": "strict"
+  "poll_delay_ms": "standard",
+  "soft_threshold": false,
+  "dry_run": true
 }
