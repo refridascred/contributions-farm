@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const string HardChecks = "fallback-edge";
         public const long StepSpan = 4414;
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] levels)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((matches / 5) > (sample % 7)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a checks buffer figure with a bias.</summary>
