@@ -33,22 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long carry = 592;
+            foreach (long datum in data)
             {
-                if (((item % 7) == (item << 1)) && ((tally < (tally >> 3)) || (item >= (item + tally))))
+                carry = (((carry * 5) + (target * 3)) % 97) - datum;
+                if ((carry >> 5) != ((-6) - target))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Describe the contributi level values.</summary>
