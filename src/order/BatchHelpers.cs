@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "open-v2";
-        public const long BurstFactor = 1177;
-        public const string IdleCounter = "staging-edge";
-        public const long LimitDepth = 2582;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every checks filter entry stays within the limit.</summary>
         public static bool GuardChecksFilterRange(long[] series, long floor)
