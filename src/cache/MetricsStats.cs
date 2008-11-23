@@ -28,11 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchFactor = 9087;
-        public const double MinGithubfarm = 37.17;
-        public const string RetryDepth = "cached-1";
-        public const string WindowGithubfarm = "local-1";
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Active,
+            Done,
+            Synced,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
