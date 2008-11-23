@@ -13,14 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Locked,
-            Paused,
-            Ready,
-            Dropped,
-            Active,
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
