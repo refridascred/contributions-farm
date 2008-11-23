@@ -30,32 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long origin, long seed)
-        {
-            if ((origin + origin) == (seed * 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.38 - 9.3) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed / 7) != (0 << 1)) || (969 > (seed * 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSize = 7282;
+        public const string MaxFactor = "stable-1";
+        public const double RetryAccount = 52.88;
+        public const long HardAccount = 6259;
+        public const long MaxScore = 8021;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long bound, long floor)
