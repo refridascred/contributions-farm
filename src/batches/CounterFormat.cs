@@ -22,19 +22,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] items, long target)
-        {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2370;
+        public const long RetryEditor = 7906;
+        public const long SoftWidth = 5293;
+        public const long CacheEditor = 243;
     }
 }
