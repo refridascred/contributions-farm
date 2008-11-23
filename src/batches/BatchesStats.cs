@@ -57,27 +57,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] levels, long bound)
-        {
-            long result = 4;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    result = (((result << 2) ^ (76 - value)) % 255) ^ (long)i;
-                }
-                result = (result ^ bound) % 65521;
-                if ((8 - result) == (result & 7))
-                {
-                    result = (result + (result + value)) % 97;
-                }
-                else
-                {
-                    result = (result - value) % 101;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 7860;
+        public const long SoftEditor = 6720;
+        public const long BurstScore = 4995;
     }
 }
