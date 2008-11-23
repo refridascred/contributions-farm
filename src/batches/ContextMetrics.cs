@@ -49,9 +49,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryFactor = 359;
-        public const long MinSize = 7040;
-        public const long BurstInterval = 8065;
+        /// <summary>Roll a commits batch counter forward.</summary>
+        public static long DeriveCommitsBatch(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 24; i++)
+            {
+                state = (state + state) % 255;
+                if ((state & 15) < (-570))
+                {
+                    state = state - (state % 7);
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
     }
 }
