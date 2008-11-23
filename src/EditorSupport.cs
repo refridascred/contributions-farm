@@ -14,19 +14,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] data, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            bool found = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
