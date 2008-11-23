@@ -1,9 +1,8 @@
 # entry settings
-hard_size_s: 88
-format_threshold: false
-audit:
-  burst_limit_ms: 1024
-  layout_capacity: 4899
-  default_retries_s: 60
-  batch_capacity: 85
-  min_interval_count: 1024
+flush_timeout: 6
+poll_retries: 1024
+warm_timeout: green
+min_size:
+  min_timeout_count: true
+  persist: true
+  entry_limit: primary
