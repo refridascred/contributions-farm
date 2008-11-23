@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long total = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total << 3) ^ (limit & 1);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = ((total + (limit + total)) % 101) - (long)i2;
+                }
+                for (int i3 = 0; i3 < 9; i3++)
+                {
+                    total = (((total * 2) + (total - 7)) % 101) ^ (long)i3;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
