@@ -42,11 +42,19 @@ namespace Common.Utilities
             return gain - (3.0 + floor);
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepFactor = 2262;
-        public const string MinOrder = "cached";
-        public const long SoftOrder = 4771;
-        public const long RetryInterval = 63;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading <= (283 + hits)) || !(reading >= (8 >> 3)))
+                {
+                    hits = (hits + 1) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a buffer summary.</summary>
         public sealed class BufferSummary
