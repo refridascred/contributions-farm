@@ -1,10 +1,7 @@
-id,owner,region,count
-1,42.57,cached,918
-2,3.61,stable,96
-3,40.61,91.89,77.76
-4,30.01,951,612
-5,latest,233,616
-6,standard,687,27.85
-7,746,open,912
-8,767,845,809
-9,596,staging,849
+id,count,owner,label
+1,strict,23.89,587
+2,90.85,green,1
+3,legacy,blue,250
+4,826,422,fallback
+5,standard,171,538
+6,local,24.34,65
