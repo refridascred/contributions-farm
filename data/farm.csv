@@ -1,6 +1,10 @@
-id,count,region
-1,strict,980
-2,edge,529
-3,blue,95.88
-4,latest,739
-5,standard,25.73
+id,region
+1,976
+2,46.4
+3,fallback
+4,547
+5,901
+6,standard
+7,628
+8,41.62
+9,969
