@@ -53,21 +53,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Derive the next layout githubfarm value from a seed.</summary>
+        public static long IterateLayoutGithubfarm(long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = total + (total % 64);
+                if (((double)(long)i != (0.6 * 13.0)) && (((long)i - (long)i) >= (long)i))
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ total) % 65521;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
