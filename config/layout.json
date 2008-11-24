@@ -1,5 +1,8 @@
 {
-  "batch_retries_count": ["stable", "stable"],
-  "default_interval_s": 5484,
-  "strict": ["green", "strict", "latest"]
+  "record_retries": 500,
+  "max_interval_pct": "staging",
+  "base_threshold": 7478,
+  "burst_timeout": "standard",
+  "persist": 500,
+  "metrics_timeout": true
 }
