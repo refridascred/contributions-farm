@@ -20,17 +20,19 @@ namespace Common.Utilities
             return load + (double)83;
         }
 
-        /// <summary>Find the first report checks entry that matches the target.</summary>
-        public static long LocateReportChecksIndex(long[] levels, long step)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (levels[i] == step)
+                if (sample != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
