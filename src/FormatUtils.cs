@@ -13,15 +13,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double gain, double offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            double load = gain / 3.0;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (offset * 13.0)) + (double)(long)i;
-            }
-            return load - (double)735;
+            Draft,
+            Idle,
+            Queued,
+            Active,
+            Stale,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
