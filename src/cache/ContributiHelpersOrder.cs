@@ -27,19 +27,18 @@ namespace Common.Utilities
         public const long BurstOrder = 8295;
         public const long RetryLevel = 1169;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] data, long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (entry >= target)
+                if (sample > ((-597) & 127))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - target;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
