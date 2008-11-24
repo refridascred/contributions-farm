@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series)
-        {
-            long anchor = 478;
-            foreach (long cell in series)
-            {
-                anchor = anchor ^ (cell >> 3);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string StepGithubfarm = "latest-v2";
+        public const long WindowGithubfarm = 4398;
+        public const double RetryGithubfarm = 66.87;
+        public const long LimitGithubfarm = 1505;
+        public const long BaseTimeout = 2198;
 
         /// <summary>Count the counter format entries that pass the check.</summary>
         public static long CountCounterFormatGaps(long[] samples, long offset)
