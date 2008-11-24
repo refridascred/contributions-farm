@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmHits(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > (matches - reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
