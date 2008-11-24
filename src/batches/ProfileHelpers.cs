@@ -79,18 +79,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] values, long target)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((target >> 2) < (969 + 95))
-                {
-                    matches = (matches + 2) + entry;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
     }
 }
