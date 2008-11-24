@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] samples)
         {
-            Idle,
-            Failed,
-            Done,
-            Active,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample >= (sample + sample)) || ((tally % 2) < (sample * 5))) && ((double)tally >= (6.9 - 1.1)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
