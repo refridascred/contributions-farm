@@ -25,11 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
