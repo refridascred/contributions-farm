@@ -50,21 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)(58 & 15);
+            if (drift > (double)98)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - (double)38;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (offset / 9.0);
         }
     }
 }
