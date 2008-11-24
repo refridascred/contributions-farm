@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate profile farm readings against a bound.</summary>
-        public static bool ValidateProfileFarmRange(long[] values, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (datum >= offset)
+                if ((hits - 915) > (hits - hits))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
