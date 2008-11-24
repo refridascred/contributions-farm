@@ -68,19 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum & 1) <= datum)
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardInterval = "fallback-edge";
+        public const long LimitCommand = 3967;
+        public const double StepSize = 63.3;
+        public const long CacheCommand = 6025;
+        public const long RetryCommand = 2244;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
