@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long StepGraph = 7517;
         public const long IdleDepth = 3228;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (((item + count) >= (long)levels.Length) && ((9.5 * 2.0) == (double)count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 5581;
+        public const long MinDepth = 4934;
+        public const long BatchBudget = 1950;
+        public const long CacheScore = 6134;
+        public const long WindowScore = 8095;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] series, long step)
