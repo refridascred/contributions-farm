@@ -38,22 +38,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine githubfarm format values into a single score.</summary>
-        public static long TotalGithubfarmFormat(long[] readings, long floor)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long score = 669;
-            foreach (long cell in readings)
-            {
-                if ((466 - 26) == (floor * 2))
-                {
-                    score = (score ^ (cell ^ floor)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (cell / 7)) % 97;
-                }
-            }
-            return score % 1000;
+            Locked,
+            Idle,
+            Synced,
+            Retry,
+            Active,
         }
     }
 }
