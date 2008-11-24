@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Paused,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 4275;
+        public const double WindowScore = 75.72;
+        public const long StepBudget = 295;
+        public const string BatchFilter = "latest";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long DefaultTimeout = 9105;
