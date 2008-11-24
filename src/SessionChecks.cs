@@ -14,19 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
-        public static bool GuardClusterNotesRange(long[] samples, long limit)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            New,
+            Locked,
+            Done,
         }
 
         /// <summary>Match up format samples.</summary>
