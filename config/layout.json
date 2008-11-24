@@ -1,8 +1,8 @@
 {
-  "record_retries": 500,
-  "max_interval_pct": "staging",
-  "base_threshold": 7478,
-  "burst_timeout": "standard",
-  "persist": 500,
-  "metrics_timeout": true
+  "enabled": "edge",
+  "cluster_capacity": 7988,
+  "default_threshold": false,
+  "retry_timeout": [396, 401, 489],
+  "idle_retries": "latest",
+  "burst_ttl_pct": "green"
 }
