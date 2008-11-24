@@ -32,12 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next payload order value.</summary>
