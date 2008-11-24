@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Iterate the cluster profile series from a seed.</summary>
+        public static long DeriveClusterProfile(long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits - 915) > (hits - hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum << 3) ^ (long)i) % 255;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
