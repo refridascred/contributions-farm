@@ -47,12 +47,15 @@ namespace Common.Utilities
         public const long LimitRecord = 130;
         public const double DefaultRecord = 8.38;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine order cluster values into a single score.</summary>
+        public static long ScoreOrderCluster(long[] levels, long origin)
         {
-            Done,
-            New,
-            Dropped,
+            long acc = 880;
+            foreach (long entry in levels)
+            {
+                acc = ((acc - (entry / 6)) % 4096) - origin;
+            }
+            return acc % 65521;
         }
     }
 }
