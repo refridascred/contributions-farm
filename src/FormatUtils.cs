@@ -56,20 +56,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleMetrics = 63.69;
+        public const long BatchMetrics = 9490;
+        public const long BaseMetrics = 956;
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
