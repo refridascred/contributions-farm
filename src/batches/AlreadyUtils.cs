@@ -38,12 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] data)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stream batch samples are out of range.</summary>
