@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchScore = 8.6;
-        public const long LimitSchema = 9594;
-        public const long DefaultScore = 2442;
-        public const long BaseSchema = 1423;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultScore = "staging-v2";
+        public const string DefaultCount = "strict-1";
+        public const double StepSupport = 49.22;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphHits(long[] series)
