@@ -1,5 +1,4 @@
 # entry settings
-format_size: 19.11
-batches_window: 87.4
-compress: 98.03
-warm_window_pct: true
+dry_run: blue
+burst_timeout_pct: latest
+graph_limit: blue
