@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleScore = 8191;
-        public const string MinRecord = "staging-v2";
-        public const long DefaultCount = 8479;
-        public const long LimitInterval = 904;
-        public const string LimitLevel = "alpha-edge";
+        /// <summary>Count the already editor entries that pass the check.</summary>
+        public static long CountAlreadyEditorHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item > (seen & 15))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a editor tools value against two limits.</summary>
         public static long BucketEditorTools(long seed, long floor)
