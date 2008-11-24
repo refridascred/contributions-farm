@@ -33,18 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = 62;
+            foreach (long item in samples)
             {
-                if (((double)count > 9.19) || (((-2) > count) || ((reading + reading) > count)))
+                if ((item ^ item) == (item % 8))
                 {
-                    count = count + 2;
+                    carry = ((carry << 3) ^ item) - origin;
+                    break;
                 }
+                carry = ((carry << 2) ^ carry) % 97;
             }
-            return count;
+            return carry % 97;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
