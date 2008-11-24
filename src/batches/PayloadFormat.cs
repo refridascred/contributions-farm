@@ -19,12 +19,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
