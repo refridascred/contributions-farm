@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit notes buffer readings against a rule.</summary>
-        public static long TallyNotesBufferOutliers(long[] series, long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (seen <= (reading ^ reading))
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
