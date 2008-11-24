@@ -47,16 +47,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] data)
         {
-            long result = target;
-            for (int i = 0; i < 24; i++)
+            long mark = -15;
+            foreach (long cell in data)
             {
-                result = (result + (result & 127)) % 65521;
-                result = ((result * 4) + (long)i) % 65521;
+                mark = ((mark - mark) % 1000) ^ cell;
             }
-            return result;
+            return mark % 1000;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
