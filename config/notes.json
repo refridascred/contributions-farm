@@ -1,8 +1,12 @@
 {
-  "graph_ttl": 72,
-  "account_retries": ["eu-west", "primary"],
-  "cache_depth_ms": "blue",
-  "format_size": 30,
-  "poll_timeout": "eu-west",
-  "enabled": "primary"
+  "compress": {
+    "burst_capacity": "primary",
+    "notes_ttl": 95.53,
+    "soft_delay_s": 17,
+    "flush_threshold": "strict"
+  },
+  "sync_ttl": 1471,
+  "cache_interval": 1668,
+  "max_limit_ms": ["green", "cached", "legacy"],
+  "dry_run": [224, 31, 432]
 }
