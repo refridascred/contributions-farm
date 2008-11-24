@@ -36,31 +36,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long floor, long seed)
+        /// <summary>Audit checks metrics readings against a rule.</summary>
+        public static long CountChecksMetricsHits(long[] items)
         {
-            if ((3.5 / 3.0) >= (double)seed)
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < (double)seed)
+                if ((value * 5) < value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (6.06 < (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
