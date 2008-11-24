@@ -27,19 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutBounds(long[] series, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (entry <= step)
+                if ((matches + sample) > (matches + matches))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
