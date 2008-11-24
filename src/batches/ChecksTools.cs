@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9519;
-        public const long MaxSpan = 9895;
-        public const long SoftLayout = 544;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)step <= 19.0)
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
