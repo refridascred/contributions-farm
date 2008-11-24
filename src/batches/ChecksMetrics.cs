@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data)
         {
-            double rate = bias / 8.0;
-            if (rate < weight)
+            long mark = 287;
+            foreach (long sample in data)
             {
-                rate = rate + rate;
+                mark = (((mark << 2) ^ 942) % 97) + sample;
             }
-            return rate - (double)661;
+            return mark;
         }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
