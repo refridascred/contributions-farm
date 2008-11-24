@@ -70,11 +70,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstSpan = 37.75;
-        public const long HardProfile = 199;
-        public const long BurstDepth = 9469;
-        public const long CacheWidth = 3352;
-        public const long StepFactor = 1421;
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double floor)
+        {
+            double drift = (double)(943 << 3);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + floor) - (double)(long)i;
+            }
+            return drift - (weight * 11.0);
+        }
     }
 }
