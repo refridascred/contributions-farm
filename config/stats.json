@@ -1,14 +1,11 @@
 {
-  "strict": {
-    "warm_limit_ms": "stable",
-    "buffer_capacity": false,
-    "session_capacity": {
-      "audit": 80,
-      "support_retries": false,
-      "enabled": "blue"
-    }
-  },
-  "entry_limit": 5034,
-  "poll_ttl_pct": false,
-  "cache_ttl": true
+  "batch_limit_count": 30,
+  "default_depth_ms": 1024,
+  "profile_retries": {
+    "min_capacity": ["standard", "primary", "blue"],
+    "burst_ttl_ms": 250,
+    "base_ttl_pct": "eu-west",
+    "retry_capacity_s": ["cached", "fallback"],
+    "idle_retries": 54
+  }
 }
