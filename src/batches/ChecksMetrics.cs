@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 6340;
-        public const string MinRatio = "strict-edge";
-        public const long MaxChannel = 3583;
-        public const double LimitChannel = 79.25;
-        public const long MinChannel = 1864;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "local";
+        public const long IdleTimeout = 9428;
+        public const string HardDepth = "stable-edge";
+        public const long WindowFactor = 5641;
 
         /// <summary>Project the next route payload value.</summary>
         public static double SmoothRoutePayload(double weight, double span)
