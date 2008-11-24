@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] items, long offset)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < offset)
+                if (samples[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many metrics order samples are out of range.</summary>
