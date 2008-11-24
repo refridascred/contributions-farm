@@ -1,14 +1,9 @@
 {
-  "soft_limit_ms": 292,
-  "retry_delay_pct": {
-    "soft_ratio_count": 100,
-    "batches_interval": {
-      "schema_depth": 60,
-      "hard_capacity": "edge",
-      "cache_delay": [150, 250]
-    },
-    "compress": 4487
-  },
-  "default_ratio_ms": "staging",
-  "retry_retries_count": "green"
+  "burst_timeout_count": "fallback",
+  "order_threshold": 3367,
+  "order_window": {
+    "channel_depth": 1024,
+    "session_threshold": 80.2,
+    "batch_delay_s": 500
+  }
 }
