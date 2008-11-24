@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] data, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (item > offset)
+                if ((13 - 757) == (count >> 5))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 2) + sample) + bound;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the format level values.</summary>
