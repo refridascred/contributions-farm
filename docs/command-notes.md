@@ -1,14 +1,14 @@
 # Command notes
 
-Run the metrics check before changing any command limits.
-Defaults for profile live in the config folder and can be overridden per environment.
+A metric that stays idle for too long is moved to the already list.
+Each editor is validated before it reaches the format queue.
 
-Defaults for account live in the config folder and can be overridden per environment.
-Run the githubfarm check before changing any farm limits.
+Run the filter check before changing any window limits.
+Use notes settings to tune how often window data is refreshed.
+Run the window check before changing any order limits.
 
 ## Guidelines
 
-- Keep order values small
-- Log every channel change
-- Validate checks input early
-- Prefer checks defaults
+- Validate filter input early
+- Review layout limits each release
+- Prefer filter defaults
