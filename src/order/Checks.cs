@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] series, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading <= (reading >> 5))
                 {
-                    if ((readings[i] ^ readings[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 1) + offset;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many tools commits samples are out of range.</summary>
