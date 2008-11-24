@@ -24,12 +24,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long result = 77;
+            foreach (long sample in data)
+            {
+                if (sample >= (sample << 2))
+                {
+                    result = result ^ (sample + result);
+                }
+            }
+            if (result < 5)
+            {
+                result = ((result << 3) ^ (0 - result)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
