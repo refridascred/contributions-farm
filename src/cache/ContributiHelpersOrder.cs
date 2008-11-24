@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] values, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((floor * 5) < (tally - floor))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            Active,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
