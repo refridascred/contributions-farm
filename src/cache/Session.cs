@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double span)
         {
-            double gain2 = bias;
-            if (gain2 >= (12.0 / 7.0))
+            double load = span;
+            if (load < 7.9)
             {
-                gain2 = gain2 + (gain * 0.9);
+                load = load - (11.0 * 5.0);
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                gain2 = gain2 - gain2;
+                load = (load - (bias - bias)) + (double)(long)i;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + 20.0) + (double)(long)i;
-            }
-            return gain2 + (9.0 - bias);
+            return load + (double)83;
         }
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
