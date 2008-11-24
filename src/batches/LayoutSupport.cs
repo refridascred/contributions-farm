@@ -29,10 +29,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftSpan = 79.94;
-        public const long IdleSpan = 3662;
-        public const long DefaultSize = 2240;
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Stale,
+            Ready,
+            Done,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long AuditBatchGaps(long[] values, long origin)
