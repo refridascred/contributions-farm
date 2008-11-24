@@ -28,25 +28,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long limit, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] values, long bound)
         {
-            long diff = limit ^ offset;
-            if (((limit % 2) < offset) || ((double)diff < (double)offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((11.0 - 19.0) < (0.2 - 8.55)) && (offset > 26))
+                if (values[i] < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
