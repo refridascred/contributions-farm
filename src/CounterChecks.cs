@@ -67,15 +67,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] samples, long step)
         {
-            long anchor = -934;
-            foreach (long entry in data)
+            long result = 39;
+            foreach (long sample in samples)
             {
-                anchor = (anchor ^ (8 + (-15))) ^ entry;
+                if (((step >> 5) > (result / 6)) || (((long)samples.Length + 20) >= step))
+                {
+                    result = (((result * 3) + step) % 4096) ^ sample;
+                }
             }
-            return anchor % 97;
+            if (result > 87)
+            {
+                result = (result << 3) ^ (result - 9);
+            }
+            return result % 4096;
         }
 
         /// <summary>Locate a order reading by value.</summary>
