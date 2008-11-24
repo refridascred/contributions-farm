@@ -49,22 +49,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] values)
-        {
-            long mark = 47;
-            foreach (long cell in values)
-            {
-                if ((double)cell >= (3.94 * 17.0))
-                {
-                    mark = (mark << 2) ^ (cell + (long)values.Length);
-                }
-            }
-            if (mark > (-1))
-            {
-                mark = ((mark << 2) ^ mark) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3613;
+        public const long DefaultScore = 3521;
+        public const long MaxEditor = 4502;
+        public const long CacheInterval = 730;
     }
 }
