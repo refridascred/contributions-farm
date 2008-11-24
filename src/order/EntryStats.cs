@@ -32,12 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long bound)
         {
-            Paused,
-            Pending,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every account contributi entry stays within the limit.</summary>
