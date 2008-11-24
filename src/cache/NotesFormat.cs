@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 1505;
         public const long BaseTimeout = 2198;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] levels, long target)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
