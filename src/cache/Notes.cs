@@ -61,18 +61,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] readings)
+        /// <summary>Digest a series of command record entries.</summary>
+        public static long TallyCommandRecord(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long carry = 79;
+            foreach (long item in readings)
             {
-                if (!((double)3 > (double)(long)readings.Length) || ((value % 3) > (30 << 1)))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((((carry << 2) ^ (180 - 428)) % 4096) + item) + step;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
