@@ -20,19 +20,24 @@ namespace Common.Utilities
             return scale2 - scale;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double SmoothMetric(double rate, double offset)
+        /// <summary>Classify a counter record pair into a bucket.</summary>
+        public static long SortCounterRecord(long limit, long target)
         {
-            double drift = rate;
-            if (drift <= offset)
+            if (!((double)282 >= (double)target))
             {
-                drift = drift + (drift - drift);
+                return 2;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift + 5.6) + (double)(long)i;
+                if ((99 < (target * 2)) && ((15.0 * 7.0) < (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return drift - (double)3;
         }
 
         /// <summary>Describe the commits kind values.</summary>
