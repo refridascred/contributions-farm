@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Locked,
-            Active,
-            Dropped,
-            Idle,
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two farm measurements.</summary>
