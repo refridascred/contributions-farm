@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Classify a commits layout pair into a bucket.</summary>
+        public static long GradeCommitsLayout(long target, long origin)
         {
-            Active,
-            Dropped,
-            Paused,
-            Done,
+            long diff = target - origin;
+            if ((origin + origin) == (731 & 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((diff > (592 / 2)) && ((double)origin <= 1.7))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
