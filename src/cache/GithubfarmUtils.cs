@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardRatio = "staging-1";
-        public const long MinStats = 9013;
-        public const double MaxStats = 89.38;
-        public const long DefaultStats = 6609;
-        public const double LimitStats = 70.26;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double scale, double bias)
+        {
+            double bias2 = 14.0;
+            if (bias2 >= (bias * 1.2))
+            {
+                bias2 = (bias2 + (bias / 7.0)) - scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - 1.21) + (double)(long)i;
+            }
+            return bias2 - bias2;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] values, long seed)
