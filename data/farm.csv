@@ -1,6 +1,10 @@
-id,label,count,rank,level
-1,staging,local,64,green
-2,open,881,872,49.38
-3,81,cached,866,620
-4,456,668,edge,96.87
-5,blue,open,87.59,2.93
+id,region,active
+1,open,84
+2,34,58
+3,49.05,27.69
+4,41.85,29.26
+5,211,79.9
+6,edge,54
+7,743,open
+8,staging,39.68
+9,876,70.32
