@@ -16,19 +16,25 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] samples, long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long cur = step - offset;
+            if (((offset & 63) > (offset - step)) && ((39 >> 4) < (offset ^ offset)))
             {
-                if (reading >= bound)
+                return 6;
+            }
+            else
+            {
+                if ((cur + cur) >= 5)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
