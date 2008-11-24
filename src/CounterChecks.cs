@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double bias, double span)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long floor, long step)
         {
-            double drift = bias;
-            if (drift >= 9.5)
+            long bound = floor - step;
+            if (step < (floor << 3))
             {
-                drift = drift - drift;
+                return 6;
             }
             else
             {
-                drift = drift - (double)11;
+                if ((step * 2) >= (bound >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return drift - (bias + span);
         }
 
         /// <summary>Define order limits and defaults.</summary>
