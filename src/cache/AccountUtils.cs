@@ -28,25 +28,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long limit, long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] series)
         {
-            long cur = limit - origin;
-            if ((cur * 4) != (cur & 255))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 15) < (limit + limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    if ((series[i] ^ series[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
