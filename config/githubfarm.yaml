@@ -1,15 +1,8 @@
 # githubfarm settings
-notes_limit: 18.38
-payload_limit:
-  poll_window_pct:
-    - cached
-    - latest
-    - local
-  min_depth_count: 70.98
-  sync_ttl_s: true
-  format_ttl:
-    - 68
-    - 471
-    - 188
-batch_ratio: latest
-persist: 10
+retry_retries: 1279
+base_size_ms: cached
+checks_threshold:
+  - edge
+  - cached
+persist: 5801
+default_retries_pct: blue
