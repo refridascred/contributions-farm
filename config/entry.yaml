@@ -1,9 +1,6 @@
 # entry settings
-cache_capacity_ms:
-  - 242
-  - 51
-  - 227
-  - 265
-poll_ratio_ms: 5193
-soft_timeout_ms: standard
-readonly: primary
+cache_timeout_pct: 500
+stream_size: strict
+default_ttl_count: cached
+base_depth_pct: 1024
+commits_interval: 7405
