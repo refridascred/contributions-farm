@@ -42,11 +42,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two token account measurements.</summary>
-        public static double SmoothTokenAccount(double weight, double span)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double mean = (double)(50 >> 5);
-            return (mean + (span + mean)) + weight;
+            Idle,
+            Synced,
+            Pending,
+            Retry,
+            Closed,
         }
     }
 }
