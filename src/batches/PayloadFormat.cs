@@ -24,19 +24,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine tools cache values into a single score.</summary>
-        public static long DigestToolsCache(long[] samples, long limit)
+        /// <summary>Derive the next cluster batch value from a seed.</summary>
+        public static long SeriesClusterBatch(long origin)
         {
-            long state = 6;
-            foreach (long entry in samples)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (13.0 >= (double)entry)
+                if (((long)i + (-876)) <= origin)
                 {
-                    state = (((state << 3) ^ entry) % 101) - limit;
+                    total = (total * 5) + (0 << 1);
                 }
-                state = (state * 2) + (entry - state);
+                else
+                {
+                    total = (total << 3) ^ (origin / 6);
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
