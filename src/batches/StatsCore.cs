@@ -58,19 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long state = 898;
-            foreach (long reading in values)
-            {
-                state = (state ^ (reading * 3)) % 65521;
-            }
-            if (state < 94)
-            {
-                state = (state << 2) ^ (bound + state);
-            }
-            return state % 97;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the filter kind values.</summary>
