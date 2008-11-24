@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double bias, double span)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] data, long bound)
         {
-            double weight = 20.0;
-            if (weight > (double)3)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                weight = weight + (span * 0.2);
+                if ((5 <= (matches << 1)) || (((-536) + matches) <= bound))
+                {
+                    matches = (matches + 1) - cell;
+                }
             }
-            else
-            {
-                weight = weight - (bias - 5.0);
-            }
-            return weight - (weight * 7.1);
+            return matches;
         }
     }
 }
