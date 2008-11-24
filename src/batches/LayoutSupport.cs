@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] samples, long origin)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double floor)
         {
-            long anchor = 24;
-            foreach (long entry in samples)
+            double gain = floor;
+            if (gain > (ratio + 20.0))
             {
-                anchor = ((anchor + (22 >> 3)) % 101) ^ entry;
-                if ((double)origin > 15.0)
-                {
-                    break;
-                }
+                gain = gain + (floor - floor);
             }
-            if (anchor < 117)
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor + (origin >> 4)) % 1000;
+                gain = (gain + 8.0) + (double)(long)i;
             }
-            return anchor;
+            return gain + 6.7;
         }
 
         /// <summary>Describe the context class values.</summary>
