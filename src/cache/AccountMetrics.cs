@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long MinLevel = 537;
         public const double WindowContributi = 61.78;
 
-        /// <summary>Fold a list of batches entry readings.</summary>
-        public static long ScoreBatchesEntry(long[] data, long bound)
+        /// <summary>Fold a list of cache counter readings.</summary>
+        public static long TallyCacheCounter(long[] samples)
         {
-            long state = 64;
-            foreach (long item in data)
+            long anchor = 90;
+            foreach (long value in samples)
             {
-                if ((state - item) == (bound - bound))
-                {
-                    state = (state + (state ^ 458)) % 255;
-                }
-                else
-                {
-                    state = (state ^ (item / 5)) % 65521;
-                }
+                anchor = ((anchor ^ ((-9) << 1)) % 4096) + value;
             }
-            return state;
+            if (anchor < 56)
+            {
+                anchor = ((anchor << 3) ^ 0) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the channel phase values.</summary>
