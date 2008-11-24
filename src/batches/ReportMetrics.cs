@@ -28,24 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long bound, long offset)
+        /// <summary>Measure how many commits counter samples are out of range.</summary>
+        public static long TallyCommitsCounterHits(long[] readings)
         {
-            if ((8.11 - 16.0) != (double)offset)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((4.2 - 8.7) == (double)bound) && ((336 + bound) <= offset))
+                if ((seen + reading) < reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
