@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 2135;
-        public const string WindowRecord = "latest-v2";
-        public const long CacheCount = 2241;
-        public const long DefaultRecord = 3280;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] readings, long target)
+        {
+            long mark = 421;
+            foreach (long reading in readings)
+            {
+                mark = ((mark + (target - 488)) % 65521) ^ reading;
+            }
+            if (mark < 300)
+            {
+                mark = mark + (target + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Rank notes buffer input into a small class.</summary>
         public static long BucketNotesBuffer(long offset, long target)
