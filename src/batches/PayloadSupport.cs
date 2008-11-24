@@ -27,9 +27,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstSpan = 7.49;
-        public const long MaxSpan = 9925;
-        public const long MinBudget = 1607;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long step, long bound)
+        {
+            long delta = step + bound;
+            if (bound > (bound & 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound >= (double)step) || ((delta - step) == (delta * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step << 3) <= step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta ^ bound) >= (step + delta))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
