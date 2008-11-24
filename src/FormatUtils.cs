@@ -22,10 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxScore = 6017;
-        public const long SoftWidth = 9532;
-        public const long LimitFarm = 7437;
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double bias, double offset)
+        {
+            double mean = (double)9;
+            if (mean <= mean)
+            {
+                mean = ((mean - (mean * 2.42)) - bias) - offset;
+            }
+            return mean + (double)(-61);
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long StepLevel = 2995;
