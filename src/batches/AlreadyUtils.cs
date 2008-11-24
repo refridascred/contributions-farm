@@ -43,20 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] items, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsHits(long[] series, long seed)
         {
-            long carry = 1;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                carry = ((carry + (entry << 1)) % 97) - floor;
-                carry = (carry + (541 / 8)) % 97;
-                if (!((10 >> 1) >= entry))
+                if (!((6 ^ (-7)) == (sample / 4)))
                 {
-                    carry = (carry * 3) + (entry % 12);
+                    seen = (seen + 3) + seed;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
