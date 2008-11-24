@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a cache order pair into a bucket.</summary>
-        public static long SortCacheOrder(long origin, long offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long offset2 = origin ^ offset;
-            if ((offset / 4) > 22)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 7;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((9.35 / 7.0) == (double)offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first filter context entry that matches the target.</summary>
