@@ -56,22 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long total = -1;
-            foreach (long datum in readings)
-            {
-                if ((52 ^ datum) < ((-385) - total))
-                {
-                    total = (total - (total - datum)) % 255;
-                }
-                else
-                {
-                    total = total - (datum & 31);
-                }
-            }
-            return total % 1000;
+            New,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
