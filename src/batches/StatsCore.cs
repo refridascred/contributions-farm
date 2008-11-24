@@ -39,20 +39,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxLevel = 9510;
+        public const long RetryAlready = 3136;
+        public const string WindowAlready = "latest-edge";
+        public const string SoftAlready = "staging-1";
 
         /// <summary>Project the next profile report value.</summary>
         public static double BlendProfileReport(double bias, double offset)
