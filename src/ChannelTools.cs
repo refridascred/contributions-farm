@@ -29,18 +29,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long step, long target)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            if ((double)target < (5.4 * 2.92))
             {
-                if ((0 - 43) != (sample / 4))
+                return 6;
+            }
+            else
+            {
+                if (164 < (step << 3))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
