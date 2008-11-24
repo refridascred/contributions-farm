@@ -12,19 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] items, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (datum > floor)
+                if (datum != bound)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
