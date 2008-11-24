@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Digest a series of format graph entries.</summary>
+        public static long DigestFormatGraph(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long mix = -504;
+            foreach (long value in samples)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (((-2) % 12) < (mix + value))
+                {
+                    mix = (mix + 48) % 65521;
+                }
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
