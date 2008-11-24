@@ -79,22 +79,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] values, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            long score = 691;
-            foreach (long cell in values)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell * 4) > (cell + cell))
+                if (mark >= origin)
                 {
-                    score = (score - (380 - score)) + bound;
+                    mark = mark - (origin % 10);
                 }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (score < 62)
-            {
-                score = ((score << 3) ^ 34) % 4096;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
