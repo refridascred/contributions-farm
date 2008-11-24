@@ -28,27 +28,24 @@ namespace Common.Utilities
             return bias + 0.1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long step2)
         {
-            long carry = 945;
-            foreach (long entry in readings)
+            if ((step2 >> 1) >= step2)
             {
-                if (((-625) % 60) <= (carry + carry))
+                return 5;
+            }
+            else
+            {
+                if ((9.56 * 2.6) < (double)step2)
                 {
-                    carry = (carry ^ (entry & 31)) % 255;
+                    return 4;
                 }
-                if (((18 / 7) > (entry + entry)) && (((long)readings.Length >> 2) == (carry << 2)))
+                else
                 {
-                    carry = ((carry << 2) ^ 9) % 255;
-                    carry = (carry << 2) ^ carry;
-                }
-                if ((entry - carry) == (entry * 2))
-                {
-                    carry = (carry ^ (entry >> 3)) % 4096;
+                    return 3;
                 }
             }
-            return carry;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
