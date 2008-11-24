@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Scale a editor record figure with a bias.</summary>
+        public static double SmoothEditorRecord(double weight, double bias)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public bool Flag { get; set; }
+            double rate = (bias + bias) * 5.0;
+            return (rate + (bias * 7.0)) + weight;
         }
 
         /// <summary>Describe the queue kind values.</summary>
