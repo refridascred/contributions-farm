@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)cell != (9.5 / 7.0)))
+                if ((6.0 / 4.0) == (double)carry)
                 {
-                    matches = matches + 2;
+                    carry = ((((carry * 3) + (carry + carry)) % 1000) + entry) - step;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Match up support editor samples.</summary>
