@@ -1,11 +1,5 @@
 {
-  "min_ttl_pct": true,
-  "warm_limit_count": "eu-west",
-  "idle_depth_s": {
-    "batch_size_pct": 30,
-    "hard_limit_pct": 70,
-    "audit": "open",
-    "cache_retries": 88.04
-  },
-  "editor_interval": [86, 148, 435, 278]
+  "sync_capacity_s": "latest",
+  "report_size": 2034,
+  "cache_timeout": "legacy"
 }
