@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two record command measurements.</summary>
-        public static double BlendRecordCommand(double rate, double floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] samples, long offset)
         {
-            double gain = 0.33;
-            if (gain >= floor)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                gain = (gain - floor) + rate;
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return stale;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
