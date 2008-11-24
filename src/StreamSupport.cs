@@ -12,12 +12,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] samples)
         {
-            Draft,
-            Pending,
-            Queued,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((1.91 / 7.0) == (double)value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
