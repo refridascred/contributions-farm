@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            New,
-            Stale,
-            Idle,
-            Queued,
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
