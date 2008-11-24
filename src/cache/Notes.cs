@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSize = 2519;
-        public const long BurstContributi = 985;
-        public const long BaseContributi = 1484;
-        public const string CacheTimeout = "primary";
-        public const long SoftContributi = 864;
+        /// <summary>Roll a channel metric counter forward.</summary>
+        public static long SeriesChannelMetric(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark - mark) % 101;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
