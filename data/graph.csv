@@ -1,10 +1,6 @@
-id,region,rank,state,level
-1,legacy,164,385,981
-2,legacy,201,787,53
-3,936,90.48,50.9,66.68
-4,58.15,50.36,35.73,21.69
-5,726,61.0,standard,549
-6,782,0.79,729,478
-7,stable,980,strict,latest
-8,246,285,484,689
-9,72.73,17.26,23.21,701
+id,rank,state,region,active
+1,legacy,93.08,fallback,208
+2,standard,edge,398,770
+3,blue,32.83,56,741
+4,stable,445,standard,563
+5,519,39.61,74.21,stable
