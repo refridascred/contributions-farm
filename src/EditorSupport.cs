@@ -60,25 +60,22 @@ namespace Common.Utilities
         public const long IdleDepth = 7315;
         public const string CacheRecord = "staging";
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long target, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] readings)
         {
-            long delta = target ^ floor;
-            if ((target + target) == (target - 5))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (delta < (target % 3))
+                if ((tally >> 5) < (tally << 3))
                 {
-                    return 7;
+                    tally = (tally + 1) + value;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
