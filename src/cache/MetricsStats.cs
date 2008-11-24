@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] values, long origin)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            long result = 7;
-            foreach (long sample in values)
+            long result = 423;
+            foreach (long entry in readings)
             {
-                result = result + result;
-                result = result - (sample % 16);
-                result = (result - (origin + result)) % 65521;
-            }
-            if (result < 370)
-            {
-                result = result - (origin + result);
+                if ((result - entry) != (result / 8))
+                {
+                    result = (result ^ (entry + entry)) % 255;
+                }
             }
             return result;
         }
