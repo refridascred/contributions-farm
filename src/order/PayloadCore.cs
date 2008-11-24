@@ -15,22 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit contributi graph readings against a rule.</summary>
-        public static long TallyContributiGraphOutliers(long[] items, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((731 ^ 87) >= (seed * 3))
-                {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Synced,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
