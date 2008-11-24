@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] readings, long target)
         {
-            long state = -64;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                state = ((state << 3) ^ item) % 255;
+                if (7 <= (sample & 31))
+                {
+                    matches = (matches + 3) - target;
+                }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
