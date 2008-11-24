@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 7388;
-        public const double RetryProfile = 16.12;
-        public const long RetryCount = 6262;
-        public const long HardProfile = 1230;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] data, long step)
+        {
+            long carry = -662;
+            foreach (long datum in data)
+            {
+                carry = ((carry << 2) ^ (step << 3)) % 101;
+                if (datum >= (datum - step))
+                {
+                    carry = (carry ^ (step >> 4)) % 4096;
+                }
+                if (((double)datum == (double)carry) && ((785 + carry) >= step))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] items)
