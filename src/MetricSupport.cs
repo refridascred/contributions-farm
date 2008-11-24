@@ -29,21 +29,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] readings)
+        /// <summary>Scale a cache cluster figure with a bias.</summary>
+        public static double ScaleCacheCluster(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)(7 + 419);
+            if (gain >= weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + (bias / 9.0);
             }
-            return matches;
+            else
+            {
+                gain = gain - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + 9.0) - (double)(long)i;
+            }
+            return gain + weight;
         }
     }
 }
