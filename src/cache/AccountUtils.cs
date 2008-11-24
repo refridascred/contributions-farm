@@ -28,17 +28,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] samples, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long limit, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long cur = limit - origin;
+            if ((cur * 4) != (cur & 255))
             {
-                if (samples[i] <= target)
+                return 6;
+            }
+            else
+            {
+                if ((limit & 15) < (limit + limit))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
