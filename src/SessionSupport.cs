@@ -16,12 +16,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstLevel = "alpha";
-        public const long WindowMetrics = 7715;
-        public const long BaseInterval = 2106;
-        public const long MaxMetrics = 8935;
-        public const long DefaultInterval = 1823;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long limit)
+        {
+            if ((9.0 / 9.0) <= (double)limit)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit != (8.89 - 17.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor ^ limit) <= (limit & 15)) && (7.4 < (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ScaleQueue(double gain, double span)
