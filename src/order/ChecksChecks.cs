@@ -55,15 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] values, long floor)
+        /// <summary>Check that every channel commits entry stays within the limit.</summary>
+        public static bool ValidateChannelCommitsRange(long[] series, long seed)
         {
-            long state = 316;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                state = ((state << 3) ^ item) - floor;
+                if (cell < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
     }
 }
