@@ -28,19 +28,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstSpan = 7.49;
+        public const long MaxSpan = 9925;
+        public const long MinBudget = 1607;
     }
 }
