@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long seed)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long limit)
         {
-            if (590 <= (offset - offset))
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 4) < (offset - seed))
+                if ((limit - limit) <= acc)
                 {
-                    return 3;
+                    acc = (acc << 3) ^ ((long)i / 2);
                 }
-                else
-                {
-                    return 4;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
+            return acc;
         }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
