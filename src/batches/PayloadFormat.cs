@@ -43,16 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] series, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                acc = (acc - acc) % 101;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (((7.3 + 12.0) >= (double)matches) || ((bound ^ 750) != (bound + item)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
