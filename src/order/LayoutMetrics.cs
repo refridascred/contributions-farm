@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] samples, long offset)
         {
-            Retry,
-            Draft,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((double)entry < (double)hits) && (18.0 <= (double)hits))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
