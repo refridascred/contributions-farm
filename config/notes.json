@@ -1,25 +1,5 @@
 {
-  "base_ratio_pct": {
-    "strict": "staging",
-    "batch_timeout_s": {
-      "verbose": 11.22,
-      "flush_size": false,
-      "readonly": true,
-      "flush_delay_count": "local",
-      "max_interval": [471, 58, 60]
-    },
-    "commits_depth": 60,
-    "counter_retries": 4554,
-    "flush_timeout_count": {
-      "base_threshold": 5508,
-      "warm_interval": "fallback",
-      "default_limit": [421, 441, 450],
-      "profile_limit": ["cached", "primary", "edge", "open"],
-      "contributi_depth": true,
-      "persist": false
-    }
-  },
-  "hard_ttl": 30,
-  "notes_retries": "strict",
-  "checks_delay": "staging"
+  "base_threshold_count": [219, 151, 294, 101],
+  "compress": true,
+  "idle_threshold_count": "local"
 }
