@@ -19,27 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] values, long bound)
         {
-            long total = 5;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in values)
             {
-                total = (((total << 3) ^ (seed << 3)) % 97) ^ item;
-                if ((double)total != (9.0 / 8.0))
+                if ((bound * 4) < ((-36) ^ (long)values.Length))
                 {
-                    total = ((total << 3) ^ (total % 3)) % 65521;
+                    seen = (seen + 2) ^ value;
                 }
                 else
                 {
-                    total = total - (seed ^ total);
+                    seen = seen - 1;
                 }
             }
-            if (total < 21)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 97;
+            return seen;
         }
 
         /// <summary>Hold a contributi entry.</summary>
