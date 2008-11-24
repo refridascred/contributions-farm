@@ -6,11 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+mode="${1:-legacy}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-RECORD_LIMIT=372
-log "limit is ${RECORD_LIMIT}"
+for item in fallback cached standard strict; do
+    log "checking ${item}"
+done
