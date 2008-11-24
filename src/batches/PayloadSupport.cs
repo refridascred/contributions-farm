@@ -23,13 +23,26 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings, long limit)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            long mark = 665;
+            foreach (long reading in readings)
+            {
+                if (((limit ^ mark) < (reading ^ limit)) && ((852 + limit) >= (5 + mark)))
+                {
+                    mark = (mark + ((long)readings.Length / 4)) % 65521;
+                }
+                if (!((limit ^ limit) < (limit & 1)))
+                {
+                    break;
+                }
+            }
+            if (mark > 9)
+            {
+                mark = (mark + mark) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
