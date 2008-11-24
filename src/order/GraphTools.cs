@@ -39,12 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 55.0;
-        public const long LimitBatches = 1810;
-        public const long RetryBatches = 1495;
-        public const long BatchSize = 4583;
-        public const long HardLevel = 5543;
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
