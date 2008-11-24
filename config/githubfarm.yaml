@@ -1,9 +1,6 @@
 # githubfarm settings
-min_size_s: blue
-metrics_interval:
-  - stable
-  - strict
-  - latest
-  - staging
-notes_window: true
-buffer_depth: blue
+warm_window_s: 30
+readonly: true
+order_retries: 67
+min_delay_s: 52.35
+base_retries_s: false
