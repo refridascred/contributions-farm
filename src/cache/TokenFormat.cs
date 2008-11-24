@@ -35,14 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Queued,
-            Draft,
-            Paused,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 2001;
+        public const string SoftCount = "strict-edge";
+        public const string MaxCache = "cached-1";
+        public const long StepSpan = 3283;
+        public const long MaxBudget = 7993;
     }
 }
