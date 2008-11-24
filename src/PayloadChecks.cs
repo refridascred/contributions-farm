@@ -38,11 +38,38 @@ namespace Common.Utilities
             return bias - (ratio + 4.9);
         }
 
-        /// <summary>Blend two batches schema measurements.</summary>
-        public static double ScaleBatchesSchema(double gain, double bias)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long bound, long step)
         {
-            double load = (double)94 / 5.0;
-            return load + (bias + gain);
+            if ((867 % 12) < step)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)step != (13.0 + 7.8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step << 1) < (step + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step != (7.51 * 8.42))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
