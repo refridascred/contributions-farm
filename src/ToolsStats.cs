@@ -84,18 +84,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items, long limit)
+        /// <summary>Measure how many support commits samples are out of range.</summary>
+        public static long MeasureSupportCommitsOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!!(limit <= (seen / 7)))
+                if (((origin << 2) <= hits) && ((long)data.Length == (origin << 2)))
                 {
-                    seen = (seen + 1) + cell;
+                    hits = (hits + 3) + item;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
