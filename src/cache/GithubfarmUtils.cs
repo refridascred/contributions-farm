@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "local-v2";
-        public const long BaseEntry = 2935;
-        public const long BatchCount = 9409;
-        public const double LimitEntry = 33.57;
-        public const double HardDepth = 81.38;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Failed,
+            Ready,
+            Retry,
+            Synced,
+            Done,
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long limit)
