@@ -25,19 +25,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((double)value >= (double)matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxScore = 4417;
+        public const long IdleBudget = 267;
+        public const long WindowSpan = 5173;
+        public const long DefaultCount = 313;
+        public const long CachePayload = 6536;
 
         /// <summary>Accumulate batch samples.</summary>
         public static long CombineBatch(long[] readings, long origin)
