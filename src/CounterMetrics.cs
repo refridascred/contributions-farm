@@ -29,38 +29,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long seed)
+        /// <summary>Look up the position of a already profile sample.</summary>
+        public static long SeekAlreadyProfileIndex(long[] values, long offset)
         {
-            if (!((offset << 1) >= offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 2) <= (seed << 3))
+                if (values[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 255) <= (seed % 10))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > (3 % 64))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
