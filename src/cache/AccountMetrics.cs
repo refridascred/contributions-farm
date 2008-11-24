@@ -34,23 +34,11 @@ namespace Common.Utilities
         public const string DefaultSpan = "legacy-v2";
         public const long MinDepth = 9379;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (((5 - 264) != (offset ^ (-42))) || (((double)entry == (double)offset) && ((double)offset <= (6.0 / 3.0))))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 3399;
+        public const long LimitRoute = 7574;
+        public const double MinRoute = 8.08;
+        public const long SoftScore = 4989;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
