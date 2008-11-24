@@ -25,11 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 5250;
-        public const long SoftNotes = 2163;
-        public const long WindowScore = 323;
-        public const double BatchScore = 26.15;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long step, long floor)
+        {
+            if (!((0.39 - 8.0) == (double)floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step & 3) > floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor / 7) <= ((-244) * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((20 - floor) <= (floor >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
         public static long ClassifyNotesChecks(long limit, long limit2)
