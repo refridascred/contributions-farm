@@ -40,39 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long limit, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double bias)
         {
-            long step = limit - origin;
-            if (!(limit > (limit + limit)))
+            double scale2 = bias;
+            if (scale2 >= scale2)
             {
-                return 2;
+                scale2 = (scale2 + scale2) + scale;
             }
             else
             {
-                if ((double)origin != (16.0 / 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) <= (origin - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((7.0 - 5.97) > (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                scale2 = scale2 - (bias * 2.67);
             }
+            return scale2 + scale2;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
