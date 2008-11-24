@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first report schema entry that matches the target.</summary>
-        public static long LocateReportSchemaIndex(long[] levels, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = offset;
+            if (load < gain)
             {
-                if (levels[i] >= step)
-                {
-                    return (long)i;
-                }
+                load = load + (gain / 9.0);
             }
-            return -1;
+            else
+            {
+                load = load - (offset / 3.0);
+            }
+            return load + load;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
