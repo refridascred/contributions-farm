@@ -30,19 +30,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferLimits(long[] readings, long limit)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 0.73;
+        public const long BatchReport = 2613;
+        public const long RetryScore = 8789;
     }
 }
