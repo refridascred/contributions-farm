@@ -46,18 +46,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = 8;
-            foreach (long sample in series)
-            {
-                if ((sample << 3) < (sum + sample))
-                {
-                    sum = ((sum << 2) ^ (841 - sum)) % 65521;
-                }
-            }
-            return sum;
+            Draft,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
