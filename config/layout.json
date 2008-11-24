@@ -1,26 +1,7 @@
 {
-  "poll_size": 4259,
-  "verbose": [162, 92, 77],
-  "hard_limit": {
-    "max_interval_s": {
-      "soft_ratio_count": 74,
-      "dry_run": false,
-      "batch_limit_s": "latest",
-      "farm_depth": "edge"
-    },
-    "min_ratio_count": "eu-west",
-    "window_window": "standard",
-    "max_timeout_ms": ["open", "latest", "latest"],
-    "verbose": {
-      "strict": "local",
-      "burst_threshold_pct": false,
-      "burst_window_s": "open",
-      "cache_depth": [419, 49, 141, 253],
-      "contributi_size": [171, 314, 108],
-      "dry_run": "latest"
-    },
-    "notes_ttl": ["green", "standard"]
-  },
-  "hard_threshold": [138, 420, 345],
-  "window_depth": 5217
+  "cache_limit": 95.27,
+  "already_ratio": 75.16,
+  "strict": ["edge", "blue", "fallback"],
+  "metric_capacity": [152, 233, 31],
+  "enabled": 39.89
 }
