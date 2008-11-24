@@ -62,11 +62,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long seed)
         {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((seed + hits) >= hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
