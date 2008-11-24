@@ -51,18 +51,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] series, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long delta = seed ^ offset;
+            if (!((0.56 - 3.23) == (double)offset))
             {
-                if ((((origin & 255) == (origin + hits)) && (hits > (37 >> 1))) && !((double)hits > (0.1 - 13.0)))
+                return 8;
+            }
+            else
+            {
+                if ((seed ^ delta) > (seed >> 2))
                 {
-                    hits = (hits + 3) + item;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset < (0.6 + 7.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
