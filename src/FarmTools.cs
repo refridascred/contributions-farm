@@ -33,38 +33,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a context batch pair into a bucket.</summary>
-        public static long SortContextBatch(long seed, long limit)
-        {
-            if ((5 - limit) <= seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed % 12) <= (seed - limit)) && ((double)limit != (20.0 - 19.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit + limit) >= limit) || (limit <= seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit - 377) == (limit + limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "stable-1";
+        public const long WindowCount = 2239;
+        public const long BurstCommand = 6338;
     }
 }
