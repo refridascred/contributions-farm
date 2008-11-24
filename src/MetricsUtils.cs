@@ -52,20 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics account measurements.</summary>
-        public static double BlendMetricsAccount(double bias, double offset)
-        {
-            double bias2 = bias;
-            if (bias2 >= (double)(-103))
-            {
-                bias2 = bias2 + (offset / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - offset;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchTimeout = 4154;
+        public const string RetryFarm = "cached-1";
+        public const long MinCount = 4383;
+        public const string MinFarm = "open-edge";
+        public const long StepFarm = 8915;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] items, long floor)
