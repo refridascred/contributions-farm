@@ -70,14 +70,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Retry,
-            Done,
-            Stale,
-            Closed,
-            Ready,
+            public double Score { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
