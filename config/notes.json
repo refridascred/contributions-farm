@@ -1,12 +1,5 @@
 {
-  "compress": {
-    "burst_capacity": "primary",
-    "notes_ttl": 95.53,
-    "soft_delay_s": 17,
-    "flush_threshold": "strict"
-  },
-  "sync_ttl": 1471,
-  "cache_interval": 1668,
-  "max_limit_ms": ["green", "cached", "legacy"],
-  "dry_run": [224, 31, 432]
+  "default_ttl": true,
+  "hard_ratio_s": "latest",
+  "sync_ratio_pct": 99
 }
