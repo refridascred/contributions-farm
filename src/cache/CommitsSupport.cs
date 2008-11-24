@@ -84,17 +84,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] data, long limit)
+        /// <summary>Iterate the metric command series from a seed.</summary>
+        public static long IterateMetricCommand(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] < limit)
+                if ((double)anchor < 7.4)
                 {
-                    return (long)i;
+                    anchor = (anchor - (floor - (long)i)) % 1000;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Locate a farm contributi reading by value.</summary>
