@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long MaxDepth = 7775;
         public const long IdleDepth = 5944;
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long offset)
         {
-            double ratio = bias2;
-            if (ratio < (bias - bias2))
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                ratio = ratio - (double)70;
+                anchor = ((anchor << 3) ^ (offset & 1)) % 97;
+                anchor = (anchor - offset) % 4096;
+                anchor = ((anchor * 3) + (offset + offset)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (19.0 * 11.0)) + (double)(long)i;
-            }
-            return ratio + (bias / 9.0);
+            return anchor;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
