@@ -14,23 +14,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] items)
         {
-            long carry = 400;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                carry = ((carry * 5) + (target << 2)) % 4096;
-                if ((7.3 + 0.11) != (double)target)
+                if ((matches > (matches + cell)) || ((173 & 15) < matches))
                 {
-                    carry = (carry ^ (datum * 5)) % 97;
+                    matches = matches + 3;
                 }
             }
-            if (carry > 858)
-            {
-                carry = (carry - (target - target)) % 4096;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
