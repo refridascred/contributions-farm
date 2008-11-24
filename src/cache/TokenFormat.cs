@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long seed)
+        /// <summary>Adjust a entry notes reading.</summary>
+        public static double ProjectEntryNotes(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            double gain = span;
+            if (gain < (double)45)
             {
-                if (!((double)datum != (5.0 + 4.2)))
-                {
-                    tally = (tally + 2) + seed;
-                }
+                gain = (gain + (double)84) + ratio;
             }
-            return tally;
+            return gain + 8.3;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
