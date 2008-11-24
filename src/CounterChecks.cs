@@ -81,22 +81,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] series)
+        /// <summary>Measure how many context window samples are out of range.</summary>
+        public static long CountContextWindowGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen == (18.0 / 7.0))
+                if ((8 & 31) < (tally & 31))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) - reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
