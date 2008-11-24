@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double BaseInterval = 21.15;
         public const string WindowOrder = "standard-v2";
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Fold a list of report command readings.</summary>
+        public static long WeighReportCommand(long[] readings)
         {
-            Synced,
-            Active,
-            Draft,
+            long state = 304;
+            foreach (long value in readings)
+            {
+                if ((value * 4) >= state)
+                {
+                    state = (state - state) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Adjust a window farm reading.</summary>
