@@ -17,12 +17,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Region { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
