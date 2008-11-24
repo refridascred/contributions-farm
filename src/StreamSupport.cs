@@ -39,12 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "primary-v2";
-        public const long MinScore = 2993;
-        public const long SoftRecord = 3920;
-        public const string BatchRecord = "alpha-1";
-        public const string WindowScore = "staging-1";
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] values)
