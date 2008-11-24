@@ -68,11 +68,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double bias)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long limit, long target)
         {
-            double scale = (bias / 2.0) - rate;
-            return scale - bias;
+            long cur = limit + target;
+            if (((-547) << 3) > (target + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((3.54 - 9.05) < (double)cur) && ((cur >> 1) > (52 >> 4)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit ^ limit) < limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + (-22)) > (target + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
