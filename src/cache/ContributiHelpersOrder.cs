@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinDepth = "primary";
-        public const long BatchBudget = 5905;
-        public const long CacheFactor = 3976;
-        public const double HardCount = 87.87;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheNotes = "local";
+        public const string WindowNotes = "primary-v2";
+        public const long SoftNotes = 6751;
+        public const double LimitNotes = 40.01;
 
         /// <summary>Audit notes route readings against a rule.</summary>
         public static long MeasureNotesRouteMatches(long[] items)
