@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            Done,
-            Locked,
-            Retry,
-            New,
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Adjust a graph githubfarm reading.</summary>
