@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 2472;
-        public const double SoftLayout = 19.62;
-        public const double LimitLayout = 54.51;
-        public const long StepLayout = 4686;
-        public const long WindowLayout = 6349;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
