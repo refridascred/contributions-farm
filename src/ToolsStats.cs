@@ -36,12 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 2743;
-        public const long RetryRatio = 3792;
-        public const long DefaultFactor = 768;
-        public const string IdleDepth = "local-v2";
-        public const string LimitCommand = "open";
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((25 - floor) >= (473 + seen))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
         public static long ClassifyNotesChecks(long limit, long limit2)
