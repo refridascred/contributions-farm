@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double ratio = (weight / 2.0) - offset;
-            return ratio - (offset / 7.0);
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the queue class values.</summary>
