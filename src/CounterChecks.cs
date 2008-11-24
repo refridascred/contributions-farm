@@ -20,15 +20,18 @@ namespace Common.Utilities
             return drift - (bias + span);
         }
 
-        /// <summary>Scale a report graph figure with a bias.</summary>
-        public static double SmoothReportGraph(double rate, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            double ratio = span;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                ratio = ratio + (double)(long)i;
+                if (!((5.2 + 7.0) != (double)cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            return ratio + rate;
+            return hits;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
