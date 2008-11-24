@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample >= (sample + sample)) || ((tally % 2) < (sample * 5))) && ((double)tally >= (6.9 - 1.1)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "local-v2";
+        public const long BaseEntry = 2935;
+        public const long BatchCount = 9409;
+        public const double LimitEntry = 33.57;
+        public const double HardDepth = 81.38;
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long IterateMetric(long limit)
