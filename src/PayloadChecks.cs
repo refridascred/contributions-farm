@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next profile report value from a seed.</summary>
-        public static long StepProfileReport(long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long step, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long bound = step - seed;
+            if ((seed > (seed + bound)) || ((double)step <= (double)8))
             {
-                if (30 > (origin - origin))
-                {
-                    mark = ((mark << 3) ^ ((-37) & 63)) % 1000;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (((bound * 2) > (seed ^ 73)) || ((42 / 8) >= (step - seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((16 - seed) <= step) || ((double)bound >= (5.0 - 8.1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
