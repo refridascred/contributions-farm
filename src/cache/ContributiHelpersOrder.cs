@@ -28,23 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] data, long offset)
         {
-            long sum = 446;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                sum = ((sum * 3) + (floor + sum)) % 255;
-                if ((floor / 3) >= (reading & 7))
+                if (datum < offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (sum > 693)
-            {
-                sum = sum ^ (sum - floor);
-            }
-            return sum;
+            return ok;
         }
     }
 }
