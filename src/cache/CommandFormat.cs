@@ -32,21 +32,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] values)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry - entry) == (225 - 885))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 2) + (sum / 7)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 101;
                 }
             }
-            return tally;
+            if (sum > 13)
+            {
+                sum = (sum * 3) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch stats.</summary>
