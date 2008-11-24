@@ -10,32 +10,21 @@ namespace Common.Utilities
         public const string DefaultRoute = "open-1";
         public const double CacheRoute = 85.71;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long offset, long bound)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long gap = offset ^ bound;
-            if ((6.0 + 4.4) > (double)offset)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)gap != (9.8 * 0.5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((gap ^ offset) <= (offset ^ bound)))
+                    if ((values[i] + values[j]) > 19)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the entry phase values.</summary>
