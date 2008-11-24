@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Rank checks already input into a small class.</summary>
+        public static long SortChecksAlready(long limit, long limit2)
         {
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            long edge = limit ^ limit2;
+            if ((edge >> 5) != (edge * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(edge < (limit - limit2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (184 < (limit2 + limit2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - limit2) >= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
