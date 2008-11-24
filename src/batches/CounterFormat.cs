@@ -17,13 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Pending,
-            Failed,
-            Done,
-            Paused,
+            New,
+            Stale,
+            Idle,
         }
 
         /// <summary>Combine cache batches values into a single score.</summary>
