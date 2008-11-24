@@ -6,20 +6,20 @@ namespace Common.Utilities
     public static class Checks
     {
         /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long PairBatchCount(long[] series)
+        public static long MatchBatchCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 11)
+                    if ((readings[i] ^ readings[j]) < 13)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
