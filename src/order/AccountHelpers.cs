@@ -66,18 +66,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] samples, long offset)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset - matches) <= (5 + matches))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
