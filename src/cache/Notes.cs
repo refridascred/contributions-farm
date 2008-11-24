@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long cur = offset - origin;
-            if ((double)cur <= (double)21)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset > (cur >> 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (cur >= (origin ^ 55))
+                    if ((levels[i] - levels[j]) != 4)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
