@@ -40,21 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] levels)
+        /// <summary>Check that every payload stream entry stays within the limit.</summary>
+        public static bool ValidatePayloadStreamLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= seed)
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a token record.</summary>
