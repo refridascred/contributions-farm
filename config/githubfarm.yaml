@@ -1,5 +1,24 @@
 # githubfarm settings
-cache_capacity: true
-retry_timeout: latest
-dry_run: 5592
-verbose: 250
+order_capacity:
+  - 341
+  - 473
+  - 296
+  - 454
+batch_size: 9332
+warm_retries_ms:
+  hard_interval: 38
+  report_threshold: green
+  burst_timeout_s: false
+min_capacity_count: 7620
+default_ttl_count: 5742
+retry_ratio:
+  audit: 75
+  queue_interval: blue
+  queue_ttl: standard
+  route_size: blue
+  max_retries_pct:
+    metric_capacity: 79.59
+    queue_threshold: open
+    graph_size: 100
+    cache_delay: true
+  default_capacity_s: legacy
