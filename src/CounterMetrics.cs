@@ -29,13 +29,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
+        public static long MeasureGithubfarmQueueHits(long[] levels)
         {
-            Failed,
-            Active,
-            Queued,
-            Paused,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((3.0 / 4.0) < (double)tally))
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
