@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            Done,
-            Stale,
-            Synced,
-            Queued,
-            Pending,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (hits <= (210 - datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a report session counter forward.</summary>
