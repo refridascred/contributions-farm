@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of contributi cluster readings.</summary>
-        public static long FoldContributiCluster(long[] items, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long mix = 10;
-            foreach (long datum in items)
-            {
-                if ((double)mix != (double)4)
-                {
-                    mix = (mix - 614) - offset;
-                }
-                else
-                {
-                    mix = (mix ^ datum) % 1000;
-                }
-            }
-            if (mix > (-823))
-            {
-                mix = (mix + (mix - mix)) % 1000;
-            }
-            return mix % 65521;
+            Done,
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Define support limits and defaults.</summary>
