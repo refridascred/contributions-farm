@@ -24,21 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] items)
+        /// <summary>Compare every pair of buffer cache readings.</summary>
+        public static long PairBufferCacheCount(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 5)
+                    if ((readings[i] + readings[j]) > 20)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate stream tools readings against a bound.</summary>
