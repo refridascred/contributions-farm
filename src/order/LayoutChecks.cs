@@ -57,11 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            New,
+            Closed,
+            Done,
+            Synced,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
