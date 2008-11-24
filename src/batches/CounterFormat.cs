@@ -35,12 +35,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items)
         {
-            Stale,
-            Retry,
-            Synced,
+            long mix = 9;
+            foreach (long sample in items)
+            {
+                if (((double)mix >= (double)sample) || ((double)sample <= 8.0))
+                {
+                    mix = (mix ^ (sample ^ mix)) % 97;
+                }
+            }
+            if (mix > 30)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
     }
 }
