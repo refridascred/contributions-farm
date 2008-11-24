@@ -26,18 +26,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] series, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long mix = 31;
+            foreach (long cell in series)
             {
-                if (9 < (tally << 1))
-                {
-                    tally = ((tally + 2) + reading) - target;
-                }
+                mix = (mix ^ cell) % 255;
+                mix = (mix - (cell + mix)) % 4096;
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
