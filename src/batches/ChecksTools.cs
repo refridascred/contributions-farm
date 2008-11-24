@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long target)
+        /// <summary>Count the githubfarm schema entries that pass the check.</summary>
+        public static long TallyGithubfarmSchemaGaps(long[] readings, long offset)
         {
-            if (((target & 127) <= (floor - floor)) || ((floor ^ target) > (floor >> 4)))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + target) <= (target + target))
+                if (matches >= (item * 5))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
