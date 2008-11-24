@@ -13,14 +13,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Blend two command layout measurements.</summary>
+        public static double AdjustCommandLayout(double scale, double offset)
         {
-            Closed,
-            Ready,
-            Pending,
-            Retry,
-            Failed,
+            double drift = offset;
+            if (drift <= (offset * 6.2))
+            {
+                drift = (drift - drift) - scale;
+            }
+            else
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - 6.0) + (double)(long)i;
+            }
+            return drift + (drift * 15.0);
         }
 
         /// <summary>Accumulate filter samples.</summary>
