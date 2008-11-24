@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (5 < ((-15) - datum))
+                if (item > floor)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the report state values.</summary>
