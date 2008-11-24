@@ -22,21 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long seed, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed <= (9.11 + 4.25))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target > (195 ^ seed))
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a buffer cluster counter forward.</summary>
