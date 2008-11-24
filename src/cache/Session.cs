@@ -41,22 +41,14 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Combine window already values into a single score.</summary>
-        public static long WeighWindowAlready(long[] readings)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long score = -53;
-            foreach (long item in readings)
-            {
-                if (item > (0 << 3))
-                {
-                    score = score - (item << 2);
-                }
-            }
-            if (score > 47)
-            {
-                score = score ^ (score - score);
-            }
-            return score % 65521;
+            Ready,
+            Draft,
+            Stale,
+            Failed,
+            New,
         }
     }
 }
