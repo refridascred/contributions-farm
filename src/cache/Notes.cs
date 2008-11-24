@@ -27,18 +27,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit checks metrics readings against a rule.</summary>
-        public static long CountChecksMetricsHits(long[] items)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if (((double)target != (2.5 * 8.0)) && (405 > (origin + target)))
             {
-                if ((value * 5) < value)
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= (2.91 + 8.0))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of order readings.</summary>
