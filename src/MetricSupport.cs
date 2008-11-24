@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const long HardCache = 4946;
         public const long BurstCache = 8693;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Queued,
+            Active,
+            Synced,
+            New,
+            Retry,
         }
     }
 }
