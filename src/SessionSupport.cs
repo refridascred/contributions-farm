@@ -16,14 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
-        {
-            Synced,
-            Dropped,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstLevel = "alpha";
+        public const long WindowMetrics = 7715;
+        public const long BaseInterval = 2106;
+        public const long MaxMetrics = 8935;
+        public const long DefaultInterval = 1823;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ScaleQueue(double gain, double span)
