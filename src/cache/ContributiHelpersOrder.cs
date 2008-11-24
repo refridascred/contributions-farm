@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine entry farm values into a single score.</summary>
-        public static long ScoreEntryFarm(long[] items, long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long result = 16;
-            foreach (long datum in items)
-            {
-                result = result - datum;
-                if ((74 << 3) > (result - offset))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public string Offset { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the report state values.</summary>
