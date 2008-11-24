@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Draft,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 820;
+        public const double LimitSpan = 27.4;
+        public const double SoftAccount = 54.77;
+        public const string StepAccount = "alpha-1";
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsMatches(long[] readings, long step)
