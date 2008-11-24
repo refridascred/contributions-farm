@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((seen & 127) > origin) || (((double)origin > (20.0 / 5.0)) || (42 > (origin - 4))))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
