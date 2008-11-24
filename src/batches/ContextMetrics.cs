@@ -51,19 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long step)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (step < ((long)i + (long)i))
-                {
-                    carry = (carry + (25 ^ carry)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
