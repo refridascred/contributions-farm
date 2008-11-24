@@ -1,16 +1,18 @@
 {
-  "base_threshold_ms": {
-    "burst_limit_ms": "blue",
-    "compress": {
-      "flush_retries_pct": true,
-      "metric_capacity": [486, 471, 80],
-      "cache_retries": 94.57,
-      "support_ratio": "stable"
+  "graph_depth": true,
+  "dry_run": 86.93,
+  "cache_capacity_ms": "local",
+  "idle_threshold": {
+    "dry_run": {
+      "poll_capacity_s": true,
+      "compress": "local",
+      "persist": 97.37
     },
-    "sync_ratio_pct": "edge",
-    "default_interval_s": false
+    "base_retries_ms": "local",
+    "base_retries": ["primary", "fallback", "standard"],
+    "cache_threshold": true,
+    "audit": 54.86
   },
-  "flush_threshold_count": "open",
-  "burst_capacity_s": false,
-  "persist": "fallback"
+  "strict": "staging",
+  "soft_capacity": "legacy"
 }
