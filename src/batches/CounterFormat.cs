@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double SoftAccount = 54.77;
         public const string StepAccount = "alpha-1";
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] readings, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = 8;
+            foreach (long cell in items)
             {
-                if (!((double)value > (double)0) && (((step % 100) > (value % 3)) && (matches > (value - value))))
+                if ((double)sum > 1.0)
                 {
-                    matches = matches + 3;
+                    sum = sum ^ (cell / 7);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Combine cache batches values into a single score.</summary>
