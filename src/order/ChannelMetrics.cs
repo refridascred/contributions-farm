@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "strict-v2";
-        public const long WindowCache = 2075;
-        public const double MaxLevel = 11.79;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string MaxOrder = "legacy-v2";
