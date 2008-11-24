@@ -24,19 +24,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long step)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((3 - 14) != (step + mark)))
-                {
-                    mark = ((mark << 3) ^ (mark & 15)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
