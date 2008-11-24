@@ -14,16 +14,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long TallyProfileEditorMatches(long[] items, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum * 5) + (sum + sum)) % 255;
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (9 < tally)
+                {
+                    tally = ((tally + 2) - reading) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the stats status values.</summary>
