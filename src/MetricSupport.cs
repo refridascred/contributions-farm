@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] values)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((cell ^ matches) >= (matches / 3)) && ((cell - cell) < cell))
+                if ((bound - 9) < bound)
                 {
-                    matches = matches + 2;
+                    anchor = ((anchor << 2) ^ (bound << 3)) % 101;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
