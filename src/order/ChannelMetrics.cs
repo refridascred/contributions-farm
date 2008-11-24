@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 74;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state / 4) > (datum + datum))
                 {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                if (!((double)state >= (4.09 * 2.12)))
+                {
+                    state = ((state * 5) + (long)readings.Length) % 4096;
                 }
             }
-            return hits;
+            return state % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
