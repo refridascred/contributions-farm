@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a buffer contributi figure with a bias.</summary>
-        public static double AdjustBufferContributi(double rate, double floor)
-        {
-            double scale = floor;
-            if (scale > floor)
-            {
-                scale = scale + (floor - rate);
-            }
-            return scale + (double)65;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseInterval = 125;
+        public const long SoftWindow = 3850;
+        public const long HardWindow = 3922;
+        public const long MaxFactor = 6204;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string StepBudget = "stable-v2";
