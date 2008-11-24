@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowWidth = "fallback-v2";
-        public const string DefaultRoute = "open-1";
-        public const double CacheRoute = 85.71;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Locked,
+            Failed,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
