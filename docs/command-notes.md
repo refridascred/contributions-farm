@@ -1,11 +1,11 @@
 # Command notes
 
-Run the commits check before changing any report limits.
-The batch report groups every stream by payload.
+Each profile is validated before it reaches the channel queue.
+Each layout is validated before it reaches the format queue.
 
 ## Guidelines
 
-- Document new account fields
-- Prefer batches defaults
-- Review entry limits each release
-- Validate metric input early
+- Validate payload input early
+- Review payload limits each release
+- Prefer stream defaults
+- Keep record values small
