@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 6657;
-        public const long SoftSize = 9084;
-        public const string WindowLevel = "local-v2";
+        /// <summary>Validate profile farm readings against a bound.</summary>
+        public static bool ValidateProfileFarmRange(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] series, long step)
