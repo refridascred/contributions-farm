@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const long CacheCount = 2241;
         public const long DefaultRecord = 3280;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            Retry,
-            Ready,
-            Idle,
-            Queued,
-            Synced,
+            long score = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)score == (2.4 * 17.0))
+                {
+                    score = score + (score & 31);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (score ^ (origin - score)) ^ (long)i2;
+                }
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
