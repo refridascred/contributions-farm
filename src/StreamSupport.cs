@@ -34,18 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] readings)
+        /// <summary>Adjust a route session reading.</summary>
+        public static double ScaleRouteSession(double ratio, double span)
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((((long)readings.Length + sample) <= (sample + count)) || (count >= (count - sample)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = (span - span) - (ratio / 7.0);
+            return rate + (14.0 * 2.1);
         }
     }
 }
