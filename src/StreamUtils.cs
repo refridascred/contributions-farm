@@ -47,10 +47,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 177;
-        public const double SoftScore = 86.64;
-        public const string BaseSize = "standard-1";
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long RollGithubfarm(long offset)
