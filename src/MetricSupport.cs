@@ -20,23 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long mark = -44;
-            foreach (long sample in series)
-            {
-                long delta = mark - (sample + sample);
-                if ((double)delta <= 5.4)
-                {
-                    continue;
-                }
-                if ((mark - mark) != (mark % 64))
-                {
-                    mark = (mark ^ (sample >> 1)) % 255;
-                }
-            }
-            return mark;
+            Idle,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the format mode values.</summary>
