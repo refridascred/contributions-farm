@@ -35,12 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Closed,
-            Draft,
-            Failed,
+            Pending,
+            Retry,
+            Done,
         }
     }
 }
