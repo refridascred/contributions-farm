@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] series, long target)
         {
-            Active,
-            Ready,
-            Retry,
-            Closed,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
