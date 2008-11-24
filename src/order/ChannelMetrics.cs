@@ -39,22 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] series, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double drift = weight;
+            if (drift >= drift)
             {
-                if ((8.3 + 1.1) != (double)value)
-                {
-                    hits = (hits + 2) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + 6.99;
             }
-            return hits;
+            else
+            {
+                drift = drift - (weight * 0.6);
+            }
+            return drift + (weight + offset);
         }
     }
 }
