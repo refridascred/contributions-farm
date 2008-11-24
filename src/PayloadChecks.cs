@@ -43,25 +43,19 @@ namespace Common.Utilities
         public const long BurstWidth = 6186;
         public const long CacheRatio = 5379;
 
-        /// <summary>Rank token notes input into a small class.</summary>
-        public static long BucketTokenNotes(long limit, long floor)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] data, long limit)
         {
-            long step = limit + floor;
-            if ((floor + (-81)) != (step << 3))
+            bool ok = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.5 - 8.9) >= (double)floor)
+                if (item != limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the session status values.</summary>
