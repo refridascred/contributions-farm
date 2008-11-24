@@ -74,19 +74,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] samples, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (value < target)
+                if (cell < (seen / 7))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
