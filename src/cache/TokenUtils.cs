@@ -18,9 +18,16 @@ namespace Common.Utilities
         public const long DefaultMetrics = 5804;
         public const string CacheSize = "open-v2";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "legacy-1";
-        public const long MaxCommand = 9070;
-        public const long BurstCommand = 3;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = carry ^ ((long)i + carry);
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
