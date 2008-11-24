@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] samples, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)datum <= (18.0 - 20.0))
                 {
-                    if ((items[i] - items[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Project the next editor value.</summary>
