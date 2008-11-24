@@ -53,11 +53,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 2809;
+        public const string BatchWidth = "strict-edge";
+        public const long LimitAccount = 3759;
     }
 }
