@@ -25,13 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Ready,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 5250;
+        public const long SoftNotes = 2163;
+        public const long WindowScore = 323;
+        public const double BatchScore = 26.15;
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
         public static long ClassifyNotesChecks(long limit, long limit2)
