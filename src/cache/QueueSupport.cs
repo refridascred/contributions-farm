@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] readings, long offset)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (weight / 2.0) - offset;
+            return ratio - (offset / 7.0);
         }
 
         /// <summary>Describe the queue class values.</summary>
