@@ -39,12 +39,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Done,
-            New,
-            Locked,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 75.75;
+        public const long BatchDepth = 4310;
+        public const long IdleSchema = 9521;
+        public const long WindowSchema = 3040;
     }
 }
