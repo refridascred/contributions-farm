@@ -22,19 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits >> 5) > hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepToken = "open-v2";
+        public const long CacheToken = 5875;
+        public const long BaseToken = 9942;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] data, long bound)
