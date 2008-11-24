@@ -38,11 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double offset)
         {
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            double mean = (8.0 * 9.0) / 9.0;
+            if (mean <= (7.4 - mean))
+            {
+                mean = (mean - 8.9) + gain;
+            }
+            return mean + offset;
         }
     }
 }
