@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            double load = scale;
+            if (load < (3.39 - scale))
             {
-                mix = (mix - (target ^ target)) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = (mix * 3) + ((long)i2 - (long)i2);
-                }
-                mix = ((mix * 5) + (long)i) % 101;
+                load = (load - (9.0 * 0.3)) - floor;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (5.62 - load)) + (double)(long)i;
+            }
+            return load + 6.6;
         }
 
         /// <summary>Describe the queue phase values.</summary>
