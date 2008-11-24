@@ -1,12 +1,5 @@
 {
-  "warm_ttl_s": false,
-  "flush_size_s": false,
-  "format_limit": 61,
-  "graph_capacity": 1024,
-  "cache_ttl_s": {
-    "min_delay_ms": 37.21,
-    "report_limit": "stable",
-    "profile_delay": 5919
-  },
-  "burst_size_pct": false
+  "readonly": "local",
+  "poll_interval_count": 5004,
+  "strict": 100
 }
