@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long MaxLevel = 1333;
         public const long BatchDepth = 437;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Check that every stats support entry stays within the limit.</summary>
+        public static bool ValidateStatsSupportRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (matches >= (matches + (-483)))
+                if (sample <= target)
                 {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
