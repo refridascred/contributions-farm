@@ -38,26 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] readings, long target)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long mix = -318;
-            foreach (long datum in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = (((mix << 3) ^ datum) % 255) - (long)i;
-                }
-                if (38 >= (target ^ mix))
-                {
-                    mix = (mix ^ (target + mix)) % 1000;
-                }
-                if ((double)datum > (5.22 * 15.0))
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
