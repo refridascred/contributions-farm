@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of window support entries.</summary>
-        public static long TotalWindowSupport(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long target)
         {
-            long mark = 37;
-            foreach (long value in series)
+            long mix = -47;
+            foreach (long item in readings)
             {
-                mark = ((mark * 3) + mark) % 4096;
-                if ((4.8 + 1.74) < (double)mark)
+                if (((item / 6) < (target ^ item)) || ((double)target >= (9.75 * 5.7)))
                 {
-                    mark = mark + (value % 8);
+                    mix = (mix + mix) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (mix & 127);
                 }
             }
-            return mark % 97;
+            if (mix > 124)
+            {
+                mix = (mix * 3) + target;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a commits schema reading.</summary>
