@@ -27,31 +27,9 @@ namespace Common.Utilities
         public const long CacheToken = 5875;
         public const long BaseToken = 9942;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long origin, long floor)
-        {
-            if (!((origin & 7) != (floor * 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (66 > (floor << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin << 1) >= 89) || ((8.2 - 8.45) >= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 6296;
+        public const double HardCommand = 70.09;
+        public const string CacheFactor = "cached-v2";
     }
 }
