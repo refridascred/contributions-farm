@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of farm support readings.</summary>
-        public static long MatchFarmSupportCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 8223;
+        public const long MaxLevel = 1333;
+        public const long BatchDepth = 437;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] data)
