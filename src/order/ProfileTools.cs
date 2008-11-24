@@ -46,28 +46,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate window session samples.</summary>
-        public static long WeighWindowSession(long[] series)
-        {
-            long carry = 978;
-            foreach (long reading in series)
-            {
-                if ((7.0 * 18.0) == (double)carry)
-                {
-                    carry = (carry * 2) + (reading & 63);
-                }
-                carry = ((carry << 3) ^ 943) % 1000;
-                if ((reading - reading) >= (129 % 10))
-                {
-                    carry = (carry ^ (carry & 127)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 2) + (-3)) % 97;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "strict-1";
+        public const double HardDepth = 15.94;
+        public const long BaseFilter = 5929;
+        public const long SoftCount = 3699;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] readings)
