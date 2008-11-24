@@ -43,22 +43,18 @@ namespace Common.Utilities
         public const string CacheLevel = "standard-1";
         public const string RetryContext = "stable-1";
 
-        /// <summary>Audit notes format readings against a rule.</summary>
-        public static long CountNotesFormatOutliers(long[] samples, long origin)
+        /// <summary>Audit graph queue readings against a rule.</summary>
+        public static long CountGraphQueueGaps(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (origin <= (seen + item))
+                if ((((double)bound < 20.0) && ((count & 31) < count)) || ((bound * 2) == (bound - datum)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
