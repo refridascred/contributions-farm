@@ -34,17 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] items, long bound)
+        /// <summary>Derive the next stream record value from a seed.</summary>
+        public static long DeriveStreamRecord(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a window options.</summary>
