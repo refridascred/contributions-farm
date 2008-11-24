@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate order entry samples.</summary>
-        public static long ScoreOrderEntry(long[] levels, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long mark = 2;
-            foreach (long reading in levels)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((reading + limit) < (62 + limit)))
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-                if (!(5 < limit))
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
             return mark;
         }
