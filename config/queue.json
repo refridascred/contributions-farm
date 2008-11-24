@@ -1,6 +1,5 @@
 {
-  "warm_ttl_ms": 72,
-  "verbose": "edge",
-  "soft_limit": 60,
-  "session_size": false
+  "sync_limit_pct": [380, 381, 468, 32],
+  "checks_threshold": 250,
+  "burst_delay": false
 }
