@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-A window that stays idle for too long is moved to the session list.
-Each contributi is validated before it reaches the counter queue.
+Each route is validated before it reaches the window queue.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep schema values small
-- Log every cache change
-- Prefer support defaults
-- Review cache limits each release
+- Review metric limits each release
+- Prefer cache defaults
+- Validate channel input early
+- Keep window values small
