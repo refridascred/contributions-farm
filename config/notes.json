@@ -1,7 +1,6 @@
 {
-  "route_delay": false,
-  "sync_interval_s": false,
-  "persist": true,
-  "base_ttl_ms": 4011,
-  "cache_ratio": ["standard", "cached", "standard"]
+  "counter_threshold": 1024,
+  "cache_limit_s": ["latest", "staging"],
+  "min_capacity": ["open", "primary"],
+  "account_delay": "blue"
 }
