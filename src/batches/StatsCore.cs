@@ -90,23 +90,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items, long target)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long sum = 148;
-            foreach (long entry in items)
-            {
-                if ((7.0 * 7.0) != (double)target)
-                {
-                    sum = ((sum * 2) + 9) ^ entry;
-                }
-                else
-                {
-                    sum = sum - (sum - sum);
-                }
-                sum = ((sum * 3) + (target + 19)) % 97;
-            }
-            return sum % 4096;
+            Paused,
+            Pending,
+            Draft,
         }
     }
 }
