@@ -1,17 +1,5 @@
 {
-  "graph_interval": {
-    "enabled": 66,
-    "graph_threshold": {
-      "report_capacity": 49,
-      "cache_interval_pct": 21.24,
-      "token_ttl": 983,
-      "poll_timeout": 9
-    },
-    "flush_limit": "fallback",
-    "contributi_capacity": 8431,
-    "session_ratio": [69, 172],
-    "min_threshold_s": "strict"
-  },
-  "dry_run": 8291,
-  "hard_retries": "stable"
+  "commits_limit": 8956,
+  "audit": 5069,
+  "poll_interval_count": "blue"
 }
