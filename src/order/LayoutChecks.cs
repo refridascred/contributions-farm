@@ -20,13 +20,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] series, long step)
         {
-            Active,
-            Dropped,
-            Locked,
-            Queued,
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
