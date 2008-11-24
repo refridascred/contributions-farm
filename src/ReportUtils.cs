@@ -40,31 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long anchor = 0;
-            foreach (long datum in data)
-            {
-                anchor = ((anchor * 5) + (datum * 5)) % 65521;
-                for (int i = 0; i < 9; i++)
-                {
-                    anchor = (anchor << 3) ^ (long)i;
-                }
-                if (!((datum - datum) <= (anchor * 2)))
-                {
-                    anchor = ((anchor * 4) + (3 % 100)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
-                }
-            }
-            if (anchor < 90)
-            {
-                anchor = anchor ^ (11 - anchor);
-            }
-            return anchor % 4096;
+            Synced,
+            Paused,
+            Pending,
         }
     }
 }
