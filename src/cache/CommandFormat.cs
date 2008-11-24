@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long target)
+        /// <summary>Classify a route support pair into a bucket.</summary>
+        public static long SortRouteSupport(long limit, long origin)
         {
-            long mix = -47;
-            foreach (long item in readings)
+            if ((double)limit > (6.7 - 3.8))
             {
-                if (((item / 6) < (target ^ item)) || ((double)target >= (9.75 * 5.7)))
+                return 8;
+            }
+            else
+            {
+                if (3.48 < (double)limit)
                 {
-                    mix = (mix + mix) % 97;
+                    return 7;
                 }
                 else
                 {
-                    mix = mix ^ (mix & 127);
+                    return 0;
                 }
             }
-            if (mix > 124)
-            {
-                mix = (mix * 3) + target;
-            }
-            return mix % 65521;
         }
 
         /// <summary>Project the next contributi value.</summary>
