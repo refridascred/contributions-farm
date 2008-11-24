@@ -28,12 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            Queued,
-            Dropped,
-            Done,
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
