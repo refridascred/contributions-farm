@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes schema value.</summary>
-        public static double AdjustNotesSchema(double scale, double bias)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double bias2 = scale - bias;
-            if (bias2 >= bias2)
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 - (double)82;
-            }
-            return bias2 + (double)1;
+            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Validate queue batches readings against a bound.</summary>
