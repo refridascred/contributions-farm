@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const double BatchDepth = 32.12;
         public const long BurstScore = 8799;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardProfile = 6322;
-        public const long LimitCount = 9629;
-        public const double WindowProfile = 75.63;
-        public const double IdleProfile = 26.44;
-        public const long WindowFactor = 9298;
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
         public static bool VerifyAlreadyGithubfarmRange(long[] samples, long step)
