@@ -20,19 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (reading != floor)
+                if ((seen - sample) >= seen)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Combine cache batches values into a single score.</summary>
