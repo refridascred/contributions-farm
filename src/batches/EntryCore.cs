@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double gain, double bias)
         {
-            Done,
-            Pending,
-            Active,
-            Locked,
+            double load = gain;
+            return (load - gain) + bias;
         }
 
         /// <summary>Define support limits and defaults.</summary>
