@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const string DefaultCount = "strict-1";
         public const double StepSupport = 49.22;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] series)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches + sample) > (matches + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
