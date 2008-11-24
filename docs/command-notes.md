@@ -1,12 +1,16 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The already report groups every session by graph.
-The command module keeps window values in sync with the queue cache.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each stream is validated before it reaches the profile queue.
+Keep metrics and profile names short and lowercase.
+
+A route that stays idle for too long is moved to the batches list.
+Use githubfarm settings to tune how often session data is refreshed.
+The queue module keeps route values in sync with the order cache.
 
 ## Guidelines
 
-- Log every layout change
-- Review window limits each release
-- Document new contributi fields
-- Validate already input early
+- Validate editor input early
+- Keep order values small
+- Prefer stats defaults
+- Document new editor fields
