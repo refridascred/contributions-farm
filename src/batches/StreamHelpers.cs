@@ -93,15 +93,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = 5;
-            foreach (long value in levels)
-            {
-                acc = (((acc * 4) + (acc + acc)) % 65521) ^ value;
-            }
-            return acc % 1000;
+            Failed,
+            Queued,
+            Paused,
+            Ready,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
