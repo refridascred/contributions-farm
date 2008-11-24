@@ -78,14 +78,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            Retry,
-            Paused,
-            Stale,
-            Failed,
-            Ready,
+            long mix = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mix >> 4) == (mix % 60))
+                {
+                    mix = (mix * 4) + (target % 8);
+                    mix = mix - (target - 598);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
