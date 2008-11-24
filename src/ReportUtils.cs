@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            double ratio = weight + (double)5;
-            if (ratio > (weight + weight))
-            {
-                ratio = ratio - (ratio + ratio);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)4) - (double)(long)i;
-            }
-            return ratio + bias;
+            Dropped,
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
