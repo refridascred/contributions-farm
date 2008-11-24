@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const long HardCache = 4946;
         public const long BurstCache = 8693;
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Queued,
-            Locked,
-            Synced,
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
