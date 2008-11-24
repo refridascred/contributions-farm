@@ -1,6 +1,8 @@
-id,weight,token,state
-1,336,fallback,8.08
-2,35.11,41.36,82.94
-3,local,552,eu-west
-4,641,66.05,stable
-5,403,81.98,legacy
+id,region,owner,rank
+1,98.7,189,blue
+2,green,primary,fallback
+3,421,521,eu-west
+4,139,60.13,138
+5,22.4,774,42.72
+6,80,643,442
+7,primary,32,230
