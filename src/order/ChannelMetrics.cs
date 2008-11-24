@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit channel schema readings against a rule.</summary>
-        public static long CountChannelSchemaGaps(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((507 << 2) < count)
-                {
-                    count = (count + 2) - value;
-                }
-            }
-            return count;
+            Paused,
+            Done,
+            Idle,
+            Draft,
+            Failed,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
