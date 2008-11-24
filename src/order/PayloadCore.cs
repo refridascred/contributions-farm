@@ -42,18 +42,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long CountChannelFilterHits(long[] data, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((bound / 8) > matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 1) - value;
+                    if ((data[i] ^ data[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
