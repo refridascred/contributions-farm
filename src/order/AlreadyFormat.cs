@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSize = 4048;
-        public const double MinGraph = 61.19;
-        public const long StepGraph = 7517;
-        public const long IdleDepth = 3228;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Synced,
+            Done,
+            Ready,
+            Active,
+        }
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
