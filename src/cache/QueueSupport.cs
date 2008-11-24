@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a record command value against two limits.</summary>
-        public static long RankRecordCommand(long target, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
-            if ((445 + (-27)) < offset)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-69) >> 1) == (target * 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target - offset) > (offset % 5)) && ((offset - target) <= (772 & 127)))
+                    if ((series[i] + series[j]) != 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target == (6.43 * 6.19))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
