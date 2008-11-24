@@ -33,22 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long acc = 5;
-            foreach (long value in series)
-            {
-                if ((acc + 414) > (value / 6))
-                {
-                    acc = acc - (acc - acc);
-                }
-                if ((0.35 + 4.0) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
