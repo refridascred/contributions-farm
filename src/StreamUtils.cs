@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] items)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum + matches) < matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
