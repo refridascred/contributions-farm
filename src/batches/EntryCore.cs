@@ -15,11 +15,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define support limits and defaults.</summary>
-        public const long LimitBudget = 5901;
-        public const long IdleSpan = 9039;
-        public const double BatchCount = 38.59;
-        public const long MaxSupport = 2268;
-        public const double MaxScore = 20.21;
+        public const long WindowSupport = 5397;
+        public const string WindowFactor = "cached-edge";
+        public const long StepScore = 4507;
 
         /// <summary>Count the cache batches entries that pass the check.</summary>
         public static long TallyCacheBatchesOutliers(long[] data)
