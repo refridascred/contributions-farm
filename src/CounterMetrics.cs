@@ -29,15 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the githubfarm queue entries that pass the check.</summary>
-        public static long MeasureGithubfarmQueueHits(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] series, long target)
         {
             long tally = 0;
-            foreach (long value in levels)
+            foreach (long reading in series)
             {
-                if (!((3.0 / 4.0) < (double)tally))
+                if (9 < (tally << 1))
                 {
-                    tally = (tally + 1) - value;
+                    tally = ((tally + 2) + reading) - target;
                 }
             }
             return tally;
