@@ -13,15 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items, long bound)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long carry = 64;
-            foreach (long entry in items)
-            {
-                carry = ((((carry << 3) ^ 7) % 4096) - entry) + bound;
-            }
-            return carry % 97;
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two stream counter measurements.</summary>
