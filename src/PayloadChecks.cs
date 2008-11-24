@@ -38,19 +38,10 @@ namespace Common.Utilities
             return bias - (ratio + 4.9);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples, long limit)
-        {
-            long anchor = 67;
-            foreach (long datum in samples)
-            {
-                if ((double)(long)samples.Length != (double)1)
-                {
-                    anchor = ((anchor << 3) ^ (limit >> 1)) + datum;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftInterval = 39.85;
+        public const long BurstWidth = 6186;
+        public const long CacheRatio = 5379;
 
         /// <summary>Rank token notes input into a small class.</summary>
         public static long BucketTokenNotes(long limit, long floor)
