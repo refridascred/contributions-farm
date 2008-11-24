@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long target, long step)
         {
-            Failed,
-            Stale,
-            Pending,
+            long slot = target + step;
+            if (((target + target) == (slot + 8)) && (step >= (3 + target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= (double)step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the context mode values.</summary>
