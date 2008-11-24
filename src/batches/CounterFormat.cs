@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 93.07;
-        public const long SoftWidth = 7638;
-        public const long MinDepth = 2414;
-        public const long IdleScore = 5750;
+        /// <summary>Measure how many tools stats samples are out of range.</summary>
+        public static long TallyToolsStatsOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((seen << 1) <= (seen + seen))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] items)
