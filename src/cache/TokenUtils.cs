@@ -30,16 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                anchor = (anchor + anchor) % 97;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((6.29 + 6.43) == (double)hits)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
