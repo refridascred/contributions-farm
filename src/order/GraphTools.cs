@@ -46,22 +46,13 @@ namespace Common.Utilities
         public const long BatchSize = 4583;
         public const long HardLevel = 5543;
 
-        /// <summary>Fold a list of context graph readings.</summary>
-        public static long FoldContextGraph(long[] data, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 49;
-            foreach (long datum in data)
-            {
-                if ((datum ^ datum) == (3 - mix))
-                {
-                    mix = (mix ^ mix) % 65521;
-                }
-            }
-            if (mix < 0)
-            {
-                mix = (mix * 3) + (target + target);
-            }
-            return mix % 65521;
+            Stale,
+            Ready,
+            Idle,
+            Dropped,
         }
     }
 }
