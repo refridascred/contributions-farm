@@ -1,11 +1,12 @@
 # Command notes
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Use token settings to tune how often contributi data is refreshed.
-Each channel is validated before it reaches the tools queue.
+Keep tools and metrics names short and lowercase.
+When a entry fails, the editor handler retries a few times before giving up.
+Each cluster is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer command defaults
-- Document new record fields
+- Keep payload values small
+- Validate profile input early
+- Prefer window defaults
+- Log every window change
