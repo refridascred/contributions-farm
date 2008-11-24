@@ -67,39 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload tools pair into a bucket.</summary>
-        public static long RankPayloadTools(long step, long origin)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long prev = step ^ origin;
-            if (((5.4 - 5.25) > (double)step) || ((prev - step) <= origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((prev & 15) <= (8 >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step ^ 51) == (step + (-6))) && ((origin + origin) == (0 - step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + step) > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Rank context input into a small class.</summary>
