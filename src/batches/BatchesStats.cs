@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] values)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] series, long step)
         {
-            long state = 4;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (!((13.0 - 9.5) == (double)state))
+                if ((((5.9 * 8.52) >= (double)reading) && ((matches * 4) >= (matches + 2))) || (matches < (step - reading)))
                 {
-                    state = (state << 2) ^ state;
+                    matches = matches + 2;
                 }
-                if ((state + cell) > (state % 2))
+                else
                 {
-                    state = (state << 2) ^ (state >> 5);
+                    matches = matches - 1;
                 }
             }
-            if (state > 494)
-            {
-                state = (state + (state + state)) % 101;
-            }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Hold a cluster record.</summary>
