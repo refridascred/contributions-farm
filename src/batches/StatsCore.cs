@@ -53,21 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
+            long state = 898;
+            foreach (long reading in values)
             {
-                anchor = ((anchor * 4) + (step * 4)) % 255;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = (((anchor * 2) + ((-4) >> 3)) % 255) - (long)i2;
-                }
-                anchor = anchor - step;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                state = (state ^ (reading * 3)) % 65521;
             }
-            return anchor;
+            if (state < 94)
+            {
+                state = (state << 2) ^ (bound + state);
+            }
+            return state % 97;
         }
 
         /// <summary>Accumulate report samples.</summary>
