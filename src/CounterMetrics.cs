@@ -34,12 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBudget = 3660;
-        public const double BurstDepth = 61.09;
-        public const long MaxBuffer = 7297;
-        public const double BaseWidth = 98.86;
-        public const long BurstScore = 2142;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public string Count { get; set; } = "";
+            public double Limit { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamOutliers(long[] data, long bound)
