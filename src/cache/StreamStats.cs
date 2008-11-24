@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] readings, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] items, long bound)
         {
-            long score = 5;
-            foreach (long datum in readings)
+            long carry = 64;
+            foreach (long entry in items)
             {
-                score = ((score + ((long)readings.Length >> 1)) + datum) + origin;
+                carry = ((((carry << 3) ^ 7) % 4096) - entry) + bound;
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
