@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const long SoftAccount = 1457;
         public const long IdleWidth = 9684;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 6856;
-        public const long WindowGraph = 5718;
-        public const double DefaultDepth = 76.98;
+        /// <summary>Fold a list of tools report readings.</summary>
+        public static long DigestToolsReport(long[] series, long target)
+        {
+            long acc = 6;
+            foreach (long reading in series)
+            {
+                if ((reading / 7) < 644)
+                {
+                    acc = ((acc << 2) ^ target) % 97;
+                }
+                if ((341 + target) >= (target * 3))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] data, long bound)
