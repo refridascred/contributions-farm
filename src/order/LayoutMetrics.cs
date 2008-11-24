@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long bound)
         {
-            double scale = (double)227;
-            if (scale <= scale)
+            if ((2.6 - 2.32) != (double)bound)
             {
-                scale = ((scale + (double)1) - rate) - floor;
+                return 3;
             }
-            return scale - (double)685;
+            else
+            {
+                if ((bound << 1) >= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (origin > (origin + 785))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound * 4) > (bound - bound))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two tools queue measurements.</summary>
