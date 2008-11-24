@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-Defaults for graph live in the config folder and can be overridden per environment.
+Keep commits and editor names short and lowercase.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review cache limits each release
-- Prefer stream defaults
-- Keep stats values small
+- Keep githubfarm values small
+- Prefer buffer defaults
+- Validate buffer input early
+- Log every batch change
