@@ -12,22 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] data)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long acc = 9;
+            foreach (long datum in data)
             {
-                if ((offset & 63) == (offset * 2))
+                if ((acc * 5) > (acc - acc))
                 {
-                    acc = ((acc << 2) ^ (offset - acc)) % 65521;
-                    acc = (acc + (offset + offset)) % 4096;
+                    acc = ((acc << 2) ^ (datum + datum)) % 255;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
+                else
                 {
-                    acc = ((acc ^ (offset - acc)) % 65521) ^ (long)i2;
+                    acc = (acc * 4) + (datum ^ datum);
                 }
-                acc = ((acc * 2) + (long)i) % 101;
             }
             return acc;
         }
