@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            double mean = floor;
-            return (mean + (mean / 5.0)) + scale;
+            double rate2 = rate;
+            if (rate2 <= 4.8)
+            {
+                rate2 = (rate2 + (double)107) - span;
+            }
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - (rate2 - rate)) + (double)(long)i;
+            }
+            return rate2 + 3.07;
         }
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
