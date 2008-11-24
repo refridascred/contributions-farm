@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long bound2)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] readings, long limit)
         {
-            long step = bound - bound2;
-            if ((double)bound2 == (7.0 + 2.8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step > bound2)
+                if ((readings[i] <= limit) && ((readings[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound > (double)bound2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound >= (6.0 / 6.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
