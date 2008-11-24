@@ -44,12 +44,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] samples, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!((count << 3) != (origin - count)))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
