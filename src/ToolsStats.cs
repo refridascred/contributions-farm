@@ -89,22 +89,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((datum + matches) < matches)
+                if ((value + tally) < (tally << 3))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many support commits samples are out of range.</summary>
