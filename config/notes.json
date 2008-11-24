@@ -1,5 +1,14 @@
 {
-  "readonly": "local",
-  "poll_interval_count": 5004,
-  "strict": 100
+  "strict": {
+    "cache_timeout_count": false,
+    "persist": 61.99,
+    "readonly": [454, 74, 261],
+    "commits_window": 53.77,
+    "format_delay": 9789
+  },
+  "readonly": "eu-west",
+  "warm_timeout_count": ["legacy", "blue", "staging", "blue"],
+  "max_delay_pct": [66, 151, 112, 273],
+  "graph_interval": "stable",
+  "batch_capacity_pct": [212, 134]
 }
