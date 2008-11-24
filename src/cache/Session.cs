@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string WindowDepth = "fallback-1";
-        public const long CacheBudget = 4292;
-        public const double BurstCounter = 53.45;
-        public const string BaseRatio = "standard-1";
-        public const double BatchScore = 12.54;
+        /// <summary>Find the first report checks entry that matches the target.</summary>
+        public static long LocateReportChecksIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double bias, double floor)
