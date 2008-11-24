@@ -19,15 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double bias, double bias2)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double scale = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale + bias) + (double)(long)i) + bias2;
-            }
-            return scale + bias;
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
