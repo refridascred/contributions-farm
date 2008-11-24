@@ -68,15 +68,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double rate, double span)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] series, long seed)
         {
-            double gain = 0.2;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                gain = ((gain - (double)(long)i) + rate) + span;
+                if ((datum & 1) <= datum)
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return gain + (double)424;
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
