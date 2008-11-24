@@ -20,10 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 5348;
-        public const long BaseSpan = 8314;
-        public const long MaxTools = 6951;
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double ratio, double span)
+        {
+            double load = (17.0 + span) + (double)4;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (ratio - ratio)) + (double)(long)i;
+            }
+            return load + (double)494;
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long FindPayloadIndex(long[] readings, long step)
