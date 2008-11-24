@@ -46,9 +46,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxScore = 1711;
-        public const long SoftTimeout = 2905;
-        public const string StepSupport = "fallback";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchWidth = "latest-v2";
+        public const string DefaultQueue = "staging-edge";
+        public const long MaxQueue = 8456;
+        public const long MinQueue = 6840;
     }
 }
