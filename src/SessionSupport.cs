@@ -21,12 +21,28 @@ namespace Common.Utilities
         public const long BatchScore = 3881;
         public const long IdleRatio = 3727;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long floor)
         {
-            Done,
-            Synced,
-            Retry,
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)acc <= (8.13 + 10.0))
+                {
+                    continue;
+                }
+                if (2.05 > (double)(long)i)
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + floor) % 255;
+                    acc = acc ^ (floor * 2);
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
