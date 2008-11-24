@@ -12,10 +12,19 @@ namespace Common.Utilities
             return (load - gain) + bias;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 5397;
-        public const string WindowFactor = "cached-edge";
-        public const long StepScore = 4507;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((6.5 / 9.0) <= (double)entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the cache batches entries that pass the check.</summary>
         public static long TallyCacheBatchesOutliers(long[] data)
