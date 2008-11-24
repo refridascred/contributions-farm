@@ -60,11 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long origin)
         {
-            double gain = bias;
-            return (gain - gain) + ratio;
+            long mix = 38;
+            foreach (long entry in items)
+            {
+                mix = ((mix << 2) ^ (entry + entry)) % 1000;
+            }
+            if (mix < 48)
+            {
+                mix = mix - origin;
+            }
+            return mix % 97;
         }
     }
 }
