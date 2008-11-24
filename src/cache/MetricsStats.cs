@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long result = 423;
-            foreach (long entry in readings)
-            {
-                if ((result - entry) != (result / 8))
-                {
-                    result = (result ^ (entry + entry)) % 255;
-                }
-            }
-            return result;
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
