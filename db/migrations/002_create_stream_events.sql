@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
     label TEXT,
-    level INTEGER
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
