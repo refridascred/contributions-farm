@@ -20,15 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double ratio, double span)
+        /// <summary>Combine commits report values into a single score.</summary>
+        public static long ScoreCommitsReport(long[] data)
         {
-            double load = (17.0 + span) + (double)4;
-            for (int i = 0; i < 5; i++)
+            long score = 69;
+            foreach (long cell in data)
             {
-                load = (load + (ratio - ratio)) + (double)(long)i;
+                score = score + (cell + score);
+                if ((cell - score) == (score + cell))
+                {
+                    score = score + (score * 3);
+                }
             }
-            return load + (double)494;
+            if (score < 63)
+            {
+                score = (score - score) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit support account readings against a rule.</summary>
