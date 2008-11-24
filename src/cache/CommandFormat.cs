@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultFactor = 4893;
-        public const double RetryBatch = 92.75;
-        public const long SoftBatch = 6426;
-        public const long StepSpan = 5894;
+        /// <summary>Measure how many tools entry samples are out of range.</summary>
+        public static long MeasureToolsEntryGaps(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)step > (5.57 * 2.2))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] items)
