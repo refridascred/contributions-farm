@@ -20,15 +20,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings, long limit)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] series, long step)
         {
-            long sum = 2;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                sum = (((sum << 2) ^ (limit % 5)) % 4096) ^ datum;
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the token kind values.</summary>
