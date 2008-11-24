@@ -61,22 +61,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long MeasureBatchesProfileOutliers(long[] series, long target)
+        /// <summary>Fold a list of counter profile readings.</summary>
+        public static long TallyCounterProfile(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long mark = 88;
+            foreach (long sample in items)
             {
-                if (target <= (cell * 5))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark + (mark + mark)) % 101) + sample;
+                mark = (mark * 5) + (floor + (-5));
             }
-            return tally;
+            return mark;
         }
     }
 }
