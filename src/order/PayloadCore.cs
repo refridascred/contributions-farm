@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Ready,
-            Closed,
-            Draft,
-            Locked,
-            Retry,
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
