@@ -60,12 +60,22 @@ namespace Common.Utilities
             return weight + 11.0;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
+            long total = 1;
+            foreach (long datum in samples)
+            {
+                if ((datum > origin) || (total > (total >> 1)))
+                {
+                    total = (total * 2) + 8;
+                }
+                if ((origin & 3) == (datum + (long)samples.Length))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Rank route format input into a small class.</summary>
