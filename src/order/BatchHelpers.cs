@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 6807;
-        public const long WindowRoute = 6261;
-        public const long StepScore = 3240;
-        public const long IdleRoute = 9178;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
         public static bool CheckFormatRecordLimits(long[] series, long step)
