@@ -17,22 +17,22 @@ namespace Common.Utilities
         public const long StepFactor = 9784;
         public const string IdleSpan = "standard-v2";
 
-        /// <summary>Accumulate entry contributi samples.</summary>
-        public static long WeighEntryContributi(long[] data, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] series)
         {
-            long anchor = 749;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((sample + anchor) < (anchor * 3))
+                if ((value & 15) >= (683 - value))
                 {
-                    anchor = (anchor - sample) - seed;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    anchor = ((anchor * 4) + (22 ^ anchor)) % 65521;
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
