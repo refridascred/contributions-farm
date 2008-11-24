@@ -19,16 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Project the next notes schema value.</summary>
+        public static double AdjustNotesSchema(double scale, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            double bias2 = scale - bias;
+            if (bias2 >= bias2)
             {
-                mix = (mix + (origin << 1)) % 255;
-                mix = ((mix * 4) + (long)i) % 97;
+                bias2 = bias2 - bias;
             }
-            return mix;
+            else
+            {
+                bias2 = bias2 - (double)82;
+            }
+            return bias2 + (double)1;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
