@@ -19,14 +19,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Rank stream payload input into a small class.</summary>
+        public static long RankStreamPayload(long offset, long floor)
         {
-            Pending,
-            Dropped,
-            Done,
-            Retry,
-            Stale,
+            if ((12.0 * 8.0) < (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)floor == (0.9 + 2.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((207 >> 3) >= offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the farm entry series from a seed.</summary>
