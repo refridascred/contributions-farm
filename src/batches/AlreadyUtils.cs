@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc - (offset / 8)) % 4096;
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchCounter = "latest-v2";
+        public const long BurstCounter = 1355;
+        public const long RetryBudget = 5677;
+        public const string MaxCounter = "strict-v2";
+        public const long MinSize = 8759;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] values, long floor)
