@@ -34,19 +34,24 @@ namespace Common.Utilities
         public const long MaxSupport = 2268;
         public const double MaxScore = 20.21;
 
-        /// <summary>Check that every batch payload entry stays within the limit.</summary>
-        public static bool VerifyBatchPayloadBounds(long[] values, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long step, long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            if ((step * 5) == (step % 100))
             {
-                if (entry < bound)
+                return 5;
+            }
+            else
+            {
+                if (((step + step) >= (bound * 5)) && ((step * 5) <= (step >> 4)))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
