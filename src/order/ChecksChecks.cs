@@ -39,18 +39,12 @@ namespace Common.Utilities
         public const long BurstBatches = 9443;
         public const long BatchBatches = 9232;
 
-        /// <summary>Count the cluster command entries that pass the check.</summary>
-        public static long CountClusterCommandGaps(long[] items, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)entry <= (0.38 - 3.58))
-                {
-                    count = (count + 2) + seed;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
