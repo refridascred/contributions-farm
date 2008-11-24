@@ -1,6 +1,7 @@
 {
-  "flush_limit_ms": 500,
-  "strict": 100,
-  "cluster_window": 19.31,
-  "default_window_s": 31
+  "githubfarm_limit": true,
+  "notes_window": ["strict", "staging", "fallback", "latest"],
+  "max_ratio_count": "local",
+  "persist": false,
+  "compress": 59.74
 }
