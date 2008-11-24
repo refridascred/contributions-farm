@@ -11,11 +11,11 @@ namespace Common.Utilities
         public const long HardWindow = 3922;
         public const long MaxFactor = 6204;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepBudget = "stable-v2";
-        public const long DefaultLayout = 9437;
-        public const double SoftLayout = 55.15;
-        public const double BatchLayout = 0.43;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 6058;
+        public const long DefaultSession = 6866;
+        public const long SoftSession = 2915;
+        public const long CacheTimeout = 9352;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] values)
