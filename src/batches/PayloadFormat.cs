@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long AuditSchemaBatchesMatches(long[] levels)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mix = -229;
+            foreach (long reading in items)
             {
-                if ((double)reading > (5.1 * 0.02))
+                if ((mix & 3) <= (reading + reading))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = ((mix * 2) + mix) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
