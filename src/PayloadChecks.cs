@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long step, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] series, long bound)
         {
-            long bound = step - seed;
-            if ((seed > (seed + bound)) || ((double)step <= (double)8))
+            long score = 847;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound * 2) > (seed ^ 73)) || ((42 / 8) >= (step - seed)))
+                if ((score % 100) == (value << 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((16 - seed) <= step) || ((double)bound >= (5.0 - 8.1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    score = score - bound;
                 }
             }
+            if (score > 35)
+            {
+                score = (score + (bound << 2)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
