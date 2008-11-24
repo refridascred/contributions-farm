@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 19.29;
-        public const double BurstWidth = 75.77;
-        public const long SoftScore = 4360;
-        public const long MinBatch = 2946;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
