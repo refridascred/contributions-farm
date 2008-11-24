@@ -12,20 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] items, long offset)
-        {
-            long result = 50;
-            foreach (long entry in items)
-            {
-                result = ((result - (result + result)) % 1000) + entry;
-            }
-            if (result > 491)
-            {
-                result = (result + offset) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchScore = 8.6;
+        public const long LimitSchema = 9594;
+        public const long DefaultScore = 2442;
+        public const long BaseSchema = 1423;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphHits(long[] series)
