@@ -70,31 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long limit)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            if (offset < (offset ^ 425))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.5 + 3.58) <= (double)offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset - offset) != (limit ^ offset)) || ((double)limit < (3.6 * 10.0)))
+                    if ((items[i] - items[j]) == 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
