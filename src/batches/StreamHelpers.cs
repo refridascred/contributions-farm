@@ -75,10 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 7325;
-        public const string BurstProfile = "stable-v2";
-        public const long WindowProfile = 6947;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchLevel = 68.63;
+        public const string RetryWidth = "standard-edge";
+        public const double BatchCluster = 36.76;
+        public const string RetryCluster = "standard";
 
         /// <summary>Check that every notes counter entry stays within the limit.</summary>
         public static bool VerifyNotesCounterRange(long[] series, long step)
