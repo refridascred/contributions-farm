@@ -47,14 +47,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 990;
+        public const double BurstLevel = 8.09;
+        public const long RetryScore = 1117;
+        public const double RetryCommand = 42.86;
+        public const string BurstCommand = "staging-v2";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] readings)
