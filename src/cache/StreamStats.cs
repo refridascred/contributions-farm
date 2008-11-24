@@ -32,17 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix ^ mix) % 65521;
-                mix = (mix - (origin << 2)) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
