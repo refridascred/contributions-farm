@@ -22,19 +22,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] levels, long floor)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry != floor)
+                if ((offset & 63) == (offset * 2))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc << 2) ^ (offset - acc)) % 65521;
+                    acc = (acc + (offset + offset)) % 4096;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc ^ (offset - acc)) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
