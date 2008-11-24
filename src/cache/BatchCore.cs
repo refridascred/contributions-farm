@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 43.1;
-        public const long DefaultSchema = 4356;
-        public const double DefaultCount = 75.45;
-        public const long SoftCount = 9638;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftDepth = 40.1;
+        public const long BaseBatch = 3671;
+        public const long BurstBatch = 7031;
+        public const long IdleBatch = 2329;
 
         /// <summary>Measure how many account command samples are out of range.</summary>
         public static long AuditAccountCommandGaps(long[] values, long bound)
