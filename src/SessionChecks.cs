@@ -50,18 +50,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] values)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((hits + 15) > hits) || ((hits - item) >= hits))
+                state = state + floor;
+                if ((double)(long)i != (12.0 + 2.1))
                 {
-                    hits = hits + 1;
+                    state = (state << 2) ^ ((long)i - 536);
                 }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
     }
 }
