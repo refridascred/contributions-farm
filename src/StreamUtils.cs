@@ -78,22 +78,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] readings, long origin)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item + origin) <= (origin / 3))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
