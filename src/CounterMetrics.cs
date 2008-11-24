@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double DefaultFormat = 46.45;
         public const string MaxDepth = "latest";
 
-        /// <summary>Accumulate queue editor samples.</summary>
-        public static long CombineQueueEditor(long[] values, long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] series, long limit)
         {
-            long carry = 4;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((double)value != (7.9 / 7.0))
+                if (datum != limit)
                 {
-                    carry = carry + (65 + floor);
-                }
-                else
-                {
-                    carry = carry ^ carry;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
