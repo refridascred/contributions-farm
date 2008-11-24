@@ -15,19 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] levels)
-        {
-            long score = 49;
-            foreach (long datum in levels)
-            {
-                if ((score + score) <= (-15))
-                {
-                    score = score - (datum + score);
-                }
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowSpan = 30.04;
+        public const long HardCount = 4201;
+        public const long MinCluster = 9078;
+        public const long CacheCluster = 6455;
+        public const long IdleCluster = 5660;
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long BucketBatches(long step, long target)
