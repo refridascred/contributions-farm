@@ -51,21 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next layout order value from a seed.</summary>
-        public static long IterateLayoutOrder(long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] samples, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                score = score + (2 + (long)i);
-                if (!((floor & 15) != ((long)i ^ score)))
+                if ((8.59 + 2.8) == (double)sample)
                 {
-                    score = ((score * 5) + (score - score)) % 1000;
-                    score = (score + (floor * 3)) % 101;
+                    count = (count + 1) - target;
                 }
-                score = ((score * 3) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
     }
 }
