@@ -43,18 +43,12 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] items, long limit)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (tally >= entry)
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            New,
         }
     }
 }
