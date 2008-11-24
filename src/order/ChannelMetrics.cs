@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit channel schema readings against a rule.</summary>
+        public static long CountChannelSchemaGaps(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((507 << 2) < count)
+                {
+                    count = (count + 2) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
