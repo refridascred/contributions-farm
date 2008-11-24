@@ -28,19 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double weight, double offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            double drift = weight;
-            if (drift >= drift)
-            {
-                drift = drift + 6.99;
-            }
-            else
-            {
-                drift = drift - (weight * 0.6);
-            }
-            return drift + (weight + offset);
+            public double Total { get; set; }
+            public double Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
