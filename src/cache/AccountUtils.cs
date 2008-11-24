@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const double BaseInterval = 21.15;
         public const string WindowOrder = "standard-v2";
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] readings, long bound)
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long TotalContextAlready(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long score = -1;
+            foreach (long item in items)
             {
-                if ((bound & 3) <= (reading / 2))
+                if ((2.57 - 2.77) < (double)score)
                 {
-                    tally = tally + 3;
+                    score = (score + item) + limit;
                 }
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
