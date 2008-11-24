@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of format graph entries.</summary>
-        public static long DigestFormatGraph(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings, long floor)
         {
-            long mix = -504;
-            foreach (long value in samples)
+            long result = 13;
+            foreach (long datum in readings)
             {
-                if (((-2) % 12) < (mix + value))
+                for (int i = 0; i < 2; i++)
                 {
-                    mix = (mix + 48) % 65521;
+                    result = (result + result) ^ (long)i;
+                    result = ((result << 3) ^ (floor + datum)) % 97;
                 }
+                result = ((result * 5) + (floor + 611)) % 255;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
