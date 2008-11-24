@@ -45,22 +45,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] series)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(item <= (431 ^ seen)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = seen + 1;
+                    total = ((total - (-435)) % 1000) + (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 7; i3++)
                 {
-                    seen = seen - 1;
+                    total = ((total - ((long)i << 1)) % 4096) ^ (long)i3;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
