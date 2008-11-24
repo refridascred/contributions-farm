@@ -25,15 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double gain, double floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double rate = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = ((rate - (8.3 * 7.24)) + (double)(long)i) - gain;
-            }
-            return rate + (rate * 15.0);
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Match up context samples.</summary>
