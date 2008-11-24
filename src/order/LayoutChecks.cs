@@ -68,22 +68,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaGaps(long[] levels)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((tally + tally) >= tally)
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Retry,
         }
     }
 }
