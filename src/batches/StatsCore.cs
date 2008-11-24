@@ -53,19 +53,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics account entry stays within the limit.</summary>
-        public static bool ValidateMetricsAccountLimits(long[] values, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long target, long floor)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if ((target + target) >= (1 + (-68)))
             {
-                if (value >= step)
+                return 1;
+            }
+            else
+            {
+                if (((5.02 * 19.0) > (double)target) || ((10.0 * 8.7) <= (double)target))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 3) != (floor ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target % 5) > (37 & 63))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Project the next profile report value.</summary>
