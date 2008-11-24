@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] readings)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] values)
         {
-            long mark = 8;
-            foreach (long entry in readings)
+            long state = 4;
+            foreach (long cell in values)
             {
-                mark = ((mark << 2) ^ mark) - entry;
+                if (!((13.0 - 9.5) == (double)state))
+                {
+                    state = (state << 2) ^ state;
+                }
+                if ((state + cell) > (state % 2))
+                {
+                    state = (state << 2) ^ (state >> 5);
+                }
             }
-            return mark % 65521;
+            if (state > 494)
+            {
+                state = (state + (state + state)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the context mode values.</summary>
