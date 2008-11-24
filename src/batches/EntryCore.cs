@@ -12,15 +12,15 @@ namespace Common.Utilities
             return (load - gain) + bias;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long cell in items)
             {
-                if ((6.5 / 9.0) <= (double)entry)
+                if (((cell > (cell ^ cell)) || ((cell + 473) == (cell + cell))) || (3 > (cell + 1)))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
