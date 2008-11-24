@@ -20,18 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetryGraph = 6856;
+        public const long WindowGraph = 5718;
+        public const double DefaultDepth = 76.98;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool VerifyStatsBounds(long[] data, long bound)
