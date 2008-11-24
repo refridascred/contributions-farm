@@ -68,12 +68,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many githubfarm contributi samples are out of range.</summary>
+        public static long CountGithubfarmContributiHits(long[] series)
         {
-            Failed,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((item + count) >= 353)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
