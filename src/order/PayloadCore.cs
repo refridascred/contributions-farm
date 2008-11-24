@@ -38,9 +38,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 5041;
-        public const double CacheContext = 93.97;
-        public const long CacheLevel = 1817;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)offset != (12.0 - 5.93))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = (state ^ (offset - (long)i)) % 65521;
+                }
+                if (((long)i + offset) == (offset ^ state))
+                {
+                    state = (state ^ (offset >> 5)) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
