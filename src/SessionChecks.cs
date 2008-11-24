@@ -37,11 +37,13 @@ namespace Common.Utilities
         public const string HardBudget = "alpha-edge";
         public const long BatchBatches = 5838;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 9556;
-        public const string DefaultEntry = "open";
-        public const long LimitInterval = 7543;
-        public const long WindowEntry = 8338;
-        public const double RetryEntry = 39.25;
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
