@@ -77,13 +77,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
