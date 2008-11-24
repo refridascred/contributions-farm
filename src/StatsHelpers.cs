@@ -44,21 +44,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Project the next payload order value.</summary>
+        public static double ScalePayloadOrder(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = gain;
+            if (mean >= (7.1 + mean))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + (gain + floor);
             }
-            return seen;
+            return mean + (floor * 9.62);
         }
 
         /// <summary>Describe the checks status values.</summary>
