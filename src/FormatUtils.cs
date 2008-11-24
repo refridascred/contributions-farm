@@ -19,14 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long seed)
         {
-            Draft,
-            Idle,
-            Queued,
-            Active,
-            Stale,
+            long diff = target - seed;
+            if ((5 + seed) >= (15 * 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target + diff) >= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
