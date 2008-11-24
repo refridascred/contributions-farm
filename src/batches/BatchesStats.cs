@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long floor)
-        {
-            if (((floor - limit) >= (floor * 5)) || ((double)floor >= 7.58))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((3.69 * 7.2) > (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinScore = 8676;
+        public const long BatchQueue = 1091;
+        public const long StepScore = 8241;
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
