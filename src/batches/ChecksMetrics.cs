@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (590 <= (offset - offset))
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 4) < (offset - seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
