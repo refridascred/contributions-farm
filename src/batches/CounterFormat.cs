@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long target)
         {
-            New,
-            Stale,
-            Idle,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine cache batches values into a single score.</summary>
