@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string HardFactor = "cached";
-        public const long RetryContributi = 1735;
-        public const double BurstLevel = 19.78;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double bias, double span)
+        {
+            double drift = bias;
+            if (drift >= 9.5)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift - (double)11;
+            }
+            return drift - (bias + span);
+        }
 
         /// <summary>Scale a report graph figure with a bias.</summary>
         public static double SmoothReportGraph(double rate, double span)
