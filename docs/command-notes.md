@@ -1,10 +1,12 @@
 # Command notes
 
-Keep layout and editor names short and lowercase.
-A buffer that stays idle for too long is moved to the buffer list.
+Keep editor and cluster names short and lowercase.
+Keep tools and channel names short and lowercase.
+Each profile is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Keep layout values small
-- Review session limits each release
-- Validate stream input early
+- Review editor limits each release
+- Keep order values small
+- Prefer filter defaults
+- Document new editor fields
