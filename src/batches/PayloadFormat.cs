@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepRatio = 6673;
-        public const long CacheSpan = 1173;
-        public const double SoftMetrics = 15.38;
-        public const long BurstMetrics = 6688;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            New,
+            Queued,
+            Active,
+            Failed,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long IdleSize = 6200;
