@@ -41,22 +41,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long anchor = 836;
-            foreach (long entry in series)
-            {
-                if ((double)entry < 2.71)
-                {
-                    anchor = (anchor - (2 & 63)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ entry;
-                }
-            }
-            return anchor % 4096;
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
