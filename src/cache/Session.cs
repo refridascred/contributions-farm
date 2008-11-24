@@ -42,10 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRatio = 344;
-        public const long LimitRecord = 130;
-        public const double DefaultRecord = 8.38;
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Combine order cluster values into a single score.</summary>
         public static long ScoreOrderCluster(long[] levels, long origin)
