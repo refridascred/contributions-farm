@@ -26,12 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long offset, long step)
         {
-            Active,
-            Queued,
-            Draft,
+            if ((offset << 1) >= (step - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)step <= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
