@@ -1,5 +1,5 @@
 {
-  "burst_ttl_ms": 30,
-  "persist": "open",
-  "cache_ttl_pct": "open"
+  "already_ttl": 100,
+  "base_delay": ["open", "eu-west"],
+  "hard_limit_ms": "latest"
 }
