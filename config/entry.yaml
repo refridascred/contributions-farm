@@ -1,4 +1,10 @@
 # entry settings
-base_delay_pct: true
-soft_window: fallback
-hard_timeout: fallback
+idle_limit:
+  - 132
+  - 7
+  - 428
+strict: false
+retry_interval_pct: local
+default_timeout_count: open
+payload_retries: 23.27
+soft_threshold_count: green
