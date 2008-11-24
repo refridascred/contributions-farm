@@ -95,9 +95,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleFactor = 75.08;
-        public const double CacheTimeout = 19.16;
-        public const string MaxCluster = "cached-edge";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)offset >= (2.7 + 2.9))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
     }
 }
