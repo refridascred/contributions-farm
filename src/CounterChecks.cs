@@ -64,21 +64,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
-        public static long OverlapBufferQueueCount(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Active,
+            Dropped,
+            Paused,
         }
     }
 }
