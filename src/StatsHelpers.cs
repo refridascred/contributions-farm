@@ -52,18 +52,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsGaps(long[] levels)
+        /// <summary>Classify a record tools pair into a bucket.</summary>
+        public static long ClassifyRecordTools(long bound, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            if (!((seed ^ 712) != (8 + bound)))
             {
-                if ((246 ^ 24) != (matches >> 3))
+                return 3;
+            }
+            else
+            {
+                if (((bound / 5) <= seed) || (bound >= (bound & 1)))
                 {
-                    matches = (matches + 1) + reading;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
