@@ -1,6 +1,11 @@
-id,token,label
-1,70.67,84.32
-2,438,3.77
-3,legacy,fallback
-4,staging,305
-5,fallback,open
+id,level,weight,owner
+1,local,758,294
+2,242,57.39,fallback
+3,784,686,755
+4,32.75,759,5.31
+5,staging,840,100
+6,cached,2.09,316
+7,legacy,82.36,eu-west
+8,green,73,896
+9,24.48,57.73,eu-west
+10,382,green,54.89
