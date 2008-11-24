@@ -51,21 +51,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            New,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Combine command format values into a single score.</summary>
