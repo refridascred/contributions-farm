@@ -51,15 +51,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine command format values into a single score.</summary>
-        public static long TotalCommandFormat(long[] data)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long bound)
         {
-            long anchor = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (reading << 1)) % 65521;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
