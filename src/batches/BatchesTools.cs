@@ -27,9 +27,22 @@ namespace Common.Utilities
         public const long CacheToken = 5875;
         public const long BaseToken = 9942;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseWidth = 6319;
-        public const string BatchSpan = "cached-1";
-        public const long StepSession = 4375;
+        /// <summary>Audit layout report readings against a rule.</summary>
+        public static long MeasureLayoutReportMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (count <= (datum + datum))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
