@@ -26,12 +26,24 @@ namespace Common.Utilities
         public const long DefaultCount = 4964;
         public const long MaxTimeout = 5063;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 22.49;
-        public const string BurstCache = "alpha";
-        public const string DefaultSpan = "strict-v2";
-        public const long SoftCache = 8681;
-        public const string DefaultCache = "legacy-v2";
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double bias, double floor)
+        {
+            double scale = (1.81 * 20.0) + (double)4;
+            if (scale >= (double)451)
+            {
+                scale = ((scale - (double)7) + bias) - floor;
+            }
+            else
+            {
+                scale = scale + (scale / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (15.0 * 9.0)) + (double)(long)i;
+            }
+            return scale + 15.0;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstLevel = 4205;
