@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long step)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            if (step >= (step + 447))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 63) != (932 - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Combine tools values into a single score.</summary>
