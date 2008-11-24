@@ -50,14 +50,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long limit, long offset)
         {
-            Draft,
-            Failed,
-            Synced,
-            Retry,
-            Paused,
+            long diff = limit ^ offset;
+            if (((limit % 2) < offset) || ((double)diff < (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((11.0 - 19.0) < (0.2 - 8.55)) && (offset > 26))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Blend two graph measurements.</summary>
