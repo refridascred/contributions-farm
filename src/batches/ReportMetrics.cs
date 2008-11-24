@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many stats payload samples are out of range.</summary>
-        public static long CountStatsPayloadGaps(long[] levels, long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double load = (ratio + 5.5) / 6.0;
+            if (load >= span)
             {
-                if ((entry <= seen) || !((seen + entry) >= (7 - seen)))
-                {
-                    seen = (seen + 1) + floor;
-                }
+                load = load - (span + ratio);
             }
-            return seen;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (8.66 + 3.3)) - (double)(long)i;
+            }
+            return load + (load - span);
         }
 
         /// <summary>Digest a series of context entries.</summary>
