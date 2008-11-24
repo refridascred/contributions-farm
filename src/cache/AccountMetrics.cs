@@ -30,22 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit command entry readings against a rule.</summary>
-        public static long TallyCommandEntryMatches(long[] items)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LookupAccountIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry > (entry + entry)) || (entry >= (entry - entry)))
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
