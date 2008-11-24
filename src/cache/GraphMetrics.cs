@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a checks entry reading.</summary>
-        public static double AdjustChecksEntry(double ratio, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
-            double bias = span;
-            if (bias <= (double)(-62))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                bias = bias + bias;
+                if (!((double)cell != (9.5 / 7.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                bias = bias + ratio;
-            }
-            return bias + 0.1;
+            return matches;
         }
 
         /// <summary>Describe the context phase values.</summary>
