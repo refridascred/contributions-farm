@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] readings, long origin)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long offset)
         {
-            long sum = 26;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (!(((16.0 * 13.0) < (double)origin) || ((sum - origin) > sum)))
+                if (reading < offset)
                 {
-                    sum = (sum - (831 + 315)) % 101;
-                }
-                sum = ((sum << 2) ^ (origin % 5)) % 1000;
-                if (9.52 <= (double)origin)
-                {
-                    sum = (sum * 3) + origin;
-                }
-                if ((cell - cell) < (origin & 3))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
