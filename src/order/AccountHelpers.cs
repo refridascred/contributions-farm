@@ -13,28 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long mix = 87;
+            foreach (long sample in items)
             {
-                if ((0.87 + 5.6) >= (double)seed)
-                {
-                    break;
-                }
-                else
-                {
-                    score = score - (seed * 4);
-                }
-                score = (score << 2) ^ (long)i;
-                if ((score * 2) <= score)
-                {
-                    score = (score - (score >> 3)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 65521;
+                mix = (mix - (mix * 2)) ^ sample;
             }
-            return score;
+            if (mix < (-301))
+            {
+                mix = ((mix * 2) + (mix & 127)) % 1000;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
