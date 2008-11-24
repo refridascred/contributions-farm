@@ -67,12 +67,18 @@ namespace Common.Utilities
             return scale + (9.6 * 4.54);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 5806;
-        public const double StepContext = 63.35;
-        public const long SoftContext = 3844;
-        public const long StepSize = 5302;
-        public const string RetryContext = "cached-edge";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
