@@ -35,19 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double span)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            double gain2 = (double)224 / 7.0;
-            if (gain2 > (double)(-74))
-            {
-                gain2 = (gain2 + (gain / 5.0)) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 + (gain2 + 8.6)) - (double)(long)i;
-            }
-            return gain2 - (gain2 * 2.43);
+            Pending,
+            New,
+            Queued,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
