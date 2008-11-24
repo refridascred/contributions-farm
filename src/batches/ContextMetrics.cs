@@ -19,12 +19,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 6852;
-        public const long CacheFormat = 4034;
-        public const long StepRatio = 4965;
-        public const long DefaultCount = 4964;
-        public const long MaxTimeout = 5063;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] levels, long offset)
+        {
+            long acc = 1;
+            foreach (long entry in levels)
+            {
+                if (entry > (entry + (long)levels.Length))
+                {
+                    acc = (acc * 2) + offset;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double bias, double floor)
