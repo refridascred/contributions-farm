@@ -55,19 +55,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] values, long floor)
         {
-            double mean = (double)(64 + 16);
-            if (mean < (double)8)
+            long state = 316;
+            foreach (long item in values)
             {
-                mean = mean + (mean * 16.0);
+                state = ((state << 3) ^ item) - floor;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (floor + bias)) + (double)(long)i;
-            }
-            return mean - (floor * 5.99);
+            return state;
         }
     }
 }
