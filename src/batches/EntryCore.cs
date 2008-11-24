@@ -34,24 +34,11 @@ namespace Common.Utilities
         public const long MaxSupport = 2268;
         public const double MaxScore = 20.21;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double scale, double span)
         {
-            long anchor = 5;
-            foreach (long value in readings)
-            {
-                if ((5.31 >= (double)anchor) || ((-78) < (19 + value)))
-                {
-                    anchor = anchor + 3;
-                }
-                else
-                {
-                    long diff = (value % 16) % 8;
-                    anchor = (anchor + (diff & 255)) % 4096;
-                }
-                anchor = (anchor - (anchor ^ anchor)) % 97;
-            }
-            return anchor;
+            double drift = scale;
+            return drift - span;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
