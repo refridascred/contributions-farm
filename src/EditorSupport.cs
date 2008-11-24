@@ -50,11 +50,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 51.66;
-        public const long BurstCommits = 2140;
-        public const double LimitLevel = 75.72;
-        public const long IdleScore = 9060;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values)
+        {
+            long carry = 303;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (double)carry)
+                {
+                    carry = (carry << 2) ^ (cell + cell);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelHits(long[] readings)
