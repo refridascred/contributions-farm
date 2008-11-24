@@ -22,18 +22,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] values, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((floor2 ^ floor2) < floor)
             {
-                if ((seen << 3) != (seen % 60))
+                return 5;
+            }
+            else
+            {
+                if ((2.0 + 1.58) <= (double)floor)
                 {
-                    seen = ((seen + 3) ^ item) + origin;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) > floor2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
