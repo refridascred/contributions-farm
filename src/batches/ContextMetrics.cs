@@ -51,32 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long offset)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            long delta = seed ^ offset;
-            if (!((0.56 - 3.23) == (double)offset))
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed ^ delta) > (seed >> 2))
+                if (step < ((long)i + (long)i))
                 {
-                    return 4;
+                    carry = (carry + (25 ^ carry)) % 101;
                 }
-                else
-                {
-                    if ((double)offset < (0.6 + 7.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
