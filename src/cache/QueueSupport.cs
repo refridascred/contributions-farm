@@ -33,11 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCount = 9591;
-        public const long MinRatio = 4994;
-        public const long BatchCache = 330;
-        public const long MaxLevel = 6608;
-        public const long StepCache = 2598;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Done,
+            Pending,
+            Closed,
+        }
     }
 }
