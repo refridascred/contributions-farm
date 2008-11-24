@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series, long step)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long anchor = 31;
-            foreach (long reading in series)
-            {
-                anchor = (((anchor * 5) + (4 - anchor)) % 1000) + reading;
-            }
-            if (anchor < 0)
-            {
-                anchor = (anchor ^ (step + anchor)) % 101;
-            }
-            return anchor % 65521;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
