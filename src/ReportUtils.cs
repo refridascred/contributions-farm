@@ -26,24 +26,16 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long StepMetrics(long offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long result = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((seed ^ 4) < (seed - seed))
-                {
-                    mix = (mix - (712 * 5)) % 4096;
-                    mix = (mix + (seed & 63)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (26 % 97);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                result = ((result << 3) ^ offset) % 255;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
