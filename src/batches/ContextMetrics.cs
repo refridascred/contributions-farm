@@ -48,19 +48,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] items, long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (reading >= floor)
+                if ((((origin & 255) == (origin + hits)) && (hits > (37 >> 1))) && !((double)hits > (0.1 - 13.0)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) + item;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
