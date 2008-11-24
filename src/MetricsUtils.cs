@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate already counter readings against a bound.</summary>
-        public static bool CheckAlreadyCounterLimits(long[] samples, long floor)
+        /// <summary>Measure how many cluster farm samples are out of range.</summary>
+        public static long TallyClusterFarmHits(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (datum < floor)
+                if ((6.0 / 7.0) > (double)step)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Project the next cluster value.</summary>
