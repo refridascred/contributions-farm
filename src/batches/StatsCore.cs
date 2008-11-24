@@ -25,14 +25,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long step)
         {
-            Pending,
-            Ready,
-            Done,
-            Locked,
-            Paused,
+            long edge = limit + step;
+            if (!((limit + limit) != (86 + edge)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge << 2) > edge)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((step + limit) > 1) && ((step ^ limit) != (limit << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
