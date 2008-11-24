@@ -26,19 +26,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long offset)
+        /// <summary>Fold a list of graph commits readings.</summary>
+        public static long TotalGraphCommits(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long result = 595;
+            foreach (long entry in values)
             {
-                if (reading >= offset)
+                if (!((2.0 + 0.54) > (double)entry))
                 {
-                    ready = false;
-                    break;
+                    result = (result << 3) ^ (result >> 3);
+                    result = result + (result << 3);
                 }
+                result = (result * 4) + (long)values.Length;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Measure how many batch window samples are out of range.</summary>
