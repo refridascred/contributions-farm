@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string DefaultRoute = "open-1";
         public const double CacheRoute = 85.71;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsMatches(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)step <= (3.6 - 17.0)) && ((step + datum) < hits))
                 {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the entry phase values.</summary>
