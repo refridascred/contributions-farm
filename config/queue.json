@@ -1,5 +1,12 @@
 {
-  "batch_ratio_s": 2839,
-  "idle_retries_s": true,
-  "poll_size_ms": "blue"
+  "sync_depth_pct": "green",
+  "channel_window": "eu-west",
+  "idle_retries_count": {
+    "flush_ttl": 7636,
+    "flush_retries_ms": [366, 391, 330],
+    "session_limit": ["green", "open"],
+    "strict": 5368,
+    "max_ttl_count": [447, 37],
+    "base_ttl_pct": [237, 93, 8, 227]
+  }
 }
