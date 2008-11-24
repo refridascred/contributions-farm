@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "primary-v2";
+        public const long MinScore = 2993;
+        public const long SoftRecord = 3920;
+        public const string BatchRecord = "alpha-1";
+        public const string WindowScore = "staging-1";
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
