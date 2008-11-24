@@ -47,19 +47,16 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double gain, double floor)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long target)
         {
-            double load = floor + (double)50;
-            if (load > (double)1)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                load = (load + floor) - gain;
+                result = (result + (result & 127)) % 65521;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)85) + (double)(long)i;
-            }
-            return load + (floor + floor);
+            return result;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
