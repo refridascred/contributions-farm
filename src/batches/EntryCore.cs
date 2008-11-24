@@ -64,19 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] samples, long target)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double offset)
         {
-            long mix = 866;
-            foreach (long entry in samples)
+            double drift = rate;
+            if (drift > (drift / 7.0))
             {
-                mix = ((mix + (target & 1)) % 101) + entry;
+                drift = (drift - (rate + drift)) - offset;
             }
-            if (mix > 6)
-            {
-                mix = (mix << 3) ^ (mix / 3);
-            }
-            return mix;
+            return drift + (double)88;
         }
     }
 }
