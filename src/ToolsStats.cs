@@ -12,17 +12,20 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] values, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                anchor = anchor - (long)i;
+                if (!((anchor >> 1) > anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ ((long)i % 5);
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
