@@ -55,12 +55,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Idle,
-            Pending,
-            Closed,
+            Queued,
+            Ready,
+            Paused,
+            Stale,
+            Synced,
         }
     }
 }
