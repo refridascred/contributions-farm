@@ -27,14 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] readings, long limit)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Failed,
-            Active,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
