@@ -44,15 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterMatches(long[] samples)
         {
-            long sum = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((double)(-4) == (double)tally)
+                {
+                    tally = (tally + 3) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the filter level values.</summary>
