@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            double ratio = 9.84 * 7.9;
+            if (ratio <= offset)
+            {
+                ratio = ratio - 1.0;
+            }
+            else
+            {
+                ratio = ratio - (double)40;
+            }
+            return ratio + (weight + offset);
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
