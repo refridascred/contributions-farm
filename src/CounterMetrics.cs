@@ -34,13 +34,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long seed, long bound)
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long edge = seed + bound;
+            if ((seed - edge) != (2 << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-32) >= (edge << 1)) && ((edge + bound) <= (edge / 9)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0.94 / 8.0) != (double)edge)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound - bound) <= edge)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
