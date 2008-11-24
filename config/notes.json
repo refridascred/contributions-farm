@@ -1,5 +1,11 @@
 {
-  "idle_interval": 250,
-  "retry_limit_ms": "strict",
-  "retry_size_s": "cached"
+  "burst_delay_ms": "cached",
+  "enabled": 95.95,
+  "default_threshold_ms": {
+    "poll_capacity_ms": 53,
+    "poll_ratio": [356, 438, 144, 245],
+    "githubfarm_depth": [391, 180, 197],
+    "default_window": false,
+    "strict": 36.5
+  }
 }
