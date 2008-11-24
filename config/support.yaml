@@ -1,9 +1,20 @@
 # support settings
-enabled: green
-base_interval_pct: primary
-cache_retries_s:
-  - strict
-  - eu-west
-  - green
-  - blue
-audit: blue
+retry_depth_s:
+  compress:
+    base_ttl_ms: false
+    contributi_limit:
+      - blue
+      - green
+    entry_retries: 0.65
+    persist: 9320
+  min_ratio_ms: standard
+  stats_capacity:
+    default_depth_ms: 9
+    token_capacity: 5783
+    compress: false
+  strict: edge
+  base_limit_ms: open
+retry_timeout_s: true
+readonly: 30
+githubfarm_capacity: true
+max_ratio: edge
