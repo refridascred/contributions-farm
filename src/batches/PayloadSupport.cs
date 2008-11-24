@@ -13,18 +13,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] values, long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (hits >= ((-6) * 4))
-                {
-                    hits = ((hits + 2) ^ reading) + seed;
-                }
-            }
-            return hits;
+            Closed,
+            Ready,
+            Pending,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a commits header.</summary>
