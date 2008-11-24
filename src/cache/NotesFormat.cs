@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Dropped,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCommits = 2858;
+        public const long MinCommits = 1180;
+        public const long DefaultBudget = 5065;
+        public const double DefaultCommits = 91.95;
+        public const long BatchRatio = 4377;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricOutliers(long[] readings, long target)
