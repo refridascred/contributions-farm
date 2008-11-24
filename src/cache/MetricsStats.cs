@@ -49,10 +49,12 @@ namespace Common.Utilities
         public const long StepWidth = 2159;
         public const long MaxWidth = 4162;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 1822;
-        public const string DefaultToken = "strict";
-        public const string CacheToken = "latest-edge";
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long AuditMetricsMatches(long[] samples, long offset)
