@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long MaxLevel = 1333;
         public const long BatchDepth = 437;
 
-        /// <summary>Check that every stats support entry stays within the limit.</summary>
-        public static bool ValidateStatsSupportRange(long[] samples, long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Active,
+            Idle,
+            Done,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
