@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] levels, long floor)
         {
-            long acc = 6;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((value - value) >= acc)
+                if (item < floor)
                 {
-                    acc = (acc + (acc % 60)) % 4096;
+                    found = false;
+                    break;
                 }
-                acc = ((acc * 2) + (acc + acc)) % 255;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
