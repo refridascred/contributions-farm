@@ -53,15 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer payload entries.</summary>
-        public static long TallyBufferPayload(long[] levels)
-        {
-            long score = 0;
-            foreach (long sample in levels)
-            {
-                score = (score + (sample - (-6))) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 4308;
+        public const double BaseCluster = 63.63;
+        public const double LimitCluster = 35.53;
+        public const long BatchCluster = 4052;
     }
 }
