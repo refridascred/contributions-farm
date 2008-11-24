@@ -10,22 +10,13 @@ namespace Common.Utilities
         public const long HardCount = 1148;
         public const long IdleFormat = 7464;
 
-        /// <summary>Measure how many command checks samples are out of range.</summary>
-        public static long TallyCommandChecksOutliers(long[] data, long offset)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)seen < (8.84 - 8.0))
-                {
-                    seen = ((seen + 3) - reading) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
