@@ -23,11 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long anchor = 6;
+            foreach (long datum in levels)
+            {
+                if (offset <= anchor)
+                {
+                    anchor = ((anchor * 5) + (offset + 561)) + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
