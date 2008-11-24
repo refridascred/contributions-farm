@@ -1,14 +1,13 @@
 # githubfarm settings
-verbose: true
-audit:
-  - 231
-  - 114
-  - 196
-  - 66
-hard_ttl_ms: 9508
-dry_run: true
-min_interval:
-  batch_size: blue
-  batch_threshold: local
-  sync_ttl: 77
-idle_ttl_s: edge
+batches_interval: 250
+dry_run:
+  - 328
+  - 315
+soft_timeout: true
+flush_retries:
+  verbose: green
+  default_retries_s: true
+  profile_delay: 1.79
+  warm_depth_ms: 75
+  compress: staging
+tools_ratio: eu-west
