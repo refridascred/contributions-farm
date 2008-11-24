@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark - (4 + mark)) % 255;
-                if ((double)mark >= (3.0 * 19.0))
-                {
-                    mark = (mark ^ (-83)) % 1000;
-                    mark = ((mark * 5) + (-34)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 3439;
+        public const string MinFilter = "latest";
+        public const long BurstCount = 8944;
+        public const long StepFilter = 8162;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string StepToken = "open-v2";
