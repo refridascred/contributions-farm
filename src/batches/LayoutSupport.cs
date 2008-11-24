@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double gain = floor;
-            if (gain > (ratio + 20.0))
-            {
-                gain = gain + (floor - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + 8.0) + (double)(long)i;
-            }
-            return gain + 6.7;
+            Pending,
+            Retry,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the context class values.</summary>
