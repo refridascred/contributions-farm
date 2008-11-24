@@ -1,26 +1,16 @@
 # support settings
-sync_ttl_s: primary
-retry_size: true
-editor_size:
-  - cached
-  - local
-cache_depth:
-  - 350
-  - 12
-farm_threshold:
-  idle_limit: 3141
-  cluster_timeout: 62.23
-  poll_retries: 4182
-  strict:
-    poll_size: 2.21
-    default_ratio_ms: blue
-    readonly: true
-    payload_depth: 30
-    warm_threshold_s: blue
-  default_interval_s: 1024
-  flush_retries_count:
-    - 270
-    - 81
-    - 420
-    - 490
-idle_ttl_count: true
+route_limit:
+  - 17
+  - 419
+  - 104
+  - 181
+min_delay:
+  compress: 12.08
+  poll_retries: fallback
+  max_interval_ms: strict
+  hard_ratio: cached
+  poll_interval_count: 88.6
+  cache_delay_ms: true
+sync_capacity_s: 20
+min_timeout_s: 7131
+commits_capacity: 7629
