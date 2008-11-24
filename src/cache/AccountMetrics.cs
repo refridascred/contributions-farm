@@ -63,14 +63,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long target)
         {
-            Draft,
-            Closed,
-            Retry,
-            Synced,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
