@@ -1,13 +1,7 @@
 # githubfarm settings
-batches_interval: 250
-dry_run:
-  - 328
-  - 315
-soft_timeout: true
-flush_retries:
-  verbose: green
-  default_retries_s: true
-  profile_delay: 1.79
-  warm_depth_ms: 75
-  compress: staging
-tools_ratio: eu-west
+token_retries: eu-west
+retry_window_s: strict
+readonly: cached
+report_window: 500
+idle_retries_s: stable
+hard_interval: staging
