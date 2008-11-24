@@ -1,24 +1,9 @@
 # githubfarm settings
-default_size_pct:
-  commits_ttl: 79
-  batch_retries: 3846
-  idle_delay: 84
-  order_capacity: 6558
-  default_interval_ms: 86
-  idle_window:
-    warm_threshold_pct: true
-    min_size_pct: 100
-    command_ratio: false
-    strict:
-      - standard
-      - edge
-      - legacy
-      - staging
-queue_threshold: 1024
-idle_size:
-  audit: 40
-  idle_ttl: 69.13
-  token_limit: staging
-  enabled: true
-  idle_threshold_ms: stable
-  warm_interval_ms: 70.31
+base_retries_ms: 63
+token_ratio: 8213
+hard_interval_s: 58.72
+hard_capacity_pct:
+  retry_threshold_ms: primary
+  retry_limit_count: 52
+  flush_retries_count: true
+warm_ttl_s: fallback
