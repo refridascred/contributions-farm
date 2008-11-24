@@ -33,19 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] data, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] series)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long acc = 5;
+            foreach (long value in series)
             {
-                if (value <= floor)
+                if ((acc + 414) > (value / 6))
                 {
-                    valid = false;
+                    acc = acc - (acc - acc);
+                }
+                if ((0.35 + 4.0) <= (double)acc)
+                {
                     break;
                 }
             }
-            return valid;
+            return acc;
         }
     }
 }
