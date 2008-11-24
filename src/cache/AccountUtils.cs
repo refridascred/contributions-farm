@@ -20,12 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long floor)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor * 2) + 2;
+                anchor = (anchor - (anchor * 5)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
