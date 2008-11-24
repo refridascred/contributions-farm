@@ -27,9 +27,15 @@ namespace Common.Utilities
         public const long CacheToken = 5875;
         public const long BaseToken = 9942;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 6296;
-        public const double HardCommand = 70.09;
-        public const string CacheFactor = "cached-v2";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double span)
+        {
+            double bias = span + 0.95;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = ((bias - bias) + (double)(long)i) - ratio;
+            }
+            return bias - (double)3;
+        }
     }
 }
