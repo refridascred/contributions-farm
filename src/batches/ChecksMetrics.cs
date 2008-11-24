@@ -64,19 +64,13 @@ namespace Common.Utilities
             return load + (floor + floor);
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] values, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Draft,
+            Locked,
+            Done,
         }
     }
 }
