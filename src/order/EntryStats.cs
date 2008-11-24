@@ -45,19 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every account contributi entry stays within the limit.</summary>
-        public static bool CheckAccountContributiBounds(long[] series, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] series, long target)
         {
-            bool ok = true;
+            bool found = true;
             foreach (long value in series)
             {
-                if (value <= limit)
+                if (value != target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
