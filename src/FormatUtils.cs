@@ -14,18 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = gain / 3.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(((double)matches == (2.37 * 9.0)) && ((matches / 3) == (matches + matches))))
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                load = (load + (offset * 13.0)) + (double)(long)i;
             }
-            return matches;
+            return load - (double)735;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
