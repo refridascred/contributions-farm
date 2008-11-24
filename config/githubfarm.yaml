@@ -1,19 +1,19 @@
 # githubfarm settings
-base_ttl: standard
-metrics_limit: edge
-max_interval: latest
-githubfarm_delay:
-  hard_ratio_ms: 60
-  compress:
-    verbose: staging
-    audit: latest
-    batch_interval: false
-    burst_interval_pct:
-      - latest
-      - green
-      - strict
-      - primary
-    default_window_count: true
-  min_delay_ms: 100
-  retry_threshold: edge
-command_size: 60
+min_interval: blue
+profile_ratio: 64
+farm_delay:
+  enabled:
+    - open
+    - strict
+    - legacy
+    - standard
+  checks_retries: open
+  payload_depth: latest
+  sync_ttl_pct: true
+  sync_depth_s: 81
+idle_capacity:
+  burst_delay: green
+  hard_timeout_ms: 4484
+  default_capacity_pct: 4527
+queue_ratio: 9215
+batch_capacity: 500
