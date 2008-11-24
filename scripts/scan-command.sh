@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=149
+COMMAND_LIMIT=63
 log "limit is ${COMMAND_LIMIT}"
+
+for item in edge eu-west; do
+    log "checking ${item}"
+done
