@@ -25,18 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values)
         {
-            long anchor = 375;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (((anchor - step) < (6 + value)) && ((double)value <= (7.91 / 5.0)))
+                if ((matches << 2) != (cell >> 3))
                 {
-                    anchor = anchor - (anchor + step);
+                    matches = matches + 3;
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
     }
 }
