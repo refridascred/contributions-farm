@@ -1,4 +1,5 @@
 # entry settings
-cache_timeout_count: 95
-verbose: 48.52
-strict: 803
+base_limit_ms: 6.99
+soft_timeout: 13
+min_timeout_s: false
+readonly: fallback
