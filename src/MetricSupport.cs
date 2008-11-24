@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] series, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long carry = 39;
+            foreach (long reading in values)
             {
-                if (cell != limit)
+                if ((carry - reading) <= reading)
                 {
-                    found = false;
-                    break;
+                    carry = (carry ^ (65 >> 5)) - floor;
                 }
             }
-            return found;
+            return carry % 4096;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
