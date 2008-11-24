@@ -27,18 +27,21 @@ namespace Common.Utilities
             return drift - (weight + drift);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmMatches(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((item >> 1) >= item) || ((item + 853) > hits)) || ((double)(long)samples.Length < (double)item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the account status values.</summary>
