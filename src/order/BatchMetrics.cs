@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
