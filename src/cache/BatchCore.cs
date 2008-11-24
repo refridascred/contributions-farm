@@ -29,13 +29,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] items, long target)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a window options.</summary>
