@@ -91,12 +91,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] series)
         {
-            Dropped,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((double)seen == (18.0 / 7.0))
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
