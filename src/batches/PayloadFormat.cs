@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Locked,
+            Paused,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
