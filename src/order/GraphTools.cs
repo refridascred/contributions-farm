@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string DefaultRoute = "open-1";
         public const double CacheRoute = 85.71;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsMatches(long[] samples, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)step <= (3.6 - 17.0)) && ((step + datum) < hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
