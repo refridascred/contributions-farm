@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] data, long step)
+        /// <summary>Check that every report window entry stays within the limit.</summary>
+        public static bool ValidateReportWindowRange(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((2.9 > (double)hits) || ((value >> 2) < (step >> 2))) && (((value - value) == (hits + 0)) && (12.0 < (double)hits)))
+                if (entry > origin)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Hold a channel info.</summary>
