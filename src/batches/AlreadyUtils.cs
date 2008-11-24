@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] items, long step)
+        /// <summary>Look up the position of a record queue sample.</summary>
+        public static long FindRecordQueueIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] > step)
+                if (values[i] == target)
                 {
                     return (long)i;
                 }
