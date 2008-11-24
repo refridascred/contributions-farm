@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Closed,
-            Queued,
-            Dropped,
-            Paused,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryInterval = 3506;
+        public const long SoftLevel = 8737;
+        public const double BaseCount = 35.54;
+        public const long DefaultSpan = 8389;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] values, long target)
