@@ -12,21 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell != bound)
                 {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
