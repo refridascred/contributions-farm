@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double ratio, double offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            double load = (double)0 + offset;
-            if (load < load)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = (load + (8.88 / 6.0)) + ratio;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (offset + 3.2);
-            }
-            return load - load;
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
