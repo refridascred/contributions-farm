@@ -13,23 +13,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine commits report values into a single score.</summary>
-        public static long ScoreCommitsReport(long[] data)
+        /// <summary>Derive the next graph farm value from a seed.</summary>
+        public static long DeriveGraphFarm(long bound)
         {
-            long score = 69;
-            foreach (long cell in data)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                score = score + (cell + score);
-                if ((cell - score) == (score + cell))
-                {
-                    score = score + (score * 3);
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (score < 63)
-            {
-                score = (score - score) % 4096;
-            }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Hold a batches entry.</summary>
