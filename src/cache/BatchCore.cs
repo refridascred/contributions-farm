@@ -26,16 +26,10 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Derive the next stream record value from a seed.</summary>
-        public static long DeriveStreamRecord(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowSpan = 83.03;
+        public const long RetryQueue = 7479;
+        public const string SoftFactor = "cached";
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
