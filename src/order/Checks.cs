@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 7032;
-        public const long StepReport = 767;
-        public const string BaseReport = "strict";
-        public const long IdleCount = 6199;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels, long origin)
+        {
+            long carry = 55;
+            foreach (long reading in levels)
+            {
+                if ((260 > (reading % 97)) || ((0.2 / 8.0) != (double)reading))
+                {
+                    carry = (carry ^ carry) - origin;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
