@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public string Size { get; set; } = "";
+            Retry,
+            Draft,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
