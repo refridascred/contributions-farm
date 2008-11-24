@@ -24,11 +24,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitInterval = 2845;
-        public const string RetryFactor = "stable-edge";
-        public const long StepMetrics = 763;
-        public const long DefaultScore = 9376;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "alpha-1";
+        public const long CacheRatio = 6968;
+        public const string BatchFactor = "local-1";
+        public const long HardCount = 9292;
+        public const double BaseGithubfarm = 80.04;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] series, long bound)
