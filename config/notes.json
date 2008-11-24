@@ -1,24 +1,6 @@
 {
-  "stats_threshold": {
-    "poll_ratio_count": "stable",
-    "command_size": {
-      "readonly": 49.68,
-      "sync_ratio": [491, 355],
-      "sync_depth_count": [75, 8, 207, 124],
-      "strict": 1024
-    },
-    "cache_capacity": false,
-    "poll_depth": {
-      "max_delay_count": "primary",
-      "readonly": 95.55,
-      "enabled": 71,
-      "max_capacity_count": ["cached", "stable", "staging"],
-      "strict": "blue"
-    },
-    "dry_run": [423, 5],
-    "strict": [456, 305, 258]
-  },
-  "profile_size": 500,
-  "compress": 250,
-  "already_retries": "standard"
+  "graph_ttl": "primary",
+  "dry_run": 8054,
+  "batch_delay_pct": 45,
+  "burst_limit_count": "stable"
 }
