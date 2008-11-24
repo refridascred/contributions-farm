@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Paused,
-            Stale,
-            Closed,
-            Retry,
-            Done,
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define batches limits and defaults.</summary>
