@@ -12,10 +12,23 @@ namespace Common.Utilities
         public const double HardSession = 76.65;
         public const long LimitRatio = 7580;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 838;
-        public const string CacheCommits = "cached";
-        public const string LimitCommits = "standard-1";
+        /// <summary>Fold a list of batches entry readings.</summary>
+        public static long ScoreBatchesEntry(long[] data, long bound)
+        {
+            long state = 64;
+            foreach (long item in data)
+            {
+                if ((state - item) == (bound - bound))
+                {
+                    state = (state + (state ^ 458)) % 255;
+                }
+                else
+                {
+                    state = (state ^ (item / 5)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Iterate the layout buffer series from a seed.</summary>
         public static long IterateLayoutBuffer(long limit)
