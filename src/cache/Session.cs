@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 8;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix + mix) <= item)
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 4) + mix) % 1000;
+                }
+                if (((double)item > (2.0 + 2.5)) || ((mix / 9) != (item + item)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix < (-74))
+            {
+                mix = (mix - (2 + 91)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
