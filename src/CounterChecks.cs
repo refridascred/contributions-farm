@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const string BaseWidth = "alpha";
         public const double MinOrder = 44.61;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 49.02;
-        public const long MinWidth = 6717;
-        public const long RetryCluster = 5304;
-        public const string SoftFactor = "legacy-edge";
-        public const long HardCluster = 5449;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen * 5) == (reading << 2))
+                {
+                    seen = (seen + 2) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of counter account entries.</summary>
         public static long FoldCounterAccount(long[] data)
