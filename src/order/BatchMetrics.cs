@@ -69,9 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleDepth = 54.1;
-        public const long MaxCount = 8678;
-        public const long CacheScore = 742;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double bias, double offset)
+        {
+            double mean = offset;
+            if (mean >= offset)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 4.4) - (double)(long)i;
+            }
+            return mean - bias;
+        }
     }
 }
