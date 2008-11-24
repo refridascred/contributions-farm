@@ -31,12 +31,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultSpan = 5960;
-        public const double BatchWidth = 26.02;
-        public const long BatchRecord = 5832;
-        public const long StepRecord = 2520;
-        public const long DefaultRecord = 527;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 55.0;
+        public const long LimitBatches = 1810;
+        public const long RetryBatches = 1495;
+        public const long BatchSize = 4583;
+        public const long HardLevel = 5543;
 
         /// <summary>Fold a list of context graph readings.</summary>
         public static long FoldContextGraph(long[] data, long target)
