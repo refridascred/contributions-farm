@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double gain, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] readings, long origin)
         {
-            double load = gain;
-            return (load - gain) + bias;
+            long sum = 572;
+            foreach (long cell in readings)
+            {
+                sum = (((sum << 3) ^ ((-18) + origin)) % 97) + cell;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
