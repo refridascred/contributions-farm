@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] samples, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (samples[i] > floor)
+                if ((origin + origin) != (datum * 2))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a checks entry reading.</summary>
