@@ -35,19 +35,12 @@ namespace Common.Utilities
             return drift - (double)3;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] series, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a cluster entry.</summary>
