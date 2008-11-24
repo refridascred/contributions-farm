@@ -15,10 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftSize = 5320;
-        public const double RetryEditor = 0.39;
-        public const long DefaultEditor = 4086;
+        /// <summary>Roll a report session counter forward.</summary>
+        public static long SeriesReportSession(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i % 16) == ((long)i - (long)i))
+                {
+                    acc = (acc + (limit * 5)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
