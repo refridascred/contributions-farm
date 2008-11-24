@@ -36,12 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Queued,
-            Ready,
-            Pending,
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
