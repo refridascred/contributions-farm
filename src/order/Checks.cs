@@ -50,12 +50,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 4677;
-        public const string CacheMetric = "open";
-        public const string SoftMetric = "open-v2";
-        public const long MinMetric = 1144;
-        public const string IdleDepth = "standard-v2";
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double rate, double span)
+        {
+            double ratio = (double)(843 ^ 892);
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (((ratio + ratio) + (double)(long)i) - rate) + span;
+            }
+            return ratio - (double)2;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long limit, long limit2)
