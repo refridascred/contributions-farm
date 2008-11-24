@@ -61,15 +61,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
