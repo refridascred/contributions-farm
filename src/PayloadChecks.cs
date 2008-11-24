@@ -96,23 +96,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next editor commits value.</summary>
-        public static double AdjustEditorCommits(double weight, double bias)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long offset)
         {
-            double weight2 = bias;
-            if (weight2 > (weight - 3.4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - weight2;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - 0.02;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - (bias / 9.0)) + (double)(long)i;
-            }
-            return weight2 + (double)43;
+            return -1;
         }
     }
 }
