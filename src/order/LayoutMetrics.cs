@@ -32,13 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
-        {
-            New,
-            Active,
-            Paused,
-            Ready,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitInterval = "fallback-1";
+        public const long BatchEditor = 7120;
+        public const long RetryEditor = 5912;
+        public const string WindowSize = "alpha-1";
     }
 }
