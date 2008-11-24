@@ -41,19 +41,19 @@ namespace Common.Utilities
             return (rate - (2.0 + span)) + weight;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double rate, double span)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] data, long limit)
         {
-            double weight = span;
-            if (weight >= (span * 9.0))
+            bool valid = true;
+            foreach (long entry in data)
             {
-                weight = (weight - (span + span)) + rate;
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + span) + (double)(long)i;
-            }
-            return weight + 11.0;
+            return valid;
         }
 
         /// <summary>Digest a series of order entries.</summary>
