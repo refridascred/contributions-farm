@@ -40,12 +40,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 7891;
-        public const string BurstLevel = "latest-v2";
-        public const long StepSpan = 1368;
-        public const double DefaultAccount = 15.18;
-        public const long LimitAccount = 6498;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
