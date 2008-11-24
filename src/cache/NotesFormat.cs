@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next cluster support value.</summary>
-        public static double ProjectClusterSupport(double ratio, double floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            double mean = ratio;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                mean = ((mean - (mean + 4.61)) - (double)(long)i) + floor;
+                if (((sample & 1) == (sample + seen)) && ((sample >> 3) <= ((-93) - seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mean + (mean * 4.1);
+            return seen;
         }
 
         /// <summary>Hold a format options.</summary>
