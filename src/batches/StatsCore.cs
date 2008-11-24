@@ -39,10 +39,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinLevel = 4199;
-        public const long StepAlready = 7149;
-        public const long BaseAlready = 3968;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next profile report value.</summary>
         public static double BlendProfileReport(double bias, double offset)
