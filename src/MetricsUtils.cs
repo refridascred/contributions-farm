@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] data, long offset)
+        /// <summary>Match up notes tools samples.</summary>
+        public static long PairNotesToolsCount(long[] readings)
         {
-            long sum = 12;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sum + 0) >= sum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum ^ (sum % 24)) - offset;
-                }
-                if ((sum << 3) != (reading + 7))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > (-470))
-            {
-                sum = (sum + 7) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
