@@ -1,7 +1,8 @@
 # support settings
-warm_size_s: staging
-profile_ttl: 965
-retry_depth_ms: 17.01
-min_limit: 6908
-dry_run: staging
-cache_retries_pct: legacy
+min_retries_count:
+  - 346
+  - 102
+  - 368
+verbose: 87.69
+payload_depth: open
+retry_ratio: false
