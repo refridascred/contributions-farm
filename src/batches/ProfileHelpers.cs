@@ -56,15 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double rate, double span)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double load = rate * 2.71;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - 17.0) + (double)(long)i) - span;
-            }
-            return load - load;
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
