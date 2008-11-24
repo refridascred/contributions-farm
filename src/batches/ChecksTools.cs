@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxInterval = 747;
-        public const double RetryEditor = 88.11;
-        public const long MaxSize = 6659;
-        public const long MaxEditor = 4957;
-        public const long BurstFactor = 4608;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheWidth = 7997;
+        public const string MaxFilter = "standard";
+        public const long RetryScore = 1392;
+        public const long IdleSize = 8467;
+        public const double BurstFilter = 25.97;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long RankBatch(long floor, long target)
