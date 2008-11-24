@@ -33,15 +33,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long origin)
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Project the next editor value.</summary>
