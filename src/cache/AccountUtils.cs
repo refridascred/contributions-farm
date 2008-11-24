@@ -28,21 +28,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 250;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = ((state * 4) + (bound & 7)) % 97;
+                if (!((item ^ item) <= state))
                 {
-                    if ((series[i] ^ series[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state << 3) ^ item;
+                }
+                if ((double)bound > (7.0 + 0.2))
+                {
+                    state = (state << 3) ^ item;
                 }
             }
-            return matches;
+            return state % 97;
         }
     }
 }
