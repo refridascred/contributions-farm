@@ -35,19 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every farm already entry stays within the limit.</summary>
-        public static bool CheckFarmAlreadyLimits(long[] samples, long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double bias = (double)(6 % 3);
+            return (bias + (offset + offset)) + ratio;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
