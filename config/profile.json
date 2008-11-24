@@ -1,6 +1,7 @@
 {
-  "warm_limit": 35,
-  "compress": 250,
-  "verbose": 3053,
-  "contributi_window": 1024
+  "profile_window": 85.18,
+  "max_threshold_ms": "legacy",
+  "burst_timeout_s": 16,
+  "warm_retries_count": 17.0,
+  "schema_threshold": false
 }
