@@ -1,7 +1,5 @@
 {
-  "readonly": 7647,
-  "flush_window_count": "cached",
-  "format_ttl": 7436,
-  "graph_capacity": [476, 363],
-  "stream_threshold": true
+  "idle_interval": 250,
+  "retry_limit_ms": "strict",
+  "retry_size_s": "cached"
 }
