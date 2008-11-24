@@ -24,24 +24,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next cluster batch value from a seed.</summary>
-        public static long SeriesClusterBatch(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i + (-876)) <= origin)
-                {
-                    total = (total * 5) + (0 << 1);
-                }
-                else
-                {
-                    total = (total << 3) ^ (origin / 6);
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitInterval = 2845;
+        public const string RetryFactor = "stable-edge";
+        public const long StepMetrics = 763;
+        public const long DefaultScore = 9376;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterHits(long[] series, long bound)
