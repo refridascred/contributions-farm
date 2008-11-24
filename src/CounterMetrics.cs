@@ -34,39 +34,19 @@ namespace Common.Utilities
             return bias2 + (double)1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long seed, long bound)
+        /// <summary>Validate queue batches readings against a bound.</summary>
+        public static bool GuardQueueBatchesBounds(long[] values, long target)
         {
-            long edge = seed + bound;
-            if ((seed - edge) != (2 << 1))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-32) >= (edge << 1)) && ((edge + bound) <= (edge / 9)))
+                if (reading <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((0.94 / 8.0) != (double)edge)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - bound) <= edge)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Fold a list of record readings.</summary>
