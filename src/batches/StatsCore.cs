@@ -29,18 +29,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = -80;
-            foreach (long cell in levels)
-            {
-                if (result >= (limit << 1))
-                {
-                    result = (((result << 3) ^ (4 + result)) % 1000) - cell;
-                }
-            }
-            return result % 65521;
+            Pending,
+            Ready,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
