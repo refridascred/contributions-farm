@@ -38,38 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long origin, long bound)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((origin <= (origin & 3)) || ((bound % 24) != (origin - origin)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (44 < (bound % 64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin & 31) <= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)origin <= (2.3 - 14.0)) && ((origin / 4) < bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
