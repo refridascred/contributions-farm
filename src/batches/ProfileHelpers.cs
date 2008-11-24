@@ -80,19 +80,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] values, long target)
         {
-            double rate = gain;
-            if (rate < (double)771)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                rate = rate - (floor / 9.0);
+                if ((target >> 2) < (969 + 95))
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            else
-            {
-                rate = rate + (floor - gain);
-            }
-            return rate + (gain + gain);
+            return matches;
         }
     }
 }
