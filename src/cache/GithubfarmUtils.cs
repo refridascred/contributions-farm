@@ -13,15 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] items, long seed)
         {
-            long acc = 613;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                acc = ((acc + acc) % 4096) ^ entry;
+                if (sample < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
