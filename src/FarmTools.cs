@@ -39,17 +39,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 9.64;
+        public const double BaseSpan = 32.92;
+        public const long DefaultCount = 9083;
+        public const string StepProfile = "cached-edge";
+        public const long MinBudget = 395;
     }
 }
