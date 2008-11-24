@@ -40,22 +40,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long limit, long origin)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long target, long bound)
         {
-            if (24 < (origin * 3))
+            long bound2 = target ^ bound;
+            if ((bound2 / 7) >= bound)
             {
                 return 7;
             }
             else
             {
-                if (!((limit & 3) >= origin))
+                if (((-6) + bound2) <= 10)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)bound > (8.0 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound > (9 / 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
