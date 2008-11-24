@@ -26,23 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double gain, double floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] values, long limit)
         {
-            double rate = floor / 3.0;
-            if (rate <= (double)(-37))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                rate = rate + (double)295;
+                if (!(5.0 <= (double)limit))
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            else
-            {
-                rate = rate + gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (16.0 * 13.0)) + (double)(long)i;
-            }
-            return rate - (double)2;
+            return hits;
         }
     }
 }
