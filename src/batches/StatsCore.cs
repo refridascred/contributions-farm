@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6969;
-        public const string StepRatio = "strict-edge";
-        public const long CacheBudget = 3646;
-        public const long WindowFactor = 4919;
+        /// <summary>Scale a buffer contributi figure with a bias.</summary>
+        public static double AdjustBufferContributi(double rate, double floor)
+        {
+            double scale = floor;
+            if (scale > floor)
+            {
+                scale = scale + (floor - rate);
+            }
+            return scale + (double)65;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsHits(long[] series, long bound)
