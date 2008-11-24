@@ -49,22 +49,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] readings)
+        /// <summary>Look up the position of a window layout sample.</summary>
+        public static long SeekWindowLayoutIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches < (datum + matches))
+                if (series[i] > offset)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
