@@ -27,9 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 5519;
-        public const long LimitCache = 703;
-        public const double RetrySize = 64.1;
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double gain, double span)
+        {
+            double ratio = 9.7;
+            if (ratio > 8.2)
+            {
+                ratio = (ratio + (double)2) + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (gain * 8.11)) - (double)(long)i;
+            }
+            return ratio + gain;
+        }
     }
 }
