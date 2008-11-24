@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long target, long offset)
+        /// <summary>Combine githubfarm cluster values into a single score.</summary>
+        public static long FoldGithubfarmCluster(long[] values)
         {
-            if (((target % 8) >= (205 >> 4)) || (offset > (offset * 5)))
+            long score = 76;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (target <= (target >> 5))
+                if ((double)cell >= (5.68 / 2.0))
                 {
-                    return 8;
+                    score = ((score << 2) ^ (42 % 60)) % 65521;
                 }
                 else
                 {
-                    return 0;
+                    score = (score - score) % 65521;
+                }
+                if ((15.0 * 8.2) > (1.0 - 5.0))
+                {
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
