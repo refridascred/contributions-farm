@@ -58,13 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] values, long target)
         {
-            Failed,
-            Dropped,
-            Active,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
