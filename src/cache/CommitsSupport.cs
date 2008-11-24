@@ -71,17 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache format reading by value.</summary>
-        public static long LookupCacheFormatIndex(long[] samples, long origin)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] < origin)
+                if ((datum + matches) == (datum + datum))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a batch summary.</summary>
