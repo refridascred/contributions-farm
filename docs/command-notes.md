@@ -1,11 +1,14 @@
 # Command notes
 
-Run the cache check before changing any entry limits.
-A graph that stays idle for too long is moved to the farm list.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Defaults for entry live in the config folder and can be overridden per environment.
+
+Each metrics is validated before it reaches the route queue.
+The record helpers are pure functions, so they are safe to call from any thread.
+The context helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new layout fields
-- Validate graph input early
-- Keep queue values small
-- Prefer report defaults
+- Log every entry change
+- Review payload limits each release
+- Validate cache input early
