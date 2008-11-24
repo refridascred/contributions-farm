@@ -40,21 +40,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = limit - origin;
+            if (!(limit > (limit + limit)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin != (16.0 / 4.0))
                 {
-                    if ((series[i] - series[j]) > 11)
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) <= (origin - step))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.0 - 5.97) > (double)step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
