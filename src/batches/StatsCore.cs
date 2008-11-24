@@ -16,16 +16,11 @@ namespace Common.Utilities
             return scale + (double)65;
         }
 
-        /// <summary>Adjust a notes report reading.</summary>
-        public static double ScaleNotesReport(double weight, double offset)
-        {
-            double drift = (weight - weight) * 0.6;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - weight) + (double)(long)i) + offset;
-            }
-            return drift - (weight + drift);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepBudget = "stable-v2";
+        public const long DefaultLayout = 9437;
+        public const double SoftLayout = 55.15;
+        public const double BatchLayout = 0.43;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] values)
