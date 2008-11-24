@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] data, long offset)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate order samples.</summary>
