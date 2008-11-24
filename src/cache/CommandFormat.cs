@@ -13,16 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next context entry value.</summary>
-        public static double BlendContextEntry(double rate, double bias)
-        {
-            double weight = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (bias - bias)) - (double)(long)i;
-            }
-            return weight - (weight / 8.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 5083;
+        public const double MinContext = 4.94;
+        public const double HardBudget = 91.45;
 
         /// <summary>Adjust a report contributi reading.</summary>
         public static double AdjustReportContributi(double ratio, double offset)
