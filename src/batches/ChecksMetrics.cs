@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] levels, long offset)
         {
-            long mark = 12;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (6 <= reading)
+                if ((offset & 127) < ((-755) >> 3))
                 {
-                    mark = ((mark + (reading * 4)) % 97) + floor;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
