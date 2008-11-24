@@ -60,17 +60,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] items, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                if ((tally % 97) >= cell)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
