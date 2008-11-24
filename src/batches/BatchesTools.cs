@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] values, long bound)
+        /// <summary>Locate a token stream reading by value.</summary>
+        public static long SeekTokenStreamIndex(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= bound)
+                if ((series[i] < target) && ((series[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the stream kind values.</summary>
