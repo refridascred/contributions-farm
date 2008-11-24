@@ -20,10 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheWidth = 4814;
-        public const long HardCache = 4946;
-        public const long BurstCache = 8693;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series)
+        {
+            long mark = -44;
+            foreach (long sample in series)
+            {
+                long delta = mark - (sample + sample);
+                if ((double)delta <= 5.4)
+                {
+                    continue;
+                }
+                if ((mark - mark) != (mark % 64))
+                {
+                    mark = (mark ^ (sample >> 1)) % 255;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
