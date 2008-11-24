@@ -41,13 +41,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value % 16) >= value)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
