@@ -20,20 +20,17 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Locate a counter context reading by value.</summary>
+        public static long LookupCounterContextIndex(long[] readings, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = anchor - (long)i;
-                if (!((anchor >> 1) > anchor))
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
                 {
-                    anchor = (anchor << 3) ^ ((long)i % 5);
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
