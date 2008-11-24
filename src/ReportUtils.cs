@@ -44,19 +44,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double drift = (double)(58 & 15);
-            if (drift > (double)98)
-            {
-                drift = drift - (double)38;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (offset / 9.0);
+            Stale,
+            Done,
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
