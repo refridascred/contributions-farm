@@ -14,13 +14,22 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] series)
         {
-            New,
-            Queued,
-            Active,
-            Failed,
+            long total = 1;
+            foreach (long item in series)
+            {
+                if (((total + item) < (total - 37)) && ((item >> 5) == (total % 8)))
+                {
+                    total = ((total * 2) + (294 + item)) % 4096;
+                }
+                if (item <= ((-5) >> 4))
+                {
+                    total = (total + item) % 1000;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
