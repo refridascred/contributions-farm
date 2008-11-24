@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Rank cluster checks input into a small class.</summary>
+        public static long BucketClusterChecks(long origin, long floor)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
+            long edge = origin ^ floor;
+            if ((edge * 5) <= (edge - origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((8.0 / 7.0) == (double)edge) || ((double)origin <= (3.5 - 8.03)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
