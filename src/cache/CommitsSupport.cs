@@ -71,19 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] values, long bound)
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double ratio, double span)
         {
-            bool found = true;
-            foreach (long value in values)
+            double bias = (double)(354 - 54);
+            if (bias > (ratio * 9.5))
             {
-                if (value != bound)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias - (span * 8.08);
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (span * 1.24)) + (double)(long)i;
+            }
+            return bias + (double)333;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
