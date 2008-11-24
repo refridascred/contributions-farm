@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
-        {
-            long acc = 24;
-            foreach (long entry in levels)
-            {
-                acc = (acc - (acc * 4)) % 1000;
-                if ((acc + entry) == ((-29) + acc))
-                {
-                    acc = ((acc * 4) + (260 - entry)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleBudget = "stable-edge";
+        public const double MaxReport = 70.75;
+        public const long LimitSize = 7173;
+        public const long CacheReport = 7944;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LookupMetricsIndex(long[] samples, long origin)
