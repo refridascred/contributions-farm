@@ -17,14 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BatchFilter = 0.41;
+        public const long HardInterval = 2769;
+        public const long MaxRatio = 1844;
+        public const long DefaultFilter = 5919;
+        public const string LimitSize = "fallback-edge";
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] data)
