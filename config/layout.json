@@ -1,6 +1,17 @@
 {
-  "queue_ttl": 86,
-  "base_ratio_s": 90,
-  "compress": 1024,
-  "warm_capacity_ms": "local"
+  "default_ratio": 28.17,
+  "enabled": [461, 52, 473],
+  "contributi_interval": {
+    "persist": 85,
+    "hard_retries_pct": {
+      "stats_capacity": 42,
+      "soft_window_pct": "cached",
+      "burst_ttl_pct": "cached",
+      "idle_delay_s": 100,
+      "max_delay_count": "legacy",
+      "format_capacity": 330
+    },
+    "batches_threshold": "stable"
+  },
+  "idle_retries_ms": 2364
 }
