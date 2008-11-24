@@ -1,10 +1,12 @@
 # Command notes
 
-A command that stays idle for too long is moved to the cache list.
-Keep queue and account names short and lowercase.
+The profile module keeps batches values in sync with the buffer cache.
+Run the editor check before changing any channel limits.
+When a batch fails, the tools handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep route values small
 - Review checks limits each release
-- Log every notes change
+- Document new commits fields
+- Log every record change
+- Keep order values small
