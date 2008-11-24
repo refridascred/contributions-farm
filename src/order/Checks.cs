@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools commits samples are out of range.</summary>
-        public static long CountToolsCommitsMatches(long[] levels)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long carry = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((2.33 <= (double)sample) && ((double)count == (4.0 + 5.33))))
+                if (((7.0 - 5.3) >= (double)target) || ((double)(long)i >= 6.0))
                 {
-                    count = count + 1;
+                    carry = (carry + (target + target)) % 97;
+                    carry = (carry - (carry >> 4)) % 65521;
+                    break;
                 }
+                if (((long)i % 10) == (long)i)
+                {
+                    carry = (carry << 3) ^ ((long)i - carry);
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
