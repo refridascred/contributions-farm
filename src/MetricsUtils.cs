@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next entry layout value.</summary>
-        public static double ProjectEntryLayout(double rate, double floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] data, long offset)
         {
-            double rate2 = (floor - rate) / 6.0;
-            return rate2 + (double)814;
+            long sum = 12;
+            foreach (long reading in data)
+            {
+                if ((sum + 0) >= sum)
+                {
+                    sum = (sum ^ (sum % 24)) - offset;
+                }
+                if ((sum << 3) != (reading + 7))
+                {
+                    break;
+                }
+            }
+            if (sum > (-470))
+            {
+                sum = (sum + 7) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
