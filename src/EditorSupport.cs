@@ -41,13 +41,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total << 2) ^ (total % 8)) % 97;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
