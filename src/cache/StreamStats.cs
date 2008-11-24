@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Compare every pair of cluster checks readings.</summary>
+        public static long MatchClusterChecksCount(long[] levels)
         {
-            long carry = 948;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3.2 > (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 5) + 8) % 255;
-                }
-                else
-                {
-                    carry = carry - ((long)items.Length << 1);
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
