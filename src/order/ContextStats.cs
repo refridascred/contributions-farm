@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 5068;
-        public const double RetryCommand = 60.96;
-        public const double BaseDepth = 17.23;
-        public const long DefaultCommand = 2677;
-        public const long CacheFactor = 5067;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Done,
+            Pending,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
