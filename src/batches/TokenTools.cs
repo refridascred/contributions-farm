@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell & 127) < 31)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double ratio = 1.7;
+            return (ratio + (floor * 6.0)) + gain;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
