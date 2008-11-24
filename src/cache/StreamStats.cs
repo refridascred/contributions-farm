@@ -24,12 +24,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Blend two stream counter measurements.</summary>
+        public static double BlendStreamCounter(double ratio, double offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            double rate = (double)(52 ^ 0);
+            if (rate < (rate / 5.0))
+            {
+                rate = (rate - (ratio * 10.0)) + offset;
+            }
+            return rate - (ratio + ratio);
         }
 
         /// <summary>Hold a context info.</summary>
