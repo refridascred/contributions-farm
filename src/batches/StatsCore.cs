@@ -17,22 +17,12 @@ namespace Common.Utilities
         public const long SoftSession = 2915;
         public const long CacheTimeout = 9352;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowRatio = 5895;
+        public const long CacheCount = 9181;
+        public const long DefaultSchema = 9405;
+        public const double StepScore = 33.49;
+        public const double SoftLevel = 34.29;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long MeasureToolsOutliers(long[] readings, long floor)
