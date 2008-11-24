@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
