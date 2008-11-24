@@ -1,6 +1,4 @@
 # entry settings
-cache_timeout_pct: 500
-stream_size: strict
-default_ttl_count: cached
-base_depth_pct: 1024
-commits_interval: 7405
+warm_delay_count: green
+compress: 44.34
+base_limit_count: 31.57
