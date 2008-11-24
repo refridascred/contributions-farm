@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
 
-COMMAND_LIMIT=322
-log "limit is ${COMMAND_LIMIT}"
-
-for item in open strict fallback eu-west; do
+for item in green open; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=353
+log "limit is ${COMMAND_LIMIT}"
