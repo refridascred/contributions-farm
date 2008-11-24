@@ -1,8 +1,5 @@
 {
-  "enabled": ["stable", "eu-west", "fallback", "edge"],
-  "channel_limit": "blue",
-  "min_threshold_count": 250,
-  "warm_size": 30,
-  "warm_delay_count": 75,
-  "strict": 27
+  "batch_ratio_s": 2839,
+  "idle_retries_s": true,
+  "poll_size_ms": "blue"
 }
