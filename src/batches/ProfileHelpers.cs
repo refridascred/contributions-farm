@@ -57,12 +57,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "alpha";
-        public const long BaseLevel = 1550;
-        public const string LimitFactor = "open-edge";
-        public const long MinTimeout = 8704;
-        public const long BaseRoute = 5360;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Scale a checks figure with a bias.</summary>
         public static double ScaleChecks(double rate, double span)
