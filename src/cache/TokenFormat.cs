@@ -27,20 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(((double)target > (4.6 - 4.27)) || ((6.2 - 4.1) <= (double)target)))
-                {
-                    long gap = -7;
-                    acc = acc ^ (gap - gap);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
