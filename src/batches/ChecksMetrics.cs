@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] values, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long limit)
         {
-            long sum = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (2 - origin)) + value;
-                if ((5.7 - 0.5) <= (double)origin)
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of record entries.</summary>
