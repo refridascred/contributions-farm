@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] values, long origin)
+        /// <summary>Measure how many route batch samples are out of range.</summary>
+        public static long CountRouteBatchHits(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (reading != origin)
+                if ((seen & 127) == (cell ^ seen))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Roll a report session counter forward.</summary>
