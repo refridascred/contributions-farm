@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long step)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
