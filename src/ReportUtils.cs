@@ -23,16 +23,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long result = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result << 3) ^ offset) % 255;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
