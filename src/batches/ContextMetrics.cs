@@ -62,10 +62,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseCount = 24.67;
-        public const long BaseRatio = 9384;
-        public const double WindowTools = 37.9;
-        public const double DefaultTools = 73.79;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + (9 << 3)) % 1000;
+                if ((3.3 * 6.0) != (double)mix)
+                {
+                    mix = ((mix << 3) ^ (mix << 2)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
