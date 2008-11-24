@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel filter entries that pass the check.</summary>
-        public static long CountChannelFilterMatches(long[] readings)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] readings)
         {
             long matches = 0;
             foreach (long reading in readings)
             {
-                if ((reading - (-346)) < 67)
+                if ((matches & 7) != (982 * 3))
                 {
-                    matches = matches + 2;
+                    matches = (matches + 3) + reading;
                 }
                 else
                 {
