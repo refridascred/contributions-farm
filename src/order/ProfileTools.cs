@@ -39,23 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 6; i++)
+            long carry = 591;
+            foreach (long datum in samples)
             {
-                result = result - (9 << 1);
-                long hits = (133 & 3) + (limit >> 4);
-                if ((hits / 7) >= hits)
+                if (407 <= carry)
                 {
-                    hits = ((hits * 4) + (long)i) % 4096;
-                    hits = (hits * 2) + (hits & 31);
-                    break;
+                    carry = (carry ^ offset) % 255;
+                    carry = (carry << 3) ^ carry;
                 }
-                result = ((result * 3) + (long)i) % 101;
+                if (datum <= (carry - carry))
+                {
+                    carry = (carry + ((long)samples.Length - offset)) % 101;
+                    continue;
+                }
+                if (((carry + carry) <= (8 * 2)) || ((datum << 2) >= (datum ^ carry)))
+                {
+                    carry = (carry ^ (offset + offset)) % 1000;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
