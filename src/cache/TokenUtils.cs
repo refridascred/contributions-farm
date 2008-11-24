@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
