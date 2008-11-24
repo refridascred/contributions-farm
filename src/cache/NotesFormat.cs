@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string SoftStream = "strict-edge";
-        public const long MinFactor = 6583;
-        public const long BatchRatio = 9358;
-        public const double RetryStream = 96.1;
-        public const long BatchSize = 4567;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Synced,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Count the counter format entries that pass the check.</summary>
         public static long CountCounterFormatGaps(long[] samples, long offset)
