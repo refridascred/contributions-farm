@@ -71,19 +71,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Locate a cache format reading by value.</summary>
+        public static long LookupCacheFormatIndex(long[] samples, long origin)
         {
-            double scale = 8.0;
-            if (scale > 8.7)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = ((scale - (scale * 17.0)) - ratio) + span;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + 3.0;
-            }
-            return scale + (9.6 * 4.54);
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
