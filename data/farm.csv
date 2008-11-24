@@ -1,8 +1,8 @@
-id,active,count
-1,371,fallback
-2,19.13,legacy
-3,522,fallback
-4,legacy,8.33
-5,94.7,46.83
-6,open,blue
-7,716,672
+id,active,weight,score
+1,28.99,471,1.99
+2,391,green,74.01
+3,251,49.46,481
+4,standard,641,148
+5,staging,698,open
+6,29.02,234,945
+7,70.14,23.04,strict
