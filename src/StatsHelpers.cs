@@ -35,11 +35,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double ratio, double offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double bias = (double)(6 % 3);
-            return (bias + (offset + offset)) + ratio;
+            public double Label { get; set; }
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
