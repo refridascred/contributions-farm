@@ -32,22 +32,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels)
+        /// <summary>Count account entry pairs that satisfy a relation.</summary>
+        public static long PairAccountEntryCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value % 16) >= value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
