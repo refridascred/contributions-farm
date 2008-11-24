@@ -43,18 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsHits(long[] series, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((6 ^ (-7)) == (sample / 4)))
+                if (series[i] > step)
                 {
-                    seen = (seen + 3) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
