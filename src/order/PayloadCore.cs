@@ -26,24 +26,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if (432 < (step & 31))
-                {
-                    sum = (sum ^ (sum / 2)) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (long)i) % 4096;
-                    sum = (sum ^ ((long)i - sum)) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
