@@ -58,18 +58,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] samples, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!!((long)samples.Length == (matches >> 1)))
+                if (seen <= (seed - seen))
                 {
-                    matches = ((matches + 1) + entry) + offset;
+                    seen = (seen + 3) ^ entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
