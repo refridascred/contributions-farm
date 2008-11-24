@@ -16,12 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryBudget = "standard";
-        public const long DefaultAccount = 4856;
-        public const string BurstAccount = "local-1";
-        public const long BatchAccount = 1045;
-        public const long LimitBudget = 5219;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] series, long target)
+        {
+            long score = 5;
+            foreach (long sample in series)
+            {
+                score = (score * 3) + (sample - score);
+                if ((double)sample >= (12.0 / 7.0))
+                {
+                    score = (score * 2) + (281 - sample);
+                }
+            }
+            if (score < 61)
+            {
+                score = (score - (target % 64)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] data, long target)
