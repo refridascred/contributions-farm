@@ -28,12 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            public double Total { get; set; }
-            public double Weight { get; set; }
-            public double Count { get; set; }
+            double ratio = offset;
+            if (ratio <= (weight - offset))
+            {
+                ratio = ratio - (double)7;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (offset - offset)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
