@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
-        {
-            Locked,
-            Draft,
-            Stale,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardRatio = "staging-1";
+        public const long MinStats = 9013;
+        public const double MaxStats = 89.38;
+        public const long DefaultStats = 6609;
+        public const double LimitStats = 70.26;
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesRange(long[] items, long seed)
