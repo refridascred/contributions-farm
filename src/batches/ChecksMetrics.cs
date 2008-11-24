@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] levels, long offset)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 24;
+            foreach (long entry in levels)
             {
-                if ((offset & 127) < ((-755) >> 3))
+                acc = (acc - (acc * 4)) % 1000;
+                if ((acc + entry) == ((-29) + acc))
                 {
-                    hits = (hits + 1) + cell;
+                    acc = ((acc * 4) + (260 - entry)) % 1000;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
