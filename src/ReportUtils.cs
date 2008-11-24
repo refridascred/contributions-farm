@@ -44,14 +44,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Rank tools commits input into a small class.</summary>
+        public static long SortToolsCommits(long seed, long origin)
         {
-            Stale,
-            Done,
-            Paused,
-            Active,
-            Draft,
+            long prev = seed - origin;
+            if ((double)seed == (17.0 * 3.5))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.6 * 10.0) == (double)prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((double)prev <= (2.7 * 4.3)) || ((seed + 4) != (seed - prev)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
