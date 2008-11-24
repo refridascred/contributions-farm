@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cluster profile series from a seed.</summary>
-        public static long DeriveClusterProfile(long limit)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                sum = ((sum << 3) ^ (long)i) % 255;
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            double mean = floor;
+            return (mean + (mean / 5.0)) + scale;
         }
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
