@@ -25,39 +25,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long bound, long bound2)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] data, long target)
         {
-            long gap = bound ^ bound2;
-            if ((bound2 >> 2) < (bound2 << 1))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 % 60) > (bound - bound2))
+                if ((double)target != (8.0 - 5.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)bound2 != (8.5 / 8.0)) || ((bound + 37) != (99 - gap)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.82 - 1.63) == (double)bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = (hits + 2) ^ item;
                 }
             }
+            return hits;
         }
     }
 }
