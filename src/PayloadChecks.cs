@@ -38,13 +38,13 @@ namespace Common.Utilities
             return gain2 + 5.69;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
+            public bool Limit { get; set; }
+            public long Count { get; set; }
             public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
