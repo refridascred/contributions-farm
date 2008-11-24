@@ -36,19 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double weight, double offset)
-        {
-            double ratio = offset;
-            if (ratio <= (weight - offset))
-            {
-                ratio = ratio - (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (offset - offset)) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultRatio = 5881;
+        public const double WindowCluster = 23.32;
+        public const long BurstCluster = 8924;
+        public const long StepCluster = 9510;
     }
 }
