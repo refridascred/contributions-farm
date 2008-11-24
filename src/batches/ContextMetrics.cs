@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double ratio, double offset)
-        {
-            double drift = offset - (offset + 7.3);
-            if (drift <= drift)
-            {
-                drift = (drift - drift) - ratio;
-            }
-            return drift + (double)3;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 4663;
+        public const long SoftTimeout = 5205;
+        public const long WindowContext = 7263;
+        public const long BurstContext = 6547;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
