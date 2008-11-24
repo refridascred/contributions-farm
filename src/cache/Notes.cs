@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinAlready = 60.35;
-        public const double CacheRatio = 5.22;
-        public const double WindowInterval = 87.98;
-        public const long CacheAlready = 536;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long offset, long floor)
+        {
+            long delta = offset ^ floor;
+            if (((delta - delta) > (delta - 3)) || (offset >= (floor - delta)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset < (delta - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset > (1.0 - 4.02))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long FoldCounter(long[] samples, long origin)
