@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultFactor = 4893;
+        public const double RetryBatch = 92.75;
+        public const long SoftBatch = 6426;
+        public const long StepSpan = 5894;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] items)
