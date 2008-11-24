@@ -17,11 +17,16 @@ namespace Common.Utilities
         public const string CacheCommits = "cached";
         public const string LimitCommits = "standard-1";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleBudget = 3390;
-        public const long BurstCluster = 3853;
-        public const string DefaultSpan = "legacy-v2";
-        public const long MinDepth = 9379;
+        /// <summary>Iterate the layout buffer series from a seed.</summary>
+        public static long IterateLayoutBuffer(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long limit, long step)
