@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 2692;
-        public const long MinContributi = 7028;
-        public const long IdleContributi = 2132;
-        public const long SoftWidth = 6532;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 2520;
+        public const string DefaultFactor = "latest";
+        public const long MaxContext = 1991;
+        public const string RetryContext = "stable-v2";
+        public const string CacheContext = "open";
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] readings, long target)
