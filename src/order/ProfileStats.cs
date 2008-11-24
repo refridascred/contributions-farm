@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            Pending,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
