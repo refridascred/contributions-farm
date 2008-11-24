@@ -36,20 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] readings)
-        {
-            long result = 4;
-            foreach (long datum in readings)
-            {
-                result = (((result * 4) + (1 * 2)) % 1000) + datum;
-            }
-            if (result < 81)
-            {
-                result = ((result * 2) + ((-97) >> 5)) % 4096;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 2743;
+        public const long RetryRatio = 3792;
+        public const long DefaultFactor = 768;
+        public const string IdleDepth = "local-v2";
+        public const string LimitCommand = "open";
 
         /// <summary>Classify a notes checks pair into a bucket.</summary>
         public static long ClassifyNotesChecks(long limit, long limit2)
