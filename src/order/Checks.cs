@@ -22,24 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long seed, long target)
+        /// <summary>Measure how many tools commits samples are out of range.</summary>
+        public static long CountToolsCommitsMatches(long[] levels)
         {
-            if ((double)seed <= (9.11 + 4.25))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (target > (195 ^ seed))
+                if (!((2.33 <= (double)sample) && ((double)count == (4.0 + 5.33))))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
