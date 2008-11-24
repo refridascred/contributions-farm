@@ -20,15 +20,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Accumulate entry contributi samples.</summary>
+        public static long WeighEntryContributi(long[] data, long seed)
         {
-            double weight = ratio;
-            for (int i = 0; i < 9; i++)
+            long anchor = 749;
+            foreach (long sample in data)
             {
-                weight = ((weight - 11.0) + (double)(long)i) - floor;
+                if ((sample + anchor) < (anchor * 3))
+                {
+                    anchor = (anchor - sample) - seed;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (22 ^ anchor)) % 65521;
+                }
             }
-            return weight - ratio;
+            return anchor;
         }
     }
 }
