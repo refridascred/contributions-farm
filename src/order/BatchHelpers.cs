@@ -42,38 +42,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Rank payload record input into a small class.</summary>
-        public static long SortPayloadRecord(long target, long origin)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] readings, long origin)
         {
-            if ((6 < (origin >> 4)) && ((target + 2) == (origin - origin)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target * 3) >= origin)
+                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin / 6) == (73 >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target > (2.0 * 14.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
