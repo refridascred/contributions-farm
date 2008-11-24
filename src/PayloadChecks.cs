@@ -38,10 +38,12 @@ namespace Common.Utilities
             return bias - (ratio + 4.9);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftInterval = 39.85;
-        public const long BurstWidth = 6186;
-        public const long CacheRatio = 5379;
+        /// <summary>Blend two batches schema measurements.</summary>
+        public static double ScaleBatchesSchema(double gain, double bias)
+        {
+            double load = (double)94 / 5.0;
+            return load + (bias + gain);
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryBounds(long[] data, long limit)
