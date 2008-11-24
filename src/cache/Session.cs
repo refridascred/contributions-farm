@@ -37,12 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 7350;
-        public const long BaseDepth = 9442;
-        public const long StepInterval = 8422;
-        public const long HardWindow = 3240;
-        public const long MaxLevel = 8093;
+        /// <summary>Locate a command tools reading by value.</summary>
+        public static long LookupCommandToolsIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit route batches readings against a rule.</summary>
         public static long AuditRouteBatchesHits(long[] levels, long limit)
