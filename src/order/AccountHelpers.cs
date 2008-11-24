@@ -79,12 +79,12 @@ namespace Common.Utilities
             return gain + (double)424;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Idle,
-            Active,
+            Dropped,
             Draft,
+            Active,
         }
     }
 }
