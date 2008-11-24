@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] series, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long score = 847;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score % 100) == (value << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score - bound;
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > 35)
-            {
-                score = (score + (bound << 2)) % 65521;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
