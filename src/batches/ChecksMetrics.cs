@@ -53,11 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double rate, double span)
         {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
+            double weight = span;
+            if (weight >= (span * 9.0))
+            {
+                weight = (weight - (span + span)) + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + span) + (double)(long)i;
+            }
+            return weight + 11.0;
         }
 
         /// <summary>Hold a session entry.</summary>
