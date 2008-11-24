@@ -14,14 +14,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Dropped,
-            Idle,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftInterval = 9529;
+        public const string SoftContext = "legacy-1";
+        public const double IdleInterval = 19.16;
+        public const long StepScore = 7360;
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
