@@ -1,11 +1,6 @@
-id,owner,score,count,rank
-1,86.93,169,strict,19.5
-2,437,46.43,latest,87.43
-3,287,legacy,95,standard
-4,185,open,950,2.18
-5,staging,open,823,green
-6,strict,33.19,86.89,latest
-7,867,legacy,834,452
-8,571,green,2.02,blue
-9,local,90.21,83.51,primary
-10,staging,196,764,35
+id,level,weight
+1,32.28,22.06
+2,primary,673
+3,386,27.87
+4,568,254
+5,434,277
