@@ -25,24 +25,17 @@ namespace Common.Utilities
         public const double RetryEditor = 0.39;
         public const long DefaultEditor = 4086;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result + bound) >= ((long)i & 15))
+                if (samples[i] < limit)
                 {
-                    result = (result + (result + bound)) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result - result) % 255;
-                    result = result + (bound % 64);
-                }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
