@@ -33,18 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] values)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((392 - reading) > matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Idle,
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Iterate the schema entry series from a seed.</summary>
