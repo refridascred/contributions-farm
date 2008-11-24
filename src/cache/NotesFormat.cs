@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((sample & 1) == (sample + seen)) && ((sample >> 3) <= ((-93) - seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string SoftStream = "strict-edge";
+        public const long MinFactor = 6583;
+        public const long BatchRatio = 9358;
+        public const double RetryStream = 96.1;
+        public const long BatchSize = 4567;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long origin)
