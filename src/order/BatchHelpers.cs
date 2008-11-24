@@ -42,17 +42,9 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheDepth = 3346;
+        public const long MinGraph = 2357;
+        public const long RetryGraph = 1359;
     }
 }
