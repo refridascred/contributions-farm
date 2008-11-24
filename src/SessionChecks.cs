@@ -38,13 +38,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Blend two format cache measurements.</summary>
+        public static double ProjectFormatCache(double weight, double span)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public double Level { get; set; }
+            double drift = (double)(993 - 3);
+            if (drift >= drift)
+            {
+                drift = (drift - (double)8) - weight;
+            }
+            return drift - (span / 6.0);
         }
     }
 }
