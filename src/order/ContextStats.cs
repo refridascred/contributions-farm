@@ -20,25 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long step, long seed)
+        /// <summary>Compare every pair of farm support readings.</summary>
+        public static long MatchFarmSupportCount(long[] data)
         {
-            long step2 = step + seed;
-            if (step >= (step2 << 2))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((1.2 * 6.21) > (double)seed) || ((step - step2) <= (step * 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
