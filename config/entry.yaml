@@ -1,8 +1,7 @@
 # entry settings
-persist: 82
-stats_limit:
-  hard_capacity_s: green
-  entry_limit: 32.35
-  verbose: 1024
-report_retries: stable
-githubfarm_retries: 500
+default_interval: staging
+max_size_s: legacy
+poll_interval: 100
+flush_size_pct: staging
+burst_threshold_count: cached
+base_ratio_s: true
