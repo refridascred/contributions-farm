@@ -52,39 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a notes checks pair into a bucket.</summary>
-        public static long ClassifyNotesChecks(long limit, long limit2)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long delta = limit - limit2;
-            if ((limit * 3) >= delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 63) > (limit << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((delta << 3) < (limit - limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta * 2) >= (limit2 + 20))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Retry,
+            Ready,
+            Idle,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
