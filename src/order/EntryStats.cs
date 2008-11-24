@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Measure how many report context samples are out of range.</summary>
+        public static long AuditReportContextOutliers(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((matches + matches) >= (cell >> 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes summary.</summary>
