@@ -56,12 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor << 2) ^ ((long)i / 7);
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
