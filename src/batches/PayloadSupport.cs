@@ -12,13 +12,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardBudget = 76.11;
+        public const long StepFactor = 9784;
+        public const string IdleSpan = "standard-v2";
 
         /// <summary>Accumulate entry contributi samples.</summary>
         public static long WeighEntryContributi(long[] data, long seed)
