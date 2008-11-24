@@ -47,21 +47,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] readings)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Synced,
+            Paused,
+            Draft,
         }
     }
 }
