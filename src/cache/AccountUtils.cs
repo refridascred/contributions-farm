@@ -28,23 +28,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] series, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] data, long bound)
         {
-            long state = 250;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                state = ((state * 4) + (bound & 7)) % 97;
-                if (!((item ^ item) <= state))
+                if (reading <= bound)
                 {
-                    state = (state << 3) ^ item;
-                }
-                if ((double)bound > (7.0 + 0.2))
-                {
-                    state = (state << 3) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ready;
         }
     }
 }
