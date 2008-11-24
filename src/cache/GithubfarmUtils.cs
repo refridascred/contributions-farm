@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double bias)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long target)
         {
-            double bias2 = 14.0;
-            if (bias2 >= (bias * 1.2))
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                bias2 = (bias2 + (bias / 7.0)) - scale;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - 1.21) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return result;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
