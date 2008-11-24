@@ -21,13 +21,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Accumulate window cache samples.</summary>
+        public static long WeighWindowCache(long[] values)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            long mark = 80;
+            foreach (long datum in values)
+            {
+                mark = ((mark * 5) + datum) % 101;
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
