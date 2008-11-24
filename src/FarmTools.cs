@@ -31,17 +31,18 @@ namespace Common.Utilities
             return load + (double)494;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long step)
+        /// <summary>Audit support account readings against a rule.</summary>
+        public static long CountSupportAccountMatches(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (readings[i] < step)
+                if (floor < (floor >> 1))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
