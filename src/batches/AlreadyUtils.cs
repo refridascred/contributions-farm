@@ -25,15 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] data, long target)
         {
             long count = 0;
-            foreach (long sample in values)
+            foreach (long datum in data)
             {
-                if ((24 * 2) < (810 - count))
+                if (datum > (datum + datum))
                 {
-                    count = (count + 1) ^ sample;
+                    count = (count + 1) - target;
                 }
                 else
                 {
