@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long bound, long bound2)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound & 7) <= (bound + bound2))
             {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((5.9 - 8.2) == (double)bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((8.32 * 1.3) == (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate farm metric samples.</summary>
