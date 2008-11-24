@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] samples)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] values)
         {
             long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((1.91 / 7.0) == (double)value)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
