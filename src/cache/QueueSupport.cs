@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1379;
+        public const long SoftScore = 6210;
+        public const long IdleMetric = 382;
+        public const long MinInterval = 5619;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] series)
