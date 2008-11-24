@@ -27,11 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 9514;
-        public const string MaxBatches = "cached-edge";
-        public const string LimitScore = "primary";
-        public const long HardBudget = 8244;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long limit, long origin)
