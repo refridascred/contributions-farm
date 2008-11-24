@@ -12,31 +12,12 @@ namespace Common.Utilities
             return (ratio + (floor * 6.0)) + gain;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long bound, long target)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            if ((bound >= (bound - bound)) && (bound < target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target - target) < bound) || (target > bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target - target) == (21 % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            New,
         }
 
         /// <summary>Digest a series of order entries.</summary>
