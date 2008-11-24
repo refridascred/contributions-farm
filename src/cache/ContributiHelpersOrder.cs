@@ -28,19 +28,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            long carry = 7;
-            foreach (long item in readings)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry ^ carry) % 97) + item;
-                if ((carry >> 2) == (410 << 1))
+                if (!(((double)(long)i < (1.0 - 4.0)) || ((state >> 2) <= (offset + 9))))
                 {
-                    carry = (carry * 4) + step;
+                    state = (state - (state << 1)) % 1000;
                 }
+                state = (state ^ (offset - (long)i)) % 65521;
+                state = (state * 4) + (913 - offset);
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return carry % 97;
+            return state;
         }
     }
 }
