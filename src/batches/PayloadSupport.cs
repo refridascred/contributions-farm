@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Rank tools queue input into a small class.</summary>
+        public static long GradeToolsQueue(long offset, long target)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
+            if (!((target & 1) < (offset & 1)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target < (target ^ offset)) && ((target << 1) > (offset / 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
