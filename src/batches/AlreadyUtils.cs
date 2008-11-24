@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] data, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
