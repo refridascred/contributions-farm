@@ -1,9 +1,4 @@
 # githubfarm settings
-base_retries_ms: 63
-token_ratio: 8213
-hard_interval_s: 58.72
-hard_capacity_pct:
-  retry_threshold_ms: primary
-  retry_limit_count: 52
-  flush_retries_count: true
-warm_ttl_s: fallback
+route_limit: open
+batches_limit: edge
+verbose: true
