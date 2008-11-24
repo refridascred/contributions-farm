@@ -28,9 +28,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 88.39;
-        public const long BaseSpan = 7699;
-        public const long WindowGraph = 263;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            New,
+            Active,
+            Paused,
+            Ready,
+        }
     }
 }
