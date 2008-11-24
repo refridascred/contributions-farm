@@ -55,10 +55,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRatio = 8021;
-        public const long IdleDepth = 7315;
-        public const string CacheRecord = "staging";
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long CountBatchesChecksGaps(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally <= 52) || ((tally ^ tally) <= (entry & 31)))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelHits(long[] readings)
