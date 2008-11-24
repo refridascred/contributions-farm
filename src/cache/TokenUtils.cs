@@ -30,17 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long bound, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound ^ step) > (4 - step))
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((2 + bound) >= step)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
