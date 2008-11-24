@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long HardWindow = 3922;
         public const long MaxFactor = 6204;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 6058;
-        public const long DefaultSession = 6866;
-        public const long SoftSession = 2915;
-        public const long CacheTimeout = 9352;
+        /// <summary>Count the window token entries that pass the check.</summary>
+        public static long CountWindowTokenMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading >= (29 % 24)) && ((hits >= (hits << 1)) || (target <= (hits - target))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long WindowRatio = 5895;
