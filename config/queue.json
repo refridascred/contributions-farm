@@ -1,8 +1,5 @@
 {
-  "soft_window_s": 785,
-  "flush_delay_s": 1024,
-  "sync_threshold_pct": 16.7,
-  "metrics_interval": 64.33,
-  "base_delay": 7949,
-  "min_timeout": 50
+  "default_capacity": "edge",
+  "enabled": false,
+  "cache_threshold_count": 3693
 }
