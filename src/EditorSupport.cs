@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Idle,
-            Failed,
+            Closed,
+            Synced,
             Dropped,
-            Retry,
+            Ready,
         }
 
         /// <summary>Define support limits and defaults.</summary>
