@@ -34,19 +34,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series)
         {
-            long result = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 836;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((double)entry < 2.71)
                 {
-                    result = (result - (floor >> 1)) - (long)i2;
+                    anchor = (anchor - (2 & 63)) % 101;
                 }
-                result = ((result * 4) + (long)i) % 65521;
+                else
+                {
+                    anchor = (anchor << 2) ^ entry;
+                }
             }
-            return result;
+            return anchor % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
