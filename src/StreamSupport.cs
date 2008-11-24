@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long bound)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            if ((19.0 / 5.0) > (double)bound)
             {
-                if (((58 - hits) < entry) || ((hits << 1) <= (hits & 63)))
+                return 5;
+            }
+            else
+            {
+                if (((step + bound) != (step ^ bound)) || ((bound + bound) == ((-4) * 5)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)step > (8.0 - 9.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)bound > (3.5 * 8.15)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
