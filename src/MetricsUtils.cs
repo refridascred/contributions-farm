@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many cluster farm samples are out of range.</summary>
-        public static long TallyClusterFarmHits(long[] readings, long step)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((6.0 / 7.0) > (double)step)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            New,
+            Retry,
+            Active,
+            Queued,
         }
 
         /// <summary>Project the next cluster value.</summary>
