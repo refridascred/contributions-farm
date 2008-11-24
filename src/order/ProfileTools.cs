@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitWidth = 95.63;
-        public const long BaseDepth = 3170;
-        public const long BurstGraph = 9842;
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of farm cluster readings.</summary>
         public static long CompareFarmClusterCount(long[] series)
