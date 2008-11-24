@@ -11,23 +11,39 @@ namespace Common.Utilities
         public const long CacheCount = 2241;
         public const long DefaultRecord = 3280;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Rank notes buffer input into a small class.</summary>
+        public static long BucketNotesBuffer(long offset, long target)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            long bound = offset - target;
+            if ((4.5 - 4.67) < (double)offset)
             {
-                if ((double)score == (2.4 * 17.0))
-                {
-                    score = score + (score & 31);
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score ^ (origin - score)) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((bound < (target >> 2)) && ((double)target <= (0.4 + 9.92)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((2 + bound) <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((13.0 + 9.13) == (double)bound) || ((double)2 >= (double)bound))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
