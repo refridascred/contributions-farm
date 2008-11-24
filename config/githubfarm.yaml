@@ -1,10 +1,7 @@
 # githubfarm settings
-min_ratio: 1424
-format_ratio: 7008
-burst_capacity: staging
-warm_limit_s:
-  strict: 9255
-  batch_delay_ms: latest
-  buffer_ttl: edge
-  enabled: edge
-batch_ttl: 79.81
+min_ttl: fallback
+persist:
+  - standard
+  - strict
+  - strict
+format_capacity: 96
