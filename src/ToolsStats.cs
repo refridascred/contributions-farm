@@ -78,22 +78,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportOutliers(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((3.07 + 12.0) > (double)item)
+                if ((datum + matches) < matches)
                 {
-                    tally = tally + 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
