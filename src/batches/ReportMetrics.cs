@@ -13,13 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long seed)
         {
-            Active,
-            Stale,
-            Failed,
-            Closed,
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate command samples.</summary>
