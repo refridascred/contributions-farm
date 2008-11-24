@@ -63,32 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long seed, long limit)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long bound = seed + limit;
-            if (((bound - limit) == (seed ^ 6)) || ((0 + seed) <= (seed % 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (seed >= (5 - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound ^ (-86)) == (limit + limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            New,
         }
     }
 }
