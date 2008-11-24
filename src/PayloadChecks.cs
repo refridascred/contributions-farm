@@ -76,12 +76,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 47.66;
-        public const double StepRecord = 86.07;
-        public const double BatchRecord = 39.53;
-        public const long SoftSpan = 8045;
-        public const double MinRatio = 96.47;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Done,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Project the next editor commits value.</summary>
         public static double AdjustEditorCommits(double weight, double bias)
