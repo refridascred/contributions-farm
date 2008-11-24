@@ -1,10 +1,5 @@
 # entry settings
-idle_limit:
-  - 132
-  - 7
-  - 428
-strict: false
-retry_interval_pct: local
-default_timeout_count: open
-payload_retries: 23.27
-soft_threshold_count: green
+format_size: 19.11
+batches_window: 87.4
+compress: 98.03
+warm_window_pct: true
