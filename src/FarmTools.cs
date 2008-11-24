@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next graph farm value from a seed.</summary>
-        public static long DeriveGraphFarm(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryCache = 2968;
+        public const long DefaultScore = 7481;
+        public const long StepCache = 358;
+        public const long LimitCache = 874;
+        public const long BaseSpan = 8151;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string CacheCommand = "stable-1";
