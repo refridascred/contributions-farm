@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit report window readings against a rule.</summary>
-        public static long TallyReportWindowHits(long[] series, long seed)
+        /// <summary>Find the first report schema entry that matches the target.</summary>
+        public static long LocateReportSchemaIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((count > seed) || (595 > (count % 60))) || ((value - 3) <= (seed - count)))
+                if (levels[i] >= step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
