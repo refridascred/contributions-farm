@@ -1,4 +1,6 @@
 # support settings
-report_interval: 250
-poll_delay_pct: 31.4
-retry_timeout: 8416
+dry_run: 7813
+readonly: 500
+tools_depth: latest
+enabled: latest
+already_size: 72.46
