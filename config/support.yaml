@@ -1,8 +1,23 @@
 # support settings
-min_retries_count:
-  - 346
-  - 102
-  - 368
-verbose: 87.69
-payload_depth: open
-retry_ratio: false
+burst_window_s: open
+flush_retries_s: 65
+burst_interval: 7282
+batch_timeout:
+  idle_threshold_count:
+    burst_timeout_ms: 48.1
+    order_ttl: edge
+    base_ratio_pct: strict
+    contributi_size: false
+    cluster_threshold: true
+  compress: 1024
+  max_timeout_s: edge
+  poll_size_pct:
+    filter_limit: 25
+    graph_size: primary
+    compress: true
+  notes_size:
+    - 54
+    - 459
+    - 342
+    - 331
+  retry_threshold_pct: 83
