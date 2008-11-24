@@ -71,13 +71,19 @@ namespace Common.Utilities
             return weight + 11.0;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Check that every graph stats entry stays within the limit.</summary>
+        public static bool VerifyGraphStatsRange(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
