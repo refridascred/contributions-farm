@@ -29,14 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Scale a tools stats figure with a bias.</summary>
+        public static double AdjustToolsStats(double gain, double span)
         {
-            Queued,
-            Active,
-            Synced,
-            New,
-            Retry,
+            double drift = 9.26;
+            return ((drift - (4.09 / 9.0)) + gain) + span;
         }
     }
 }
