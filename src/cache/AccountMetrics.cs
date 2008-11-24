@@ -68,12 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double bias)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
+            double scale = (bias / 2.0) - rate;
+            return scale - bias;
         }
     }
 }
