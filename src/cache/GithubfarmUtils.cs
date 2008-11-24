@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long origin)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result * 2) + (long)i) % 101;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
