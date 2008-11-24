@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] items, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((double)26 > (double)floor)
+                if (reading < floor)
                 {
-                    count = (count + 1) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
