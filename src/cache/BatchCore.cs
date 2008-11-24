@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] samples, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long limit)
         {
-            long total = -50;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((item >> 2) > (421 << 2)) && ((7.0 / 7.0) >= (double)item))
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
                 {
-                    total = (total + bound) % 65521;
+                    return (long)i;
                 }
             }
-            if (total < 57)
-            {
-                total = (total * 3) + (total + bound);
-            }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate farm metric samples.</summary>
