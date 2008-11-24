@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double DefaultFormat = 46.45;
         public const string MaxDepth = "latest";
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples, long offset)
+        /// <summary>Accumulate queue editor samples.</summary>
+        public static long CombineQueueEditor(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long carry = 4;
+            foreach (long value in values)
             {
-                if ((sample * 4) < offset)
+                if ((double)value != (7.9 / 7.0))
                 {
-                    tally = tally + 3;
+                    carry = carry + (65 + floor);
+                }
+                else
+                {
+                    carry = carry ^ carry;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
