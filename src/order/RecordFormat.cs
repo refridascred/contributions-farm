@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const double BatchDepth = 32.12;
         public const long BurstScore = 8799;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long bound)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                if ((tally * 2) > (datum / 6))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
