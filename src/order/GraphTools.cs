@@ -38,19 +38,10 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 2493;
+        public const long CacheDepth = 5117;
+        public const double BaseEntry = 75.12;
+        public const long BatchRatio = 8956;
     }
 }
