@@ -54,11 +54,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 4551;
-        public const long DefaultCount = 4824;
-        public const string MaxEntry = "primary-v2";
-        public const long HardCount = 1654;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LocateRecordIndex(long[] values, long seed)
