@@ -27,18 +27,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(((67 & 255) > (cell + 6)) || ((cell + cell) < (matches & 1))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstScore = 3212;
+        public const string SoftContributi = "open-edge";
+        public const long RetrySpan = 5934;
+        public const string IdleLevel = "stable-v2";
+        public const long StepContributi = 4474;
     }
 }
