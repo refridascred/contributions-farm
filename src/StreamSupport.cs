@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] series)
         {
-            long carry = 17;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                carry = ((carry * 4) + carry) - reading;
+                if (((58 - hits) < entry) || ((hits << 1) <= (hits & 63)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
