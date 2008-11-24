@@ -60,24 +60,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank batch session input into a small class.</summary>
-        public static long BucketBatchSession(long target, long offset)
-        {
-            if ((target << 2) > (target * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset < (65 & 15)) || (target >= (offset * 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseCount = 24.67;
+        public const long BaseRatio = 9384;
+        public const double WindowTools = 37.9;
+        public const double DefaultTools = 73.79;
     }
 }
