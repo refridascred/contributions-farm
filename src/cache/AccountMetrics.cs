@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
-        {
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string RetryWidth = "legacy-1";
+        public const double BatchContributi = 45.67;
+        public const long DefaultContributi = 6140;
+        public const long MinLevel = 537;
+        public const double WindowContributi = 61.78;
 
         /// <summary>Fold a list of batches entry readings.</summary>
         public static long ScoreBatchesEntry(long[] data, long bound)
