@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank checks already input into a small class.</summary>
-        public static long SortChecksAlready(long limit, long limit2)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long edge = limit ^ limit2;
-            if ((edge >> 5) != (edge * 2))
+            long mark = 8;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(edge < (limit - limit2)))
+                mark = mark ^ ((long)levels.Length ^ entry);
+                if ((entry & 3) >= (47 << 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (184 < (limit2 + limit2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - limit2) >= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define record limits and defaults.</summary>
