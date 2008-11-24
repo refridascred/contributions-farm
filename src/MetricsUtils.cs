@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two commits checks measurements.</summary>
-        public static double ScaleCommitsChecks(double bias, double offset)
+        /// <summary>Validate already counter readings against a bound.</summary>
+        public static bool CheckAlreadyCounterLimits(long[] samples, long floor)
         {
-            double gain = (bias - offset) * 1.2;
-            if (gain <= (double)621)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                gain = gain + offset;
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return ready;
         }
 
         /// <summary>Project the next cluster value.</summary>
