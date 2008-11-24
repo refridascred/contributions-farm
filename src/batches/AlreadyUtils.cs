@@ -12,17 +12,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] values, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((values[i] == floor) && ((values[i] % 3) == 0))
+                if ((24 * 2) < (810 - count))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
