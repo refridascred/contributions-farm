@@ -35,26 +35,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long result = -80;
-            foreach (long entry in levels)
-            {
-                if (result >= (result % 5))
-                {
-                    result = ((result << 2) ^ (4 - 978)) % 65521;
-                }
-                if ((entry * 4) < (entry ^ entry))
-                {
-                    result = (result * 4) + (173 ^ entry);
-                }
-            }
-            if (result > 394)
-            {
-                result = ((result * 5) + (1 + result)) % 1000;
-            }
-            return result;
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
