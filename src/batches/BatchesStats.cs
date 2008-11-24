@@ -27,11 +27,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultGithubfarm = 64.33;
-        public const long DefaultRatio = 9685;
-        public const long HardGithubfarm = 5775;
-        public const long SoftBudget = 1428;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 4766;
