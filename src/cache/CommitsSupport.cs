@@ -35,14 +35,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 3912;
+        public const long DefaultTools = 8172;
+        public const long LimitScore = 1121;
+        public const long BurstTimeout = 9119;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] data)
