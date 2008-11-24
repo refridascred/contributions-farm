@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a commits layout pair into a bucket.</summary>
-        public static long GradeCommitsLayout(long target, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long offset, long step)
         {
-            long diff = target - origin;
-            if ((origin + origin) == (731 & 3))
+            long next = offset + step;
+            if (next >= (next + offset))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((diff > (592 / 2)) && ((double)origin <= 1.7))
+                if ((next > (1 / 7)) && ((7.9 - 5.0) < (double)next))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    return 0;
+                    if (!(9.88 <= (double)offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((offset ^ offset) > (3 & 63)) && (offset <= (step + step)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
