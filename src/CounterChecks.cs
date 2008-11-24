@@ -31,11 +31,16 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state << 2) ^ (state >> 3)) % 101;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
