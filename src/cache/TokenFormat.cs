@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 5672;
-        public const double BatchNotes = 9.05;
-        public const long SoftTimeout = 1266;
-        public const long MaxNotes = 4978;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
