@@ -36,11 +36,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 3978;
-        public const double BaseGithubfarm = 69.05;
-        public const long SoftGithubfarm = 5373;
-        public const long LimitGithubfarm = 5174;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
