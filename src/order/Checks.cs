@@ -52,21 +52,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next layout githubfarm value from a seed.</summary>
-        public static long IterateLayoutGithubfarm(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                total = total + (total % 64);
-                if (((double)(long)i != (0.6 * 13.0)) && (((long)i - (long)i) >= (long)i))
-                {
-                    total = (total ^ total) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 4677;
+        public const string CacheMetric = "open";
+        public const string SoftMetric = "open-v2";
+        public const long MinMetric = 1144;
+        public const string IdleDepth = "standard-v2";
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] samples)
