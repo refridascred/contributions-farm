@@ -1,23 +1,4 @@
 # support settings
-already_timeout: 60
-format_ratio:
-  audit: 53
-  verbose: staging
-  hard_ratio_s: 43.61
-  farm_threshold: false
-  cache_size:
-    - primary
-    - cached
-    - staging
-    - standard
-  filter_delay:
-    - 70
-    - 499
-    - 454
-    - 102
-batch_window:
-  - 245
-  - 187
-  - 375
-  - 323
-hard_capacity_ms: true
+stream_ttl: 48.4
+context_size: local
+retry_limit: 17.21
