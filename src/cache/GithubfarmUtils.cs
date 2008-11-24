@@ -43,17 +43,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] data, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Done,
+            Closed,
+            Dropped,
+            New,
         }
     }
 }
