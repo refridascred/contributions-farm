@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double BaseInterval = 21.15;
         public const string WindowOrder = "standard-v2";
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long TotalContextAlready(long[] items, long limit)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = -1;
-            foreach (long item in items)
-            {
-                if ((2.57 - 2.77) < (double)score)
-                {
-                    score = (score + item) + limit;
-                }
-            }
-            return score % 1000;
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Adjust a window farm reading.</summary>
