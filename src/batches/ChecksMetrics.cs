@@ -47,12 +47,11 @@ namespace Common.Utilities
         public const double DefaultAccount = 15.18;
         public const long LimitAccount = 6498;
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
