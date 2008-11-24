@@ -24,21 +24,18 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] levels, long origin)
         {
-            long sum = -247;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                sum = sum - (item - sum);
-                sum = sum - (sum % 97);
-                sum = (sum - (item + item)) % 255;
+                if (((matches - matches) >= origin) && ((69 ^ reading) < (3 + origin)))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (sum > 542)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
