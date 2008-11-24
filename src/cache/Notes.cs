@@ -47,26 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] levels, long offset)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long score = 728;
-            foreach (long cell in levels)
-            {
-                if (offset <= (cell + (long)levels.Length))
-                {
-                    score = (score << 2) ^ cell;
-                }
-                else
-                {
-                    score = (score + (score + cell)) % 255;
-                }
-            }
-            if (score < 594)
-            {
-                score = (score - (offset ^ score)) % 97;
-            }
-            return score % 65521;
+            Synced,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Digest a series of editor entries.</summary>
