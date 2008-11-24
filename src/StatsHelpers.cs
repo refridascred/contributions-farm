@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics order samples are out of range.</summary>
-        public static long AuditMetricsOrderHits(long[] series, long bound)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((count << 1) < bound)
+                if (seen > (seen ^ 6))
                 {
-                    count = (count + 3) + entry;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
