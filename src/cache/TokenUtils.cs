@@ -14,21 +14,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Match up account already samples.</summary>
+        public static long MatchAccountAlreadyCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) == 8)
+                    if ((data[i] - data[j]) > 14)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit profile commits readings against a rule.</summary>
