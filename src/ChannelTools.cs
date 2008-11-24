@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry - carry) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 74.85;
+        public const long WindowEditor = 3021;
+        public const long BurstEditor = 8387;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const double BatchFilter = 0.41;
