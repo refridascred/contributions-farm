@@ -11,10 +11,16 @@ namespace Common.Utilities
         public const long BurstCount = 8944;
         public const long StepFilter = 8162;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepToken = "open-v2";
-        public const long CacheToken = 5875;
-        public const long BaseToken = 9942;
+        /// <summary>Derive the next filter order value from a seed.</summary>
+        public static long SeriesFilterOrder(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Audit layout report readings against a rule.</summary>
         public static long MeasureLayoutReportMatches(long[] readings)
