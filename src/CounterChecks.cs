@@ -26,11 +26,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 27.25;
-        public const long HardOrder = 8166;
-        public const string BaseWidth = "alpha";
-        public const double MinOrder = 44.61;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long floor)
+        {
+            if (((double)target > (double)floor) && ((floor % 3) <= (target + floor)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (target >= floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long TallyEditorMatches(long[] values, long target)
