@@ -72,20 +72,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                mix = ((mix * 3) + (9 << 3)) % 1000;
-                if ((3.3 * 6.0) != (double)mix)
-                {
-                    mix = ((mix << 3) ^ (mix << 2)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 8738;
+        public const long LimitBudget = 2504;
+        public const long BurstOrder = 2728;
     }
 }
