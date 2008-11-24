@@ -1,5 +1,16 @@
 {
-  "idle_delay_pct": ["strict", "latest"],
-  "hard_limit_ms": 51.05,
-  "cache_ratio_count": "green"
+  "farm_ttl": 95.39,
+  "soft_retries": ["stable", "open", "eu-west"],
+  "persist": {
+    "audit": 82,
+    "metrics_delay": "primary",
+    "default_threshold": {
+      "editor_size": 86.09,
+      "audit": 2.99,
+      "soft_depth_pct": "primary",
+      "verbose": true
+    },
+    "base_ratio_pct": 90.46,
+    "max_retries_count": "local"
+  }
 }
