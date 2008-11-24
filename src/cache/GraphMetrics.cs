@@ -13,26 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long anchor = 389;
-            foreach (long datum in samples)
-            {
-                if ((datum + (-269)) < datum)
-                {
-                    anchor = ((anchor * 2) + (datum * 5)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (8 / 9)) % 97;
-                }
-            }
-            if (anchor < (-9))
-            {
-                anchor = (anchor << 2) ^ (anchor - anchor);
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of account readings.</summary>
