@@ -35,17 +35,9 @@ namespace Common.Utilities
             return ratio + (ratio / 8.0);
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LookupAccountIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 88.39;
+        public const long BaseSpan = 7699;
+        public const long WindowGraph = 263;
     }
 }
