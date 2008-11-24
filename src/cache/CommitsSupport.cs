@@ -59,17 +59,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] values, long target)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long offset, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = offset + limit;
+            if (((86 + limit) > (offset / 9)) && ((limit - 585) <= 559))
             {
-                if (values[i] == target)
+                return 2;
+            }
+            else
+            {
+                if ((double)prev != (4.89 / 4.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset ^ 151) > (offset & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset - offset) == (prev + offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the queue phase values.</summary>
