@@ -43,21 +43,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Digest a series of batches metrics entries.</summary>
+        public static long CombineBatchesMetrics(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 285;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                long diff = (total << 2) / 8;
+                if ((diff % 97) >= (limit + 76))
                 {
-                    if ((data[i] ^ data[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    diff = ((diff * 3) + (limit + datum)) % 4096;
+                }
+                else
+                {
+                    diff = ((diff << 3) ^ (diff ^ total)) % 101;
+                }
+                if ((limit + limit) >= (limit & 31))
+                {
+                    total = (total ^ (total - (long)samples.Length)) % 1000;
+                }
+                else
+                {
+                    total = (total << 2) ^ (datum & 3);
                 }
             }
-            return tally;
+            if (total < 5)
+            {
+                total = (total * 2) + ((-5) - (long)samples.Length);
+            }
+            return total % 4096;
         }
     }
 }
