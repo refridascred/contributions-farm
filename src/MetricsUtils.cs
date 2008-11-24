@@ -44,12 +44,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchTimeout = 4154;
-        public const string RetryFarm = "cached-1";
-        public const long MinCount = 4383;
-        public const string MinFarm = "open-edge";
-        public const long StepFarm = 8915;
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long limit)
+        {
+            if (offset < (offset ^ 425))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.5 + 3.58) <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset - offset) != (limit ^ offset)) || ((double)limit < (3.6 * 10.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] values, long bound)
