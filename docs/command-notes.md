@@ -1,11 +1,15 @@
 # Command notes
 
-Use metrics settings to tune how often route data is refreshed.
-Each queue is validated before it reaches the cluster queue.
+When a notes fails, the batches handler retries a few times before giving up.
+Keep entry and route names short and lowercase.
+The filter report groups every graph by support.
+
+The format module keeps record values in sync with the editor cache.
+The metrics report groups every token by stream.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every entry change
-- Prefer metrics defaults
-- Validate counter input early
-- Review buffer limits each release
+- Prefer command defaults
+- Document new metrics fields
+- Validate token input early
