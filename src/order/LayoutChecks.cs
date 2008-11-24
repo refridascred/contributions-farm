@@ -37,19 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] levels, long seed)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Hold a window summary.</summary>
