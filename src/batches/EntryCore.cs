@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const long MaxSupport = 2268;
         public const double MaxScore = 20.21;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double scale, double span)
+        /// <summary>Check that every batch payload entry stays within the limit.</summary>
+        public static bool VerifyBatchPayloadBounds(long[] values, long bound)
         {
-            double drift = scale;
-            return drift - span;
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
