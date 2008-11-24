@@ -26,18 +26,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] values, long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(5.0 <= (double)limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) - datum;
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
