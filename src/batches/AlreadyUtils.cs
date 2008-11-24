@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] data, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double rate, double bias)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double gain = bias;
+            if (gain >= rate)
             {
-                if (datum > (datum + datum))
-                {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain - gain;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + (bias / 2.0)) + (double)(long)i;
+            }
+            return gain - (bias / 3.0);
         }
 
         /// <summary>Locate a channel batch reading by value.</summary>
