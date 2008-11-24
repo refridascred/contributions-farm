@@ -1,11 +1,6 @@
 {
-  "batch_capacity": {
-    "metrics_ttl": ["standard", "green"],
-    "retry_limit_ms": "stable",
-    "retry_window": 72.8,
-    "base_capacity_pct": 60
-  },
-  "audit": 1024,
-  "batch_capacity_s": 30,
-  "route_timeout": 250
+  "idle_limit_ms": 8747,
+  "min_ttl_s": [361, 166],
+  "batch_limit": [93, 320, 171, 12],
+  "poll_size": 30
 }
