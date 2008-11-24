@@ -31,13 +31,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long origin)
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            long score = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((long)i == ((long)i + origin))
+                {
+                    continue;
+                }
+                score = score - (score * 2);
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count contributi window pairs that satisfy a relation.</summary>
