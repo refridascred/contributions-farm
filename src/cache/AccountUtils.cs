@@ -30,19 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] data, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            double mean = ratio;
+            if (mean > span)
             {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mean = mean + ratio;
             }
-            return ready;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)4) + (double)(long)i;
+            }
+            return mean + (ratio * 8.77);
         }
     }
 }
