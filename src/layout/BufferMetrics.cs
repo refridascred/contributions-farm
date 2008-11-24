@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a payload buffer sample.</summary>
-        public static long LookupPayloadBufferIndex(long[] samples, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                if ((9.47 * 9.3) <= (double)hits)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) + value) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
