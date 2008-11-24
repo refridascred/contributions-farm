@@ -36,22 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] levels, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((double)count > (3.5 - 19.0))
+                if ((8.3 + 1.1) != (double)value)
                 {
-                    count = ((count + 2) - reading) - step;
+                    hits = (hits + 2) + bound;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
