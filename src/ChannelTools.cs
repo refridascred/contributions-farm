@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 74.85;
-        public const long WindowEditor = 3021;
-        public const long BurstEditor = 8387;
+        /// <summary>Measure how many support commits samples are out of range.</summary>
+        public static long MeasureSupportCommitsHits(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ hits) <= 8)
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long step)
