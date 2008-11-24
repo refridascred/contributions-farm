@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const string StepRatio = "cached-v2";
         public const long WindowCounter = 8591;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] values, long limit)
+        /// <summary>Compare every pair of tools cluster readings.</summary>
+        public static long MatchToolsClusterCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] == limit) && ((values[i] % 5) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
