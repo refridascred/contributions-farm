@@ -14,13 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordRange(long[] items, long target)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
