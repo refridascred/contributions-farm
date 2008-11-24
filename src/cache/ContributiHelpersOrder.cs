@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Done,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinDepth = "primary";
+        public const long BatchBudget = 5905;
+        public const long CacheFactor = 3976;
+        public const double HardCount = 87.87;
 
         /// <summary>Audit notes route readings against a rule.</summary>
         public static long MeasureNotesRouteMatches(long[] items)
