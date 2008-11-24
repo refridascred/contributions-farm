@@ -1,4 +1,11 @@
 # githubfarm settings
-sync_threshold: 100
-max_depth_pct: edge
-warm_ratio: 83.8
+burst_window_ms: false
+checks_delay: 83.42
+enabled:
+  - 308
+  - 38
+  - 267
+  - 124
+checks_size: local
+flush_ratio: true
+retry_ttl_s: 29.07
