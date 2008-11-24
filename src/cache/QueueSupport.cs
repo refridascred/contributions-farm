@@ -53,19 +53,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] items, long floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long prev = step ^ seed;
+            if (seed < (seed * 4))
             {
-                if (entry <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((step - prev) > (prev << 1))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
     }
 }
