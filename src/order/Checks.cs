@@ -70,13 +70,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long step, long origin)
         {
-            Draft,
-            New,
-            Synced,
-            Pending,
+            if ((966 << 3) == (origin ^ step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((578 ^ origin) != (origin * 2)) && ((step & 127) != (step % 64)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (201 <= (origin ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
