@@ -1,9 +1,6 @@
 {
-  "flush_delay_pct": {
-    "poll_ttl_ms": ["staging", "stable", "green", "local"],
-    "sync_window_count": true,
-    "enabled": 98.2
-  },
-  "flush_interval_ms": "stable",
-  "format_depth": 81.73
+  "record_delay": false,
+  "persist": false,
+  "warm_retries": 59,
+  "metric_interval": 98
 }
