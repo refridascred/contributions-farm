@@ -36,13 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Count the checks batches entries that pass the check.</summary>
+        public static long AuditChecksBatchesGaps(long[] items, long offset)
         {
-            New,
-            Closed,
-            Stale,
-            Pending,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((6.0 * 6.7) < (double)cell)
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
