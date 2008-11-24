@@ -1,6 +1,13 @@
 {
-  "compress": 93.67,
-  "burst_retries_count": "blue",
-  "retry_capacity_pct": 7.43,
-  "idle_limit": "blue"
+  "report_ttl": [157, 366],
+  "retry_capacity_pct": "open",
+  "checks_size": ["primary", "blue"],
+  "min_retries_count": {
+    "idle_size_ms": 22.04,
+    "hard_depth_ms": "blue",
+    "idle_delay": 30,
+    "batch_retries_s": 2100,
+    "warm_interval_s": "local",
+    "cache_ratio_s": 4885
+  }
 }
