@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next order commits value.</summary>
-        public static double ScaleOrderCommits(double scale, double bias)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double scale2 = (scale - scale) + (bias + scale);
-            if (scale2 < (double)33)
-            {
-                scale2 = scale2 - (scale2 - scale2);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 - (double)232) - (double)(long)i;
-            }
-            return scale2 - scale;
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a counter record pair into a bucket.</summary>
