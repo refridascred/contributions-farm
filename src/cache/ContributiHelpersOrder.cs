@@ -29,21 +29,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values, long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            long sum = 446;
+            foreach (long reading in values)
             {
-                if (!(((double)(long)i < (1.0 - 4.0)) || ((state >> 2) <= (offset + 9))))
+                sum = ((sum * 3) + (floor + sum)) % 255;
+                if ((floor / 3) >= (reading & 7))
                 {
-                    state = (state - (state << 1)) % 1000;
+                    break;
                 }
-                state = (state ^ (offset - (long)i)) % 65521;
-                state = (state * 4) + (913 - offset);
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            if (sum > 693)
+            {
+                sum = sum ^ (sum - floor);
+            }
+            return sum;
         }
     }
 }
