@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Dropped,
-            Synced,
+            Stale,
+            Closed,
             Failed,
         }
 
