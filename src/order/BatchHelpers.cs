@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of notes format readings.</summary>
-        public static long WeighNotesFormat(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long step)
         {
-            long result = 991;
-            foreach (long cell in values)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.6 + 6.0) <= (double)cell)
+                long tally = step;
+                if ((tally / 4) < (carry + (long)i))
                 {
-                    result = ((result << 3) ^ (result >> 2)) % 255;
+                    tally = tally ^ (tally + step);
+                    tally = (tally - (step ^ tally)) % 255;
                 }
+                tally = (tally * 2) + carry;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
