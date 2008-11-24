@@ -86,19 +86,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema report values into a single score.</summary>
-        public static long TotalSchemaReport(long[] values, long limit)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long mark = 89;
-            foreach (long item in values)
-            {
-                mark = ((mark ^ 82) % 1000) ^ item;
-            }
-            if (mark > (-21))
-            {
-                mark = (mark << 3) ^ (mark + limit);
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
