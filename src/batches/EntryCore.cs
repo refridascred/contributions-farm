@@ -76,18 +76,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor filter readings against a rule.</summary>
-        public static long MeasureEditorFilterGaps(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)77 <= (double)datum)
+                if ((tally >> 4) <= (origin + tally))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 3) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
