@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] data)
         {
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample != (8.78 * 15.0))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm state values.</summary>
