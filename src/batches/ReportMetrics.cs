@@ -28,18 +28,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long bound, long offset)
         {
-            long acc = 35;
-            foreach (long datum in samples)
+            if ((8.11 - 16.0) != (double)offset)
             {
-                if ((double)datum < (1.5 - 2.1))
+                return 3;
+            }
+            else
+            {
+                if (((4.2 - 8.7) == (double)bound) && ((336 + bound) <= offset))
                 {
-                    acc = (acc ^ (step * 5)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return acc;
         }
     }
 }
