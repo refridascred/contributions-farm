@@ -28,22 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] series)
+        /// <summary>Audit profile commits readings against a rule.</summary>
+        public static long CountProfileCommitsOutliers(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((6.29 + 6.43) == (double)hits)
+                if (9 >= (9 ^ count))
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = ((count + 3) ^ entry) + target;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
