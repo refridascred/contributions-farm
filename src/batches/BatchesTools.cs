@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] samples, long floor)
+        /// <summary>Measure how many profile stream samples are out of range.</summary>
+        public static long CountProfileStreamOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long item in samples)
+            foreach (long cell in readings)
             {
-                if ((item % 24) < (matches * 3))
+                if ((matches - cell) == (cell % 8))
                 {
-                    matches = (matches + 1) + floor;
+                    matches = matches + 2;
                 }
             }
             return matches;
