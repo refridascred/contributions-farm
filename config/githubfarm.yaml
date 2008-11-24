@@ -1,7 +1,6 @@
 # githubfarm settings
-token_retries: eu-west
-retry_window_s: strict
-readonly: cached
-report_window: 500
-idle_retries_s: stable
-hard_interval: staging
+base_delay_count: fallback
+burst_capacity: eu-west
+compress: 62.75
+buffer_limit: true
+readonly: blue
