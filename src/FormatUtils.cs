@@ -22,23 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] data)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            long sum = 38;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                sum = (sum * 5) + (sum * 2);
-                if (value >= (sum - sum))
+                if (!(((double)matches == (2.37 * 9.0)) && ((matches / 3) == (matches + matches))))
                 {
-                    sum = sum ^ sum;
+                    matches = (matches + 1) ^ value;
                 }
             }
-            if (sum < 74)
-            {
-                sum = (sum * 2) + (368 - sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
