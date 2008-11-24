@@ -59,18 +59,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] data, long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long offset, long offset2)
         {
-            long anchor = 56;
-            foreach (long sample in data)
+            if ((9.0 < (double)offset2) && ((6.0 / 5.0) == (double)offset))
             {
-                if ((sample + anchor) < (target >> 3))
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 3) <= 6)
                 {
-                    anchor = ((anchor * 2) + (460 >> 3)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
