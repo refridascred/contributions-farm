@@ -14,15 +14,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a record cluster figure with a bias.</summary>
-        public static double AdjustRecordCluster(double rate, double span)
+        /// <summary>Classify a layout githubfarm pair into a bucket.</summary>
+        public static long GradeLayoutGithubfarm(long seed, long target)
         {
-            double mean = rate;
-            for (int i = 0; i < 3; i++)
+            long step = seed ^ target;
+            if ((step >= (target - (-589))) || (target >= (step * 4)))
             {
-                mean = (mean - span) + (double)(long)i;
+                return 3;
             }
-            return mean - span;
+            else
+            {
+                if (((seed - target) > seed) || ((step << 2) != (seed + target)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the format record series from a seed.</summary>
