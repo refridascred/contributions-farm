@@ -14,16 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] items, long origin)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] series)
         {
-            long total = 278;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                total = (((total * 2) + (origin % 16)) % 101) + reading;
-                total = (total - total) % 101;
+                if ((cell >= (cell & 127)) && ((tally >> 2) <= (cell / 9)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Fold a list of graph commits readings.</summary>
