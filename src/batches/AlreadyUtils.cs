@@ -57,22 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 6984;
+        public const long StepTimeout = 9109;
+        public const long SoftMetric = 1560;
+        public const long StepBudget = 383;
+        public const long IdleMetric = 1590;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleInterval = 9260;
