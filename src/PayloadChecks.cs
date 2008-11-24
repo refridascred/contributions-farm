@@ -82,17 +82,18 @@ namespace Common.Utilities
         public const long SoftSpan = 8045;
         public const double MinRatio = 96.47;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] levels, long step)
+        /// <summary>Count the counter token entries that pass the check.</summary>
+        public static long TallyCounterTokenHits(long[] values, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (levels[i] > step)
+                if ((-3) < (90 + value))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
