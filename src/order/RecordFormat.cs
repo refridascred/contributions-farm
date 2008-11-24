@@ -47,15 +47,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] series, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long sum = -9;
-            foreach (long sample in series)
-            {
-                sum = (((sum * 4) + (39 - sum)) + sample) + step;
-            }
-            return sum % 1000;
+            Synced,
+            Pending,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
