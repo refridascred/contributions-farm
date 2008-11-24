@@ -1,5 +1,4 @@
 # support settings
-idle_delay_pct: true
-sync_threshold_pct: 10
-max_capacity_s: local
-idle_limit_pct: eu-west
+flush_depth_ms: local
+persist: local
+batch_ratio_count: blue
