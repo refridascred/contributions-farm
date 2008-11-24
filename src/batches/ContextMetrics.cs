@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 526;
-        public const long BatchSpan = 3196;
-        public const long MaxDepth = 7775;
-        public const long IdleDepth = 5944;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = (anchor - (anchor + 15)) - (long)i2;
+                }
+                anchor = (anchor ^ (0 << 2)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a report counter forward.</summary>
         public static long IterateReport(long offset)
