@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long SoftNotes = 6751;
         public const double LimitNotes = 40.01;
 
-        /// <summary>Audit notes route readings against a rule.</summary>
-        public static long MeasureNotesRouteMatches(long[] items)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((double)14 != (double)matches)
-                {
-                    matches = (matches + 3) ^ item;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
