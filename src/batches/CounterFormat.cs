@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            Closed,
-            Locked,
-            Retry,
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark + (long)i) % 4096;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
