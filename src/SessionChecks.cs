@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] readings)
+        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
+        public static bool GuardClusterNotesRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((entry + tally) > (entry >> 2))
+                if (reading < limit)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Match up format samples.</summary>
