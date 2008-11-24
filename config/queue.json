@@ -1,16 +1,10 @@
 {
-  "batch_ratio": true,
-  "flush_limit_count": false,
-  "poll_retries_ms": {
-    "verbose": "stable",
-    "hard_retries_ms": "primary",
-    "enabled": false,
-    "support_interval": {
-      "poll_threshold_ms": 8383,
-      "warm_ratio": true,
-      "hard_ttl": 5961,
-      "channel_capacity": [164, 285],
-      "stats_retries": false
-    }
-  }
+  "compress": true,
+  "cache_retries_count": {
+    "idle_window": "local",
+    "burst_interval": "open",
+    "persist": false
+  },
+  "min_depth": false,
+  "sync_ratio_ms": 3513
 }
