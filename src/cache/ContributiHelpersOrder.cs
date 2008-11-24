@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftDepth = 4638;
-        public const long BaseCount = 6520;
-        public const double MaxOrder = 30.89;
-        public const long BurstOrder = 8295;
-        public const long RetryLevel = 1169;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Retry,
+            Stale,
+            Done,
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
