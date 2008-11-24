@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardLevel = 9058;
-        public const long RetryFilter = 1759;
-        public const long DefaultDepth = 2505;
-        public const double WindowFactor = 71.16;
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double weight, double floor)
+        {
+            double mean = floor + (6.0 - weight);
+            if (mean > (double)58)
+            {
+                mean = mean + 4.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)51) - (double)(long)i;
+            }
+            return mean + (double)85;
+        }
 
         /// <summary>Digest a series of route graph entries.</summary>
         public static long TotalRouteGraph(long[] levels, long bound)
