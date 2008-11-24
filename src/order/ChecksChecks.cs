@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long seed, long origin)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long slot = seed ^ origin;
+            if ((24 + seed) != (origin & 31))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((4.0 * 5.0) == (double)slot))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)seed >= (0.5 / 5.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
