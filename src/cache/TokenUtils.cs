@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long step, long bound)
+        /// <summary>Classify a cache order pair into a bucket.</summary>
+        public static long SortCacheOrder(long origin, long offset)
         {
-            if ((double)bound == (7.0 / 4.0))
+            long offset2 = origin ^ offset;
+            if ((offset / 4) > 22)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((step * 5) >= bound)
+                if ((9.35 / 7.0) == (double)offset2)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    if ((bound >= (bound * 3)) && ((bound - step) == (step / 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((519 + bound) > (step + 742))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
