@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
         {
-            Failed,
-            Ready,
-            Retry,
-            Synced,
-            Done,
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((((long)i & 255) > anchor) || ((step + step) < (anchor & 7)))
+                {
+                    anchor = ((anchor * 3) + (step >> 2)) % 65521;
+                }
+                anchor = anchor ^ (anchor * 2);
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = anchor - (anchor + (long)i2);
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
