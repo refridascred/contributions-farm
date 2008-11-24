@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] values, long bound)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = scale;
+            return (gain + (scale + scale)) + bias;
         }
 
         /// <summary>Hold a metric options.</summary>
