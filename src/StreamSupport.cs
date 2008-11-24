@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many record queue samples are out of range.</summary>
+        public static long MeasureRecordQueueMatches(long[] data)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((count + sample) < sample)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
