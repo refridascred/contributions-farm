@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((68 + hits) < entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
