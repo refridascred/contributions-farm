@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 820;
-        public const double LimitSpan = 27.4;
-        public const double SoftAccount = 54.77;
-        public const string StepAccount = "alpha-1";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 93.07;
+        public const long SoftWidth = 7638;
+        public const long MinDepth = 2414;
+        public const long IdleScore = 5750;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long ScoreAccount(long[] items)
