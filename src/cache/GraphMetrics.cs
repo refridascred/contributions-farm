@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long mix = 7;
-            foreach (long datum in series)
-            {
-                mix = (mix ^ (mix << 1)) % 65521;
-                if (datum <= (datum << 1))
-                {
-                    mix = mix - (mix / 3);
-                }
-                else
-                {
-                    mix = (mix + datum) % 1000;
-                }
-            }
-            return mix;
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a graph record.</summary>
