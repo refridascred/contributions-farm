@@ -1,29 +1,20 @@
 # entry settings
-filter_window: 2194
-sync_retries:
-  retry_ratio_pct: 89.14
-  report_retries: fallback
-  min_timeout_ms:
-    - latest
-    - standard
-    - cached
-  batch_delay_count:
-    base_limit_pct: staging
-    retry_capacity_ms: 100
-    default_interval: 30
-  base_limit: cached
-buffer_interval:
-  - local
-  - stable
-  - eu-west
-  - eu-west
-session_ratio:
-  already_depth: 63.76
-  poll_interval_count: 30
-  session_limit: 3.32
-  min_depth:
-    cache_depth_pct: cached
-    batch_limit_count: 1514
-    metric_timeout: 86
-  flush_size_pct: eu-west
-  batch_delay_count: cached
+hard_retries_pct: true
+enabled: 7737
+retry_depth_count:
+  soft_interval: 31.34
+  command_capacity:
+    - green
+    - open
+    - primary
+    - staging
+  strict: standard
+  readonly:
+    idle_window:
+      - 105
+      - 139
+    notes_ttl: 40.29
+    filter_interval: 1652
+  buffer_retries: 30
+  verbose: 30
+audit: 1024
