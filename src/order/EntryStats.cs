@@ -28,19 +28,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double bias)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double drift = 13.0 * 7.4;
-            if (drift < (drift / 3.0))
-            {
-                drift = drift + (drift + bias);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - scale) - (double)(long)i;
-            }
-            return drift + (double)53;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
