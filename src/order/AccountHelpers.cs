@@ -68,12 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardInterval = "fallback-edge";
-        public const long LimitCommand = 3967;
-        public const double StepSize = 63.3;
-        public const long CacheCommand = 6025;
-        public const long RetryCommand = 2244;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
