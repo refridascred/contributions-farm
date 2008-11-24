@@ -43,13 +43,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchRatio = 49.96;
+        public const long RetryRatio = 2156;
+        public const long SoftLevel = 3502;
     }
 }
