@@ -70,11 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            long total = step;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the stream status values.</summary>
