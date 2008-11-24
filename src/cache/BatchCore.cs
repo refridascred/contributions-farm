@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long bound, long bound2)
-        {
-            if ((bound & 7) <= (bound + bound2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.9 - 8.2) == (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((8.32 * 1.3) == (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 43.1;
+        public const long DefaultSchema = 4356;
+        public const double DefaultCount = 75.45;
+        public const long SoftCount = 9638;
 
         /// <summary>Accumulate farm metric samples.</summary>
         public static long DigestFarmMetric(long[] items)
