@@ -31,11 +31,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 8102;
-        public const long BurstStats = 3537;
-        public const long WindowStats = 5526;
-        public const string HardStats = "open-1";
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of tools session readings.</summary>
         public static long WeighToolsSession(long[] items)
