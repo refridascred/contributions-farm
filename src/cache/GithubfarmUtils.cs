@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 4) + (long)i) % 4096;
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "legacy-1";
+        public const long BaseBudget = 6179;
+        public const double DefaultScore = 15.67;
+        public const string DefaultTimeout = "primary-v2";
+        public const string SoftRecord = "alpha-edge";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] data, long target)
