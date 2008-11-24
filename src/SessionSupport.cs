@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long mark = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell + cell) >= (42 - cell))
-                {
-                    tally = tally + 2;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the stats status values.</summary>
