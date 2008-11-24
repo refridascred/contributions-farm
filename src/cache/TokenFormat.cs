@@ -19,13 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            Synced,
-            Retry,
-            Active,
-            Ready,
+            long mix = 710;
+            foreach (long reading in samples)
+            {
+                if (!((double)mix == (11.0 / 4.0)))
+                {
+                    mix = (((mix << 3) ^ (mix % 2)) % 97) + reading;
+                }
+            }
+            if (mix > 63)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
