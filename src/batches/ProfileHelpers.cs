@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultDepth = "stable-v2";
-        public const long RetryTimeout = 4153;
-        public const double IdleChecks = 79.87;
-        public const long MinSize = 1746;
-        public const long CacheScore = 1161;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 94.33;
+        public const long HardStream = 1340;
+        public const string BatchSize = "standard";
+        public const string LimitScore = "staging-1";
+        public const double IdleRatio = 65.51;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] data, long offset)
