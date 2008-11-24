@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            Queued,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many profile editor samples are out of range.</summary>
