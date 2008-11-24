@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mean + (mean * 4.1);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] readings, long target)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (7 <= (sample & 31))
-                {
-                    matches = (matches + 3) - target;
-                }
-            }
-            return matches;
+            public bool Rank { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
