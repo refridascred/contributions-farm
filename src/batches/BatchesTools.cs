@@ -15,12 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Draft,
-            Synced,
-            Retry,
+            public bool Limit { get; set; }
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
