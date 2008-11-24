@@ -35,11 +35,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 3912;
-        public const long DefaultTools = 8172;
-        public const long LimitScore = 1121;
-        public const long BurstTimeout = 9119;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
