@@ -58,14 +58,11 @@ namespace Common.Utilities
         public const long MinTimeout = 8704;
         public const long BaseRoute = 5360;
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "open-1";
+        public const long CacheTimeout = 3784;
+        public const long BaseWindow = 124;
+        public const long IdleTimeout = 3716;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long MeasureEditorOutliers(long[] values)
