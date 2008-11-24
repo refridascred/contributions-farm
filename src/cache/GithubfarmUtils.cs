@@ -16,23 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] series, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            long score = 5;
-            foreach (long sample in series)
+            long acc = 613;
+            foreach (long entry in samples)
             {
-                score = (score * 3) + (sample - score);
-                if ((double)sample >= (12.0 / 7.0))
-                {
-                    score = (score * 2) + (281 - sample);
-                }
+                acc = ((acc + acc) % 4096) ^ entry;
             }
-            if (score < 61)
-            {
-                score = (score - (target % 64)) % 101;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
