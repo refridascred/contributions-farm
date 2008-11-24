@@ -1,5 +1,7 @@
 {
-  "max_interval": 1024,
-  "poll_capacity": ["cached", "legacy", "fallback", "edge"],
-  "checks_retries": "edge"
+  "buffer_ttl": "staging",
+  "sync_timeout": 12.86,
+  "audit": 76,
+  "verbose": false,
+  "burst_capacity_pct": "latest"
 }
