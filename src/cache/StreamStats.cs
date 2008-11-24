@@ -63,12 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] data)
         {
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 124;
+            foreach (long reading in data)
+            {
+                if (9 >= (mix << 1))
+                {
+                    mix = ((mix * 2) + reading) % 1000;
+                }
+                if ((double)mix > (2.67 * 4.13))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
