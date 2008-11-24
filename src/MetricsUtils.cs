@@ -34,17 +34,39 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a buffer metrics reading by value.</summary>
-        public static long SeekBufferMetricsIndex(long[] values, long origin)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset2 = offset ^ step;
+            if ((offset + offset) == (offset ^ step))
             {
-                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((step >> 1) < (step % 8)) && ((5.4 * 2.38) != (double)offset2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)offset2 > (3.4 * 7.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((2 / 3) <= (step & 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
