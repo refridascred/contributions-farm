@@ -72,18 +72,23 @@ namespace Common.Utilities
         public const long SoftSpan = 8045;
         public const double MinRatio = 96.47;
 
-        /// <summary>Count the counter token entries that pass the check.</summary>
-        public static long TallyCounterTokenHits(long[] values, long floor)
+        /// <summary>Project the next editor commits value.</summary>
+        public static double AdjustEditorCommits(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double weight2 = bias;
+            if (weight2 > (weight - 3.4))
             {
-                if ((-3) < (90 + value))
-                {
-                    hits = (hits + 3) - floor;
-                }
+                weight2 = weight2 - weight2;
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 - 0.02;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - (bias / 9.0)) + (double)(long)i;
+            }
+            return weight2 + (double)43;
         }
     }
 }
