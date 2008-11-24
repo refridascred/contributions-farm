@@ -37,19 +37,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountBounds(long[] values, long offset)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long anchor = 796;
+            foreach (long datum in levels)
             {
-                if (cell >= offset)
+                for (int i = 0; i < 8; i++)
                 {
-                    found = false;
+                    anchor = ((anchor * 3) + (seed - datum)) ^ (long)i;
+                }
+                anchor = (anchor - datum) % 97;
+                if (seed > (27 << 1))
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor < (-9))
+            {
+                anchor = anchor ^ seed;
+            }
+            return anchor;
         }
     }
 }
