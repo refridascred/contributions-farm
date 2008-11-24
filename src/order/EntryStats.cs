@@ -32,13 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Retry,
-            Stale,
-            Active,
-            Failed,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Check that every account contributi entry stays within the limit.</summary>
