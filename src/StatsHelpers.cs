@@ -50,18 +50,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] series, long seed)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + matches) < (666 - entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + seed;
+                    if ((samples[i] ^ samples[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
