@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Grade a schema stream value against two limits.</summary>
+        public static long ClassifySchemaStream(long offset, long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long delta = offset - origin;
+            if (!((delta + origin) >= (origin & 255)))
             {
-                carry = carry ^ (carry + limit);
-                carry = ((carry * 2) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((origin & 63) < (origin ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin != (5.41 / 5.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
