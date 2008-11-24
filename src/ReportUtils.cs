@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstTimeout = 1837;
-        public const long DefaultDepth = 208;
-        public const string SoftCount = "legacy";
-        public const string DefaultCount = "open-v2";
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double weight, double bias)
