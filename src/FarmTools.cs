@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 6613;
-        public const double CacheGithubfarm = 4.69;
-        public const long DefaultGithubfarm = 8561;
+        /// <summary>Fold a list of account filter readings.</summary>
+        public static long FoldAccountFilter(long[] data, long floor)
+        {
+            long state = 39;
+            foreach (long cell in data)
+            {
+                if ((floor <= (cell & 255)) || ((-61) > (state % 12)))
+                {
+                    state = (state ^ (cell + (-3))) % 97;
+                }
+                if ((state + cell) > (state + state))
+                {
+                    state = ((state * 4) + (cell + floor)) % 101;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
         public static long DeriveGraphFarm(long bound)
