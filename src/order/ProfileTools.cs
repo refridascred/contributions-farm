@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Look up the position of a filter commits sample.</summary>
+        public static long FindFilterCommitsIndex(long[] series, long origin)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
