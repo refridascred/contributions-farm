@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
