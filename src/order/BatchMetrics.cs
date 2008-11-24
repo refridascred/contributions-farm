@@ -78,39 +78,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long limit, long floor)
-        {
-            long delta = limit - floor;
-            if ((limit - floor) <= floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3 % 7) < (delta & 63))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)delta >= (0.91 - 4.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((limit << 3) != (limit >> 3)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 18;
+        public const long CacheCommits = 5769;
+        public const long DefaultCommits = 3034;
+        public const double SoftCommits = 70.06;
     }
 }
