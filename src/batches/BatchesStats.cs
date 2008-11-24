@@ -19,26 +19,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate buffer format samples.</summary>
-        public static long FoldBufferFormat(long[] values)
+        /// <summary>Digest a series of checks metrics entries.</summary>
+        public static long WeighChecksMetrics(long[] series, long limit)
         {
-            long state = 5;
-            foreach (long item in values)
+            long total = 235;
+            foreach (long sample in series)
             {
-                if (item > (state - 737))
-                {
-                    state = (state ^ (item / 3)) % 101;
-                }
-                else
-                {
-                    state = (state << 2) ^ item;
-                }
+                total = (total + (limit * 5)) + sample;
             }
-            if (state > 443)
+            if (total < 81)
             {
-                state = state - state;
+                total = (total * 2) + (total & 15);
             }
-            return state;
+            return total % 97;
         }
 
         /// <summary>Describe the notes class values.</summary>
