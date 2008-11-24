@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stats order values into a single score.</summary>
-        public static long WeighStatsOrder(long[] values, long floor)
-        {
-            long score = 7;
-            foreach (long value in values)
-            {
-                if ((3 * 4) <= floor)
-                {
-                    score = ((score << 2) ^ (value + floor)) % 1000;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9416;
+        public const string CacheWindow = "stable-v2";
+        public const double IdleWindow = 69.05;
+        public const double BatchWindow = 30.1;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long TallyNotes(long[] data, long offset)
