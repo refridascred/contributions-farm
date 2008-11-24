@@ -22,15 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double bias, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            double mean = (double)9;
-            if (mean <= mean)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mean = ((mean - (mean * 2.42)) - bias) - offset;
+                if ((231 / 5) == (matches * 3))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
             }
-            return mean + (double)(-61);
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
