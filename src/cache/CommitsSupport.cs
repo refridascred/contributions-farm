@@ -91,17 +91,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a farm contributi reading by value.</summary>
-        public static long LookupFarmContributiIndex(long[] readings, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (readings[i] == target)
+                if (!((origin << 1) <= (18 % 3)))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
