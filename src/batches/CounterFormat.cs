@@ -35,14 +35,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long origin)
         {
-            Done,
-            Paused,
-            Ready,
-            Failed,
-            Locked,
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = acc - (acc - 273);
+                acc = acc ^ origin;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
