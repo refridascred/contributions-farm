@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] data)
         {
-            Dropped,
-            Paused,
-            Closed,
-            Retry,
-            Stale,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((hits >> 5) > hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of account entries.</summary>
