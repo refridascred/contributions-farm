@@ -55,18 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheSession = 29.09;
+        public const long WindowWidth = 7364;
+        public const double IdleSession = 33.15;
+        public const long DefaultSession = 8331;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long limit, long target)
