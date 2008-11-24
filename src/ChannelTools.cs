@@ -15,15 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            long score = 49;
+            foreach (long datum in levels)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((score + score) <= (-15))
+                {
+                    score = score - (datum + score);
+                }
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
