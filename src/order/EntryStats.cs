@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 2472;
+        public const double SoftLayout = 19.62;
+        public const double LimitLayout = 54.51;
+        public const long StepLayout = 4686;
+        public const long WindowLayout = 6349;
 
         /// <summary>Count the window token entries that pass the check.</summary>
         public static long TallyWindowTokenHits(long[] series, long bound)
