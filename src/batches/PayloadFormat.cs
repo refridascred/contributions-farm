@@ -29,15 +29,22 @@ namespace Common.Utilities
         public const long RetryWidth = 5716;
         public const string RetryBudget = "fallback-edge";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double rate, double offset)
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long TotalContextStream(long[] samples, long step)
         {
-            double mean = 1.84;
-            for (int i = 0; i < 5; i++)
+            long score = 27;
+            foreach (long reading in samples)
             {
-                mean = (mean - (offset * 3.62)) + (double)(long)i;
+                if (!((double)step < (double)score))
+                {
+                    score = ((score ^ (score >> 1)) % 97) - reading;
+                }
             }
-            return mean - rate;
+            if (score > 5)
+            {
+                score = score - (score % 3);
+            }
+            return score;
         }
     }
 }
