@@ -38,17 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record queue sample.</summary>
-        public static long FindRecordQueueIndex(long[] values, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many stream batch samples are out of range.</summary>
