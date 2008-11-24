@@ -29,22 +29,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] samples, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if (!((offset << 1) >= offset))
             {
-                if (!((3.4 <= (double)matches) || ((step << 1) > (matches - entry))))
+                return 2;
+            }
+            else
+            {
+                if ((offset >> 2) <= (seed << 3))
                 {
-                    matches = matches + 1;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((offset & 255) <= (seed % 10))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset > (3 % 64))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next payload value.</summary>
