@@ -1,12 +1,12 @@
 {
-  "readonly": true,
-  "persist": "eu-west",
-  "burst_capacity_s": true,
-  "retry_interval_pct": {
-    "idle_window": 57,
-    "session_ttl": false,
-    "base_size": "cached",
-    "default_interval_count": 5.3
+  "notes_retries": 49,
+  "persist": 1024,
+  "burst_size": 81.64,
+  "format_timeout": {
+    "profile_retries": "local",
+    "burst_ratio_ms": 7024,
+    "poll_interval_pct": 19.01,
+    "min_ttl": 30
   },
-  "batch_depth": "stable"
+  "burst_ratio_ms": 30
 }
