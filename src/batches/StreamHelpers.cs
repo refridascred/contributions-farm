@@ -79,15 +79,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account payload counter forward.</summary>
-        public static long DeriveAccountPayload(long origin)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long acc = 5;
+            foreach (long value in levels)
             {
-                state = ((state * 5) + (long)i) % 101;
+                acc = (((acc * 4) + (acc + acc)) % 65521) ^ value;
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Describe the checks class values.</summary>
