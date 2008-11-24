@@ -1,5 +1,6 @@
 {
-  "sync_capacity_s": "latest",
-  "report_size": 2034,
-  "cache_timeout": "legacy"
+  "sync_size_pct": true,
+  "default_window_count": [147, 279],
+  "base_window_pct": "latest",
+  "soft_retries": "legacy"
 }
