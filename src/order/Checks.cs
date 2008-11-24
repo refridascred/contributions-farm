@@ -66,15 +66,32 @@ namespace Common.Utilities
         public const long MinMetric = 1144;
         public const string IdleDepth = "standard-v2";
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long limit, long limit2)
         {
-            long sum = target;
-            for (int i = 0; i < 19; i++)
+            long gap = limit - limit2;
+            if ((gap + limit) >= limit)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (!((limit / 7) < (limit & 127)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (gap >= (limit2 - gap))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
