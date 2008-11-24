@@ -41,12 +41,33 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepLevel = 2995;
-        public const long WindowContext = 3278;
-        public const double CacheRatio = 46.4;
-        public const string CacheLevel = "standard-1";
-        public const string RetryContext = "stable-1";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long origin, long limit)
+        {
+            long bound = origin - limit;
+            if (!((origin + bound) < limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin >> 5) < (limit + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (18.0 <= (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double DefaultSize = 46.71;
