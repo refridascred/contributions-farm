@@ -20,13 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long DigestStatsMetric(long[] series)
         {
-            Idle,
-            Queued,
-            Pending,
-            Retry,
+            long acc = 372;
+            foreach (long reading in series)
+            {
+                acc = (acc ^ (reading & 15)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Scale a cache cluster figure with a bias.</summary>
