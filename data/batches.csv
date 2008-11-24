@@ -1,9 +1,7 @@
-id,state
-1,14.04
-2,open
-3,edge
-4,26
-5,521
-6,strict
-7,36.15
-8,open
+id,active,token,count,label
+1,local,98.29,358,928
+2,open,575,852,575
+3,541,edge,66.05,eu-west
+4,699,11.62,303,fallback
+5,577,142,cached,187
+6,741,424,strict,31.2
