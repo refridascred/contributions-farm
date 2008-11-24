@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit command route readings against a rule.</summary>
-        public static long MeasureCommandRouteGaps(long[] samples)
+        /// <summary>Grade a record command value against two limits.</summary>
+        public static long RankRecordCommand(long target, long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((445 + (-27)) < offset)
             {
-                if ((double)entry < (3.24 * 8.73))
+                return 2;
+            }
+            else
+            {
+                if (((-69) >> 1) == (target * 4))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((target - offset) > (offset % 5)) && ((offset - target) <= (772 & 127)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target == (6.43 * 6.19))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a support options.</summary>
