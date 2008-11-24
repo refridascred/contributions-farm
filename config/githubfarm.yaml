@@ -1,19 +1,24 @@
 # githubfarm settings
-entry_retries:
-  contributi_limit: 10.61
-  graph_delay:
-    audit: strict
-    burst_threshold_pct: open
-    commits_size:
-      - green
+default_size_pct:
+  commits_ttl: 79
+  batch_retries: 3846
+  idle_delay: 84
+  order_capacity: 6558
+  default_interval_ms: 86
+  idle_window:
+    warm_threshold_pct: true
+    min_size_pct: 100
+    command_ratio: false
+    strict:
+      - standard
+      - edge
       - legacy
-      - green
-      - strict
-    checks_ratio: 5.87
-  support_timeout: false
-  order_timeout: blue
-  route_delay: 100
-  compress: 9.85
-soft_threshold_ms: false
-persist: false
-warm_depth_ms: cached
+      - staging
+queue_threshold: 1024
+idle_size:
+  audit: 40
+  idle_ttl: 69.13
+  token_limit: staging
+  enabled: true
+  idle_threshold_ms: stable
+  warm_interval_ms: 70.31
