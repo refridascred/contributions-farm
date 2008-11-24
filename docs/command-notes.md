@@ -1,14 +1,10 @@
 # Command notes
 
-Keep schema and tools names short and lowercase.
-Keep cache and schema names short and lowercase.
-Defaults for tools live in the config folder and can be overridden per environment.
-
-Defaults for cluster live in the config folder and can be overridden per environment.
-When a layout fails, the support handler retries a few times before giving up.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Keep batch and route names short and lowercase.
 
 ## Guidelines
 
-- Validate schema input early
-- Prefer cache defaults
-- Keep graph values small
+- Document new buffer fields
+- Review metrics limits each release
+- Keep session values small
