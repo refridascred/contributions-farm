@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
+            public long Owner { get; set; }
             public long Token { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
