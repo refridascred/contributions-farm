@@ -63,17 +63,22 @@ namespace Common.Utilities
         public const long StepBudget = 383;
         public const long IdleMetric = 1590;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] items, long step)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 34;
+            foreach (long item in levels)
             {
-                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                if (((double)anchor != (17.0 + 9.16)) || (7.19 > (double)anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ 11) + offset;
+                }
+                else
+                {
+                    anchor = (anchor ^ item) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
