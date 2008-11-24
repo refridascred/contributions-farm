@@ -38,19 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] readings, long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry > offset)
+                if (!((entry << 1) != (seen & 31)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
