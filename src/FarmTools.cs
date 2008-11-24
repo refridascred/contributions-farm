@@ -17,24 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((20.0 / 3.0) != (double)mark))
-                {
-                    mark = ((mark * 2) + (2 + mark)) % 4096;
-                }
-                if (mark > offset)
-                {
-                    mark = ((mark * 2) + (offset >> 3)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 5348;
+        public const long BaseSpan = 8314;
+        public const long MaxTools = 6951;
 
         /// <summary>Match up notes samples.</summary>
         public static long PairNotesCount(long[] series)
