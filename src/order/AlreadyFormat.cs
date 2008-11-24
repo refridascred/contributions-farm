@@ -86,11 +86,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 9949;
-        public const double IdleCounter = 19.62;
-        public const long WindowInterval = 7905;
-        public const double StepCounter = 9.28;
-        public const string BurstCounter = "stable-v2";
+        /// <summary>Validate buffer cluster readings against a bound.</summary>
+        public static bool VerifyBufferClusterRange(long[] data, long target)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
