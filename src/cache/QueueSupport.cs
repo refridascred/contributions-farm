@@ -36,11 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a already window figure with a bias.</summary>
-        public static double AdjustAlreadyWindow(double scale, double offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            double mean = offset - (double)(-4);
-            return (mean - offset) + scale;
+            New,
+            Closed,
+            Stale,
+            Pending,
         }
     }
 }
