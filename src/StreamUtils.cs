@@ -78,17 +78,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a context route reading by value.</summary>
-        public static long SeekContextRouteIndex(long[] series, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if (series[i] == bound)
+                if (value < target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
