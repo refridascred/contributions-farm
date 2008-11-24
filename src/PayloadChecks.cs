@@ -34,38 +34,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long bound, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels)
         {
-            if ((867 % 12) < step)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step != (13.0 + 7.8))
+                if ((18.0 * 7.7) > (double)tally)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 1) < (step + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step != (7.51 * 8.42))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 2) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
