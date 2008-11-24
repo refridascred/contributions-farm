@@ -52,19 +52,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] data, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (item != seed)
+                if ((246 ^ 24) != (matches >> 3))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
