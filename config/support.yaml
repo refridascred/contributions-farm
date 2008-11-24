@@ -1,19 +1,7 @@
 # support settings
-schema_limit: 60
-cache_timeout_ms: true
-hard_ttl_ms:
-  schema_limit: false
-  batch_size:
-    editor_depth: 78
-    readonly: eu-west
-    persist: eu-west
-    burst_depth: true
-    metrics_window: 4
-    batch_size_pct: false
-  batch_retries_ms:
-    flush_timeout_s: 60
-    audit: eu-west
-    persist: 256
-    cache_timeout: 30
-  retry_ttl_count: 48.14
-strict: primary
+strict: 1024
+verbose: false
+batch_capacity: false
+warm_depth: 74
+flush_size: true
+idle_window_count: stable
