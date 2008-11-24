@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Derive the next profile report value from a seed.</summary>
+        public static long StepProfileReport(long origin)
         {
-            Failed,
-            Closed,
-            Stale,
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if (30 > (origin - origin))
+                {
+                    mark = ((mark << 3) ^ ((-37) & 63)) % 1000;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
