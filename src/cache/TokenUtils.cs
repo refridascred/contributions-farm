@@ -28,13 +28,9 @@ namespace Common.Utilities
         public const long DefaultMetrics = 5804;
         public const string CacheSize = "open-v2";
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Locked,
-            Draft,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "legacy-1";
+        public const long MaxCommand = 9070;
+        public const long BurstCommand = 3;
     }
 }
