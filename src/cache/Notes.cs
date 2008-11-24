@@ -20,18 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] levels)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (item < (item << 3))
+                if (((double)count > 9.19) || (((-2) > count) || ((reading + reading) > count)))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
