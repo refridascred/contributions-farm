@@ -1,6 +1,11 @@
 {
-  "burst_depth_ms": "legacy",
-  "verbose": "strict",
-  "audit": 48.4,
-  "entry_size": "stable"
+  "default_limit_s": "latest",
+  "soft_threshold_s": "latest",
+  "readonly": 97.24,
+  "session_delay": "latest",
+  "batch_ttl": {
+    "compress": ["standard", "latest"],
+    "hard_interval": "eu-west",
+    "flush_ttl_pct": "primary"
+  }
 }
