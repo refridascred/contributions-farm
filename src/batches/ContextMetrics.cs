@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long MaxDepth = 7775;
         public const long IdleDepth = 5944;
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
+            double ratio = bias2;
+            if (ratio < (bias - bias2))
+            {
+                ratio = ratio - (double)70;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (19.0 * 11.0)) + (double)(long)i;
+            }
+            return ratio + (bias / 9.0);
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
