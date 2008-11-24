@@ -42,15 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer cluster counter forward.</summary>
-        public static long SeriesBufferCluster(long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Active,
+            Closed,
+            Synced,
+            Done,
         }
 
         /// <summary>Derive the next layout githubfarm value from a seed.</summary>
