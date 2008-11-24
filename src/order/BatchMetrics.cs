@@ -75,18 +75,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] items, long seed)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)(-6) > (double)sample)
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            Retry,
+            Done,
+            Stale,
+            Closed,
+            Ready,
         }
     }
 }
