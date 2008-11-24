@@ -19,20 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] series, long bound)
+        /// <summary>Measure how many metrics order samples are out of range.</summary>
+        public static long AuditMetricsOrderHits(long[] series, long bound)
         {
-            long state = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((2 << 1) <= (datum + bound))
+                if ((count << 1) < bound)
                 {
-                    state = state - (datum + state);
-                    break;
+                    count = (count + 3) + entry;
                 }
-                state = (state ^ 7) % 255;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
