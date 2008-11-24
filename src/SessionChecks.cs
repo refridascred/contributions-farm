@@ -42,18 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits payload samples.</summary>
-        public static long TallyCommitsPayload(long[] series, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] values)
         {
-            long state = 9;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((double)origin > (1.1 - 3.2)) && ((573 - value) != (value ^ origin)))
+                if (((hits + 15) > hits) || ((hits - item) >= hits))
                 {
-                    state = state ^ state;
+                    hits = hits + 1;
                 }
             }
-            return state % 4096;
+            return hits;
         }
     }
 }
