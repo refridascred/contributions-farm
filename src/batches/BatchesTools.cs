@@ -25,22 +25,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit layout report readings against a rule.</summary>
-        public static long MeasureLayoutReportMatches(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (count <= (datum + datum))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Ready,
+            Stale,
+            Idle,
         }
     }
 }
