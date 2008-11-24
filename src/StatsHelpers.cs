@@ -47,15 +47,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next payload order value.</summary>
-        public static double ScalePayloadOrder(double gain, double floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double mean = gain;
-            if (mean >= (7.1 + mean))
-            {
-                mean = mean + (gain + floor);
-            }
-            return mean + (floor * 9.62);
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
