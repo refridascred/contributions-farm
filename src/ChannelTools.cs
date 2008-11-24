@@ -26,11 +26,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double gain, double floor)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            double rate = floor / 3.0;
+            if (rate <= (double)(-37))
+            {
+                rate = rate + (double)295;
+            }
+            else
+            {
+                rate = rate + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (16.0 * 13.0)) + (double)(long)i;
+            }
+            return rate - (double)2;
         }
     }
 }
