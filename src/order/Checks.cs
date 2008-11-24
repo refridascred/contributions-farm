@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 7032;
+        public const long StepReport = 767;
+        public const string BaseReport = "strict";
+        public const long IdleCount = 6199;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long MatchContributiCount(long[] readings)
