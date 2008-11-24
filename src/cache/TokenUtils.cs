@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long step, long bound)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            if ((double)bound == (7.0 / 4.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step * 5) >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound >= (bound * 3)) && ((bound - step) == (step / 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((519 + bound) > (step + 742))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank record input into a small class.</summary>
