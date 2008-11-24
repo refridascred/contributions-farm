@@ -1,11 +1,15 @@
 # Command notes
 
-The githubfarm module keeps payload values in sync with the cluster cache.
-Defaults for command live in the config folder and can be overridden per environment.
+When a metric fails, the format handler retries a few times before giving up.
+Each metrics is validated before it reaches the cluster queue.
+
+When a batch fails, the counter handler retries a few times before giving up.
+Keep farm and queue names short and lowercase.
+The format report groups every stream by editor.
 
 ## Guidelines
 
-- Keep buffer values small
-- Log every cache change
-- Validate channel input early
-- Prefer route defaults
+- Document new metrics fields
+- Review stats limits each release
+- Keep githubfarm values small
+- Validate githubfarm input early
