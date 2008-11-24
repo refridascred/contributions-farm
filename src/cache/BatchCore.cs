@@ -48,15 +48,11 @@ namespace Common.Utilities
         public const double SoftRatio = 18.74;
         public const double LimitBudget = 63.07;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] readings, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long result = 44;
-            foreach (long reading in readings)
-            {
-                result = (((result ^ (result / 8)) % 255) - reading) - step;
-            }
-            return result % 65521;
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
