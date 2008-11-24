@@ -28,17 +28,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first layout farm entry that matches the target.</summary>
-        public static long FindLayoutFarmIndex(long[] samples, long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Dropped,
+            Done,
         }
     }
 }
