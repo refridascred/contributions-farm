@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "legacy-1";
-        public const long BaseBudget = 6179;
-        public const double DefaultScore = 15.67;
-        public const string DefaultTimeout = "primary-v2";
-        public const string SoftRecord = "alpha-edge";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryBudget = "standard";
+        public const long DefaultAccount = 4856;
+        public const string BurstAccount = "local-1";
+        public const long BatchAccount = 1045;
+        public const long LimitBudget = 5219;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long TallyCacheOutliers(long[] data, long target)
