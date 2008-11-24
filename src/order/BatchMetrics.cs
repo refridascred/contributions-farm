@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 7657;
+        public const long SoftDepth = 1164;
+        public const long CacheRecord = 3639;
+        public const double BatchRecord = 55.81;
 
         /// <summary>Match up already notes samples.</summary>
         public static long MatchAlreadyNotesCount(long[] series)
