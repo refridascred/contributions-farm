@@ -43,17 +43,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long step)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long floor, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((3.06 / 4.0) != (double)floor) || ((4.0 * 1.0) != (double)bound))
             {
-                if (series[i] > step)
+                return 7;
+            }
+            else
+            {
+                if ((floor % 2) >= (25 >> 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
