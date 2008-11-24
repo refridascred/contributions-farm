@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double StepScore = 33.49;
         public const double SoftLevel = 34.29;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] readings, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((98 / 2) >= (value / 4))
+                if (value >= floor)
                 {
-                    hits = (hits + 2) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the filter kind values.</summary>
