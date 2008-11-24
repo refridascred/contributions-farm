@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a token stream reading by value.</summary>
-        public static long SeekTokenStreamIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "local";
+        public const string BatchRatio = "stable-1";
+        public const long RetryTimeout = 3089;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueMatches(long[] data)
