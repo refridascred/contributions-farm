@@ -14,21 +14,26 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up account already samples.</summary>
-        public static long MatchAccountAlreadyCount(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 327;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)acc <= (9.6 + 9.66)) && ((value / 5) == (acc + acc)))
                 {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc - (acc - acc)) % 4096;
+                }
+                else
+                {
+                    acc = acc + (acc << 2);
                 }
             }
-            return count;
+            if (acc > 22)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits kind values.</summary>
