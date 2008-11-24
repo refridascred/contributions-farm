@@ -31,18 +31,23 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double bias = (double)(300 + (-52));
+            if (bias > 9.3)
             {
-                if ((double)matches == (6.7 / 5.0))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
+                bias = bias - (offset + 5.0);
             }
-            return matches;
+            else
+            {
+                bias = bias + (offset * 9.81);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (bias - rate)) + (double)(long)i;
+            }
+            return bias + (double)0;
         }
 
         /// <summary>Hold a batch stats.</summary>
