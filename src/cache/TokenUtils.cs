@@ -30,24 +30,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long bound, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] data)
         {
-            if ((bound ^ step) > (4 - step))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 + bound) >= step)
+                if ((9.8 + 10.0) <= (double)reading)
                 {
-                    return 2;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
