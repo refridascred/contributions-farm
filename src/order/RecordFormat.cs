@@ -38,12 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            Synced,
+            Done,
+            Draft,
+            New,
         }
 
         /// <summary>Accumulate format samples.</summary>
