@@ -44,12 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] readings, long floor)
         {
-            New,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((98 / 2) >= (value / 4))
+                {
+                    hits = (hits + 2) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
