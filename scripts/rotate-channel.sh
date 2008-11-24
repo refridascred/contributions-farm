@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=219
-log "limit is ${CHANNEL_LIMIT}"
+for item in open primary; do
+    log "checking ${item}"
+done
