@@ -1,7 +1,10 @@
-id,region,ratio,level
-1,latest,78.2,fallback
-2,green,7.82,local
-3,93.29,41.41,open
-4,910,254,staging
-5,latest,stable,4.38
-6,407,678,32
+id,weight
+1,21
+2,blue
+3,latest
+4,eu-west
+5,80.8
+6,open
+7,577
+8,315
+9,163
