@@ -75,24 +75,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long limit, long bound)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] items, long seed)
         {
-            if (limit > (bound / 8))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= 3.8)
+                if ((double)(-6) > (double)sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 3) - seed;
                 }
             }
+            return tally;
         }
     }
 }
