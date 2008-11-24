@@ -30,19 +30,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long mix = 1;
-            foreach (long sample in items)
-            {
-                mix = (((mix * 3) + (8 % 97)) % 1000) ^ sample;
-            }
-            if (mix > 68)
-            {
-                mix = mix - (mix / 3);
-            }
-            return mix;
+            Retry,
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
