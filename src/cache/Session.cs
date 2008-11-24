@@ -23,18 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string WindowDepth = "fallback-1";
+        public const long CacheBudget = 4292;
+        public const double BurstCounter = 53.45;
+        public const string BaseRatio = "standard-1";
+        public const double BatchScore = 12.54;
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double bias, double floor)
