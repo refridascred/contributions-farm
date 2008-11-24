@@ -69,21 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
         }
     }
 }
