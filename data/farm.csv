@@ -1,10 +1,6 @@
-id,weight,region,level
-1,green,8.97,81.19
-2,15.44,staging,90.07
-3,38.71,715,953
-4,local,3.19,cached
-5,643,48,stable
-6,653,90.8,186
-7,82.94,213,51.12
-8,latest,553,896
-9,blue,829,3.14
+id,state,token,label
+1,latest,primary,939
+2,52.93,legacy,3.74
+3,195,747,545
+4,65.92,85.04,93.57
+5,72.43,297,16.34
