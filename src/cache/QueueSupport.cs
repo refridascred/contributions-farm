@@ -36,31 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long limit, long offset)
+        /// <summary>Scale a already window figure with a bias.</summary>
+        public static double AdjustAlreadyWindow(double scale, double offset)
         {
-            if ((double)210 < (double)limit)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (3.27 + 9.6))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (710 << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double mean = offset - (double)(-4);
+            return (mean - offset) + scale;
         }
     }
 }
