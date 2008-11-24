@@ -13,19 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (value > seed)
+                if ((target << 1) <= (target + target))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) ^ item;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many commits counter samples are out of range.</summary>
