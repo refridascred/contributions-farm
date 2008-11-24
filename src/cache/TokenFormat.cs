@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items, long target)
+        /// <summary>Count the command stats entries that pass the check.</summary>
+        public static long CountCommandStatsHits(long[] readings)
         {
-            long mix = 502;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((double)mix == (14.0 - 17.0))
+                if ((value ^ hits) > hits)
                 {
-                    mix = (mix - (41 + item)) % 1000;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    mix = ((mix * 2) + (target ^ target)) % 97;
+                    hits = hits - 1;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
