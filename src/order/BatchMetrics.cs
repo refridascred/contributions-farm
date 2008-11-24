@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] series, long floor)
         {
-            public long Label { get; set; }
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((floor + datum) <= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the queue class values.</summary>
