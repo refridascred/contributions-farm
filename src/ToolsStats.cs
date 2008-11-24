@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up entry context samples.</summary>
-        public static long OverlapEntryContextCount(long[] series)
+        /// <summary>Audit report window readings against a rule.</summary>
+        public static long TallyReportWindowHits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((count > seed) || (595 > (count % 60))) || ((value - 3) <= (seed - count)))
                 {
-                    if ((series[i] ^ series[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
