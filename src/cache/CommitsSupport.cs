@@ -34,17 +34,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] values, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = offset + (double)244;
+            if (rate >= (double)8)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                rate = (rate - (offset - offset)) + bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - (rate * 2.6);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - offset) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
