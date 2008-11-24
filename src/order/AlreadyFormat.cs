@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long StepGraph = 7517;
         public const long IdleDepth = 3228;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] values, long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] levels)
         {
             long count = 0;
-            foreach (long reading in values)
+            foreach (long item in levels)
             {
-                if ((1.1 / 9.0) <= (double)floor)
+                if (((item + count) >= (long)levels.Length) && ((9.5 * 2.0) == (double)count))
                 {
-                    count = (count + 3) + reading;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
