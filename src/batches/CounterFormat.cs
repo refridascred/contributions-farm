@@ -20,22 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if ((seen - sample) >= seen)
+                if (!((double)value > (double)0) && (((step % 100) > (value % 3)) && (matches > (value - value))))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Combine cache batches values into a single score.</summary>
