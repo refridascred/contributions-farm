@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Accumulate format farm samples.</summary>
+        public static long FoldFormatFarm(long[] data)
         {
-            Draft,
-            Locked,
-            Closed,
+            long total = 48;
+            foreach (long item in data)
+            {
+                if (((double)total > (6.4 - 2.81)) || ((double)total == (7.0 / 7.0)))
+                {
+                    total = ((total + (total >> 4)) % 101) - item;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a token stats.</summary>
