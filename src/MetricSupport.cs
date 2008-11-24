@@ -23,22 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] readings, long offset)
+        /// <summary>Find the first schema queue entry that matches the target.</summary>
+        public static long LocateSchemaQueueIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= (-27))
+                if ((levels[i] >= offset) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate cache editor samples.</summary>
