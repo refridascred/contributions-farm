@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((((5.9 * 8.52) >= (double)reading) && ((matches * 4) >= (matches + 2))) || (matches < (step - reading)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 2956;
+        public const string LimitSupport = "standard";
+        public const double BatchCount = 92.2;
+        public const long MaxRatio = 6138;
+        public const string BaseScore = "legacy";
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
