@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long TallyRecordSessionHits(long[] levels, long offset)
+        /// <summary>Accumulate tools metric samples.</summary>
+        public static long DigestToolsMetric(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long anchor = 52;
+            foreach (long reading in series)
             {
-                if (!((tally - 9) > (offset % 60)))
+                if (!((limit > (anchor * 2)) && ((4.0 * 5.87) != (double)anchor)))
                 {
-                    tally = (tally + 3) - cell;
+                    anchor = anchor + (anchor + limit);
                 }
-                else
+                if (anchor < reading)
                 {
-                    tally = tally - 1;
+                    anchor = ((anchor << 3) ^ 49) % 255;
+                    anchor = (anchor << 3) ^ (reading * 4);
+                }
+                if (limit >= (0 / 8))
+                {
+                    anchor = anchor - (5 % 2);
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
