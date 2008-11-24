@@ -1,7 +1,6 @@
 {
-  "profile_window": 85.18,
-  "max_threshold_ms": "legacy",
-  "burst_timeout_s": 16,
-  "warm_retries_count": 17.0,
-  "schema_threshold": false
+  "editor_limit": ["staging", "blue", "strict", "cached"],
+  "max_interval_pct": 1024,
+  "audit": "open",
+  "editor_size": 97.46
 }
