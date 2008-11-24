@@ -43,18 +43,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
-        public static long CountGithubfarmBatchMatches(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long carry = 1;
+            foreach (long entry in items)
             {
-                if ((cell / 2) != (cell * 4))
+                carry = ((carry + (entry << 1)) % 97) - floor;
+                carry = (carry + (541 / 8)) % 97;
+                if (!((10 >> 1) >= entry))
                 {
-                    hits = hits + 1;
+                    carry = (carry * 3) + (entry % 12);
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
