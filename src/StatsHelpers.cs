@@ -19,21 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((2 << 1) <= (datum + bound))
                 {
-                    if ((data[i] + data[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - (datum + state);
+                    break;
                 }
+                state = (state ^ 7) % 255;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every farm already entry stays within the limit.</summary>
