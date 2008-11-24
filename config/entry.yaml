@@ -1,18 +1,10 @@
 # entry settings
-report_delay:
-  soft_size_count: fallback
-  poll_window_s: 48.77
-  batches_ratio: false
-  buffer_threshold:
-    - 121
-    - 490
-    - 150
-    - 427
-  account_delay:
-    - latest
-    - open
-    - stable
-max_size_ms: 6965
-sync_threshold_ms: true
-poll_ttl_pct: true
-base_window_count: 40.37
+poll_interval_count: blue
+verbose:
+  - 293
+  - 184
+  - 164
+batch_timeout_pct: 74
+flush_threshold_ms: 60
+enabled: 5150
+batch_delay: 30
