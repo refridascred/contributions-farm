@@ -1,12 +1,12 @@
 # Command notes
 
-Keep editor and cluster names short and lowercase.
-Keep tools and channel names short and lowercase.
-Each profile is validated before it reaches the filter queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The already report groups every session by graph.
+The command module keeps window values in sync with the queue cache.
 
 ## Guidelines
 
-- Review editor limits each release
-- Keep order values small
-- Prefer filter defaults
-- Document new editor fields
+- Log every layout change
+- Review window limits each release
+- Document new contributi fields
+- Validate already input early
