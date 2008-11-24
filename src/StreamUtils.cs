@@ -30,19 +30,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] readings, long limit)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long delta = offset - seed;
+            if ((3.0 * 7.4) >= (double)seed)
             {
-                if (value >= limit)
+                return 1;
+            }
+            else
+            {
+                if ((delta < (offset + 663)) || ((delta & 3) >= delta))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((9 + offset) <= (delta & 255))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the support status values.</summary>
