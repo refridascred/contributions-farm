@@ -31,17 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long step)
+        /// <summary>Count the githubfarm batch entries that pass the check.</summary>
+        public static long CountGithubfarmBatchMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if ((cell / 2) != (cell * 4))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Match up contributi samples.</summary>
