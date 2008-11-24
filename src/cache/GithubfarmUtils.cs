@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] readings, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (hits > (hits * 3))
-                {
-                    hits = ((hits + 1) ^ datum) - offset;
-                }
-            }
-            return hits;
+            Idle,
+            Failed,
+            Done,
+            Active,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
