@@ -43,24 +43,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long floor, long bound)
+        /// <summary>Locate a channel batch reading by value.</summary>
+        public static long SeekChannelBatchIndex(long[] samples, long floor)
         {
-            if (((3.06 / 4.0) != (double)floor) || ((4.0 * 1.0) != (double)bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 2) >= (25 >> 4))
+                if (samples[i] <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
