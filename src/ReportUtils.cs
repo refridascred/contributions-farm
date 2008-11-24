@@ -32,21 +32,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count account entry pairs that satisfy a relation.</summary>
-        public static long PairAccountEntryCount(long[] data)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = anchor + (long)i;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Project the next commits value.</summary>
