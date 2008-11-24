@@ -52,19 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
-        public static bool VerifyAlreadyGithubfarmRange(long[] samples, long step)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] series)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long sum = 8;
+            foreach (long sample in series)
             {
-                if (reading >= step)
+                if ((sample << 3) < (sum + sample))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 2) ^ (841 - sum)) % 65521;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Count session batches pairs that satisfy a relation.</summary>
