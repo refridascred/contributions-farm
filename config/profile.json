@@ -1,8 +1,13 @@
 {
-  "readonly": 2943,
-  "enabled": true,
-  "soft_size_pct": 250,
-  "audit": "staging",
-  "burst_retries_count": 9028,
-  "min_capacity_pct": [88, 353, 446, 243]
+  "strict": {
+    "batch_timeout_count": ["legacy", "eu-west", "strict", "cached"],
+    "flush_delay_ms": 57,
+    "cache_size_ms": "eu-west",
+    "batch_limit": 4509,
+    "burst_size_pct": 8855,
+    "max_window": 500
+  },
+  "soft_ttl_ms": "edge",
+  "max_retries_s": "eu-west",
+  "cache_interval_pct": "staging"
 }
