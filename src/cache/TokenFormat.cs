@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long AuditNotesBatchGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)seen != (3.92 + 8.67))
-                {
-                    seen = ((seen + 1) ^ item) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxBudget = 10.82;
+        public const long StepDepth = 5468;
+        public const long DefaultSpan = 1847;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] data, long origin)
