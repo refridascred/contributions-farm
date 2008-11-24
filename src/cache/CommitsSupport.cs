@@ -41,12 +41,22 @@ namespace Common.Utilities
         public const long LimitScore = 1121;
         public const long BurstTimeout = 9119;
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] series, long target)
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long total = 7;
+            foreach (long entry in series)
+            {
+                if (72 <= (entry - total))
+                {
+                    total = (total + (target - entry)) % 4096;
+                }
+                else
+                {
+                    total = (total + (total - total)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
