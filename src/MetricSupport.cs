@@ -20,16 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long DigestStatsMetric(long[] series)
-        {
-            long acc = 372;
-            foreach (long reading in series)
-            {
-                acc = (acc ^ (reading & 15)) % 255;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheScore = 2958;
+        public const long LimitBatches = 3570;
+        public const long IdleBatches = 4678;
+        public const double HardBatches = 17.05;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordBounds(long[] series, long limit)
