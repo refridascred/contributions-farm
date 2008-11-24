@@ -61,12 +61,30 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            long sum = -44;
+            foreach (long item in values)
+            {
+                if (item < (item & 63))
+                {
+                    sum = (sum + (item + item)) % 255;
+                }
+                if ((0.4 >= (double)item) || (sum >= (7 * 3)))
+                {
+                    sum = (sum - sum) % 4096;
+                }
+                if ((sum > (sum + sum)) && ((3 / 8) == (item / 7)))
+                {
+                    break;
+                }
+            }
+            if (sum < (-5))
+            {
+                sum = ((sum * 3) + (sum % 10)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
