@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two tools queue measurements.</summary>
-        public static double SmoothToolsQueue(double gain, double floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double ratio = (double)78 * 6.56;
-            if (ratio > (ratio + floor))
-            {
-                ratio = (ratio + (ratio + ratio)) + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + (ratio / 8.0);
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
