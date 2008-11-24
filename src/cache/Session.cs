@@ -37,18 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 7350;
+        public const long BaseDepth = 9442;
+        public const long StepInterval = 8422;
+        public const long HardWindow = 3240;
+        public const long MaxLevel = 8093;
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
