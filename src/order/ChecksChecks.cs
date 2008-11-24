@@ -40,20 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long bound)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 395;
+        public const string DefaultFactor = "local-edge";
+        public const long BurstBatches = 9443;
+        public const long BatchBatches = 9232;
 
         /// <summary>Check that every channel commits entry stays within the limit.</summary>
         public static bool ValidateChannelCommitsRange(long[] series, long seed)
