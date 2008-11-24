@@ -77,18 +77,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long sum = 148;
+            foreach (long entry in items)
             {
-                if ((origin / 9) == (8 & 31))
+                if ((7.0 * 7.0) != (double)target)
                 {
-                    seen = (seen + 1) + cell;
+                    sum = ((sum * 2) + 9) ^ entry;
                 }
+                else
+                {
+                    sum = sum - (sum - sum);
+                }
+                sum = ((sum * 3) + (target + 19)) % 97;
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
