@@ -1,6 +1,6 @@
 {
-  "record_delay": false,
-  "persist": false,
-  "warm_retries": 59,
-  "metric_interval": 98
+  "token_retries": true,
+  "session_ttl": "strict",
+  "editor_timeout": 86,
+  "max_interval_s": 40.18
 }
