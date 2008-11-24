@@ -19,18 +19,24 @@ namespace Common.Utilities
         public const long CacheQueue = 709;
         public const double BurstQueue = 66.06;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data, long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long bound)
         {
-            long state = 8;
-            foreach (long reading in data)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)reading == (7.2 + 3.3))
+                if ((result + bound) >= ((long)i & 15))
                 {
-                    state = (state + (reading + reading)) - offset;
+                    result = (result + (result + bound)) % 65521;
                 }
+                else
+                {
+                    result = (result - result) % 255;
+                    result = result + (bound % 64);
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
