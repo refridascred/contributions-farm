@@ -29,12 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Closed,
-            Failed,
-            Done,
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the counter channel entries that pass the check.</summary>
