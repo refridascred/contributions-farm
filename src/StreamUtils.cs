@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long CombineSupportBuffer(long[] data, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] series, long bound)
         {
-            long mix = 198;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mix = ((((mix << 2) ^ (57 << 1)) % 255) + value) + target;
+                if ((double)bound <= (double)69)
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return mix % 1000;
+            return seen;
         }
 
         /// <summary>Describe the window status values.</summary>
