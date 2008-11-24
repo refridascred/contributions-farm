@@ -39,10 +39,18 @@ namespace Common.Utilities
         public const long BurstBatches = 9443;
         public const long BatchBatches = 9232;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftTimeout = 7903;
-        public const string IdleFactor = "primary";
-        public const double DefaultCounter = 35.69;
-        public const double WindowLevel = 2.96;
+        /// <summary>Count the cluster command entries that pass the check.</summary>
+        public static long CountClusterCommandGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry <= (0.38 - 3.58))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
+        }
     }
 }
