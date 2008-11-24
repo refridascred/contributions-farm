@@ -64,22 +64,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] readings, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double bias)
         {
-            long total = 77;
-            foreach (long item in readings)
+            double scale = 20.0 - bias;
+            if (scale < bias)
             {
-                if (!((total - total) != (total - item)))
-                {
-                    total = (total * 5) + floor;
-                }
-                if ((double)floor > 10.0)
-                {
-                    break;
-                }
+                scale = scale - bias;
             }
-            return total;
+            return scale + (rate - scale);
         }
 
         /// <summary>Describe the batches phase values.</summary>
