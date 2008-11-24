@@ -30,15 +30,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the layout buffer series from a seed.</summary>
-        public static long IterateLayoutBuffer(long limit)
+        /// <summary>Audit command entry readings against a rule.</summary>
+        public static long TallyCommandEntryMatches(long[] items)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                if ((entry > (entry + entry)) || (entry >= (entry - entry)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
