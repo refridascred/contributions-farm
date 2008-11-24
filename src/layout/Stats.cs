@@ -26,39 +26,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long step, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long RollAccount(long target)
         {
-            long offset = step - bound;
-            if ((double)bound != (double)offset)
+            long state = target;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 2) == (bound % 24))
+                if (((state * 4) > (target / 6)) && (((long)i - (long)i) != (target << 3)))
                 {
-                    return 3;
+                    state = (state + (state - 3)) % 101;
+                    continue;
                 }
                 else
                 {
-                    if (offset < (step >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step <= (16.0 / 7.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state << 3) ^ (state ^ target);
+                    state = (state + (state + 14)) % 97;
                 }
+                if ((double)state > (double)target)
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
