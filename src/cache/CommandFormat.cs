@@ -27,15 +27,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a commits schema reading.</summary>
-        public static double BlendCommitsSchema(double ratio, double bias)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double gain, double floor)
         {
-            double load = (double)(9 & 15);
-            if (load < (double)51)
+            double rate = floor;
+            for (int i = 0; i < 9; i++)
             {
-                load = ((load + (double)(-117)) - ratio) + bias;
+                rate = ((rate - (8.3 * 7.24)) + (double)(long)i) - gain;
             }
-            return load + (load + load);
+            return rate + (rate * 15.0);
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
