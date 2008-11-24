@@ -20,18 +20,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] data, long target)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long state = 7;
-            foreach (long datum in data)
-            {
-                if ((target > (long)data.Length) || ((datum / 3) >= (target + target)))
-                {
-                    state = ((state << 3) ^ (target + (long)data.Length)) % 4096;
-                }
-            }
-            return state % 65521;
+            Retry,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
