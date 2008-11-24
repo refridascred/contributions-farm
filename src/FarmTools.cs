@@ -39,18 +39,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit support account readings against a rule.</summary>
-        public static long CountSupportAccountMatches(long[] series, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (floor < (floor >> 1))
+                if (data[i] == floor)
                 {
-                    tally = (tally + 2) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
