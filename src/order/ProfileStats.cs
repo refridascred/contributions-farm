@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit queue route readings against a rule.</summary>
-        public static long MeasureQueueRouteMatches(long[] readings, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((1.71 - 19.0) > (double)entry)
-                {
-                    tally = (tally + 3) - seed;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the layout state values.</summary>
