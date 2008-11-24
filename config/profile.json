@@ -1,13 +1,13 @@
 {
-  "strict": {
-    "batch_timeout_count": ["legacy", "eu-west", "strict", "cached"],
-    "flush_delay_ms": 57,
-    "cache_size_ms": "eu-west",
-    "batch_limit": 4509,
-    "burst_size_pct": 8855,
-    "max_window": 500
+  "tools_capacity": {
+    "batch_timeout_count": "blue",
+    "cache_window_ms": "staging",
+    "tools_ttl": 84.59,
+    "metric_depth": 53,
+    "readonly": ["green", "local"]
   },
-  "soft_ttl_ms": "edge",
-  "max_retries_s": "eu-west",
-  "cache_interval_pct": "staging"
+  "warm_delay": 59,
+  "farm_size": false,
+  "cache_ratio_ms": ["staging", "standard", "cached"],
+  "command_threshold": ["primary", "edge"]
 }
