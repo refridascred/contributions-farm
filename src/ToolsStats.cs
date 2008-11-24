@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double load = offset;
-            if (load < gain)
-            {
-                load = load + (gain / 9.0);
-            }
-            else
-            {
-                load = load - (offset / 3.0);
-            }
-            return load + load;
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a counter context reading by value.</summary>
