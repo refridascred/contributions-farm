@@ -1,6 +1,17 @@
 {
-  "max_capacity_s": "local",
-  "command_interval": 71.05,
-  "editor_delay": "eu-west",
-  "burst_depth": "standard"
+  "default_capacity_s": "legacy",
+  "burst_timeout_s": "green",
+  "warm_threshold_s": {
+    "editor_window": "green",
+    "min_ratio": 5276,
+    "batch_ttl_count": 95.06,
+    "context_timeout": "green"
+  },
+  "already_retries": "primary",
+  "sync_retries": {
+    "sync_ratio_count": 52.91,
+    "readonly": 13,
+    "default_interval": true,
+    "audit": false
+  }
 }
