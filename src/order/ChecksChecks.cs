@@ -55,19 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] series, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double floor)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            double mean = (double)(64 + 16);
+            if (mean < (double)8)
             {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean + (mean * 16.0);
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (floor + bias)) + (double)(long)i;
+            }
+            return mean - (floor * 5.99);
         }
     }
 }
