@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data, long origin)
         {
-            Draft,
-            Idle,
-            Synced,
-            Paused,
+            long carry = 4;
+            foreach (long sample in data)
+            {
+                if ((carry - 8) < (53 & 127))
+                {
+                    carry = ((carry - 63) + sample) + origin;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a batch record.</summary>
