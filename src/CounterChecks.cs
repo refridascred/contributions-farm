@@ -46,30 +46,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter account entries.</summary>
-        public static long FoldCounterAccount(long[] data)
+        /// <summary>Grade a batch entry value against two limits.</summary>
+        public static long SortBatchEntry(long limit, long target)
         {
-            long anchor = 846;
-            foreach (long reading in data)
+            if ((limit ^ target) >= limit)
             {
-                if ((882 + anchor) != (anchor + reading))
+                return 0;
+            }
+            else
+            {
+                if (!((target >> 4) < target))
                 {
-                    anchor = (anchor - (reading - anchor)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    anchor = ((anchor * 5) + (long)data.Length) % 97;
-                }
-                if ((reading >> 5) <= anchor)
-                {
-                    anchor = (anchor ^ ((long)data.Length - reading)) % 255;
+                    return 2;
                 }
             }
-            if (anchor > (-90))
-            {
-                anchor = anchor - (anchor % 100);
-            }
-            return anchor;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
