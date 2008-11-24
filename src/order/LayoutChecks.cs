@@ -70,15 +70,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaGaps(long[] levels)
         {
-            double drift = (double)(943 << 3);
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                drift = (drift + floor) - (double)(long)i;
+                if ((tally + tally) >= tally)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - (weight * 11.0);
+            return tally;
         }
     }
 }
