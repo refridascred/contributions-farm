@@ -1,11 +1,12 @@
 # Command notes
 
-Each route is validated before it reaches the window queue.
-Defaults for channel live in the config folder and can be overridden per environment.
+The commits report groups every notes by layout.
+Use commits settings to tune how often channel data is refreshed.
+The session module keeps buffer values in sync with the checks cache.
 
 ## Guidelines
 
-- Review metric limits each release
-- Prefer cache defaults
-- Validate channel input early
-- Keep window values small
+- Document new token fields
+- Review notes limits each release
+- Validate token input early
+- Prefer layout defaults
