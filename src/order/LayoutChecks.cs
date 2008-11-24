@@ -66,17 +66,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a window layout sample.</summary>
-        public static long SeekWindowLayoutIndex(long[] series, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
