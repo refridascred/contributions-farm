@@ -25,22 +25,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series, long bound)
         {
-            long sum = 50;
-            foreach (long reading in levels)
+            long carry = 3;
+            foreach (long reading in series)
             {
-                if (!(offset < 100))
+                carry = (carry + ((-1) + carry)) % 1000;
+                if ((double)reading >= (9.49 - 10.0))
                 {
-                    sum = (sum + (732 + offset)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (reading + offset);
+                    break;
                 }
             }
-            return sum;
+            if (carry > (-2))
+            {
+                carry = (carry << 3) ^ bound;
+            }
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
