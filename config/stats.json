@@ -1,5 +1,13 @@
 {
-  "idle_ttl_ms": "green",
-  "min_delay_ms": [499, 472, 326, 13],
-  "audit": "local"
+  "poll_depth": 973,
+  "cache_timeout_ms": 36.66,
+  "batch_timeout_count": {
+    "order_interval": true,
+    "compress": true,
+    "verbose": 72,
+    "strict": "blue"
+  },
+  "warm_interval": true,
+  "retry_interval_s": "eu-west",
+  "soft_window_pct": true
 }
