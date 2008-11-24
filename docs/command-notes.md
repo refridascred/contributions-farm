@@ -1,15 +1,11 @@
 # Command notes
 
-When a notes fails, the batches handler retries a few times before giving up.
-Keep entry and route names short and lowercase.
-The filter report groups every graph by support.
-
-The format module keeps record values in sync with the editor cache.
-The metrics report groups every token by stream.
-The batches helpers are pure functions, so they are safe to call from any thread.
+The order module keeps batch values in sync with the checks cache.
+Each channel is validated before it reaches the counter queue.
+Use batches settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Prefer command defaults
-- Document new metrics fields
-- Validate token input early
+- Document new editor fields
+- Log every contributi change
+- Review report limits each release
