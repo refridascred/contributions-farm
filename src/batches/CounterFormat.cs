@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                mark = (mark + (long)i) % 4096;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the route class values.</summary>
