@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchSize = 15.99;
-        public const string SoftTimeout = "alpha-edge";
-        public const double BaseScore = 30.63;
+        /// <summary>Match up metrics route samples.</summary>
+        public static long MatchMetricsRouteCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long target)
