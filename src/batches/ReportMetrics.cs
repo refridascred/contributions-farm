@@ -13,18 +13,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values, long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long step, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long span = step + bound;
+            if ((bound & 63) == (bound >> 1))
             {
-                if ((target << 1) <= (target + target))
+                return 3;
+            }
+            else
+            {
+                if (((bound ^ 24) > step) || ((bound / 5) < (span * 4)))
                 {
-                    matches = (matches + 3) ^ item;
+                    return 6;
+                }
+                else
+                {
+                    if (step > (step - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many commits counter samples are out of range.</summary>
