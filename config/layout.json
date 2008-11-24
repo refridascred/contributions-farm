@@ -1,16 +1,5 @@
 {
-  "enabled": false,
-  "stream_delay": {
-    "dry_run": {
-      "sync_capacity_pct": ["eu-west", "stable", "staging"],
-      "default_threshold_s": 47.71,
-      "default_limit_ms": "latest",
-      "warm_threshold_count": 92
-    },
-    "batch_ttl_ms": false,
-    "persist": 3326,
-    "queue_window": ["cached", "strict", "cached", "cached"]
-  },
-  "order_timeout": "stable",
-  "graph_capacity": 7.16
+  "idle_delay_pct": ["strict", "latest"],
+  "hard_limit_ms": 51.05,
+  "cache_ratio_count": "green"
 }
