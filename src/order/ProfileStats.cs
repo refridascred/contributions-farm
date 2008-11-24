@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double HardDepth = 83.63;
         public const long MaxEditor = 9378;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Check that every token farm entry stays within the limit.</summary>
+        public static bool CheckTokenFarmBounds(long[] readings, long seed)
         {
-            Pending,
-            Stale,
-            Locked,
-            Paused,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine session values into a single score.</summary>
