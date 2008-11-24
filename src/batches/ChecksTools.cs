@@ -38,32 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long offset, long bound)
-        {
-            if ((offset <= (bound * 5)) && ((offset / 9) <= offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 3) == (offset - bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound & 3) <= bound) || ((offset + bound) >= 0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 6566;
+        public const long BatchFactor = 5229;
+        public const long MaxCommits = 8193;
+        public const string BurstWidth = "primary";
+        public const double HardCommits = 48.12;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string DefaultMetrics = "alpha-1";
