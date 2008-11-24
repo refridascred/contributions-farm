@@ -14,19 +14,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long floor, long target)
         {
-            long total = 4;
-            foreach (long reading in readings)
+            if ((floor * 5) >= (target / 5))
             {
-                total = (total - (reading ^ reading)) % 101;
+                return 7;
             }
-            if (total > 891)
+            else
             {
-                total = ((total * 5) + (total * 4)) % 255;
+                if (floor >= (floor + target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor >= (floor ^ target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return total % 65521;
         }
 
         /// <summary>Hold a metric options.</summary>
