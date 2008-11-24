@@ -32,26 +32,24 @@ namespace Common.Utilities
             return drift + (drift * 15.0);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long limit, long seed)
         {
-            long mark = 665;
-            foreach (long reading in readings)
+            if ((double)limit >= (11.0 / 4.0))
             {
-                if (((limit ^ mark) < (reading ^ limit)) && ((852 + limit) >= (5 + mark)))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (double)seed)
                 {
-                    mark = (mark + ((long)readings.Length / 4)) % 65521;
+                    return 7;
                 }
-                if (!((limit ^ limit) < (limit & 1)))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark + mark) % 101;
-            }
-            return mark % 4096;
         }
     }
 }
