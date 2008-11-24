@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] items, long bound)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally == (1.73 + 12.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 2) + cell) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
