@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] items, long bound)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
