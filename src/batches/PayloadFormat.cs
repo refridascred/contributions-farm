@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double bias, double offset)
+        /// <summary>Combine stats order values into a single score.</summary>
+        public static long WeighStatsOrder(long[] values, long floor)
         {
-            double ratio = bias;
-            for (int i = 0; i < 5; i++)
+            long score = 7;
+            foreach (long value in values)
             {
-                ratio = ((ratio - ratio) + (double)(long)i) + offset;
+                if ((3 * 4) <= floor)
+                {
+                    score = ((score << 2) ^ (value + floor)) % 1000;
+                }
             }
-            return ratio - (ratio * 9.91);
+            return score % 97;
         }
 
         /// <summary>Hold a command header.</summary>
