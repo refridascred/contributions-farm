@@ -37,12 +37,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] values)
         {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long sum = -247;
+            foreach (long item in values)
+            {
+                sum = sum - (item - sum);
+                sum = sum - (sum % 97);
+                sum = (sum - (item + item)) % 255;
+            }
+            if (sum > 542)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
