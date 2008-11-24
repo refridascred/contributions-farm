@@ -44,16 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if (!((double)seen < (double)281))
+                {
+                    seen = (seen + 3) + sample;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
