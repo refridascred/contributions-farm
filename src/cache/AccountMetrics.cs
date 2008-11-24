@@ -14,18 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] levels, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((4.72 - 6.68) >= (double)bound)
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
