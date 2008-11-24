@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Pending,
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitWidth = 95.63;
+        public const long BaseDepth = 3170;
+        public const long BurstGraph = 9842;
 
         /// <summary>Compare every pair of farm cluster readings.</summary>
         public static long CompareFarmClusterCount(long[] series)
