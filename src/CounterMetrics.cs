@@ -27,19 +27,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate queue batches readings against a bound.</summary>
-        public static bool GuardQueueBatchesBounds(long[] values, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = (ratio / 7.0) - (ratio - ratio);
+            return (scale - scale) + floor;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
