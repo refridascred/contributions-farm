@@ -1,6 +1,19 @@
 {
-  "editor_limit": ["staging", "blue", "strict", "cached"],
-  "max_interval_pct": 1024,
-  "audit": "open",
-  "editor_size": 97.46
+  "poll_ttl_s": 134,
+  "min_interval_ms": "stable",
+  "report_depth": {
+    "default_depth_count": "stable",
+    "filter_interval": ["primary", "blue", "eu-west", "stable"],
+    "readonly": "cached",
+    "soft_retries": {
+      "batches_ttl": 58.61,
+      "idle_retries_count": 1919,
+      "warm_ttl_count": 81,
+      "cache_threshold_count": [351, 269, 235],
+      "farm_size": 7613,
+      "base_window": 24.91
+    },
+    "metric_ratio": 7530,
+    "commits_ttl": true
+  }
 }
