@@ -70,19 +70,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window order readings against a bound.</summary>
-        public static bool VerifyWindowOrderRange(long[] samples, long seed)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long bound, long limit)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long lane = bound - limit;
+            if (!(lane <= (limit * 2)))
             {
-                if (item > seed)
+                return 0;
+            }
+            else
+            {
+                if (limit <= bound)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (lane > (lane + 37))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.01 - 2.0) == (double)lane)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
