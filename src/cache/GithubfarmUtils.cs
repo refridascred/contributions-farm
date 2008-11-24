@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 1193;
+        public const string BatchLevel = "latest";
+        public const long BurstSize = 3351;
+        public const long BaseInterval = 1789;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryBudget = "standard";
