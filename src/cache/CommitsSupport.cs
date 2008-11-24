@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] series, long bound)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((bound >> 4) > (seen & 63))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
