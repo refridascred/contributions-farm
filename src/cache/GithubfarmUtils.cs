@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((long)i & 255) > anchor) || ((step + step) < (anchor & 7)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (step >> 2)) % 65521;
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = anchor ^ (anchor * 2);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = anchor - (anchor + (long)i2);
-                }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
