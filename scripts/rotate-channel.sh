@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary latest cached local; do
+for item in local open legacy; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=421
+CHANNEL_LIMIT=250
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
