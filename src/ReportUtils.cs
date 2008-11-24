@@ -41,18 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (seen > sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
