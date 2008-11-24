@@ -31,23 +31,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a cache cluster figure with a bias.</summary>
-        public static double ScaleCacheCluster(double weight, double bias)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] series, long limit)
         {
-            double gain = (double)(7 + 419);
-            if (gain >= weight)
+            bool flag = true;
+            foreach (long value in series)
             {
-                gain = gain + (bias / 9.0);
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 9.0) - (double)(long)i;
-            }
-            return gain + weight;
+            return flag;
         }
     }
 }
