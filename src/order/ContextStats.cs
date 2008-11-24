@@ -48,15 +48,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] readings, long bound)
         {
-            double ratio2 = (offset - offset) * 1.15;
-            if (ratio2 > ratio)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                ratio2 = ratio2 - (ratio - offset);
+                if (!(item >= (bound - 822)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return ratio2 - 9.27;
+            return hits;
         }
     }
 }
