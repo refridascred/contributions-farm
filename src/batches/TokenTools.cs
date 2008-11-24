@@ -30,11 +30,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxFactor = 9158;
-        public const long MinCommits = 3864;
-        public const double BaseCount = 17.23;
-        public const double DefaultRatio = 77.93;
-        public const double HardCommits = 19.18;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountBounds(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
