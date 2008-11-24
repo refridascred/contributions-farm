@@ -1,10 +1,12 @@
 # Command notes
 
-Keep command and token names short and lowercase.
-The schema module keeps stream values in sync with the entry cache.
+Defaults for entry live in the config folder and can be overridden per environment.
+The payload module keeps batches values in sync with the entry cache.
+Each metrics is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Review payload limits each release
-- Validate graph input early
-- Log every record change
+- Prefer schema defaults
+- Keep queue values small
+- Log every cluster change
+- Document new graph fields
