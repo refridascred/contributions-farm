@@ -45,22 +45,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long TallySchemaMetricsHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (3.0 < (double)value)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 5041;
+        public const double CacheContext = 93.97;
+        public const long CacheLevel = 1817;
     }
 }
