@@ -30,15 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next tools support value.</summary>
-        public static double AdjustToolsSupport(double scale, double bias)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] readings, long floor)
         {
-            double scale2 = 14.0;
-            if (scale2 <= 6.22)
+            bool found = true;
+            foreach (long value in readings)
             {
-                scale2 = scale2 - (bias - scale2);
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return scale2 + scale;
+            return found;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
