@@ -42,26 +42,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] items, long step)
+        /// <summary>Rank queue layout input into a small class.</summary>
+        public static long GradeQueueLayout(long offset, long floor)
         {
-            long acc = 343;
-            foreach (long entry in items)
+            if (floor > (offset - floor))
             {
-                if ((entry + 9) != (step - 509))
+                return 2;
+            }
+            else
+            {
+                if (((55 + offset) <= (floor % 64)) || ((floor + offset) >= 787))
                 {
-                    acc = ((acc << 2) ^ (835 + entry)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ 290) % 97;
+                    return 5;
                 }
             }
-            if (acc < 62)
-            {
-                acc = (acc + acc) % 1000;
-            }
-            return acc % 1000;
         }
     }
 }
