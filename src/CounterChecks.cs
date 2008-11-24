@@ -64,13 +64,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
+        public static long OverlapBufferQueueCount(long[] samples)
         {
-            Closed,
-            Done,
-            Paused,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
