@@ -26,31 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long limit2)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] readings, long origin)
         {
-            if ((limit / 3) <= limit2)
+            long score = 5;
+            foreach (long datum in readings)
             {
-                return 2;
+                score = ((score + ((long)readings.Length >> 1)) + datum) + origin;
             }
-            else
-            {
-                if ((4.6 / 8.0) > (double)limit2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit2 & 3) != (limit & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
