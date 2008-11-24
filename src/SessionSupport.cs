@@ -16,14 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Failed,
-            Pending,
-            Stale,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 4630;
+        public const long BatchScore = 3881;
+        public const long IdleRatio = 3727;
 
         /// <summary>Describe the channel mode values.</summary>
         public enum ChannelMode
