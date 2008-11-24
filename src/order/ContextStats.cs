@@ -34,13 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            Closed,
+            Failed,
+            Done,
         }
 
         /// <summary>Blend two token account measurements.</summary>
