@@ -64,17 +64,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Combine schema report values into a single score.</summary>
+        public static long TotalSchemaReport(long[] values, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long mark = 89;
+            foreach (long item in values)
             {
-                mix = (mix - (mix * 2)) % 1000;
-                mix = (mix - mix) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                mark = ((mark ^ 82) % 1000) ^ item;
             }
-            return mix;
+            if (mark > (-21))
+            {
+                mark = (mark << 3) ^ (mark + limit);
+            }
+            return mark;
         }
     }
 }
