@@ -60,22 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream batch samples are out of range.</summary>
-        public static long CountStreamBatchHits(long[] levels, long limit)
+        /// <summary>Validate graph queue readings against a bound.</summary>
+        public static bool CheckGraphQueueLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((limit >> 4) > (matches % 7))
+                if (sample < offset)
                 {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
