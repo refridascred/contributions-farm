@@ -34,17 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] items, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                if (value >= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
