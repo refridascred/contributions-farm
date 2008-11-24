@@ -36,16 +36,19 @@ namespace Common.Utilities
         public const double IdleProfile = 26.44;
         public const long WindowFactor = 9298;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Check that every already githubfarm entry stays within the limit.</summary>
+        public static bool VerifyAlreadyGithubfarmRange(long[] samples, long step)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                state = (state << 3) ^ state;
-                state = ((state * 4) + (long)i) % 65521;
+                if (reading >= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Classify a session format pair into a bucket.</summary>
