@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Adjust a checks entry reading.</summary>
+        public static double AdjustChecksEntry(double ratio, double span)
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            double bias = span;
+            if (bias <= (double)(-62))
+            {
+                bias = bias + bias;
+            }
+            else
+            {
+                bias = bias + ratio;
+            }
+            return bias + 0.1;
         }
 
         /// <summary>Fold a list of account readings.</summary>
