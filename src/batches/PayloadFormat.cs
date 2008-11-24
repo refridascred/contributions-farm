@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long mix = -229;
-            foreach (long reading in items)
+            long mark = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((mix & 3) <= (reading + reading))
-                {
-                    mix = ((mix * 2) + mix) % 97;
-                }
+                mark = ((mark << 3) ^ (long)i) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
