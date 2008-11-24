@@ -1,11 +1,8 @@
 {
-  "burst_delay_ms": "cached",
-  "enabled": 95.95,
-  "default_threshold_ms": {
-    "poll_capacity_ms": 53,
-    "poll_ratio": [356, 438, 144, 245],
-    "githubfarm_depth": [391, 180, 197],
-    "default_window": false,
-    "strict": 36.5
-  }
+  "default_ttl_count": 28,
+  "already_window": 250,
+  "graph_capacity": "fallback",
+  "compress": 800,
+  "cache_ttl": ["latest", "cached"],
+  "dry_run": 45.98
 }
