@@ -24,19 +24,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileRange(long[] readings, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (sample < bound)
+                if ((cell <= 92) || (((double)hits != (2.9 * 2.9)) || ((seed << 3) < (seed + 414))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
