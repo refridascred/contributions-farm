@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of account filter readings.</summary>
-        public static long FoldAccountFilter(long[] data, long floor)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] data)
         {
-            long state = 39;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor <= (cell & 255)) || ((-61) > (state % 12)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ (cell + (-3))) % 97;
-                }
-                if ((state + cell) > (state + state))
-                {
-                    state = ((state * 4) + (cell + floor)) % 101;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
