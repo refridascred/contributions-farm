@@ -1,7 +1,18 @@
 {
-  "githubfarm_limit": true,
-  "notes_window": ["strict", "staging", "fallback", "latest"],
-  "max_ratio_count": "local",
-  "persist": false,
-  "compress": 59.74
+  "min_interval_count": false,
+  "filter_ttl": {
+    "readonly": "strict",
+    "persist": {
+      "persist": ["cached", "green"],
+      "dry_run": "latest",
+      "audit": true,
+      "idle_ratio_s": "green",
+      "sync_size_pct": 250
+    },
+    "default_interval_s": true
+  },
+  "soft_size_s": "stable",
+  "soft_window": 5.73,
+  "warm_threshold": false,
+  "profile_timeout": "open"
 }
