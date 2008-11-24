@@ -1,8 +1,6 @@
 {
-  "dry_run": 40,
-  "warm_capacity": 89.41,
-  "strict": 33,
-  "min_retries_ms": false,
-  "sync_interval_pct": "stable",
-  "githubfarm_threshold": false
+  "warm_limit": 35,
+  "compress": 250,
+  "verbose": 3053,
+  "contributi_window": 1024
 }
