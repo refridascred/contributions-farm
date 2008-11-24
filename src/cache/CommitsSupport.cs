@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const long LimitScore = 1121;
         public const long BurstTimeout = 9119;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "strict-edge";
-        public const long MaxMetrics = 1901;
-        public const double IdleCount = 40.64;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] samples, long offset)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long GradeBatches(long offset, long limit)
