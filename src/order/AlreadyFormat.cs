@@ -20,14 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] items, long bound)
         {
-            Queued,
-            Dropped,
-            Synced,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)tally == (1.73 + 12.0))
+                {
+                    tally = ((tally + 2) + cell) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
