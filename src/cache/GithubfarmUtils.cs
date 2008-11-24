@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Done,
-            Dropped,
-            Idle,
+            Locked,
+            Draft,
+            Stale,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
