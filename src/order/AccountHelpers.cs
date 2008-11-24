@@ -68,21 +68,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] samples)
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double rate, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = 0.2;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = ((gain - (double)(long)i) + rate) + span;
             }
-            return matches;
+            return gain + (double)424;
         }
 
         /// <summary>Describe the stats mode values.</summary>
