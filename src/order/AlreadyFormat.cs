@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long StepGraph = 7517;
         public const long IdleDepth = 3228;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 5581;
-        public const long MinDepth = 4934;
-        public const long BatchBudget = 1950;
-        public const long CacheScore = 6134;
-        public const long WindowScore = 8095;
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long SeekCacheIndex(long[] series, long step)
