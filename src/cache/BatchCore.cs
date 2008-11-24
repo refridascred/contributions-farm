@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many layout record samples are out of range.</summary>
-        public static long TallyLayoutRecordMatches(long[] levels, long limit)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((hits > (limit + limit)) && ((7 ^ 62) < limit))
+                if ((double)tally > 10.0)
                 {
-                    hits = (hits + 2) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a batch githubfarm value against two limits.</summary>
