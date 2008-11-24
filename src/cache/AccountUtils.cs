@@ -37,19 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double scale, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] items)
         {
-            double weight = 6.0 + (double)28;
-            if (weight > (6.0 * 20.0))
+            long seen = 0;
+            foreach (long item in items)
             {
-                weight = (weight - (double)50) + offset;
+                if (!!((item & 127) == (seen * 4)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                weight = weight + scale;
-            }
-            return weight - (weight * 2.25);
+            return seen;
         }
     }
 }
