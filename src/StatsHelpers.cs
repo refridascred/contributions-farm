@@ -14,15 +14,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = 673;
-            foreach (long value in readings)
-            {
-                acc = (acc << 3) ^ (value << 2);
-            }
-            return acc;
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
