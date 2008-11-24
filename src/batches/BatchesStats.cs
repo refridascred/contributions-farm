@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 2956;
-        public const string LimitSupport = "standard";
-        public const double BatchCount = 92.2;
-        public const long MaxRatio = 6138;
-        public const string BaseScore = "legacy";
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long floor)
+        {
+            if (((floor - limit) >= (floor * 5)) || ((double)floor >= 7.58))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((3.69 * 7.2) > (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
