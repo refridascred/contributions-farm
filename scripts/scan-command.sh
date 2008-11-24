@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-staging}"
+COMMAND_LIMIT=41
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
