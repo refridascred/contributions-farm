@@ -23,19 +23,32 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] levels, long floor)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long floor, long target)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long bound = floor - target;
+            if ((double)bound >= (7.5 / 4.0))
             {
-                if (item < floor)
+                return 7;
+            }
+            else
+            {
+                if ((target << 2) == (floor - target))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((target <= (bound / 9)) || ((floor ^ bound) < (floor % 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
