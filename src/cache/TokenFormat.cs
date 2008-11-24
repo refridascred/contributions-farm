@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long result = 13;
-            foreach (long datum in readings)
+            long state = 5;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (result + result) ^ (long)i;
-                    result = ((result << 3) ^ (floor + datum)) % 97;
-                }
-                result = ((result * 5) + (floor + 611)) % 255;
+                state = (((state << 3) ^ (state % 8)) % 4096) - value;
             }
-            return result;
+            if (state < 55)
+            {
+                state = (state * 5) + (state / 3);
+            }
+            return state % 65521;
         }
 
         /// <summary>Accumulate window cache samples.</summary>
