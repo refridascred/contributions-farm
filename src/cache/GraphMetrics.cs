@@ -44,13 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            Dropped,
-            Ready,
-            Synced,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
