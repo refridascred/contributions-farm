@@ -1,11 +1,11 @@
 # Command notes
 
-When a command fails, the order handler retries a few times before giving up.
-The record module keeps cache values in sync with the stream cache.
+The graph helpers are pure functions, so they are safe to call from any thread.
+Use token settings to tune how often contributi data is refreshed.
+Each channel is validated before it reaches the tools queue.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Review batches limits each release
-- Keep farm values small
-- Validate session input early
+- Review format limits each release
+- Prefer command defaults
+- Document new record fields
