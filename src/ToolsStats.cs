@@ -79,20 +79,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] data)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportOutliers(long[] series)
         {
-            long carry = 52;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in series)
             {
-                carry = (carry - (entry + entry)) % 255;
-                carry = (carry - (entry + carry)) % 1000;
+                if ((3.07 + 12.0) > (double)item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (carry < 57)
-            {
-                carry = (carry - (carry - carry)) % 97;
-            }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
