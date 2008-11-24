@@ -1,7 +1,7 @@
 # githubfarm settings
-min_ttl: fallback
-persist:
-  - standard
-  - strict
-  - strict
-format_capacity: 96
+persist: eu-west
+hard_timeout_s: false
+farm_threshold: false
+poll_delay_count:
+  - stable
+  - eu-west
