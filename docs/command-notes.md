@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for entry live in the config folder and can be overridden per environment.
-The format report groups every notes by report.
-The counter helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and notes names short and lowercase.
+Keep buffer and order names short and lowercase.
 
-Use channel settings to tune how often route data is refreshed.
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep buffer and filter names short and lowercase.
+Use filter settings to tune how often cluster data is refreshed.
+Each payload is validated before it reaches the farm queue.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every route change
-- Validate window input early
-- Review stream limits each release
+- Validate contributi input early
+- Review graph limits each release
+- Keep queue values small
+- Document new support fields
