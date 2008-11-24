@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 1193;
-        public const string BatchLevel = "latest";
-        public const long BurstSize = 3351;
-        public const long BaseInterval = 1789;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryBudget = "standard";
