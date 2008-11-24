@@ -52,18 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format queue readings against a rule.</summary>
-        public static long CountFormatQueueMatches(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((entry / 6) <= (entry >> 3))
+                if (cell >= floor)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
