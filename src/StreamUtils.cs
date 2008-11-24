@@ -56,13 +56,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Closed,
-            Paused,
-            Draft,
-            Dropped,
+            public long Flag { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
