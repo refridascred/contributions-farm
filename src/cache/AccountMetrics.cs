@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxSession = 39.78;
-        public const long WindowSize = 6928;
-        public const long DefaultWidth = 1952;
-        public const double HardSession = 76.65;
-        public const long LimitRatio = 7580;
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
+        {
+            Ready,
+            Locked,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Fold a list of batches entry readings.</summary>
         public static long ScoreBatchesEntry(long[] data, long bound)
