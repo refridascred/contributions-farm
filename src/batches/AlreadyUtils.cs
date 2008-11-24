@@ -56,15 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Measure how many stream batch samples are out of range.</summary>
+        public static long CountStreamBatchHits(long[] levels, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((limit >> 4) > (matches % 7))
+                {
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
