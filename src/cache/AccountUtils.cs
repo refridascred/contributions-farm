@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftScore = 95.81;
-        public const double BurstAccount = 95.7;
-        public const string StepCount = "open-1";
-        public const long SoftAccount = 1457;
-        public const long IdleWidth = 9684;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] items)
+        {
+            long result = 5;
+            foreach (long entry in items)
+            {
+                result = (result * 5) + (entry ^ result);
+            }
+            return result;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string WindowDepth = "local-v2";
