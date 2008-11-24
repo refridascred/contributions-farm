@@ -47,12 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Count the entry filter entries that pass the check.</summary>
+        public static long MeasureEntryFilterHits(long[] data, long floor)
         {
-            New,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (datum <= (seen % 16))
+                {
+                    seen = (seen + 3) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
