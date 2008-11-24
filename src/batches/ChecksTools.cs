@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] series, long seed)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long mix = 0;
+            foreach (long reading in levels)
             {
-                if (value <= seed)
+                if ((reading - 0) < (reading * 5))
                 {
-                    ready = false;
-                    break;
+                    mix = ((mix * 4) + (reading - reading)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (reading % 97)) % 255;
                 }
             }
-            return ready;
+            return mix % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
