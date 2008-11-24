@@ -48,21 +48,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] readings)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - (floor >> 1)) - (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Fold a list of counter profile readings.</summary>
