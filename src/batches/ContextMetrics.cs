@@ -31,27 +31,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of commits githubfarm entries.</summary>
-        public static long WeighCommitsGithubfarm(long[] samples)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result + (672 >> 2)) % 1000;
-                if (((455 * 5) > datum) || ((datum + (long)samples.Length) != (datum % 10)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = result - ((-43) << 2);
-                }
-                else
-                {
-                    result = result - (result % 2);
+                    if ((values[i] + values[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (result > 757)
-            {
-                result = result - result;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
