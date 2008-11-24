@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Fold a list of notes format readings.</summary>
+        public static long WeighNotesFormat(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 991;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((4.6 + 6.0) <= (double)cell)
                 {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result << 3) ^ (result >> 2)) % 255;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
