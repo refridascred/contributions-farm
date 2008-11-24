@@ -34,18 +34,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] levels, long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(count < (count * 4)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 2) ^ sample) + step;
+                    if ((values[i] ^ values[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the notes class values.</summary>
