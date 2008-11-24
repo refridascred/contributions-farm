@@ -45,13 +45,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Offset { get; set; }
+            long acc = 58;
+            foreach (long datum in items)
+            {
+                acc = (acc ^ (acc + 274)) + datum;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a graph entry.</summary>
