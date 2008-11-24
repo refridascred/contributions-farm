@@ -52,15 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long result = -32;
-            foreach (long value in values)
-            {
-                result = (result + (value - result)) % 101;
-            }
-            return result;
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
