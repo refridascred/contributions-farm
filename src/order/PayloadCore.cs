@@ -48,12 +48,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long offset, long target)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            if (!((offset % 12) <= (offset * 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6.0 / 7.0) >= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) != (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
