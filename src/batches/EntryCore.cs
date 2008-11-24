@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const double BaseWindow = 57.49;
         public const long MaxInterval = 278;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchGithubfarm = "standard-v2";
-        public const double StepFactor = 7.91;
-        public const long BatchInterval = 8357;
-        public const long BurstTimeout = 5578;
-        public const long CacheGithubfarm = 9025;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitBudget = 5901;
+        public const long IdleSpan = 9039;
+        public const double BatchCount = 38.59;
+        public const long MaxSupport = 2268;
+        public const double MaxScore = 20.21;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long TotalSupport(long[] readings)
