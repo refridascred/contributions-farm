@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long carry = 55;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((260 > (reading % 97)) || ((0.2 / 8.0) != (double)reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry ^ carry) - origin;
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
