@@ -25,18 +25,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values)
+        /// <summary>Project the next stream channel value.</summary>
+        public static double SmoothStreamChannel(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double scale = (double)(-64);
+            if (scale <= bias)
             {
-                if ((matches << 2) != (cell >> 3))
-                {
-                    matches = matches + 3;
-                }
+                scale = (scale + (scale - scale)) - floor;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (scale * 8.99)) + (double)(long)i;
+            }
+            return scale - bias;
         }
     }
 }
