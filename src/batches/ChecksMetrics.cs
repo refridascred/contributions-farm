@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            double rate = bias / 8.0;
+            if (rate < weight)
             {
-                if ((limit - limit) <= acc)
-                {
-                    acc = (acc << 3) ^ ((long)i / 2);
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                rate = rate + rate;
             }
-            return acc;
+            return rate - (double)661;
         }
 
         /// <summary>Count the channel filter entries that pass the check.</summary>
