@@ -38,13 +38,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long offset)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long state = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
