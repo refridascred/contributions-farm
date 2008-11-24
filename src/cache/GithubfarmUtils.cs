@@ -27,18 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] values, long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((value > (limit ^ 134)) || ((double)hits >= (13.0 * 1.7)))
+                if (sample > seed)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
