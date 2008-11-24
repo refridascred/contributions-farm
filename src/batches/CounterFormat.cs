@@ -25,22 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine cache batches values into a single score.</summary>
-        public static long TotalCacheBatches(long[] data, long limit)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] samples, long origin)
         {
-            long state = 7;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (!((9.1 * 0.7) < (double)limit))
+                if ((origin % 16) > (sample + seen))
                 {
-                    state = ((state ^ 0) % 255) ^ datum;
+                    seen = seen + 3;
                 }
             }
-            if (state > 186)
-            {
-                state = ((state * 5) + (1 + 693)) % 101;
-            }
-            return state;
+            return seen;
         }
     }
 }
