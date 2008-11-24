@@ -1,5 +1,6 @@
 # entry settings
-soft_interval: edge
-tools_capacity: standard
-schema_depth: 46.55
-flush_timeout: strict
+channel_delay: 25.57
+dry_run: 56
+audit: fallback
+cache_capacity_s: fallback
+flush_limit_ms: latest
