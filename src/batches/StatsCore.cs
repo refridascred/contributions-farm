@@ -53,38 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long target, long floor)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            if ((target + target) >= (1 + (-68)))
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((5.02 * 19.0) > (double)target) || ((10.0 * 8.7) <= (double)target))
+                anchor = ((anchor * 4) + (step * 4)) % 255;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 2;
+                    anchor = (((anchor * 2) + ((-4) >> 3)) % 255) - (long)i2;
                 }
-                else
-                {
-                    if ((target * 3) != (floor ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target % 5) > (37 & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = anchor - step;
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Project the next profile report value.</summary>
