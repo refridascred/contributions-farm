@@ -6,11 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=354
-log "limit is ${RECORD_LIMIT}"
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
+
+for item in latest primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-staging}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
