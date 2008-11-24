@@ -1,10 +1,6 @@
-id,label,rank
-1,438,legacy
-2,370,736
-3,primary,33.23
-4,33.73,432
-5,64.46,68.46
-6,555,standard
-7,35.97,118
-8,cached,standard
-9,41.44,15.45
+id,token,label
+1,70.67,84.32
+2,438,3.77
+3,legacy,fallback
+4,staging,305
+5,fallback,open
