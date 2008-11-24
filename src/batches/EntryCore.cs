@@ -50,15 +50,18 @@ namespace Common.Utilities
             return scale + (bias * 0.7);
         }
 
-        /// <summary>Blend two graph order measurements.</summary>
-        public static double ScaleGraphOrder(double bias, double span)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterHits(long[] readings)
         {
-            double bias2 = (double)(603 + 608);
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                bias2 = (((bias2 + (double)39) - (double)(long)i) - bias) + span;
+                if (datum <= ((long)readings.Length ^ matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return bias2 - (double)37;
+            return matches;
         }
     }
 }
