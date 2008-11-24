@@ -37,10 +37,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultRatio = 5881;
-        public const double WindowCluster = 23.32;
-        public const long BurstCluster = 8924;
-        public const long StepCluster = 9510;
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = (mark + (step - mark)) % 97;
+                if (mark > (mark + step))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
