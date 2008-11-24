@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] readings, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((tally * 2) > (datum / 6))
+                if (entry > offset)
                 {
-                    tally = (tally + 3) - bound;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
