@@ -38,24 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long result = 509;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((284 + offset) < result) || ((double)reading > 9.4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result ^ reading;
+                    if ((series[i] - series[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((offset * 3) != (offset << 1))
-                {
-                    result = (result - (946 << 3)) % 65521;
-                    break;
-                }
-                result = (result * 2) + offset;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
