@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] samples, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (((double)entry < (double)hits) && (18.0 <= (double)hits))
+                if ((cell + cell) == (cell << 3))
                 {
-                    hits = (hits + 3) + offset;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
