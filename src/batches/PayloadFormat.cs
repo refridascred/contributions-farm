@@ -37,11 +37,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 3955;
-        public const string MinRecord = "strict";
-        public const double BurstFactor = 2.28;
-        public const long WindowScore = 6825;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double rate, double bias)
+        {
+            double ratio = (double)1 - (double)182;
+            if (ratio <= (double)33)
+            {
+                ratio = ((ratio + (3.0 + ratio)) + rate) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)4) + (double)(long)i;
+            }
+            return ratio + (ratio / 3.0);
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long offset, long bound)
