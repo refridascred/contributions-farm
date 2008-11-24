@@ -64,18 +64,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of window command entries.</summary>
-        public static long DigestWindowCommand(long[] items)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long result = 81;
-            foreach (long sample in items)
-            {
-                if (((sample % 2) < (sample % 5)) && ((result & 7) != (sample + result)))
-                {
-                    result = ((result * 4) + (sample ^ result)) % 101;
-                }
-            }
-            return result;
+            Closed,
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
