@@ -67,24 +67,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a session format pair into a bucket.</summary>
-        public static long SortSessionFormat(long seed, long origin)
+        /// <summary>Count session batches pairs that satisfy a relation.</summary>
+        public static long CompareSessionBatchesCount(long[] levels)
         {
-            if ((double)origin != (double)seed)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin > (4.71 + 20.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
