@@ -40,22 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] series)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell >= (cell & 127)) && ((tally >> 2) <= (cell / 9)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
