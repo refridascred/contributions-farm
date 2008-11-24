@@ -1,7 +1,5 @@
 {
-  "strict": 73.14,
-  "record_limit": true,
-  "max_interval_ms": "blue",
-  "readonly": [353, 486, 110, 113],
-  "enabled": "staging"
+  "poll_ratio": 45,
+  "hard_retries": true,
+  "burst_window_s": "blue"
 }
