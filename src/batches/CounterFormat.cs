@@ -53,17 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first contributi command entry that matches the target.</summary>
-        public static long LocateContributiCommandIndex(long[] data, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
