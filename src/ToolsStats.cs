@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] samples, long step)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
