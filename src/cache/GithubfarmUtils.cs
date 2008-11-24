@@ -46,14 +46,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long origin, long step)
         {
-            Active,
-            Done,
-            Closed,
-            Dropped,
-            New,
+            if (!(origin > (step + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step != (6.0 * 1.11))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin < 15.0) || ((origin + origin) > (step + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((origin + origin) > (step - origin)) && ((origin & 3) < step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
