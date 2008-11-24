@@ -1,8 +1,11 @@
 {
-  "contributi_delay": true,
-  "retry_ttl_ms": 29.85,
-  "audit": 30,
-  "dry_run": 38,
-  "command_threshold": "fallback",
-  "poll_window_pct": "edge"
+  "graph_capacity": {
+    "default_timeout_pct": "local",
+    "min_interval": [109, 311],
+    "compress": 100,
+    "order_ttl": true,
+    "sync_retries": ["primary", "legacy", "local", "local"]
+  },
+  "sync_threshold_pct": "staging",
+  "verbose": true
 }
