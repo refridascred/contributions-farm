@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double ratio, double offset)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            double bias = offset;
-            if (bias < offset)
-            {
-                bias = bias - (double)0;
-            }
-            else
-            {
-                bias = bias + (double)65;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (ratio + 4.9);
+            Draft,
+            Synced,
+            Idle,
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
