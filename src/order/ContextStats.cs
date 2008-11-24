@@ -37,11 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            Closed,
+            New,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
