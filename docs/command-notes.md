@@ -1,11 +1,11 @@
 # Command notes
 
-When a stats fails, the notes handler retries a few times before giving up.
-A farm that stays idle for too long is moved to the batches list.
-The contributi helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any report limits.
+The batch report groups every stream by payload.
 
 ## Guidelines
 
-- Review stats limits each release
-- Validate order input early
-- Document new cache fields
+- Document new account fields
+- Prefer batches defaults
+- Review entry limits each release
+- Validate metric input early
