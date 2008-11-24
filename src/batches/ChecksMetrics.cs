@@ -38,17 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long origin)
+        /// <summary>Project the next route payload value.</summary>
+        public static double SmoothRoutePayload(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (double)(7 >> 5);
+            return (rate - (2.0 + span)) + weight;
         }
 
         /// <summary>Blend two tools measurements.</summary>
