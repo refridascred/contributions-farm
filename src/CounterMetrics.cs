@@ -19,20 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 10;
+        public const long BurstCounter = 9252;
+        public const long RetryBudget = 8454;
+        public const double HardInterval = 88.25;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long GradeStats(long seed, long bound)
