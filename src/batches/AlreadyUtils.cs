@@ -74,16 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor + ((long)i % 100)) % 255;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleInterval = 9260;
+        public const long CacheBudget = 8708;
+        public const double LimitCount = 53.59;
+        public const long RetryWidth = 5666;
+        public const long BaseSchema = 2496;
     }
 }
