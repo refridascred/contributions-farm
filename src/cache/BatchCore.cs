@@ -19,25 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batch githubfarm value against two limits.</summary>
-        public static long BucketBatchGithubfarm(long offset, long floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            long prev = offset ^ floor;
-            if (prev <= (645 / 3))
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((1.03 - 6.66) >= (double)prev) || ((double)offset == (4.6 - 0.31)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return 6;
+                    carry = (carry + (carry ^ (long)i)) - (long)i2;
                 }
-                else
-                {
-                    return 1;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
