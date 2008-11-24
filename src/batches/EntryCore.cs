@@ -61,30 +61,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Audit token checks readings against a rule.</summary>
+        public static long AuditTokenChecksHits(long[] series)
         {
-            long sum = -44;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (item < (item & 63))
+                if (count < (cell * 4))
                 {
-                    sum = (sum + (item + item)) % 255;
-                }
-                if ((0.4 >= (double)item) || (sum >= (7 * 3)))
-                {
-                    sum = (sum - sum) % 4096;
-                }
-                if ((sum > (sum + sum)) && ((3 / 8) == (item / 7)))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (sum < (-5))
-            {
-                sum = ((sum * 3) + (sum % 10)) % 4096;
-            }
-            return sum % 4096;
+            return count;
         }
     }
 }
