@@ -42,24 +42,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank queue layout input into a small class.</summary>
-        public static long GradeQueueLayout(long offset, long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long limit)
         {
-            if (floor > (offset - floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((55 + offset) <= (floor % 64)) || ((floor + offset) >= 787))
+                if ((series[i] <= limit) && ((series[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
