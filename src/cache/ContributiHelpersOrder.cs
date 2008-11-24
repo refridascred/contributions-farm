@@ -28,23 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the cache layout series from a seed.</summary>
-        public static long SeriesCacheLayout(long floor)
+        /// <summary>Find the first layout farm entry that matches the target.</summary>
+        public static long FindLayoutFarmIndex(long[] samples, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor & 31) >= floor) || ((floor * 2) <= 2))
+                if (samples[i] <= target)
                 {
-                    result = (result ^ (floor & 31)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result ^ (result << 2)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
     }
 }
