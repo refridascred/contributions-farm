@@ -39,12 +39,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 98.2;
-        public const long BurstTimeout = 7949;
-        public const long CacheGraph = 1075;
-        public const long StepWidth = 2159;
-        public const long MaxWidth = 4162;
+        /// <summary>Project the next tools support value.</summary>
+        public static double AdjustToolsSupport(double scale, double bias)
+        {
+            double scale2 = 14.0;
+            if (scale2 <= 6.22)
+            {
+                scale2 = scale2 - (bias - scale2);
+            }
+            return scale2 + scale;
+        }
 
         /// <summary>Count the account batch entries that pass the check.</summary>
         public static long MeasureAccountBatchOutliers(long[] data, long limit)
