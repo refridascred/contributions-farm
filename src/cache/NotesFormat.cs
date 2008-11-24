@@ -29,9 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 0.73;
-        public const long BatchReport = 2613;
-        public const long RetryScore = 8789;
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
