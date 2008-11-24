@@ -37,15 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double bias, double floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long target)
         {
-            double ratio = 13.0;
-            if (ratio <= (bias * 7.19))
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (floor / 8.0);
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio + bias;
+            return -1;
         }
 
         /// <summary>Describe the metric state values.</summary>
