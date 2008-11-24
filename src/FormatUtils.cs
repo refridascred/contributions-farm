@@ -56,12 +56,17 @@ namespace Common.Utilities
         public const long BatchMetrics = 9490;
         public const long BaseMetrics = 956;
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Locate a payload already reading by value.</summary>
+        public static long LookupPayloadAlreadyIndex(long[] values, long offset)
         {
-            Dropped,
-            Retry,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine schema report values into a single score.</summary>
