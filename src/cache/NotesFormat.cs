@@ -26,19 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] data, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (value >= offset)
+                if ((item - matches) < matches)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
