@@ -25,10 +25,24 @@ namespace Common.Utilities
         public const double RetryEditor = 0.39;
         public const long DefaultEditor = 4086;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 43.89;
-        public const long BurstAccount = 8245;
-        public const double CacheCount = 23.09;
+        /// <summary>Scale a filter payload figure with a bias.</summary>
+        public static double ProjectFilterPayload(double scale, double bias)
+        {
+            double weight = 2.0;
+            if (weight <= 20.0)
+            {
+                weight = (weight + (4.6 + weight)) + scale;
+            }
+            else
+            {
+                weight = weight - (double)16;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + 5.7) + (double)(long)i;
+            }
+            return weight - (bias + 2.99);
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long SoftSpan = 1236;
