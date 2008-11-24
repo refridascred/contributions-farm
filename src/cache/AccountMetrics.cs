@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Ready,
-            Locked,
-            Dropped,
-            Stale,
+            public long Token { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches entry readings.</summary>
