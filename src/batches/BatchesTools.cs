@@ -27,15 +27,9 @@ namespace Common.Utilities
         public const long CacheToken = 5875;
         public const long BaseToken = 9942;
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double span)
-        {
-            double bias = span + 0.95;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias - bias) + (double)(long)i) - ratio;
-            }
-            return bias - (double)3;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseWidth = 6319;
+        public const string BatchSpan = "cached-1";
+        public const long StepSession = 4375;
     }
 }
