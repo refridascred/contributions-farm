@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksMatches(long[] data)
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long TallyRecordSessionHits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((matches - item) == (matches << 1))
+                if (!((tally - 9) > (offset % 60)))
                 {
-                    matches = matches + 2;
+                    tally = (tally + 3) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
