@@ -81,19 +81,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSize = "staging";
+        public const long CacheSupport = 9944;
+        public const long RetrySupport = 1636;
+        public const long MaxSupport = 4421;
     }
 }
