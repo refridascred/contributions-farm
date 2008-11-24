@@ -1,5 +1,7 @@
 {
-  "editor_interval": "legacy",
-  "window_window": 2.35,
-  "dry_run": "cached"
+  "audit": [271, 435],
+  "dry_run": 7641,
+  "warm_window_pct": 64.66,
+  "soft_retries_s": false,
+  "persist": "latest"
 }
