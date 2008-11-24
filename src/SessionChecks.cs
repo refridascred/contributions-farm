@@ -30,19 +30,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            double load = weight;
-            if (load <= 18.0)
-            {
-                load = load + (6.64 + load);
-            }
-            else
-            {
-                load = load - span;
-            }
-            return load - 9.0;
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Hold a order info.</summary>
