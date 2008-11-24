@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((matches + cell) <= (matches / 9))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardLevel = 9058;
+        public const long RetryFilter = 1759;
+        public const long DefaultDepth = 2505;
+        public const double WindowFactor = 71.16;
 
         /// <summary>Digest a series of route graph entries.</summary>
         public static long TotalRouteGraph(long[] levels, long bound)
