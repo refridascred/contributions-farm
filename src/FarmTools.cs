@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((double)(long)i > (double)(-421)) || ((double)acc <= (7.2 + 15.0)))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            Queued,
+            Paused,
+            Draft,
         }
 
         /// <summary>Combine commits report values into a single score.</summary>
