@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] samples, long offset)
         {
-            if ((2.6 - 2.32) != (double)bound)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound << 1) >= origin)
+                if (item != offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > (origin + 785))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound * 4) > (bound - bound))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two tools queue measurements.</summary>
