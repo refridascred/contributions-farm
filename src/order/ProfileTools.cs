@@ -31,20 +31,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] series, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((long)i == ((long)i + origin))
+                if (datum >= bound)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                score = score - (score * 2);
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Count contributi window pairs that satisfy a relation.</summary>
