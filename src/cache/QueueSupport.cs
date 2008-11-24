@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] values, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Active,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the profile phase values.</summary>
