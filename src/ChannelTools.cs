@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels, long floor)
         {
-            Idle,
-            Draft,
-            Active,
-            Ready,
-            Dropped,
+            long sum = 0;
+            foreach (long datum in levels)
+            {
+                sum = (((sum * 3) + floor) % 97) + datum;
+            }
+            if (sum < 231)
+            {
+                sum = (sum ^ sum) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
