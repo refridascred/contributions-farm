@@ -20,12 +20,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Retry,
-            Stale,
-            Done,
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
