@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double IdleWindow = 69.05;
         public const double BatchWindow = 30.1;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] series, long floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Rank channel input into a small class.</summary>
