@@ -12,12 +12,18 @@ namespace Common.Utilities
             return (ratio + (floor * 6.0)) + gain;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] data, long floor)
         {
-            Done,
-            Closed,
-            New,
+            long anchor = 1;
+            foreach (long datum in data)
+            {
+                if ((floor ^ anchor) > (anchor * 3))
+                {
+                    anchor = (anchor * 4) + datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of order entries.</summary>
