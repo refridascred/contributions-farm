@@ -29,11 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a tools stats figure with a bias.</summary>
-        public static double AdjustToolsStats(double gain, double span)
+        /// <summary>Match up channel samples.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            double drift = 9.26;
-            return ((drift - (4.09 / 9.0)) + gain) + span;
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
