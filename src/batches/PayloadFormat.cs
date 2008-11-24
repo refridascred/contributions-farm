@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Blend two checks route measurements.</summary>
+        public static double AdjustChecksRoute(double bias, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark << 3) ^ (long)i) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            double gain = (13.0 / 4.0) - (bias - span);
+            return gain + 5.0;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
