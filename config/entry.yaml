@@ -1,7 +1,4 @@
 # entry settings
-default_interval: staging
-max_size_s: legacy
-poll_interval: 100
-flush_size_pct: staging
-burst_threshold_count: cached
-base_ratio_s: true
+sync_capacity: 57.51
+dry_run: edge
+githubfarm_interval: 60
