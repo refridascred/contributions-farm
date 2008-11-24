@@ -51,39 +51,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long offset, long limit)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            long prev = offset + limit;
-            if (((86 + limit) > (offset / 9)) && ((limit - 585) <= 559))
+            double scale = 8.0;
+            if (scale > 8.7)
             {
-                return 2;
+                scale = ((scale - (scale * 17.0)) - ratio) + span;
             }
             else
             {
-                if ((double)prev != (4.89 / 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset ^ 151) > (offset & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset - offset) == (prev + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale = scale + 3.0;
             }
+            return scale + (9.6 * 4.54);
         }
 
         /// <summary>Compare every pair of window readings.</summary>
