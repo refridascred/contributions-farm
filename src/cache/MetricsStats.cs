@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of buffer format readings.</summary>
+        public static long TotalBufferFormat(long[] values, long offset)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long sum = 2;
+            foreach (long entry in values)
+            {
+                if (entry < (sum + sum))
+                {
+                    sum = ((sum * 5) + (4 + entry)) + offset;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of contributi already readings.</summary>
