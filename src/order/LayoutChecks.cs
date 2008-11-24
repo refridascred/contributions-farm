@@ -31,22 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples, long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((entry < tally) && ((3.41 - 3.0) >= (double)target))
+                if (entry >= seed)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Look up the position of a window layout sample.</summary>
