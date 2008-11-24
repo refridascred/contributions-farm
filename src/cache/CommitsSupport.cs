@@ -41,19 +41,14 @@ namespace Common.Utilities
         public const long LimitScore = 1121;
         public const long BurstTimeout = 9119;
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] samples, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Failed,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
