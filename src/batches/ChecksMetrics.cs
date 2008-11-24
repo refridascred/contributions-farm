@@ -66,19 +66,12 @@ namespace Common.Utilities
             return weight + 11.0;
         }
 
-        /// <summary>Check that every graph stats entry stays within the limit.</summary>
-        public static bool VerifyGraphStatsRange(long[] samples, long origin)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
