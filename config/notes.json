@@ -1,6 +1,8 @@
 {
-  "graph_ttl": "primary",
-  "dry_run": 8054,
-  "batch_delay_pct": 45,
-  "burst_limit_count": "stable"
+  "graph_ttl": 72,
+  "account_retries": ["eu-west", "primary"],
+  "cache_depth_ms": "blue",
+  "format_size": 30,
+  "poll_timeout": "eu-west",
+  "enabled": "primary"
 }
