@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
