@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a schema stream value against two limits.</summary>
-        public static long ClassifySchemaStream(long offset, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            long delta = offset - origin;
-            if (!((delta + origin) >= (origin & 255)))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 63) < (origin ^ offset))
+                if (10.0 <= (double)hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)origin != (5.41 / 5.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 1) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many command checks samples are out of range.</summary>
