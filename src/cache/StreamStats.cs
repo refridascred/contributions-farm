@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank cluster checks input into a small class.</summary>
-        public static long BucketClusterChecks(long origin, long floor)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long edge = origin ^ floor;
-            if ((edge * 5) <= (edge - origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((8.0 / 7.0) == (double)edge) || ((double)origin <= (3.5 - 8.03)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
