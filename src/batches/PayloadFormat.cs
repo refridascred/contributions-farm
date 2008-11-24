@@ -39,22 +39,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many stats already samples are out of range.</summary>
-        public static long CountStatsAlreadyOutliers(long[] items, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long acc = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (608 > (hits << 1))
-                {
-                    hits = ((hits + 1) + cell) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (acc - acc) % 101;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
