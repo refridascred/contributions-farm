@@ -29,17 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a already profile sample.</summary>
-        public static long SeekAlreadyProfileIndex(long[] values, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
