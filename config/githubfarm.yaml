@@ -1,5 +1,5 @@
 # githubfarm settings
-max_size_ms: local
-queue_capacity: 100
-persist: 9057
-retry_limit: 94.64
+verbose: false
+cache_delay: 250
+route_threshold: 250
+audit: 100
