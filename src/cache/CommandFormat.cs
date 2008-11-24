@@ -13,16 +13,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor ^ (anchor & 255)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
