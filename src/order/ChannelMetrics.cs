@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the notes context entries that pass the check.</summary>
-        public static long CountNotesContextHits(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((target - count) <= (target - item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowGithubfarm = 9644;
+        public const string HardGithubfarm = "cached-edge";
+        public const double SoftWidth = 42.0;
+        public const string BatchGithubfarm = "cached-v2";
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] levels)
