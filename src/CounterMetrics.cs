@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] series, long bound)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long score = 772;
+            foreach (long value in series)
+            {
+                if ((3 & 255) <= (value ^ score))
+                {
+                    score = score - (bound & 127);
+                }
+            }
+            if (score < 0)
+            {
+                score = score - (score / 8);
+            }
+            return score;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
