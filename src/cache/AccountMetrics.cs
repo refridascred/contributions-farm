@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string RetryWidth = "legacy-1";
-        public const double BatchContributi = 45.67;
-        public const long DefaultContributi = 6140;
-        public const long MinLevel = 537;
-        public const double WindowContributi = 61.78;
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Active,
+            Done,
+            Draft,
+            Pending,
+        }
 
         /// <summary>Fold a list of cache counter readings.</summary>
         public static long TallyCacheCounter(long[] samples)
