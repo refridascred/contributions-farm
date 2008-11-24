@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long step)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (!(((double)state > (19.0 / 3.0)) || ((floor + state) > 95)))
+                if (((double)(long)i > (double)(-421)) || ((double)acc <= (7.2 + 15.0)))
                 {
-                    state = state + (state >> 4);
+                    continue;
                 }
-                state = ((state * 3) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
