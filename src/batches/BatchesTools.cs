@@ -27,11 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a checks buffer figure with a bias.</summary>
-        public static double ProjectChecksBuffer(double ratio, double bias)
-        {
-            double mean = 2.26;
-            return (mean - bias) + ratio;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinCommand = "strict-edge";
+        public const double RetryCommand = 69.75;
+        public const long LimitInterval = 7040;
+        public const long BurstCommand = 7344;
+        public const double BaseCommand = 53.51;
     }
 }
