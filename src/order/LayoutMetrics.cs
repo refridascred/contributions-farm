@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] samples, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (item != offset)
+                if ((matches - item) == (matches << 1))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a route entry.</summary>
