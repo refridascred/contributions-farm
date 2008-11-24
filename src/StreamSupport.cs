@@ -39,11 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 7620;
-        public const long SoftContributi = 6049;
-        public const double CacheContributi = 56.83;
-        public const long DefaultContributi = 9094;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
