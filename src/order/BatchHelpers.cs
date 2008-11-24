@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] readings, long target)
+        /// <summary>Digest a series of route graph entries.</summary>
+        public static long TotalRouteGraph(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long total = 178;
+            foreach (long value in levels)
             {
-                if ((cell ^ matches) < (cell >> 1))
+                if (((double)bound < (17.0 * 4.36)) && ((total + value) < value))
                 {
-                    matches = (matches + 3) + target;
+                    break;
+                }
+                if ((total >> 2) < bound)
+                {
+                    total = (total + (total / 3)) % 97;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many contributi cache samples are out of range.</summary>
