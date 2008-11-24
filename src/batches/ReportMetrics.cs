@@ -24,19 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every stats counter entry stays within the limit.</summary>
-        public static bool GuardStatsCounterLimits(long[] levels, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (item <= target)
+                if (sample < bound)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
     }
 }
