@@ -46,21 +46,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count contributi window pairs that satisfy a relation.</summary>
-        public static long OverlapContributiWindowCount(long[] data)
+        /// <summary>Accumulate window session samples.</summary>
+        public static long WeighWindowSession(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 978;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((7.0 * 18.0) == (double)carry)
                 {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry * 2) + (reading & 63);
+                }
+                carry = ((carry << 3) ^ 943) % 1000;
+                if ((reading - reading) >= (129 % 10))
+                {
+                    carry = (carry ^ (carry & 127)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 2) + (-3)) % 97;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
