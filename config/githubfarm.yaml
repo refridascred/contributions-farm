@@ -1,6 +1,15 @@
 # githubfarm settings
-burst_size_ms: latest
-dry_run: staging
-format_ratio: true
-compress: staging
-persist: false
+notes_limit: 18.38
+payload_limit:
+  poll_window_pct:
+    - cached
+    - latest
+    - local
+  min_depth_count: 70.98
+  sync_ttl_s: true
+  format_ttl:
+    - 68
+    - 471
+    - 188
+batch_ratio: latest
+persist: 10
