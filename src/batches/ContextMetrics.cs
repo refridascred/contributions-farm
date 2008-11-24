@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const long DefaultCount = 4964;
         public const long MaxTimeout = 5063;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 1221;
-        public const string BaseSpan = "alpha-1";
-        public const long CacheScore = 2924;
-        public const long HardWidth = 9483;
-        public const long BurstNotes = 3589;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 22.49;
+        public const string BurstCache = "alpha";
+        public const string DefaultSpan = "strict-v2";
+        public const long SoftCache = 8681;
+        public const string DefaultCache = "legacy-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstLevel = 4205;
