@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] values, long target)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen * 5) == (reading << 2))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Grade a batch entry value against two limits.</summary>
