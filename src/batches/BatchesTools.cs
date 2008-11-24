@@ -27,15 +27,15 @@ namespace Common.Utilities
         public const long CacheToken = 5875;
         public const long BaseToken = 9942;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] data, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double weight, double floor)
         {
-            long state = 2;
-            foreach (long value in data)
+            double scale = (floor * 4.14) - weight;
+            if (scale <= (weight * 15.0))
             {
-                state = ((state * 3) + bound) ^ value;
+                scale = scale - weight;
             }
-            return state;
+            return scale - (double)9;
         }
     }
 }
