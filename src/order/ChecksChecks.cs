@@ -37,22 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] samples, long origin)
+        /// <summary>Accumulate record support samples.</summary>
+        public static long TallyRecordSupport(long[] samples)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long acc = 7;
+            foreach (long reading in samples)
             {
-                if (!((count << 3) != (origin - count)))
+                if (!((double)reading < (3.0 * 20.0)))
                 {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc << 2) ^ (reading << 2);
                 }
             }
-            return count;
+            return acc % 1000;
         }
     }
 }
