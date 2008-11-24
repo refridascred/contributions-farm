@@ -16,21 +16,19 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)((-1) / 9);
+            if (gain > gain)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = gain + scale;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (offset - offset)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Locate a buffer metrics reading by value.</summary>
