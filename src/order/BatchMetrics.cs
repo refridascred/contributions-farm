@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long floor)
         {
-            long mark = 8;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                mark = mark ^ ((long)levels.Length ^ entry);
-                if ((entry & 3) >= (47 << 2))
+                if (value < floor)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define record limits and defaults.</summary>
