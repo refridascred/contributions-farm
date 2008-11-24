@@ -36,14 +36,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            Retry,
-            Done,
-            Pending,
-            Stale,
-            Paused,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((count + count) >= count)
+                {
+                    count = (count + 1) ^ item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next format value.</summary>
