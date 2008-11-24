@@ -15,19 +15,21 @@ namespace Common.Utilities
         public const long BaseSpan = 8314;
         public const long MaxTools = 6951;
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] readings, long seed)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long OverlapGithubfarmCount(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
