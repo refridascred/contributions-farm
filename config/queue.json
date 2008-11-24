@@ -1,5 +1,6 @@
 {
-  "persist": "latest",
-  "counter_interval": false,
-  "poll_interval_count": true
+  "warm_ttl_ms": 72,
+  "verbose": "edge",
+  "soft_limit": 60,
+  "session_size": false
 }
