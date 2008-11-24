@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            public double Rank { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of commits githubfarm entries.</summary>
