@@ -34,18 +34,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] series)
+        /// <summary>Count the counter channel entries that pass the check.</summary>
+        public static long AuditCounterChannelGaps(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((double)hits > (double)value)
+                if (!((datum >> 4) < tally))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) + step;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
