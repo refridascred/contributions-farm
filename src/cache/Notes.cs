@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a channel metric counter forward.</summary>
-        public static long SeriesChannelMetric(long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long carry = 11;
+            foreach (long reading in samples)
             {
-                mark = (mark - mark) % 101;
-                mark = ((mark * 4) + (long)i) % 97;
+                carry = ((carry ^ (4 ^ 589)) % 255) + reading;
             }
-            return mark;
+            if (carry > 32)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
