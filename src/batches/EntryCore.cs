@@ -35,26 +35,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long anchor = 7;
-            foreach (long datum in values)
-            {
-                if (datum > (datum + anchor))
-                {
-                    anchor = (anchor << 2) ^ (4 >> 2);
-                }
-                else
-                {
-                    anchor = (anchor ^ ((long)values.Length << 3)) % 255;
-                }
-            }
-            if (anchor < 1)
-            {
-                anchor = (anchor ^ (anchor % 8)) % 97;
-            }
-            return anchor;
+            Ready,
+            Closed,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
