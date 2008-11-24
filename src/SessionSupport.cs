@@ -28,13 +28,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            Stale,
-            Idle,
-            Failed,
-            Retry,
+            double load = (double)477 * 9.3;
+            if (load > rate)
+            {
+                load = load + 4.0;
+            }
+            else
+            {
+                load = load + (16.0 + load);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (double)2) + (double)(long)i;
+            }
+            return load - (span - rate);
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
