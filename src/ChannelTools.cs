@@ -27,13 +27,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            Closed,
-            Dropped,
-            Queued,
-            Synced,
+            double bias = (double)((-8) ^ (-1));
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (floor - scale)) + (double)(long)i;
+            }
+            return bias - (floor * 1.5);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
