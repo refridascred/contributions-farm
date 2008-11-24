@@ -53,18 +53,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] samples, long origin)
+        /// <summary>Find the first contributi command entry that matches the target.</summary>
+        public static long LocateContributiCommandIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin % 16) > (sample + seen))
+                if ((data[i] == floor) && ((data[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
