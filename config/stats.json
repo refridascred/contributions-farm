@@ -1,5 +1,16 @@
 {
-  "flush_capacity_count": false,
-  "verbose": [372, 107, 177, 428],
-  "max_retries": 25
+  "base_threshold_ms": {
+    "burst_limit_ms": "blue",
+    "compress": {
+      "flush_retries_pct": true,
+      "metric_capacity": [486, 471, 80],
+      "cache_retries": 94.57,
+      "support_ratio": "stable"
+    },
+    "sync_ratio_pct": "edge",
+    "default_interval_s": false
+  },
+  "flush_threshold_count": "open",
+  "burst_capacity_s": false,
+  "persist": "fallback"
 }
