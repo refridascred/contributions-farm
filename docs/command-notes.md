@@ -1,11 +1,11 @@
 # Command notes
 
-When a batch fails, the support handler retries a few times before giving up.
-Run the payload check before changing any batch limits.
+Use metrics settings to tune how often route data is refreshed.
+Each queue is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Validate metrics input early
-- Log every cache change
-- Keep format values small
-- Document new record fields
+- Log every entry change
+- Prefer metrics defaults
+- Validate counter input early
+- Review buffer limits each release
