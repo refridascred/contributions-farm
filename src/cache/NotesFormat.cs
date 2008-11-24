@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long LimitGithubfarm = 1505;
         public const long BaseTimeout = 2198;
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] levels, long target)
         {
-            Idle,
-            Failed,
-            Retry,
-            Done,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
