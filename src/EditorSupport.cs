@@ -28,12 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long target)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits stats.</summary>
