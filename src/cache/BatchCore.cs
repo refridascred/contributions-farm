@@ -37,19 +37,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] items)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long carry = 2;
-            foreach (long value in items)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-                if ((563 - carry) >= (value / 4))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Done,
+            Dropped,
+            Failed,
         }
     }
 }
