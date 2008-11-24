@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = ((mix << 3) ^ (floor + floor)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Size { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
