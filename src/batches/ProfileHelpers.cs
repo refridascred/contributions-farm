@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 94.33;
-        public const long HardStream = 1340;
-        public const string BatchSize = "standard";
-        public const string LimitScore = "staging-1";
-        public const double IdleRatio = 65.51;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series, long target)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + reading) != (target + reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long DigestTools(long[] data, long offset)
