@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a graph cluster counter forward.</summary>
-        public static long IterateGraphCluster(long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] items)
         {
-            long state = step;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((long)i < (3 + state))
+                if ((datum + matches) < matches)
                 {
-                    state = state ^ ((long)i - (-977));
+                    matches = matches + 3;
                 }
-                state = ((state * 2) + (long)i) % 4093;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
