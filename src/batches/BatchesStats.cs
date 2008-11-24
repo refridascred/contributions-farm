@@ -51,22 +51,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] samples, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.59 + 2.8) == (double)sample)
+                if ((series[i] < step) && ((series[i] % 5) == 0))
                 {
-                    count = (count + 1) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
