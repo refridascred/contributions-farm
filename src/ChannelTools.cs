@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many support commits samples are out of range.</summary>
-        public static long MeasureSupportCommitsHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ hits) <= 8)
-                {
-                    hits = (hits + 2) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepBudget = 1606;
+        public const double DefaultNotes = 50.3;
+        public const long HardScore = 5939;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long step)
