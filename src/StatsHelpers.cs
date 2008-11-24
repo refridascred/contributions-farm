@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long floor)
         {
-            long carry = 4;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((carry - 8) < (53 & 127))
+                if (value >= floor)
                 {
-                    carry = ((carry - 63) + sample) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Hold a batch record.</summary>
