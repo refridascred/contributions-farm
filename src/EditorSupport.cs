@@ -63,20 +63,25 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of route batch entries.</summary>
-        public static long CombineRouteBatch(long[] values)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long target, long floor)
         {
-            long mark = 6;
-            foreach (long item in values)
+            long delta = target ^ floor;
+            if ((target + target) == (target - 5))
             {
-                mark = ((mark * 5) + (mark / 2)) % 101;
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark + (mark << 1)) % 255) - (long)i;
-                }
-                mark = (mark << 2) ^ (item << 3);
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (delta < (target % 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
