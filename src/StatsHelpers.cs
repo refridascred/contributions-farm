@@ -36,13 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every farm already entry stays within the limit.</summary>
+        public static bool CheckFarmAlreadyLimits(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
