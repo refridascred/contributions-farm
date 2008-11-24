@@ -65,19 +65,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] values, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long score = 728;
+            foreach (long cell in levels)
             {
-                if (cell >= floor)
+                if (offset <= (cell + (long)levels.Length))
                 {
-                    found = false;
-                    break;
+                    score = (score << 2) ^ cell;
+                }
+                else
+                {
+                    score = (score + (score + cell)) % 255;
                 }
             }
-            return found;
+            if (score < 594)
+            {
+                score = (score - (offset ^ score)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
