@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double ratio, double span)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double load = (ratio + 5.5) / 6.0;
-            if (load >= span)
-            {
-                load = load - (span + ratio);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (8.66 + 3.3)) - (double)(long)i;
-            }
-            return load + (load - span);
+            Paused,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Describe the channel class values.</summary>
