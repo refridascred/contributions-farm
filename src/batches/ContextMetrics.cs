@@ -53,24 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double bias, double floor)
-        {
-            double scale = (1.81 * 20.0) + (double)4;
-            if (scale >= (double)451)
-            {
-                scale = ((scale - (double)7) + bias) - floor;
-            }
-            else
-            {
-                scale = scale + (scale / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (15.0 * 9.0)) + (double)(long)i;
-            }
-            return scale + 15.0;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "stable";
+        public const double SoftWindow = 20.63;
+        public const long MinWidth = 5400;
+        public const long BurstWindow = 7433;
+        public const long MaxSize = 4926;
 
         /// <summary>Combine report batches values into a single score.</summary>
         public static long DigestReportBatches(long[] items)
