@@ -29,10 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 75.75;
-        public const long BatchDepth = 4310;
-        public const long IdleSchema = 9521;
-        public const long WindowSchema = 3040;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultRatio = 68.72;
+        public const double BaseInterval = 71.97;
+        public const long StepStream = 6422;
+        public const string HardStream = "open-v2";
     }
 }
