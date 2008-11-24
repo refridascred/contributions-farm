@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of command buffer readings.</summary>
-        public static long ScoreCommandBuffer(long[] samples)
+        /// <summary>Adjust a commits schema reading.</summary>
+        public static double BlendCommitsSchema(double ratio, double bias)
         {
-            long sum = 8;
-            foreach (long reading in samples)
+            double load = (double)(9 & 15);
+            if (load < (double)51)
             {
-                if ((sum + sum) <= (reading * 2))
-                {
-                    sum = (sum ^ (reading >> 3)) % 4096;
-                }
+                load = ((load + (double)(-117)) - ratio) + bias;
             }
-            if (sum < 4)
-            {
-                sum = (sum << 3) ^ (9 + sum);
-            }
-            return sum;
+            return load + (load + load);
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
