@@ -1,11 +1,27 @@
 # githubfarm settings
-base_interval_pct: false
-default_window: false
-base_interval_count:
-  retry_threshold:
-    - 317
-    - 160
-  stream_ttl: 31
-  sync_capacity: eu-west
-  cache_delay_pct: 30
-base_limit: 38.2
+sync_retries_s:
+  stats_size:
+    idle_retries: eu-west
+    idle_ttl_count: 80.16
+    default_capacity_s: legacy
+    poll_ttl_pct: 38
+  min_limit:
+    hard_threshold_s: 61.7
+    poll_depth: standard
+    max_retries_count: true
+    editor_retries: 76
+  strict:
+    - latest
+    - latest
+    - standard
+  compress: 61
+  burst_timeout: true
+flush_ratio_pct: 27.73
+base_depth_ms:
+  burst_delay: 250
+  sync_ttl_pct: eu-west
+  record_limit:
+    graph_ratio: stable
+    counter_threshold: false
+    sync_size_pct: cached
+    hard_delay_ms: false
