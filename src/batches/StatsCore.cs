@@ -85,23 +85,18 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double SmoothMetric(double rate, double offset)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data, long origin)
         {
-            double gain = (double)(64 + 4);
-            if (gain < (offset / 8.0))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                gain = gain - rate;
+                if ((origin / 9) == (8 & 31))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            else
-            {
-                gain = gain - 3.36;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - (double)371;
+            return seen;
         }
     }
 }
