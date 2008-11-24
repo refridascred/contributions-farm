@@ -49,12 +49,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            Locked,
-            Dropped,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 8675;
+        public const long LimitWindow = 476;
+        public const string HardWindow = "standard-edge";
+        public const long RetryWindow = 4121;
     }
 }
