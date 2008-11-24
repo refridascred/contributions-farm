@@ -1,8 +1,7 @@
 {
-  "hard_timeout": "eu-west",
-  "default_ratio_pct": false,
-  "sync_ratio_count": "open",
-  "max_threshold": "green",
-  "dry_run": ["latest", "primary", "open"],
-  "idle_capacity_count": [113, 148]
+  "strict": 73.14,
+  "record_limit": true,
+  "max_interval_ms": "blue",
+  "readonly": [353, 486, 110, 113],
+  "enabled": "staging"
 }
