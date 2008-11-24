@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long DefaultStats = 6609;
         public const double LimitStats = 70.26;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] items, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (sample < seed)
+                if (reading > seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
