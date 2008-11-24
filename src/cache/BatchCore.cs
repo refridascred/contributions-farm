@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const string RetryContext = "stable-v2";
         public const string CacheContext = "open";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] readings, long target)
+        /// <summary>Match up batch order samples.</summary>
+        public static long CompareBatchOrderCount(long[] data)
         {
-            long score = 837;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 3) ^ sample) + target;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score < (-26))
-            {
-                score = (score - (score + (long)readings.Length)) % 65521;
-            }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Describe the account class values.</summary>
