@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long carry = 129;
+            foreach (long sample in readings)
             {
-                if ((item + tally) >= (tally - item))
+                if ((double)carry > (13.0 - 3.06))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (((carry << 3) ^ (5 % 100)) % 65521) + sample;
                 }
             }
-            return tally;
+            if (carry > 14)
+            {
+                carry = (carry ^ (origin * 3)) % 255;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many profile editor samples are out of range.</summary>
