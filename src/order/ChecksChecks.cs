@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long seed, long origin)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] items, long seed)
         {
-            long slot = seed ^ origin;
-            if ((24 + seed) != (origin & 31))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((4.0 * 5.0) == (double)slot))
+                if (99 <= ((long)items.Length ^ cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)seed >= (0.5 / 5.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    matches = (matches + 1) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Blend two record command measurements.</summary>
