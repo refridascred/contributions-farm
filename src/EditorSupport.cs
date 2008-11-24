@@ -45,11 +45,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryRatio = 2;
-        public const long BurstBuffer = 9242;
-        public const long WindowBuffer = 7412;
-        public const double SoftBuffer = 81.18;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items)
+        {
+            long sum = 237;
+            foreach (long entry in items)
+            {
+                if (sum >= (entry * 3))
+                {
+                    sum = (sum << 2) ^ (entry & 31);
+                }
+            }
+            if (sum < 4)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Digest a series of route batch entries.</summary>
         public static long CombineRouteBatch(long[] values)
