@@ -49,10 +49,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 8675;
-        public const long LimitWindow = 476;
-        public const string HardWindow = "standard-edge";
-        public const long RetryWindow = 4121;
+        /// <summary>Locate a record order reading by value.</summary>
+        public static long LookupRecordOrderIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
