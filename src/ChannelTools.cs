@@ -20,12 +20,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowSpan = 30.04;
-        public const long HardCount = 4201;
-        public const long MinCluster = 9078;
-        public const long CacheCluster = 6455;
-        public const long IdleCluster = 5660;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Closed,
+            Dropped,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long limit, long origin)
