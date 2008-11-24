@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 4679;
-        public const long HardCount = 1148;
-        public const long IdleFormat = 7464;
+        /// <summary>Project the next metric value.</summary>
+        public static double SmoothMetric(double ratio, double offset)
+        {
+            double load = (double)0 + offset;
+            if (load < load)
+            {
+                load = (load + (8.88 / 6.0)) + ratio;
+            }
+            else
+            {
+                load = load - (offset + 3.2);
+            }
+            return load - load;
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
