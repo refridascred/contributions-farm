@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long origin)
         {
-            long carry = 11;
-            foreach (long reading in samples)
+            long cur = offset - origin;
+            if ((double)cur <= (double)21)
             {
-                carry = ((carry ^ (4 ^ 589)) % 255) + reading;
+                return 1;
             }
-            if (carry > 32)
+            else
             {
-                carry = (carry << 3) ^ (carry + carry);
+                if (offset > (cur >> 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (cur >= (origin ^ 55))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
