@@ -33,14 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Measure how many contributi cache samples are out of range.</summary>
+        public static long CountContributiCacheOutliers(long[] data, long offset)
         {
-            Idle,
-            Failed,
-            Dropped,
-            Ready,
-            Synced,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (offset < (value - count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
