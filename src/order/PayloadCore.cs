@@ -40,23 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double scale, double floor)
+        /// <summary>Validate stream tools readings against a bound.</summary>
+        public static bool CheckStreamToolsLimits(long[] data, long target)
         {
-            double bias = (9.4 + scale) + (5.0 / 5.0);
-            if (bias < bias)
+            bool valid = true;
+            foreach (long item in data)
             {
-                bias = bias - (bias + scale);
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (floor + floor)) + (double)(long)i;
-            }
-            return bias - floor;
+            return valid;
         }
 
         /// <summary>Match up editor samples.</summary>
