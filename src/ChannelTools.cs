@@ -26,21 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a profile counter counter forward.</summary>
-        public static long StepProfileCounter(long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix + (3 & 255)) % 65521;
-                bool valid = (50 - mix) < (step - 7);
-                if ((7.0 <= (double)step) || valid)
-                {
-                    valid = step <= (7 ^ 176);
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
