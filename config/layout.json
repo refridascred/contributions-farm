@@ -1,8 +1,20 @@
 {
-  "enabled": "edge",
-  "cluster_capacity": 7988,
-  "default_threshold": false,
-  "retry_timeout": [396, 401, 489],
-  "idle_retries": "latest",
-  "burst_ttl_pct": "green"
+  "enabled": 100,
+  "batch_timeout_ms": {
+    "strict": 30,
+    "readonly": {
+      "sync_capacity": [196, 113, 165, 486],
+      "retry_ratio_count": 34.18,
+      "flush_limit_ms": "eu-west",
+      "order_threshold": "edge",
+      "hard_interval_s": 250
+    },
+    "format_timeout": [486, 392, 77],
+    "route_interval": "standard",
+    "poll_limit": "local"
+  },
+  "min_window_s": false,
+  "record_ttl": 876,
+  "min_size": 41.94,
+  "min_ttl_count": 22
 }
