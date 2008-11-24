@@ -87,19 +87,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long limit, long floor)
         {
-            double mean = offset;
-            if (mean >= offset)
+            long delta = limit - floor;
+            if ((limit - floor) <= floor)
             {
-                mean = mean + mean;
+                return 8;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - 4.4) - (double)(long)i;
+                if ((3 % 7) < (delta & 63))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)delta >= (0.91 - 4.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((limit << 3) != (limit >> 3)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return mean - bias;
         }
     }
 }
