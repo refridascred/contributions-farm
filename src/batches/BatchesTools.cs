@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many profile stream samples are out of range.</summary>
-        public static long CountProfileStreamOutliers(long[] readings)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches - cell) == (cell % 8))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Done,
+            New,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the metrics phase values.</summary>
