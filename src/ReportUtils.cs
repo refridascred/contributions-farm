@@ -52,19 +52,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] values, long step)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] samples)
         {
-            long anchor = 918;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = anchor ^ (item << 3);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor < 581)
-            {
-                anchor = anchor ^ (step >> 4);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
