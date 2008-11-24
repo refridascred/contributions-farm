@@ -43,12 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series)
         {
-            Synced,
-            Queued,
-            Closed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((cell << 1) >= (90 ^ matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
