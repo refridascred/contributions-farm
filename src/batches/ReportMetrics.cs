@@ -20,35 +20,14 @@ namespace Common.Utilities
             return load + (load - span);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items, long origin)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = 918;
-            foreach (long datum in items)
-            {
-                mix = (mix + (mix / 3)) % 1000;
-                if (((2.0 * 17.0) <= (double)mix) || (datum > (mix << 1)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = (mix + mix) % 255;
-                }
-                if ((datum % 7) > (89 << 2))
-                {
-                    mix = mix - (origin ^ datum);
-                }
-                else
-                {
-                    mix = (mix * 5) + (mix - mix);
-                }
-            }
-            if (mix < 472)
-            {
-                mix = (mix * 3) + origin;
-            }
-            return mix % 4096;
+            Dropped,
+            Failed,
+            Retry,
+            Closed,
+            Done,
         }
 
         /// <summary>Check that every stats counter entry stays within the limit.</summary>
