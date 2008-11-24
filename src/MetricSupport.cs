@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] data, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
