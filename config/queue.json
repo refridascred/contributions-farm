@@ -1,5 +1,5 @@
 {
-  "default_depth": "primary",
-  "default_size_pct": "open",
-  "poll_limit_ms": "local"
+  "persist": "latest",
+  "counter_interval": false,
+  "poll_interval_count": true
 }
