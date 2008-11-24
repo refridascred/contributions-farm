@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((value & 31) == (value + seen))
+                if (((0.22 / 3.0) <= (double)count) || ((3.0 * 3.3) != (double)seed))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 3) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Find the first schema queue entry that matches the target.</summary>
