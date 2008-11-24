@@ -23,18 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] levels, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] readings, long offset)
         {
-            long anchor = 6;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (offset <= anchor)
+                if (entry >= (-27))
                 {
-                    anchor = ((anchor * 5) + (offset + 561)) + datum;
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate cache editor samples.</summary>
