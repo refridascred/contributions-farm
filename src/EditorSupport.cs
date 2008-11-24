@@ -28,19 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutBounds(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if (sample < origin)
+                if (entry <= step)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
