@@ -37,18 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] data)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (matches >= (matches + (-483)))
                 {
-                    if ((series[i] ^ series[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
