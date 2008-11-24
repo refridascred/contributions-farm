@@ -90,13 +90,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Active,
-            Idle,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowDepth = 4181;
+        public const long StepChecks = 3597;
+        public const long IdleTimeout = 1324;
     }
 }
