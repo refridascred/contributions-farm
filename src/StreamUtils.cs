@@ -16,19 +16,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Roll a graph cluster counter forward.</summary>
+        public static long IterateGraphCluster(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long state = step;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((long)i < (3 + state))
                 {
-                    carry = (((carry * 2) + (offset >> 3)) % 101) ^ (long)i2;
+                    state = state ^ ((long)i - (-977));
                 }
-                carry = ((carry * 4) + (long)i) % 101;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
