@@ -1,7 +1,5 @@
 {
-  "cache_limit": 95.27,
-  "already_ratio": 75.16,
-  "strict": ["edge", "blue", "fallback"],
-  "metric_capacity": [152, 233, 31],
-  "enabled": 39.89
+  "stats_ratio": 84.51,
+  "burst_delay_count": 2.43,
+  "soft_limit": true
 }
