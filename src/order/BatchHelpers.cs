@@ -19,27 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long acc = 86;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (acc ^ ((long)i >> 1)) % 1000;
-                }
-                acc = (acc ^ sample) % 101;
-                if ((acc % 16) < (sample % 7))
-                {
-                    acc = (acc ^ (acc + 185)) % 97;
-                }
-            }
-            if (acc < 2)
-            {
-                acc = (acc * 4) + origin;
-            }
-            return acc % 97;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
