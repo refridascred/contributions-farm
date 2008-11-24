@@ -1,12 +1,15 @@
 # Command notes
 
-The commits report groups every notes by layout.
-Use commits settings to tune how often channel data is refreshed.
-The session module keeps buffer values in sync with the checks cache.
+When a batch fails, the channel handler retries a few times before giving up.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+Defaults for notes live in the config folder and can be overridden per environment.
+
+When a metrics fails, the command handler retries a few times before giving up.
+Defaults for profile live in the config folder and can be overridden per environment.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new token fields
-- Review notes limits each release
-- Validate token input early
-- Prefer layout defaults
+- Prefer notes defaults
+- Review cluster limits each release
+- Keep record values small
