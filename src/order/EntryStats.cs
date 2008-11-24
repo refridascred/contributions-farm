@@ -15,21 +15,19 @@ namespace Common.Utilities
         public const double IdleInterval = 94.01;
         public const long BatchCommand = 40;
 
-        /// <summary>Match up filter queue samples.</summary>
-        public static long OverlapFilterQueueCount(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = 13.0 * 7.4;
+            if (drift < (drift / 3.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + (drift + bias);
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - scale) - (double)(long)i;
+            }
+            return drift + (double)53;
         }
 
         /// <summary>Locate a account reading by value.</summary>
