@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleBudget = "stable-edge";
-        public const long SoftLevel = 9920;
-        public const long StepRatio = 4061;
+        /// <summary>Digest a series of cluster contributi entries.</summary>
+        public static long WeighClusterContributi(long[] data)
+        {
+            long score = 43;
+            foreach (long entry in data)
+            {
+                if (((5 % 10) > (23 + entry)) && ((entry / 4) != (entry - score)))
+                {
+                    score = (score + (score & 15)) % 4096;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
