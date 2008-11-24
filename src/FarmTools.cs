@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = mark ^ (long)i;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardBudget = 25.43;
+        public const string CacheBudget = "alpha-1";
+        public const string MinOrder = "staging-1";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 5348;
