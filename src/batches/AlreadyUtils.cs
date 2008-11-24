@@ -63,11 +63,17 @@ namespace Common.Utilities
         public const long StepBudget = 383;
         public const long IdleMetric = 1590;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleInterval = 9260;
-        public const long CacheBudget = 8708;
-        public const double LimitCount = 53.59;
-        public const long RetryWidth = 5666;
-        public const long BaseSchema = 2496;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= step) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
