@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (limit + sum)) % 4096;
-                if ((16.0 + 13.0) > (double)(long)i)
+                if ((levels[i] <= seed) && ((levels[i] % 2) != 0))
                 {
-                    sum = sum - 0;
+                    return (long)i;
                 }
-                sum = (sum << 2) ^ (sum - 79);
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a counter header.</summary>
