@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long BurstBatches = 9443;
         public const long BatchBatches = 9232;
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool ValidateChannelCommitsRange(long[] series, long seed)
+        /// <summary>Project the next batch order value.</summary>
+        public static double SmoothBatchOrder(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double scale = (double)(5 >> 1);
+            return (scale + bias) + bias2;
         }
     }
 }
