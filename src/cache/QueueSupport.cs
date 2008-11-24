@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1379;
-        public const long SoftScore = 6210;
-        public const long IdleMetric = 382;
-        public const long MinInterval = 5619;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Mode { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] series)
