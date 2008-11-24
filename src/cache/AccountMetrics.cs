@@ -72,24 +72,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] data)
         {
-            long state = -696;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (state + state) % 97;
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (((state << 3) ^ (item / 2)) % 4096) - (long)i;
-                }
-                state = (state + (item >> 5)) % 1000;
-                if ((double)state <= (7.1 * 17.0))
-                {
-                    break;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return hits;
         }
     }
 }
