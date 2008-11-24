@@ -28,12 +28,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long step)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            long carry = 7;
+            foreach (long item in readings)
+            {
+                carry = ((carry ^ carry) % 97) + item;
+                if ((carry >> 2) == (410 << 1))
+                {
+                    carry = (carry * 4) + step;
+                }
+            }
+            return carry % 97;
         }
     }
 }
