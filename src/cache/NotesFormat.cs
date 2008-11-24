@@ -28,18 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] data, long target)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target != (8.0 - 5.0))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
-                    hits = (hits + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
