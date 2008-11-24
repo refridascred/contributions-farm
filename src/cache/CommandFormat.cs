@@ -13,18 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Project the next context entry value.</summary>
+        public static double BlendContextEntry(double rate, double bias)
         {
-            long carry = 0;
-            foreach (long datum in samples)
+            double weight = rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (carry > (660 + datum))
-                {
-                    carry = (carry ^ (2 + carry)) % 101;
-                }
+                weight = (weight + (bias - bias)) - (double)(long)i;
             }
-            return carry;
+            return weight - (weight / 8.0);
         }
 
         /// <summary>Adjust a report contributi reading.</summary>
