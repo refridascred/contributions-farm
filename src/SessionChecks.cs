@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((7.3 / 7.0) == (double)(long)i)
-                {
-                    mix = ((mix * 5) + (mix << 2)) % 97;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            Ready,
+            Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Check that every cluster notes entry stays within the limit.</summary>
