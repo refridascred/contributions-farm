@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepBudget = 1606;
-        public const double DefaultNotes = 50.3;
-        public const long HardScore = 5939;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Idle,
+            Draft,
+            Active,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long SeriesMetric(long step)
