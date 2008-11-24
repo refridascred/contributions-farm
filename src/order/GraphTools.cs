@@ -42,16 +42,19 @@ namespace Common.Utilities
         public const long StepRecord = 2520;
         public const long DefaultRecord = 527;
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long value in values)
             {
-                anchor = anchor - offset;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
     }
 }
