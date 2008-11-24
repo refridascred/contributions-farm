@@ -38,14 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Synced,
-            Done,
-            Draft,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSize = 8448;
+        public const double LimitProfile = 66.44;
+        public const long BatchProfile = 2064;
+        public const string WindowDepth = "fallback-edge";
+        public const long BaseProfile = 9227;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
