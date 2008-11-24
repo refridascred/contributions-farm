@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] data)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
