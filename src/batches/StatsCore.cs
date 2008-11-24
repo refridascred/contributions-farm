@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long offset)
         {
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
