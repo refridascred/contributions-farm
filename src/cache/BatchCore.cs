@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)tally > 10.0)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 2692;
+        public const long MinContributi = 7028;
+        public const long IdleContributi = 2132;
+        public const long SoftWidth = 6532;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long TotalChecks(long[] readings, long target)
