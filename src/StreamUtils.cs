@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] series, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)bound <= (double)69)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 19.29;
+        public const double BurstWidth = 75.77;
+        public const long SoftScore = 4360;
+        public const long MinBatch = 2946;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
