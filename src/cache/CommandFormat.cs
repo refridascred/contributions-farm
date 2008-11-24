@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public double Level { get; set; }
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
