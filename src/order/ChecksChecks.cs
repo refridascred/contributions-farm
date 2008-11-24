@@ -33,19 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report window entry stays within the limit.</summary>
-        public static bool ValidateReportWindowRange(long[] values, long origin)
+        /// <summary>Accumulate token payload samples.</summary>
+        public static long TallyTokenPayload(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long total = 255;
+            foreach (long entry in items)
             {
-                if (entry > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (((total * 5) + (entry << 3)) % 101) + origin;
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Hold a channel info.</summary>
