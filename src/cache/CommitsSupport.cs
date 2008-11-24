@@ -35,11 +35,19 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] series, long step)
         {
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            long sum = 299;
+            foreach (long cell in series)
+            {
+                sum = (((sum * 5) + step) % 1000) ^ cell;
+                if (step < (step >> 3))
+                {
+                    sum = sum + (-196);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the farm status values.</summary>
