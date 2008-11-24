@@ -25,19 +25,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Project the next stream channel value.</summary>
-        public static double SmoothStreamChannel(double bias, double floor)
+        /// <summary>Adjust a window farm reading.</summary>
+        public static double ScaleWindowFarm(double ratio, double offset)
         {
-            double scale = (double)(-64);
-            if (scale <= bias)
+            double scale = ratio;
+            if (scale > offset)
             {
-                scale = (scale + (scale - scale)) - floor;
+                scale = scale - scale;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                scale = (scale - (scale * 8.99)) + (double)(long)i;
+                scale = scale + ratio;
             }
-            return scale - bias;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + (ratio / 4.0);
         }
     }
 }
