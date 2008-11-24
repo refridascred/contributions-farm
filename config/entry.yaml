@@ -1,11 +1,4 @@
 # entry settings
-min_window_count:
-  - standard
-  - legacy
-cache_retries_ms: 250
-buffer_depth: 68.65
-sync_ratio: open
-dry_run: latest
-max_size_ms:
-  - local
-  - green
+context_timeout: true
+hard_capacity: standard
+audit: 6
