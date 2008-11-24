@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of filter layout entries.</summary>
-        public static long DigestFilterLayout(long[] readings)
-        {
-            long sum = 76;
-            foreach (long sample in readings)
-            {
-                sum = (sum + sample) % 4096;
-                sum = sum - (long)readings.Length;
-                sum = sum ^ (sum + sample);
-            }
-            if (sum > 39)
-            {
-                sum = ((sum << 3) ^ (sum << 3)) % 1000;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 376;
+        public const long RetryScore = 7020;
+        public const long BatchTimeout = 9056;
 
         /// <summary>Classify a layout githubfarm pair into a bucket.</summary>
         public static long GradeLayoutGithubfarm(long seed, long target)
