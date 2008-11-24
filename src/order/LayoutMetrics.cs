@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Ratio { get; set; }
+            long acc = 5;
+            foreach (long value in items)
+            {
+                acc = (((acc * 4) + (bound ^ bound)) % 65521) + value;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
