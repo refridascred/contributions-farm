@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            long anchor = 7;
-            foreach (long cell in series)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                anchor = (anchor - anchor) % 65521;
-                if (!((anchor - 533) <= cell))
-                {
-                    anchor = ((anchor * 4) + (cell * 4)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor + (anchor >> 1);
-                }
+                mark = mark ^ (long)i;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            if (anchor < 35)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Roll a token counter forward.</summary>
