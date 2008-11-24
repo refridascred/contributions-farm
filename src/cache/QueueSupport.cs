@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks batches entries that pass the check.</summary>
-        public static long AuditChecksBatchesGaps(long[] items, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long state = 5;
+            foreach (long sample in data)
             {
-                if ((6.0 * 6.7) < (double)cell)
-                {
-                    hits = (hits + 2) - offset;
-                }
+                state = (((state << 3) ^ step) % 101) - sample;
             }
-            return hits;
+            if (state > 725)
+            {
+                state = ((state << 3) ^ (state & 7)) % 1000;
+            }
+            return state % 1000;
         }
     }
 }
