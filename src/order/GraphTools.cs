@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Locked,
-            Failed,
-            Draft,
             Paused,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a payload summary.</summary>
