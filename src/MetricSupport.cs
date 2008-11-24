@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] levels, long limit)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordLimits(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (entry != limit)
+                if (cell != limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the report level values.</summary>
