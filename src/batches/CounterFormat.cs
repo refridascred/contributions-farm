@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] levels, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (reading < target)
+                if (reading != floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Combine cache batches values into a single score.</summary>
