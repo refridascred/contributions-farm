@@ -70,19 +70,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next profile report value.</summary>
-        public static double BlendProfileReport(double bias, double offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values)
         {
-            double gain = offset * 1.63;
-            if (gain < gain)
+            long state = 11;
+            foreach (long cell in values)
             {
-                gain = gain + 15.0;
+                if ((490 - cell) >= (cell << 1))
+                {
+                    state = ((state * 2) + state) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (cell + cell)) % 65521;
+                }
             }
-            else
-            {
-                gain = gain + (bias + offset);
-            }
-            return gain - gain;
+            return state;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
