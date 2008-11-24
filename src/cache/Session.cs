@@ -42,15 +42,12 @@ namespace Common.Utilities
         public const long LimitRecord = 130;
         public const double DefaultRecord = 8.38;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long carry = 80;
-            foreach (long entry in values)
-            {
-                carry = ((carry ^ (carry % 7)) % 101) ^ entry;
-            }
-            return carry;
+            Done,
+            New,
+            Dropped,
         }
     }
 }
