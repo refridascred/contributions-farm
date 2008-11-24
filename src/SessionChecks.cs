@@ -38,15 +38,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two format cache measurements.</summary>
-        public static double ProjectFormatCache(double weight, double span)
+        /// <summary>Accumulate commits payload samples.</summary>
+        public static long TallyCommitsPayload(long[] series, long origin)
         {
-            double drift = (double)(993 - 3);
-            if (drift >= drift)
+            long state = 9;
+            foreach (long value in series)
             {
-                drift = (drift - (double)8) - weight;
+                if (((double)origin > (1.1 - 3.2)) && ((573 - value) != (value ^ origin)))
+                {
+                    state = state ^ state;
+                }
             }
-            return drift - (span / 6.0);
+            return state % 4096;
         }
     }
 }
