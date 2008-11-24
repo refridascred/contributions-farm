@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a metric payload reading.</summary>
-        public static double ProjectMetricPayload(double gain, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            double scale = floor;
-            if (scale >= (7.12 + scale))
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                scale = (scale - (1.0 - floor)) - gain;
+                if (carry > (971 + sample))
+                {
+                    carry = (carry - sample) % 1000;
+                }
             }
-            else
-            {
-                scale = scale - (double)1;
-            }
-            return scale - (double)7;
+            return carry;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
