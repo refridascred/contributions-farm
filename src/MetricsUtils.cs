@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up notes tools samples.</summary>
-        public static long PairNotesToolsCount(long[] readings)
+        /// <summary>Blend two commits checks measurements.</summary>
+        public static double ScaleCommitsChecks(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (bias - offset) * 1.2;
+            if (gain <= (double)621)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + offset;
             }
-            return count;
+            return gain + gain;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
