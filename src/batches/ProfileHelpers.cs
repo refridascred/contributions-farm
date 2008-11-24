@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long RetryBatches = 9916;
         public const long StepBatches = 6238;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry % 2) != (entry >> 5))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
