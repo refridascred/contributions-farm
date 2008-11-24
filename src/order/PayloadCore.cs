@@ -31,13 +31,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long floor)
         {
-            Idle,
-            Failed,
-            Queued,
-            Closed,
+            long carry = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
