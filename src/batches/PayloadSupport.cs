@@ -13,11 +13,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long acc = 68;
+            foreach (long cell in series)
+            {
+                acc = acc - (cell & 63);
+                if (((long)series.Length / 4) <= (acc + cell))
+                {
+                    break;
+                }
+            }
+            if (acc > 70)
+            {
+                acc = (acc ^ (acc & 31)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
