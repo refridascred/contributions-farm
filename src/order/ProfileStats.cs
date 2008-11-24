@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const double HardDepth = 83.63;
         public const long MaxEditor = 9378;
 
-        /// <summary>Check that every token farm entry stays within the limit.</summary>
-        public static bool CheckTokenFarmBounds(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchBudget = "primary-v2";
+        public const long CacheQueue = 709;
+        public const double BurstQueue = 66.06;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] data, long offset)
