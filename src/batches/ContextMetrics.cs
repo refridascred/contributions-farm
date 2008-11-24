@@ -53,12 +53,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "stable";
-        public const double SoftWindow = 20.63;
-        public const long MinWidth = 5400;
-        public const long BurstWindow = 7433;
-        public const long MaxSize = 4926;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Combine report batches values into a single score.</summary>
         public static long DigestReportBatches(long[] items)
