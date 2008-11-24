@@ -41,12 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
