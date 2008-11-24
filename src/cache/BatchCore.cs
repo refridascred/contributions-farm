@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const long BurstBatch = 7031;
         public const long IdleBatch = 2329;
 
-        /// <summary>Measure how many account command samples are out of range.</summary>
-        public static long AuditAccountCommandGaps(long[] values, long bound)
+        /// <summary>Grade a batch githubfarm value against two limits.</summary>
+        public static long BucketBatchGithubfarm(long offset, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long prev = offset ^ floor;
+            if (prev <= (645 / 3))
             {
-                if ((seen & 31) >= bound)
+                return 3;
+            }
+            else
+            {
+                if (((1.03 - 6.66) >= (double)prev) || ((double)offset == (4.6 - 0.31)))
                 {
-                    seen = (seen + 3) + datum;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
