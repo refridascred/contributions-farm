@@ -19,19 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long floor)
+        /// <summary>Look up the position of a window metric sample.</summary>
+        public static long FindWindowMetricIndex(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > floor)
+                if (levels[i] >= limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
