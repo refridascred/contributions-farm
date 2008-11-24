@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] readings, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long sum = 26;
+            foreach (long cell in readings)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (!(((16.0 * 13.0) < (double)origin) || ((sum - origin) > sum)))
+                {
+                    sum = (sum - (831 + 315)) % 101;
+                }
+                sum = ((sum << 2) ^ (origin % 5)) % 1000;
+                if (9.52 <= (double)origin)
+                {
+                    sum = (sum * 3) + origin;
+                }
+                if ((cell - cell) < (origin & 3))
+                {
+                    break;
+                }
             }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
