@@ -26,14 +26,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] items)
         {
-            Synced,
-            Done,
-            Retry,
-            Paused,
-            Locked,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((0 - 43) != (sample / 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
