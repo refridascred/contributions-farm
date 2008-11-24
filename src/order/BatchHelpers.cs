@@ -28,9 +28,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheDepth = 3346;
-        public const long MinGraph = 2357;
-        public const long RetryGraph = 1359;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Idle,
+            Failed,
+            Dropped,
+            Ready,
+            Synced,
+        }
     }
 }
