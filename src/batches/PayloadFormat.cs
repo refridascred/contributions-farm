@@ -54,12 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long bound, long seed)
         {
-            Dropped,
-            Pending,
-            New,
+            if (5 >= (bound * 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed > (seed * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
