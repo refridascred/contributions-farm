@@ -25,18 +25,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] readings, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (!(item >= (bound - 822)))
+                result = result - (8 & 127);
+                if (!(((long)i ^ result) < step))
                 {
-                    hits = hits + 3;
+                    result = result - (result % 3);
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
     }
 }
