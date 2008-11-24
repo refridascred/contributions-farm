@@ -33,13 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Match up support editor samples.</summary>
+        public static long OverlapSupportEditorCount(long[] values)
         {
-            Queued,
-            Draft,
-            Paused,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the batch phase values.</summary>
