@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Paused,
-            Done,
-            Idle,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchScore = 263;
+        public const long HardFactor = 7479;
+        public const long BatchCount = 8914;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long origin, long offset)
