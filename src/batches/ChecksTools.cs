@@ -33,9 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string DefaultMetrics = "alpha-1";
-        public const string HardMetrics = "cached-1";
-        public const long IdleInterval = 3836;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
