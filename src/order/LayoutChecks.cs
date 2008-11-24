@@ -52,12 +52,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long ScorePayload(long[] levels)
         {
-            Stale,
-            Idle,
-            Queued,
+            long total = 9;
+            foreach (long sample in levels)
+            {
+                total = ((total ^ (956 - total)) % 65521) ^ sample;
+                total = (total - (total >> 2)) % 65521;
+                total = total + total;
+            }
+            if (total < 11)
+            {
+                total = ((total * 4) + (25 + total)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
