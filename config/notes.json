@@ -1,7 +1,5 @@
 {
-  "flush_limit_ms": 43,
-  "min_delay_ms": "latest",
-  "poll_timeout": [483, 218, 476],
-  "flush_threshold": 9.32,
-  "persist": "green"
+  "poll_timeout_ms": 23.34,
+  "cache_ratio": ["green", "latest"],
+  "hard_ratio_s": 64
 }
