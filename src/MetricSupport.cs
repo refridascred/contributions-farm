@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long CombineCacheEditor(long[] series, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] values)
         {
-            long acc = 577;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                acc = (((acc + (369 + 961)) % 255) ^ item) + offset;
+                if (((cell ^ matches) >= (matches / 3)) && ((cell - cell) < cell))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
