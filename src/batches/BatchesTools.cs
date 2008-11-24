@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cluster channel samples are out of range.</summary>
-        public static long CountClusterChannelMatches(long[] data, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] series)
         {
             long seen = 0;
-            foreach (long entry in data)
+            foreach (long cell in series)
             {
-                if (seen >= (origin / 4))
+                if ((((cell - cell) <= 95) && (((long)series.Length & 255) >= (cell << 1))) || (((473 ^ cell) >= (seen + seen)) || ((seen ^ 0) == (cell + cell))))
                 {
-                    seen = (seen + 1) + entry;
+                    seen = seen + 2;
                 }
             }
             return seen;
