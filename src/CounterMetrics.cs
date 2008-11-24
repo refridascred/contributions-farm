@@ -12,27 +12,15 @@ namespace Common.Utilities
         public const string LimitRatio = "fallback-v2";
         public const long MinSize = 6610;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long seed)
         {
-            long mix = 8;
-            foreach (long entry in samples)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix - (entry - mix)) % 1000;
-                if ((mix << 3) > (3 % 64))
-                {
-                    mix = mix - (entry + entry);
-                }
-                else
-                {
-                    mix = mix - (entry ^ entry);
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (mix > 171)
-            {
-                mix = (mix << 3) ^ mix;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
