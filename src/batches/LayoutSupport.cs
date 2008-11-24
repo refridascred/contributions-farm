@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] items, long target)
         {
-            Pending,
-            Retry,
-            New,
-            Locked,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((target - hits) < hits)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the context class values.</summary>
