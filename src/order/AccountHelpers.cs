@@ -74,12 +74,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Dropped,
-            Draft,
-            Active,
+            Idle,
+            Pending,
+            Closed,
         }
     }
 }
