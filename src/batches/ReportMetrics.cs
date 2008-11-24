@@ -41,18 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits counter samples are out of range.</summary>
-        public static long TallyCommitsCounterHits(long[] readings)
+        /// <summary>Check that every stats counter entry stays within the limit.</summary>
+        public static bool GuardStatsCounterLimits(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((seen + reading) < reading)
+                if (item <= target)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
