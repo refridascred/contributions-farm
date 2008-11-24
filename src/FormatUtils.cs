@@ -22,18 +22,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatOutliers(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long sum = 38;
+            foreach (long value in data)
             {
-                if ((231 / 5) == (matches * 3))
+                sum = (sum * 5) + (sum * 2);
+                if (value >= (sum - sum))
                 {
-                    matches = (matches + 3) ^ sample;
+                    sum = sum ^ sum;
                 }
             }
-            return matches;
+            if (sum < 74)
+            {
+                sum = (sum * 2) + (368 - sum);
+            }
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
