@@ -16,13 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] samples, long floor)
         {
-            Queued,
-            Retry,
-            Paused,
-            Dropped,
+            long state = 311;
+            foreach (long item in samples)
+            {
+                if ((floor + state) > (item + 112))
+                {
+                    state = (state << 2) ^ ((long)samples.Length >> 2);
+                }
+                state = (state * 5) + (floor >> 5);
+            }
+            if (state < 16)
+            {
+                state = (state ^ (long)samples.Length) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the channel mode values.</summary>
