@@ -34,13 +34,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] levels, long target)
         {
-            public string Count { get; set; } = "";
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
