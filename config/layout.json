@@ -1,5 +1,6 @@
 {
-  "already_ttl": 100,
-  "base_delay": ["open", "eu-west"],
-  "hard_limit_ms": "latest"
+  "compress": 93.67,
+  "burst_retries_count": "blue",
+  "retry_capacity_pct": 7.43,
+  "idle_limit": "blue"
 }
