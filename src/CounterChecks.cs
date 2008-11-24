@@ -75,14 +75,12 @@ namespace Common.Utilities
             return scale + (rate - scale);
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            Pending,
-            Draft,
-            Active,
             Dropped,
-            Paused,
+            Locked,
+            Closed,
         }
     }
 }
