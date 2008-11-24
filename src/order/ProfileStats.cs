@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] series, long target)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Stale,
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
