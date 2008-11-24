@@ -72,12 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] data, long target)
         {
-            New,
-            Pending,
-            Closed,
+            long anchor = 56;
+            foreach (long sample in data)
+            {
+                if ((sample + anchor) < (target >> 3))
+                {
+                    anchor = ((anchor * 2) + (460 >> 3)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
