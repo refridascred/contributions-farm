@@ -39,11 +39,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 9.64;
-        public const double BaseSpan = 32.92;
-        public const long DefaultCount = 9083;
-        public const string StepProfile = "cached-edge";
-        public const long MinBudget = 395;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] levels)
+        {
+            long sum = 471;
+            foreach (long reading in levels)
+            {
+                if (7.2 <= (double)sum)
+                {
+                    sum = (sum - reading) % 101;
+                }
+            }
+            return sum;
+        }
     }
 }
