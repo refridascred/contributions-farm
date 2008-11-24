@@ -46,11 +46,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double scale = (double)(675 & 255);
+            if (scale < 9.4)
+            {
+                scale = (scale + (bias / 4.0)) + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + (bias * 0.4);
         }
     }
 }
