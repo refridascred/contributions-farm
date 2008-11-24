@@ -1,15 +1,15 @@
 # githubfarm settings
-poll_timeout_ms: eu-west
-hard_ratio_pct: local
-compress:
-  sync_ttl_count: false
-  githubfarm_size: false
-  readonly:
-    cache_ttl: false
-    audit: 5888
-    sync_timeout_ms: staging
-    retry_timeout_s: true
-    readonly: latest
-  default_depth_ms:
-    - strict
-    - standard
+hard_ratio_count: 250
+cache_threshold_pct: primary
+idle_ratio:
+  strict: false
+  idle_ratio_pct: 8644
+  batch_ratio_count: false
+  farm_capacity: 1024
+  poll_ttl_s:
+    warm_delay_pct: true
+    base_threshold_s: false
+    idle_ratio_ms: 33.37
+  default_timeout: fallback
+poll_capacity_ms: 5391
+batches_ttl: open
