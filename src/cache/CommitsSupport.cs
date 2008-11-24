@@ -103,10 +103,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSize = "staging";
-        public const long CacheSupport = 9944;
-        public const long RetrySupport = 1636;
-        public const long MaxSupport = 4421;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
