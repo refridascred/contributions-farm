@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const string DefaultRoute = "open-1";
         public const double CacheRoute = 85.71;
 
-        /// <summary>Count the record layout entries that pass the check.</summary>
-        public static long CountRecordLayoutGaps(long[] levels, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long gap = offset ^ bound;
+            if ((6.0 + 4.4) > (double)offset)
             {
-                if (seen <= (seen & 255))
+                return 2;
+            }
+            else
+            {
+                if ((double)gap != (9.8 * 0.5))
                 {
-                    seen = ((seen + 3) ^ reading) - target;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((gap ^ offset) <= (offset ^ bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
