@@ -27,17 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first already report entry that matches the target.</summary>
-        public static long LocateAlreadyReportIndex(long[] values, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) == 0))
+                if ((value > (limit ^ 134)) || ((double)hits >= (13.0 * 1.7)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
