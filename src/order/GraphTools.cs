@@ -36,20 +36,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double bias, double offset)
-        {
-            double gain = (double)(29 ^ 44);
-            if (gain < 4.47)
-            {
-                gain = ((gain - (gain / 5.0)) - bias) - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + 10.0) + (double)(long)i;
-            }
-            return gain - 9.92;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSpan = 5960;
+        public const double BatchWidth = 26.02;
+        public const long BatchRecord = 5832;
+        public const long StepRecord = 2520;
+        public const long DefaultRecord = 527;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long MeasureOrderHits(long[] items, long limit)
