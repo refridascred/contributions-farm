@@ -38,13 +38,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] series, long seed)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value << 2) <= (matches & 3))
+                {
+                    matches = (matches + 2) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
