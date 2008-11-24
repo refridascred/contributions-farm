@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next batches metrics value.</summary>
-        public static double BlendBatchesMetrics(double bias, double bias2)
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            double scale = (double)(7 + 6);
-            if (scale < (6.3 - scale))
+            double gain2 = bias;
+            if (gain2 >= (12.0 / 7.0))
             {
-                scale = (scale + bias2) - bias;
+                gain2 = gain2 + (gain * 0.9);
             }
             else
             {
-                scale = scale - (scale / 8.0);
+                gain2 = gain2 - gain2;
             }
-            return scale - (scale - 2.02);
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 + 20.0) + (double)(long)i;
+            }
+            return gain2 + (9.0 - bias);
         }
 
         /// <summary>Find the first report checks entry that matches the target.</summary>
