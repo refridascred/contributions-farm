@@ -1,7 +1,12 @@
 {
-  "retry_retries": [258, 494, 157, 168],
-  "strict": 42.01,
-  "batch_ratio": "edge",
-  "sync_timeout_s": 71.77,
-  "route_ratio": "staging"
+  "readonly": true,
+  "persist": "eu-west",
+  "burst_capacity_s": true,
+  "retry_interval_pct": {
+    "idle_window": 57,
+    "session_ttl": false,
+    "base_size": "cached",
+    "default_interval_count": 5.3
+  },
+  "batch_depth": "stable"
 }
