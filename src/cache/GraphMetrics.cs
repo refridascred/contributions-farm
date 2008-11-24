@@ -44,12 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            New,
-            Retry,
-            Active,
+            Dropped,
+            Ready,
+            Synced,
             Paused,
         }
 
