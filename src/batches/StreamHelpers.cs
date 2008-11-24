@@ -5,37 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long offset, long step)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long seed, long step)
         {
-            long next = offset + step;
-            if (next >= (next + offset))
+            long prev = seed - step;
+            if ((3.0 * 9.5) < (double)prev)
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((next > (1 / 7)) && ((7.9 - 5.0) < (double)next))
+                if (!((seed & 3) > (2 ^ prev)))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (!(9.88 <= (double)offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((offset ^ offset) > (3 & 63)) && (offset <= (step + step)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
