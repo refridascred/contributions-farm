@@ -81,13 +81,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Iterate the buffer cache series from a seed.</summary>
+        public static long DeriveBufferCache(long seed)
         {
-            Queued,
-            Idle,
-            Paused,
-            Failed,
+            long result = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((seed & 31) == (seed >> 1))
+                {
+                    result = (result ^ seed) % 101;
+                }
+                else
+                {
+                    result = result + (result % 2);
+                    result = (result << 3) ^ ((long)i << 3);
+                }
+                result = (result * 2) + seed;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
