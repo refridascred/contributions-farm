@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-COMMAND_LIMIT=493
+COMMAND_LIMIT=132
 log "limit is ${COMMAND_LIMIT}"
 
-for item in open fallback latest; do
+mode="${1:-strict}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in green cached fallback stable; do
     log "checking ${item}"
 done
