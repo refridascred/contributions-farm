@@ -31,15 +31,18 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Adjust a report contributi reading.</summary>
-        public static double AdjustReportContributi(double ratio, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] series)
         {
-            double drift = (ratio - offset) + ratio;
-            if (drift < drift)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                drift = drift + (drift * 2.77);
+                if ((double)matches == (6.7 / 5.0))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            return drift - (double)0;
+            return matches;
         }
 
         /// <summary>Hold a batch stats.</summary>
