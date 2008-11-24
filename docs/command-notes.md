@@ -1,10 +1,10 @@
 # Command notes
 
-Each session is validated before it reaches the notes queue.
-Keep queue and stats names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review token limits each release
-- Validate tools input early
-- Keep counter values small
+- Review cache limits each release
+- Prefer stream defaults
+- Keep stats values small
