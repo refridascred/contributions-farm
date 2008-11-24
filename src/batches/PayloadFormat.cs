@@ -19,21 +19,22 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 3;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)offset != (double)reading) && ((offset / 4) < (offset + offset)))
                 {
-                    if ((samples[i] ^ samples[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (reading - anchor)) % 65521;
+                }
+                if ((offset >> 5) != (785 - 8))
+                {
+                    anchor = (anchor + (offset - offset)) % 1000;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
