@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] items, long bound)
+        /// <summary>Digest a series of filter layout entries.</summary>
+        public static long TallyFilterLayout(long[] samples, long offset)
         {
-            long acc = 5;
-            foreach (long value in items)
+            long score = 3;
+            foreach (long reading in samples)
             {
-                acc = (((acc * 4) + (bound ^ bound)) % 65521) + value;
+                if (reading < (reading + score))
+                {
+                    score = (score - reading) - offset;
+                }
+                if (((reading + (long)samples.Length) < reading) || ((8 % 2) > (reading - reading)))
+                {
+                    break;
+                }
             }
-            return acc % 65521;
+            return score % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
