@@ -1,8 +1,19 @@
 # githubfarm settings
-retry_retries: 1279
-base_size_ms: cached
-checks_threshold:
-  - edge
-  - cached
-persist: 5801
-default_retries_pct: blue
+contributi_delay: open
+batch_interval:
+  idle_ttl: standard
+  strict: stable
+  readonly: 38.81
+  sync_ratio:
+    - 495
+    - 233
+retry_size_pct:
+  cache_limit: 45
+  idle_window: 4936
+  idle_timeout_s: false
+  verbose: 54.38
+  record_interval:
+    githubfarm_limit: local
+    batch_interval_pct: 88
+    strict: 1024
+  context_limit: 67
