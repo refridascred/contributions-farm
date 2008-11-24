@@ -1,18 +1,8 @@
 {
-  "idle_ttl_count": {
-    "contributi_delay": 41.42,
-    "poll_timeout_pct": 3104,
-    "burst_size": [170, 234, 254, 151]
-  },
-  "verbose": "fallback",
-  "base_delay": 6038,
-  "min_depth_s": true,
-  "retry_threshold_s": {
-    "hard_limit": "local",
-    "hard_threshold_ms": false,
-    "flush_timeout_ms": 91.35,
-    "idle_ratio_ms": false,
-    "strict": [121, 484, 373, 396],
-    "soft_ttl": "legacy"
-  }
+  "contributi_delay": true,
+  "retry_ttl_ms": 29.85,
+  "audit": 30,
+  "dry_run": 38,
+  "command_threshold": "fallback",
+  "poll_window_pct": "edge"
 }
