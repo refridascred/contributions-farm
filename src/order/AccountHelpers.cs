@@ -13,18 +13,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] series, long bound)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((reading + bound) < (bound + 373))
+                if ((0.87 + 5.6) >= (double)seed)
                 {
-                    hits = hits + 3;
+                    break;
                 }
+                else
+                {
+                    score = score - (seed * 4);
+                }
+                score = (score << 2) ^ (long)i;
+                if ((score * 2) <= score)
+                {
+                    score = (score - (score >> 3)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
