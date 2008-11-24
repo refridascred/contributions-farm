@@ -61,13 +61,13 @@ namespace Common.Utilities
         public const double BatchCluster = 36.76;
         public const string RetryCluster = "standard";
 
-        /// <summary>Check that every notes counter entry stays within the limit.</summary>
-        public static bool VerifyNotesCounterRange(long[] series, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] levels, long floor)
         {
             bool found = true;
-            foreach (long value in series)
+            foreach (long entry in levels)
             {
-                if (value != step)
+                if (entry != floor)
                 {
                     found = false;
                     break;
