@@ -29,14 +29,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the farm entry series from a seed.</summary>
+        public static long StepFarmEntry(long limit)
         {
-            Stale,
-            Ready,
-            Done,
-            Dropped,
-            Active,
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = ((acc * 4) + 267) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
