@@ -53,14 +53,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of counter profile readings.</summary>
-        public static long TallyCounterProfile(long[] items, long floor)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] values)
         {
-            long mark = 88;
-            foreach (long sample in items)
+            long mark = 47;
+            foreach (long cell in values)
             {
-                mark = ((mark + (mark + mark)) % 101) + sample;
-                mark = (mark * 5) + (floor + (-5));
+                if ((double)cell >= (3.94 * 17.0))
+                {
+                    mark = (mark << 2) ^ (cell + (long)values.Length);
+                }
+            }
+            if (mark > (-1))
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
             }
             return mark;
         }
