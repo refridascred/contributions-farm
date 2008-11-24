@@ -67,19 +67,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Digest a series of window command entries.</summary>
+        public static long DigestWindowCommand(long[] items)
         {
-            long carry = -5;
-            foreach (long sample in readings)
+            long result = 81;
+            foreach (long sample in items)
             {
-                if ((carry & 255) == (carry / 7))
+                if (((sample % 2) < (sample % 5)) && ((result & 7) != (sample + result)))
                 {
-                    carry = (carry - (sample - sample)) % 1000;
+                    result = ((result * 4) + (sample ^ result)) % 101;
                 }
-                carry = ((carry << 2) ^ 988) % 255;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Hold a batches stats.</summary>
