@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long LimitInterval = 904;
         public const string LimitLevel = "alpha-edge";
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultSize = 1850;
+        public const long WindowRatio = 6802;
+        public const double BatchDepth = 32.12;
+        public const long BurstScore = 8799;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long HardProfile = 6322;
