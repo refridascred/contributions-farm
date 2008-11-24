@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] values, long origin)
         {
-            long mix = 710;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (!((double)mix == (11.0 / 4.0)))
+                if (cell < origin)
                 {
-                    mix = (((mix << 3) ^ (mix % 2)) % 97) + reading;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix > 63)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix;
+            return ready;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
