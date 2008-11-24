@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine format githubfarm values into a single score.</summary>
-        public static long CombineFormatGithubfarm(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] samples, long bound)
         {
-            long carry = -5;
-            foreach (long entry in samples)
+            long total = -50;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 5; i++)
+                if (((item >> 2) > (421 << 2)) && ((7.0 / 7.0) >= (double)item))
                 {
-                    carry = (((carry << 3) ^ (entry + 13)) % 1000) ^ (long)i;
-                }
-                if (((entry * 3) != (carry << 2)) || ((double)carry < (double)(-75)))
-                {
-                    carry = (carry ^ (carry >> 3)) % 97;
+                    total = (total + bound) % 65521;
                 }
             }
-            return carry;
+            if (total < 57)
+            {
+                total = (total * 3) + (total + bound);
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate farm metric samples.</summary>
