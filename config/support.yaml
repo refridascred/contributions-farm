@@ -1,4 +1,9 @@
 # support settings
-schema_delay: true
-batch_interval_pct: 68.35
-batches_interval: 1024
+account_threshold: latest
+default_limit_s: edge
+schema_delay: 44
+audit: true
+idle_retries_count:
+  - 110
+  - 435
+enabled: false
