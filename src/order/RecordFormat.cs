@@ -57,21 +57,32 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count session batches pairs that satisfy a relation.</summary>
-        public static long CompareSessionBatchesCount(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long offset, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = offset ^ floor;
+            if (871 <= (offset - offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((3.28 / 4.0) > (double)offset)
                 {
-                    if ((levels[i] + levels[j]) != 16)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset + step) > step)
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
     }
 }
