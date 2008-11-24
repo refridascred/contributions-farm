@@ -20,13 +20,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] data, long floor)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public double Weight { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
