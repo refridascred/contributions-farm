@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxChecks = "local-edge";
-        public const long WindowLevel = 1581;
-        public const double HardSize = 21.31;
-        public const long RetryInterval = 641;
+        /// <summary>Count the notes context entries that pass the check.</summary>
+        public static long CountNotesContextHits(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((target - count) <= (target - item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] levels)
