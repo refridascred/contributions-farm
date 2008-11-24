@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Iterate the layout counter series from a seed.</summary>
+        public static long RollLayoutCounter(long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
