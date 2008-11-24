@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples, long bound)
         {
-            Synced,
-            Done,
-            Ready,
-            Active,
+            long mix = 647;
+            foreach (long entry in samples)
+            {
+                mix = (mix + (entry & 15)) % 97;
+            }
+            if (mix > 733)
+            {
+                mix = mix + bound;
+            }
+            return mix;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
