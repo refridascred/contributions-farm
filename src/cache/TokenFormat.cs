@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long SoftTimeout = 1266;
         public const long MaxNotes = 4978;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] data, long origin)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
