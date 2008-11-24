@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series, long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if (step >= (step + 447))
             {
-                if ((reading + reading) != (target + reading))
+                return 6;
+            }
+            else
+            {
+                if ((offset & 63) != (932 - offset))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
