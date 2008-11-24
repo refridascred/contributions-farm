@@ -1,5 +1,6 @@
 {
-  "compress": "legacy",
-  "min_limit": [243, 476],
-  "idle_size_ms": 30
+  "base_capacity": "strict",
+  "retry_ratio_pct": 6797,
+  "retry_limit_s": 0.32,
+  "soft_retries": "latest"
 }
