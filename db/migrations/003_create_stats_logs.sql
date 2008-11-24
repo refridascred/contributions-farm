@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     ratio REAL,
-    active INTEGER NOT NULL DEFAULT 1,
-    region TEXT
+    created_at TIMESTAMP,
+    label TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_active ON stats_logs (active);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
 
-INSERT INTO stats_logs (ratio, active, region) VALUES (68.72, 7, 'strict');
+INSERT INTO stats_logs (ratio, label) VALUES (67.98, 'local');
+INSERT INTO stats_logs (ratio, label) VALUES (69.87, 'local');
+INSERT INTO stats_logs (ratio, label) VALUES (72.27, 'eu-west');
