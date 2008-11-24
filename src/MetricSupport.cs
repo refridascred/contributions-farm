@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long carry = 39;
-            foreach (long reading in values)
-            {
-                if ((carry - reading) <= reading)
-                {
-                    carry = (carry ^ (65 >> 5)) - floor;
-                }
-            }
-            return carry % 4096;
+            public long Level { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
