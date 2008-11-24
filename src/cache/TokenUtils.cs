@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] values, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((double)seen > 17.0)
+                if ((step + step) >= (-26))
                 {
-                    seen = ((seen + 3) ^ entry) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
