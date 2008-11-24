@@ -45,23 +45,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] readings, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long state = 3;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 3) ^ (state ^ seed);
-                if (((sample << 2) <= state) || ((sample & 3) == (sample + state)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 80)
-            {
-                state = state ^ (state << 2);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
