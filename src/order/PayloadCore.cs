@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] readings, long origin)
-        {
-            long carry = 129;
-            foreach (long sample in readings)
-            {
-                if ((double)carry > (13.0 - 3.06))
-                {
-                    carry = (((carry << 3) ^ (5 % 100)) % 65521) + sample;
-                }
-            }
-            if (carry > 14)
-            {
-                carry = (carry ^ (origin * 3)) % 255;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 7388;
+        public const double RetryProfile = 16.12;
+        public const long RetryCount = 6262;
+        public const long HardProfile = 1230;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] items)
