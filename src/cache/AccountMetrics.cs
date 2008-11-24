@@ -29,14 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Draft,
-            Idle,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxWidth = "cached-1";
+        public const string SoftCount = "open-edge";
+        public const long HardLayout = 2269;
+        public const string BaseRatio = "standard-1";
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long limit, long step)
