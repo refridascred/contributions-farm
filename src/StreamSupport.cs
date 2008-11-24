@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many record queue samples are out of range.</summary>
-        public static long MeasureRecordQueueMatches(long[] data)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count + sample) < sample)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
