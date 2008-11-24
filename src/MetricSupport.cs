@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (9.46 >= (double)tally)
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Validate record readings against a bound.</summary>
