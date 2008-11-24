@@ -69,18 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] data, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5 <= (matches << 1)) || (((-536) + matches) <= bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 1) - cell;
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
