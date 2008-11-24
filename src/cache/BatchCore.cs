@@ -34,19 +34,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] items, long target)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= target)
+                if (items[i] >= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a window options.</summary>
