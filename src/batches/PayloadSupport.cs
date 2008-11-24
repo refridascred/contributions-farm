@@ -13,23 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two command layout measurements.</summary>
-        public static double AdjustCommandLayout(double scale, double offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            double drift = offset;
-            if (drift <= (offset * 6.2))
-            {
-                drift = (drift - drift) - scale;
-            }
-            else
-            {
-                drift = drift + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - 6.0) + (double)(long)i;
-            }
-            return drift + (drift * 15.0);
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
