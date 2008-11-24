@@ -36,23 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((25 - floor) >= (473 + seen))
-                {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MaxDepth = "open-v2";
+        public const long MinInterval = 5955;
+        public const double CacheRoute = 65.12;
+        public const long IdleScore = 4369;
+        public const long IdleRoute = 4668;
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
