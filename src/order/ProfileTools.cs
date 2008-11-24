@@ -40,19 +40,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long origin)
+        /// <summary>Count contributi window pairs that satisfy a relation.</summary>
+        public static long OverlapContributiWindowCount(long[] data)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
