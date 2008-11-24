@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            Dropped,
-            Queued,
-            Pending,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = result - (9 << 1);
+                long hits = (133 & 3) + (limit >> 4);
+                if ((hits / 7) >= hits)
+                {
+                    hits = ((hits * 4) + (long)i) % 4096;
+                    hits = (hits * 2) + (hits & 31);
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
