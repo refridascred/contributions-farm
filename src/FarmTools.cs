@@ -39,18 +39,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] levels)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long sum = 471;
-            foreach (long reading in levels)
-            {
-                if (7.2 <= (double)sum)
-                {
-                    sum = (sum - reading) % 101;
-                }
-            }
-            return sum;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
     }
 }
