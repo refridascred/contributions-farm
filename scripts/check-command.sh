@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for item in fallback open stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-cached}"
 case "${mode}" in
-    legacy)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in staging fallback; do
-    log "checking ${item}"
-done
