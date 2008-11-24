@@ -38,12 +38,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of counter account entries.</summary>
+        public static long FoldCounterAccount(long[] data)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long anchor = 846;
+            foreach (long reading in data)
+            {
+                if ((882 + anchor) != (anchor + reading))
+                {
+                    anchor = (anchor - (reading - anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (long)data.Length) % 97;
+                }
+                if ((reading >> 5) <= anchor)
+                {
+                    anchor = (anchor ^ ((long)data.Length - reading)) % 255;
+                }
+            }
+            if (anchor > (-90))
+            {
+                anchor = anchor - (anchor % 100);
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
